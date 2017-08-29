@@ -1,0 +1,15 @@
+{
+  "name": "MaxFront",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next"
+  },
+  "dependencies": {
+    "next": "^3.0.6",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "rebass": "^1.0.4"
+  }
+}
