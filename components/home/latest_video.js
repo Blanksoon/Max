@@ -50,9 +50,6 @@ const latest_video = () => (
                         />
                     </a>
                 </Box>
-                <Box px={2} py={2} width={1/6}>
-                    
-                </Box>
             </Flex>
             <Flex wrap mx={-2} my={-2}>
                 <Box px={2} py={2} width={1/5.7}>

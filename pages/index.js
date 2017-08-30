@@ -7,6 +7,9 @@ import {Footer} from '../components/home/Footer'
 import {ComingLive} from '../components/home/ComingLive'
 import Test from '../components/navbar'
 import Latest_video from '../components/latest_video'
+import Test from '../components/home/navbar'
+import Latest_video from '../components/home/latest_video'
+import Max_new from '../components/home/max_new'
 import {
   Provider
 } from 'rebass'
@@ -33,6 +36,7 @@ const Index = () => (
         </div>
       </div>
       <Latest_video />
+      <Max_new />
     </Provider>
     <style jsx global>
         {
