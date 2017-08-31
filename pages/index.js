@@ -1,43 +1,66 @@
 // This is the Link API
+import Head from 'next/head'
 import Link from 'next/link'
-import Test from '../components/navbar'
+import {Navbar} from '../components/home/Navbar'
+import {HeroSection} from '../components/home/HeroSection'
+import {Footer} from '../components/home/Footer'
+import {ComingLive} from '../components/home/ComingLive'
 import {
-  Provider,
-  Container,
-  Heading,
-  Blockquote,
-  Toolbar,
-  NavLink,
-  Flex,
-  Box
+  Provider
 } from 'rebass'
 const Index = () => (
-  <div>
+  <div className="wrapper-index">
+    <Head>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </Head>
     <Provider>
-    <Heading is='h1' children='Next.js + Rebass' mb={3} center />
+    <div className="warrper-navbar">
+      <div className="centerPage">
+        <Navbar />
+      </div>
+    </div>
+    <HeroSection />
+    <div className="warrper-cominglive">
+      <div className="centerPage">
+        <ComingLive />
+      </div>
+    </div>
+    <div className="warrper-centerPage">
+      <div className="centerPage">
+        <Footer />
+      </div>
+    </div>
+    </Provider>
 
-    <Container>
-      <Toolbar bg='black'>
-        <NavLink href='https://github.com/zeit/next.js/' target='_blank'>Next.js</NavLink>
-        <NavLink ml='auto' href='http://jxnblk.com/rebass/' target='_blank'>
-          REBASS docter jill
-        </NavLink>
-      </Toolbar>
 
-      <Flex justify='center'>
-        <Box width={1 / 2}>
-          <Blockquote center fontSize={3} py={4}>
-            "Next.js is a minimalistic framework for server-rendered React applications."
-          </Blockquote>
-        </Box>
-        <Box width={6 / 12}>
-          <Blockquote center fontSize={3} py={4}>
-            "Functional React UI component library, built with styled-components"
-          </Blockquote>
-        </Box>
-      </Flex>
-    </Container>
-  </Provider>
+    <style jsx global>
+          {
+            `
+            body {
+              padding: 0 !important;
+              margin: 0 !important;
+            }
+            `
+          }
+      </style>
+      <style jsx>
+          {`
+            .centerPage {
+              width: 1200px;
+              margin: auto;
+              border: 3px solid red;
+            }
+            .warrper-navbar {
+              background-color: #009999;
+            }
+            .warrper-centerPage {
+              background-color: gray;
+            }
+            .warrper-cominglive {
+              background-color: yellow;
+            }
+          `}
+      </style>
   </div>
 )
 
