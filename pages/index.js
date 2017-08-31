@@ -2,7 +2,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import {Navbar} from '../components/home/Navbar'
-import {HeroSection} from '../components/home/HeroSection'
 import {Footer} from '../components/home/Footer'
 import {ComingLive} from '../components/home/ComingLive'
 import Test from '../components/navbar'
@@ -10,6 +9,11 @@ import Latest_video from '../components/latest_video'
 import Test from '../components/home/navbar'
 import Latest_video from '../components/home/latest_video'
 import Max_new from '../components/home/max_new'
+import LatestVideo from '../components/home/LatestVideo'
+import MaxNew from '../components/home/MaxNew'
+import StadiumTicket from '../components/home/StadiumTicket'
+import About from '../components/home/About'
+import HeroSection from '../components/home/HeroSection'
 import {
   Provider
 } from 'rebass'
@@ -35,8 +39,23 @@ const Index = () => (
           <Footer />
         </div>
       </div>
-      <Latest_video />
-      <Max_new />
+      <div>
+      <div className="centerPage">
+        <HeroSection />
+        <LatestVideo />
+        <MaxNew />
+        <StadiumTicket />
+        <About />
+        <style>
+          {`
+            .centerPage {
+              width: 960px;
+              margin: auto;
+              background-color: ;
+            }
+          `}
+        </style>
+      </div>
     </Provider>
     <style jsx global>
         {
