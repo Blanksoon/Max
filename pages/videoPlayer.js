@@ -1,19 +1,15 @@
-// This is the Link API
 import Head from 'next/head'
 import Link from 'next/link'
 import {Navbar} from '../components/home/Navbar'
 import {Footer} from '../components/home/Footer'
-import {ComingLive} from '../components/home/ComingLive'
-
+import {VideoCenter} from '../components/videoplayer/videoCenter'
+import {Player} from '../components/videoplayer/player'
+import {Description} from '../components/videoplayer/description'
 import LatestVideo from '../components/home/LatestVideo'
-import MaxNew from '../components/home/MaxNew'
-import StadiumTicket from '../components/home/StadiumTicket'
-import About from '../components/home/About'
-import HeroSection from '../components/home/HeroSection'
 import {
   Provider
 } from 'rebass'
-const Index = () => (
+const videoPlayer = () => (
   <div className="wrapper-index">
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,30 +20,24 @@ const Index = () => (
           <Navbar />
         </div>
       </div>
-      <HeroSection />
+      <div className="wrapper-videoCenter">
+        <div className="centerPage">
+          <VideoCenter />
+        </div>
+      </div>
+      <div className="wrapper-Player">
+        <div className="centerPage">
+          <Player />
+        </div>
+      </div>
+      <div className="wrapper-Description">
+        <div className="centerPage">
+          <Description />
+        </div>
+      </div>
       <div className="wrapper-centerPage">
         <div className="centerPage">
           <LatestVideo />
-        </div>
-      </div>
-      <div className="wrapper-cominglive">
-        <div className="centerPage">
-          <ComingLive />
-        </div>
-      </div>
-      <div className="wrapper-centerPage">
-        <div className="centerPage">
-          <MaxNew />
-        </div>
-      </div>
-      <div className="wrapper-centerPage">
-        <div className="centerPage">
-          <StadiumTicket />
-        </div>
-      </div>
-      <div className="wrapper-centerPage">
-        <div className="centerPage">
-          <About />
         </div>
       </div>
       <div className="wrapper-centerPage">
@@ -81,10 +71,19 @@ const Index = () => (
             .wrapper-cominglive {
               background-color: yellow;
             }
+            .wrapper-videoCenter {
+              background-color: green;
+            }
+            .wrapper-Player {
+              background-color: darkblue;
+            }
+            .wrapper-Description {
+              background-color: white;
+            }
           `}
       </style>
     </Provider>
   </div>
 )
 
-export default Index
+export default videoPlayer

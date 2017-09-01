@@ -69,5 +69,6 @@ const LogoFooter = (props) => (
 )
 
 export {
-  Footer
+  Footer,
+  LogoFooter
 }
