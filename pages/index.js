@@ -27,7 +27,7 @@ const Index = () => (
       <HeroSection />
       <div className="wrapper-centerPage">
         <div className="centerPage">
-          <LatestVideo />
+          <LatestVideo name = 'Latest Video'/>
         </div>
       </div>
       <div className="wrapper-cominglive">

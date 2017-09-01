@@ -4,49 +4,126 @@ import {Media,
     Link,
     Flex,
     Box,
-    Text
+    Text,
+    BackgroundImage
 } from 'rebass'
 
 const HeroSection = () => (
     <div>
-        <Flex>
-            <Box width={4/6} bg='#A9CCE3'>
-                <p>Coming Up Next</p>
-                <h2>MAX Ultimate Tournament &MAX</h2>
-                <h2>World Champions 7 International Fights</h2>
-                <h4>Sun. Aug 27th, 2017</h4>
-                <button>Buy Ticket</button>
-                <b> More Information</b>
+        {/* <BackgroundImage
+            ratio={1/2}
+            src='https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=2048&q=20'
+        /> */}
+        <Flex pt={4} pb={4}>
+            
+            <Box width={1/12}>
             </Box>
-            <Box width={2/6} bg='#AED6F1'>
-                <Box width={1} bg='#5DADE2'>
-                    <Flex>
-                        <Box mx={0} my={0} width={3.7/4.9} bg='#48C9B0'>
+            <Box width={6/12} bg='Yellow'>
+                <Box pt={1} >
+                </Box>
+                <Box pt={6} >
+                    <h3>Coming Up Next</h3>
+                    <h2>MAX Ultimate Tournament &MAX</h2>
+                    <h2>World Champions 7 International Fights</h2>
+                    <h4>Sun. Aug 27th, 2017</h4>
+                    <button><h>Buy Ticket</h></button>
+                    <b> More Information</b>
+                </Box>
+            </Box>
+            <Box width={4/12} bg='blue'>
+                <Box width={1} bg='gray'>
+                    <Flex bg='blue'>
+                        <Box width={4.5/6}>
                         </Box>
-                        <Box mx={0} my={0} width={1.1/4.9} bg='#3498DB'>
-                            <h3>LIVE in</h3>
+                        <Box width={1.5/6} pb={1} bg='Orange'>
+                            <Text
+                                center
+                                bold
+                                children='LIVE in'
+                                fontSize='1.6em'
+                            />
                         </Box>
                     </Flex>
-                    <Flex>
-                        <Box mx={0} my={0} width={2/5} bg='#3498DB'>
+                    <Flex bg=''>
+                        <Box width={10/16} bg='green'>
                         </Box>
-                        <Box mx={0} my={0} width={1/5} bg='#73C6B6'>
-                            <center>
-                            <h1>00</h1>
-                            <h4>DAY</h4>
-                            </center>
+                        <Box width={2/16} bg='Yellow'>
+                            <Text
+                                center
+                                bold
+                                children='00'
+                                fontSize='2em'
+                            />
+                            <Text
+                                center
+                                bold
+                                children='DAY'
+                                fontSize='0.8em'
+                            />
                         </Box>
-                        <Box mx={0} my={0} width={1/5} bg='#F1C40F'>
-                            <center>
-                            <h3>01</h3>
-                            <h4>HRS</h4>
-                            </center>
+                        <Box width={2/16} bg='red'>
+                            <Text
+                                center
+                                bold
+                                children='01'
+                                fontSize='2em'
+                            />
+                            <Text
+                                center
+                                bold
+                                children='HRS'
+                                fontSize='0.8em'
+                            />
                         </Box>
-                        <Box mx={0} my={0} width={1/5} bg='#F39C12'>
-                            <center>
-                            <h3>48</h3>
-                            <h4>MIN</h4>
-                            </center>
+                        <Box width={2/16} bg='gray'>
+                            <Text
+                                center
+                                bold
+                                children='48'
+                                fontSize='2em'
+                            />
+                            <Text
+                                center
+                                bold
+                                children='MIN'
+                                fontSize='0.8em'
+                            />
+                        </Box>
+                    </Flex>
+                    <Flex pt={5} pb={5} bg='Orange'>
+                    </Flex>
+                    <Box pt={4} pb={2}>
+                    </Box>
+                    <Flex bg='red'>
+                        <Box width={4/14} bg='' >
+                        </Box>
+                        <Box width={4/14} bf='' >
+                            <a href="#">
+                                <Image
+                                    src='../../static/3.png'
+                                />
+                            </a>
+                            <Text
+                                pt={1}
+                                bold
+                                children='Title of slide 2'
+                                fontSize='0.8em'
+                            />
+                        </Box>
+                        <Box width={1/14} bg='' >
+                        </Box>
+                        <Box width={4/14} bf='gray' >
+                        <a href="#">
+                                <Image
+                                    src='../../static/3.png'
+                                />
+                            </a>
+                            <Text
+                                pt={1}
+                                bold
+                                children='Title of slide 3'
+                                fontSize='0.8em'
+                            />
                         </Box>
                     </Flex>
                 </Box>

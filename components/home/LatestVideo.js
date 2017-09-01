@@ -7,15 +7,15 @@ import {Media,
     Text
 } from 'rebass'
 
-const latest_video = () => (
+const latest_video = (props) => (
     <div>
-        <Box px={0} py={0} width={1} bg='gray'>
-            <Flex wrap mx={0} my={-2} bg='#2874A6'>
-                <Box px={0} py={2} width={1/8} bg='#2ECC71'>
-                    <b>Latest Videos</b>
+        <Box mt={2} width={1} bg='gray'>
+            <Flex wrap mx={0} my={-2} pb={2} bg='#2874A6'>
+                <Box pt={15} pb={15} mt={1} width={1/8} bg='#2ECC71'>
+                    <b>{props.name}</b>
                 </Box>
             </Flex>
-            <Flex>
+            <Flex bg='gray'>
                 <Box px={0} py={2} mx={0} width={8/35}>
                     <a href="#">
                         <Image
