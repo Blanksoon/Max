@@ -9,10 +9,10 @@ import {Media,
 
 const latest_video = (props) => (
     <div>
-        <Box mt={2} width={1} bg='gray'>
+        <Box mt={2} width={1} pb={5} bg='gray'>
             <Flex wrap mx={0} my={-2} pb={2} bg='#2874A6'>
-                <Box pt={15} pb={15} mt={1} width={1/8} bg='#2ECC71'>
-                    <b>{props.name}</b>
+                <Box pt={15} pb={15} mt={1} width={1} bg='#2ECC71'>
+                    <h1>{props.name}</h1>
                 </Box>
             </Flex>
             <Flex bg='gray'>

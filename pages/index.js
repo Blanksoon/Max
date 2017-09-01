@@ -68,7 +68,7 @@ const Index = () => (
       <style jsx>
           {`
             .centerPage {
-              width: 1200px;
+              width: 80%;
               margin: auto;
               border: 3px solid red;
             }

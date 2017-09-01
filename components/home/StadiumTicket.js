@@ -16,8 +16,21 @@ const stadium_ticket = () => (
               <h1>Witness the ultimate extreme MuayThai</h1>
               <h2>Get Stadium Ticket</h2>
             </Box>
-            <Box px={0} py={3} width={1/4} bg='blue'>
-              <button><h3>Reserve Now!</h3></button>
+            <Box px={0} py={4} width={1/4} bg='blue'>
+              <center>
+                <button>
+                  <Text
+                    pl= {3}
+                    pr= {3}
+                    pt= {3}
+                    pb = {3}
+                    center
+                    bold
+                    children= "Reserve Now!"
+                    fontSize='2em'
+                  />
+                </button>
+              </center>
             </Box>
           </Flex>
         </Box>

@@ -37,7 +37,7 @@ const videoPlayer = () => (
       </div>
       <div className="wrapper-centerPage">
         <div className="centerPage">
-          <LatestVideo />
+          <LatestVideo name="Up next" />
         </div>
       </div>
       <div className="wrapper-centerPage">
@@ -58,7 +58,7 @@ const videoPlayer = () => (
       <style jsx>
           {`
             .centerPage {
-              width: 1200px;
+              width: 80%;
               margin: auto;
               border: 3px solid red;
             }

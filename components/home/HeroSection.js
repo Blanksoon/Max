@@ -16,35 +16,56 @@ const HeroSection = () => (
         /> */}
         <Flex pt={4} pb={4}>
             
-            <Box width={1/12}>
+            <Box width={1/10}>
             </Box>
-            <Box width={6/12} bg='Yellow'>
-                <Box pt={1} >
+            <Box width={4/10} bg='Yellow'>
+                <Box pt={3} pb={5} >
                 </Box>
                 <Box pt={6} >
-                    <h3>Coming Up Next</h3>
-                    <h2>MAX Ultimate Tournament &MAX</h2>
-                    <h2>World Champions 7 International Fights</h2>
-                    <h4>Sun. Aug 27th, 2017</h4>
-                    <button><h>Buy Ticket</h></button>
-                    <b> More Information</b>
+                    <h2>Coming Up Next</h2>
+                    <h1>MAX Ultimate Tournament &MAX</h1>
+                    <h1>World Champions 7 International Fights</h1>
+                    <h2>Sun. Aug 27th, 2017</h2>
+                    <Flex>
+                        <button>
+                            <Text
+                                pl={4}
+                                pr={4}
+                                pt={2}
+                                pb={2}
+                                center
+                                bold
+                                children='Buy Ticket'
+                                fontSize='1.6em'
+                            />
+                        </button>
+                        <b>
+                            <Text
+                                pt={1}
+                                pl={4}
+                                bold
+                                children='More Information'
+                                fontSize='1.6em'
+                            />
+                        </b>
+                    </Flex>
                 </Box>
             </Box>
-            <Box width={4/12} bg='blue'>
+            <Box width={4/10} bg='blue'>
                 <Box width={1} bg='gray'>
                     <Flex bg='blue'>
-                        <Box width={4.5/6}>
+                        <Box width={4.4/6}>
                         </Box>
-                        <Box width={1.5/6} pb={1} bg='Orange'>
+                        <Box width={1.6/6} pb={1} bg='Orange'>
                             <Text
                                 center
                                 bold
                                 children='LIVE in'
-                                fontSize='1.6em'
+                                fontSize='2.3em'
                             />
                         </Box>
                     </Flex>
-                    <Flex bg=''>
+                    <Flex>
                         <Box width={10/16} bg='green'>
                         </Box>
                         <Box width={2/16} bg='Yellow'>
@@ -52,13 +73,13 @@ const HeroSection = () => (
                                 center
                                 bold
                                 children='00'
-                                fontSize='2em'
+                                fontSize='3em'
                             />
                             <Text
                                 center
                                 bold
                                 children='DAY'
-                                fontSize='0.8em'
+                                fontSize='1em'
                             />
                         </Box>
                         <Box width={2/16} bg='red'>
@@ -66,13 +87,13 @@ const HeroSection = () => (
                                 center
                                 bold
                                 children='01'
-                                fontSize='2em'
+                                fontSize='3em'
                             />
                             <Text
                                 center
                                 bold
                                 children='HRS'
-                                fontSize='0.8em'
+                                fontSize='1em'
                             />
                         </Box>
                         <Box width={2/16} bg='gray'>
@@ -80,24 +101,26 @@ const HeroSection = () => (
                                 center
                                 bold
                                 children='48'
-                                fontSize='2em'
+                                fontSize='3em'
                             />
                             <Text
                                 center
                                 bold
                                 children='MIN'
-                                fontSize='0.8em'
+                                fontSize='1em'
                             />
                         </Box>
                     </Flex>
                     <Flex pt={5} pb={5} bg='Orange'>
-                    </Flex>
-                    <Box pt={4} pb={2}>
-                    </Box>
-                    <Flex bg='red'>
-                        <Box width={4/14} bg='' >
+                        <Box pt={5} pb={4} >
                         </Box>
-                        <Box width={4/14} bf='' >
+                    </Flex>
+                    <Flex pt={2}>
+                    </Flex>
+                    <Flex bg='red'>
+                        <Box width={7/16} >
+                        </Box>
+                        <Box width={4/16} >
                             <a href="#">
                                 <Image
                                     src='../../static/3.png'
@@ -107,12 +130,12 @@ const HeroSection = () => (
                                 pt={1}
                                 bold
                                 children='Title of slide 2'
-                                fontSize='0.8em'
+                                fontSize='1em'
                             />
                         </Box>
-                        <Box width={1/14} bg='' >
+                        <Box width={0.5/16} >
                         </Box>
-                        <Box width={4/14} bf='gray' >
+                        <Box width={4/16} bf='gray' >
                         <a href="#">
                                 <Image
                                     src='../../static/3.png'
@@ -122,7 +145,7 @@ const HeroSection = () => (
                                 pt={1}
                                 bold
                                 children='Title of slide 3'
-                                fontSize='0.8em'
+                                fontSize='1em'
                             />
                         </Box>
                     </Flex>
