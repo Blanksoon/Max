@@ -10,8 +10,8 @@ import {Media,
 const latest_video = () => (
     <div>
         <Box px={0} py={0} width={1} bg='gray'>
-            <Flex wrap mx={0} my={-2}>
-                <Box px={0} py={2} width={1/5}>
+            <Flex wrap mx={0} my={-2} bg='#2874A6'>
+                <Box px={0} py={2} width={1/8} bg='#2ECC71'>
                     <b>Latest Videos</b>
                 </Box>
             </Flex>
