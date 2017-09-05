@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import {
   Provider,
   Toolbar,
@@ -13,6 +14,9 @@ import {
   Button
 } from 'rebass'
 
+const Contact = styled.div`
+  text-align: right;
+`
 const Footer = (props) => (
   <div className="Footer">
     <Flex>
@@ -37,22 +41,15 @@ const Footer = (props) => (
         </Box>
       </Box>
       <Box w={1/2} bg='blue' pt={80}>
-        <div className="contact">
+        <Contact>
           <h10><b>Max Muay Thai Co.,Ltd.</b></h10><br/>
           <h10>42/108 Sukumvit Rd. Moo.9 Nongprue</h10><br/>
           <h10>Banglamung Chon Buri 20150 (Thailand)</h10><br/><br/>
           <h10>Tel(+66) 038-416-999,08-2495-5549</h10><br/><br/><br/>
           <h10>Copyright @ 2016 All Rights Reserved</h10><br/>
-        </div>
+        </Contact>
       </Box>
     </Flex>
-    <style jsx>
-          {`
-            .contact {
-              text-align: right;
-            }
-          `}
-      </style>
   </div>
 )
 

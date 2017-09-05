@@ -18,7 +18,7 @@ const HeroSection = () => (
             
             <Box width={1/12}>
             </Box>
-            <Box width={6/12} bg='Yellow'>
+            <Box width={6/12} bg='yellow'>
                 <Box pt={1} >
                 </Box>
                 <Box pt={6} >
@@ -35,7 +35,7 @@ const HeroSection = () => (
                     <Flex bg='blue'>
                         <Box width={4.5/6}>
                         </Box>
-                        <Box width={1.5/6} pb={1} bg='Orange'>
+                        <Box width={1.5/6} pb={1} bg='orange'>
                             <Text
                                 center
                                 bold
@@ -44,10 +44,10 @@ const HeroSection = () => (
                             />
                         </Box>
                     </Flex>
-                    <Flex bg=''>
+                    <Flex>
                         <Box width={10/16} bg='green'>
                         </Box>
-                        <Box width={2/16} bg='Yellow'>
+                        <Box width={2/16} bg='yellow'>
                             <Text
                                 center
                                 bold
@@ -90,14 +90,14 @@ const HeroSection = () => (
                             />
                         </Box>
                     </Flex>
-                    <Flex pt={5} pb={5} bg='Orange'>
+                    <Flex pt={5} pb={5} bg='orange'>
                     </Flex>
                     <Box pt={4} pb={2}>
                     </Box>
                     <Flex bg='red'>
-                        <Box width={4/14} bg='' >
+                        <Box width={4/14}>
                         </Box>
-                        <Box width={4/14} bf='' >
+                        <Box width={4/14}>
                             <a href="#">
                                 <Image
                                     src='../../static/3.png'
@@ -110,9 +110,9 @@ const HeroSection = () => (
                                 fontSize='0.8em'
                             />
                         </Box>
-                        <Box width={1/14} bg='' >
+                        <Box width={1/14}>
                         </Box>
-                        <Box width={4/14} bf='gray' >
+                        <Box width={4/14}>
                         <a href="#">
                                 <Image
                                     src='../../static/3.png'

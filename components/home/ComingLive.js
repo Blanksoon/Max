@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import {
   Provider,
   Toolbar,
@@ -13,10 +14,13 @@ import {
   Button
 } from 'rebass'
 
+const H1 = styled.h1`
+  margin: 0px;
+`
 const ComingLive = (props) => (
   <div className="ComingLive">
       <Box w={1} bg='green'>
-        <h1><b>Up Coming LIVE</b></h1>
+        <H1><b>Up Coming LIVE</b></H1>
       </Box>
       <Flex>
       <Box w={1/2} bg='blue'>
@@ -54,13 +58,6 @@ const ComingLive = (props) => (
             />
       </Box>
       </Flex>
-      <style jsx>
-          {`
-            h1 {
-              margin: 0;
-            }
-          `}
-      </style>
   </div>
 )
 

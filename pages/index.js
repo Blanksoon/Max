@@ -4,26 +4,31 @@ import Link from 'next/link'
 import {Navbar} from '../components/home/Navbar'
 import {Footer} from '../components/home/Footer'
 import {ComingLive} from '../components/home/ComingLive'
-
 import LatestVideo from '../components/home/LatestVideo'
 import MaxNew from '../components/home/MaxNew'
 import StadiumTicket from '../components/home/StadiumTicket'
 import About from '../components/home/About'
 import HeroSection from '../components/home/HeroSection'
+import styled from 'styled-components'
 import {
-  Provider
+  Provider,
+  Container
 } from 'rebass'
+const WrapperNavbar = styled.div`
+  background-color: #009999;
+`;
 const Index = () => (
   <div className="wrapper-index">
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
     <Provider>
-      <div className="wrapper-navbar">
+    <Container>
+      <WrapperNavbar className="wrapper-navbar">
         <div className="centerPage">
           <Navbar />
         </div>
-      </div>
+      </WrapperNavbar>
       <HeroSection />
       <div className="wrapper-centerPage">
         <div className="centerPage">
@@ -55,6 +60,7 @@ const Index = () => (
           <Footer />
         </div>
       </div>
+    </Container>
       <style jsx global>
           {
             `
@@ -67,14 +73,6 @@ const Index = () => (
       </style>
       <style jsx>
           {`
-            .centerPage {
-              width: 1200px;
-              margin: auto;
-              border: 3px solid red;
-            }
-            .wrapper-navbar {
-              background-color: #009999;
-            }
             .wrapper-centerPage {
               background-color: gray;
             }
