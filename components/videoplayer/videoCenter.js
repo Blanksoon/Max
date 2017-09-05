@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import {Media,
   Subhead,
   Image,
@@ -7,21 +8,17 @@ import {Media,
   Text
 } from 'rebass'
 
+const BackVideo = styled.div`
+  padding-top: 6px;
+  padding-bottom: 6px;
+`
 const VideoCenter = () => (
   <div className="VideoCenter">
       <Box width={1} bg='pink'>
-        <div className="BackVideo">
+        <BackVideo className="back-video">
           {"<"} Back to Video Center
-        </div>
+        </BackVideo>
       </Box>
-      <style jsx>
-          {`
-            .BackVideo {
-              padding-top: 6px;
-              padding-bottom: 6px;
-            }
-          `}
-      </style>
   </div>
 )
 export {
