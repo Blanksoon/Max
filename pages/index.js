@@ -1,7 +1,7 @@
 // This is the Link API
 import Head from 'next/head'
 import Link from 'next/link'
-import {Navbar} from '../components/home/Navbar'
+import {NavbarHead} from '../components/home/NavbarHead'
 import {Footer} from '../components/home/Footer'
 import {ComingLive} from '../components/home/ComingLive'
 import LatestVideo from '../components/home/LatestVideo'
@@ -26,7 +26,7 @@ const Index = () => (
     <Container>
       <WrapperNavbar className="wrapper-navbar">
         <div className="centerPage">
-          <Navbar />
+          <NavbarHead />
         </div>
       </WrapperNavbar>
       <HeroSection />

@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { LabelSearch } from '../components/videoCenter/LabelSearch'
 import styled from 'styled-components'
-import { Navbar } from '../components/home/Navbar'
+import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
 import { VideoBox } from '../components/videoCenter/VideoBox'
 import {
@@ -10,9 +10,9 @@ import {
   Container
 } from 'rebass'
 const WrapperNavbar = styled.div`
-background-color: #009999;
-`;
-const videoPlayer = () => (
+  background-color: #009999;
+  `;
+const videoCenter = () => (
   <div className="wrapper-index">
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,7 +21,7 @@ const videoPlayer = () => (
       <Container>
         <WrapperNavbar>
           <div className="centerPage">
-            <Navbar />
+            <NavbarHead />
           </div>
         </WrapperNavbar>
         <div className="wrapper-navbar">
@@ -54,4 +54,4 @@ const videoPlayer = () => (
   </div>
 )
 
-export default videoPlayer
+export default videoCenter
