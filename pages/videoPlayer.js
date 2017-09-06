@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import {Navbar} from '../components/home/Navbar'
-import {Footer} from '../components/home/Footer'
-import {VideoCenter} from '../components/videoplayer/VideoCenter'
-import {Player} from '../components/videoplayer/Player'
-import {Description} from '../components/videoplayer/Description'
+import { Navbar } from '../components/home/Navbar'
+import { Footer } from '../components/home/Footer'
+import { VideoCenter } from '../components/videoplayer/VideoCenter'
+import { Player } from '../components/videoplayer/Player'
+import { Description } from '../components/videoplayer/Description'
 import LatestVideo from '../components/home/LatestVideo'
 import {
   Provider
@@ -37,7 +37,7 @@ const videoPlayer = () => (
       </div>
       <div className="wrapper-centerPage">
         <div className="centerPage">
-          <LatestVideo name="Up next"/>
+          <LatestVideo name="Up next" />
         </div>
       </div>
       <div className="wrapper-centerPage">
@@ -46,18 +46,18 @@ const videoPlayer = () => (
         </div>
       </div>
       <style jsx global>
-          {
-            `
+        {
+          `
             body {
               padding: 0 !important;
               margin: 0 !important;
               backgroud-color: #000;
             }
             `
-          }
+        }
       </style>
       <style jsx>
-          {`
+        {`
             .centerPage {
               width: 80%;
               margin: auto;

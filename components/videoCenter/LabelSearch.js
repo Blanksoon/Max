@@ -26,7 +26,7 @@ const AllShow = styled.select`
 `
 
 const LabelSearch = () => (
-  <div>
+  <div className="LabelSearch">
     <Flex mb={3}>
       <Box w={1/2}>
         <h1><b>Video Center</b></h1>
@@ -59,7 +59,7 @@ const LabelSearch = () => (
         </Select>
       </Box>
       <Box className="2" w={1}>
-        <Flex>
+        <Flex mb='1em'>
           <Box className="2" w={1/3.5}>
           </Box>
           <Box className="2" w={1}>
