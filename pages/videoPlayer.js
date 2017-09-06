@@ -7,7 +7,8 @@ import { Player } from '../components/videoplayer/Player'
 import { Description } from '../components/videoplayer/Description'
 import LatestVideo from '../components/home/LatestVideo'
 import {
-  Provider
+  Provider,
+  Container
 } from 'rebass'
 const videoPlayer = () => (
   <div className="wrapper-index">
@@ -15,54 +16,50 @@ const videoPlayer = () => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
     <Provider>
-      <div className="wrapper-navbar">
-        <div className="centerPage">
-          <NavbarHead />
+      <Container>
+        <div className="wrapper-navbar">
+          <div className="centerPage">
+            <NavbarHead />
+          </div>
         </div>
-      </div>
-      <div className="wrapper-videoCenter">
-        <div className="centerPage">
-          <BackVideoCenter />
+        <div className="wrapper-videoCenter">
+          <div className="centerPage">
+            <BackVideoCenter />
+          </div>
         </div>
-      </div>
-      <div className="wrapper-Player">
-        <div className="centerPage">
-          <Player />
+        <div className="wrapper-Player">
+          <div className="centerPage">
+            <Player />
+          </div>
         </div>
-      </div>
-      <div className="wrapper-Description">
-        <div className="centerPage">
-          <Description />
+        <div className="wrapper-Description">
+          <div className="centerPage">
+            <Description />
+          </div>
         </div>
-      </div>
-      <div className="wrapper-centerPage">
-        <div className="centerPage">
-          <LatestVideo name="Up next" />
+        <div className="wrapper-centerPage">
+          <div className="centerPage">
+            <LatestVideo name="Up next" />
+          </div>
         </div>
-      </div>
-      <div className="wrapper-centerPage">
-        <div className="centerPage">
-          <Footer />
+        <div className="wrapper-centerPage">
+          <div className="centerPage">
+            <Footer />
+          </div>
         </div>
-      </div>
-      <style jsx global>
-        {
-          `
+        <style jsx global>
+          {
+            `
             body {
               padding: 0 !important;
               margin: 0 !important;
               backgroud-color: #000;
             }
             `
-        }
-      </style>
-      <style jsx>
-        {`
-            .centerPage {
-              width: 80%;
-              margin: auto;
-              border: 3px solid red;
-            }
+          }
+        </style>
+        <style jsx>
+          {`
             .wrapper-navbar {
               background-color: #009999;
             }
@@ -82,7 +79,8 @@ const videoPlayer = () => (
               background-color: white;
             }
           `}
-      </style>
+        </style>
+      </Container>
     </Provider>
   </div>
 )
