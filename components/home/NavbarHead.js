@@ -16,26 +16,26 @@ import {
   NavLink
 } from 'rebass'
 
-const Navbar = () => (
+const NavbarHead = () => (
   <div className="Navbar">
     <Flex>
-      <Box w={3 / 12} px={0} >
+      <Box w={3 / 12} px={0}>
         <Image
           width={100}
-          borderWidth={5}
+          borderWidth={5} color='red'
           //height={1/12}
           src='/static/logo.png'
           ml={15}
           mt={2}
         />
       </Box>
-      <Box w={9 / 12}>
+      <Box w={9 / 12} px={0} >
         <Flex w={12 / 12}>
-          <Box w={8 / 12} />
+        <Box w={9/12}></Box>
           <Register register='Register/login' />
         </Flex>
         <Flex w={12 / 12}>
-          <Box w={1 / 12} />
+        <Box w={1/12} />
           <TabNavbar name='Home' />
           <TabNavbar name='Our Show' />
           <TabNavbar name='Video Center' />
@@ -48,7 +48,9 @@ const Navbar = () => (
     </Flex>
   </div>
 )
+
+
 export {
-  Navbar
+  NavbarHead
 }
 

@@ -12,7 +12,7 @@ const BackVideo = styled.div`
   padding-top: 6px;
   padding-bottom: 6px;
 `
-const VideoCenter = () => (
+const BackVideoCenter = () => (
   <div className="VideoCenter">
       <Box width={1} bg='pink'>
         <BackVideo className="back-video">
@@ -22,5 +22,5 @@ const VideoCenter = () => (
   </div>
 )
 export {
-  VideoCenter
+  BackVideoCenter
 }

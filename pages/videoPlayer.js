@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { Navbar } from '../components/home/Navbar'
+import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
-import { VideoCenter } from '../components/videoplayer/VideoCenter'
+import { BackVideoCenter } from '../components/videoplayer/BackVideoCenter'
 import { Player } from '../components/videoplayer/Player'
 import { Description } from '../components/videoplayer/Description'
 import LatestVideo from '../components/home/LatestVideo'
@@ -17,12 +17,12 @@ const videoPlayer = () => (
     <Provider>
       <div className="wrapper-navbar">
         <div className="centerPage">
-          <Navbar />
+          <NavbarHead />
         </div>
       </div>
       <div className="wrapper-videoCenter">
         <div className="centerPage">
-          <VideoCenter />
+          <BackVideoCenter />
         </div>
       </div>
       <div className="wrapper-Player">
