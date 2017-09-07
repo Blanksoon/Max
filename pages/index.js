@@ -36,7 +36,6 @@ const Index = () => (
           <NavbarHead />
         </div>
       </WrapperNavbar>
-      <HeroSection />
       <div className="wrapper-centerPage">
         <div className="centerPage">
           <HeroSection d = '04' h = '05' m = '21'/>
