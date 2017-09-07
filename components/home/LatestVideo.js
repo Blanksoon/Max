@@ -1,3 +1,4 @@
+import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 import {Media,
     Subhead,
     Image,
@@ -9,46 +10,43 @@ import {Media,
 
 const latest_video = (props) => (
     <div>
-        <Box mt={2} width={1} pb={5} bg='gray'>
-            <Flex wrap mx={0} my={-2} pb={2} bg='#2874A6'>
-                <Box pt={15} pb={15} mt={1} width={1} bg='#2ECC71'>
-                    <h1><b>{props.name}</b></h1>
+        <Box pb='5%'>
+            <Flex>
+                <Box width={1}>
+                    <h3>{props.name}<hr/></h3>
+                    
                 </Box>
             </Flex>
-            <Flex bg='gray'>
-                <Box px={0} py={2} mx={0} width={8/35}>
-                    <a href="#">
-                        <Image
-                            src='../../static/photo.jpg'
-                        />
-                    </a>
+            <Flex>
+                <Box width={8/35}>
+                    <ThumbnailBottom img= 'static/maxPromo.jpg'
+                        name= 'The Battle Muay-Thai(4/4)'
+                        date='On air - Aug 11, 2017'
+                    />
                 </Box>
-                <Box px={0} py={2} mx={0} width={1/35}>
+                <Box width={1/35}>
                 </Box>
-                <Box px={0} py={2} mx={0} width={8/35}>
-                    <a href="#">
-                        <Image
-                            src='../../static/photo.jpg'
-                        />
-                    </a>
+                <Box width={8/35}>
+                    <ThumbnailBottom img= 'static/maxPromo.jpg'
+                        name= 'The Battle Muay-Thai(4/4)'
+                        date='On air - Aug 11, 2017'
+                    />
                 </Box>
-                <Box px={0} py={2} mx={0} width={1/35}>
+                <Box width={1/35}>
                 </Box>
-                <Box px={0} py={2} mx={0} width={8/35}>
-                    <a href="#">
-                        <Image
-                            src='../../static/photo.jpg'
-                        />
-                    </a>
+                <Box width={8/35}>
+                    <ThumbnailBottom img= 'static/maxPromo.jpg'
+                        name= 'The Battle Muay-Thai(4/4)'
+                        date='On air - Aug 11, 2017'
+                    />
                 </Box>
-                <Box px={0} py={2} mx={0} width={1/35}>
+                <Box width={1/35}>
                 </Box>
-                <Box px={0} py={2} mx={0} width={8/35}>
-                    <a href="#">
-                        <Image
-                            src='../../static/photo.jpg'
-                        />
-                    </a>
+                <Box width={8/35}>
+                    <ThumbnailBottom img= 'static/maxPromo.jpg'
+                        name= 'The Battle Muay-Thai(4/4)'
+                        date='On air - Aug 11, 2017'
+                    />
                 </Box>
             </Flex>
         </Box>
