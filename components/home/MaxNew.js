@@ -19,7 +19,7 @@ const max_new = () => (
                     </Box>
                 </Flex>
                 <Flex>
-                    <Box bg='gray' pt='13%' pl='1.5%' w={7/12}>
+                    <Box bg='gray' pt='9%' pl='1.5%' w={7/12}>
                         <Box pt={2} pb={10} width={1} bg='gray'>
                         <h3>Headline consectetur adipicing<br/>elit, sed do eiusmod tempor</h3>
                         <h>Incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud<br/>
@@ -52,14 +52,14 @@ const max_new = () => (
                                 date='Aug 11, 2017'
                             />
                         </Flex>
-                        <Flex pt='2.8%'>
+                        <Flex pt='3.9%'>
                             <ThumbnailRight img= 'static/maxPromo.jpg'
                                 text1='Headline Headline consect'
                                 text2='adipicing elit sedid'
                                 date='Aug 11, 2017'
                             />
                         </Flex>
-                        <Flex pt='2.8%'>
+                        <Flex pt='3.9%'>
                             <ThumbnailRight img= 'static/maxPromo.jpg'
                                 text1='Headline Headline consect'
                                 text2='adipicing elit sedid'

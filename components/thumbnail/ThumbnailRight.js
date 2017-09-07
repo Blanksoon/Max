@@ -17,7 +17,7 @@ const ThumbnailRight = (porps) => (
           src= {porps.img}
         />
       </Box>
-      <Box w={8/12} pl='20px' pb='2%' pt='3%' bg='#ebebeb' >
+      <Box w={8/12} pl='20px' pt='3%' bg='#ebebeb' >
         <Text                
           bold
           children= {porps.text1}
