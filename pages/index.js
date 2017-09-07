@@ -10,9 +10,16 @@ import StadiumTicket from '../components/home/StadiumTicket'
 import About from '../components/home/About'
 import HeroSection from '../components/home/HeroSection'
 import styled from 'styled-components'
+import OurShow from '../components/our show/OurShow'
+import ContactUs from '../components/contact us/ContactUs'
+import MaxNewsSeach from '../components/max news/MaxNewsSeach'
+import ListVideo from '../components/max news/ListVideo'
+import ThumbnailRight from '../components/thumbnail/ThumbnailRight'
+import ThumbnailBottom from '../components/thumbnail/ThumbnailBottom'
+import ThumbnailLive from '../components/thumbnail/ThumbnailLive'
 import {
   Provider,
-  Container
+  Container,
 } from 'rebass'
 const WrapperNavbar = styled.div`
   background-color: #009999;
@@ -32,6 +39,7 @@ const Index = () => (
       <HeroSection />
       <div className="wrapper-centerPage">
         <div className="centerPage">
+          <HeroSection d = '04' h = '05' m = '21'/>
           <LatestVideo name = 'Latest Video'/>
         </div>
       </div>
@@ -68,6 +76,9 @@ const Index = () => (
               padding: 0 !important;
               margin: 0 !important;
             }
+            {/* * {
+              box-sizing: border-box;
+            } */}
             `
           }
       </style>
