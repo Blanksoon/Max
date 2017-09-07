@@ -1,161 +1,164 @@
-import {Media,
+import React from 'react'
+import {
+    Media,
     Subhead,
     Image,
     Link,
     Flex,
     Box,
     Text,
-    BackgroundImage
+    BackgroundImage,
+    Provider,
 } from 'rebass'
 
-const HeroSection = () => (
-    <div>
-        {/* <BackgroundImage
-            ratio={1/2}
-            src='https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=2048&q=20'
-        /> */}
-        <Flex pt={4} pb={4}>
-            
-            <Box width={1/10}>
-            </Box>
-            <Box width={4/10} bg='Yellow'>
-                <Box pt={3} pb={5} >
-                </Box>
-                <Box pt={6} >
-                    <h2>Coming Up Next</h2>
-                    <h1>MAX Ultimate Tournament &MAX</h1>
-                    <h1>World Champions 7 International Fights</h1>
-                    <h2>Sun. Aug 27th, 2017</h2>
-                    <Flex>
-                        <button>
-                            <Text
-                                pl={4}
-                                pr={4}
-                                pt={2}
-                                pb={2}
-                                center
-                                bold
-                                children='Buy Ticket'
-                                fontSize='1.6em'
-                            />
-                        </button>
-                        <b>
-                            <Text
-                                pt={1}
-                                pl={4}
-                                bold
-                                children='More Information'
-                                fontSize='1.6em'
-                            />
-                        </b>
-                    </Flex>
-                </Box>
-            </Box>
-            <Box width={4/10} bg='blue'>
-                <Box width={1} bg='gray'>
-                    <Flex bg='blue'>
-                        <Box width={4.4/6}>
-                        </Box>
-                        <Box width={1.6/6} pb={1} bg='Orange'>
-                            <Text
-                                center
-                                bold
-                                children='LIVE in'
-                                fontSize='2.3em'
-                            />
-                        </Box>
-                    </Flex>
-                    <Flex>
-                        <Box width={10/16} bg='green'>
-                        </Box>
-                        <Box width={2/16} bg='Yellow'>
-                            <Text
-                                center
-                                bold
-                                children='00'
-                                fontSize='3em'
-                            />
-                            <Text
-                                center
-                                bold
-                                children='DAY'
-                                fontSize='1em'
-                            />
-                        </Box>
-                        <Box width={2/16} bg='red'>
-                            <Text
-                                center
-                                bold
-                                children='01'
-                                fontSize='3em'
-                            />
-                            <Text
-                                center
-                                bold
-                                children='HRS'
-                                fontSize='1em'
-                            />
-                        </Box>
-                        <Box width={2/16} bg='gray'>
-                            <Text
-                                center
-                                bold
-                                children='48'
-                                fontSize='3em'
-                            />
-                            <Text
-                                center
-                                bold
-                                children='MIN'
-                                fontSize='1em'
-                            />
-                        </Box>
-                    </Flex>
-                    <Flex pt={5} pb={5} bg='Orange'>
-                        <Box pt={5} pb={4} >
-                        </Box>
-                    </Flex>
-                    <Flex pt={2}>
-                    </Flex>
-                    <Flex bg='red'>
-                        <Box width={7/16} >
-                        </Box>
-                        <Box width={4/16} >
-                            <a href="#">
-                                <Image
-                                    src='../../static/3.png'
+const HeroSection = (porps) => (
+    <Provider>
+        <div className='big' >
+            <div className='herohover'>
+                <Flex>
+                    <Box w={12 / 12} >
+                        <div className='live-in' style={{ textAlign: 'right' }} >
+                            Live in
+                        </div>
+                        <Flex>
+                            <Box w={12/12} >
+                                <div className='time' style={{ textAlign: 'right' }} >{porps.d} : {porps.h} : {porps.m}</div>                                
+                            </Box>
+                        </Flex>
+                        <Flex>
+                            <Box w={12/12} >
+                                <div className='time-type' style={{ textAlign: 'right' }} >
+                                    DAY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HRS  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MIN&nbsp;
+                                </div>
+                            </Box>
+                        </Flex>
+                        <Flex >
+                            <Box w={6 / 12} pt='17%'>
+                                <Text
+                                    bold
+                                    children="Coming Up Next"
+                                    fontSize='0.8em'
                                 />
-                            </a>
-                            <Text
-                                pt={1}
-                                bold
-                                children='Title of slide 2'
-                                fontSize='1em'
-                            />
-                        </Box>
-                        <Box width={0.5/16} >
-                        </Box>
-                        <Box width={4/16} bf='gray' >
-                        <a href="#">
-                                <Image
-                                    src='../../static/3.png'
+                                <Text
+                                    pt='5px'
+                                    bold
+                                    children="The Battle Muay Thai"
+                                    fontSize='0.9em'
                                 />
-                            </a>
-                            <Text
-                                pt={1}
-                                bold
-                                children='Title of slide 3'
-                                fontSize='1em'
-                            />
-                        </Box>
-                    </Flex>
-                </Box>
-            </Box>
-        </Flex>
-        <Box width={1}>
-
-        </Box>
-    </div>
+                                <div className='text-date'>
+                                    <Text
+                                        pt='5px'
+                                        bold
+                                        children="Fri. Sep 1st,2017"
+                                        fontSize='0.7em'
+                                    />
+                                </div>
+                                <Flex pt='8%' >
+                                    <Box w={5 / 12} >
+                                            <button className='button'>Buy Ticket</button>
+                                    </Box>
+                                    <Box w={6 / 12} >
+                                        <div className='text-more'>
+                                            <Text 
+                                                pt='3px'
+                                                bold
+                                                children="More Information"
+                                                fontSize='0.9em'
+                                            />
+                                        </div>
+                                    </Box>
+                                </Flex>
+                            </Box>
+                            <Box w={6 / 12} pt='14%' >
+                                <Flex>
+                                    <Box w={1 / 12} ></Box>
+                                    <Box w={5 / 12} >
+                                        <Box>
+                                            <Image
+                                                width='100%'
+                                                src='static/maxPromo.jpg'
+                                            />
+                                        </Box>
+                                        <Box>
+                                            <Text
+                                                bold
+                                                children="Title of slide 3"
+                                                fontSize='0.9em'
+                                            />
+                                        </Box>
+                                    </Box>
+                                    <Box w={1 / 12} ></Box>
+                                    <Box w={5 / 12} >
+                                        <Box>
+                                            <Image
+                                                width='100%'
+                                                src='static/maxPromo.jpg'
+                                            />
+                                        </Box>
+                                        <Box>
+                                            <Text
+                                                bold
+                                                children="Title of slide 3"
+                                                fontSize='0.9em'
+                                            />
+                                        </Box>
+                                    </Box>
+                                </Flex>
+                            </Box>
+                        </Flex>
+                    </Box>
+                </Flex>
+            </div>
+        </div>
+        <style jsx>
+            {`
+            .button {
+                background-color: #58b2ff; /* Green */
+                border: none;
+                color: white;
+                padding: 5px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: px;
+            }
+            .text-more{
+                color: #4e9fe5;
+            }
+            .text-date{
+                color: #e7e803;
+            }
+            .live-in {
+                font-size: 100%;
+                font-weight: bold;
+            }
+            .time{
+                font-size: 130%;
+                font-weight: bold;
+            }
+            .time-type{
+                font-size: 50%;
+                font-weight: bold;
+            }
+            .big {
+                color: #ffffff;
+            }
+            .herohover {
+                opacity: 0.8;
+                height: 100%;
+                width: 100%;
+                background-size: cover;
+                background-image: url("static/maxPromo.jpg");
+                top: 0;
+                left: 0;
+            }
+            .live-in {
+                align: right;
+                color: #e7e803;
+            }
+        `}
+        </style>
+    </Provider>
 )
 
 export default HeroSection

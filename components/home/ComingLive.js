@@ -1,3 +1,4 @@
+import ThumbnailLive from '../thumbnail/ThumbnailLive'
 import {
   Provider,
   Toolbar,
@@ -20,38 +21,22 @@ const ComingLive = (props) => (
       </Box>
       <Flex>
       <Box w={1/2} bg='blue'>
-        <Image
-              width={700}
-              pt={3}
-              src='/static/maxPromo.jpg'
-            />
+        <ThumbnailLive />
       </Box>
       <Box w={1/32} bg='red'>
       </Box>
       <Box w={1/2} bg='blue'>
-        <Image
-              width={700}
-              pt={3}
-              src='/static/maxPromo.jpg'
-            />
+        <ThumbnailLive />
       </Box>
       </Flex>
-      <Flex>
+      <Flex pt='2%'>
       <Box w={1/2} bg='blue'>
-        <Image
-              width={700}
-              pt={3}
-              src='/static/maxPromo.jpg'
-            />
+        <ThumbnailLive />
       </Box>
       <Box w={1/32} bg='red'>
       </Box>
       <Box w={1/2} bg='blue'>
-        <Image
-              width={700}
-              pt={3}
-              src='/static/maxPromo.jpg'
-            />
+        <ThumbnailLive />
       </Box>
       </Flex>
       <style jsx>

@@ -10,8 +10,16 @@ import MaxNew from '../components/home/MaxNew'
 import StadiumTicket from '../components/home/StadiumTicket'
 import About from '../components/home/About'
 import HeroSection from '../components/home/HeroSection'
+import OurShow from '../components/our show/OurShow'
+import ContactUs from '../components/contact us/ContactUs'
+import MaxNewsSeach from '../components/max news/MaxNewsSeach'
+import ListVideo from '../components/max news/ListVideo'
+import ThumbnailRight from '../components/thumbnail/ThumbnailRight'
+import ThumbnailBottom from '../components/thumbnail/ThumbnailBottom'
+import ThumbnailLive from '../components/thumbnail/ThumbnailLive'
 import {
-  Provider
+  Provider,
+  Container,
 } from 'rebass'
 const Index = () => (
   <div className="wrapper-index">
@@ -24,9 +32,9 @@ const Index = () => (
           <Navbar />
         </div>
       </div>
-      <HeroSection />
       <div className="wrapper-centerPage">
         <div className="centerPage">
+          <HeroSection d = '04' h = '05' m = '21'/>
           <LatestVideo name = 'Latest Video'/>
         </div>
       </div>
@@ -55,6 +63,20 @@ const Index = () => (
           <Footer />
         </div>
       </div>
+      {/* <div className="wrapper-centerPage">
+        <div className="centerPage">
+          <ThumbnailRight img= 'static/maxPromo.jpg'
+            text1='Headline Headline consect'
+            text2='adipicing elit sedid'
+            date='Aug 11, 2017'
+          />
+          <ThumbnailBottom img= 'static/maxPromo.jpg'
+            name= 'The Battle Muay-Thai(4/4)'
+            date='On air - Aug 11, 2017'
+          />
+          <ThumbnailLive />
+        </div>
+      </div> */}
       <style jsx global>
           {
             `
@@ -62,6 +84,9 @@ const Index = () => (
               padding: 0 !important;
               margin: 0 !important;
             }
+            {/* * {
+              box-sizing: border-box;
+            } */}
             `
           }
       </style>
