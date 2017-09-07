@@ -15,11 +15,13 @@ import {
   Border,
   NavLink
 } from 'rebass'
+import Link from 'next/link'
 
 const NavbarHead = () => (
   <div className="Navbar">
     <Flex>
       <Box w={3 / 12} px={0}>
+      <Link href={`/`}>
         <Image
           width={100}
           borderWidth={5} color='red'
@@ -28,6 +30,7 @@ const NavbarHead = () => (
           ml={15}
           mt={2}
         />
+      </Link>
       </Box>
       <Box w={9 / 12} px={0} >
         <Flex w={12 / 12}>
