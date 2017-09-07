@@ -11,19 +11,45 @@ import {
   NavLink,
   Button
 } from 'rebass'
+import Link from 'next/link'
 
-const TabNavbar = (props) => (
-  <Box w={1.5 / 12} px={0} >
-    <Text
-      pt='20%'
-      pb={2}
-      center
-      bold
-      children={`${props.name}`}
-      fontSize='0.9em'
-    />
-  </Box>
-)
+const TabNavbar = (props) => {
+  let nameLink = ''
+  switch (props.name) {
+    case 'Our Show':
+      nameLink = 'ourShow'
+      break;
+    case 'Video Center':
+      nameLink = 'videoCenter'
+      break;
+    case 'Our Show':
+      nameLink = 'ourShow'
+      break;
+    case 'Max News':
+      nameLink = 'maxNews'
+      break;
+    case 'Get Ticket':
+      nameLink = 'get-ticket'
+      break;
+    case 'Contact Us':
+      nameLink = 'contactUs'
+      break;
+    default:
+      nameLink = ''
+  }
+  if (props.name == 'Video Center') {
+    nameLink = 'videoCenter'
+  }
+  return (
+    <Box w={1.8 / 12} px={0} >
+      <div className="tab" style={{textAlign: 'center'}}>
+        <Link href={`/${nameLink}`}>
+          <a>{props.name}</a>
+        </Link>
+      </div>
+    </Box>
+  )
+}
 
 const Language = (props) => (
   <Flex w={2 / 12}>
