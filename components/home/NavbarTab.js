@@ -41,11 +41,20 @@ const TabNavbar = (props) => {
     nameLink = 'videoCenter'
   }
   return (
-    <Box w={1.8 / 12} px={0} >
+    <Box w={1.8 / 12} pt='2%' >
       <div className="tab" style={{textAlign: 'center'}}>
         <Link href={`/${nameLink}`}>
           <a>{props.name}</a>
         </Link>
+        <style jsx>{`
+          a:link {} 
+          a {
+            color: #fff;
+            TEXT-DECORATION: none
+          }
+          a:hover {COLOR: #FF0000; TEXT-DECORATION: none} 
+        `}
+        </style>
       </div>
     </Box>
   )
@@ -84,7 +93,6 @@ const Register = (props) => (
     </div>
   </Box>
 )
-
 export {
   TabNavbar,
   Register,

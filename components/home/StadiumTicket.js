@@ -1,4 +1,5 @@
-import {Media,
+import {
+  Media,
   Subhead,
   Image,
   Link,
@@ -8,34 +9,34 @@ import {Media,
 } from 'rebass'
 
 const stadium_ticket = () => (
-    <div>
-      <Flex bg='#909497'>
-        <Box width={1}>
-          <Flex>
-            <Box px={0} py={0} width={3/4} bg='red'>
-              <h1>Witness the ultimate extreme MuayThai</h1>
-              <h2>Get Stadium Ticket</h2>
-            </Box>
-            <Box px={0} py={4} width={1/4} bg='blue'>
-              <center>
-                <button>
-                  <Text
-                    pl= {3}
-                    pr= {3}
-                    pt= {3}
-                    pb = {3}
-                    center
-                    bold
-                    children= "Reserve Now!"
-                    fontSize='2em'
-                  />
-                </button>
-              </center>
-            </Box>
-          </Flex>
+  <div>
+    <Box mt='2%' pt='1%' pb='3%'>
+      <Box pt='0%' >
+        <h1>Witness the ultimate extreme MuayThai</h1>
+        <h4>Call for suadilum ticket reservation</h4>
+      </Box>
+      <Flex>
+        <Box w={0.5 / 12} >
+          <Image
+            width='100%'
+            src='static/phone.png'
+          />
         </Box>
+        <button className='button' >(+66)038-416-999</button>
+        <button className='button' >(+66)038-416-999</button>
       </Flex>
-    </div>
-  )
-  
-  export default stadium_ticket
+    </Box>
+    <style jsx>
+      {`
+        .button{
+          left: 1px;
+          color: #ffffff;
+          background-color: red;
+          margin-left: 21px;
+        }
+      `}
+    </style>
+  </div>
+)
+
+export default stadium_ticket

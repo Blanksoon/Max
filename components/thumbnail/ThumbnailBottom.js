@@ -10,7 +10,7 @@ import {
 const ThumbnailBottom = (porps) => (
   <Provider>
     <Flex>
-      <Box bg='#b7b7b7' >
+      <Box bg='#021e3d' >
         <Box>
           <Box>
             <Image
@@ -20,13 +20,15 @@ const ThumbnailBottom = (porps) => (
             />
           </Box>
           <Box>
-            <Text                
+            <Text    
+              color= '#ffffff'            
               bold
               children= {porps.name}
               fontSize='0.9em'
             />
             <br/>
             <Text
+              color= '#c2c405'
               children= {porps.date}
               fontSize='0.9em'
             />

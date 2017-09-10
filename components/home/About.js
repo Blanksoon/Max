@@ -9,16 +9,19 @@ import {Media,
 
 const about = () => (
     <div>
-        <Box width={1}pb={5} bg='#D5DBDB'>
+        <Box width={1}pb={5} >
         </Box>
-        <Box width={1} pt={5} pb={5} bg='#D5DBDB'>
-            <center>
-                <h1>About</h1>
-                <b>Lorem ipsum</b><br/>
-                <b>sed do diusmod</b>
-            </center>
-        </Box>
-        <Box width={1}pb={5} bg='#D5DBDB'>
+        <Flex>
+            <Box w={10/12} ></Box>
+            <Box width={2/12} pt={5} pb={5} >
+                <center>
+                    <h1>About</h1>
+                    <b>Lorem ipsum</b><br/>
+                    <b>sed do diusmod</b>
+                </center>
+            </Box>
+        </Flex>
+        <Box width={1}pb={5} >
         </Box>
     </div>
 )

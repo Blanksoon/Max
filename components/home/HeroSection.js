@@ -1,4 +1,5 @@
 import React from 'react'
+// import clock from 'react-live-clock'
 import {
     Media,
     Subhead,
@@ -21,12 +22,12 @@ const HeroSection = (porps) => (
                             Live in
                         </div>
                         <Flex>
-                            <Box w={12/12} >
-                                <div className='time' style={{ textAlign: 'right' }} >{porps.d} : {porps.h} : {porps.m}</div>                                
+                            <Box w={12 / 12} >
+                                <div className='time' style={{ textAlign: 'right' }} >{porps.d} : {porps.h} : {porps.m}</div>
                             </Box>
                         </Flex>
                         <Flex>
-                            <Box w={12/12} >
+                            <Box w={12 / 12} >
                                 <div className='time-type' style={{ textAlign: 'right' }} >
                                     DAY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HRS  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MIN&nbsp;
                                 </div>
@@ -55,16 +56,21 @@ const HeroSection = (porps) => (
                                 </div>
                                 <Flex pt='8%' >
                                     <Box w={5 / 12} >
-                                            <button className='button'>Buy Ticket</button>
+                                        <button className='button'>Buy Ticket</button>
                                     </Box>
                                     <Box w={6 / 12} >
                                         <div className='text-more'>
-                                            <Text 
-                                                pt='3px'
-                                                bold
-                                                children="More Information"
-                                                fontSize='0.9em'
-                                            />
+                                            <Link>
+                                                <a href="">
+                                                    <Text
+                                                        color= '#4e9fe5'
+                                                        pt='3px'
+                                                        bold
+                                                        children="More Information"
+                                                        fontSize='0.9em'
+                                                    />
+                                                </a>
+                                            </Link>
                                         </div>
                                     </Box>
                                 </Flex>
@@ -148,14 +154,20 @@ const HeroSection = (porps) => (
                 height: 100%;
                 width: 100%;
                 background-size: cover;
-                background-image: url("static/maxPromo.jpg");
+                background-image: url("static/img_live_banner1.png");
                 top: 0;
                 left: 0;
             }
             .live-in {
                 align: right;
-                color: #e7e803;
+                color: #e9e911;
             }
+            a:link {} 
+            a {
+                color: #fff;
+                TEXT-DECORATION: none
+            }
+            a:hover {COLOR: #FF0000; TEXT-DECORATION: none} 
         `}
         </style>
     </Provider>

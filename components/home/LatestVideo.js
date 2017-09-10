@@ -14,7 +14,6 @@ const latest_video = (props) => (
             <Flex>
                 <Box width={1}>
                     <h3>{props.name}<hr/></h3>
-                    
                 </Box>
             </Flex>
             <Flex>

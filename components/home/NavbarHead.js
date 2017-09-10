@@ -32,12 +32,12 @@ const NavbarHead = () => (
         />
       </Link>
       </Box>
-      <Box w={9 / 12} px={0} >
+      <Box w={9 / 12} >
         <Flex w={12 / 12}>
         <Box w={9/12}></Box>
           <Register register='Register/login' />
         </Flex>
-        <Flex w={12 / 12}>
+        <Flex w={12 / 12} pt='1%' >
         <Box w={1/12} />
           <TabNavbar name='Home' />
           <TabNavbar name='Our Show' />
