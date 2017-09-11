@@ -44,7 +44,7 @@ const LabelSearch = () => (
     <Flex>
       <Box className="1" w={1/2.3}>
       <Select>
-        <option value="All Month">All Month</option>
+        <option value="Filter month">All Month</option>
         <option value="saab">Saab</option>
         <option value="opel">Opel</option>
         <option value="audi">Audi</option>
@@ -52,7 +52,7 @@ const LabelSearch = () => (
       </Box>
       <Box className="2" w={1}>
         <Select>
-          <option value="All Year">All Year</option>
+          <option value="Filter year">All Year</option>
           <option value="saab">Saab</option>
           <option value="opel">Opel</option>
           <option value="audi">Audi</option>
@@ -64,7 +64,7 @@ const LabelSearch = () => (
           </Box>
           <Box className="2" w={1}>
             <AllShow>
-              <option value="All Show">All Show</option>
+              <option value="All Show">Filter the show</option>
               <option value="saab">Saab</option>
               <option value="opel">Opel</option>
               <option value="audi">Audi</option>

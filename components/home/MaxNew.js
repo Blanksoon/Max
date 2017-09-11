@@ -74,7 +74,7 @@ const max_new = () => (
                 <Flex>
                     <Box w={1} pt='40px' pb='60px'>
                         <center>
-                            <Button>Hunger for more</Button>
+                            <button className='button-hunger'>Hunger for more</button>
                         </center>
                     </Box>
                 </Flex>
@@ -91,6 +91,17 @@ const max_new = () => (
                 background-color: red;
                 border: none;
                 color: white;
+                padding: 8px 25px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-weight: 700;
+                font-family: Helvetica, Arial, sans-serif;
+            }
+            .button-hunger {
+                background-color: white;
+                border: 1px solid red;
+                color: red;
                 padding: 8px 25px;
                 text-align: center;
                 text-decoration: none;

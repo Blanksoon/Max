@@ -7,7 +7,9 @@ import { Footer } from '../components/home/Footer'
 import { VideoBox } from '../components/videoCenter/VideoBox'
 import {
   Provider,
-  Container
+  Container,
+  Flex,
+  Box,
 } from 'rebass'
 const WrapperNavbar = styled.div`
   background-color: #009999;
@@ -18,9 +20,21 @@ const videoCenter = () => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
     <Provider>
-      <Container>
-        
-      </Container>
+      <div className='wrapper-head'>
+        <Container>
+          <Box w={12 / 12} >
+            <NavbarHead />
+          </Box>
+        </Container>
+      </div>
+      <div>
+        <Container>
+          <Box>
+            <LabelSearch />
+            <VideoBox />
+          </Box>
+        </Container>
+      </div>
     </Provider>
     <style jsx global>
       {
@@ -33,8 +47,8 @@ const videoCenter = () => (
       }
     </style>
     <style jsx>
-        {`
-            .wrapper-centerPage {
+      {`
+            .wrapper-head {
               color: #fff;
               background-color: #011020;
             }
@@ -56,7 +70,7 @@ const videoCenter = () => (
               font-family: Helvetica, Arial, sans-serif;
             }
           `}
-      </style>
+    </style>
   </div>
 )
 

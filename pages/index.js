@@ -31,26 +31,26 @@ const Index = () => (
     </Head>
     <Provider>
       <div className='home'>
-        <div className="wrapper-centerPage">
-          <Flex>
-            <Container>
+        <div className="wrapper-head">
+          <Container>
+            <Flex>
               <Box w={12 / 12} >
                 <NavbarHead />
                 <HeroSection d='04' h='05' m='21' />
                 <LatestVideo name='Latest Video' />
               </Box>
-            </Container>
-          </Flex>
+            </Flex>
+          </Container>
         </div>
         <div>
-          <Flex>
-            <Container>
+          <Container>
+            <Flex>
               <Box w={12 / 12} >
                 <ComingLive />
                 <MaxNew />
               </Box>
-            </Container>
-          </Flex>
+            </Flex>
+          </Container>
         </div>
         <div className="wrapper-mid">
           <Container>
@@ -95,7 +95,7 @@ const Index = () => (
       </style>
       <style jsx>
         {`
-            .wrapper-centerPage {
+            .wrapper-head {
               color: #fff;
               background-color: #011020;
             }
