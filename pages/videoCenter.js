@@ -20,10 +20,12 @@ const videoCenter = () => (
           </Box>
         </Container>
       </div>
-      <div>
+      <div className="videocenter">
         <Container>
           <Box>
             <LabelSearch />
+          </Box>
+          <Box pt="20px">
             <VideoBox />
           </Box>
         </Container>
@@ -57,7 +59,7 @@ const videoCenter = () => (
         .wrapper-contact {
           background-color: #001f3d;
         }
-        .home {
+        .videocenter {
           font-family: Helvetica, Arial, sans-serif;
         }
       `}
