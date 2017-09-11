@@ -1,15 +1,15 @@
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 import { Media, Subhead, Image, Link, Flex, Box, Text } from 'rebass'
 
-const latest_video = props => (
+const UpNext = props => (
   <div>
-    <Box pb="5%">
+    <Box pb="5%" pl="5%" pr="5%">
       <Flex>
-        <Box width={1}>
-          <h3>
+        <Box width={1} color="red">
+          <h2>
             {props.name}
             {/* <hr /> */}
-          </h3>
+          </h2>
         </Box>
       </Flex>
       <Flex>
@@ -48,4 +48,4 @@ const latest_video = props => (
     </Box>
   </div>
 )
-export default latest_video
+export default UpNext

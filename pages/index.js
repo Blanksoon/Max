@@ -24,7 +24,7 @@ const Index = () => (
     </Head>
     <Provider>
       <div className="home">
-        <div className="wrapper-head">
+        <div className="wrapper-centerPage">
           <Container>
             <Flex>
               <Box w={12 / 12}>
@@ -88,6 +88,10 @@ const Index = () => (
       </style>
       <style jsx>
         {`
+          .wrapper-centerPage {
+            color: #fff;
+            background-color: #011020;
+          }
           .wrapper-head {
             color: #fff;
             background-color: #011020;
