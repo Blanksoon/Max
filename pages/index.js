@@ -30,53 +30,55 @@ const Index = () => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
     <Provider>
-      <div className="wrapper-centerPage">
-        <Flex>
-          <Box w={2/12} ></Box>
-          <Box w={8/12} >
-            <NavbarHead />
-            <HeroSection d='04' h='05' m='21' />
-            <LatestVideo name='Latest Video' />
-          </Box>
-          <Box w={2/12} ></Box>
-        </Flex>
-      </div>
-      <div>
-        <Flex>
-          <Box w={2/12} ></Box>
-          <Box w={8/12} >
-            <ComingLive />
-            <MaxNew />
-          </Box>
-          <Box w={2/12} ></Box>
-        </Flex>
-      </div>
-      <div className="wrapper-mid">
-        <Flex>
-          <Box w={2/12} ></Box>
-          <Box w={8/12} >
-            <StadiumTicket />
-          </Box>
-          <Box w={2/12} ></Box>
-        </Flex>
-      </div>
-      <div className="wrapper-about" >
-        <Flex>
-          <Box w={2/12} ></Box>
-          <Box w={8/12} >
-            <About />
-          </Box>
-          <Box w={2/12} ></Box>
-        </Flex>
-      </div>
-      <div className="wrapper-contact" >
-        <Flex>
-          <Box w={2/12} ></Box>
-          <Box w={8/12} >
-            <Footer />
-          </Box>
-          <Box w={2/12} ></Box>
-        </Flex>
+      <div className='home'>
+        <div className="wrapper-centerPage">
+          <Flex>
+            <Container>
+              <Box w={12 / 12} >
+                <NavbarHead />
+                <HeroSection d='04' h='05' m='21' />
+                <LatestVideo name='Latest Video' />
+              </Box>
+            </Container>
+          </Flex>
+        </div>
+        <div>
+          <Flex>
+            <Container>
+              <Box w={12 / 12} >
+                <ComingLive />
+                <MaxNew />
+              </Box>
+            </Container>
+          </Flex>
+        </div>
+        <div className="wrapper-mid">
+          <Container>
+            <Flex>
+              <Box w={12 / 12} >
+                <StadiumTicket />
+              </Box>
+            </Flex>
+          </Container>
+        </div>
+        <div className="wrapper-about" >
+          <Container>
+            <Flex>
+              <Box w={12 / 12} >
+                <About />
+              </Box>
+            </Flex>
+          </Container>
+        </div>
+        <div className="wrapper-contact" >
+          <Container>
+            <Flex>
+              <Box w={12 / 12} >
+                <Footer />
+              </Box>
+            </Flex>
+          </Container>
+        </div>
       </div>
       <style jsx global>
         {
@@ -110,6 +112,9 @@ const Index = () => (
             }
             .wrapper-contact{
               background-color: #001F3D;
+            }
+            .home{
+              font-family: Helvetica, Arial, sans-serif;
             }
           `}
       </style>

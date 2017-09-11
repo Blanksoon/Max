@@ -53,7 +53,7 @@ const ThumbnailLive = (porps) => (
                 <div>
                   <Image
                     width='100%'
-                    src='static/facebookLogo.png'
+                    src='static/01.jpg'
                   />
                 </div>
               </Link>
@@ -65,7 +65,7 @@ const ThumbnailLive = (porps) => (
                 <div>
                   <Image
                     width='40%'
-                    src='static/facebookLogo.png'
+                    src='static/02.jpg'
                   />
                 </div>
               </Link>
@@ -77,7 +77,7 @@ const ThumbnailLive = (porps) => (
                 <div>
                   <Image
                     width='100%'
-                    src='static/facebookLogo.png'
+                    src='static/03.jpg'
                   />
                 </div>
               </Link>
@@ -113,6 +113,7 @@ const ThumbnailLive = (porps) => (
         }
         .wraperlive {
           position: relative;
+          font-family: Helvetica, Arial, sans-serif;
         }
       `}
     </style>

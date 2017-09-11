@@ -19,26 +19,7 @@ const videoCenter = () => (
     </Head>
     <Provider>
       <Container>
-        <WrapperNavbar>
-          <div className="centerPage">
-            <NavbarHead />
-          </div>
-        </WrapperNavbar>
-        <div className="wrapper-navbar">
-          <div className="centerPage">
-            <LabelSearch />
-          </div>
-        </div>
-        <div className="wrapper-VideoBox">
-          <div className="centerPage">
-            <VideoBox />
-          </div>
-        </div>
-        <div className="wrapper-centerPage">
-          <div className="centerPage">
-            <Footer />
-          </div>
-        </div>
+        
       </Container>
     </Provider>
     <style jsx global>
@@ -51,6 +32,31 @@ const videoCenter = () => (
             `
       }
     </style>
+    <style jsx>
+        {`
+            .wrapper-centerPage {
+              color: #fff;
+              background-color: #011020;
+            }
+            .wrapper-cominglive {
+              background-color: ;
+            }
+            .wrapper-mid{
+              color: #ffffff;
+              background-image: url("static/img_stadiumticket_banner.png");
+            }
+            .wrapper-about{
+              color: #ffffff;
+              background-image: url("static/img_home_about.png");
+            }
+            .wrapper-contact{
+              background-color: #001F3D;
+            }
+            .home{
+              font-family: Helvetica, Arial, sans-serif;
+            }
+          `}
+      </style>
   </div>
 )
 

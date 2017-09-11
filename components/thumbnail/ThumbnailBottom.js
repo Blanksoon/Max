@@ -10,31 +10,40 @@ import {
 const ThumbnailBottom = (porps) => (
   <Provider>
     <Flex>
-      <Box bg='#021e3d' >
-        <Box>
+      <div className='thumbnailbottom'>
+        <Box bg='#021e3d' >
           <Box>
-            <Image
-              width='100%'
-              pt={0}
-              src={porps.img}
-            />
-          </Box>
-          <Box>
-            <Text    
-              color= '#ffffff'            
-              bold
-              children= {porps.name}
-              fontSize='0.9em'
-            />
-            <br/>
-            <Text
-              color= '#c2c405'
-              children= {porps.date}
-              fontSize='0.9em'
-            />
+            <Box>
+              <Image
+                width='100%'
+                pt={0}
+                src={porps.img}
+              />
+            </Box>
+            <Box>
+              <Text
+                color='#ffffff'
+                bold
+                children={porps.name}
+                fontSize='0.9em'
+              />
+              <br />
+              <Text
+                color='#c2c405'
+                children={porps.date}
+                fontSize='0.9em'
+              />
+            </Box>
           </Box>
         </Box>
-      </Box>
+      </div>
+      <style jsx>
+        {`
+        .thumbnailbottom {
+          font-family: Helvetica, Arial, sans-serif;
+        }
+      `}
+      </style>
     </Flex>
   </Provider>
 )
