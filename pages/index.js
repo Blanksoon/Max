@@ -23,11 +23,11 @@ const Index = () => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
     <Provider>
-      <div className='home'>
+      <div className="home">
         <div className="wrapper-head">
           <Container>
             <Flex>
-              <Box w={12 / 12} >
+              <Box w={12 / 12}>
                 <NavbarHead />
                 <HeroSection d="04" h="05" m="21" />
                 <LatestVideo name="Latest Video" />
@@ -38,7 +38,7 @@ const Index = () => (
         <div>
           <Container>
             <Flex>
-              <Box w={12 / 12} >
+              <Box w={12 / 12}>
                 <ComingLive />
                 <MaxNew />
               </Box>
@@ -88,28 +88,28 @@ const Index = () => (
       </style>
       <style jsx>
         {`
-            .wrapper-head {
-              color: #fff;
-              background-color: #011020;
-            }
-            .wrapper-cominglive {
-              background-color: ;
-            }
-            .wrapper-mid{
-              color: #ffffff;
-              background-image: url("static/img_stadiumticket_banner.png");
-            }
-            .wrapper-about{
-              color: #ffffff;
-              background-image: url("static/img_home_about.png");
-            }
-            .wrapper-contact{
-              background-color: #001F3D;
-            }
-            .home{
-              font-family: Helvetica, Arial, sans-serif;
-            }
-          `}
+          .wrapper-head {
+            color: #fff;
+            background-color: #011020;
+          }
+          .wrapper-cominglive {
+            background-color: ;
+          }
+          .wrapper-mid {
+            color: #ffffff;
+            background-image: url('static/img_stadiumticket_banner.png');
+          }
+          .wrapper-about {
+            color: #ffffff;
+            background-image: url('static/img_home_about.png');
+          }
+          .wrapper-contact {
+            background-color: #001f3d;
+          }
+          .home {
+            font-family: Helvetica, Arial, sans-serif;
+          }
+        `}
       </style>
     </Provider>
   </div>

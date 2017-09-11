@@ -40,13 +40,13 @@ const LabelSearch = () => (
       </Box>
     </Flex>
     <Flex>
-      <Box className="1" w={1/2.3}>
-      <Select>
-        <option value="Filter month">All Month</option>
-        <option value="saab">Saab</option>
-        <option value="opel">Opel</option>
-        <option value="audi">Audi</option>
-      </Select>
+      <Box className="1" w={1 / 2.3}>
+        <Select>
+          <option value="Filter month">All Month</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </Select>
       </Box>
       <Box className="2" w={1}>
         <Select>
