@@ -1,13 +1,4 @@
-import {
-  Media,
-  Subhead,
-  Image,
-  Link,
-  Flex,
-  Box,
-  Text,
-  Provider,
-} from 'rebass'
+import { Media, Subhead, Image, Link, Flex, Box, Text, Provider } from 'rebass'
 
 const stadium_ticket = () => (
   <Provider>

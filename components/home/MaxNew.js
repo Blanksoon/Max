@@ -1,17 +1,10 @@
 import ThumbnailRight from '../thumbnail/ThumbnailRight'
-import {
-    Media,
-    Subhead,
-    Image,
-    Link,
-    Flex,
-    Box,
-    Text,
-    Button,
-} from 'rebass'
+import { Media, Subhead, Image, Link, Flex, Box, Text, Button } from 'rebass'
 
 const max_new = () => (
-    <div className='maxnew'>
+  <div className="maxnew">
+    <Flex>
+      <Box width={1}>
         <Flex>
             <Box width={1}>
                 <Flex >
@@ -78,7 +71,35 @@ const max_new = () => (
                         </center>
                     </Box>
                 </Flex>
-            </Box>
+              </Box>
+            </div>
+          </Box>
+          <Box width={5 / 12} ml="2%">
+            <Flex>
+              <ThumbnailRight
+                img="static/maxPromo.jpg"
+                text1="Headline Headline consect"
+                text2="adipicing elit sedid"
+                date="Aug 11, 2017"
+              />
+            </Flex>
+            <Flex pt="5.2%">
+              <ThumbnailRight
+                img="static/maxPromo.jpg"
+                text1="Headline Headline consect"
+                text2="adipicing elit sedid"
+                date="Aug 11, 2017"
+              />
+            </Flex>
+            <Flex pt="5.2%">
+              <ThumbnailRight
+                img="static/maxPromo.jpg"
+                text1="Headline Headline consect"
+                text2="adipicing elit sedid"
+                date="Aug 11, 2017"
+              />
+            </Flex>
+          </Box>
         </Flex>
         <style jsx>
             {`

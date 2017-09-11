@@ -15,15 +15,8 @@ import ContactUs from '../components/contact us/ContactUs'
 import MaxNewsSeach from '../components/max news/MaxNewsSeach'
 import ListVideo from '../components/max news/ListVideo'
 import Login from '../components/login/Login'
-import {
-  Provider,
-  Container,
-  Flex,
-  Box,
-} from 'rebass'
-const WrapperNavbar = styled.div`
-  background-color: #011020;
-`;
+import { Provider, Container, Flex, Box } from 'rebass'
+const WrapperNavbar = styled.div`background-color: #011020;`
 const Index = () => (
   <div className="wrapper-index">
     <Head>
@@ -36,8 +29,8 @@ const Index = () => (
             <Flex>
               <Box w={12 / 12} >
                 <NavbarHead />
-                <HeroSection d='04' h='05' m='21' />
-                <LatestVideo name='Latest Video' />
+                <HeroSection d="04" h="05" m="21" />
+                <LatestVideo name="Latest Video" />
               </Box>
             </Flex>
           </Container>
@@ -55,25 +48,25 @@ const Index = () => (
         <div className="wrapper-mid">
           <Container>
             <Flex>
-              <Box w={12 / 12} >
+              <Box w={12 / 12}>
                 <StadiumTicket />
               </Box>
             </Flex>
           </Container>
         </div>
-        <div className="wrapper-about" >
+        <div className="wrapper-about">
           <Container>
             <Flex>
-              <Box w={12 / 12} >
+              <Box w={12 / 12}>
                 <About />
               </Box>
             </Flex>
           </Container>
         </div>
-        <div className="wrapper-contact" >
+        <div className="wrapper-contact">
           <Container>
             <Flex>
-              <Box w={12 / 12} >
+              <Box w={12 / 12}>
                 <Footer />
               </Box>
             </Flex>
@@ -81,17 +74,17 @@ const Index = () => (
         </div>
       </div>
       <style jsx global>
-        {
-          `
-            body {
-              padding: 0 !important;
-              margin: 0 !important;
-            }
-            {/* * {
+        {`
+          body {
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+           {
+            /* * {
               box-sizing: border-box;
-            } */}
-            `
-        }
+            } */
+          }
+        `}
       </style>
       <style jsx>
         {`

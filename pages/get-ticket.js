@@ -2,12 +2,7 @@ import React, { PureComponent } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import GetTicketTabs from '../components/get-ticket/GetTicketTabs'
-import {
-  Provider,
-  Container,
-  Flex,
-  Box,
-} from 'rebass'
+import { Provider, Container, Flex, Box } from 'rebass'
 
 const styleGlobal = {
   defaultMargin: '20px',
@@ -17,21 +12,17 @@ const styleGlobal = {
 
 export default class GetTicket extends PureComponent {
   state = {
-    activeContent: 0
+    activeContent: 0,
   }
 
-  onChangeTabTicket = (active) => {
+  onChangeTabTicket = active => {
     this.setState({
-      activeContent: active
+      activeContent: active,
     })
   }
 
   render() {
-
-    const tickeyTabs = [
-      'LIVE Ticket / Subscribe',
-      'Stadium Ticket'
-    ]
+    const tickeyTabs = ['LIVE Ticket / Subscribe', 'Stadium Ticket']
     const { activeContent } = this.state
 
     return (
@@ -39,16 +30,11 @@ export default class GetTicket extends PureComponent {
         <div id="get-ticket">
           <section id="get-ticket-head-tab">
             <Container>
-              <h1>
-                Get Ticket
-              </h1>
+              <h1>Get Ticket</h1>
               <GetTicketTabs
                 activeNumber={activeContent}
                 headTabs={tickeyTabs}
-                contents={[
-                  LiveTicket,
-                  StadiumTicket,
-                ]}
+                contents={[LiveTicket, StadiumTicket]}
                 onClick={this.onChangeTabTicket}
               />
             </Container>
@@ -56,8 +42,7 @@ export default class GetTicket extends PureComponent {
         </div>
 
         <style jsx global>
-          {
-            `
+          {`
             body {
               padding: 0 !important;
               margin: 0 !important;
@@ -75,15 +60,14 @@ export default class GetTicket extends PureComponent {
               font-size: 15px;
               font-weight: bold;
             }
-            `
-          }
+          `}
         </style>
         <style jsx>
           {`
-          section {
-            margin-bottom: 40px;
-          }
-        `}
+            section {
+              margin-bottom: 40px;
+            }
+          `}
         </style>
       </Provider>
     )
@@ -111,9 +95,7 @@ const LiveTicket = () => {
             <Flex>
               <Box px={1} w={6 / 12}>
                 <div className="content-live-ticket content-right">
-                  <h3>
-                    One Time LIVE Ticket
-                  </h3>
+                  <h3>One Time LIVE Ticket</h3>
                   <br />
                   <br />
                   <br />
@@ -122,15 +104,12 @@ const LiveTicket = () => {
                   <br />
                   <br />
                   ..
-
-                <button className='btn-buy-ticket'>Purchase $xx.xx</button>
+                  <button className="btn-buy-ticket">Purchase $xx.xx</button>
                 </div>
               </Box>
               <Box px={1} w={6 / 12}>
                 <div className="content-live-ticket content-right">
-                  <h3>
-                    One Time LIVE Ticket
-                  </h3>
+                  <h3>One Time LIVE Ticket</h3>
                   <br />
                   <br />
                   <br />
@@ -139,8 +118,7 @@ const LiveTicket = () => {
                   <br />
                   <br />
                   ..
-
-                  <button className='btn-buy-ticket'>Purchase $xx.xx</button>
+                  <button className="btn-buy-ticket">Purchase $xx.xx</button>
                 </div>
               </Box>
             </Flex>
@@ -149,9 +127,18 @@ const LiveTicket = () => {
 
         <h3>Terms and Conditions</h3>
         <ul>
-          <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </li>
-          <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </li>
-          <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </li>
+          <li>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.{' '}
+          </li>
+          <li>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.{' '}
+          </li>
+          <li>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.{' '}
+          </li>
         </ul>
       </div>
       <style jsx>
@@ -170,7 +157,6 @@ const LiveTicket = () => {
             background: #fff;
             padding: 20px;
             min-height: 300px;
-
           }
           .content-live-ticket.content-right {
             text-align: center;
@@ -196,21 +182,28 @@ const LiveTicket = () => {
 const StadiumTicket = () => {
   return (
     <div className="stadium-ticket">
-      <h1>How to get  stadium ticket?</h1>
+      <h1>How to get stadium ticket?</h1>
 
       <Flex>
         <Box w={8 / 12} pr={5}>
-          <h4>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout</h4>
-          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical </p>
+          <h4>
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout
+          </h4>
+          <p>
+            Contrary to popular belief, Lorem Ipsum is not simply random text.
+            It has roots in a piece of classical{' '}
+          </p>
         </Box>
         <Box w={4 / 12} pl={5}>
           <h3>Reserve now!</h3>
-          <button className="btn-get-ticket-1" style={{ marginBottom: styleGlobal.margin_1 }}>
+          <button
+            className="btn-get-ticket-1"
+            style={{ marginBottom: styleGlobal.margin_1 }}
+          >
             (+66) 038-416-999
           </button>
-          <button className="btn-get-ticket-1">
-            (+66) 038-416-999
-          </button>
+          <button className="btn-get-ticket-1">(+66) 038-416-999</button>
         </Box>
       </Flex>
       <style jsx>
