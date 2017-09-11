@@ -11,11 +11,9 @@ import {
   Border,
   NavLink,
   BackgroundImage,
-  Button
+  Button,
 } from 'rebass'
 
-const ListVideo = () => (
-  <LatestVideo />
-)
+const ListVideo = () => <LatestVideo />
 
 export default ListVideo

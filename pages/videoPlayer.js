@@ -6,10 +6,7 @@ import { BackVideoCenter } from '../components/videoplayer/BackVideoCenter'
 import { Player } from '../components/videoplayer/Player'
 import { Description } from '../components/videoplayer/Description'
 import LatestVideo from '../components/home/LatestVideo'
-import {
-  Provider,
-  Container
-} from 'rebass'
+import { Provider, Container } from 'rebass'
 const videoPlayer = () => (
   <div className="wrapper-index">
     <Head>
@@ -48,15 +45,13 @@ const videoPlayer = () => (
           </div>
         </div>
         <style jsx global>
-          {
-            `
+          {`
             body {
               padding: 0 !important;
               margin: 0 !important;
               backgroud-color: #000;
             }
-            `
-          }
+          `}
         </style>
         <style jsx>
           {`
