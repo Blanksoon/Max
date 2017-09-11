@@ -15,65 +15,58 @@ import ContactUs from '../components/contact us/ContactUs'
 import MaxNewsSeach from '../components/max news/MaxNewsSeach'
 import ListVideo from '../components/max news/ListVideo'
 import Login from '../components/login/Login'
-import {
-  Provider,
-  Container,
-  Flex,
-  Box,
-} from 'rebass'
-const WrapperNavbar = styled.div`
-  background-color: #011020;
-`;
+import { Provider, Container, Flex, Box } from 'rebass'
+const WrapperNavbar = styled.div`background-color: #011020;`
 const Index = () => (
   <div className="wrapper-index">
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
     <Provider>
-      <div className='home'>
+      <div className="home">
         <div className="wrapper-centerPage">
           <Container>
             <Flex>
-              <Box w={12 / 12} >
+              <Box w={12 / 12}>
                 <NavbarHead />
-                <HeroSection d='04' h='05' m='21' />
-                <LatestVideo name='Latest Video' />
+                <HeroSection d="04" h="05" m="21" />
+                <LatestVideo name="Latest Video" />
               </Box>
             </Flex>
           </Container>
         </div>
         <div>
-          <Flex>
-            <Container>
-              <Box w={12 / 12} >
+          <Container>
+            <Flex>
+              <Box w={12 / 12}>
                 <ComingLive />
                 <MaxNew />
               </Box>
-            </Container>
-          </Flex>
+            </Flex>
+          </Container>
         </div>
         <div className="wrapper-mid">
           <Container>
             <Flex>
-              <Box w={12 / 12} >
+              <Box w={12 / 12}>
                 <StadiumTicket />
               </Box>
             </Flex>
           </Container>
         </div>
-        <div className="wrapper-about" >
+        <div className="wrapper-about">
           <Container>
             <Flex>
-              <Box w={12 / 12} >
+              <Box w={12 / 12}>
                 <About />
               </Box>
             </Flex>
           </Container>
         </div>
-        <div className="wrapper-contact" >
+        <div className="wrapper-contact">
           <Container>
             <Flex>
-              <Box w={12 / 12} >
+              <Box w={12 / 12}>
                 <Footer />
               </Box>
             </Flex>
@@ -81,42 +74,42 @@ const Index = () => (
         </div>
       </div>
       <style jsx global>
-        {
-          `
-            body {
-              padding: 0 !important;
-              margin: 0 !important;
-            }
-            {/* * {
+        {`
+          body {
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+           {
+            /* * {
               box-sizing: border-box;
-            } */}
-            `
-        }
+            } */
+          }
+        `}
       </style>
       <style jsx>
         {`
-            .wrapper-centerPage {
-              color: #fff;
-              background-color: #011020;
-            }
-            .wrapper-cominglive {
-              background-color: ;
-            }
-            .wrapper-mid{
-              color: #ffffff;
-              background-image: url("static/img_stadiumticket_banner.png");
-            }
-            .wrapper-about{
-              color: #ffffff;
-              background-image: url("static/img_home_about.png");
-            }
-            .wrapper-contact{
-              background-color: #001F3D;
-            }
-            .home{
-              font-family: Helvetica, Arial, sans-serif;
-            }
-          `}
+          .wrapper-head {
+            color: #fff;
+            background-color: #011020;
+          }
+          .wrapper-cominglive {
+            background-color: ;
+          }
+          .wrapper-mid {
+            color: #ffffff;
+            background-image: url('static/img_stadiumticket_banner.png');
+          }
+          .wrapper-about {
+            color: #ffffff;
+            background-image: url('static/img_home_about.png');
+          }
+          .wrapper-contact {
+            background-color: #001f3d;
+          }
+          .home {
+            font-family: Helvetica, Arial, sans-serif;
+          }
+        `}
       </style>
     </Provider>
   </div>

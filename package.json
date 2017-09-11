@@ -1,9 +1,10 @@
 {
-  "name": "MaxFront",
+  "name": "max-ui",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "prettier": "bash prettier.sh",
     "dev": "next -p 8080"
   },
   "dependencies": {
@@ -12,5 +13,8 @@
     "react-dom": "^15.6.1",
     "rebass": "^1.0.4",
     "styled-components": "^2.1.2"
+  },
+  "devDependencies": {
+    "prettier": "^1.6.1"
   }
 }
