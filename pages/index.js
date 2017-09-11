@@ -88,6 +88,10 @@ const Index = () => (
       </style>
       <style jsx>
         {`
+          .wrapper-centerPage {
+            color: #fff;
+            background-color: #011020;
+          }
           .wrapper-head {
             color: #fff;
             background-color: #011020;

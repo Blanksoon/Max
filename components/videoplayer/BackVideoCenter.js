@@ -4,6 +4,7 @@ import { Media, Subhead, Image, Link, Flex, Box, Text } from 'rebass'
 const BackVideo = styled.div`
   padding-top: 6px;
   padding-bottom: 6px;
+  color: #d2dbe8;
 `
 const BackVideoCenter = () => (
   <div className="VideoCenter">

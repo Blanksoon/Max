@@ -5,7 +5,7 @@ import { Footer } from '../components/home/Footer'
 import { BackVideoCenter } from '../components/videoplayer/BackVideoCenter'
 import { Player } from '../components/videoplayer/Player'
 import { Description } from '../components/videoplayer/Description'
-import LatestVideo from '../components/home/LatestVideo'
+import UpNext from '../components/videoplayer/UpNext'
 import StadiumTicket from '../components/home/StadiumTicket'
 import { Provider, Container, Flex, Box } from 'rebass'
 const videoPlayer = () => (
@@ -45,7 +45,7 @@ const videoPlayer = () => (
         <div className="wrapper-BackVideoCenter">
           <Container>
             <Flex>
-              <Box w={12 / 12}>
+              <Box w={12 / 12} bg="white">
                 <Description />
               </Box>
             </Flex>
@@ -54,8 +54,8 @@ const videoPlayer = () => (
         <div className="wrapper-BackVideoCenter">
           <Container>
             <Flex>
-              <Box w={12 / 12}>
-                <LatestVideo name="Up next" />
+              <Box w={12 / 12} bg="white">
+                <UpNext name="Up next" />
               </Box>
             </Flex>
           </Container>
@@ -102,7 +102,7 @@ const videoPlayer = () => (
             background-color: ;
           }
           .wrapper-BackVideoCenter {
-            color: #ebebeb;
+            background-color: #ebebeb;
           }
           .wrapper-about {
             color: #ffffff;

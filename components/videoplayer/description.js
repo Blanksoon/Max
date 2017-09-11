@@ -10,33 +10,51 @@ const BackVideo = styled.div`
 `
 const Description = () => (
   <div className="Description">
-    <Box width={1} pb={1} pt={4}>
-      <h1>
-        <b>
-          Max Ultimate Tournament &MAX World Champions<br />
-          7 International Fights(1/4)
-        </b>
-      </h1>
-      <h3>
-        <b>On Air - Aug 6,2017 </b>
-      </h3>
-    </Box>
-    <Flex>
-      <Box width={1 / 4}>
-        <h3>
-          <b>Share on</b>
-        </h3>
+    <Flex pl="5%">
+      <Box width={1 / 12} pt="2%" mr="2%">
+        <Image width="100%" src="/static/logoinvidoplayer.jpg" />
       </Box>
-      <LogoFooter />
-      <LogoFooter />
-      <LogoFooter />
-      <LogoFooter />
-      <LogoFooter />
-      <LogoFooter />
-      <Box width={1} />
-      <Box width={1} />
+      <Box width={9 / 12} pb={1} pt={3}>
+        <h2>
+          <b>
+            Max Ultimate Tournament &MAX World Champions<br />
+            7 International Fights(1/4)
+          </b>
+        </h2>
+      </Box>
     </Flex>
-    <Box width={1} pb={4}>
+    <Flex pl="5%" pr="5%">
+      <Box width={5 / 12}>
+        <div className="livetelecom">
+          <h4>
+            <b>Live telecast on Channel 8</b>
+            <br />
+            <b>every Sunday 7.20 - 9.50pm</b>
+          </h4>
+        </div>
+      </Box>
+      <Box width={7 / 12} pl="46%">
+        <div className="Share">
+          <h4>
+            <b>Share on</b>
+          </h4>
+        </div>
+      </Box>
+      <ShareOn />
+      <ShareOn />
+      {/* <LogoFooter />
+      <LogoFooter />
+      <LogoFooter />
+      <LogoFooter />
+      <LogoFooter />
+      <LogoFooter /> */}
+      {/* <Box width={1} />
+      <Box width={1} /> */}
+    </Flex>
+    <Box width={1} pb={3} pl="5%" pr="5%">
+      <hr size="0.1" />
+    </Box>
+    <Box width={1} pb={3} pl="5%" pr="5%">
       <P>
         On sait depuis longtemps que travailler avec du texte lisible et
         contenant du sens est source de distractions, et empêche de se
@@ -52,6 +70,28 @@ const Description = () => (
         de petits clins d'oeil, voire des phrases embarassantes).
       </P>
     </Box>
+    <style jsx>
+      {`
+        .livetelecom {
+          color: #175499;
+        }
+        .Share {
+          color: #bb2121;
+        }
+      `}
+    </style>
   </div>
+)
+
+const ShareOn = props => (
+  <Box w={1 / 12}>
+    <Image
+      width={59}
+      src="/static/facebookLogo.png"
+      pt={2}
+      pb={4}
+      //m={1}
+    />
+  </Box>
 )
 export { Description }

@@ -32,7 +32,7 @@ const Footer = props => (
           </Flex>
         </Box>
       </Box>
-      <Box w={1 / 2} pt={80}>
+      <Box w={1 / 2} pt="7%">
         <Contact>
           <h10 style={{ color: 'white' }}>
             <b>Max Muay Thai Co.,Ltd.</b>
@@ -64,7 +64,7 @@ const Footer = props => (
 )
 
 const LogoFooter = props => (
-  <Box w={1 / 6}>
+  <Box w={3 / 12}>
     <Image
       width={59}
       src="/static/facebookLogo.png"
