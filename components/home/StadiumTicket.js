@@ -18,7 +18,7 @@ const stadium_ticket = () => (
             <h4>Call for suadilum ticket reservation</h4>
           </Box>
           <Flex>
-            <Box w={0.5 / 12} >
+            <Box w={1 / 12} >
               <Image
                 width='100%'
                 src='static/phone.png'

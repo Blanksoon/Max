@@ -21,13 +21,13 @@ const BackVideo = styled.div`
 `
 const Description = () => (
   <div className="Description">
-      <Box width={1} bg='pink' pb={1} pt={4}>
+      <Box width={1} pb={1} pt={4}>
         <h1><b>Max Ultimate Tournament &MAX World Champions<br/>
         7 International Fights(1/4)</b></h1>
         <h3><b>On Air - Aug 6,2017 </b></h3>
       </Box>
       <Flex>
-        <Box width={1/4} bg='lightgreen'>
+        <Box width={1/4} >
           <h3><b>Share on</b></h3>
         </Box>
         <LogoFooter />
@@ -36,12 +36,12 @@ const Description = () => (
         <LogoFooter />
         <LogoFooter />
         <LogoFooter />
-        <Box width={1} bg='red'>
+        <Box width={1} >
         </Box>
-        <Box width={1} bg='red'>
+        <Box width={1} >
         </Box>
       </Flex>
-      <Box width={1} bg='lightblue' pb={4}>
+      <Box width={1}  pb={4}>
           <P>On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, 
             et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 
             'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas 

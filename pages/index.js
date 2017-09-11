@@ -32,15 +32,15 @@ const Index = () => (
     <Provider>
       <div className='home'>
         <div className="wrapper-centerPage">
-          <Flex>
-            <Container>
+          <Container>
+            <Flex>
               <Box w={12 / 12} >
                 <NavbarHead />
                 <HeroSection d='04' h='05' m='21' />
                 <LatestVideo name='Latest Video' />
               </Box>
-            </Container>
-          </Flex>
+            </Flex>
+          </Container>
         </div>
         <div>
           <Flex>

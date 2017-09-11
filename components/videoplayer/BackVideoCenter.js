@@ -14,7 +14,7 @@ const BackVideo = styled.div`
 `
 const BackVideoCenter = () => (
   <div className="VideoCenter">
-      <Box width={1} bg='pink'>
+      <Box width={1} bg='#084a94' pl='5%'>
         <BackVideo className="back-video">
           {"<"} Back to Video Center
         </BackVideo>
