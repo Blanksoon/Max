@@ -72,7 +72,6 @@ const max_new = () => (
                     </Box>
                 </Flex>
               </Box>
-            </div>
           </Box>
           <Box width={5 / 12} ml="2%">
             <Flex>
