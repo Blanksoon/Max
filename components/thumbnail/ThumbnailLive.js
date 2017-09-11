@@ -1,5 +1,6 @@
 import React from 'react'
-import { Flex, Provider, Box, Image, Text, Link } from 'rebass'
+import { Flex, Provider, Box, Image, Text } from 'rebass'
+import Link from 'next/link'
 
 const ThumbnailLive = porps => (
   <Provider>
