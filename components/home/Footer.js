@@ -19,13 +19,9 @@ const Footer = props => (
   <div className="Footer">
     <Flex bg="#001F3D">
       <Box w={6 / 12}>
-        <Image width="40%" pt="8%" pb="10%" src="/static/img_logo_white.png" />
+        <Image width="20%" pt="8%" pb="10%" src="/static/img_logo_white.png" />
       </Box>
-<<<<<<< HEAD
-      <Box w={6 / 12} pt="5%">
-=======
-      <Box w={1 / 2} pt="7%">
->>>>>>> eaea2fbeed44b5f37c6cb7931a9f741609be591d
+      <Box w={6 / 12} pt="3%">
         <Contact>
           <Text
             color="#fff"
@@ -48,7 +44,7 @@ const Footer = props => (
             fontSize="0.9em"
           />
           <Text
-            pt="0.5em"
+            pt="1em"
             color="#53a9f2"
             right
             children="Tel. (+66) 038-416-999, 08-2495-5549"
@@ -68,7 +64,7 @@ const Footer = props => (
       </Box>
       <Box w={6 / 12}>
         <Text
-          pt="2em"
+          pt="1em"
           color="#eeef02"
           right
           bold
@@ -81,19 +77,8 @@ const Footer = props => (
 )
 
 const LogoFooter = props => (
-<<<<<<< HEAD
-  <Box w={1 / 6}>
-    <Image width="100%" src={props.name} pt={0} pb={0} />
-=======
-  <Box w={3 / 12}>
-    <Image
-      width={59}
-      src={props.name}
-      pt={2}
-      pb={4}
-      //m={1}
-    />
->>>>>>> eaea2fbeed44b5f37c6cb7931a9f741609be591d
+  <Box w={1 / 12} mr={props.mr}>
+    <Image width="100%" src={props.name} />
   </Box>
 )
 

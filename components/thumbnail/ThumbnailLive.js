@@ -32,7 +32,11 @@ const ThumbnailLive = porps => (
             <center>
               <Link href="/videoPlayer">
                 <div>
-                  <Image width="100%" src="static/01.jpg" />
+                  <Link href={`#`}>
+                    <a>
+                      <Image width="100%" src="static/01.jpg" />
+                    </a>
+                  </Link>
                 </div>
               </Link>
             </center>
@@ -41,7 +45,11 @@ const ThumbnailLive = porps => (
             <center>
               <Link href="">
                 <div>
-                  <Image width="40%" src="static/02.jpg" />
+                  <Link href={`#`}>
+                    <a>
+                      <Image width="40%" src="static/02.jpg" />
+                    </a>
+                  </Link>
                 </div>
               </Link>
             </center>
@@ -50,7 +58,11 @@ const ThumbnailLive = porps => (
             <center>
               <Link href="#">
                 <div>
-                  <Image width="100%" src="static/03.jpg" />
+                  <Link href={`#`}>
+                    <a>
+                      <Image width="100%" src="static/03.jpg" />
+                    </a>
+                  </Link>
                 </div>
               </Link>
             </center>

@@ -17,6 +17,10 @@ import ListVideo from '../components/max news/ListVideo'
 import Login from '../components/login/Login'
 import { Provider, Container, Flex, Box } from 'rebass'
 const WrapperNavbar = styled.div`background-color: #011020;`
+const BackgroundImage = props =>
+  styled.div`
+    background-image: url({prop.image});
+  `
 const Index = () => (
   <div className="wrapper-index">
     <Head>
@@ -105,7 +109,13 @@ const Index = () => (
           }
           .wrapper-about {
             color: #ffffff;
-            background-image: url('static/img_home_about.png');
+            background: -webkit-linear-gradient(
+              left,
+              rgba(8, 73, 147, 1) 0%,
+              rgba(8, 73, 147, 1) 51%,
+              rgba(139, 3, 3, 1) 53%,
+              rgba(139, 3, 3, 1) 100%
+            ); /* Chrome10-25,Safari5.1-6 */
           }
           .wrapper-contact {
             background-color: #001f3d;

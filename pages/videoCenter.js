@@ -30,6 +30,13 @@ const videoCenter = () => (
           </Box>
         </Container>
       </div>
+      <div>
+        <Container>
+          <Box>
+            <Footer />
+          </Box>
+        </Container>
+      </div>
     </Provider>
     <style jsx global>
       {`

@@ -10,10 +10,10 @@ const stadium_ticket = () => (
             <h4>Call for suadilum ticket reservation</h4>
           </Box>
           <Flex>
-            <Box w={1 / 12}>
+            <Box w={1 / 24}>
               <Image width="100%" src="static/phone.png" />
             </Box>
-            <Box w={11 / 12}>
+            <Box w={11 / 12} pt="1ex">
               <button className="button">(+66)038-416-999</button>
               <button className="button">(+66)038-416-999</button>
             </Box>

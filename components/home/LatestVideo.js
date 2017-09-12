@@ -15,13 +15,15 @@ const latest_video = props => (
       </Flex>
       <Flex>
         <Box width={8 / 35}>
-          <a href="#">
-            <ThumbnailBottom
-              img="static/maxPromo.jpg"
-              name="The Battle Muay-Thai(4/4)"
-              date="On air - Aug 11, 2017"
-            />
-          </a>
+          <Link href={`/videoPlayer`}>
+            <a>
+              <ThumbnailBottom
+                img="static/maxPromo.jpg"
+                name="The Battle Muay-Thai(4/4)"
+                date="On air - Aug 11, 2017"
+              />
+            </a>
+          </Link>
         </Box>
         <Box width={1 / 35} />
         <Box width={8 / 35}>
@@ -37,23 +39,27 @@ const latest_video = props => (
         </Box>
         <Box width={1 / 35} />
         <Box width={8 / 35}>
-          <a href="#">
-            <ThumbnailBottom
-              img="static/maxPromo.jpg"
-              name="The Battle Muay-Thai(4/4)"
-              date="On air - Aug 11, 2017"
-            />
-          </a>
+          <Link href={`/videoPlayer`}>
+            <a>
+              <ThumbnailBottom
+                img="static/maxPromo.jpg"
+                name="The Battle Muay-Thai(4/4)"
+                date="On air - Aug 11, 2017"
+              />
+            </a>
+          </Link>
         </Box>
         <Box width={1 / 35} />
         <Box width={8 / 35}>
-          <a href="#">
-            <ThumbnailBottom
-              img="static/maxPromo.jpg"
-              name="The Battle Muay-Thai(4/4)"
-              date="On air - Aug 11, 2017"
-            />
-          </a>
+          <Link href={`/videoPlayer`}>
+            <a>
+              <ThumbnailBottom
+                img="static/maxPromo.jpg"
+                name="The Battle Muay-Thai(4/4)"
+                date="On air - Aug 11, 2017"
+              />
+            </a>
+          </Link>
         </Box>
       </Flex>
     </Box>
