@@ -11,23 +11,53 @@ const BackgroundImage = styled.div`
 const VideoBox = () => (
   <div>
     <Flex mb={3}>
-      <Box w={6 / 12} bg="#022246" >
-        <Box w={12 / 12}>
-          <Image width="100%" pt={0} src="static/FT6A2278.jpg" />
-        </Box>
-        <Box w={12 / 12} pl="20px">
-          <Text color="#57b1fe" bold children="HILIGHT" fontSize="1em" />
-          <Text pt='5px' color="#fff" bold children="Max Ultimate Tournament:Epic fight" fontSize="1.5em" />
-          <Text color="#fff" bold children='"Double knockdow"' fontSize="1.5em" />
-          <Flex>
-            <Box w={6/12} >            
-              <Text pt='15px' pb='15px' left color="#f7f704" bold children="On air-Aug11,2017" fontSize="0.9em" />
-            </Box>
-            <Box w={6/12} >
-              <Text pt='15px' pb='15px' pr='15px' right color="#f7f704" bold children="24.51" fontSize="0.9em" />
-            </Box>
-          </Flex>
-        </Box>
+      <Box w={6 / 12} bg="#022246" mr="1em">
+        <div className="gradient">
+          <Box w={12 / 12}>
+            <Image width="100%" pt={0} src="static/FT6A2278.jpg" />
+          </Box>
+          <Box w={12 / 12} pl="20px">
+            <Text color="#57b1fe" bold children="HILIGHT" fontSize="1em" />
+            <Text
+              pt="5px"
+              color="#fff"
+              bold
+              children="Max Ultimate Tournament:Epic fight"
+              fontSize="1.5em"
+            />
+            <Text
+              color="#fff"
+              bold
+              children="&quot;Double knockdow&quot;"
+              fontSize="1.5em"
+            />
+            <Flex>
+              <Box w={6 / 12}>
+                <Text
+                  pt="15px"
+                  pb="15px"
+                  left
+                  color="#f7f704"
+                  bold
+                  children="On air-Aug11,2017"
+                  fontSize="0.9em"
+                />
+              </Box>
+              <Box w={6 / 12}>
+                <Text
+                  pt="15px"
+                  pb="15px"
+                  pr="15px"
+                  right
+                  color="#f7f704"
+                  bold
+                  children="24.51"
+                  fontSize="0.9em"
+                />
+              </Box>
+            </Flex>
+          </Box>
+        </div>
       </Box>
 
       <Box w={6 / 12}>
@@ -106,6 +136,28 @@ const VideoBox = () => (
         }
         .text-right {
           float: right;
+        }
+        .gradient {
+          background: -moz-linear-gradient(
+            top,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 1) 100%
+          ); /* FF3.6-15 */
+          background: -webkit-linear-gradient(
+            top,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 1) 100%
+          ); /* Chrome10-25,Safari5.1-6 */
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 1) 100%
+          ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          filter: progid:DXImageTransform.Microsoft.gradient(
+              startColorstr='#00000000',
+              endColorstr='#000000',
+              GradientType=0
+            ); /* IE6-9 */
         }
       `}
     </style>

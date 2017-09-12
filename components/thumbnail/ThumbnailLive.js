@@ -1,5 +1,6 @@
 import React from 'react'
-import { Flex, Provider, Box, Image, Text, Link } from 'rebass'
+import { Flex, Provider, Box, Image, Text } from 'rebass'
+import Link from 'next/link'
 
 const ThumbnailLive = porps => (
   <Provider>
@@ -29,7 +30,7 @@ const ThumbnailLive = porps => (
         <Flex pt="13.5%">
           <Box w={4 / 12} pl="20%">
             <center>
-              <Link href="#">
+              <Link href="/videoPlayer">
                 <div>
                   <Image width="100%" src="static/01.jpg" />
                 </div>
@@ -38,7 +39,7 @@ const ThumbnailLive = porps => (
           </Box>
           <Box w={4 / 12}>
             <center>
-              <Link href="#">
+              <Link href="">
                 <div>
                   <Image width="40%" src="static/02.jpg" />
                 </div>
