@@ -18,46 +18,59 @@ const Contact = styled.div`text-align: right;`
 const Footer = props => (
   <div className="Footer">
     <Flex bg="#001F3D">
-      <Box w={1}>
-        <Box w={1 / 5}>
-          <Image width={100} pt={4} pb={5} src="/static/logo.png" ml={15} />
-        </Box>
-        <Box w={1 / 2}>
-          <Flex>
-            <LogoFooter />
-            <LogoFooter />
-            <LogoFooter />
-            <LogoFooter />
-            <LogoFooter />
-          </Flex>
-        </Box>
+      <Box w={6 / 12}>
+        <Image width="40%" pt="8%" pb="10%" src="/static/img_logo_white.png" />
       </Box>
-      <Box w={1 / 2} pt={80}>
+      <Box w={6 / 12} pt="5%">
         <Contact>
-          <h10 style={{ color: 'white' }}>
-            <b>Max Muay Thai Co.,Ltd.</b>
-          </h10>
-          <br />
-          <h10 style={{ color: 'white' }}>
-            42/108 Sukumvit Rd. Moo.9 Nongprue
-          </h10>
-          <br />
-          <h10 style={{ color: 'white' }}>
-            Banglamung Chon Buri 20150 (Thailand)
-          </h10>
-          <br />
-          <br />
-          <h10 style={{ color: 'white' }}>
-            Tel(+66) 038-416-999,08-2495-5549
-          </h10>
-          <br />
-          <br />
-          <br />
-          <h10 style={{ color: 'white' }}>
-            Copyright @ 2016 All Rights Reserved
-          </h10>
-          <br />
+          <Text
+            color="#fff"
+            right
+            bold
+            children="Max Muay Thai Co.,Ltd."
+            fontSize="0.9em"
+          />
+          <Text
+            pt="0.5em"
+            color="#53a9f2"
+            right
+            children="42/108 Sukhumvit Rd. Moo.9 Nongprue"
+            fontSize="0.9em"
+          />
+          <Text
+            color="#53a9f2"
+            right
+            children="Banglamung Chon Buri 20150 (Thailand)"
+            fontSize="0.9em"
+          />
+          <Text
+            pt="0.5em"
+            color="#53a9f2"
+            right
+            children="Tel. (+66) 038-416-999, 08-2495-5549"
+            fontSize="0.9em"
+          />
         </Contact>
+      </Box>
+    </Flex>
+    <Flex bg="#010f1e">
+      <Box w={6 / 12}>
+        <Flex>
+          <LogoFooter name="static/ic_facebook@2x.png" />
+          <LogoFooter name="static/ic_googleplus@2x.png" />
+          <LogoFooter name="static/ic_youtube@2x.png" />
+          <LogoFooter name="static/ic_instagram@2x.png" />
+        </Flex>
+      </Box>
+      <Box w={6 / 12}>
+        <Text
+          pt="2em"
+          color="#eeef02"
+          right
+          bold
+          children="Copyright@2016 All Rights Reserved"
+          fontSize="0.9em"
+        />
       </Box>
     </Flex>
   </div>
@@ -65,13 +78,7 @@ const Footer = props => (
 
 const LogoFooter = props => (
   <Box w={1 / 6}>
-    <Image
-      width={59}
-      src="/static/facebookLogo.png"
-      pt={2}
-      pb={4}
-      //m={1}
-    />
+    <Image width="100%" src={props.name} pt={0} pb={0} />
   </Box>
 )
 
