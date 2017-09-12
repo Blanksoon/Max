@@ -19,9 +19,6 @@ import { Provider, Container, Flex, Box } from 'rebass'
 const WrapperNavbar = styled.div`background-color: #011020;`
 const Index = () => (
   <div className="wrapper-index">
-    <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </Head>
     <Provider>
       <div className="home">
         <div className="wrapper-centerPage">
