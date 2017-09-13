@@ -1,4 +1,5 @@
 import React from 'react'
+import FacebookLoginButton from './FacebookLoginButton'
 import { Flex, Provider, Box, Image, Text, Input, Button, Link } from 'rebass'
 
 const Login = () => (
@@ -50,7 +51,7 @@ const Login = () => (
             <Box w={6 / 12}>
               <center>
                 <Box>
-                  <button className="button-right">Log in with Facebook</button>
+                  <FacebookLoginButton />
                 </Box>
                 <Box pt="4%">
                   <button className="button-right">
