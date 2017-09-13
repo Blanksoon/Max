@@ -67,7 +67,7 @@ const LogoFooter = props => (
   <Box w={3 / 12}>
     <Image
       width={59}
-      src="/static/facebookLogo.png"
+      src={props.name}
       pt={2}
       pb={4}
       //m={1}
