@@ -9,7 +9,10 @@ export default class MyDocument extends Document {
 
     return (
       <html>
-        <Head>{styleTags}</Head>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          {styleTags}
+        </Head>
         <body>
           <div className="root">{main}</div>
           <NextScript />
