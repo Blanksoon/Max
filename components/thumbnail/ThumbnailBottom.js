@@ -1,25 +1,43 @@
 import React from 'react'
 import { Flex, Provider, Box, Image, Text } from 'rebass'
 
-const ThumbnailBottom = porps => (
+const ThumbnailBottom = props => (
   <Provider>
     <Flex>
       <div className="thumbnailbottom">
-        <Box bg="#021e3d">
+        <Box bg={props.bg}>
           <Box>
-            <Box>
-              <Image width="100%" pt={0} src={porps.img} />
+            <Box pb={props.pb}>
+              <Image width="100%" pt={0} src={props.img} />
             </Box>
-            <Box>
+            <Box pt="0.3em" pb="0.3em">
               <Text
                 color="#ffffff"
                 bold
-                children={porps.name}
+                children={props.name}
                 fontSize="0.9em"
               />
-              <br />
-              <Text color="#c2c405" children={porps.date} fontSize="0.9em" />
             </Box>
+            <Flex pt="0.8em" pb="0.5em">
+              <Box w={8 / 12}>
+                <Text
+                  pt="0.3em"
+                  color="#c2c405"
+                  left
+                  children={props.date}
+                  fontSize="0.8em"
+                />
+              </Box>
+              <Box w={4 / 12}>
+                <Text
+                  pt="0.3em"
+                  color="#c2c405"
+                  right
+                  children={props.time}
+                  fontSize="0.8em"
+                />
+              </Box>
+            </Flex>
           </Box>
         </Box>
       </div>

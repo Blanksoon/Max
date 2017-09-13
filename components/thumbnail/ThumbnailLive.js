@@ -1,5 +1,6 @@
 import React from 'react'
-import { Flex, Provider, Box, Image, Text } from 'rebass'
+import Login from '../login/Login'
+import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
 import Link from 'next/link'
 
 const ThumbnailLive = porps => (
@@ -27,7 +28,7 @@ const ThumbnailLive = porps => (
           <Text children="live telecast on ThairathTV HD 32" fontSize="0.8em" />
           <Text children="every Saturday 2.00 - 4.00pm" fontSize="0.8em" />
         </Box>
-        <Flex pt="13.5%">
+        <Flex pt="2.3rem">
           <Box w={4 / 12} pl="20%">
             <center>
               <Link href="/videoPlayer">
