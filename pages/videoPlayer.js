@@ -1,9 +1,9 @@
-import Head from 'next/head'
 import Link from 'next/link'
+import Head from 'next/head'
 import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
 import { BackVideoCenter } from '../components/videoplayer/BackVideoCenter'
-import { Player } from '../components/videoplayer/Player'
+import Players from '../components/videoplayer/Player'
 import { Description } from '../components/videoplayer/Description'
 import UpNext from '../components/videoplayer/UpNext'
 import StadiumTicket from '../components/home/StadiumTicket'
@@ -12,6 +12,7 @@ const videoPlayer = () => (
   <div className="wrapper-index">
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link href="./static/css/video-react.css" rel="stylesheet" />
     </Head>
     <Provider>
       <div className="home">
@@ -37,7 +38,7 @@ const videoPlayer = () => (
           <Container>
             <Flex>
               <Box w={12 / 12}>
-                <Player />
+                <Players />
               </Box>
             </Flex>
           </Container>
