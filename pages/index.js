@@ -63,15 +63,6 @@ const Index = () => (
               </Flex>
             </Container>
           </div>
-          <div className="wrapper-contact">
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>
-                  <Footer />
-                </Box>
-              </Flex>
-            </Container>
-          </div>
         </div>
         <style jsx global>
           {`

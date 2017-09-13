@@ -4,8 +4,8 @@ import vars from './vars'
 
 const SocialFooter = styled.div`
   background: ${vars.darkblue};
-  height: 64px;
-  line-height: 64px;
+  height: 4rem;
+  line-height: 4rem;
 `
 const CopyRight = styled.span`
   color: ${vars.yellow};
@@ -13,27 +13,27 @@ const CopyRight = styled.span`
   float: right;
 `
 
-const Icon = styled(Image)`
-  height: 64px;
+const SocialIcon = styled(Image)`
+  height: 4rem;
   float: left;
   margin: 0;
   padding: 0;
-  width: 64px;
+  width: 4rem;
 `
 export default () => (
   <SocialFooter>
     <Container>
       <a href="http://www.google.com" target="_blank">
-        <Icon src="static/ic_facebook@2x.png" />
+        <SocialIcon src="static/ic_facebook@2x.png" />
       </a>
       <a href="http://www.google.com" target="_blank">
-        <Icon src="static/ic_googleplus@2x.png" />
+        <SocialIcon src="static/ic_googleplus@2x.png" />
       </a>
       <a href="http://www.google.com" target="_blank">
-        <Icon src="static/ic_youtube@2x.png" />
+        <SocialIcon src="static/ic_youtube@2x.png" />
       </a>
       <a href="http://www.google.com" target="_blank">
-        <Icon src="static/ic_instagram@2x.png" />
+        <SocialIcon src="static/ic_instagram@2x.png" />
       </a>
       <CopyRight>Copyright © 2016 All Rights Reserved</CopyRight>
     </Container>
