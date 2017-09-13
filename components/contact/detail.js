@@ -85,6 +85,7 @@ const Detail = props => (
         fontSize="0.9em"
       />
       <Input px="0.5em" py="1em" placeholder="Your email here" />
+      <Input px="0.5em" py="1em" placeholder="Let us know what can we do more fro our beloved fan.+-+" />
     </Box>
   </Flex>
 )
