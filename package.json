@@ -8,6 +8,7 @@
     "dev": "next -p 8080"
   },
   "dependencies": {
+    "hls.js": "^0.8.2",
     "next": "^3.0.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

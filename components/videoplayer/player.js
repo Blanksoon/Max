@@ -9,8 +9,9 @@ import { Media, Subhead, Image, Link, Flex, Box, Text } from 'rebass'
 import React from 'react'
 //import '/Users/farmoz/Desktop/MaxMuayThai/front-end/MaxFront/static/css/video-react.css'
 import { Player } from 'video-react'
+import HLSSource from './HLSSource'
 //let videojs = require('video.js')
-const Players = () => {
+const Players = props => {
   // console.log(videojs)
   // let player = videojs('example-video')
   // player.play()
@@ -18,9 +19,11 @@ const Players = () => {
     <div className="Player">
       <Box width={1} bg="pink">
         <Player>
-          <source src="https://wittestvod-vh.akamaihd-staging.net/i/wittestvod/SampleVideo/luke_,3,6,11,000k.mp4.csmil/master.m3u8" />
+          <HLSSource
+            isVideoChild
+            src="https://wittestvod-vh.akamaihd-staging.net/i/wittestvod/SampleVideo/luke_,3,6,11,000k.mp4.csmil/master.m3u8"
+          />
         </Player>
-        );
         {/* <Image src="../../static/maxPromo.jpg" /> */}
         {/* <video
           id="example-video"
