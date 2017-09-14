@@ -12,7 +12,13 @@ import {
   Fixed,
   Heading,
 } from 'rebass'
+import styled from 'styled-components'
 
+const Wrapper = styled.div`
+  color: blue;
+  z-index: 50;
+  position: fixed;
+`
 export default class Modal extends Component {
   constructor(props) {
     super(props)
@@ -36,25 +42,25 @@ export default class Modal extends Component {
   render() {
     return (
       <div>
-        <Link href={`#`}>
-          <a>
-            <Image onClick={this.update} width="100%" src={this.props.img} />
-          </a>
-        </Link>
-        {this.state.overlay && (
-          <div className="promo">
-            <Fixed top right bottom left onClick={this.update} />
-            <Overlay w="50%">
-              <Login />
-            </Overlay>
-          </div>
-        )}
-        <style jsx>
-          {`
-            .promo {
-            }
-          `}
-        </style>
+        <Wrapper>
+          <Link href={`#`}>
+            <a>
+              <Image onClick={this.update} width="100%" src={this.props.img} />
+            </a>
+          </Link>
+          {this.state.overlay && (
+            <div>
+              <Fixed top right bottom left onClick={this.update} />
+              <Overlay w="50%">
+                asdflksajdflk
+                <br />
+                asdgasgsad
+                <br />
+                rgergesrgdrrhs
+              </Overlay>
+            </div>
+          )}
+        </Wrapper>
       </div>
     )
   }

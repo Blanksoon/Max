@@ -29,7 +29,7 @@ const TabNavbar = props => {
       nameLink = 'maxNews'
       break
     case 'Get Ticket':
-      nameLink = 'get-ticket'
+      nameLink = 'getTicket'
       break
     case 'Contact Us':
       nameLink = 'contactUs'

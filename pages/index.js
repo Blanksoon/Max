@@ -10,10 +10,10 @@ import StadiumTicket from '../components/home/StadiumTicket'
 import About from '../components/home/About'
 import HeroSection from '../components/home/HeroSection'
 import styled from 'styled-components'
-import OurShow from '../components/our show/OurShow'
-import ContactUs from '../components/contact us/ContactUs'
-import MaxNewsSeach from '../components/max news/MaxNewsSeach'
-import ListVideo from '../components/max news/ListVideo'
+import OurShow from '../components/ourShow/OurShow'
+import ContactUs from '../components/contactUs/ContactUs'
+import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
+import ListVideo from '../components/maxNews/ListVideo'
 import Login from '../components/login/Login'
 import Modal from '../components/modal/Modal'
 import { Provider, Container, Flex, Box } from 'rebass'
@@ -97,7 +97,13 @@ const Index = () => (
             }
             .wrapper-about {
               color: #ffffff;
-              background-image: url('static/img_home_about.png');
+              background: -webkit-linear-gradient(
+                left,
+                rgba(8, 74, 148, 1) 0%,
+                rgba(8, 74, 148, 1) 49%,
+                rgba(139, 3, 3, 1) 52%,
+                rgba(139, 3, 3, 1) 100%
+              ); /* Chrome10-25,Safari5.1-6 */
             }
             .wrapper-contact {
               background-color: #001f3d;

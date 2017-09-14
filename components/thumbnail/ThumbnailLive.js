@@ -58,7 +58,7 @@ const ThumbnailLive = porps => (
     <style jsx>
       {`
         .textfutterlive {
-          z-index: 10;
+          z-index: 2;
           position: relative;
           bottom: 0;
         }
@@ -66,7 +66,7 @@ const ThumbnailLive = porps => (
           color: #d6ff00;
         }
         .livehover {
-          z-index: 0;
+          z-index: 1;
           transition: ease-in-out 0.4s all;
           opacity: 0;
           height: 100%;
