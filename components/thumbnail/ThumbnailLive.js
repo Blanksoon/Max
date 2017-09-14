@@ -1,5 +1,6 @@
 import React from 'react'
-import { Flex, Provider, Box, Image, Text } from 'rebass'
+import Login from '../login/Login'
+import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
 import Link from 'next/link'
 
 const ThumbnailLive = porps => (
@@ -27,12 +28,16 @@ const ThumbnailLive = porps => (
           <Text children="live telecast on ThairathTV HD 32" fontSize="0.8em" />
           <Text children="every Saturday 2.00 - 4.00pm" fontSize="0.8em" />
         </Box>
-        <Flex pt="13.5%">
+        <Flex pt="2.3rem">
           <Box w={4 / 12} pl="20%">
             <center>
               <Link href="/videoPlayer">
                 <div>
-                  <Image width="100%" src="static/01.jpg" />
+                  <Link href={`#`}>
+                    <a>
+                      <Image width="100%" src="static/01.jpg" />
+                    </a>
+                  </Link>
                 </div>
               </Link>
             </center>
@@ -41,7 +46,11 @@ const ThumbnailLive = porps => (
             <center>
               <Link href="">
                 <div>
-                  <Image width="40%" src="static/02.jpg" />
+                  <Link href={`#`}>
+                    <a>
+                      <Image width="40%" src="static/02.jpg" />
+                    </a>
+                  </Link>
                 </div>
               </Link>
             </center>
@@ -50,7 +59,11 @@ const ThumbnailLive = porps => (
             <center>
               <Link href="#">
                 <div>
-                  <Image width="100%" src="static/03.jpg" />
+                  <Link href={`#`}>
+                    <a>
+                      <Image width="100%" src="static/03.jpg" />
+                    </a>
+                  </Link>
                 </div>
               </Link>
             </center>
@@ -81,7 +94,7 @@ const ThumbnailLive = porps => (
           left: 0;
         }
         .livehover:hover {
-          opacity: 0.9;
+          opacity: 1;
         }
         .wraperlive {
           position: relative;

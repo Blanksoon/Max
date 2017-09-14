@@ -18,6 +18,7 @@ const UpNext = props => (
             img="static/maxPromo.jpg"
             name="The Battle Muay-Thai(4/4)"
             date="On air - Aug 11, 2017"
+            bg="#021e3d"
           />
         </Box>
         <Box width={1 / 35} />
@@ -26,6 +27,7 @@ const UpNext = props => (
             img="static/maxPromo.jpg"
             name="The Battle Muay-Thai(4/4)"
             date="On air - Aug 11, 2017"
+            bg="#021e3d"
           />
         </Box>
         <Box width={1 / 35} />
@@ -34,6 +36,7 @@ const UpNext = props => (
             img="static/maxPromo.jpg"
             name="The Battle Muay-Thai(4/4)"
             date="On air - Aug 11, 2017"
+            bg="#021e3d"
           />
         </Box>
         <Box width={1 / 35} />
@@ -42,6 +45,7 @@ const UpNext = props => (
             img="static/maxPromo.jpg"
             name="The Battle Muay-Thai(4/4)"
             date="On air - Aug 11, 2017"
+            bg="#021e3d"
           />
         </Box>
       </Flex>

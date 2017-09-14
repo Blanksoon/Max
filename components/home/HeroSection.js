@@ -1,4 +1,5 @@
 import React from 'react'
+import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 // import clock from 'react-live-clock'
 import {
   Media,
@@ -45,26 +46,43 @@ const HeroSection = porps => (
               />
               <Text bold children="Champions 7 International Fights" />
               <div className="text-date">
-                <Text pt="15px" bold children="Sun. Sep 1st,2017" />
+                <Text pt="15px" bold children="Sun. Aug 27st,2017" />
               </div>
             </div>
             <Flex pt="5%">
-              <Box w={2.5 / 12}>
+              <Box w={5 / 24}>
                 <button className="button">Buy Ticket</button>
               </Box>
               <Box w={6 / 12}>
                 <div className="text-more">
-                  <Link>
-                    <a href="">
-                      <Text
-                        color="#4e9fe5"
-                        pt="3px"
-                        bold
-                        children="More Information"
-                        fontSize="0.9em"
-                      />
-                    </a>
-                  </Link>
+                  <Flex>
+                    <Box w={6 / 12}>
+                      <Link>
+                        <a href="">
+                          <Text
+                            color="#4e9fe5"
+                            pt="3px"
+                            bold
+                            children="View Fightcard"
+                            fontSize="0.9em"
+                          />
+                        </a>
+                      </Link>
+                    </Box>
+                    <Box w={6 / 12}>
+                      <Link>
+                        <a href="">
+                          <Text
+                            color="#4e9fe5"
+                            pt="3px"
+                            bold
+                            children="Promo Clip"
+                            fontSize="0.9em"
+                          />
+                        </a>
+                      </Link>
+                    </Box>
+                  </Flex>
                 </div>
               </Box>
             </Flex>
@@ -73,25 +91,27 @@ const HeroSection = porps => (
             <Flex>
               <Box w={1 / 12} />
               <Box w={5 / 12}>
-                <Box>
-                  <Image width="100%" src="static/maxPromo.jpg" />
-                </Box>
-                <Box>
-                  <Text bold children="The Battle Muay Thai" fontSize="0.8em" />
-                </Box>
+                <Link>
+                  <a href={`#`}>
+                    <ThumbnailBottom
+                      img="static/maxPromo.jpg"
+                      name="The Battle Muay Thai"
+                      pb="0.8em"
+                    />
+                  </a>
+                </Link>
               </Box>
               <Box w={1 / 12} />
               <Box w={5 / 12}>
-                <Box>
-                  <Image width="100%" src="static/maxPromo.jpg" />
-                </Box>
-                <Box>
-                  <Text
-                    bold
-                    children="Max World Champion 2013: DVD boxset"
-                    fontSize="0.8em"
-                  />
-                </Box>
+                <Link>
+                  <a href={`#`}>
+                    <ThumbnailBottom
+                      img="static/maxPromo.jpg"
+                      name="Max World Champion 2013: DVD boxset"
+                      pb="0.8em"
+                    />
+                  </a>
+                </Link>
               </Box>
             </Flex>
           </Box>

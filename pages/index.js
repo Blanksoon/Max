@@ -15,6 +15,7 @@ import ContactUs from '../components/contact us/ContactUs'
 import MaxNewsSeach from '../components/max news/MaxNewsSeach'
 import ListVideo from '../components/max news/ListVideo'
 import Login from '../components/login/Login'
+import Modal from '../components/modal/Modal'
 import { Provider, Container, Flex, Box } from 'rebass'
 import Main from '../layouts/Main'
 const WrapperNavbar = styled.div`background-color: #011020;`
