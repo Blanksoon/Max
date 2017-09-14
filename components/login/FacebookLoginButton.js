@@ -22,7 +22,9 @@ class FacebookLoginButton extends React.Component {
           'Content-Type' : 'application/json'
         }
     })
-    .then(function(response){ return response.json() })
+    .then(function(response){ 
+      return response.json() 
+    })
     .then(function(response){ 
       cookies.set('token', response.data.token, { path: '/' });
     })
@@ -37,6 +39,8 @@ class FacebookLoginButton extends React.Component {
           appId="116494852394377"
           autoLoad={false}
           fields="name,email,id"
+          cssClass="button-right"
+          textButton="Log in with Facebook"
           callback={this.facebookResponse}
         />
       </div>
