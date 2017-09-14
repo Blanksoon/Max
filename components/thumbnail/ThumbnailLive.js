@@ -94,7 +94,7 @@ const ThumbnailLive = porps => (
           left: 0;
         }
         .livehover:hover {
-          opacity: 0.9;
+          opacity: 1;
         }
         .wraperlive {
           position: relative;
