@@ -1,4 +1,5 @@
 import React from 'react'
+import ModalPromo from '../modal/ModalPromo'
 import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
 import Link from 'next/link'
 
@@ -30,40 +31,24 @@ const ThumbnailLive = porps => (
         <Flex pt="2.3rem">
           <Box w={4 / 12} pl="20%">
             <center>
-              <Link href="/videoPlayer">
-                <div>
-                  <Link href={`#`}>
-                    <a>
-                      <Image width="100%" src="static/01.jpg" />
-                    </a>
-                  </Link>
-                </div>
-              </Link>
+              <ModalPromo img="static/01.jpg" />
             </center>
           </Box>
           <Box w={4 / 12}>
             <center>
-              <Link href="">
-                <div>
-                  <Link href={`#`}>
-                    <a>
-                      <Image width="40%" src="static/02.jpg" />
-                    </a>
-                  </Link>
-                </div>
+              <Link href={`#`}>
+                <a>
+                  <Image width="40%" src="static/02.jpg" />
+                </a>
               </Link>
             </center>
           </Box>
           <Box w={4 / 12} pr="20%">
             <center>
-              <Link href="#">
-                <div>
-                  <Link href={`#`}>
-                    <a>
-                      <Image width="100%" src="static/03.jpg" />
-                    </a>
-                  </Link>
-                </div>
+              <Link href={`#`}>
+                <a>
+                  <Image width="100%" src="static/03.jpg" />
+                </a>
               </Link>
             </center>
           </Box>
@@ -81,7 +66,7 @@ const ThumbnailLive = porps => (
           color: #d6ff00;
         }
         .livehover {
-          z-index: 1;
+          z-index: 0;
           transition: ease-in-out 0.4s all;
           opacity: 0;
           height: 100%;

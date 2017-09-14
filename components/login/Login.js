@@ -1,9 +1,10 @@
 import React from 'react'
-import { Flex, Provider, Box, Image, Text, Input, Button, Link } from 'rebass'
+import Link from 'next/link'
+import { Flex, Provider, Box, Image, Text, Input, Button, Border } from 'rebass'
 
 const Login = () => (
   <Provider>
-    <div>
+    <div className="login/register">
       <Box w={1}>
         <Flex>
           <Box w={11 / 12} />
@@ -21,31 +22,47 @@ const Login = () => (
           <Flex>
             <Box w={3 / 12}>
               <Image width="100%" src="static/logo.png" />
-              <Text pt="20%" bold children="Log in" fontSize="1.5em" />
+              <Text
+                color="#b81111"
+                pt="20%"
+                bold
+                children="Log in"
+                fontSize="1.5em"
+              />
             </Box>
           </Flex>
         </div>
-        <div className="login/register">
+        <div>
           <Flex pt="5%">
             <Box w={6 / 12}>
-              <div className="login">
-                <Box w={10 / 12}>
-                  <Input defaultValue="" placeholder=" Email" />
-                </Box>
-                <Box w={10 / 12} pt="5%">
-                  <Input defaultValue="" placeholder=" Password" />
-                </Box>
-                <Box w={10 / 12} pt="8%">
-                  <div style={{ textAlign: 'right' }}>
-                    <Link>
-                      <a href="#/">Forgot password?</a>
-                    </Link>
-                  </div>
-                </Box>
-                <Box w={10 / 12} pt="8%" style={{ textAlign: 'right' }}>
-                  <button className="button-left">Go</button>
-                </Box>
-              </div>
+              <Box w={10 / 12}>
+                <Border color="gray">
+                  <Input pl="0em" pr="0em" placeholder=" Email" />
+                </Border>
+              </Box>
+              <Box w={10 / 12} pt="5%">
+                <Border color="gray">
+                  <Input pl="0em" pr="0em" placeholder=" Password" />
+                </Border>
+              </Box>
+              <Box w={10 / 12} pt="5%">
+                <div style={{ textAlign: 'right' }}>
+                  <Link>
+                    <a href="#/">
+                      <Text
+                        color="#b81111"
+                        right
+                        bold
+                        children="Forgot password?"
+                        fontSize="1em"
+                      />
+                    </a>
+                  </Link>
+                </div>
+              </Box>
+              <Box w={10 / 12} pt="8%" style={{ textAlign: 'right' }}>
+                <button className="button-left">GO!</button>
+              </Box>
             </Box>
             <Box w={6 / 12}>
               <center>
@@ -58,7 +75,9 @@ const Login = () => (
                   </button>
                 </Box>
                 <Box pt="6%">
-                  <Link href="#!" children="Wanna register with email" />
+                  <Link href={`#`}>
+                    <a>Register with email</a>
+                  </Link>
                 </Box>
               </center>
             </Box>
@@ -71,14 +90,14 @@ const Login = () => (
         .logomax {
         }
         .button-left {
-          background-color: gray;
+          font-weight: bold;
+          background-color: #b81111;
           border: none;
           color: white;
-          padding: 10px 70px;
+          padding: 10px 50px;
           text-align: center;
-          text-decoration: none;
           display: inline-block;
-          font-size: px;
+          font-size: 1em;
         }
         .button-right {
           background-color: gray;
@@ -90,12 +109,17 @@ const Login = () => (
           display: inline-block;
           font-size: px;
         }
-        .login {
-          border-right: 1px solid;
-          border-color: gray;
-        }
-        .close {
+        .login/register {
+          z-index: 50;
           position: relative;
+          transition: ease-in-out 0.4s all;
+          opacity: 0;
+          height: 100%;
+          width: 100%;
+          color: #ffffff;
+          background: #000;
+          top: 0;
+          left: 0;
         }
         a:link {
           COLOR: #660000;

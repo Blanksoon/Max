@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Login from '../login/Login'
+import Link from 'next/link'
 import {
   Flex,
   Provider,
@@ -35,15 +36,25 @@ export default class Modal extends Component {
   render() {
     return (
       <div>
-        <Button onClick={this.update} children={this.props.name} />
+        <Link href={`#`}>
+          <a>
+            <Image onClick={this.update} width="100%" src={this.props.img} />
+          </a>
+        </Link>
         {this.state.overlay && (
-          <div>
+          <div className="promo">
             <Fixed top right bottom left onClick={this.update} />
             <Overlay w="50%">
               <Login />
             </Overlay>
           </div>
         )}
+        <style jsx>
+          {`
+            .promo {
+            }
+          `}
+        </style>
       </div>
     )
   }
