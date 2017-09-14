@@ -11,11 +11,13 @@
     "hls.js": "^0.8.2",
     "next": "^3.0.6",
     "react": "^15.6.1",
+    "react-cookie": "^2.1.1",
     "react-dom": "^15.6.1",
     "react-facebook-login": "^3.6.2",
     "rebass": "^1.0.4",
     "redux": "^3.7.2",
     "styled-components": "^2.1.2",
+    "universal-cookie": "^2.1.0",
     "video-react": "^0.8.8",
     "videojs-contrib-hls": "^5.10.1"
   },

@@ -1,6 +1,8 @@
 import React from 'react'
-
+import Cookies from 'universal-cookie';
 import FacebookLogin from 'react-facebook-login';
+
+const cookies = new Cookies();
 
 class FacebookLoginButton extends React.Component {
 
@@ -20,8 +22,10 @@ class FacebookLoginButton extends React.Component {
           'Content-Type' : 'application/json'
         }
     })
-    .then(function(res){ return res.json(); })
-    .then(function(data){ console.log( data  ) })
+    .then(function(response){ return response.json() })
+    .then(function(response){ 
+      cookies.set('token', response.data.token, { path: '/' });
+    })
   }
 
   render() {
