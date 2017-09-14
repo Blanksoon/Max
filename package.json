@@ -4,17 +4,22 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build": "next build",
+    "dev": "next -p 8080",
     "prettier": "bash prettier.sh",
-    "dev": "next -p 8080"
+    "start": "next start -p 8080"
   },
   "dependencies": {
+    "hls.js": "^0.8.2",
     "next": "^3.0.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-modal": "^2.3.2",
     "react-overlays": "^0.8.0",
     "rebass": "^1.0.4",
-    "styled-components": "^2.1.2"
+    "redux": "^3.7.2",
+    "styled-components": "^2.1.2",
+    "video-react": "^0.8.8"
   },
   "devDependencies": {
     "prettier": "^1.6.1"
