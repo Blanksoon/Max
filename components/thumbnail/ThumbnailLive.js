@@ -44,7 +44,7 @@ const ThumbnailLive = porps => (
           </Box>
           <Box w={4 / 12}>
             <center>
-              <Link href="">
+              <Link href={'#'}>
                 <div>
                   <Link href={`#`}>
                     <a>
@@ -57,7 +57,7 @@ const ThumbnailLive = porps => (
           </Box>
           <Box w={4 / 12} pr="20%">
             <center>
-              <Link href="#">
+              <Link href={'#'}>
                 <div>
                   <Link href={`#`}>
                     <a>

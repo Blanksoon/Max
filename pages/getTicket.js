@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import GetTicketTabs from '../components/get-ticket/GetTicketTabs'
+import GetTicketTabs from '../components/getTicket/GetTicketTabs'
 import { Provider, Container, Flex, Box } from 'rebass'
 
 const styleGlobal = {

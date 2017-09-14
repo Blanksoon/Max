@@ -1,11 +1,10 @@
 import React from 'react'
+import Link from 'next/link'
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
-// import clock from 'react-live-clock'
 import {
   Media,
   Subhead,
   Image,
-  Link,
   Flex,
   Box,
   Text,

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Container, Image } from 'rebass'
-import vars from './vars'
+import vars from './Vars'
 
 const SocialFooter = styled.div`
   background: ${vars.darkblue};
