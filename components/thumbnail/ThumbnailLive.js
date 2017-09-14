@@ -1,5 +1,4 @@
 import React from 'react'
-import Login from '../login/Login'
 import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
 import Link from 'next/link'
 
