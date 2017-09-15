@@ -18,34 +18,46 @@ import {
 const H1 = styled.h1`margin: 0px;`
 const ComingLive = props => (
   <div className="ComingLive">
-    <Box w={1}>
+    <Box w={1} pt="2em" pb="1em">
       <center>
         <Text
           pt="2%"
           pb="2%"
           bold
-          color="red"
-          children="Up Coming LIVE"
-          fontSize="0.9em"
+          color="#fff"
+          children="UP COMING LIVE"
+          fontSize="1.5em"
         />
       </center>
     </Box>
     <Flex>
       <Box w={1 / 2}>
-        <ThumbnailLive />
+        <ThumbnailLive
+          text="Now! LIVE-on Fri. Aug 18th, 2017"
+          img="static/maxultimate-show.jpg"
+        />
       </Box>
       <Box w={1 / 32} />
       <Box w={1 / 2}>
-        <ThumbnailLive />
+        <ThumbnailLive
+          text="NEXT-on Fri. Aug 18th, 2017"
+          img="static/thairath-show.jpg"
+        />
       </Box>
     </Flex>
     <Flex pt="2%">
       <Box w={1 / 2}>
-        <ThumbnailLive />
+        <ThumbnailLive
+          text="Now! LIVE-on Fri. Aug 18th, 2017"
+          img="static/thechampion-show.jpg"
+        />
       </Box>
       <Box w={1 / 32} />
       <Box w={1 / 2}>
-        <ThumbnailLive />
+        <ThumbnailLive
+          text="NEXT-on Fri. Aug 18th, 2017"
+          img="static/thebattle-show.jpg"
+        />
       </Box>
     </Flex>
   </div>

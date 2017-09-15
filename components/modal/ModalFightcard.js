@@ -17,6 +17,7 @@ import {
 const Wrapper = styled.div`
   color: blue;
   z-index: 10;
+  opacity: 1;
   position: relative;
 `
 const WrapperIn = styled.div`
@@ -48,13 +49,15 @@ export default class Modal extends Component {
       <Wrapper>
         <Link href={`#`}>
           <a>
-            <Image onClick={this.update} width="100%" src={this.props.img} />
+            <Image onClick={this.update} width="40%" src={this.props.img} />
           </a>
         </Link>
         {this.state.overlay && (
           <WrapperIn>
             <Fixed top right bottom left onClick={this.update} />
-            <Overlay w="60%">Video</Overlay>
+            <Overlay w="30%">
+              <Image width="100%" src={this.props.imgFight} />
+            </Overlay>
           </WrapperIn>
         )}
       </Wrapper>

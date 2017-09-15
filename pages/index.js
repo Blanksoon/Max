@@ -11,7 +11,6 @@ import About from '../components/home/About'
 import HeroSection from '../components/home/HeroSection'
 import styled from 'styled-components'
 import OurShow from '../components/ourShow/OurShow'
-import ContactUs from '../components/contactUs/ContactUs'
 import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
 import ListVideo from '../components/maxNews/ListVideo'
 import Login from '../components/login/Login'
@@ -23,102 +22,82 @@ const WrapperTop = styled.div`
   color: #fff;
   background-color: #011020;
 `
-
+const WrapperLive = styled.div`
+  color: #fff;
+  background-image: url('static/bg-upcoming-home.jpg');
+  background-size: cover;
+  background-position-y: 0px;
+`
+const WrapperStadiumTicket = styled.div`
+  color: #ffffff;
+  background-color: #b71111;
+`
+const WrapperAbout = styled.div`
+  color: #ffffff;
+  background: -webkit-linear-gradient(
+    left,
+    rgba(7, 70, 141, 1) 0%,
+    rgba(7, 70, 141, 1) 48%,
+    rgba(139, 3, 3, 1) 52%,
+    rgba(139, 3, 3, 1) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+`
+const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 const Index = () => (
   <Main>
-    <div className="wrapper-index">
-      <Provider>
-        <div className="home">
-          <WrapperTop>
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>
-                  <NavbarHead />
-                  <HeroSection d="04" h="05" m="21" />
-                  <LatestVideo name="Latest Video" />
-                </Box>
-              </Flex>
-            </Container>
-          </WrapperTop>
-          <div>
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>
-                  <ComingLive />
-                  <MaxNew />
-                </Box>
-              </Flex>
-            </Container>
-          </div>
-          <div className="wrapper-mid">
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>
-                  <StadiumTicket />
-                </Box>
-              </Flex>
-            </Container>
-          </div>
-          <div className="wrapper-about">
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>
-                  <About />
-                </Box>
-              </Flex>
-            </Container>
-          </div>
-        </div>
-        <style jsx global>
-          {`
-            body {
-              padding: 0 !important;
-              margin: 0 !important;
-            }
-             {
-              /* * {
+    <Provider>
+      <Home>
+        <WrapperTop>
+          <Container>
+            <Flex>
+              <Box w={12 / 12}>
+                <NavbarHead />
+                <HeroSection d="04" h="05" m="21" />
+                <LatestVideo name="Latest Video" />
+              </Box>
+            </Flex>
+          </Container>
+        </WrapperTop>
+        <WrapperLive>
+          <Container>
+            <Flex>
+              <Box w={12 / 12} pb="4em" pt="2em">
+                <ComingLive />
+              </Box>
+            </Flex>
+          </Container>
+        </WrapperLive>
+        <WrapperStadiumTicket>
+          <Container>
+            <Flex>
+              <Box w={12 / 12}>
+                <StadiumTicket />
+              </Box>
+            </Flex>
+          </Container>
+        </WrapperStadiumTicket>
+        <WrapperAbout>
+          <Container>
+            <Box w={12 / 12}>
+              <About />
+            </Box>
+          </Container>
+        </WrapperAbout>
+      </Home>
+      <style jsx global>
+        {`
+          body {
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+           {
+            /* * {
               box-sizing: border-box;
             } */
-            }
-          `}
-        </style>
-        <style jsx>
-          {`
-            .wrapper-centerPage {
-              color: #fff;
-              background-color: #011020;
-            }
-            .wrapper-head {
-              color: #fff;
-              background-color: #011020;
-            }
-            .wrapper-cominglive {
-              background-color: ;
-            }
-            .wrapper-mid {
-              color: #ffffff;
-              background-image: url('static/img_stadiumticket_banner.png');
-            }
-            .wrapper-about {
-              color: #ffffff;
-              background: -webkit-linear-gradient(
-                left,
-                rgba(8, 74, 148, 1) 0%,
-                rgba(8, 74, 148, 1) 49%,
-                rgba(139, 3, 3, 1) 52%,
-                rgba(139, 3, 3, 1) 100%
-              ); /* Chrome10-25,Safari5.1-6 */
-            }
-            .wrapper-contact {
-              background-color: #001f3d;
-            }
-            .home {
-              font-family: Helvetica, Arial, sans-serif;
-            }
-          `}
-        </style>
-      </Provider>
-    </div>
+          }
+        `}
+      </style>
+    </Provider>
   </Main>
 )
 

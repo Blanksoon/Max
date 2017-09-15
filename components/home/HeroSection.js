@@ -93,7 +93,7 @@ const HeroSection = porps => (
                 <Link>
                   <a href={`#`}>
                     <ThumbnailBottom
-                      img="static/maxPromo.jpg"
+                      img="static/slide2.jpg"
                       name="The Battle Muay Thai"
                       pb="0.8em"
                     />
@@ -105,7 +105,7 @@ const HeroSection = porps => (
                 <Link>
                   <a href={`#`}>
                     <ThumbnailBottom
-                      img="static/maxPromo.jpg"
+                      img="static/slide3.jpg"
                       name="Max World Champion 2013: DVD boxset"
                       pb="0.8em"
                     />
@@ -160,8 +160,8 @@ const HeroSection = porps => (
           height: 100%;
           width: 100%;
           background-size: cover;
-          background-image: url('static/img_live_banner1.png');
-          background-position-y: 68%;
+          background-position-y: -76px;
+          background-image: url('static/img_live_banner.jpg');
           font-family: Helvetica, Arial, sans-serif;
         }
         .live-in {

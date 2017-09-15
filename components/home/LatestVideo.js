@@ -7,10 +7,16 @@ const latest_video = props => (
     <Box pb="5%">
       <Flex>
         <Box width={1}>
-          <h3>
-            {props.name}
-            {/* <hr /> */}
-          </h3>
+          <center>
+            <Text
+              pt="2%"
+              pb="2%"
+              bold
+              color="#fff"
+              children={props.name}
+              fontSize="1.5em"
+            />
+          </center>
         </Box>
       </Flex>
       <Flex>
@@ -18,11 +24,12 @@ const latest_video = props => (
           <Link>
             <a href={`/videoPlayer`}>
               <ThumbnailBottom
-                img="static/maxPromo.jpg"
+                img="static/FT6A6133.jpg"
                 name="The Battle Muay-Thai(4/4)"
                 date="On air - Aug 11, 2017"
                 time="16:24"
                 bg="#021e3d"
+                pl="1em"
               />
             </a>
           </Link>
@@ -32,11 +39,12 @@ const latest_video = props => (
           <Link>
             <a href={`/videoPlayer`}>
               <ThumbnailBottom
-                img="static/maxPromo.jpg"
+                img="static/FT6A6483.jpg"
                 name="The Battle Muay-Thai(3/4)"
                 date="On air - Aug 11, 2017"
                 time="16:24"
                 bg="#021e3d"
+                pl="1em"
               />
             </a>
           </Link>
@@ -46,11 +54,12 @@ const latest_video = props => (
           <Link>
             <a href={`/videoPlayer`}>
               <ThumbnailBottom
-                img="static/maxPromo.jpg"
+                img="static/FT6A6495.jpg"
                 name="The Battle Muay-Thai(2/4)"
                 date="On air - Aug 11, 2017"
                 time="16:24"
                 bg="#021e3d"
+                pl="1em"
               />
             </a>
           </Link>
@@ -60,11 +69,12 @@ const latest_video = props => (
           <Link>
             <a href={`/videoPlayer`}>
               <ThumbnailBottom
-                img="static/maxPromo.jpg"
+                img="static/FT6A6676.jpg"
                 name="The Battle Muay-Thai(1/4)"
                 date="On air - Aug 11, 2017"
                 time="16:24"
                 bg="#021e3d"
+                pl="1em"
               />
             </a>
           </Link>

@@ -2,25 +2,25 @@ import styled from 'styled-components'
 import { Media, Subhead, Image, Link, Flex, Box, Text } from 'rebass'
 
 const WrapperAbout = styled.div`
-  background-image: url('static/img_home_about.png');
+  background-image: url('static/bg-about-home.jpg');
   background-position: left;
+  background-position-x: 28%;
 `
 const about = () => (
   <div>
     <WrapperAbout>
       <Box width={1} pb={5} />
       <Flex>
-        <Box w={8 / 12} />
-        <Box width={4 / 12} pt={5} pb={5}>
-          <center>
-            <h1>About</h1>
-            <b>Lorem ipsum</b>
-            <br />
-            <b>sed do diusmod</b>
-          </center>
+        <Box w={6 / 12} />
+        <Box width={6 / 12} pt="0em" pb={5}>
+          <Text pt='2em' bold children="ABOUT US" fontSize="1.5em" />
+          <Text pt='1.5em' children="You've never really been to Thailand without witnessing extreme" fontSize="0.8em" />
+          <Text children="muay thai at Max Muay Thai Stadium Pattaya.." fontSize="0.8em" />
+          <Text pt='1em' children="We are the industry leader in Muay Thai Broadcasting. The no.1reated" fontSize="0.8em" />
+          <Text children="boxing tv show in Thailand with our 3 round format of Non Stop" fontSize="0.8em" />
+          <Text children="Aggressive Action." fontSize="0.8em" />
         </Box>
       </Flex>
-      <Box width={1} pb={5} />
     </WrapperAbout>
   </div>
 )

@@ -9,11 +9,18 @@ const ThumbnailBottom = props => (
           <Image width="100%" pt={0} src={props.img} />
         </Box>
         <Box pt="0.3em" pb="0.3em">
-          <Text color="#ffffff" bold children={props.name} fontSize="0.9em" />
+          <Text
+            pl={props.pl}
+            color="#ffffff"
+            bold
+            children={props.name}
+            fontSize="0.9em"
+          />
         </Box>
         <Flex pt="0.8em" pb="0.5em">
           <Box w={8 / 12}>
             <Text
+              pl="1em"
               pt="0.3em"
               color="#c2c405"
               left
@@ -23,6 +30,7 @@ const ThumbnailBottom = props => (
           </Box>
           <Box w={4 / 12}>
             <Text
+              pr="1em"
               pt="0.3em"
               color="#c2c405"
               right

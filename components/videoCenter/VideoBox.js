@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import ThumbnailVideo from '../thumbnail/ThumbnailVideo'
+import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 import { Flex, Box, Image, Button, Text } from 'rebass'
 
 const BackgroundImage = styled.div`
@@ -11,7 +12,7 @@ const BackgroundImage = styled.div`
 const VideoBox = () => (
   <div>
     <Flex mb={3}>
-      <Box w={6 / 12} bg="#022246" mr="1em">
+      <Box w={6 / 12} bg="" mr="1em">
         <div className="gradient">
           <Box w={12 / 12}>
             <Image width="100%" pt={0} src="static/FT6A2278.jpg" />
@@ -67,6 +68,7 @@ const VideoBox = () => (
               img="static/FT6A6133.jpg"
               name="MAX Ultimate Tournament & MAX World Champions (4/4)"
               date="On air - Aug 11, 2017"
+              time="16.24"
             />
           </Box>
           <Box w={6 / 12} pl="7.5px" pb="7.5px">
@@ -74,6 +76,7 @@ const VideoBox = () => (
               img="static/FT6A6483.jpg"
               name="MAX Ultimate Tournament & MAX World Champions (3/4)"
               date="On air - Aug 11, 2017"
+              time="16.24"
             />
           </Box>
         </Flex>
@@ -83,6 +86,7 @@ const VideoBox = () => (
               img="static/FT6A6495.jpg"
               name="MAX Ultimate Tournament & MAX World Champions (2/4)"
               date="On air - Aug 11, 2017"
+              time="16.24"
             />
           </Box>
           <Box w={6 / 12} pl="7.5px" pt="7.5px">
@@ -90,6 +94,7 @@ const VideoBox = () => (
               img="static/FT6A6676.jpg"
               name="MAX Ultimate Tournament & MAX World Champions (1/4)"
               date="On air - Aug 11, 2017"
+              time="16.24"
             />
           </Box>
         </Flex>
@@ -98,7 +103,7 @@ const VideoBox = () => (
     <RowVideo />
     <RowVideo />
     <RowVideo />
-    <Box w={12 / 12} pb="3%" pt="2%">
+    <Box w={12 / 12} pb="5rem" pt="4rem">
       <center>
         <button className="button-hunger">Hunger for more</button>
       </center>
@@ -138,26 +143,11 @@ const VideoBox = () => (
           float: right;
         }
         .gradient {
-          background: -moz-linear-gradient(
-            top,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 1) 100%
-          ); /* FF3.6-15 */
           background: -webkit-linear-gradient(
             top,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 1) 100%
+            rgba(119, 133, 153, 1) 0%,
+            rgba(2, 34, 70, 1) 100%
           ); /* Chrome10-25,Safari5.1-6 */
-          background: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 1) 100%
-          ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-          filter: progid:DXImageTransform.Microsoft.gradient(
-              startColorstr='#00000000',
-              endColorstr='#000000',
-              GradientType=0
-            ); /* IE6-9 */
         }
       `}
     </style>
@@ -173,6 +163,8 @@ const RowVideo = () => (
             img="static/FT6A6133.jpg"
             name="The Battle Muay-Thai(4/4)"
             date="On air - Aug 11, 2017"
+            time="16.24"
+            pt="1em"
           />
         </Box>
         <Box w={6 / 12} pl="7.5px">
@@ -180,6 +172,8 @@ const RowVideo = () => (
             img="static/FT6A6483.jpg"
             name="The Battle Muay-Thai(3/4)"
             date="On air - Aug 11, 2017"
+            time="16.24"
+            pt="1em"
           />
         </Box>
       </Flex>
@@ -191,6 +185,8 @@ const RowVideo = () => (
             img="static/FT6A6495.jpg"
             name="The Battle Muay-Thai(2/4)"
             date="On air - Aug 11, 2017"
+            time="16.24"
+            pt="1em"
           />
         </Box>
         <Box w={6 / 12} pl="7.5px">
@@ -198,6 +194,8 @@ const RowVideo = () => (
             img="static/FT6A6676.jpg"
             name="The Battle Muay-Thai(1/4)"
             date="On air - Aug 11, 2017"
+            time="16.24"
+            pt="1em"
           />
         </Box>
       </Flex>

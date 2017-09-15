@@ -1,5 +1,6 @@
 import React from 'react'
 import ModalPromo from '../modal/ModalPromo'
+import ModalFightcard from '../modal/ModalFightcard'
 import styled from 'styled-components'
 import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
 import Link from 'next/link'
@@ -8,11 +9,11 @@ const Wrapper = styled.div`
   z-index: 2;
   position: relative;
 `
-const ThumbnailLive = porps => (
+const ThumbnailLive = props => (
   <Provider>
     <div className="wraperlive">
       <Box>
-        <Image width="100%" pt={0} src="static/maxPromo.jpg" />
+        <Image width="100%" pt={0} src={props.img} />
       </Box>
       <div className="livehover">
         <Box pl="5%" pt="5%">
@@ -34,11 +35,10 @@ const ThumbnailLive = porps => (
           </Box>
           <Box w={4 / 12}>
             <center>
-              <Link href={`#`}>
-                <a>
-                  <Image width="40%" src="static/02.jpg" />
-                </a>
-              </Link>
+              <ModalFightcard
+                img="static/02.jpg"
+                imgFight="static/DailyFightcard 12092017 .jpg"
+              />
             </center>
           </Box>
           <Box w={4 / 12} pr="20%">
@@ -53,9 +53,9 @@ const ThumbnailLive = porps => (
         </Flex>
       </div>
     </div>
-    <Box bg="#010f1e" pt="1%" pb="1%">
+    <Box bg="#022246" pt="2%" pb="2%">
       <center>
-        <h className="textlive">Now! LIVE-on Fri. Aug 18th, 2017</h>
+        <Text color="#d6ff00" bold children={props.text} fontSize="1em" />
       </center>
     </Box>
     <style jsx>
@@ -76,7 +76,7 @@ const ThumbnailLive = porps => (
           left: 0;
         }
         .livehover:hover {
-          opacity: 1;
+          opacity: 0.9;
         }
         .wraperlive {
           position: relative;
