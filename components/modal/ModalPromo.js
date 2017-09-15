@@ -15,8 +15,7 @@ import {
 } from 'rebass'
 
 const Wrapper = styled.div`
-  color: blue;
-  z-index: 10;
+  color: red;
   position: relative;
 `
 const WrapperIn = styled.div`
@@ -46,16 +45,12 @@ export default class Modal extends Component {
   render() {
     return (
       <Wrapper>
-        <Link href={`#`}>
-          <a>
-            <Image onClick={this.update} width="100%" src={this.props.img} />
-          </a>
-        </Link>
+        <Image onClick={this.update} width="100%" src={this.props.img} />
         {this.state.overlay && (
-          <WrapperIn>
+          <div>
             <Fixed top right bottom left onClick={this.update} />
             <Overlay w="60%">Video</Overlay>
-          </WrapperIn>
+          </div>
         )}
       </Wrapper>
     )
