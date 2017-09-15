@@ -1,9 +1,43 @@
 import React from 'react'
-import { Flex, Provider, Box, Image, Text, Input, Button, Link } from 'rebass'
+import Link from 'next/link'
+import { Flex, Provider, Box, Image, Text, Input, Button, Border } from 'rebass'
+import styled from 'styled-components'
+
+const A = styled.a`TEXT-DECORATION: none;`
+const ButtonLeft = styled.button`
+  font-weight: bold;
+  background-color: #b81111;
+  border: none;
+  color: white;
+  padding: 10px 50px;
+  text-align: center;
+  display: inline-block;
+  font-size: 1em;
+`
+const ButtonFace = styled.button`
+  background-color: #3a559f;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: px;
+`
+const ButtonGoogle = styled.button`
+  background-color: #dd4b39;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: px;
+`
 
 const Login = () => (
   <Provider>
-    <div>
+    <div className="login/register">
       <Box w={1}>
         <Flex>
           <Box w={11 / 12} />
@@ -16,49 +50,77 @@ const Login = () => (
           </Box>
         </Flex>
       </Box>
-      <Box w={11 / 12}>
+      <Box w={11 / 12} pl="4em" pb="1em">
         <div className="logomax">
           <Flex>
+            <Box w={9 / 24} />
             <Box w={3 / 12}>
               <Image width="100%" src="static/logo.png" />
-              <Text pt="20%" bold children="Log in" fontSize="1.5em" />
+            </Box>
+          </Flex>
+          <Flex>
+            <Box w={3 / 12}>
+              <Text
+                color="#b81111"
+                pt="20%"
+                bold
+                children="Log in"
+                fontSize="1.5em"
+              />
             </Box>
           </Flex>
         </div>
-        <div className="login/register">
+        <div>
           <Flex pt="5%">
             <Box w={6 / 12}>
-              <div className="login">
-                <Box w={10 / 12}>
-                  <Input defaultValue="" placeholder=" Email" />
-                </Box>
-                <Box w={10 / 12} pt="5%">
-                  <Input defaultValue="" placeholder=" Password" />
-                </Box>
-                <Box w={10 / 12} pt="8%">
-                  <div style={{ textAlign: 'right' }}>
-                    <Link>
-                      <a href="#/">Forgot password?</a>
-                    </Link>
-                  </div>
-                </Box>
-                <Box w={10 / 12} pt="8%" style={{ textAlign: 'right' }}>
-                  <button className="button-left">Go</button>
-                </Box>
-              </div>
+              <Box w={10 / 12}>
+                <Border color="gray">
+                  <Input color="back" pl="0em" pr="0em" placeholder=" Email" />
+                </Border>
+              </Box>
+              <Box w={10 / 12} pt="5%">
+                <Border color="gray">
+                  <Input
+                    color="back"
+                    pl="0em"
+                    pr="0em"
+                    placeholder=" Password"
+                  />
+                </Border>
+              </Box>
+              <Box w={10 / 12} pt="5%">
+                <div style={{ textAlign: 'right' }}>
+                  <Link>
+                    <A href="#/">
+                      <Text
+                        color="#b81111"
+                        right
+                        bold
+                        children="Forgot password?"
+                        fontSize="1em"
+                      />
+                    </A>
+                  </Link>
+                </div>
+              </Box>
+              <Box w={10 / 12} pt="8%" style={{ textAlign: 'right' }}>
+                <ButtonLeft>GO!</ButtonLeft>
+              </Box>
             </Box>
             <Box w={6 / 12}>
               <center>
                 <Box>
-                  <button className="button-right">Log in with Facebook</button>
+                  <ButtonFace>f &nbsp;&nbsp; Log in with Facebook</ButtonFace>
                 </Box>
                 <Box pt="4%">
-                  <button className="button-right">
-                    &nbsp; Log in with Google &nbsp;
-                  </button>
+                  <ButtonGoogle>
+                    G+ &nbsp;&nbsp;&nbsp; Log in with Google
+                  </ButtonGoogle>
                 </Box>
                 <Box pt="6%">
-                  <Link href="#!" children="Wanna register with email" />
+                  <Link href={`#`}>
+                    <a>Register with email</a>
+                  </Link>
                 </Box>
               </center>
             </Box>
@@ -68,38 +130,8 @@ const Login = () => (
     </div>
     <style jsx>
       {`
-        .logomax {
-        }
-        .button-left {
-          background-color: gray;
-          border: none;
-          color: white;
-          padding: 10px 70px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: px;
-        }
-        .button-right {
-          background-color: gray;
-          border: none;
-          color: white;
-          padding: 10px 80px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: px;
-        }
-        .login {
-          border-right: 1px solid;
-          border-color: gray;
-        }
-        .close {
-          position: relative;
-        }
         a:link {
           COLOR: #660000;
-          TEXT-DECORATION: none;
         }
         a:visited {
           COLOR: #660000;

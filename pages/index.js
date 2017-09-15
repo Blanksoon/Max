@@ -18,14 +18,18 @@ import Login from '../components/login/Login'
 import Modal from '../components/modal/Modal'
 import { Provider, Container, Flex, Box } from 'rebass'
 import Main from '../layouts/Main'
-const WrapperNavbar = styled.div`background-color: #011020;`
+
+const WrapperTop = styled.div`
+  color: #fff;
+  background-color: #011020;
+`
 
 const Index = () => (
   <Main>
     <div className="wrapper-index">
       <Provider>
         <div className="home">
-          <div className="wrapper-centerPage">
+          <WrapperTop>
             <Container>
               <Flex>
                 <Box w={12 / 12}>
@@ -35,7 +39,7 @@ const Index = () => (
                 </Box>
               </Flex>
             </Container>
-          </div>
+          </WrapperTop>
           <div>
             <Container>
               <Flex>
@@ -97,7 +101,13 @@ const Index = () => (
             }
             .wrapper-about {
               color: #ffffff;
-              background-image: url('static/img_home_about.png');
+              background: -webkit-linear-gradient(
+                left,
+                rgba(8, 74, 148, 1) 0%,
+                rgba(8, 74, 148, 1) 49%,
+                rgba(139, 3, 3, 1) 52%,
+                rgba(139, 3, 3, 1) 100%
+              ); /* Chrome10-25,Safari5.1-6 */
             }
             .wrapper-contact {
               background-color: #001f3d;

@@ -1,4 +1,5 @@
 import { TabNavbar, Register, Language } from './NavbarTab'
+import Modal from '../modal/Modal'
 import {
   Provider,
   Toolbar,
@@ -31,8 +32,8 @@ const NavbarHead = () => (
       </Box>
       <Box w={9 / 12}>
         <Flex w={12 / 12}>
-          <Box w={9 / 12} />
-          <Register register="Register/login" />
+          <Box w={11 / 12} />
+          <Modal name="register/login" />
         </Flex>
         <Flex w={12 / 12} pt="1%">
           <Box w={1 / 12} />

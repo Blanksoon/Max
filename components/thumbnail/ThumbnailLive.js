@@ -1,21 +1,19 @@
 import React from 'react'
-import Login from '../login/Login'
+import ModalPromo from '../modal/ModalPromo'
+import styled from 'styled-components'
 import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
 import Link from 'next/link'
-
+const Wrapper = styled.div`
+  color: red;
+  z-index: 2;
+  position: relative;
+`
 const ThumbnailLive = porps => (
   <Provider>
     <div className="wraperlive">
       <Box>
         <Image width="100%" pt={0} src="static/maxPromo.jpg" />
       </Box>
-      <div className="textfutterlive">
-        <Box bg="#010f1e" pt="1%" pb="1%">
-          <center>
-            <h className="textlive">Now! LIVE-on Fri. Aug 18th, 2017</h>
-          </center>
-        </Box>
-      </div>
       <div className="livehover">
         <Box pl="5%" pt="5%">
           <Text bold children="Thairath Muay-Thai Fighter" fontSize="0.9em" />
@@ -31,53 +29,37 @@ const ThumbnailLive = porps => (
         <Flex pt="2.3rem">
           <Box w={4 / 12} pl="20%">
             <center>
-              <Link href="/videoPlayer">
-                <div>
-                  <Link href={`#`}>
-                    <a>
-                      <Image width="100%" src="static/01.jpg" />
-                    </a>
-                  </Link>
-                </div>
-              </Link>
+              <ModalPromo img="static/01.jpg" />
             </center>
           </Box>
           <Box w={4 / 12}>
             <center>
-              <Link href={'#'}>
-                <div>
-                  <Link href={`#`}>
-                    <a>
-                      <Image width="40%" src="static/02.jpg" />
-                    </a>
-                  </Link>
-                </div>
+              <Link href={`#`}>
+                <a>
+                  <Image width="40%" src="static/02.jpg" />
+                </a>
               </Link>
             </center>
           </Box>
           <Box w={4 / 12} pr="20%">
             <center>
-              <Link href={'#'}>
-                <div>
-                  <Link href={`#`}>
-                    <a>
-                      <Image width="100%" src="static/03.jpg" />
-                    </a>
-                  </Link>
-                </div>
+              <Link href={`#`}>
+                <a>
+                  <Image width="100%" src="static/03.jpg" />
+                </a>
               </Link>
             </center>
           </Box>
         </Flex>
       </div>
     </div>
+    <Box bg="#010f1e" pt="1%" pb="1%">
+      <center>
+        <h className="textlive">Now! LIVE-on Fri. Aug 18th, 2017</h>
+      </center>
+    </Box>
     <style jsx>
       {`
-        .textfutterlive {
-          z-index: 10;
-          position: relative;
-          bottom: 0;
-        }
         .textlive {
           color: #d6ff00;
         }
