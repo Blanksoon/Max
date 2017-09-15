@@ -4,6 +4,37 @@ import { Flex, Provider, Box, Image, Text, Input, Button, Border } from 'rebass'
 import styled from 'styled-components'
 
 const A = styled.a`TEXT-DECORATION: none;`
+const ButtonLeft = styled.button`
+  font-weight: bold;
+  background-color: #b81111;
+  border: none;
+  color: white;
+  padding: 10px 50px;
+  text-align: center;
+  display: inline-block;
+  font-size: 1em;
+`
+const ButtonFace = styled.button`
+  background-color: #3a559f;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: px;
+`
+const ButtonGoogle = styled.button`
+  background-color: #dd4b39;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: px;
+`
+
 const Login = () => (
   <Provider>
     <div className="login/register">
@@ -73,20 +104,18 @@ const Login = () => (
                 </div>
               </Box>
               <Box w={10 / 12} pt="8%" style={{ textAlign: 'right' }}>
-                <button className="button-left">GO!</button>
+                <ButtonLeft>GO!</ButtonLeft>
               </Box>
             </Box>
             <Box w={6 / 12}>
               <center>
                 <Box>
-                  <button className="button-face">
-                    f &nbsp;&nbsp; Log in with Facebook
-                  </button>
+                  <ButtonFace>f &nbsp;&nbsp; Log in with Facebook</ButtonFace>
                 </Box>
                 <Box pt="4%">
-                  <button className="button-google">
+                  <ButtonGoogle>
                     G+ &nbsp;&nbsp;&nbsp; Log in with Google
-                  </button>
+                  </ButtonGoogle>
                 </Box>
                 <Box pt="6%">
                   <Link href={`#`}>
@@ -101,41 +130,6 @@ const Login = () => (
     </div>
     <style jsx>
       {`
-        .login/register {
-        }
-        .font-bold {
-          font-weight: bold;
-        }
-        .button-left {
-          font-weight: bold;
-          background-color: #b81111;
-          border: none;
-          color: white;
-          padding: 10px 50px;
-          text-align: center;
-          display: inline-block;
-          font-size: 1em;
-        }
-        .button-face {
-          background-color: #3a559f;
-          border: none;
-          color: white;
-          padding: 10px 30px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: px;
-        }
-        .button-google {
-          background-color: #dd4b39;
-          border: none;
-          color: white;
-          padding: 10px 30px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: px;
-        }
         a:link {
           COLOR: #660000;
         }

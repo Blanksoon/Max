@@ -1,21 +1,19 @@
 import React from 'react'
 import ModalPromo from '../modal/ModalPromo'
+import styled from 'styled-components'
 import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
 import Link from 'next/link'
-
+const Wrapper = styled.div`
+  color: red;
+  z-index: 2;
+  position: relative;
+`
 const ThumbnailLive = porps => (
   <Provider>
     <div className="wraperlive">
       <Box>
         <Image width="100%" pt={0} src="static/maxPromo.jpg" />
       </Box>
-      <div className="textfutterlive">
-        <Box bg="#010f1e" pt="1%" pb="1%">
-          <center>
-            <h className="textlive">Now! LIVE-on Fri. Aug 18th, 2017</h>
-          </center>
-        </Box>
-      </div>
       <div className="livehover">
         <Box pl="5%" pt="5%">
           <Text bold children="Thairath Muay-Thai Fighter" fontSize="0.9em" />
@@ -55,13 +53,13 @@ const ThumbnailLive = porps => (
         </Flex>
       </div>
     </div>
+    <Box bg="#010f1e" pt="1%" pb="1%">
+      <center>
+        <h className="textlive">Now! LIVE-on Fri. Aug 18th, 2017</h>
+      </center>
+    </Box>
     <style jsx>
       {`
-        .textfutterlive {
-          z-index: 2;
-          position: relative;
-          bottom: 0;
-        }
         .textlive {
           color: #d6ff00;
         }

@@ -6,9 +6,9 @@ const max_new = () => (
     <Flex>
       <Box width={1}>
         <Flex>
-          <Box px={0} py={2} width={1}>
+          <Box pt="2em" pb="1em" width={1}>
             <center>
-              <h2>Max News</h2>
+              <Text color="red" bold children="Max News" fontSize="1.5em" />
             </center>
           </Box>
         </Flex>

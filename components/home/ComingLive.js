@@ -19,14 +19,16 @@ const H1 = styled.h1`margin: 0px;`
 const ComingLive = props => (
   <div className="ComingLive">
     <Box w={1}>
-      <Text
-        pt="2%"
-        pb="2%"
-        bold
-        color="red"
-        children="Up Coming LIVE"
-        fontSize="0.9em"
-      />
+      <center>
+        <Text
+          pt="2%"
+          pb="2%"
+          bold
+          color="red"
+          children="Up Coming LIVE"
+          fontSize="0.9em"
+        />
+      </center>
     </Box>
     <Flex>
       <Box w={1 / 2}>
