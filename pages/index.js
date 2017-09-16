@@ -33,7 +33,6 @@ const Index = ({ url }) => (
             <Container>
               <Flex>
                 <Box w={12 / 12}>
-                  <NavbarHead />
                   <HeroSection d="04" h="05" m="21" />
                   <LatestVideo name="Latest Video" />
                 </Box>
