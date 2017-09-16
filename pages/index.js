@@ -24,8 +24,8 @@ const WrapperTop = styled.div`
   background-color: #011020;
 `
 
-const Index = () => (
-  <Main>
+const Index = ({ url }) => (
+  <Main url={url}>
     <div className="wrapper-index">
       <Provider>
         <div className="home">
