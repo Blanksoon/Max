@@ -4,6 +4,7 @@ import vars from './vars'
 
 const Inactive = styled.a`
   color: ${vars.lightBlue};
+  cursor: pointer;
   float: left;
   padding: 0.5rem 1rem;
   text-decorate: none;
