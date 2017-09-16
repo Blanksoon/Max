@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Container, Image } from 'rebass'
-import vars from './Vars'
+import vars from './vars'
 
 const AddressFooter = styled.div`
   background: ${vars.blue};

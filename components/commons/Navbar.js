@@ -1,6 +1,6 @@
 import { Fixed, Container } from 'rebass'
 import styled from 'styled-components'
-import vars from './Vars'
+import vars from './vars'
 
 const Navbar = styled(Fixed)`
   background: ${vars.darkblue};
