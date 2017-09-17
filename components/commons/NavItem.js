@@ -8,6 +8,9 @@ const Inactive = styled.a`
   float: left;
   padding: 0.5rem 1rem;
   text-decorate: none;
+  &:hover {
+    color: ${vars.white};
+  }
 `
 const Active = styled(Inactive)`
   color: ${vars.white};

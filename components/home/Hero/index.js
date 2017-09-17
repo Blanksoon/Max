@@ -5,6 +5,7 @@ import { Image } from 'rebass'
 import Slider from 'react-slick'
 import { slick, slickTheme } from './slickStyle'
 import Countdown from './Countdown'
+import ActionBar from './ActionBar'
 import vars from '../../commons/vars'
 
 const Slide = styled(Image)`width: 100%;`
@@ -78,6 +79,7 @@ export default class extends Component {
         <LiveInfo>
           <Title>{activeLive.title}</Title>
           <LiveDate>{formattedLiveDate}</LiveDate>
+          <ActionBar live={activeLive} />
         </LiveInfo>
         <Countdown liveDateStr={activeLive.liveDate} />
         <Slider {...settings}>
