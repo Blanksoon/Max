@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import Link from 'next/link'
 import { Fixed, Container, Image } from 'rebass'
 import styled from 'styled-components'
 import NavItem from './NavItem'
@@ -15,9 +16,10 @@ const NavItemContainer = styled.div`
   bottom: 0;
 `
 const Logo = styled(Image)`
+  cursor: pointer;
   height: 4rem;
   float: right;
-  margin-right: 1rem;
+  margin-right: 2rem;
 `
 export default class extends Component {
   constructor(props) {
@@ -58,7 +60,9 @@ export default class extends Component {
               <NavItem key={label} label={label} href={href} active={active} />
             ))}
           </NavItemContainer>
-          <Logo src="/static/logo.png" />
+          <Link href="/">
+            <Logo src="/static/logo.png" />
+          </Link>
         </Container>
       </Navbar>
     )
