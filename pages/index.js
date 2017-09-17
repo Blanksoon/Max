@@ -126,15 +126,19 @@ Index.getInitialProps = () => {
     lives: [
       {
         bannerUrl: '/static/img_live_banner.jpg',
-        liveDate: '2017/09/30',
+        liveDate: '2017-09-30',
+        title:
+          'MAX Ultimate Tournament & MAX World Champions 7 International Fights',
       },
       {
         bannerUrl: '/static/slide2.jpg',
-        liveDate: '2017/10/5',
+        liveDate: '2017-10-5',
+        title: 'The Battle Muay Thai',
       },
       {
         bannerUrl: '/static/slide3.jpg',
-        liveDate: '2017/10/10',
+        liveDate: '2017-10-10',
+        title: 'Max World Champion 2013: DVD bookset',
       },
     ],
   }
