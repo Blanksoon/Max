@@ -39,16 +39,43 @@ export default class extends Component {
     this.state = {
       visibility: 'hidden',
       activeLive: 0,
+      fightcardVisible: false,
+      promovideoVisible: false,
     }
+    this.closeModal = this.closeModal.bind(this)
+    this.setActiveLive = this.setActiveLive.bind(this)
+    this.showFightcard = this.showFightcard.bind(this)
+    this.showPromoVideo = this.showPromoVideo.bind(this)
   }
   componentDidMount() {
     // Show carousel only after initiate to avoid flicker
     this.setState({
       visibility: 'visible',
     })
+    document.addEventListener('keydown', e => {
+      if (e.keyCode === 27) this.closeModal()
+    })
+  }
+  closeModal(event) {
+    if (event.keyCode === 27) {
+      this.setState({
+        fightcardVisible: false,
+        promovideoVisible: false,
+      })
+    }
   }
   setActiveLive(i) {
     this.setState({ activeLive: i })
+  }
+  showFightcard(status) {
+    this.setState({
+      fightcardVisible: status,
+    })
+  }
+  showPromoVideo(status) {
+    this.setState({
+      promovideoVisible: status,
+    })
   }
   render() {
     const { lives } = this.props
@@ -75,11 +102,20 @@ export default class extends Component {
       slidesToScroll: 1,
     }
     return (
-      <div style={{ visibility: this.state.visibility, position: 'relative' }}>
+      <div
+        style={{ visibility: this.state.visibility, position: 'relative' }}
+        onKeyDown={this.closeModal}
+      >
         <LiveInfo>
           <Title>{activeLive.title}</Title>
           <LiveDate>{formattedLiveDate}</LiveDate>
-          <ActionBar live={activeLive} />
+          <ActionBar
+            live={activeLive}
+            fightcardVisible={this.state.fightcardVisible}
+            promovideoVisible={this.state.promovideoVisible}
+            showFightcard={this.showFightcard}
+            showPromoVideo={this.showPromoVideo}
+          />
         </LiveInfo>
         <Countdown liveDateStr={activeLive.liveDate} />
         <Slider {...settings}>
