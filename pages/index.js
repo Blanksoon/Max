@@ -8,7 +8,7 @@ import LatestVideo from '../components/home/LatestVideo'
 import MaxNew from '../components/home/MaxNew'
 import StadiumTicket from '../components/home/StadiumTicket'
 import About from '../components/home/About'
-import HeroSection from '../components/home/HeroSection'
+import Hero from '../components/home/Hero'
 import styled from 'styled-components'
 import OurShow from '../components/ourShow/OurShow'
 import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
@@ -101,4 +101,26 @@ const Index = () => (
   </Main>
 )
 
+Index.getInitialProps = () => {
+  return {
+    lives: [
+      {
+        bannerUrl: '/static/img_live_banner.jpg',
+        liveDate: '2017-09-30',
+        title:
+          'MAX Ultimate Tournament & MAX World Champions 7 International Fights',
+      },
+      {
+        bannerUrl: '/static/slide2.jpg',
+        liveDate: '2017-10-5',
+        title: 'The Battle Muay Thai',
+      },
+      {
+        bannerUrl: '/static/slide3.jpg',
+        liveDate: '2017-10-10',
+        title: 'Max World Champion 2013: DVD bookset',
+      },
+    ],
+  }
+}
 export default Index
