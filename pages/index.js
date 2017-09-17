@@ -17,6 +17,7 @@ import Login from '../components/login/Login'
 import Modal from '../components/modal/Modal'
 import { Provider, Container, Flex, Box } from 'rebass'
 import Main from '../layouts/Main'
+import vars from '../components/commons/vars'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -42,13 +43,18 @@ const WrapperAbout = styled.div`
     rgba(139, 3, 3, 1) 100%
   ); /* Chrome10-25,Safari5.1-6 */
 `
+const GradientBg = styled.div`
+  background: linear-gradient(${vars.darkblue}, ${vars.blue});
+`
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 const Index = ({ url, lives }) => (
   <Main url={url}>
-    <Container>
-      <Hero lives={lives} />
-      <LatestVideo name="Latest Video" />
-    </Container>
+    <GradientBg>
+      <Container>
+        <Hero lives={lives} />
+        <LatestVideo name="Latest Video" />
+      </Container>
+    </GradientBg>
     <WrapperLive>
       <Container>
         <Flex>

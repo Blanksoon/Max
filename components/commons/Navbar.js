@@ -5,10 +5,9 @@ import NavItem from './NavItem'
 import vars from './vars'
 
 const Navbar = styled(Fixed)`
-  background: ${vars.darkblue};
+  background: rgba(1, 15, 30, 0.8);
   display: block;
   height: 4rem;
-  opacity: 0.8;
   width: 100%;
 `
 const NavItemContainer = styled.div`

@@ -92,6 +92,7 @@ export default class extends Component {
       afterChange: i => this.setActiveLive(i),
       autoplay: true,
       autoplaySpeed: 9000,
+      arrows: false,
       customPaging: i => <Thumb src={lives[i].bannerUrl} />,
       dots: true,
       draggable: false,

@@ -13,7 +13,7 @@ const Panel = styled.span`
   display: inline-block;
   font-size: 2rem;
   margin: 0.5rem;
-  padding: 0.3rem;
+  padding: 0.1rem 0.5rem;
 `
 const Digit = styled.div`
   color: ${vars.yellow};
@@ -33,7 +33,7 @@ const Label = styled.div`
   font-family: 'Lucida Console', Monaco, monospace;
   font-size: 1.5rem;
   margin: 0 0.5rem;
-  padding: 0.5rem 0.3rem;
+  padding: 0.3rem 0.5rem;
 `
 // Calculate date2 - date2
 // date1 and date2 must be date object
