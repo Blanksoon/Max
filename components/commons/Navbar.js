@@ -10,6 +10,7 @@ const Navbar = styled(Fixed)`
   display: block;
   height: 4rem;
   width: 100%;
+  z-index: 9999;
 `
 const NavItemContainer = styled.div`
   position: absolute;
