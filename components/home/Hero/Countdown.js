@@ -3,20 +3,17 @@ import styled from 'styled-components'
 import vars from '../../commons/vars'
 
 const Countdown = styled.div`
-  background: ${vars.darkblue};
+  background: ${vars.transDarkblue};
   position: absolute;
   top: 8rem;
   right: 20px;
-  opacity: 0.8;
   z-index: 1;
 `
 const Panel = styled.span`
-  background: ${vars.darkblue};
   display: inline-block;
   font-size: 2rem;
   margin: 0.5rem;
-  opacity: 0.8;
-  padding: 0.7rem;
+  padding: 0.3rem;
 `
 const Digit = styled.div`
   color: ${vars.yellow};
@@ -31,14 +28,12 @@ const Text = styled.div`
   text-align: center;
 `
 const Label = styled.div`
-  background: ${vars.darkblue};
   border-bottom: 1px solid ${vars.white};
   color: ${vars.yellow};
   font-family: 'Lucida Console', Monaco, monospace;
   font-size: 1.5rem;
-  opacity: 0.8;
   margin: 0 0.5rem;
-  padding: 0.5rem 0.7rem;
+  padding: 0.5rem 0.3rem;
 `
 // Calculate date2 - date2
 // date1 and date2 must be date object

@@ -43,61 +43,50 @@ const WrapperAbout = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
-const Index = () => (
-  <Main>
-    <Provider>
-      <Home>
-        <WrapperTop>
-          <Container>
-            <Flex>
-              <Box w={12 / 12}>
-                <NavbarHead />
-                <HeroSection d="04" h="05" m="21" />
-                <LatestVideo name="Latest Video" />
-              </Box>
-            </Flex>
-          </Container>
-        </WrapperTop>
-        <WrapperLive>
-          <Container>
-            <Flex>
-              <Box w={12 / 12} pb="4em" pt="2em">
-                <ComingLive />
-              </Box>
-            </Flex>
-          </Container>
-        </WrapperLive>
-        <WrapperStadiumTicket>
-          <Container>
-            <Flex>
-              <Box w={12 / 12}>
-                <StadiumTicket />
-              </Box>
-            </Flex>
-          </Container>
-        </WrapperStadiumTicket>
-        <WrapperAbout>
-          <Container>
-            <Box w={12 / 12}>
-              <About />
-            </Box>
-          </Container>
-        </WrapperAbout>
-      </Home>
-      <style jsx global>
-        {`
-          body {
-            padding: 0 !important;
-            margin: 0 !important;
-          }
-           {
-            /* * {
+const Index = ({ url, lives }) => (
+  <Main url={url}>
+    <Container>
+      <Hero lives={lives} />
+      <LatestVideo name="Latest Video" />
+    </Container>
+    <WrapperLive>
+      <Container>
+        <Flex>
+          <Box w={12 / 12} pb="4em" pt="2em">
+            <ComingLive />
+          </Box>
+        </Flex>
+      </Container>
+    </WrapperLive>
+    <WrapperStadiumTicket>
+      <Container>
+        <Flex>
+          <Box w={12 / 12}>
+            <StadiumTicket />
+          </Box>
+        </Flex>
+      </Container>
+    </WrapperStadiumTicket>
+    <WrapperAbout>
+      <Container>
+        <Box w={12 / 12}>
+          <About />
+        </Box>
+      </Container>
+    </WrapperAbout>
+    <style jsx global>
+      {`
+        body {
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+         {
+          /* * {
               box-sizing: border-box;
             } */
-          }
-        `}
-      </style>
-    </Provider>
+        }
+      `}
+    </style>
   </Main>
 )
 

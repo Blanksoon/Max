@@ -14,11 +14,10 @@ const Thumb = styled(Image)`
   width: 100%;
 `
 const LiveInfo = styled.div`
-  background: ${vars.darkblue};
-  bottom: 5rem;
+  background: ${vars.transDarkblue};
+  bottom: 1rem;
   font-weight: bold;
   left: 2rem;
-  opacity: 0.8;
   padding: 1rem;
   position: absolute;
   width: 50%;
@@ -45,7 +44,7 @@ export default class extends Component {
     this.closeModal = this.closeModal.bind(this)
     this.setActiveLive = this.setActiveLive.bind(this)
     this.showFightcard = this.showFightcard.bind(this)
-    this.showPromoVideo = this.showPromoVideo.bind(this)
+    this.showPromovideo = this.showPromovideo.bind(this)
   }
   componentDidMount() {
     // Show carousel only after initiate to avoid flicker
@@ -72,7 +71,7 @@ export default class extends Component {
       fightcardVisible: status,
     })
   }
-  showPromoVideo(status) {
+  showPromovideo(status) {
     this.setState({
       promovideoVisible: status,
     })
@@ -114,7 +113,7 @@ export default class extends Component {
             fightcardVisible={this.state.fightcardVisible}
             promovideoVisible={this.state.promovideoVisible}
             showFightcard={this.showFightcard}
-            showPromoVideo={this.showPromoVideo}
+            showPromovideo={this.showPromovideo}
           />
         </LiveInfo>
         <Countdown liveDateStr={activeLive.liveDate} />
