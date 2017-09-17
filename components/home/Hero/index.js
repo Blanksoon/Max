@@ -25,7 +25,7 @@ const LiveInfo = styled.div`
 `
 const Title = styled.div`
   color: ${vars.white};
-  font-size: 2rem;
+  font-size: 1.5rem;
 `
 const LiveDate = styled.div`
   color: ${vars.yellow};
