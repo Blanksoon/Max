@@ -6,5 +6,9 @@ const StyledButton = styled(Button)`
   background: ${vars.red};
   color: ${vars.white};
   cursor: pointer;
+
+  &:active {
+    background: ${vars.red};
+  }
 `
 export default StyledButton
