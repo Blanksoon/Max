@@ -16,6 +16,7 @@
     "react-dom": "^15.6.1",
     "react-modal": "^2.3.2",
     "react-overlays": "^0.8.0",
+    "react-slick": "^0.15.4",
     "rebass": "^1.0.4",
     "redux": "^3.7.2",
     "styled-components": "^2.1.2",

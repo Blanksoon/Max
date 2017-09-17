@@ -56,7 +56,7 @@ export default class extends Component {
         <Container>
           <NavItemContainer>
             {this.state.navItems.map(({ label, href, active }) => (
-              <NavItem label={label} href={href} active={active} />
+              <NavItem key={label} label={label} href={href} active={active} />
             ))}
           </NavItemContainer>
           <Logo src="/static/logo.png" />
