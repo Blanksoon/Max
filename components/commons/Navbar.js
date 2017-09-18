@@ -64,7 +64,7 @@ export default class extends Component {
             ))}
           </NavItemContainer>
           <Link href="/">
-            <Logo src="/static/logo.png" />
+            <Logo onClick={console.log('helo 1212')} src="/static/logo.png" />
           </Link>
         </Container>
       </Navbar>

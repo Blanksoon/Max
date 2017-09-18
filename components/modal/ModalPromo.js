@@ -14,15 +14,7 @@ import {
   Heading,
 } from 'rebass'
 
-const Wrapper = styled.div`
-  color: red;
-  position: relative;
-`
-const WrapperIn = styled.div`
-  color: blue;
-  z-index: 20;
-  position: relative;
-`
+const Wrapper = styled.div`color: red;`
 export default class Modal extends Component {
   constructor(props) {
     super(props)
@@ -49,7 +41,9 @@ export default class Modal extends Component {
         {this.state.overlay && (
           <div>
             <Fixed top right bottom left onClick={this.update} />
-            <Overlay w="60%">Video</Overlay>
+            <Overlay style={{ zIndex: '30' }} w="60%">
+              Video
+            </Overlay>
           </div>
         )}
       </Wrapper>
