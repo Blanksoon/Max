@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import React from 'react'
 import Link from 'next/link'
 import { LabelSearch } from '../components/videoCenter/LabelSearch'
 import styled from 'styled-components'
@@ -6,11 +7,18 @@ import Detail from '../components/contact/Detail'
 import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
 import { VideoBox } from '../components/videoCenter/VideoBox'
-import { Provider, Container, Flex, Box } from 'rebass'
+import { Container, Flex, Box } from 'rebass'
+import CounterComponent from '../containers/CounterContainers'
+import rootReducer from '../reducers'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 const Wapper = styled.div`font-family: Helvetica, Arial, sans-serif;`
 const Background = styled.div`background-color: ${props => props.color};`
+const initialState = { counter: 100 }
+const store = createStore(rootReducer, initialState, composeWithDevTools())
 const Contact = props => (
-  <Provider>
+  <Provider store={store}>
     <Wapper>
       <Background color="#8b0303">
         <Container>
@@ -22,6 +30,7 @@ const Contact = props => (
           <Box>
             <Detail />
           </Box>
+          <CounterComponent label="counter" />
         </Container>
       </Background>
     </Wapper>
