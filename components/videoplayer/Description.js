@@ -1,6 +1,6 @@
 import { LogoFooter } from '../home/Footer'
 import styled from 'styled-components'
-import { Media, Subhead, Image, Link, Flex, Box, Text } from 'rebass'
+import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 
 const H1 = styled.h1`margin: 0px;`
 const P = styled.p`margin: 0px;`
@@ -35,13 +35,13 @@ const Description = () => (
       </Box>
       <Box width={7 / 12} pl="46%">
         <div className="Share">
-          <h4>
+          {/* <h4>
             <b>Share on</b>
-          </h4>
+          </h4> */}
         </div>
       </Box>
-      <ShareOn />
-      <ShareOn />
+      {/* <ShareOn />
+      <ShareOn /> */}
       {/* <LogoFooter />
       <LogoFooter />
       <LogoFooter />

@@ -18,6 +18,10 @@ import Modal from '../components/modal/Modal'
 import { Container, Flex, Box } from 'rebass'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
+import rootReducer from '../reducers'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -47,53 +51,56 @@ const GradientBg = styled.div`
   background: linear-gradient(${vars.darkblue}, ${vars.blue});
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
+const store = createStore(rootReducer, composeWithDevTools())
 const Index = ({ url, lives }) => (
-  <Main url={url}>
-    <GradientBg>
-      <Container>
-        <Hero lives={lives} />
-        <LatestVideo name="Latest Video" />
-      </Container>
-    </GradientBg>
-    <WrapperLive>
-      <Container>
-        <Flex>
-          <Box w={12 / 12} pb="4em" pt="2em">
-            <ComingLive />
-          </Box>
-        </Flex>
-      </Container>
-    </WrapperLive>
-    <WrapperStadiumTicket>
-      <Container>
-        <Flex>
+  <Provider store={store}>
+    <Main url={url}>
+      <GradientBg>
+        <Container>
+          <Hero lives={lives} />
+          <LatestVideo name="Latest Video" />
+        </Container>
+      </GradientBg>
+      <WrapperLive>
+        <Container>
+          <Flex>
+            <Box w={12 / 12} pb="4em" pt="2em">
+              <ComingLive />
+            </Box>
+          </Flex>
+        </Container>
+      </WrapperLive>
+      <WrapperStadiumTicket>
+        <Container>
+          <Flex>
+            <Box w={12 / 12}>
+              <StadiumTicket />
+            </Box>
+          </Flex>
+        </Container>
+      </WrapperStadiumTicket>
+      <WrapperAbout>
+        <Container>
           <Box w={12 / 12}>
-            <StadiumTicket />
+            <About />
           </Box>
-        </Flex>
-      </Container>
-    </WrapperStadiumTicket>
-    <WrapperAbout>
-      <Container>
-        <Box w={12 / 12}>
-          <About />
-        </Box>
-      </Container>
-    </WrapperAbout>
-    <style jsx global>
-      {`
-        body {
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-         {
-          /* * {
+        </Container>
+      </WrapperAbout>
+      <style jsx global>
+        {`
+          body {
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+           {
+            /* * {
               box-sizing: border-box;
             } */
-        }
-      `}
-    </style>
-  </Main>
+          }
+        `}
+      </style>
+    </Main>
+  </Provider>
 )
 
 Index.getInitialProps = () => {

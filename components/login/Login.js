@@ -43,7 +43,7 @@ const Login = () => (
           <Box w={11 / 12} />
           <Box w={1 / 12}>
             <div className="close">
-              <a href="#/">
+              <a href={`#`}>
                 <Image width="50%" src="static/close.jpg" />
               </a>
             </div>
@@ -90,8 +90,8 @@ const Login = () => (
               </Box>
               <Box w={10 / 12} pt="5%">
                 <div style={{ textAlign: 'right' }}>
-                  <Link>
-                    <A href="#/">
+                  <Link href="/">
+                    <a href="/">
                       <Text
                         color="#b81111"
                         right
@@ -99,7 +99,7 @@ const Login = () => (
                         children="Forgot password?"
                         fontSize="1em"
                       />
-                    </A>
+                    </a>
                   </Link>
                 </div>
               </Box>
@@ -118,7 +118,7 @@ const Login = () => (
                   </ButtonGoogle>
                 </Box>
                 <Box pt="6%">
-                  <Link href={`#`}>
+                  <Link href="/">
                     <a>Register with email</a>
                   </Link>
                 </Box>

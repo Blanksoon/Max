@@ -1,5 +1,5 @@
 import ThumbnailRight from '../thumbnail/ThumbnailRight'
-import { Media, Subhead, Image, Link, Flex, Box, Text, Button } from 'rebass'
+import { Media, Subhead, Image, Flex, Box, Text, Button } from 'rebass'
 
 const max_new = () => (
   <Box width={1}>

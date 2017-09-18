@@ -5,73 +5,44 @@ import styled from 'styled-components'
 import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
 import { VideoBox } from '../components/videoCenter/VideoBox'
-import { Provider, Container, Flex, Box } from 'rebass'
+import { Provider as Rebass, Container, Flex, Box } from 'rebass'
+import rootReducer from '../reducers'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 const WrapperNavbar = styled.div`background-color: #009999;`
-const videoCenter = () => (
-  <div className="wrapper-index">
-    <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </Head>
-    <Provider>
-      <div className="wrapper-head">
-        <Container>
-          <Box w={12 / 12}>
-            <NavbarHead />
-          </Box>
-        </Container>
-      </div>
-      <div className="videocenter">
-        <Container>
-          <Box>
-            <LabelSearch />
-          </Box>
-          <Box pt="20px">
-            <VideoBox />
-          </Box>
-        </Container>
-      </div>
-      <div>
-        <Container>
-          <Box>
-            <Footer />
-          </Box>
-        </Container>
-      </div>
-    </Provider>
-    <style jsx global>
-      {`
-        body {
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-      `}
-    </style>
-    <style jsx>
-      {`
-        .wrapper-head {
-          color: #fff;
-          background-color: #011020;
-        }
-        .wrapper-cominglive {
-          background-color: ;
-        }
-        .wrapper-mid {
-          color: #ffffff;
-          background-image: url('static/img_stadiumticket_banner.png');
-        }
-        .wrapper-about {
-          color: #ffffff;
-          background-image: url('static/img_home_about.png');
-        }
-        .wrapper-contact {
-          background-color: #001f3d;
-        }
-        .videocenter {
-          font-family: Helvetica, Arial, sans-serif;
-        }
-      `}
-    </style>
-  </div>
+import Main from '../layouts/Main'
+const store = createStore(rootReducer, composeWithDevTools())
+const videoCenter = ({ url }) => (
+  <Provider store={store}>
+    <Rebass>
+      <Main url={url}>
+        <div className="videocenter">
+          <Container>
+            <Box>
+              <LabelSearch />
+            </Box>
+            <Box pt="20px">
+              <VideoBox />
+            </Box>
+          </Container>
+        </div>
+        <style jsx global>
+          {`
+            body {
+              padding: 0 !important;
+              margin: 0 !important;
+            }
+             {
+              /* * {
+              box-sizing: border-box;
+            } */
+            }
+          `}
+        </style>
+      </Main>
+    </Rebass>
+  </Provider>
 )
 
 export default videoCenter

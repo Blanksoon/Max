@@ -21,7 +21,7 @@ const latest_video = props => (
       </Flex>
       <Flex>
         <Box width={8 / 35}>
-          <Link>
+          <Link href={`/videoPlayer`}>
             <a href={`/videoPlayer`}>
               <ThumbnailBottom
                 img="static/FT6A6133.jpg"
@@ -36,7 +36,7 @@ const latest_video = props => (
         </Box>
         <Box width={1 / 35} />
         <Box width={8 / 35}>
-          <Link>
+          <Link href={`/videoPlayer`}>
             <a href={`/videoPlayer`}>
               <ThumbnailBottom
                 img="static/FT6A6483.jpg"
@@ -51,7 +51,7 @@ const latest_video = props => (
         </Box>
         <Box width={1 / 35} />
         <Box width={8 / 35}>
-          <Link>
+          <Link href={`/videoPlayer`}>
             <a href={`/videoPlayer`}>
               <ThumbnailBottom
                 img="static/FT6A6495.jpg"
@@ -66,7 +66,7 @@ const latest_video = props => (
         </Box>
         <Box width={1 / 35} />
         <Box width={8 / 35}>
-          <Link>
+          <Link href={`/videoPlayer`}>
             <a href={`/videoPlayer`}>
               <ThumbnailBottom
                 img="static/FT6A6676.jpg"

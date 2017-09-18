@@ -1,5 +1,5 @@
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
-import { Media, Subhead, Image, Link, Flex, Box, Text } from 'rebass'
+import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 
 const UpNext = props => (
   <div>

@@ -1,4 +1,4 @@
-import { Media, Subhead, Image, Link, Flex, Box, Text } from 'rebass'
+import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 import React from 'react'
 import { Player } from 'video-react'
 import HLSSource from './HLSSource'

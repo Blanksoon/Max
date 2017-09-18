@@ -77,7 +77,7 @@ const Footer = props => (
 )
 
 const LogoFooter = props => (
-  <Box w={1 / 12} mr={props.mr}>
+  <Box w={1.6 / 12} mr={props.mr}>
     <Image width="100%" src={props.name} />
   </Box>
 )

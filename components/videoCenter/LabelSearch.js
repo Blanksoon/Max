@@ -24,14 +24,14 @@ const AllShow = styled.select`
 
 const LabelSearch = () => (
   <div className="LabelSearch">
-    <Flex mb={3} pt='3rem'>
+    <Flex mb={3} pt="9rem">
       <Box w={1 / 2}>
         <Text
-          pt="5px"
           color="red"
           bold
           children="VIDEO CENTER"
-          fontSize="1.4em"
+          fontSize="2em"
+          mb="25px"
         />
       </Box>
     </Flex>

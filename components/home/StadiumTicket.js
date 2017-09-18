@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Media, Subhead, Image, Link, Flex, Box, Text, Provider } from 'rebass'
+import { Media, Subhead, Image, Flex, Box, Text, Provider } from 'rebass'
 
 const BorderRight = styled.div`border: 1px solid #fff;`
 const Button = styled.button`

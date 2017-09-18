@@ -43,7 +43,7 @@ const ThumbnailLive = props => (
           </Box>
           <Box w={4 / 12} pr="20%">
             <center>
-              <Link href={`#`}>
+              <Link href="/">
                 <a>
                   <Image width="100%" src="static/03.jpg" />
                 </a>

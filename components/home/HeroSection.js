@@ -56,8 +56,8 @@ const HeroSection = porps => (
                 <div className="text-more">
                   <Flex>
                     <Box w={6 / 12}>
-                      <Link>
-                        <a href="">
+                      <Link href="/">
+                        <a href="/">
                           <Text
                             color="#4e9fe5"
                             pt="3px"
@@ -69,8 +69,8 @@ const HeroSection = porps => (
                       </Link>
                     </Box>
                     <Box w={6 / 12}>
-                      <Link>
-                        <a href="">
+                      <Link href="/">
+                        <a href="/">
                           <Text
                             color="#4e9fe5"
                             pt="3px"
@@ -90,8 +90,8 @@ const HeroSection = porps => (
             <Flex>
               <Box w={1 / 12} />
               <Box w={5 / 12}>
-                <Link>
-                  <a href={`#`}>
+                <Link href="/">
+                  <a href="/">
                     <ThumbnailBottom
                       img="static/slide2.jpg"
                       name="The Battle Muay Thai"
@@ -102,8 +102,8 @@ const HeroSection = porps => (
               </Box>
               <Box w={1 / 12} />
               <Box w={5 / 12}>
-                <Link>
-                  <a href={`#`}>
+                <Link href="/">
+                  <a href="/">
                     <ThumbnailBottom
                       img="static/slide3.jpg"
                       name="Max World Champion 2013: DVD boxset"
