@@ -11,6 +11,17 @@ const Button = styled.button`
   text-align: center;
   border: 0;
 `
+const ButtonEmail = styled.button`
+  background-color: #b81111;
+  border: 1px solid #b81111;
+  color: white;
+  padding: 0.6em 11.4em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
+  font-family: Helvetica, Arial, sans-serif;
+`
 
 const Detail = props => (
   <Flex>
@@ -39,6 +50,7 @@ const Detail = props => (
         fontSize="0.9em"
       />
       <Text
+        pt="0.3em"
         color="#fff"
         left
         children="40/108 Sukhumvit Rd. Moo.9 Nongprue"
@@ -78,6 +90,7 @@ const Detail = props => (
       </Flex>
       <Text
         pt="1em"
+        pb="1.5em"
         color="#fff"
         left
         bold
@@ -85,7 +98,17 @@ const Detail = props => (
         fontSize="0.9em"
       />
       <Input px="0.5em" py="1em" placeholder="Your email here" />
-      <Input px="0.5em" py="1em" placeholder="Let us know what can we do more fro our beloved fan.+-+" />
+      <Text pt="1em" />
+      <Input
+        px="0.5em"
+        py="1em"
+        placeholder="Let us know what can we do more fro our beloved fan.+-+"
+      />
+      <Box pt="0.8em" w={12 / 12}>
+        <center>
+          <ButtonEmail>Send</ButtonEmail>
+        </center>
+      </Box>
     </Box>
   </Flex>
 )
