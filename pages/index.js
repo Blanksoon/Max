@@ -15,9 +15,16 @@ import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
 import ListVideo from '../components/maxNews/ListVideo'
 import Login from '../components/login/Login'
 import Modal from '../components/modal/Modal'
+import NewModal from '../containers/NewModal'
 import { Container, Flex, Box } from 'rebass'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import rootReducer from '../reducers'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+
+const store = createStore(rootReducer, composeWithDevTools())
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -48,52 +55,60 @@ const GradientBg = styled.div`
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 const Index = ({ url, lives }) => (
-  <Main url={url}>
-    <GradientBg>
-      <Container>
-        <Hero lives={lives} />
-        <LatestVideo name="Latest Video" />
-      </Container>
-    </GradientBg>
-    <WrapperLive>
-      <Container>
-        <Flex>
-          <Box w={12 / 12} pb="4em" pt="2em">
-            <ComingLive />
-          </Box>
-        </Flex>
-      </Container>
-    </WrapperLive>
-    <WrapperStadiumTicket>
-      <Container>
-        <Flex>
-          <Box w={12 / 12}>
-            <StadiumTicket />
-          </Box>
-        </Flex>
-      </Container>
-    </WrapperStadiumTicket>
-    <WrapperAbout>
-      <Container>
-        <Box w={12 / 12}>
-          <About />
-        </Box>
-      </Container>
-    </WrapperAbout>
-    <style jsx global>
-      {`
-        body {
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-         {
-          /* * {
+  <div>
+    <Head>
+      <link href="./static/css/video-react.css" rel="stylesheet" />
+    </Head>
+    <Provider store={store}>
+      <Main url={url}>
+        <NewModal />
+        <GradientBg>
+          <Container>
+            <Hero lives={lives} />
+            <LatestVideo name="Latest Video" />
+          </Container>
+        </GradientBg>
+        <WrapperLive>
+          <Container>
+            <Flex>
+              <Box w={12 / 12} pb="4em" pt="2em">
+                <ComingLive />
+              </Box>
+            </Flex>
+          </Container>
+        </WrapperLive>
+        <WrapperStadiumTicket>
+          <Container>
+            <Flex>
+              <Box w={12 / 12}>
+                <StadiumTicket />
+              </Box>
+            </Flex>
+          </Container>
+        </WrapperStadiumTicket>
+        <WrapperAbout>
+          <Container>
+            <Box w={12 / 12}>
+              <About />
+            </Box>
+          </Container>
+        </WrapperAbout>
+        <style jsx global>
+          {`
+            body {
+              padding: 0 !important;
+              margin: 0 !important;
+            }
+             {
+              /* * {
               box-sizing: border-box;
             } */
-        }
-      `}
-    </style>
-  </Main>
+            }
+          `}
+        </style>
+      </Main>
+    </Provider>
+  </div>
 )
 
 Index.getInitialProps = () => {

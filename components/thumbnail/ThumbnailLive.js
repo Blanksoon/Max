@@ -2,6 +2,7 @@ import React from 'react'
 import ModalPromo from '../modal/ModalPromo'
 import ModalFightcard from '../modal/ModalFightcard'
 import styled from 'styled-components'
+import ModalImg from '../../containers/ModalImg'
 import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
 import Link from 'next/link'
 const Wrapper = styled.div`
@@ -30,14 +31,16 @@ const ThumbnailLive = props => (
         <Flex pt="2.3rem">
           <Box w={4 / 12} pl="20%">
             <center>
-              <ModalPromo img="static/01.jpg" />
+              <ModalImg modalType={1} w="100%" img="static/01.jpg" />
             </center>
           </Box>
           <Box w={4 / 12}>
             <center>
-              <ModalFightcard
+              <ModalImg
+                modalType={2}
+                url="static/DailyFightcard 12092017 .jpg"
+                w="40%"
                 img="static/02.jpg"
-                imgFight="static/DailyFightcard 12092017 .jpg"
               />
             </center>
           </Box>
