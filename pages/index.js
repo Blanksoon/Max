@@ -15,7 +15,7 @@ import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
 import ListVideo from '../components/maxNews/ListVideo'
 import Login from '../components/login/Login'
 import Modal from '../components/modal/Modal'
-import { Provider, Container, Flex, Box } from 'rebass'
+import { Container, Flex, Box } from 'rebass'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
 
