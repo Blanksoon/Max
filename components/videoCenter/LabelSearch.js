@@ -24,12 +24,7 @@ const AllShow = styled.select`
 
 const LabelSearch = () => (
   <div className="LabelSearch">
-    <Flex mb={3} pt="9rem">
-      <Box w={1 / 2}>
-        <Text color="red" bold children="ON DEMAND" fontSize="2em" mb="25px" />
-      </Box>
-    </Flex>
-    <Flex>
+    <Flex pb="1rem">
       {/* <Box className="1" w={2 / 12}>
         <Select>
           <option value="Filter month">Filter month</option>
