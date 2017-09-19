@@ -10,7 +10,11 @@ import rootReducer from '../reducers'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import color from '../components/commons/vars'
 const WrapperNavbar = styled.div`background-color: #009999;`
+const WrapperVod = styled.div`
+  background-color: ${props => props.color.lightBlue};
+`
 import Main from '../layouts/Main'
 const store = createStore(rootReducer, composeWithDevTools())
 const videoCenter = ({ url }) => (
@@ -18,14 +22,16 @@ const videoCenter = ({ url }) => (
     <Rebass>
       <Main url={url}>
         <div className="videocenter">
-          <Container>
-            <Box>
-              <LabelSearch />
-            </Box>
-            <Box pt="20px">
-              <VideoBox />
-            </Box>
-          </Container>
+          <WrapperVod color={color}>
+            <Container>
+              <Box bg="white">
+                <LabelSearch />
+              </Box>
+              <Box pt="20px" bg="white">
+                <VideoBox />
+              </Box>
+            </Container>
+          </WrapperVod>
         </div>
         <style jsx global>
           {`
