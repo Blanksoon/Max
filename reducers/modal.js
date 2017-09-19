@@ -1,4 +1,8 @@
-import { TOOGLE_MODAL, MODAL_UPDATE_TYPE } from '../actions/modal/types'
+import {
+  TOOGLE_MODAL,
+  MODAL_UPDATE_TYPE,
+  MODAL_URL,
+} from '../actions/modal/types'
 const initialState = {
   activeModal: false,
   modalType: 2,
@@ -6,6 +10,7 @@ const initialState = {
 }
 
 const modalReducer = (state = initialState, action) => {
+  console.log('hello 1124', action)
   switch (action.type) {
     case TOOGLE_MODAL: {
       return {
@@ -17,6 +22,13 @@ const modalReducer = (state = initialState, action) => {
       return {
         ...state,
         modalType: action.payload.modalType,
+      }
+    }
+    case MODAL_URL: {
+      console.log('state', state)
+      return {
+        ...state,
+        modalURL: action.URL.modalURL,
       }
     }
     default: {

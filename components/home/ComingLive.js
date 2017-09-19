@@ -35,6 +35,7 @@ const ComingLive = props => (
         <ThumbnailLive
           text="Now! LIVE-on Fri. Aug 18th, 2017"
           img="static/maxultimate-show.jpg"
+          urlimg="static/DailyFightcard 12092017 .jpg"
         />
       </Box>
       <Box w={1 / 32} />
@@ -42,6 +43,7 @@ const ComingLive = props => (
         <ThumbnailLive
           text="NEXT-on Fri. Aug 18th, 2017"
           img="static/thairath-show.jpg"
+          urlimg="static/logoinvidoplayer.jpg"
         />
       </Box>
     </Flex>
@@ -50,6 +52,7 @@ const ComingLive = props => (
         <ThumbnailLive
           text="Now! LIVE-on Fri. Aug 18th, 2017"
           img="static/thechampion-show.jpg"
+          urlimg="static/DailyFightcard 12092017 .jpg"
         />
       </Box>
       <Box w={1 / 32} />
@@ -57,6 +60,7 @@ const ComingLive = props => (
         <ThumbnailLive
           text="NEXT-on Fri. Aug 18th, 2017"
           img="static/thebattle-show.jpg"
+          urlimg="static/DailyFightcard 12092017 .jpg"
         />
       </Box>
     </Flex>

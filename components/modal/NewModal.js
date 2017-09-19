@@ -3,17 +3,7 @@ import Player from '../videoplayer/Player'
 import Login from '../login/Login'
 import Link from 'next/link'
 import styled from 'styled-components'
-import {
-  Flex,
-  Provider,
-  Box,
-  Image,
-  Text,
-  Button,
-  Overlay,
-  Fixed,
-  Heading,
-} from 'rebass'
+import { Image } from 'rebass'
 
 const Wrapper = styled.div`
   color: blue;
@@ -29,8 +19,8 @@ const Wrapper = styled.div`
 `
 const WrapperVod = styled.div`
   color: blue;
-  width: 200px;
-  height: 200px;
+  width: 600px;
+  height: 335px;
   background: #fff;
   z-index: 240;
 `
@@ -51,20 +41,30 @@ export default class Modal extends Component {
   static defaultProps = {
     modalType: 2,
   }
+  handleOnClick = e => {
+    false ? this.props.toogleModalAction() : null
+    // if (true) {
+    // }
+    e.stopPropagation()
+  }
   render() {
     let renderUI = <div />
     if (this.props.modalType === 1) {
-      renderUI = <Player />
+      renderUI = (
+        <WrapperVod onClick={e => this.handleOnClick(e)}>
+          <Player />
+        </WrapperVod>
+      )
     } else if (this.props.modalType === 2) {
       renderUI = (
-        <WrapperImg>
+        <WrapperImg onClick={e => this.handleOnClick(e)}>
           <Image width="100%" src={this.props.modalURL} />
         </WrapperImg>
       )
     } else {
       renderUI = <h5>lollol</h5>
     }
-    console.log('ULR', this.props)
+    console.log('ULR 2323', this.props)
     return (
       <Wrapper
         onClick={true ? this.props.toogleModalAction : ''}

@@ -2,9 +2,10 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import NewModal from './NewModal'
 import { toogleModal } from '../../actions/modal'
-import { Image } from 'rebass'
+import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
+import BorderlessButton from '../commons/BorderlessButton'
 
-class ModalImg extends Component {
+class ModalButton extends Component {
   static propTypes = {
     active: PropTypes.bool,
     toogleModalAction: PropTypes.func,
@@ -19,14 +20,15 @@ class ModalImg extends Component {
   render() {
     return (
       <div>
-        <Image
+        <BorderlessButton
           onClick={this.handleOnClickModal}
-          width={this.props.w}
-          src={this.props.img}
-        />
+          visibility={this.props.active}
+        >
+          {this.props.text}
+        </BorderlessButton>
       </div>
     )
   }
 }
 
-export default ModalImg
+export default ModalButton

@@ -38,7 +38,7 @@ const ThumbnailLive = props => (
             <center>
               <ModalImg
                 modalType={2}
-                url="static/DailyFightcard 12092017 .jpg"
+                modalURL={props.urlimg}
                 w="40%"
                 img="static/02.jpg"
               />
