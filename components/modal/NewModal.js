@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import Player from '../videoplayer/Player'
+import Player from '../videoPlayer/Player'
 import Login from '../login/Login'
 import Link from 'next/link'
 import styled from 'styled-components'

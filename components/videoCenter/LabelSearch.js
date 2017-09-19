@@ -26,17 +26,11 @@ const LabelSearch = () => (
   <div className="LabelSearch">
     <Flex mb={3} pt="9rem">
       <Box w={1 / 2}>
-        <Text
-          color="red"
-          bold
-          children="VIDEO CENTER"
-          fontSize="2em"
-          mb="25px"
-        />
+        <Text color="red" bold children="ON DEMAND" fontSize="2em" mb="25px" />
       </Box>
     </Flex>
     <Flex>
-      <Box className="1" w={2 / 12}>
+      {/* <Box className="1" w={2 / 12}>
         <Select>
           <option value="Filter month">Filter month</option>
           <option value="saab">Saab</option>
@@ -51,8 +45,9 @@ const LabelSearch = () => (
           <option value="opel">Opel</option>
           <option value="audi">Audi</option>
         </Select>
-      </Box>
-      <Box className="2" pl="30px" w={3 / 12}>
+      </Box> */}
+      {/* <Box className="2" pl="30px" w={3 / 12}>  เอาตัวนี้*/}
+      <Box className="2" w={3 / 12}>
         <AllShow>
           <option value="Filter the show">Filter the show</option>
           <option value="saab">Saab</option>
@@ -61,9 +56,9 @@ const LabelSearch = () => (
         </AllShow>
       </Box>
       <Box w={2 / 12} />
-      <Box w={3 / 12}>
+      {/* <Box w={3 / 12}>
         <Input placeholder="Search" />
-      </Box>
+      </Box> */}
     </Flex>
   </div>
 )
