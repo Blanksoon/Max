@@ -6,9 +6,10 @@ import { Footer } from '../components/home/Footer'
 import { BackVideoCenter } from '../components/videoPlayer/BackVideoCenter'
 import Players from '../components/videoPlayer/Player'
 import { LiveDescription } from '../components/livePlayer/LiveDescription'
+import LiveTop from '../components/livePlayer/LiveTop'
 import UpNext from '../components/videoPlayer/UpNext'
 import StadiumTicket from '../components/home/StadiumTicket'
-import { Provider as Rebass, Container, Flex, Box, Image } from 'rebass'
+import { Provider as Rebass, Container, Flex, Box, Image, Text } from 'rebass'
 import rootReducer from '../reducers'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
@@ -46,16 +47,7 @@ const videoPlayer = ({ url }) => (
           <div>
             <WrapperLivePlayer color={color}>
               <Container>
-                <Flex>
-                  <LivePlayer>
-                    <Box w={12 / 12} />
-                    <Image
-                      width="100%"
-                      src="../static/maxPromo.jpg"
-                      height="100%"
-                    />
-                  </LivePlayer>
-                </Flex>
+                <LiveTop />
               </Container>
             </WrapperLivePlayer>
           </div>
@@ -75,7 +67,7 @@ const videoPlayer = ({ url }) => (
               <Container>
                 <Flex>
                   <Box w={12 / 12} bg="white">
-                    <UpNext name="Up next" />
+                    <UpNext name="THIS SHOW RELATED VIDEO" />
                   </Box>
                 </Flex>
               </Container>

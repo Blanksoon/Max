@@ -1,4 +1,4 @@
-import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
+import ThumbnailVideo from '../thumbnail/ThumbnailVideo'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 
 const UpNext = props => (
@@ -14,38 +14,34 @@ const UpNext = props => (
       </Flex>
       <Flex>
         <Box width={8 / 35}>
-          <ThumbnailBottom
+          <ThumbnailVideo
             img="static/maxPromo.jpg"
             name="The Battle Muay-Thai(4/4)"
             date="On air - Aug 11, 2017"
-            bg="#021e3d"
           />
         </Box>
         <Box width={1 / 35} />
         <Box width={8 / 35}>
-          <ThumbnailBottom
+          <ThumbnailVideo
             img="static/maxPromo.jpg"
             name="The Battle Muay-Thai(4/4)"
             date="On air - Aug 11, 2017"
-            bg="#021e3d"
           />
         </Box>
         <Box width={1 / 35} />
         <Box width={8 / 35}>
-          <ThumbnailBottom
+          <ThumbnailVideo
             img="static/maxPromo.jpg"
             name="The Battle Muay-Thai(4/4)"
             date="On air - Aug 11, 2017"
-            bg="#021e3d"
           />
         </Box>
         <Box width={1 / 35} />
         <Box width={8 / 35}>
-          <ThumbnailBottom
+          <ThumbnailVideo
             img="static/maxPromo.jpg"
             name="The Battle Muay-Thai(4/4)"
             date="On air - Aug 11, 2017"
-            bg="#021e3d"
           />
         </Box>
       </Flex>
