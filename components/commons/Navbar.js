@@ -4,6 +4,7 @@ import { Fixed, Container, Image } from 'rebass'
 import styled from 'styled-components'
 import NavItem from './NavItem'
 import vars from './vars'
+import FacebookLoginButton from '../login/FacebookLoginButton'
 //rgba(1, 15, 30, 0.8)
 const Navbar = styled(Fixed)`
   background: ${props =>
@@ -58,6 +59,7 @@ export default class extends Component {
       <Navbar m={0} p={2} top left z={1} url={this.props.activeUrl.pathname}>
         {console.log('url', this.props.activeUrl.pathname)}
         <Container>
+          <FacebookLoginButton />
           <NavItemContainer>
             {this.state.navItems.map(({ label, href, active }) => (
               <NavItem key={label} label={label} href={href} active={active} />
