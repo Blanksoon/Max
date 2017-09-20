@@ -91,7 +91,7 @@ const LiveDescription = () => (
         </Box>
         <ButtonPromoClip color={color}>Watch Promo Clip</ButtonPromoClip>
       </Box>
-      <Box w={3 / 12}>
+      <Box w={3 / 12} mr="1rem">
         <Box w={12 / 12} pt="1rem">
           <Image
             width="100%"
