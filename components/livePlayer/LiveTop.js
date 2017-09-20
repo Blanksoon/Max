@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Provider, Box, Image, Text, overlay } from 'rebass'
+import { Flex, Provider, Box, Text, overlay } from 'rebass'
 import Modal from '../modal/Modal'
 import color from '../commons/vars'
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 74vh;
   background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
-  background-image: url('static/img_live_banner.jpg');
+  // background-image: url('static/img_live_banner.jpg');
   position: relative;
 `
 const TextBig = styled.div`
@@ -28,7 +28,7 @@ const WrapperText = styled.div`
   width: 100%;
   position: absolute;
 `
-const Button = styled.div`
+const Button = styled.button`
   bottom: 2%;
   background-color: ${props => props.color};
   border: 1px solid ${props => props.color};
@@ -43,7 +43,7 @@ const WrapperSky = styled.div`
   z-index: 1;
   transition: ease-in-out 0.4s all;
   opacity: 1;
-  height: 38%;
+  height: 40%;
   width: 100%;
   color: #ffffff;
   background: rgba(1, 15, 30, 0.6);
@@ -51,11 +51,14 @@ const WrapperSky = styled.div`
   top: 25%;
   left: 0;
 `
+const Image = styled.img`width: 100%;`
 const LiveTop = props => (
   <Wrapper>
+    {/* <img src="static/img_live_banner.jpg" alt="Paris" /> */}
+    <Image src="static/img_live_banner.jpg" alt="Paris" />
     <WrapperText>
       <Flex>
-        <Box w={10 / 12}>
+        <Box w={10 / 12} pl="1rem">
           <TextBig color={color.white}>
             MAX Ultimate Tournament & MAX World<br />Champions 7 International
             Fights

@@ -30,7 +30,7 @@ const ButtonPromoClip = styled.button`
 const LiveTelecom = styled.div`color: ${props => props.color.red};`
 const LiveDescription = () => (
   <div className="liveDescription">
-    <Flex>
+    <Flex pt="1.5rem" mr="1rem">
       <Box w={9 / 12} ml="1rem">
         <Flex pt="1rem">
           <Box width={1 / 12} mr="1rem">
