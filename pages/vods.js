@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { LabelSearch } from '../components/videoCenter/LabelSearch'
 import styled from 'styled-components'
 import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
@@ -24,9 +23,9 @@ const videoCenter = ({ url }) => (
         <div className="videocenter">
           <WrapperVod color={color}>
             <Container>
-              <Box bg="white">
+              {/* <Box bg="white">
                 <LabelSearch />
-              </Box>
+              </Box> */}
               <Box pt="20px" bg="white">
                 <VideoBox />
               </Box>
