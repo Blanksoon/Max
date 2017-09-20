@@ -3,7 +3,7 @@ import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 
 const UpNext = props => (
   <div>
-    <Box pb="5%" pl="3%" pr="5%">
+    <Box pb="5%" ml="1rem" mr="1rem">
       <Flex>
         <Box width={1} color="red">
           <h2>

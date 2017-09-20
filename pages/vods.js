@@ -23,9 +23,6 @@ const videoCenter = ({ url }) => (
         <div className="videocenter">
           <WrapperVod color={color}>
             <Container>
-              {/* <Box bg="white">
-                <LabelSearch />
-              </Box> */}
               <Box pt="20px" bg="white">
                 <VideoBox />
               </Box>

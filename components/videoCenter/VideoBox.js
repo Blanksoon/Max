@@ -31,6 +31,22 @@ const WrapperHilightText = styled.div`
     rgba(30, 87, 153, 1) 100%
   ); /* Chrome10-25,Safari5.1-6 */
 `
+const WrapperImg = styled.div`
+  // width: 100%;
+  // height: 114%;
+  // background-size: cover;
+  font-family: Helvetica, Arial, sans-serif;
+  // background-image: url('static/FT6A2278.jpg');
+  position: relative;
+`
+const WrapperText = styled.div`
+  color: #fff;
+  top: 24%;
+  left: 29%;
+  font-weight: 700;
+  font-size: 2.5em;
+  position: absolute;
+`
 const VideoBox = () => (
   <div>
     <Flex mb={3} pt="7rem">
@@ -58,7 +74,7 @@ const VideoBox = () => (
                 pl="1rem"
                 color="#fff"
                 bold
-                children="Max Ultimate Tournament:Epic fight"
+                children="Max Ultimate Tournament : Epic fight"
                 fontSize="1.3em"
               />
               <Text
@@ -102,13 +118,17 @@ const VideoBox = () => (
 
       <Box w={4 / 12}>
         <Box w={1} pl="7.5px" pb="7.5px" pr="20px">
-          <ThumbnailSky
-            img="static/FT6A6483.jpg"
-            text="MAX Ultimate Tournament & MAX World Champions (3/4)"
-          />
+          <ThumbnailSky />
         </Box>
         <Box w={1} pl="7.5px" pt="7.5px" pr="20px">
-          <Image width="100%" src="static/maxultimate-show.jpg" />
+          <WrapperImg>
+            <Image width="100%" src="static/maxultimate-show.jpg" />
+            <WrapperText>
+              <center>
+                Live<br />Banner
+              </center>
+            </WrapperText>
+          </WrapperImg>
           {/* <ThumbnailSky img="static/maxultimate-show.jpg" /> */}
         </Box>
       </Box>

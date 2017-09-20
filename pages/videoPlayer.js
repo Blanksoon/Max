@@ -49,7 +49,7 @@ const videoPlayer = ({ url }) => (
             <Container>
               <Flex>
                 <Box w={12 / 12} bg="white">
-                  {/* <LiveDescription /> */}
+                  <Description />
                 </Box>
               </Flex>
             </Container>

@@ -10,7 +10,7 @@ const BackVideo = styled.div`
 `
 const Description = () => (
   <div className="Description">
-    <Flex pl="5%">
+    <Flex pl="1rem">
       <Box width={1 / 12} pt="2%" mr="2%">
         <Image width="100%" src="/static/logoinvidoplayer.jpg" />
       </Box>
@@ -23,7 +23,7 @@ const Description = () => (
         </h2>
       </Box>
     </Flex>
-    <Flex pl="5%" pr="5%">
+    <Flex pl="1rem" pr="1rem">
       <Box width={5 / 12}>
         <div className="livetelecom">
           <h4>
@@ -51,10 +51,10 @@ const Description = () => (
       {/* <Box width={1} />
       <Box width={1} /> */}
     </Flex>
-    <Box width={1} pb={3} pl="5%" pr="5%">
+    <Box width={1} pb={3} pl="1rem" pr="1rem">
       <hr size="0.1" />
     </Box>
-    <Box width={1} pb={3} pl="5%" pr="5%">
+    <Box width={1} pb={3} pl="1rem" pr="1rem">
       <P>
         On sait depuis longtemps que travailler avec du texte lisible et
         contenant du sens est source de distractions, et empêche de se
