@@ -11,7 +11,7 @@ class FacebookLoginButton extends React.Component {
       provider_data: response,
     }
 
-    fetch('http://localhost:3001/social_login', {
+    fetch('http://139.59.127.206:3001/social_login', {
       method: 'POST',
       body: JSON.stringify(providerData),
       cors: 'cors',

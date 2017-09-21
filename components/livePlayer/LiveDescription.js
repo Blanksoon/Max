@@ -2,6 +2,7 @@ import { LogoFooter } from '../home/Footer'
 import styled from 'styled-components'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 import color from '../commons/vars'
+import ModalButton from '../../containers/ModalButton'
 
 const H1 = styled.h1`margin: 0px;`
 const P = styled.p`margin: 0px;`
@@ -89,7 +90,13 @@ const LiveDescription = () => (
             voire des phrases embarassantes).
           </P>
         </Box>
-        <ButtonPromoClip color={color}>Watch Promo Clip</ButtonPromoClip>
+        <ModalButton
+          buttonID={2}
+          modalType={1}
+          modalURL="static/DailyFightcard 12092017 .jpg"
+          text="Watch Promo Clip"
+        />
+        {/* <ButtonPromoClip color={color}>Watch Promo Clip</ButtonPromoClip> */}
       </Box>
       <Box w={3 / 12} mr="1rem">
         <Box w={12 / 12} pt="1rem">
