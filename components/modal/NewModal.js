@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   align-items: center;
   display: flex;
   visibility: ${props => (props.visibility === true ? 'initial' : 'hidden')};
+  display: ${props => (props.display === true ? '' : 'none')};
 `
 const WrapperVod = styled.div`
   color: blue;
@@ -51,7 +52,7 @@ export default class Modal extends Component {
     let renderUI = <div />
     if (this.props.modalType === 1) {
       renderUI = (
-        <WrapperVod onClick={e => this.handleOnClick(e)}>
+        <WrapperVod onClick={e => this.handleOnClick(e)} visibility="hidden">
           <Player />
         </WrapperVod>
       )
@@ -62,12 +63,13 @@ export default class Modal extends Component {
         </WrapperImg>
       )
     } else {
-      renderUI = <h5>lollol</h5>
+      renderUI = <h5 />
     }
     return (
       <Wrapper
         onClick={true ? this.props.toogleModalAction : ''}
         visibility={this.props.active}
+        display={this.props.active}
       >
         {renderUI}
       </Wrapper>

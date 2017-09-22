@@ -17,7 +17,7 @@ class FacebookLoginButton extends React.Component {
     j = JSON.stringify(j)
     console.log('providerData', j)
 
-    fetch('http://localhost:3001/fb-login', {
+    fetch('http://139.59.127.206:3001/fb-login', {
       method: 'POST',
       body: JSON.stringify(providerData),
       cors: 'cors',

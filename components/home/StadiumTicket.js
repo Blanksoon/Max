@@ -30,10 +30,10 @@ const stadium_ticket = () => (
           <Box w={1 / 24}>
             <Image width="100%" src="static/phone.png" />
           </Box>
-          <Box pl="1em" pt="0.2em">
+          <Box pl="1em" pt="0.4em">
             <Button>(+66)038-416-999</Button>
           </Box>
-          <Box pl="1em" pt="0.2em">
+          <Box pl="1em" pt="0.4em">
             <Button>08-2495-5549</Button>
           </Box>
         </Flex>
