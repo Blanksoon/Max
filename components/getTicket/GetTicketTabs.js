@@ -3,7 +3,6 @@ import { Flex, Provider, Box } from 'rebass'
 
 const GetTicketTabs = ({ activeNumber, headTabs, contents, onClick }) => {
   const ActiveContent = contents[activeNumber]
-  console.log('hello 11')
   return (
     <Provider>
       <Flex>

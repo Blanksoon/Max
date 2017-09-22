@@ -64,7 +64,6 @@ export default class Modal extends Component {
     } else {
       renderUI = <h5>lollol</h5>
     }
-    console.log('ULR 2323', this.props)
     return (
       <Wrapper
         onClick={true ? this.props.toogleModalAction : ''}

@@ -10,7 +10,6 @@ const initialState = {
 }
 
 const modalReducer = (state = initialState, action) => {
-  console.log('hello 1124', action)
   switch (action.type) {
     case TOOGLE_MODAL: {
       return {
@@ -25,7 +24,6 @@ const modalReducer = (state = initialState, action) => {
       }
     }
     case MODAL_URL: {
-      console.log('state', state)
       return {
         ...state,
         modalURL: action.URL.modalURL,
