@@ -102,6 +102,19 @@ const live = ({ url }) => (
         </Main>
       </Rebass>
     </Provider>
+    <style jsx global>
+      {`
+        body {
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+         {
+          /* * {
+              box-sizing: border-box;
+            } */
+        }
+      `}
+    </style>
   </div>
 )
 
