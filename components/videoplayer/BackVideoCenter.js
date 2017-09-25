@@ -8,18 +8,20 @@ const BackVideo = styled.div`
   color: #d2dbe8;
   cursor: pointer;
 `
-const BackVideoCenter = props => (
+const BackVideoCenter = ({ name, url }) => (
   <div className="VideoCenter">
     <Box width={1} pt="80px" />
     <Box width={1} bg="#084a94" pl="1.5rem">
-      <Link href={'/vods'}>
+      <div
+        onClick={() => {
+          url.back()
+        }}
+      >
         <BackVideo className="back-video">
-          <a>
-            {'<'}
-            {props.name}
-          </a>
+          {'<'}
+          {name}
         </BackVideo>
-      </Link>
+      </div>
     </Box>
   </div>
 )

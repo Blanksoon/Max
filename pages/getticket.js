@@ -54,6 +54,19 @@ const getticket = ({ url }) => (
               </Flex>
             </Container>
           </WrapperStadiumTicket>
+          <style jsx global>
+            {`
+              body {
+                padding: 0 !important;
+                margin: 0 !important;
+              }
+               {
+                /* * {
+              box-sizing: border-box;
+            } */
+              }
+            `}
+          </style>
         </Main>
       </Rebass>
     </Provider>

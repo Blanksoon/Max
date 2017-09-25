@@ -22,13 +22,15 @@ const WrapperHilightText = styled.div`
   bottom: 12%;
   right: 0;
   width: 100%;
+  height: 100%;
   position: absolute;
   background: -webkit-linear-gradient(
     top,
     rgba(30, 87, 153, 0) 0%,
-    rgba(30, 87, 153, 1) 35%,
-    rgba(30, 87, 153, 1) 99%,
-    rgba(30, 87, 153, 1) 100%
+    rgba(30, 87, 153, 0.05) 15%,
+    rgba(7, 45, 89, 0.8) 81%,
+    rgba(6, 44, 87, 1) 83%,
+    rgba(1, 33, 71, 1) 100%
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const WrapperImg = styled.div`
@@ -60,8 +62,9 @@ const VideoBox = () => (
           <Box w={12 / 12}>
             <Image width="100%" pt={0} src="static/FT6A2278.jpg" />
           </Box>
-          <Box w={12 / 12} pl="20px">
+          <Box w={12 / 12} pl="21px">
             <WrapperHilightText>
+              <Box pt="62%" />
               <Text
                 pl="1rem"
                 color="#57b1fe"

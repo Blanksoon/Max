@@ -19,76 +19,86 @@ const WrapperStadiumTicket = styled.div`
   background-color: #b71111;
 `
 const store = createStore(rootReducer, composeWithDevTools())
-const videoPlayer = ({ url }) => (
-  <div className="wrapper-index">
-    <Head>
-      <link href="./static/css/video-react.css" rel="stylesheet" />
-    </Head>
-    <Provider store={store}>
-      <Rebass>
-        <Main url={url}>
-          <div className="wrapper-BackVideoCenter">
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>
-                  <BackVideoCenter name="Back to On Demand" />
-                </Box>
-              </Flex>
-            </Container>
-          </div>
-          <div>
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>
-                  <Players />
-                </Box>
-              </Flex>
-            </Container>
-          </div>
-          <div className="wrapper-BackVideoCenter">
-            <Container>
-              <Flex>
-                <Box w={12 / 12} bg="white">
-                  <Description />
-                </Box>
-              </Flex>
-            </Container>
-          </div>
-          <div className="wrapper-BackVideoCenter">
-            <Container>
-              <Flex>
-                <Box w={12 / 12} bg="white">
-                  <UpNext name="Up next" />
-                </Box>
-              </Flex>
-            </Container>
-          </div>
-          <WrapperStadiumTicket>
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>
-                  <StadiumTicket />
-                </Box>
-              </Flex>
-            </Container>
-          </WrapperStadiumTicket>
-          <style jsx global>
-            {`
-              body {
-                padding: 0 !important;
-                margin: 0 !important;
-              }
-               {
-                /* * {
+const videoPlayer = ({ url }) => {
+  let i = 20
+  const countdown = setInterval(function() {
+    i--
+    if (i < 0) {
+      console.log('lolololol')
+      clearInterval(countdown)
+    }
+  }, 1000)
+  return (
+    <div className="wrapper-index">
+      <Head>
+        <link href="./static/css/video-react.css" rel="stylesheet" />
+      </Head>
+      <Provider store={store}>
+        <Rebass>
+          <Main url={url}>
+            <div className="wrapper-BackVideoCenter">
+              <Container>
+                <Flex>
+                  <Box w={12 / 12}>
+                    <BackVideoCenter name="Back to On Demand" url={url} />
+                  </Box>
+                </Flex>
+              </Container>
+            </div>
+            <div>
+              <Container>
+                <Flex>
+                  <Box w={12 / 12}>
+                    <Players />
+                  </Box>
+                </Flex>
+              </Container>
+            </div>
+            <div className="wrapper-BackVideoCenter">
+              <Container>
+                <Flex>
+                  <Box w={12 / 12} bg="white">
+                    <Description />
+                  </Box>
+                </Flex>
+              </Container>
+            </div>
+            <div className="wrapper-BackVideoCenter">
+              <Container>
+                <Flex>
+                  <Box w={12 / 12} bg="white">
+                    <UpNext name="Up next" />
+                  </Box>
+                </Flex>
+              </Container>
+            </div>
+            <WrapperStadiumTicket>
+              <Container>
+                <Flex>
+                  <Box w={12 / 12}>
+                    <StadiumTicket />
+                  </Box>
+                </Flex>
+              </Container>
+            </WrapperStadiumTicket>
+            <style jsx global>
+              {`
+                body {
+                  padding: 0 !important;
+                  margin: 0 !important;
+                }
+                 {
+                  /* * {
               box-sizing: border-box;
             } */
-              }
-            `}
-          </style>
-        </Main>
-      </Rebass>
-    </Provider>
-  </div>
-)
+                }
+              `}
+            </style>
+          </Main>
+        </Rebass>
+      </Provider>
+    </div>
+  )
+}
 
 export default videoPlayer

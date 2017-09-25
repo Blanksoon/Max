@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 import color from '../commons/vars'
 import ModalButton from '../../containers/ModalButton'
+import ModalImg from '../../containers/ModalImg'
 
 const H1 = styled.h1`margin: 0px;`
 const P = styled.p`margin: 0px;`
@@ -100,11 +101,17 @@ const LiveDescription = () => (
       </Box>
       <Box w={3 / 12} mr="1rem">
         <Box w={12 / 12} pt="1rem">
-          <Image
+          <ModalImg
+            modalType={2}
+            modalURL="static/DailyFightcard 12092017 .jpg"
+            w="100%"
+            img="static/DailyFightcard 12092017 .jpg"
+          />
+          {/* <Image
             width="100%"
             src="../static/DailyFightcard 12092017 .jpg"
             height="100%"
-          />
+          /> */}
         </Box>
       </Box>
     </Flex>

@@ -32,7 +32,7 @@ export default class extends Component {
         { label: 'Home', href: '/', active: false },
         { label: 'Live', href: '/lives', active: false },
         { label: 'On Demand', href: '/vods', active: false },
-        { label: 'Get Ticket', href: '/ticket', active: false },
+        { label: 'Get Ticket', href: '/getticket', active: false },
         { label: 'Contact Us', href: '/contact', active: false },
       ],
     }

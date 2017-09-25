@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   display: ${props => (props.display === true ? '' : 'none')};
 `
 const WrapperVod = styled.div`
+  position: relative;
   color: blue;
   width: 600px;
   height: 335px;
@@ -26,11 +27,21 @@ const WrapperVod = styled.div`
   z-index: 240;
 `
 const WrapperImg = styled.div`
+  position: relative;
   color: blue;
-  width: 450px;
-  height: 600px;
+  width: 440px;
+  height: 500px;
   background: #fff;
   z-index: 240;
+`
+const WrapperClose = styled.div`
+  position: absolute;
+  color: #fff;
+  top: 0px;
+  right: 0px;
+  width: 40px;
+  height: 40px;
+  //border: 3px solid #73ad81;
 `
 export default class Modal extends Component {
   static propTypes = {
@@ -38,37 +49,62 @@ export default class Modal extends Component {
     modalType: PropTypes.string,
     toogleModalAction: PropTypes.func,
     modalURL: PropTypes.string,
+    closeModal: PropTypes.func,
   }
   static defaultProps = {
     modalType: 2,
   }
   handleOnClick = e => {
+    console.log('click', e)
     false ? this.props.toogleModalAction() : null
-    // if (true) {
+    // if (false) {
+    //   this.props.toogleModalAction()
     // }
     e.stopPropagation()
   }
+  componentDidMount() {
+    this.setState({
+      visibility: 'visible',
+    })
+    // Show carousel only after initiate to avoid flicker
+    document.addEventListener('keydown', e => {
+      console.log('eventcode', e.keyCode)
+      if (e.keyCode === 27) this.closeModal()
+    })
+  }
+
+  closeModal = () => {
+    console.log('props', this.props)
+    this.props.closeModal()
+  }
   render() {
+    ;<div onKeyDown={this.closeModal} />
     let renderUI = <div />
     if (this.props.modalType === 1) {
       renderUI = (
         <WrapperVod onClick={e => this.handleOnClick(e)} visibility="hidden">
           <Player />
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="static/close.jpg" />
+          </WrapperClose>
         </WrapperVod>
       )
     } else if (this.props.modalType === 2) {
       renderUI = (
         <WrapperImg onClick={e => this.handleOnClick(e)}>
           <Image width="100%" src={this.props.modalURL} />
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="static/close.jpg" />
+          </WrapperClose>
         </WrapperImg>
       )
     } else {
-      renderUI = <h5 />
+      renderUI = renderUI
     }
     console.log('ULR 2323', this.props)
     return (
       <Wrapper
-        onClick={true ? this.props.toogleModalAction : ''}
+        onClick={e => this.handleOnClick(e)}
         visibility={this.props.active}
         display={this.props.active}
       >
