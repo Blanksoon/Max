@@ -22,13 +22,14 @@ export default class HLSSource extends Component {
     if (Hls.isSupported()) {
       this.hls.loadSource(src)
       this.hls.attachMedia(video)
-      this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        video.play()
-      })
+      // this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      //   video.play()
+      // })
     }
   }
 
   render() {
+    //console.log('this.props', this.props)
     return (
       <source
         src={this.props.src}

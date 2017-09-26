@@ -20,6 +20,7 @@ class Players extends React.Component {
   }
 
   render() {
+    console.log('this.props.src', this.props)
     return (
       <div className="Player">
         <Box width={1} bg="pink">
