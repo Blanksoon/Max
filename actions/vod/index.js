@@ -8,15 +8,12 @@ const fetchVodsSuccess = vods => ({
 })
 
 const fetchVods = token => dispatch => {
-  const data = JSON.stringify(token)
+  const data = JSON.stringify({ token })
   console.log('hiii', data)
   //'http://139.59.127.206:3001/vod'
   const uri = 'http://139.59.127.206:3001/vod'
   fetch(uri, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
     mode: 'cors',
     body: data,
   })
