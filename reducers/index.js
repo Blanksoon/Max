@@ -6,7 +6,7 @@ import vodReducer from './vods'
 const rootReducer = combineReducers({
   counter: counterReducer,
   modal: modalReducer,
-  vods: vodReducer,
+  vod: vodReducer,
 })
 
 export default rootReducer
