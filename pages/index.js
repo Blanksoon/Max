@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
 import { ComingLive } from '../components/home/ComingLive'
-import LatestVideo from '../components/home/LatestVideo'
+import LatestVideo from '../containers/home/LatestVideo'
 import MaxNew from '../components/home/MaxNew'
 import StadiumTicket from '../components/home/StadiumTicket'
 import About from '../components/home/About'
@@ -22,7 +22,10 @@ import vars from '../components/commons/vars'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from '../reducers'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import { fetchVods } from '../actions/vod'
+import thunkMiddleware from 'redux-thunk'
+import Cookies from 'universal-cookie'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -52,7 +55,13 @@ const GradientBg = styled.div`
   background: linear-gradient(${vars.darkblue}, ${vars.blue});
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
-const store = createStore(rootReducer, composeWithDevTools())
+const cookies = new Cookies()
+const token = cookies.get('token')
+console.log('mk', token)
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunkMiddleware))
+)
 const Index = ({ url, lives }) => (
   <div>
     <Head>
@@ -64,7 +73,7 @@ const Index = ({ url, lives }) => (
         <GradientBg>
           <Container>
             <Hero lives={lives} />
-            <LatestVideo name="Latest Video" />
+            <LatestVideo name="Latest Video" token={token} />
           </Container>
         </GradientBg>
         <WrapperLive>
