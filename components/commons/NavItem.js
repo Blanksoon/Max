@@ -6,6 +6,7 @@ const Inactive = styled.a`
   color: ${vars.lightBlue};
   cursor: pointer;
   float: left;
+  margin-top: 2.4rem;
   padding: 0.5rem 1rem;
   text-decorate: none;
   &:hover {

@@ -5,7 +5,7 @@ import SocialFooter from '../components/commons/SocialFooter'
 export default ({ children, url }) => (
   <Provider>
     {/* {url.pathname === '/' && <Navbar activeUrl={url} />} */}
-    <Navbar activeUrl={url} />
+    <Navbar url={url} />
     {children}
     <AddressFooter />
     <SocialFooter />

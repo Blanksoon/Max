@@ -5,10 +5,12 @@ import styled from 'styled-components'
 import NavItem from './NavItem'
 import vars from './vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
+import LoginLang from './LoginLang'
+
 //rgba(1, 15, 30, 0.8)
 const Navbar = styled(Fixed)`
   background: ${props =>
-    props.url == '/' ? 'rgba(1, 15, 30, 0.8)' : 'rgba(1, 15, 30, 10)'};
+    props.pathname == '/' ? 'rgba(1, 15, 30, 0.8)' : 'rgba(1, 15, 30, 10)'};
   display: block;
   height: 4rem;
   width: 100%;
@@ -40,7 +42,7 @@ export default class extends Component {
   }
 
   componentWillMount() {
-    this.setActiveUrl(this.props.activeUrl.pathname)
+    this.setActiveUrl(this.props.url.pathname)
   }
 
   setActiveUrl(activeUrl) {
@@ -56,17 +58,17 @@ export default class extends Component {
 
   render() {
     return (
-      <Navbar m={0} p={2} top left z={1} url={this.props.activeUrl.pathname}>
+      <Navbar m={0} p={2} top left z={1} pathname={this.props.url.pathname}>
         <Container>
           <NavItemContainer>
             {this.state.navItems.map(({ label, href, active }) => (
               <NavItem key={label} label={label} href={href} active={active} />
             ))}
+            <LoginLang url={this.props.url} />
           </NavItemContainer>
           <Link href="/">
             <Logo onClick={console.log('helo 1212')} src="/static/logo.png" />
           </Link>
-          <FacebookLoginButton />
         </Container>
       </Navbar>
     )
