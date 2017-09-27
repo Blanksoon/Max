@@ -2,21 +2,20 @@ import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
 import withRedux from 'next-redux-wrapper'
-import rootReducer from '../reducers'
 import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
 import { VideoBox } from '../components/videoCenter/VideoBox'
 import { Provider as Rebass, Container, Flex, Box } from 'rebass'
 import color from '../components/commons/vars'
-import { initStore } from '../store'
-import { fetchVods } from '../actions/vod'
+import { initStore } from '../redux/store'
+import { fetchVods } from '../redux/modules/vod'
 
 const WrapperNavbar = styled.div`background-color: #009999;`
 const WrapperVod = styled.div`
   background-color: ${props => props.color.lightBlue};
 `
 import Main from '../layouts/Main'
-//console.log('hiii', req)
+
 let token = ''
 class Vods extends React.Component {
   static getInitialProps({ store, isServer, query, req }) {
@@ -64,12 +63,6 @@ class Vods extends React.Component {
         </Main>
       </Rebass>
     )
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchVod: bindActionCreators(fetchVods, dispatch),
   }
 }
 

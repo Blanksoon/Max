@@ -19,13 +19,6 @@ import NewModal from '../containers/NewModal'
 import { Container, Flex, Box } from 'rebass'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import rootReducer from '../reducers'
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import { fetchVods } from '../actions/vod'
-import thunkMiddleware from 'redux-thunk'
-import Cookies from 'universal-cookie'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -58,64 +51,59 @@ const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 const cookies = new Cookies()
 const token = cookies.get('token')
 console.log('mk', token)
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunkMiddleware))
-)
+
 const Index = ({ url, lives }) => (
   <div>
     <Head>
       <link href="./static/css/video-react.css" rel="stylesheet" />
     </Head>
-    <Provider store={store}>
-      <Main url={url}>
-        <NewModal />
-        <GradientBg>
-          <Container>
-            <Hero lives={lives} />
-            <LatestVideo name="Latest Video" token={token} />
-          </Container>
-        </GradientBg>
-        <WrapperLive>
-          <Container>
-            <Flex>
-              <Box w={12 / 12} pb="4em" pt="2em">
-                <ComingLive />
-              </Box>
-            </Flex>
-          </Container>
-        </WrapperLive>
-        <WrapperStadiumTicket>
-          <Container>
-            <Flex>
-              <Box w={12 / 12}>
-                <StadiumTicket />
-              </Box>
-            </Flex>
-          </Container>
-        </WrapperStadiumTicket>
-        <WrapperAbout>
-          <Container>
-            <Box w={12 / 12}>
-              <About />
+    <Main url={url}>
+      <NewModal />
+      <GradientBg>
+        <Container>
+          <Hero lives={lives} />
+          <LatestVideo name="Latest Video" token={token} />
+        </Container>
+      </GradientBg>
+      <WrapperLive>
+        <Container>
+          <Flex>
+            <Box w={12 / 12} pb="4em" pt="2em">
+              <ComingLive />
             </Box>
-          </Container>
-        </WrapperAbout>
-        <style jsx global>
-          {`
-            body {
-              padding: 0 !important;
-              margin: 0 !important;
-            }
-             {
-              /* * {
+          </Flex>
+        </Container>
+      </WrapperLive>
+      <WrapperStadiumTicket>
+        <Container>
+          <Flex>
+            <Box w={12 / 12}>
+              <StadiumTicket />
+            </Box>
+          </Flex>
+        </Container>
+      </WrapperStadiumTicket>
+      <WrapperAbout>
+        <Container>
+          <Box w={12 / 12}>
+            <About />
+          </Box>
+        </Container>
+      </WrapperAbout>
+      <style jsx global>
+        {`
+          body {
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+           {
+            /* * {
               box-sizing: border-box;
             } */
-            }
-          `}
-        </style>
-      </Main>
-    </Provider>
+          }
+        `}
+      </style>
+    </Main>
   </div>
 )
 
