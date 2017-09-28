@@ -16,9 +16,9 @@ export const fetchVods = token => async dispatch => {
     const json = await api.post(url, { token })
     // You should not return in Vods <-- change to something like data
     if (json.data.Vods == undefined) {
-      dispatch(fetchVodsSuccess(json.data.VodsLogin))
+      dispatch(fetchVodsSuccess(json.data.vodslogin))
     } else {
-      dispatch(fetchVodsSuccess(json.data.Vods))
+      dispatch(fetchVodsSuccess(json.data.vods))
     }
   } catch (error) {
     console.log(error)

@@ -9,7 +9,6 @@ import Detail from '../components/contact/Detail'
 import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
 import { VideoBox } from '../components/videoCenter/VideoBox'
-import CounterComponent from '../containers/CounterContainers'
 import Main from '../layouts/Main'
 
 const Wrapper = styled.div`font-family: Helvetica, Arial, sans-serif;`
