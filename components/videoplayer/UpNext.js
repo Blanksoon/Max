@@ -14,38 +14,62 @@ const UpNext = props => (
       </Flex>
       <Flex>
         <Box width={8 / 35}>
-          <ThumbnailVideo
-            img="static/maxPromo.jpg"
-            name="The Battle Muay-Thai(4/4)"
-            date="On air - Aug 11, 2017"
-          />
+          <a href={`/videoPlayer`}>
+            <ThumbnailVideo
+              img="static/FT6A6133.jpg"
+              name="The Battle Muay-Thai(4/4)"
+              date="On air - Aug 11, 2017"
+              time="16.24"
+            />
+          </a>
         </Box>
         <Box width={1 / 35} />
         <Box width={8 / 35}>
-          <ThumbnailVideo
-            img="static/maxPromo.jpg"
-            name="The Battle Muay-Thai(4/4)"
-            date="On air - Aug 11, 2017"
-          />
+          <a href={`/videoPlayer`}>
+            <ThumbnailVideo
+              img="static/FT6A6483.jpg"
+              name="The Battle Muay-Thai(3/4)"
+              date="On air - Aug 11, 2017"
+              time="16.24"
+            />
+          </a>
         </Box>
         <Box width={1 / 35} />
         <Box width={8 / 35}>
-          <ThumbnailVideo
-            img="static/maxPromo.jpg"
-            name="The Battle Muay-Thai(4/4)"
-            date="On air - Aug 11, 2017"
-          />
+          <a href={`/videoPlayer`}>
+            <ThumbnailVideo
+              img="static/FT6A6495.jpg"
+              name="The Battle Muay-Thai(2/4)"
+              date="On air - Aug 11, 2017"
+              time="16.24"
+            />
+          </a>
         </Box>
         <Box width={1 / 35} />
         <Box width={8 / 35}>
-          <ThumbnailVideo
-            img="static/maxPromo.jpg"
-            name="The Battle Muay-Thai(4/4)"
-            date="On air - Aug 11, 2017"
-          />
+          <a href={`/videoPlayer`}>
+            <ThumbnailVideo
+              img="static/FT6A6676.jpg"
+              name="The Battle Muay-Thai(1/4)"
+              date="On air - Aug 11, 2017"
+              time="16.24"
+            />
+          </a>
         </Box>
       </Flex>
     </Box>
+    <style jsx>
+      {`
+        a:link {
+          COLOR: #660000;
+          TEXT-DECORATION: none;
+        }
+        a:visited {
+          COLOR: #660000;
+          TEXT-DECORATION: none;
+        }
+      `}
+    </style>
   </div>
 )
 export default UpNext

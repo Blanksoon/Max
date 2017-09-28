@@ -20,12 +20,12 @@ export default ({
         <Button>Buy Ticket</Button>
         <ModalButton
           modalType={2}
-          modalURL="static/DailyFightcard 12092017 .jpg"
+          modalURL="static/flightcard.jpg"
           text="View Fightcard"
         />
         <ModalButton
           modalType={1}
-          modalURL="static/DailyFightcard 12092017 .jpg"
+          modalURL="static/flightcard.jpg"
           text="Promo Clip"
         />
         {/* <BorderlessButton onClick={() => showFightcard(true)}>

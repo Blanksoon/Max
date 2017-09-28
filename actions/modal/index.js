@@ -1,4 +1,9 @@
-import { TOOGLE_MODAL, MODAL_UPDATE_TYPE, MODAL_URL } from './types'
+import {
+  TOOGLE_MODAL,
+  MODAL_UPDATE_TYPE,
+  MODAL_URL,
+  CLOSE_MODAL,
+} from './types'
 const toogleModal = () => {
   return {
     type: TOOGLE_MODAL,
@@ -16,5 +21,10 @@ const indexModalURL = modalURL => {
     URL: { modalURL },
   }
 }
+const closeModal = () => {
+  return {
+    type: CLOSE_MODAL,
+  }
+}
 
-export { toogleModal, updateModalType, indexModalURL }
+export { toogleModal, updateModalType, indexModalURL, closeModal }

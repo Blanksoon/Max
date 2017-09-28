@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 import color from '../commons/vars'
 import ModalButton from '../../containers/ModalButton'
+import ModalImg from '../../containers/ModalImg'
 
 const H1 = styled.h1`margin: 0px;`
 const P = styled.p`margin: 0px;`
@@ -93,18 +94,24 @@ const LiveDescription = () => (
         <ModalButton
           buttonID={2}
           modalType={1}
-          modalURL="static/DailyFightcard 12092017 .jpg"
+          modalURL="static/flightcard.jpg"
           text="Watch Promo Clip"
         />
         {/* <ButtonPromoClip color={color}>Watch Promo Clip</ButtonPromoClip> */}
       </Box>
       <Box w={3 / 12} mr="1rem">
         <Box w={12 / 12} pt="1rem">
-          <Image
-            width="100%"
-            src="../static/DailyFightcard 12092017 .jpg"
-            height="100%"
+          <ModalImg
+            modalType={2}
+            modalURL="static/flightcard.jpg"
+            w="100%"
+            img="static/flightcard.jpg"
           />
+          {/* <Image
+            width="100%"
+            src="../static/flightcard.jpg"
+            height="100%"
+          /> */}
         </Box>
       </Box>
     </Flex>

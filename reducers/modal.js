@@ -2,11 +2,13 @@ import {
   TOOGLE_MODAL,
   MODAL_UPDATE_TYPE,
   MODAL_URL,
+  CLOSE_MODAL,
 } from '../actions/modal/types'
 const initialState = {
   activeModal: false,
   modalType: 2,
-  modalURL: 'static/DailyFightcard 12092017 .jpg',
+  modalURL: 'static/flightcard.jpg',
+  video: false,
 }
 
 const modalReducer = (state = initialState, action) => {
@@ -27,6 +29,13 @@ const modalReducer = (state = initialState, action) => {
       return {
         ...state,
         modalURL: action.URL.modalURL,
+      }
+    }
+    case CLOSE_MODAL: {
+      return {
+        ...state,
+        activeModal: false,
+        modalType: 0,
       }
     }
     default: {

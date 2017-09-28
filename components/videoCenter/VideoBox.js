@@ -3,8 +3,12 @@ import ThumbnailVideo from '../thumbnail/ThumbnailVideo'
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 import ThumbnailSky from '../thumbnail/ThumbnailSky'
 import { LabelSearch } from './LabelSearch'
-import { Flex, Box, Image, Button, Text } from 'rebass'
+import { Flex, Box, Button, Text } from 'rebass'
 
+const ImageHlight = styled.img`
+  width: ${props => props.w};
+  src: ${props => props.src};
+`
 const BackgroundImage = styled.div`
   background: '../../static/3.png';
   background-repeat: no-repeat;
@@ -12,7 +16,7 @@ const BackgroundImage = styled.div`
 `
 const WrapperHilight = styled.div`
   width: 100%;
-  height: 114%;
+  height: 120%;
   background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
   // background-image: url('static/FT6A2278.jpg');
@@ -22,13 +26,15 @@ const WrapperHilightText = styled.div`
   bottom: 12%;
   right: 0;
   width: 100%;
+  height: 100%;
   position: absolute;
   background: -webkit-linear-gradient(
     top,
     rgba(30, 87, 153, 0) 0%,
-    rgba(30, 87, 153, 1) 35%,
-    rgba(30, 87, 153, 1) 99%,
-    rgba(30, 87, 153, 1) 100%
+    rgba(30, 87, 153, 0.05) 15%,
+    rgba(7, 45, 89, 0.8) 81%,
+    rgba(6, 44, 87, 1) 83%,
+    rgba(1, 33, 71, 1) 100%
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const WrapperImg = styled.div`
@@ -54,20 +60,22 @@ const VideoBox = () => (
         <Text color="red" bold children="ON DEMAND" fontSize="2em" />
       </Box>
     </Flex>
-    <Flex mb="1rem">
-      <Box w={8 / 12} pl="1rem" mr="1em">
+    <Flex mb="3rem">
+      <Box w={2.5 / 12} />
+      <Box w={7.75 / 12} pl="1rem" mr="1em">
         <WrapperHilight>
           <Box w={12 / 12}>
-            <Image width="100%" pt={0} src="static/FT6A2278.jpg" />
+            <ImageHlight w="100%" src="static/FT6A2278.jpg" />
           </Box>
-          <Box w={12 / 12} pl="20px">
+          <Box w={12 / 12} pl="21px">
             <WrapperHilightText>
+              <Box pt="62%" />
               <Text
                 pl="1rem"
                 color="#57b1fe"
                 bold
                 children="HILIGHT"
-                fontSize="1em"
+                fontSize="0.9em"
               />
               <Text
                 pt="5px"
@@ -116,7 +124,7 @@ const VideoBox = () => (
         </WrapperHilight>
       </Box>
 
-      <Box w={4 / 12}>
+      {/* <Box w={4 / 12}>
         <Box w={1} pl="7.5px" pb="7.5px" pr="20px">
           <ThumbnailSky />
         </Box>
@@ -129,9 +137,8 @@ const VideoBox = () => (
               </center>
             </WrapperText>
           </WrapperImg>
-          {/* <ThumbnailSky img="static/maxultimate-show.jpg" /> */}
         </Box>
-      </Box>
+      </Box> */}
     </Flex>
     <Box pl="1rem" pr="1rem">
       <LabelSearch />
@@ -187,6 +194,16 @@ const VideoBox = () => (
             rgba(2, 34, 70, 1) 100%
           ); /* Chrome10-25,Safari5.1-6 */
         }
+        a:link {
+        }
+        a {
+          color: #fff;
+          TEXT-DECORATION: none;
+        }
+        a:hover {
+          COLOR: #ff0000;
+          TEXT-DECORATION: none;
+        }
       `}
     </style>
   </div>
@@ -197,47 +214,62 @@ const RowVideo = () => (
     <Box w={6 / 12} mr="1em">
       <Flex>
         <Box w={6 / 12} pr="7.5px">
-          <ThumbnailVideo
-            img="static/FT6A6133.jpg"
-            name="The Battle Muay-Thai(4/4)"
-            date="On air - Aug 11, 2017"
-            time="16.24"
-            pt="1em"
-          />
+          <a href={`/videoPlayer`}>
+            <ThumbnailVideo
+              img="static/FT6A6133.jpg"
+              name="The Battle Muay-Thai(4/4)"
+              date="On air - Aug 11, 2017"
+              time="16.24"
+              pt="1em"
+            />
+          </a>
         </Box>
         <Box w={6 / 12} pl="7.5px">
-          <ThumbnailVideo
-            img="static/FT6A6483.jpg"
-            name="The Battle Muay-Thai(3/4)"
-            date="On air - Aug 11, 2017"
-            time="16.24"
-            pt="1em"
-          />
+          <a href={`/videoPlayer`}>
+            <ThumbnailVideo
+              img="static/FT6A6483.jpg"
+              name="The Battle Muay-Thai(3/4)"
+              date="On air - Aug 11, 2017"
+              time="16.24"
+              pt="1em"
+            />
+          </a>
         </Box>
       </Flex>
     </Box>
     <Box w={6 / 12}>
       <Flex>
         <Box w={6 / 12} pr="7.5px">
-          <ThumbnailVideo
-            img="static/FT6A6495.jpg"
-            name="The Battle Muay-Thai(2/4)"
-            date="On air - Aug 11, 2017"
-            time="16.24"
-            pt="1em"
-          />
+          <a href={`/videoPlayer`}>
+            <ThumbnailVideo
+              img="static/FT6A6495.jpg"
+              name="The Battle Muay-Thai(2/4)"
+              date="On air - Aug 11, 2017"
+              time="16.24"
+              pt="1em"
+            />
+          </a>
         </Box>
         <Box w={6 / 12} pl="7.5px">
-          <ThumbnailVideo
-            img="static/FT6A6676.jpg"
-            name="The Battle Muay-Thai(1/4)"
-            date="On air - Aug 11, 2017"
-            time="16.24"
-            pt="1em"
-          />
+          <a href={`/videoPlayer`}>
+            <ThumbnailVideo
+              img="static/FT6A6676.jpg"
+              name="The Battle Muay-Thai(1/4)"
+              date="On air - Aug 11, 2017"
+              time="16.24"
+              pt="1em"
+            />
+          </a>
         </Box>
       </Flex>
     </Box>
+    <style jsx>
+      {`
+        a {
+          TEXT-DECORATION: none;
+        }
+      `}
+    </style>
   </Flex>
 )
 export { VideoBox }

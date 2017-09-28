@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Flex, Provider, Box, Text, overlay } from 'rebass'
 import Modal from '../components/modal/Modal'
+import Login from '../components/login/Login'
 import color from '../components/commons/vars'
 
 const Wrapper = styled.div`
@@ -26,37 +27,8 @@ const Hr = styled.div`
   }
 `
 const test = props => (
-  <Wrapper>
-    <Box w={3 / 12}>
-      <center>
-        <Box pt="15rem" />
-        <Text1>
-          GET 1 TIME<br />LIVE STREAMING
-        </Text1>
-        <br />
-        <Flex mr="18px">
-          <Box w={2.75 / 12} />
-          <Box>
-            <Hr />
-          </Box>
-          <Box width={6.5 / 12} pb={3}>
-            <hr size="0.1" />
-          </Box>
-          <Box>
-            <Hr />
-          </Box>
-        </Flex>
-        <Text2>
-          Watch 1 time of specific show<br />live streaming on any platfrom
-        </Text2>
-        <br />
-        <br />
-        <br />
-        <br />
-        <Text2>coming vary soon</Text2>
-        <Box pb="1.5rem" />
-      </center>
-    </Box>
-  </Wrapper>
+  <div>
+    <Login />
+  </div>
 )
 export default test

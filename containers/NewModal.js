@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import NewModal from '../components/modal/NewModal'
-import { toogleModal } from '../actions/modal'
+import { toogleModal, closeModal } from '../actions/modal'
 
 const mapStateToProps = state => ({
   active: state.modal.activeModal,
@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   toogleModalAction: () => dispatch(toogleModal()),
+  closeModal: () => dispatch(closeModal()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewModal)

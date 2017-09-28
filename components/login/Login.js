@@ -22,7 +22,7 @@ const ButtonFace = styled.button`
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: px;
+  font-size: 1.5em;
 `
 const ButtonGoogle = styled.button`
   background-color: #dd4b39;
@@ -37,7 +37,23 @@ const ButtonGoogle = styled.button`
 
 const Login = () => (
   <Provider>
-    <div className="login/register">
+    <div>
+      <Box>
+        <center>
+          <Image width="20%" src="static/logo.png" />
+          <Text
+            color="#B81111"
+            pt="20%"
+            pb="3em"
+            bold
+            children="Almost there, Please log in to continue."
+            fontSize="1.5em"
+          />
+          <ButtonFace>f &nbsp;&nbsp; Log in with Facebook</ButtonFace>
+        </center>
+      </Box>
+    </div>
+    {/* <div className="login/register">
       <Box w={1}>
         <Flex>
           <Box w={11 / 12} />
@@ -127,7 +143,7 @@ const Login = () => (
           </Flex>
         </div>
       </Box>
-    </div>
+    </div> */}
     <style jsx>
       {`
         a:link {

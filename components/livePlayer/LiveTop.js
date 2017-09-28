@@ -39,9 +39,19 @@ const Button = styled.button`
   display: inline-block;
   font-weight: 700;
 `
+const ButtonBlue = styled.button`
+  background-color: initial;
+  border: 1px solid #3d7fb8;
+  color: #3d7fb8;
+  padding: 3px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
+  font-family: Helvetica, Arial, sans-serif;
+`
 const WrapperSky = styled.div`
   z-index: 1;
-  height: 41.5%;
   width: 100%;
   color: #ffffff;
   background: rgba(1, 15, 30, 0.6);
@@ -64,6 +74,11 @@ const Text3 = styled.div`
   font-weight: 700;
   font-size: 1.6em;
 `
+const Text4 = styled.div`
+  color: #3d7fb8;
+  font-weight: 700;
+  font-size: 1em;
+`
 const Image = styled.img`width: 100%;`
 const LiveTop = props => (
   <Wrapper>
@@ -85,38 +100,35 @@ const LiveTop = props => (
       </Flex>
     </WrapperText>
     <WrapperSky>
-      <Flex pt="2.4rem">
-        <Box w={4.9 / 12} />
-        <Box w={2.5 / 12}>
-          <center>
-            <Box>
-              <Text1>LIVE in</Text1>
+      <Box pt="1.5rem">
+        <center>
+          <Box>
+            <Text1>LIVE in</Text1>
+          </Box>
+          <Box>
+            <Text2>00 : 00 : 00 : 12</Text2>
+          </Box>
+          <Box>
+            <Text3>
+              DAY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              HRS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              MIN &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              SEC
+            </Text3>
+          </Box>
+          <br />
+          <br />
+          <Flex pl="30%">
+            <Box pt="0.2rem">
+              <Text4>Hurry up! Buy ticket before live start</Text4>
             </Box>
-            <Flex pt="1.5rem">
-              <Box w={5 / 12}>
-                <Box>
-                  <Text2>00</Text2>
-                </Box>
-                <Box>
-                  <Text3>MIN</Text3>
-                </Box>
-              </Box>
-              <Box w={2 / 12}>
-                <Text2>:</Text2>
-              </Box>
-              <Box w={5 / 12}>
-                <Box>
-                  <Text2>12</Text2>
-                </Box>
-                <Box>
-                  <Text3>SEC</Text3>
-                </Box>
-              </Box>
-            </Flex>
-          </center>
-        </Box>
-        <Box w={4.5 / 12} />
-      </Flex>
+            <Box pl="1.5rem">
+              <ButtonBlue>BUY</ButtonBlue>
+            </Box>
+          </Flex>
+          <Box pt="1rem" />
+        </center>
+      </Box>
     </WrapperSky>
   </Wrapper>
 )
