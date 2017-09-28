@@ -24,7 +24,6 @@ export default class Modal extends Component {
     this.update = this.update.bind(this)
   }
   update() {
-    console.log('hello')
     if (this.state.overlay == true) {
       this.setState({
         overlay: false,

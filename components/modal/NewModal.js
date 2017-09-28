@@ -101,7 +101,6 @@ export default class Modal extends Component {
     } else {
       renderUI = renderUI
     }
-    console.log('ULR 2323', this.props)
     return (
       <Wrapper
         onClick={e => this.handleOnClick(e)}

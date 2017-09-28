@@ -57,9 +57,7 @@ export default class extends Component {
   render() {
     return (
       <Navbar m={0} p={2} top left z={1} url={this.props.activeUrl.pathname}>
-        {console.log('url', this.props.activeUrl.pathname)}
         <Container>
-          <FacebookLoginButton />
           <NavItemContainer>
             {this.state.navItems.map(({ label, href, active }) => (
               <NavItem key={label} label={label} href={href} active={active} />
@@ -68,6 +66,7 @@ export default class extends Component {
           <Link href="/">
             <Logo onClick={console.log('helo 1212')} src="/static/logo.png" />
           </Link>
+          <FacebookLoginButton />
         </Container>
       </Navbar>
     )
