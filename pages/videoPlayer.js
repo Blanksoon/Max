@@ -9,11 +9,12 @@ import { Description } from '../components/videoPlayer/Description'
 import UpNext from '../components/videoPlayer/UpNext'
 import StadiumTicket from '../components/home/StadiumTicket'
 import { Provider as Rebass, Container, Flex, Box } from 'rebass'
+import Main from '../layouts/Main'
 import rootReducer from '../reducers'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import Main from '../layouts/Main'
+
 const WrapperStadiumTicket = styled.div`
   color: #ffffff;
   background-color: #b71111;

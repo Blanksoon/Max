@@ -19,10 +19,15 @@ import NewModal from '../containers/NewModal'
 import { Container, Flex, Box } from 'rebass'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import rootReducer from '../reducers'
-import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import rootReducer from '../reducers'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import { Provider } from 'react-redux'
+import Cookies from 'universal-cookie'
+import withRedux from 'next-redux-wrapper'
+import { initStore } from '../redux/store'
+import { fetchVods } from '../redux/modules/vod'
+const cookies = new Cookies()
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -52,63 +57,76 @@ const GradientBg = styled.div`
   background: linear-gradient(${vars.darkblue}, ${vars.blue});
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
+//const cookies = new Cookies()
+//const token = cookies.get('token')
+//console.log('mk', token)
+let cookie = ''
 const store = createStore(rootReducer, composeWithDevTools())
-const Index = ({ url, lives }) => (
-  <div>
-    <Head>
-      <link href="./static/css/video-react.css" rel="stylesheet" />
-    </Head>
-    <Provider store={store}>
-      <Main url={url}>
-        <NewModal />
-        <GradientBg>
-          <Container>
-            <Hero lives={lives} />
-            <LatestVideo name="Latest Video" />
-          </Container>
-        </GradientBg>
-        <WrapperLive>
-          <Container>
-            <Flex>
-              <Box w={12 / 12} pb="4em" pt="2em">
-                <ComingLive />
-              </Box>
-            </Flex>
-          </Container>
-        </WrapperLive>
-        <WrapperStadiumTicket>
-          <Container>
-            <Flex>
-              <Box w={12 / 12}>
-                <StadiumTicket />
-              </Box>
-            </Flex>
-          </Container>
-        </WrapperStadiumTicket>
-        <WrapperAbout>
-          <Container>
-            <Box w={12 / 12}>
-              <About />
-            </Box>
-          </Container>
-        </WrapperAbout>
-        <style jsx global>
-          {`
-            body {
-              padding: 0 !important;
-              margin: 0 !important;
-            }
-             {
-              /* * {
+class Index extends React.Component {
+  componentDidMount() {
+    cookie = cookies.get('token')
+    //console.log('get cookie', cookie)
+    return this.props.fetchVods(cookie)
+  }
+  render() {
+    return (
+      <div>
+        <Head>
+          <link href="./static/css/video-react.css" rel="stylesheet" />
+        </Head>
+        <Provider store={store}>
+          <Main url={this.props.url}>
+            <NewModal />
+            <GradientBg>
+              <Container>
+                <Hero lives={this.props.lives} />
+                <LatestVideo name="Latest Video" />
+              </Container>
+            </GradientBg>
+            <WrapperLive>
+              <Container>
+                <Flex>
+                  <Box w={12 / 12} pb="4em" pt="2em">
+                    <ComingLive />
+                  </Box>
+                </Flex>
+              </Container>
+            </WrapperLive>
+            <WrapperStadiumTicket>
+              <Container>
+                <Flex>
+                  <Box w={12 / 12}>
+                    <StadiumTicket />
+                  </Box>
+                </Flex>
+              </Container>
+            </WrapperStadiumTicket>
+            <WrapperAbout>
+              <Container>
+                <Box w={12 / 12}>
+                  <About />
+                </Box>
+              </Container>
+            </WrapperAbout>
+            <style jsx global>
+              {`
+                body {
+                  padding: 0 !important;
+                  margin: 0 !important;
+                }
+                 {
+                  /* * {
               box-sizing: border-box;
             } */
-            }
-          `}
-        </style>
-      </Main>
-    </Provider>
-  </div>
-)
+                }
+              `}
+            </style>
+          </Main>
+        </Provider>
+      </div>
+    )
+  }
+}
 
 Index.getInitialProps = () => {
   return {
@@ -132,4 +150,4 @@ Index.getInitialProps = () => {
     ],
   }
 }
-export default Index
+export default withRedux(initStore, null, { fetchVods })(Index)

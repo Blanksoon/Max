@@ -14,8 +14,8 @@ class FacebookLoginButton extends React.Component {
       provider_name: 'facebook',
       provider_data: response,
     }
-    j = JSON.stringify(j)
-    console.log('providerData', j)
+    //j = JSON.stringify(j)
+    // console.log('providerData', j)
 
     fetch('http://139.59.127.206:3001/fb-login', {
       method: 'POST',
