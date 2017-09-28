@@ -1,7 +1,8 @@
 import { Component } from 'react'
 import Link from 'next/link'
-import { Fixed, Container, Image } from 'rebass'
+import { Fixed, Image } from 'rebass'
 import styled from 'styled-components'
+import Container from './Container'
 import NavItem from './NavItem'
 import vars from './vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
@@ -12,7 +13,7 @@ const Navbar = styled(Fixed)`
   background: ${props =>
     props.pathname == '/' ? 'rgba(1, 15, 30, 0.8)' : 'rgba(1, 15, 30, 10)'};
   display: block;
-  height: 4rem;
+  height: 6rem;
   width: 100%;
   z-index: 9999;
 `
