@@ -8,6 +8,15 @@ import color from '../components/commons/vars'
 import Promocode from '../components/getTicket/Promocode'
 import Promotion from '../components/getTicket/Promotion'
 import StadiumTicket from '../components/home/StadiumTicket'
+import withRedux from 'next-redux-wrapper'
+import { initStore } from '../redux/store'
+import { fetchVods } from '../redux/modules/vod'
+import {
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+} from '../redux/modules/modal'
 
 const WrapperLivePlayer = styled.div`
   background-color: ${props => props.color.lightBlue};
@@ -27,7 +36,7 @@ const getticket = ({ url }) => (
       <WrapperPromotion>
         <Container>
           <Box>
-            <Promocode />
+            <Promocode id={1} />
           </Box>
         </Container>
       </WrapperPromotion>
@@ -64,4 +73,9 @@ const getticket = ({ url }) => (
   </div>
 )
 
-export default getticket
+export default withRedux(initStore, null, {
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+})(getticket)

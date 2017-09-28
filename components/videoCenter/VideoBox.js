@@ -101,8 +101,9 @@ class VideoBox extends Component {
             <Text color="red" bold children="ON DEMAND" fontSize="2em" />
           </Box>
         </Flex>
-        <Flex mb="1rem">
-          <Box w={12 / 12} pl="1rem" mr="1em">
+        <Flex mb="3rem">
+          <Box w={2.5 / 12} />
+          <Box w={7.75 / 12} pl="1rem" mr="1em">
             <WrapperHilight>
               <Box w={12 / 12} className="imagesss">
                 <Image width="100%" pt={0} src="static/FT6A2278.jpg" />
