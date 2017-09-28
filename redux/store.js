@@ -1,15 +1,14 @@
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
-import { fetchVods, fetchVodsSuccess } from './actions/vod'
-import rootReducer from './reducers'
-import vodReducer from './reducers/vods'
+import rootReducer from './rootReducer'
 
-const InitialState = {
+const initialState = {
+  modal: {},
   vod: {},
 }
 
-export const initStore = (initialState = InitialState) => {
+export const initStore = (initialState = initialState) => {
   return createStore(
     rootReducer,
     initialState,
