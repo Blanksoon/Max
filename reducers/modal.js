@@ -7,7 +7,7 @@ import {
 const initialState = {
   activeModal: false,
   modalType: 2,
-  modalURL: 'static/DailyFightcard 12092017 .jpg',
+  modalURL: 'static/flightcard.jpg',
   video: false,
 }
 

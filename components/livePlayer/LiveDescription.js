@@ -94,7 +94,7 @@ const LiveDescription = () => (
         <ModalButton
           buttonID={2}
           modalType={1}
-          modalURL="static/DailyFightcard 12092017 .jpg"
+          modalURL="static/flightcard.jpg"
           text="Watch Promo Clip"
         />
         {/* <ButtonPromoClip color={color}>Watch Promo Clip</ButtonPromoClip> */}
@@ -103,13 +103,13 @@ const LiveDescription = () => (
         <Box w={12 / 12} pt="1rem">
           <ModalImg
             modalType={2}
-            modalURL="static/DailyFightcard 12092017 .jpg"
+            modalURL="static/flightcard.jpg"
             w="100%"
-            img="static/DailyFightcard 12092017 .jpg"
+            img="static/flightcard.jpg"
           />
           {/* <Image
             width="100%"
-            src="../static/DailyFightcard 12092017 .jpg"
+            src="../static/flightcard.jpg"
             height="100%"
           /> */}
         </Box>
