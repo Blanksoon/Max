@@ -14,6 +14,15 @@ import rootReducer from '../reducers'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import withRedux from 'next-redux-wrapper'
+import { initStore } from '../redux/store'
+import { fetchVods } from '../redux/modules/vod'
+import {
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+} from '../redux/modules/modal'
 
 const WrapperStadiumTicket = styled.div`
   color: #ffffff;
@@ -32,7 +41,7 @@ const videoPlayer = ({ url }) => {
   return (
     <div className="wrapper-index">
       <Head>
-        <link href="./static/css/video-react.css" rel="stylesheet" />
+        <link href="../static/css/video-react.css" rel="stylesheet" />
       </Head>
       <Provider store={store}>
         <Rebass>
@@ -101,5 +110,9 @@ const videoPlayer = ({ url }) => {
     </div>
   )
 }
-
-export default videoPlayer
+export default withRedux(initStore, null, {
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+})(videoPlayer)

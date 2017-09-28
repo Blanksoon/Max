@@ -1,10 +1,11 @@
 // types
-const TOGGLE_MODAL = 'TOOGLE_MODAL'
+const TOOGLE_MODAL = 'TOOGLE_MODAL'
 const MODAL_UPDATE_TYPE = 'MODAL_UPDATE_TYPE'
 const MODAL_URL = 'MODAL_URL'
+const CLOSE_MODAL = 'CLOSE_MODAL'
 
 // actions
-const toggleModal = () => {
+const toogleModal = () => {
   return {
     type: TOOGLE_MODAL,
   }
@@ -21,16 +22,22 @@ const indexModalURL = modalURL => {
     URL: { modalURL },
   }
 }
+const closeModal = () => {
+  return {
+    type: CLOSE_MODAL,
+  }
+}
 
 const initialState = {
   activeModal: false,
   modalType: 2,
-  modalURL: 'static/DailyFightcard 12092017 .jpg',
+  modalURL: 'static/flightcard.jpg',
+  video: false,
 }
 
 const modalReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_MODAL: {
+    case TOOGLE_MODAL: {
       return {
         ...state,
         activeModal: !state.activeModal,
@@ -46,6 +53,13 @@ const modalReducer = (state = initialState, action) => {
       return {
         ...state,
         modalURL: action.URL.modalURL,
+      }
+    }
+    case CLOSE_MODAL: {
+      return {
+        ...state,
+        activeModal: false,
+        modalType: 0,
       }
     }
     default: {

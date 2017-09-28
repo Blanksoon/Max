@@ -19,14 +19,17 @@ import NewModal from '../containers/NewModal'
 import { Container, Flex, Box } from 'rebass'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
-import { createStore } from 'redux'
-import rootReducer from '../reducers'
-import { composeWithDevTools } from 'redux-devtools-extension'
 import { Provider } from 'react-redux'
 import Cookies from 'universal-cookie'
-import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import withRedux from 'next-redux-wrapper'
+import {
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+} from '../redux/modules/modal'
 const cookies = new Cookies()
 
 const WrapperTop = styled.div`
@@ -61,7 +64,6 @@ const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 //const token = cookies.get('token')
 //console.log('mk', token)
 let cookie = ''
-const store = createStore(rootReducer, composeWithDevTools())
 class Index extends React.Component {
   componentDidMount() {
     cookie = cookies.get('token')
@@ -72,57 +74,55 @@ class Index extends React.Component {
     return (
       <div>
         <Head>
-          <link href="./static/css/video-react.css" rel="stylesheet" />
+          <link href="../static/css/video-react.css" rel="stylesheet" />
         </Head>
-        <Provider store={store}>
-          <Main url={this.props.url}>
-            <NewModal />
-            <GradientBg>
-              <Container>
-                <Hero lives={this.props.lives} />
-                <LatestVideo name="Latest Video" />
-              </Container>
-            </GradientBg>
-            <WrapperLive>
-              <Container>
-                <Flex>
-                  <Box w={12 / 12} pb="4em" pt="2em">
-                    <ComingLive />
-                  </Box>
-                </Flex>
-              </Container>
-            </WrapperLive>
-            <WrapperStadiumTicket>
-              <Container>
-                <Flex>
-                  <Box w={12 / 12}>
-                    <StadiumTicket />
-                  </Box>
-                </Flex>
-              </Container>
-            </WrapperStadiumTicket>
-            <WrapperAbout>
-              <Container>
-                <Box w={12 / 12}>
-                  <About />
+        <Main url={this.props.url}>
+          <NewModal />
+          <GradientBg>
+            <Container>
+              <Hero lives={this.props.lives} />
+              <LatestVideo name="Latest Video" />
+            </Container>
+          </GradientBg>
+          <WrapperLive>
+            <Container>
+              <Flex>
+                <Box w={12 / 12} pb="4em" pt="2em">
+                  <ComingLive />
                 </Box>
-              </Container>
-            </WrapperAbout>
-            <style jsx global>
-              {`
-                body {
-                  padding: 0 !important;
-                  margin: 0 !important;
-                }
-                 {
-                  /* * {
+              </Flex>
+            </Container>
+          </WrapperLive>
+          <WrapperStadiumTicket>
+            <Container>
+              <Flex>
+                <Box w={12 / 12}>
+                  <StadiumTicket />
+                </Box>
+              </Flex>
+            </Container>
+          </WrapperStadiumTicket>
+          <WrapperAbout>
+            <Container>
+              <Box w={12 / 12}>
+                <About />
+              </Box>
+            </Container>
+          </WrapperAbout>
+          <style jsx global>
+            {`
+              body {
+                padding: 0 !important;
+                margin: 0 !important;
+              }
+               {
+                /* * {
               box-sizing: border-box;
             } */
-                }
-              `}
-            </style>
-          </Main>
-        </Provider>
+              }
+            `}
+          </style>
+        </Main>
       </div>
     )
   }
@@ -150,4 +150,10 @@ Index.getInitialProps = () => {
     ],
   }
 }
-export default withRedux(initStore, null, { fetchVods })(Index)
+export default withRedux(initStore, null, {
+  fetchVods,
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+})(Index)
