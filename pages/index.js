@@ -21,9 +21,15 @@ import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
 import Cookies from 'universal-cookie'
-import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import withRedux from 'next-redux-wrapper'
+import {
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+} from '../redux/modules/modal'
 const cookies = new Cookies()
 
 const WrapperTop = styled.div`
@@ -66,7 +72,7 @@ class Index extends React.Component {
     return (
       <div>
         <Head>
-          <link href="./static/css/video-react.css" rel="stylesheet" />
+          <link href="../static/css/video-react.css" rel="stylesheet" />
         </Head>
         <Main url={this.props.url}>
           <NewModal />
@@ -142,4 +148,10 @@ Index.getInitialProps = () => {
     ],
   }
 }
-export default withRedux(initStore, null, { fetchVods })(Index)
+export default withRedux(initStore, null, {
+  fetchVods,
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+})(Index)
