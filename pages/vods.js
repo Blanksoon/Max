@@ -24,6 +24,10 @@ let token = ''
 class videoCenter extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      tokens: 's',
+    }
+    //this.props.fetchVod(token)
     this.fetchVideo = this.fetchVideo.bind(this)
   }
   static getInitialProps({ store, isServer, query, req }) {
@@ -34,19 +38,27 @@ class videoCenter extends React.Component {
       token = req.cookies
       //console.log('this is token ', token)
     }
-    //store.dispatch(fetchVods(token))
+    //store.dispatch(fetchVods())
     return { isServer }
   }
 
-  fetchVideo(token) {
+  fetchVideo() {
     //console.log('fdssdfdfsfs', token)
     this.props.fetchVod(token)
+  }
+
+  componentWillMount() {
+    console.log('sss', this.state.tokens)
+    this.setState({
+      tokens: token,
+    })
+    //this.props.fetchVod(this.state.tokens)
   }
 
   render() {
     return (
       <Rebass>
-        {this.fetchVideo(token)}
+        {this.fetchVideo()}
         <Main url={this.props.url}>
           <div className="videocenter">
             <WrapperVod color={color}>

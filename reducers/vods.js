@@ -8,9 +8,9 @@ const vodReducer = (state = InitialState, action) => {
   switch (action.type) {
     case FETCH_VODS_SUCCESS:
       //console.log('jdflsdjfl', action.payload.data)
-      return {
+      return Object.assign({}, state, {
         vod: action.payload.data,
-      }
+      })
     default: {
       return state
     }

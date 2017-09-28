@@ -8,10 +8,10 @@ const fetchVodsSuccess = vods => ({
 })
 
 const fetchVods = token => dispatch => {
-  const data = JSON.stringify(token)
+  const data = JSON.stringify({ token })
   console.log('hiii', data)
   //'http://139.59.127.206:3001/vod'
-  const uri = 'http://139.59.127.206:3001/vod'
+  const uri = 'http://localhost:3001/vod'
   fetch(uri, {
     method: 'POST',
     headers: {
@@ -27,7 +27,7 @@ const fetchVods = token => dispatch => {
       return response.json()
     })
     .then(vods => {
-      //console.log(vods)
+      console.log(vods.data)
       // console.log(dispatch)
       return dispatch(fetchVodsSuccess(vods))
     })
