@@ -23,7 +23,7 @@ const NavItemContainer = styled.div`
 `
 const Logo = styled(Image)`
   cursor: pointer;
-  height: 4rem;
+  height: 6rem;
   float: right;
   margin-right: 2rem;
 `
@@ -68,7 +68,7 @@ export default class extends Component {
             <LoginLang url={this.props.url} />
           </NavItemContainer>
           <Link href="/">
-            <Logo onClick={console.log('helo 1212')} src="/static/logo.png" />
+            <Logo src="/static/logo.png" />
           </Link>
         </Container>
       </Navbar>
