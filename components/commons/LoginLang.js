@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import vars from '../commons/vars'
 
 const LoginLang = styled.span`
-  border: 1px solid ${vars.white};
   color: ${vars.white};
   float: left;
   margin-left: 1rem;
@@ -13,29 +12,22 @@ const LoginLang = styled.span`
   text-align: center;
 `
 const Login = styled.div`
-  border-bottom: 1px solid ${vars.white};
   cursor: pointer;
   display: inline-block;
-  padding: 0.5rem;
+  padding: 1rem 0 1.8rem;
   &:hover {
-    background-color: ${vars.lightBlue};
+    color: ${vars.lightBlue};
   }
 `
-const LanguagePanel = styled.div`width: 100%;`
+const LanguagePanel = styled.div`float: right;`
 const Language = styled.a`
   box-sizing: border-box;
-  border-right: ${props =>
-    props.borderRight ? `1px solid ${vars.white}` : '0px'};
   background-color: ${props =>
     props.active ? `${vars.lightBlue}` : 'transparent'};
   cursor: pointer;
   height: 100%;
-  padding: 0.5rem 1rem;
-  float: left;
-  width: 50%;
-  &:hover {
-    background-color: ${vars.lightBlue};
-  }
+  padding: 0.5rem 0.7rem;
+  margin-bottom: 0.5rem;
 `
 export default class extends Component {
   render() {
