@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
+import Cookies from 'universal-cookie'
 import vars from '../commons/vars'
 import ModalText from '../../containers/ModalText'
 
@@ -30,25 +31,41 @@ const Language = styled.a`
   padding: 0.5rem 0.7rem;
   margin-bottom: 0.5rem;
 `
+
+const cookies = new Cookies()
 export default class extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      lang: cookies.get('lang'),
+    }
+    this.setLang = this.setLang.bind(this)
+  }
+  setLang(lang) {
+    cookies.set('lang', lang, { path: '/' })
+    this.setState({
+      lang,
+    })
+  }
   render() {
     const { url } = this.props
-    console.log(url)
-    const lang = url.query.lang || 'en'
+    const { lang } = this.state
     return (
       <LoginLang>
         <Login>
           <ModalText modalType={3} text="Login/Register" />
         </Login>
         <LanguagePanel>
-          <Link href={`${url.pathname}?lang=en`}>
-            <Language borderRight active={lang === 'en'}>
-              EN
-            </Language>
-          </Link>
-          <Link href={`${url.pathname}?lang=th`}>
-            <Language active={lang === 'th'}>TH</Language>
-          </Link>
+          <Language
+            onClick={() => this.setLang('en')}
+            borderRight
+            active={lang === 'en'}
+          >
+            EN
+          </Language>
+          <Language onClick={() => this.setLang('th')} active={lang === 'th'}>
+            TH
+          </Language>
         </LanguagePanel>
       </LoginLang>
     )
