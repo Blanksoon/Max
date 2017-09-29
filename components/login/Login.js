@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import FacebookLoginButton from './FacebookLoginButton'
 
 const A = styled.a`TEXT-DECORATION: none;`
+const Wrapper = styled.div`position: absolute;`
 const ButtonLeft = styled.button`
   font-weight: bold;
   background-color: #b81111;
@@ -41,10 +42,10 @@ const Login = () => (
     <div>
       <Box>
         <center>
-          <Image pt="5rem" width="20%" src="static/logo.png" />
+          <Image width="100%" src="static/img_login.png" />
           <Text
             color="#B81111"
-            pt="10%"
+            pt="1rem"
             pb="3em"
             bold
             children="Almost there, Please log in to continue."

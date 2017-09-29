@@ -5,11 +5,14 @@ import withRedux from 'next-redux-wrapper'
 import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
 import VideoBox from '../components/videoCenter/VideoBox'
-import { Provider as Rebass, Container, Flex, Box } from 'rebass'
+import { Provider as Rebass, Flex, Box } from 'rebass'
+import Container from '../components/commons/Container'
 import color from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
 import Cookies from 'universal-cookie'
+import NewModal from '../containers/NewModal'
+
 const cookies = new Cookies()
 
 const WrapperNavbar = styled.div`background-color: #009999;`

@@ -8,7 +8,8 @@ import Players from '../components/videoPlayer/Player'
 import { Description } from '../components/videoPlayer/Description'
 import UpNext from '../components/videoPlayer/UpNext'
 import StadiumTicket from '../components/home/StadiumTicket'
-import { Provider as Rebass, Container, Flex, Box } from 'rebass'
+import { Provider as Rebass, Flex, Box } from 'rebass'
+import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import rootReducer from '../reducers'
 import { Provider } from 'react-redux'
@@ -17,6 +18,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import NewModal from '../containers/NewModal'
 import {
   toogleModal,
   updateModalType,

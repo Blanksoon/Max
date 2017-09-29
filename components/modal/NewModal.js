@@ -37,15 +37,15 @@ const WrapperImg = styled.div`
 const WrapperLogin = styled.div`
   position: relative;
   width: 840px;
-  height: 500px;
+  height: 550px;
   background: #fff;
   z-index: 240;
 `
 const WrapperClose = styled.div`
   position: absolute;
   color: #fff;
-  top: 0px;
-  right: 0px;
+  top: 20px;
+  right: 20px;
   width: 40px;
   height: 40px;
   //border: 3px solid #73ad81;
@@ -92,7 +92,7 @@ export default class Modal extends Component {
         <WrapperVod onClick={e => this.handleOnClick(e)} visibility="hidden">
           <Player />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="static/close.jpg" />
+            <Image width="100%" src="static/close.png" />
           </WrapperClose>
         </WrapperVod>
       )
@@ -101,7 +101,7 @@ export default class Modal extends Component {
         <WrapperImg onClick={e => this.handleOnClick(e)}>
           <Image width="100%" src={this.props.modalURL} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="static/close.jpg" />
+            <Image width="100%" src="static/close.png" />
           </WrapperClose>
         </WrapperImg>
       )
@@ -110,7 +110,7 @@ export default class Modal extends Component {
         <WrapperLogin onClick={e => this.handleOnClick(e)}>
           <Login />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="static/close.jpg" />
+            <Image width="100%" src="static/close.png" />
           </WrapperClose>
         </WrapperLogin>
       )

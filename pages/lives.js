@@ -2,10 +2,20 @@ import Link from 'next/link'
 import React from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { Container, Flex, Box, Image } from 'rebass'
+import { Flex, Box, Image } from 'rebass'
 import Main from '../layouts/Main'
 import color from '../components/commons/vars'
 import ThumbnailBigLive from '../components/thumbnail/ThumbnailBigLive'
+import Container from '../components/commons/Container'
+import { initStore } from '../redux/store'
+import { fetchVods } from '../redux/modules/vod'
+import withRedux from 'next-redux-wrapper'
+import {
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+} from '../redux/modules/modal'
 
 const Text = styled.div`
   color: #b81111;
@@ -97,4 +107,10 @@ const lives = ({ url }) => (
   </div>
 )
 
-export default lives
+export default withRedux(initStore, null, {
+  fetchVods,
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+})(lives)

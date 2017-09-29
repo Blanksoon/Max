@@ -43,10 +43,24 @@ class FacebookLoginButton extends React.Component {
           appId="1492448664168205"
           autoLoad={false}
           fields="name,email,id,gender,locale,age_range"
-          //cssClass="button-right"
+          //cssClass="my-facebook-button-class"
           textButton="f Log in with Facebook"
           callback={this.facebookResponse}
         />
+        <style jsx>
+          {`
+            .button-right {
+              background-color: #3a559f;
+              border: none;
+              color: white;
+              padding: 10px 30px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 1em;
+            }
+          `}
+        </style>
       </div>
     )
   }

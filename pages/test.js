@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Flex, Provider, Box, Text, overlay } from 'rebass'
+import Container from '../components/commons/Container'
 import Modal from '../components/modal/Modal'
 import Login from '../components/login/Login'
 import color from '../components/commons/vars'
