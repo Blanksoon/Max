@@ -13,6 +13,7 @@ import Main from '../layouts/Main'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import NewModal from '../containers/NewModal'
 import {
   toogleModal,
   updateModalType,

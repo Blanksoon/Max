@@ -41,8 +41,8 @@ const Input = styled.input`
 const WrapperClose = styled.div`
   position: absolute;
   color: #000;
-  top: 0px;
-  right: 17.5rem;
+  top: 0.5rem;
+  right: 17rem;
   width: 40px;
   height: 40px;
   //border: 3px solid #73ad81;
@@ -71,7 +71,7 @@ export default class Promocode extends Component {
     //promocode = '1003'
     if (this.props.cookie == undefined) {
       console.log('cookie not found')
-      this.props.push('/vods')
+      this.props.push('/login')
     }
     this.props.subScribe(this.state.promocode)
   }
@@ -142,7 +142,7 @@ export default class Promocode extends Component {
             />
           </Box>
           <WrapperClose onClick={() => this.props.backToPromo()}>
-            <Image width="100%" src="static/close.jpg" />
+            <Image width="50%" src="static/close.png" />
           </WrapperClose>
         </WrapperVod>
       )

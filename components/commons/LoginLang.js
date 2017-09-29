@@ -2,6 +2,7 @@ import { Component } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import vars from '../commons/vars'
+import ModalText from '../../containers/ModalText'
 
 const LoginLang = styled.span`
   color: ${vars.white};
@@ -36,7 +37,9 @@ export default class extends Component {
     const lang = url.query.lang || 'en'
     return (
       <LoginLang>
-        <Login>Login/Register</Login>
+        <Login>
+          <ModalText modalType={3} text="Login/Register" />
+        </Login>
         <LanguagePanel>
           <Link href={`${url.pathname}?lang=en`}>
             <Language borderRight active={lang === 'en'}>

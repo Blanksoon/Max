@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { Container, Flex, Box, Image, Text } from 'rebass'
+import { Flex, Box, Image, Text } from 'rebass'
+import Container from '../components/commons/Container'
 import NewModal from '../containers/NewModal'
 import Main from '../layouts/Main'
 import color from '../components/commons/vars'
@@ -122,7 +123,7 @@ class getticket extends React.Component {
           <WrapperPromotion>
             <Container>
               <Box>
-                <FacebookLoginButton />
+                {/* <FacebookLoginButton /> */}
                 <Promotion />
               </Box>
             </Container>

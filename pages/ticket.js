@@ -2,7 +2,9 @@ import React, { PureComponent } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import GetTicketTabs from '../components/getTicket/GetTicketTabs'
-import { Container, Flex, Box } from 'rebass'
+import { Flex, Box } from 'rebass'
+import Container from '../components/commons/Container'
+import NewModal from '../containers/NewModal'
 
 const styleGlobal = {
   defaultMargin: '20px',

@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import React from 'react'
 import Link from 'next/link'
-import { Container, Flex, Box } from 'rebass'
+import { Flex, Box } from 'rebass'
+import Container from '../components/commons/Container'
 import styled from 'styled-components'
 import About from '../components/home/About'
 import { LabelSearch } from '../components/videoCenter/LabelSearch'
@@ -10,6 +11,16 @@ import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
 import { VideoBox } from '../components/videoCenter/VideoBox'
 import Main from '../layouts/Main'
+import NewModal from '../containers/NewModal'
+import { initStore } from '../redux/store'
+import { fetchVods } from '../redux/modules/vod'
+import withRedux from 'next-redux-wrapper'
+import {
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+} from '../redux/modules/modal'
 
 const Wrapper = styled.div`font-family: Helvetica, Arial, sans-serif;`
 const Background = styled.div`background-color: ${props => props.color};`
@@ -57,5 +68,10 @@ const Contact = ({ url }) => (
     </style>
   </Main>
 )
-
-export default Contact
+export default withRedux(initStore, null, {
+  fetchVods,
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+})(Contact)
