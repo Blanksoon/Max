@@ -26,6 +26,7 @@ export const post = (url, json) => {
       if (!response.ok) {
         throw new Error(response.statusText)
       }
+      //console.log('response', response.json())
       return response.json()
     })
     .catch(err => Promise.reject(err))

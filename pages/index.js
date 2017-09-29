@@ -65,7 +65,7 @@ let cookie = ''
 class Index extends React.Component {
   componentDidMount() {
     cookie = cookies.get('token')
-    //console.log('get cookie', cookie)
+    console.log('get cookie', cookie)
     return this.props.fetchVods(cookie)
   }
   render() {

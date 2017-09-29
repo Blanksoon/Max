@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import styled from 'styled-components'
-import { Flex, Provider, Box, Text, overlay } from 'rebass'
+import { Flex, Provider, Box, Text, overlay, Image } from 'rebass'
 import color from '../commons/vars'
+import Link from 'next/link'
 import ThumbnailTicket from '../thumbnail/ThumbnailTicket'
 
 const Button = styled.button`
@@ -37,10 +38,65 @@ const Input = styled.input`
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
 `
+const WrapperClose = styled.div`
+  position: absolute;
+  color: #000;
+  top: 0px;
+  right: 17.5rem;
+  width: 40px;
+  height: 40px;
+  //border: 3px solid #73ad81;
+`
+const WrapperVod = styled.div`
+  position: relative;
+  color: blue;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 240;
+`
 const Wrapper = styled.div`background-color: #fff;`
 export default class Promocode extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      promocode: '',
+    }
+    this.subScribe = this.subScribe.bind(this)
+    this.handleOnChange = this.handleOnChange.bind(this)
+    this.handleOnKeyDown = this.handleOnKeyDown.bind(this)
+  }
+  subScribe() {
+    //console.log('test', this.state.promocode)
+    //promocode = '1003'
+    if (this.props.cookie == undefined) {
+      console.log('cookie not found')
+      this.props.push('/vods')
+    }
+    this.props.subScribe(this.state.promocode)
+  }
+
+  handleOnChange(event) {
+    this.setState({
+      promocode: event.target.value,
+    })
+    //console.log('OnChange', this.state.promocode)
+  }
+
+  handleOnKeyDown(event) {
+    if (event.keyCode !== 13) {
+      return
+    }
+    event.preventDefault()
+    this.subScribe()
+  }
   render() {
     let renderUI = <div />
+    if (this.props.cookie == undefined) {
+      {
+        console.log('login')
+      }
+    }
     if (this.props.id === 1) {
       renderUI = (
         <Box>
@@ -55,8 +111,11 @@ export default class Promocode extends Component {
               id="fname"
               name="firstname"
               placeholder="Promo code here"
+              value={this.state.promocode}
+              onChange={this.handleOnChange}
+              onKeyDown={this.handleOnKeyDown}
             />&nbsp;&nbsp;&nbsp;
-            <Button>Submit</Button>
+            <Button onClick={() => this.subScribe()}>Submit</Button>
           </Box>
         </Box>
       )
@@ -73,12 +132,28 @@ export default class Promocode extends Component {
       )
     } else if (this.props.id === 3) {
       renderUI = (
+        <WrapperVod>
+          <Box w={5.5 / 12}>
+            <ThumbnailTicket
+              img="static/wrong.jpg"
+              text1="Opp!"
+              text2="Invalid promo code, please try another one."
+              color="#a82404"
+            />
+          </Box>
+          <WrapperClose onClick={() => this.props.backToPromo()}>
+            <Image width="100%" src="static/close.jpg" />
+          </WrapperClose>
+        </WrapperVod>
+      )
+    } else if (this.props.id === 4) {
+      renderUI = (
         <Box w={5.5 / 12}>
           <ThumbnailTicket
-            img="static/wrong.jpg"
-            text1="Opp!"
-            text2="Invalid promo code, please try another one."
-            color="#a82404"
+            img="static/correct.jpg"
+            text1="Success!"
+            text2="Your purchase has been started you can watch in 30 day, Thank you."
+            color="#79adff"
           />
         </Box>
       )
