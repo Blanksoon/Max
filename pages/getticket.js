@@ -34,7 +34,7 @@ const getticket = ({ url }) => (
           <WrapperPromotion>
             <Container>
               <Box>
-                <Promocode id={1} />
+                <Promocode id={2} />
               </Box>
             </Container>
           </WrapperPromotion>
