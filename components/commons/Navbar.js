@@ -12,14 +12,21 @@ import LoginLang from './LoginLang'
 const Navbar = styled(Fixed)`
   background: ${props =>
     props.pathname == '/' ? 'rgba(1, 15, 30, 0.8)' : 'rgba(1, 15, 30, 10)'};
-  display: block;
-  height: 6rem;
+  box-sizing: 'border-box';
+  height: ${vars.navHeight};
   width: 100%;
   z-index: 9999;
 `
-const NavItemContainer = styled.div`
-  position: absolute;
-  bottom: 0;
+const Motto = styled.span`
+  box-sizing: border-box;
+  color: ${vars.white};
+  display: inline-block;
+  font-style: italic;
+  float: left;
+  height: ${vars.navHeight};
+  padding: 1.5rem 1rem;
+  text-align: right;
+  vertical-align: middle;
 `
 const Logo = styled(Image)`
   cursor: pointer;
@@ -61,12 +68,13 @@ export default class extends Component {
     return (
       <Navbar m={0} p={2} top left z={1} pathname={this.props.url.pathname}>
         <Container>
-          <NavItemContainer>
-            {this.state.navItems.map(({ label, href, active }) => (
-              <NavItem key={label} label={label} href={href} active={active} />
-            ))}
-            <LoginLang url={this.props.url} />
-          </NavItemContainer>
+          <Motto>
+            The Most Exciting <br />Fightingsport in the World
+          </Motto>
+          {this.state.navItems.map(({ label, href, active }) => (
+            <NavItem key={label} label={label} href={href} active={active} />
+          ))}
+          <LoginLang url={this.props.url} />
           <Link href="/">
             <Logo src="/static/logo.png" />
           </Link>

@@ -1,4 +1,5 @@
 export default {
+  navHeight: '6rem',
   lightBlue: '#3D7FB8',
   blue: '#022346',
   darkblue: '#010F1E',
