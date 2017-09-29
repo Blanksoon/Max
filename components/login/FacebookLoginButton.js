@@ -2,10 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import Cookies from 'universal-cookie'
 import FacebookLogin from 'react-facebook-login'
+import { connect } from 'react-redux'
+import { loginSuccess } from '../../redux/modules/login'
 
 const cookies = new Cookies()
 const Wrapper = styled.div`color: red;`
 class FacebookLoginButton extends React.Component {
+  constructor(props) {
+    super(props)
+    this.facebookResponse = this.facebookResponse.bind(this)
+  }
   facebookResponse(response) {
     var providerData = {
       provider_name: 'facebook',
@@ -15,9 +21,6 @@ class FacebookLoginButton extends React.Component {
       provider_name: 'facebook',
       provider_data: response,
     }
-    //j = JSON.stringify(j)
-    // console.log('providerData', j)
-
     fetch('http://139.59.127.206:3001/fb-login', {
       method: 'POST',
       body: JSON.stringify(providerData),
@@ -32,6 +35,8 @@ class FacebookLoginButton extends React.Component {
       .then(function(response) {
         cookies.set('token', response.data.token, { path: '/' })
       })
+    console.log('ss', this.props)
+    this.props.loginSuccess()
   }
 
   render() {
@@ -65,5 +70,8 @@ class FacebookLoginButton extends React.Component {
     )
   }
 }
+const mapDispatchToProps = dispatch => ({
+  loginSuccess: () => dispatch(loginSuccess()),
+})
 
-export default FacebookLoginButton
+export default connect(null, mapDispatchToProps)(FacebookLoginButton)

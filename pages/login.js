@@ -10,8 +10,9 @@ import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
 import Cookies from 'universal-cookie'
 import { initStore } from '../redux/store'
-import { fetchVods } from '../redux/modules/vod'
+import { loginSuccess } from '../redux/modules/login'
 import withRedux from 'next-redux-wrapper'
+import React from 'react'
 import {
   toogleModal,
   updateModalType,
@@ -50,51 +51,61 @@ const GradientBg = styled.div`
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 let cookie = ''
 
-class login extends React.Component {
+class LoginFacebook extends React.Component {
+  constructor(props) {
+    super(props)
+  }
   componentDidMount() {
     cookie = cookies.get('token')
     //console.log('get cookie', cookie)
-    return this.props.fetchVods(cookie)
+    //return this.props.fetchVods(cookie)
   }
   render() {
-    return (
-      <div>
-        <Head>
-          <link href="../static/css/video-react.css" rel="stylesheet" />
-        </Head>
-        <Main url={this.props.url}>
-          <NewModal />
-          <Container>
-            <Flex>
-              <Box w={2 / 12} />
-              <Box w={8 / 12} pt="7rem" pb="2rem">
-                <Login />
-              </Box>
-            </Flex>
-          </Container>
+    console.log('loginSucessful', this.props)
+    if (this.props.checkLogin == true) {
+      this.props.url.back()
+    } else {
+      return (
+        <div>
+          <Head>
+            <link href="../static/css/video-react.css" rel="stylesheet" />
+          </Head>
+          <Main url={this.props.url}>
+            <NewModal />
+            <Container>
+              <Flex>
+                <Box w={2 / 12} />
+                <Box w={8 / 12} pt="7rem" pb="2rem">
+                  <Login />
+                </Box>
+              </Flex>
+            </Container>
 
-          <style jsx global>
-            {`
-              body {
-                padding: 0 !important;
-                margin: 0 !important;
-              }
-               {
-                /* * {
+            <style jsx global>
+              {`
+                body {
+                  padding: 0 !important;
+                  margin: 0 !important;
+                }
+                 {
+                  /* * {
               box-sizing: border-box;
             } */
-              }
-            `}
-          </style>
-        </Main>
-      </div>
-    )
+                }
+              `}
+            </style>
+          </Main>
+        </div>
+      )
+    }
   }
 }
-export default withRedux(initStore, null, {
-  fetchVods,
-  toogleModal,
-  updateModalType,
-  indexModalURL,
-  closeModal,
-})(login)
+const mapStateToProps = state => {
+  return {
+    checkLogin: state.login.loginSucessful,
+  }
+}
+
+export default withRedux(initStore, mapStateToProps, {
+  loginSuccess,
+})(LoginFacebook)
