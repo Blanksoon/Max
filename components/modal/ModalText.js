@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import NewModal from './NewModal'
-import { toogleModal } from '../../actions/modal'
 import { Image } from 'rebass'
+import NewModal from './NewModal'
+import { toogleModal } from '../../redux/modules/modal'
 
 class ModalText extends Component {
   static propTypes = {

@@ -1,6 +1,10 @@
 import { connect } from 'react-redux'
 import ModalImg from '../components/modal/ModalImg'
-import { toogleModal, updateModalType, indexModalURL } from '../actions/modal'
+import {
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+} from '../redux/modules/modal'
 
 const mapStateToProps = state => {
   return {

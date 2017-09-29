@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
+import styled from 'styled-components'
+import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
 import { connect } from 'react-redux'
 import NewModal from './NewModal'
-import styled from 'styled-components'
-import { toogleModal } from '../../actions/modal'
-import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
+import { toggleModal } from '../../redux/modules/modal'
 import BorderlessButton from '../commons/BorderlessButton'
 import color from '../commons/vars'
 
