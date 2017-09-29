@@ -34,6 +34,13 @@ const WrapperImg = styled.div`
   background: #fff;
   z-index: 240;
 `
+const WrapperLogin = styled.div`
+  position: relative;
+  width: 840px;
+  height: 500px;
+  background: #fff;
+  z-index: 240;
+`
 const WrapperClose = styled.div`
   position: absolute;
   color: #fff;
@@ -97,6 +104,15 @@ export default class Modal extends Component {
             <Image width="100%" src="static/close.jpg" />
           </WrapperClose>
         </WrapperImg>
+      )
+    } else if (this.props.modalType === 3) {
+      renderUI = (
+        <WrapperLogin onClick={e => this.handleOnClick(e)}>
+          <Login />
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="static/close.jpg" />
+          </WrapperClose>
+        </WrapperLogin>
       )
     } else {
       renderUI = renderUI

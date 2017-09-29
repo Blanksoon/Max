@@ -1,6 +1,7 @@
 // This is the Link API
 import Head from 'next/head'
 import Link from 'next/link'
+import { Flex, Box } from 'rebass'
 import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
 import { ComingLive } from '../components/home/ComingLive'
@@ -16,13 +17,20 @@ import ListVideo from '../components/maxNews/ListVideo'
 import Login from '../components/login/Login'
 import Modal from '../components/modal/Modal'
 import NewModal from '../containers/NewModal'
-import { Container, Flex, Box } from 'rebass'
+import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import rootReducer from '../reducers'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import Cookies from 'universal-cookie'
+import { initStore } from '../redux/store'
+import { fetchVods } from '../redux/modules/vod'
+import withRedux from 'next-redux-wrapper'
+import {
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+} from '../redux/modules/modal'
+const cookies = new Cookies()
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -52,63 +60,71 @@ const GradientBg = styled.div`
   background: linear-gradient(${vars.darkblue}, ${vars.blue});
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
-const store = createStore(rootReducer, composeWithDevTools())
-const Index = ({ url, lives }) => (
-  <div>
-    <Head>
-      <link href="./static/css/video-react.css" rel="stylesheet" />
-    </Head>
-    <Provider store={store}>
-      <Main url={url}>
-        <NewModal />
-        <GradientBg>
-          <Container>
-            <Hero lives={lives} />
-            <LatestVideo name="Latest Video" />
-          </Container>
-        </GradientBg>
-        <WrapperLive>
-          <Container>
-            <Flex>
-              <Box w={12 / 12} pb="4em" pt="2em">
-                <ComingLive />
-              </Box>
-            </Flex>
-          </Container>
-        </WrapperLive>
-        <WrapperStadiumTicket>
-          <Container>
-            <Flex>
+let cookie = ''
+
+class Index extends React.Component {
+  componentDidMount() {
+    cookie = cookies.get('token')
+    //console.log('get cookie', cookie)
+    return this.props.fetchVods(cookie)
+  }
+  render() {
+    return (
+      <div>
+        <Head>
+          <link href="../static/css/video-react.css" rel="stylesheet" />
+        </Head>
+        <Main url={this.props.url}>
+          <NewModal />
+          <GradientBg>
+            <Container>
+              <Hero lives={this.props.lives} />
+              <LatestVideo name="Latest Video" />
+            </Container>
+          </GradientBg>
+          <WrapperLive>
+            <Container>
+              <Flex>
+                <Box w={12 / 12} pb="4em" pt="2em">
+                  <ComingLive />
+                </Box>
+              </Flex>
+            </Container>
+          </WrapperLive>
+          <WrapperStadiumTicket>
+            <Container>
+              <Flex>
+                <Box w={12 / 12}>
+                  <StadiumTicket />
+                </Box>
+              </Flex>
+            </Container>
+          </WrapperStadiumTicket>
+          <WrapperAbout>
+            <Container>
               <Box w={12 / 12}>
-                <StadiumTicket />
+                <About />
               </Box>
-            </Flex>
-          </Container>
-        </WrapperStadiumTicket>
-        <WrapperAbout>
-          <Container>
-            <Box w={12 / 12}>
-              <About />
-            </Box>
-          </Container>
-        </WrapperAbout>
-        <style jsx global>
-          {`
-            body {
-              padding: 0 !important;
-              margin: 0 !important;
-            }
-             {
-              /* * {
+            </Container>
+          </WrapperAbout>
+          <style jsx global>
+            {`
+              body {
+                padding: 0 !important;
+                margin: 0 !important;
+              }
+               {
+                /* * {
               box-sizing: border-box;
             } */
-            }
-          `}
-        </style>
-      </Main>
-    </Provider>
-  </div>
-)
+              }
+            `}
+          </style>
+        </Main>
+      </div>
+    )
+  }
+}
 
 Index.getInitialProps = () => {
   return {
@@ -132,4 +148,10 @@ Index.getInitialProps = () => {
     ],
   }
 }
-export default Index
+export default withRedux(initStore, null, {
+  fetchVods,
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+})(Index)

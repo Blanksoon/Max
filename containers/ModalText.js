@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import ModalButton from '../components/modal/ModalButton'
+import ModalText from '../components/modal/ModalText'
 import { toogleModal, updateModalType, indexModalURL } from '../actions/modal'
 
 const mapStateToProps = state => {
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
   indexModalURL: modalURL => dispatch(indexModalURL(modalURL)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalButton)
+export default connect(mapStateToProps, mapDispatchToProps)(ModalText)

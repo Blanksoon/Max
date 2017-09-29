@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import GetTicketTabs from '../components/getTicket/GetTicketTabs'
-import { Provider, Container, Flex, Box } from 'rebass'
+import { Container, Flex, Box } from 'rebass'
 
 const styleGlobal = {
   defaultMargin: '20px',
@@ -26,21 +26,18 @@ export default class GetTicket extends PureComponent {
     const { activeContent } = this.state
 
     return (
-      <Provider>
-        <div id="get-ticket">
-          <section id="get-ticket-head-tab">
-            <Container>
-              <h1>Get Ticket</h1>
-              <GetTicketTabs
-                activeNumber={activeContent}
-                headTabs={tickeyTabs}
-                contents={[LiveTicket, StadiumTicket]}
-                onClick={this.onChangeTabTicket}
-              />
-            </Container>
-          </section>
-        </div>
-
+      <div id="get-ticket">
+        <section id="get-ticket-head-tab">
+          <Container>
+            <h1>Get Ticket</h1>
+            <GetTicketTabs
+              activeNumber={activeContent}
+              headTabs={tickeyTabs}
+              contents={[LiveTicket, StadiumTicket]}
+              onClick={this.onChangeTabTicket}
+            />
+          </Container>
+        </section>
         <style jsx global>
           {`
             body {
@@ -69,7 +66,7 @@ export default class GetTicket extends PureComponent {
             }
           `}
         </style>
-      </Provider>
+      </div>
     )
   }
 }

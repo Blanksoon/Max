@@ -7,7 +7,7 @@ const mapStateToProps = state => {
     // active: state.modal.activeModal,
   }
 }
-
+//console.log('hi')
 const mapDispatchToProps = dispatch => ({
   toogleModalAction: () => dispatch(toogleModal()),
   updateModalAction: modalType => dispatch(updateModalType(modalType)),

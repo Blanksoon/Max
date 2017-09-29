@@ -2,11 +2,11 @@ import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 import React, { PropTypes } from 'react'
 import { Player } from 'video-react'
 import HLSSource from './HLSSource'
-import rootReducer from '../../reducers'
+//import rootReducer from '../../reducers'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-const store = createStore(rootReducer, composeWithDevTools())
+//const store = createStore(rootReducer, composeWithDevTools())
 const sources = {
   promoClip:
     'https://wittestvod-vh.akamaihd-staging.net/i/wittestvod/SampleVideo/luke_,3,6,11,000k.mp4.csmil/master.m3u8',
@@ -35,13 +35,14 @@ class Players extends React.Component {
   // }
 
   render() {
+    console.log('this.props.src', this.props)
     return (
       <div className="Player">
         <Box width={1} bg="pink">
           <Player ref="player" autoPlay={false}>
             <HLSSource
               isVideoChild
-              src="https://wittesthlslive-i.akamaihd.net/hls/live/571301/Event1/group1/playlist.m3u8"
+              src="https://wittestvod-vh.akamaihd-staging.net/i/wittestvod/SampleVideo/luke_,3,6,11,000k.mp4.csmil/master.m3u8"
             />
           </Player>
           {/* <button onClick={this.onClickVideo}>pause</button> */}
