@@ -18,6 +18,7 @@ const Login = styled.div`
   color: ${vars.lightBlue};
   cursor: pointer;
   display: inline-block;
+  float: right;
   padding: 0.5rem 1rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;

@@ -66,7 +66,7 @@ export default class extends Component {
 
   render() {
     return (
-      <Navbar m={0} p={2} top left z={1}>
+      <Navbar pathname={this.props.url.pathname} m={0} p={2} top left z={1}>
         <Container>
           <Motto>
             The Most Exciting <br />Fightingsport in the World
