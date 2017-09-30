@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  toogleModalAction: () => dispatch(toogleModal()),
+  toggleModalAction: () => dispatch(toggleModal()),
   closeModal: () => dispatch(closeModal()),
 })
 

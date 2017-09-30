@@ -4,7 +4,7 @@ import thunkMiddleware from 'redux-thunk'
 import Cookies from 'universal-cookie'
 import rootReducer from './rootReducer'
 
-const state = {
+const initialState = {
   cookie: {},
   modal: {},
   vod: {},
@@ -19,12 +19,12 @@ const getAllCookies = ({ req, isServer }) => {
   }
   return cookies.getAll()
 }
-export const initStore = (initialState = state, options) => {
+export const initStore = (state = initialState, options) => {
   let cookies = getAllCookies(options)
-  initialState.cookie = cookies
+  state.cookie = cookies
   return createStore(
     rootReducer,
-    initialState,
+    state,
     composeWithDevTools(applyMiddleware(thunkMiddleware))
   )
 }

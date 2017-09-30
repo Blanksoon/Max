@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import ModalImg from '../components/modal/ModalImg'
 import {
-  toogleModal,
+  toggleModal,
   updateModalType,
   indexModalURL,
 } from '../redux/modules/modal'
@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 }
 //console.log('hi')
 const mapDispatchToProps = dispatch => ({
-  toogleModalAction: () => dispatch(toogleModal()),
+  toggleModalAction: () => dispatch(toggleModal()),
   updateModalAction: modalType => dispatch(updateModalType(modalType)),
   indexModalURL: modalURL => dispatch(indexModalURL(modalURL)),
 })
