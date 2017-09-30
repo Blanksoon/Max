@@ -54,7 +54,7 @@ export default class Modal extends Component {
   static propTypes = {
     active: PropTypes.bool,
     modalType: PropTypes.string,
-    toogleModalAction: PropTypes.func,
+    toggleModalAction: PropTypes.func,
     modalURL: PropTypes.string,
     closeModal: PropTypes.func,
   }
@@ -63,7 +63,7 @@ export default class Modal extends Component {
   }
   handleOnClick = e => {
     console.log('click', e)
-    false ? this.props.toogleModalAction() : null
+    false ? this.props.toggleModalAction() : null
     // if (false) {
     //   this.props.toogleModalAction()
     // }
