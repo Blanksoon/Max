@@ -2,10 +2,9 @@ import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
 import withRedux from 'next-redux-wrapper'
-import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
 import VideoBox from '../components/videoCenter/VideoBox'
-import { Provider as Rebass, Flex, Box } from 'rebass'
+import { Flex, Box } from 'rebass'
 import Container from '../components/commons/Container'
 import color from '../components/commons/vars'
 import { initStore } from '../redux/store'
@@ -43,32 +42,30 @@ class Vods extends React.Component {
   render() {
     //console.log(cookie)
     return (
-      <Rebass>
-        <Main url={this.props.url}>
-          <div className="videocenter">
-            <WrapperVod color={color}>
-              <Container>
-                <Box pt="20px" bg="white">
-                  <VideoBox />
-                </Box>
-              </Container>
-            </WrapperVod>
-          </div>
-          <style jsx global>
-            {`
-              body {
-                padding: 0 !important;
-                margin: 0 !important;
-              }
-               {
-                /* * {
+      <Main url={this.props.url}>
+        <div className="videocenter">
+          <WrapperVod color={color}>
+            <Container>
+              <Box pt="20px" bg="white">
+                <VideoBox />
+              </Box>
+            </Container>
+          </WrapperVod>
+        </div>
+        <style jsx global>
+          {`
+            body {
+              padding: 0 !important;
+              margin: 0 !important;
+            }
+             {
+              /* * {
               box-sizing: border-box;
             } */
-              }
-            `}
-          </style>
-        </Main>
-      </Rebass>
+            }
+          `}
+        </style>
+      </Main>
     )
   }
 }
