@@ -1,14 +1,27 @@
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
+import Cookies from 'universal-cookie'
 import rootReducer from './rootReducer'
 
-const initialState = {
+const state = {
+  cookie: {},
   modal: {},
   vod: {},
 }
 
-export const initStore = (initialState = initialState) => {
+const getAllCookies = ({ req, isServer }) => {
+  let cookies
+  if (isServer) {
+    cookies = new Cookies(req.headers.cookie)
+  } else {
+    cookies = new Cookies()
+  }
+  return cookies.getAll()
+}
+export const initStore = (initialState = state, options) => {
+  let cookies = getAllCookies(options)
+  initialState.cookie = cookies
   return createStore(
     rootReducer,
     initialState,

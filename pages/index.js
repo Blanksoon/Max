@@ -2,6 +2,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { Flex, Box } from 'rebass'
+import Cookies from 'universal-cookie'
 import { NavbarHead } from '../components/home/NavbarHead'
 import { Footer } from '../components/home/Footer'
 import { ComingLive } from '../components/home/ComingLive'
@@ -20,9 +21,9 @@ import NewModal from '../containers/NewModal'
 import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
-import Cookies from 'universal-cookie'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import { loadAllCookies } from '../redux/modules/cookie'
 import withRedux from 'next-redux-wrapper'
 import {
   toogleModal,
@@ -30,7 +31,6 @@ import {
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
-const cookies = new Cookies()
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -60,11 +60,11 @@ const GradientBg = styled.div`
   background: linear-gradient(${vars.darkblue}, ${vars.blue});
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
-let cookie = ''
 
 class Index extends React.Component {
   componentDidMount() {
-    cookie = cookies.get('token')
+    const cookies = new Cookies()
+    const cookie = cookies.get('token')
     console.log('get cookie', cookie)
     return this.props.fetchVods(cookie)
   }
@@ -126,7 +126,8 @@ class Index extends React.Component {
   }
 }
 
-Index.getInitialProps = () => {
+Index.getInitialProps = props => {
+  console.log(props.store.getState())
   return {
     lives: [
       {
@@ -148,7 +149,7 @@ Index.getInitialProps = () => {
     ],
   }
 }
-export default withRedux(initStore, null, {
+export default withRedux(initStore, state => state, {
   fetchVods,
   toogleModal,
   updateModalType,

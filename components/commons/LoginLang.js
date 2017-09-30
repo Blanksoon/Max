@@ -32,24 +32,17 @@ const Language = styled.a`
   margin-bottom: 0.5rem;
 `
 
-const cookies = new Cookies()
 export default class extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      lang: cookies.get('lang'),
-    }
     this.setLang = this.setLang.bind(this)
   }
   setLang(lang) {
-    cookies.set('lang', lang, { path: '/' })
-    this.setState({
-      lang,
-    })
+    this.props.setCookie('lang', lang)
   }
   render() {
-    const { url } = this.props
-    const { lang } = this.state
+    const { url, lang } = this.props
+    console.log(this.props)
     return (
       <LoginLang>
         <Login>
