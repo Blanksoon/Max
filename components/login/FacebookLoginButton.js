@@ -1,11 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
 import Cookies from 'universal-cookie'
 import FacebookLogin from 'react-facebook-login'
 import api from '../../api'
 
 const cookies = new Cookies()
-const Wrapper = styled.div`color: red;`
 class FacebookLoginButton extends React.Component {
   facebookResponse(response) {
     var providerData = {
