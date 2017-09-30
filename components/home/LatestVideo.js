@@ -2,11 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 import Link from 'next/link'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
-class latest_video extends Component {
-  componentDidMount() {
-    console.log(this.props)
-    //this.props.fetchVods(this.props.token)
-  }
+class LatestVideo extends Component {
   render() {
     return (
       <div>
@@ -93,11 +89,11 @@ class latest_video extends Component {
             }
             a {
               color: #fff;
-              TEXT-DECORATION: none;
+              text-decoration: none;
             }
             a:hover {
-              COLOR: #ff0000;
-              TEXT-DECORATION: none;
+              color: #ff0000;
+              text-decoration: none;
             }
           `}
         </style>
@@ -105,4 +101,4 @@ class latest_video extends Component {
     )
   }
 }
-export default latest_video
+export default LatestVideo

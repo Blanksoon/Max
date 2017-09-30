@@ -42,7 +42,6 @@ export default class extends Component {
   }
   render() {
     const { url, lang } = this.props
-    console.log(this.props)
     return (
       <LoginLang>
         <Login>

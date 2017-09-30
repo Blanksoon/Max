@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Flex, Box } from 'rebass'
 import Cookies from 'universal-cookie'
-import { NavbarHead } from '../components/home/NavbarHead'
+import styled from 'styled-components'
 import { Footer } from '../components/home/Footer'
 import { ComingLive } from '../components/home/ComingLive'
 import LatestVideo from '../components/home/LatestVideo'
@@ -11,19 +11,16 @@ import MaxNew from '../components/home/MaxNew'
 import StadiumTicket from '../components/home/StadiumTicket'
 import About from '../components/home/About'
 import Hero from '../components/home/Hero'
-import styled from 'styled-components'
 import OurShow from '../components/ourShow/OurShow'
 import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
 import ListVideo from '../components/maxNews/ListVideo'
 import Login from '../components/login/Login'
-import Modal from '../components/modal/Modal'
 import NewModal from '../containers/NewModal'
 import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
-import { loadAllCookies } from '../redux/modules/cookie'
 import withRedux from 'next-redux-wrapper'
 import {
   toogleModal,
@@ -65,7 +62,6 @@ class Index extends React.Component {
   componentDidMount() {
     const cookies = new Cookies()
     const cookie = cookies.get('token')
-    console.log('get cookie', cookie)
     return this.props.fetchVods(cookie)
   }
   render() {
@@ -127,7 +123,6 @@ class Index extends React.Component {
 }
 
 Index.getInitialProps = props => {
-  console.log(props.store.getState())
   return {
     lives: [
       {
@@ -149,7 +144,7 @@ Index.getInitialProps = props => {
     ],
   }
 }
-export default withRedux(initStore, state => state, {
+export default withRedux(initStore, null, {
   fetchVods,
   toogleModal,
   updateModalType,

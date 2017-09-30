@@ -61,7 +61,7 @@ const ThumbnailLive = props => (
         </Flex>
       </div>
     </div>
-    <Box bg="#022246" pt="2%" pb="2%">
+    <Box pt="2%" pb="2%">
       <center>
         <Text color="#d6ff00" bold children={props.text} fontSize="1em" />
       </center>

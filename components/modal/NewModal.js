@@ -53,7 +53,7 @@ const WrapperClose = styled.div`
 export default class Modal extends Component {
   static propTypes = {
     active: PropTypes.bool,
-    modalType: PropTypes.string,
+    modalType: PropTypes.number,
     toggleModalAction: PropTypes.func,
     modalURL: PropTypes.string,
     closeModal: PropTypes.func,
