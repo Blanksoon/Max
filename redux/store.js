@@ -20,9 +20,21 @@ const getAllCookies = ({ req, isServer }) => {
   return cookies.getAll()
 }
 export const initStore = (state = initialState, options) => {
-  let cookies = getAllCookies(options)
+  const cookies = getAllCookies(options)
+
+  // Set default language
+  cookies.lang = cookies.lang || 'en'
+
+  // Load auth state from cookies
+  const auth = {
+    email: cookies.email,
+    token: cookies.token,
+  }
+
+  // Init state
   state.cookie = cookies
-  state.cookie.lang = state.cookie.lang || 'en'
+  state.auth = auth
+
   return createStore(
     rootReducer,
     state,

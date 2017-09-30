@@ -1,19 +1,25 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Cookies from 'universal-cookie'
 import FacebookLogin from 'react-facebook-login'
 import * as api from '../../api'
+import { fbLogin } from '../../redux/modules/auth'
+import { closeModal } from '../../redux/modules/modal'
 
 const cookies = new Cookies()
 class FacebookLoginButton extends React.Component {
+  constructor(props) {
+    super(props)
+    this.facebookResponse = this.facebookResponse.bind(this)
+  }
   async facebookResponse(response) {
     const providerData = {
       provider_name: 'facebook',
       provider_data: response,
     }
-    const json = await api.post(`${api.SERVER}/fb-login`, providerData)
-    console.log(json)
+    this.props.fbLogin(providerData)
+    this.props.closeModal()
   }
-
   render() {
     return (
       <div>
@@ -84,4 +90,4 @@ class FacebookLoginButton extends React.Component {
   }
 }
 
-export default FacebookLoginButton
+export default connect(null, { fbLogin, closeModal })(FacebookLoginButton)
