@@ -1,30 +1,17 @@
 import React from 'react'
 import Cookies from 'universal-cookie'
 import FacebookLogin from 'react-facebook-login'
-import api from '../../api'
+import * as api from '../../api'
 
 const cookies = new Cookies()
 class FacebookLoginButton extends React.Component {
-  facebookResponse(response) {
-    var providerData = {
+  async facebookResponse(response) {
+    const providerData = {
       provider_name: 'facebook',
       provider_data: response,
     }
-
-    fetch(`${api.SERVER}/fb-login`, {
-      method: 'POST',
-      body: JSON.stringify(providerData),
-      cors: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(function(response) {
-        return response.json()
-      })
-      .then(function(response) {
-        cookies.set('token', response.data.token, { path: '/' })
-      })
+    const json = await api.post(`${api.SERVER}/fb-login`, providerData)
+    console.log(json)
   }
 
   render() {

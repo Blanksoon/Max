@@ -22,6 +22,7 @@ const getAllCookies = ({ req, isServer }) => {
 export const initStore = (state = initialState, options) => {
   let cookies = getAllCookies(options)
   state.cookie = cookies
+  state.cookie.lang = state.cookie.lang || 'en'
   return createStore(
     rootReducer,
     state,
