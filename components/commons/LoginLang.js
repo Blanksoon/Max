@@ -14,9 +14,13 @@ const LoginLang = styled.span`
   text-align: center;
 `
 const Login = styled.div`
+  border: 1px solid ${vars.lightBlue};
+  color: ${vars.lightBlue};
   cursor: pointer;
   display: inline-block;
-  padding: 1rem 0 1.8rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
   &:hover {
     color: ${vars.lightBlue};
   }
@@ -45,7 +49,7 @@ export default class extends Component {
     return (
       <LoginLang>
         <Login>
-          <ModalText modalType={3} text="Login/Register" />
+          <ModalText modalType={3} text="Register/Login" />
         </Login>
         <LanguagePanel>
           <Language
