@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { Flex, Box } from 'rebass'
 import Cookies from 'universal-cookie'
 import styled from 'styled-components'
-import { Footer } from '../components/home/Footer'
 import { ComingLive } from '../components/home/ComingLive'
 import LatestVideo from '../components/home/LatestVideo'
 import MaxNew from '../components/home/MaxNew'
@@ -68,7 +67,7 @@ class Index extends React.Component {
     return (
       <div>
         <Head>
-          <link href="../static/css/video-react.css" rel="stylesheet" />
+          <link href="/static/css/video-react.css" rel="stylesheet" />
         </Head>
         <Main url={this.props.url}>
           <NewModal />

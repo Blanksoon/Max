@@ -53,7 +53,10 @@ const ThumbnailBigLive = props => (
         </Text3>
       </Box>
       <Box pl="6rem">
-        <Link href="/lives_vdo">
+        <Link
+          as={`/lives/${props.text2}`}
+          href={`/lives_vdo?id=${props.text2}`}
+        >
           <a>
             <Button color={color.red}>Watch</Button>
           </a>

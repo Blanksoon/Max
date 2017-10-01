@@ -60,7 +60,7 @@ class login extends React.Component {
     return (
       <div>
         <Head>
-          <link href="../static/css/video-react.css" rel="stylesheet" />
+          <link href="/static/css/video-react.css" rel="stylesheet" />
         </Head>
         <Main url={this.props.url}>
           <NewModal />

@@ -35,7 +35,7 @@ const videoPlayer = ({ url }) => {
   return (
     <div className="wrapper-index">
       <Head>
-        <link href="../static/css/video-react.css" rel="stylesheet" />
+        <link href="/static/css/video-react.css" rel="stylesheet" />
       </Head>
       <Main url={url}>
         <div className="wrapper-BackVideoCenter">

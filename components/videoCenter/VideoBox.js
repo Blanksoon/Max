@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import React, { Component } from 'react'
 
 const BackgroundImage = styled.div`
-  background: '../../static/3.png';
+  background: '/static/3.png';
   background-repeat: no-repeat;
   background-position: center;
 `
