@@ -10,6 +10,7 @@ import Container from '../components/commons/Container'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
 import withRedux from 'next-redux-wrapper'
+import NewModal from '../containers/NewModal'
 import {
   toogleModal,
   updateModalType,
@@ -31,6 +32,7 @@ const LivePlayer = styled.div`height: 36rem;`
 const lives = ({ url }) => (
   <div>
     <Main url={url}>
+      <NewModal />
       <Wrapper>
         <Container>
           <Box pl="1.5rem" bg="#fff" pt="8rem">

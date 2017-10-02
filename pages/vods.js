@@ -11,6 +11,12 @@ import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
 import Cookies from 'universal-cookie'
 import NewModal from '../containers/NewModal'
+import {
+  toogleModal,
+  updateModalType,
+  indexModalURL,
+  closeModal,
+} from '../redux/modules/modal'
 
 const cookies = new Cookies()
 
@@ -43,6 +49,7 @@ class Vods extends React.Component {
     //console.log(cookie)
     return (
       <Main url={this.props.url}>
+        <NewModal />
         <div className="videocenter">
           <WrapperVod color={color}>
             <Container>
@@ -70,4 +77,9 @@ class Vods extends React.Component {
   }
 }
 
-export default withRedux(initStore, null, { fetchVods })(Vods)
+export default withRedux(initStore, null, { 
+  fetchVods,
+  updateModalType,
+  indexModalURL,
+  closeModal, 
+})(Vods)

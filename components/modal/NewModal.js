@@ -90,7 +90,7 @@ export default class Modal extends Component {
     if (this.props.modalType === 1) {
       renderUI = (
         <WrapperVod onClick={e => this.handleOnClick(e)} visibility="hidden">
-          <Player />
+          <Player Url={this.props.modalURL} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
             <Image width="100%" src="static/close.png" />
           </WrapperClose>

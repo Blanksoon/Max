@@ -9,12 +9,12 @@ import UpNext from '../components/videoPlayer/UpNext'
 import StadiumTicket from '../components/home/StadiumTicket'
 import { Flex, Box, Image, Text } from 'rebass'
 import Container from '../components/commons/Container'
-import NewModal from '../containers/NewModal'
 import Main from '../layouts/Main'
 import color from '../components/commons/vars'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import NewModal from '../containers/NewModal'
 import {
   toogleModal,
   updateModalType,
@@ -106,6 +106,7 @@ const liveVdo = ({ url }) => (
 )
 
 export default withRedux(initStore, null, {
+  fetchVods,
   toogleModal,
   updateModalType,
   indexModalURL,

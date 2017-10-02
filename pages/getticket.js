@@ -3,7 +3,6 @@ import Head from 'next/head'
 import styled from 'styled-components'
 import { Flex, Box, Image, Text } from 'rebass'
 import Container from '../components/commons/Container'
-import NewModal from '../containers/NewModal'
 import Main from '../layouts/Main'
 import color from '../components/commons/vars'
 import Promocode from '../components/getTicket/Promocode'
@@ -14,6 +13,7 @@ import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
 import Cookies from 'universal-cookie'
 import FacebookLoginButton from '../components/login/FacebookLoginButton'
+import NewModal from '../containers/NewModal'
 import {
   toogleModal,
   updateModalType,
@@ -107,6 +107,7 @@ class getticket extends React.Component {
         </Head>
         {/* {status.message ?  : null } */}
         <Main url={this.props.url}>
+          <NewModal/>
           <WrapperPromotion>
             <Container>
               <Box>

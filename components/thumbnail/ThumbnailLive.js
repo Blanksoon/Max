@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   z-index: 2;
   position: relative;
 `
+const WrapperText = styled.div`background: #012147;`
 const ThumbnailLive = ({ live }) => {
   return (
     <div>
