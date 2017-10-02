@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import styled from 'styled-components'
 import vars from '../../commons/vars'
-import { datediff, pad } from '../../../util'
+import { dateDiff, pad } from '../../../util'
 
 const Countdown = styled.div`
   background: ${vars.transDarkblue};
