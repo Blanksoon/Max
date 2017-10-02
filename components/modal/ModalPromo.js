@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Login from '../login/Login'
 import Link from 'next/link'
 import styled from 'styled-components'
 import {
@@ -13,6 +12,7 @@ import {
   Fixed,
   Heading,
 } from 'rebass'
+import Login from '../login/Login'
 
 const Wrapper = styled.div`color: red;`
 export default class Modal extends Component {

@@ -119,7 +119,9 @@ export default class extends Component {
         </LiveInfo>
         <Countdown liveDateStr={activeLive.liveDate} />
         <Slider {...settings}>
-          {lives.map(live => <Slide src={live.bannerUrl} />)}
+          {lives.map(live => (
+            <Slide key={live.bannerUrl} src={live.bannerUrl} />
+          ))}
         </Slider>
         <style global jsx>
           {slick}

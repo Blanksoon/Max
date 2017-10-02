@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   height: 74vh;
   background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
-  background-image: url('static/img_live_banner.jpg');
+  background-image: url('/static/img_live_banner.jpg');
   position: relative;
 `
 const TextBig = styled.div`

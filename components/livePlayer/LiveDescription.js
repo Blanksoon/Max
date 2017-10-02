@@ -1,4 +1,3 @@
-import { LogoFooter } from '../home/Footer'
 import styled from 'styled-components'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 import color from '../commons/vars'
@@ -60,16 +59,6 @@ const LiveDescription = () => (
           </h4> */}
             </div>
           </Box>
-          {/* <ShareOn />
-      <ShareOn /> */}
-          {/* <LogoFooter />
-      <LogoFooter />
-      <LogoFooter />
-      <LogoFooter />
-      <LogoFooter />
-      <LogoFooter /> */}
-          {/* <Box width={1} />
-      <Box width={1} /> */}
         </Flex>
         <Box width={1} pb={3} pr="5%">
           <hr size="0.1" />
@@ -94,7 +83,7 @@ const LiveDescription = () => (
         <ModalButton
           buttonID={2}
           modalType={1}
-          modalURL="static/flightcard.jpg"
+          modalURL="/static/flightcard.jpg"
           text="Watch Promo Clip"
         />
         {/* <ButtonPromoClip color={color}>Watch Promo Clip</ButtonPromoClip> */}
@@ -103,15 +92,10 @@ const LiveDescription = () => (
         <Box w={12 / 12} pt="1rem">
           <ModalImg
             modalType={2}
-            modalURL="static/flightcard.jpg"
+            modalURL="/static/flightcard.jpg"
             w="100%"
-            img="static/flightcard.jpg"
+            img="/static/flightcard.jpg"
           />
-          {/* <Image
-            width="100%"
-            src="../static/flightcard.jpg"
-            height="100%"
-          /> */}
         </Box>
       </Box>
     </Flex>

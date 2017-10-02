@@ -2,25 +2,22 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { Flex, Box } from 'rebass'
-import { NavbarHead } from '../components/home/NavbarHead'
-import { Footer } from '../components/home/Footer'
+import Cookies from 'universal-cookie'
+import styled from 'styled-components'
 import { ComingLive } from '../components/home/ComingLive'
 import LatestVideo from '../components/home/LatestVideo'
 import MaxNew from '../components/home/MaxNew'
 import StadiumTicket from '../components/home/StadiumTicket'
 import About from '../components/home/About'
 import Hero from '../components/home/Hero'
-import styled from 'styled-components'
 import OurShow from '../components/ourShow/OurShow'
 import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
 import ListVideo from '../components/maxNews/ListVideo'
 import Login from '../components/login/Login'
-import Modal from '../components/modal/Modal'
 import NewModal from '../containers/NewModal'
 import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
-import Cookies from 'universal-cookie'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
 import withRedux from 'next-redux-wrapper'
@@ -30,7 +27,6 @@ import {
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
-const cookies = new Cookies()
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -57,22 +53,30 @@ const WrapperAbout = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const GradientBg = styled.div`
-  background: linear-gradient(${vars.darkblue}, ${vars.blue});
+  background: -webkit-linear-gradient(
+    top,
+    rgba(2, 15, 31, 1) 0%,
+    rgba(2, 15, 31, 1) 12%,
+    rgba(2, 15, 31, 1) 26%,
+    rgba(2, 15, 31, 1) 39%,
+    rgba(2, 15, 31, 1) 70%,
+    rgba(9, 69, 139, 1) 86%,
+    rgba(9, 69, 139, 1) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
-let cookie = ''
 
 class Index extends React.Component {
   componentDidMount() {
-    cookie = cookies.get('token')
-    console.log('get cookie', cookie)
+    const cookies = new Cookies()
+    const cookie = cookies.get('token')
     return this.props.fetchVods(cookie)
   }
   render() {
     return (
       <div>
         <Head>
-          <link href="../static/css/video-react.css" rel="stylesheet" />
+          <link href="/static/css/video-react.css" rel="stylesheet" />
         </Head>
         <Main url={this.props.url}>
           <NewModal />
@@ -126,7 +130,7 @@ class Index extends React.Component {
   }
 }
 
-Index.getInitialProps = () => {
+Index.getInitialProps = props => {
   return {
     lives: [
       {

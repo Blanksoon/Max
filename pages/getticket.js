@@ -103,7 +103,7 @@ class getticket extends React.Component {
     return (
       <div>
         <Head>
-          <link href="./static/css/video-react.css" rel="stylesheet" />
+          <link href="/static/css/video-react.css" rel="stylesheet" />
         </Head>
         {/* {status.message ?  : null } */}
         <Main url={this.props.url}>

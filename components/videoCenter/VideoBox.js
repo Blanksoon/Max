@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import React, { Component } from 'react'
 
 const BackgroundImage = styled.div`
-  background: '../../static/3.png';
+  background: '/static/3.png';
   background-repeat: no-repeat;
   background-position: center;
 `
@@ -72,13 +72,13 @@ class VideoBox extends Component {
   fetchVod() {
     const data = Object.values(this.props.vod)
     let i = 1
-    while (i <= data.length) {
+    while (i <= 4) {
       console.log(data[i].id)
-      // if (this.props.vod[i].feature == 'active') {
-      //   this.setState({
-      //     hilightProgram: this.props.vod[i],
-      //   })
-      // }
+      if (this.props.vod[i].feature == 'active') {
+        this.setState({
+          hilightProgram: this.props.vod[i],
+        })
+      }
       i++
     }
   }
@@ -92,7 +92,7 @@ class VideoBox extends Component {
     //return console.log(data[1].id)
   }
   render() {
-    // this.fetchVod()
+    //this.fetchVod()
     // const vod = this.props
     return (
       <div>
@@ -168,6 +168,7 @@ class VideoBox extends Component {
         </Flex>
         <Box pt="1rem" pl="1rem" pr="1rem">
           <LabelSearch />
+          {/* {this.fetchVod()} */}
           <RowVideo />
           <RowVideo />
           <RowVideo />

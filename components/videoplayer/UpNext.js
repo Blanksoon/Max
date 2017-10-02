@@ -16,7 +16,7 @@ const UpNext = props => (
         <Box width={8 / 35}>
           <a href={`/videoPlayer`}>
             <ThumbnailVideo
-              img="static/FT6A6133.jpg"
+              img="/static/FT6A6133.jpg"
               name="The Battle Muay-Thai(4/4)"
               date="On air - Aug 11, 2017"
               time="16.24"
@@ -27,7 +27,7 @@ const UpNext = props => (
         <Box width={8 / 35}>
           <a href={`/videoPlayer`}>
             <ThumbnailVideo
-              img="static/FT6A6483.jpg"
+              img="/static/FT6A6483.jpg"
               name="The Battle Muay-Thai(3/4)"
               date="On air - Aug 11, 2017"
               time="16.24"
@@ -38,7 +38,7 @@ const UpNext = props => (
         <Box width={8 / 35}>
           <a href={`/videoPlayer`}>
             <ThumbnailVideo
-              img="static/FT6A6495.jpg"
+              img="/static/FT6A6495.jpg"
               name="The Battle Muay-Thai(2/4)"
               date="On air - Aug 11, 2017"
               time="16.24"
@@ -49,7 +49,7 @@ const UpNext = props => (
         <Box width={8 / 35}>
           <a href={`/videoPlayer`}>
             <ThumbnailVideo
-              img="static/FT6A6676.jpg"
+              img="/static/FT6A6676.jpg"
               name="The Battle Muay-Thai(1/4)"
               date="On air - Aug 11, 2017"
               time="16.24"

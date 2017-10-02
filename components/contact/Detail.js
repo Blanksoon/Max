@@ -1,5 +1,4 @@
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
-import { LogoFooter } from '../home/Footer'
 import styled from 'styled-components'
 import { MapWithAMarker } from './GoogleMap'
 const Input = styled.input`
@@ -41,12 +40,6 @@ const Detail = props => (
         children="Follow Max Muay Thai at"
         fontSize="0.9em"
       />
-      <Flex pt="1em" pb="1em">
-        <LogoFooter mr="1em" w="100%" name="static/ic_facebook@2x.png" />
-        <LogoFooter mr="1em" name="static/ic_googleplus@2x.png" />
-        <LogoFooter mr="1em" name="static/ic_youtube@2x.png" />
-        <LogoFooter mr="1em" name="static/ic_instagram@2x.png" />
-      </Flex>
       <Text
         pt="1em"
         color="#f8f2f2"

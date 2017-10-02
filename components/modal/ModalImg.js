@@ -1,18 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import NewModal from './NewModal'
-import { toogleModal } from '../../actions/modal'
+import { toggleModal } from '../../redux/modules/modal'
 import { Image } from 'rebass'
 
 class ModalImg extends Component {
   static propTypes = {
     active: PropTypes.bool,
-    toogleModalAction: PropTypes.func,
+    toggleModalAction: PropTypes.func,
     modalType: PropTypes.number,
     modalURL: PropTypes.string,
   }
   handleOnClickModal = () => {
-    this.props.toogleModalAction()
+    this.props.toggleModalAction()
     this.props.updateModalAction(this.props.modalType)
     this.props.indexModalURL(this.props.modalURL)
   }

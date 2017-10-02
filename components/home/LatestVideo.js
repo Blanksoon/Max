@@ -2,37 +2,36 @@ import React, { Component, PropTypes } from 'react'
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 import Link from 'next/link'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
-class latest_video extends Component {
-  componentDidMount() {
-    console.log(this.props)
-    //this.props.fetchVods(this.props.token)
-  }
+import { connect } from 'react-redux'
+
+class LatestVideo extends Component {
   render() {
     return (
       <div>
         <Box pb="5%">
           <Flex>
             <Box width={1}>
-              <center>
-                <Text
-                  pt="2%"
-                  pb="2%"
-                  bold
-                  color="#fff"
-                  children={this.props.name}
-                  fontSize="1.5em"
-                />
-              </center>
+              <Text
+                pt="2%"
+                bold
+                color="#fff"
+                children={this.props.name}
+                fontSize="1.5em"
+              />
             </Box>
           </Flex>
-          <Flex>
+          <hr size="0.1" />
+          <Flex pt="2rem">
             <Box width={8 / 35}>
-              <Link href={`/videoPlayer`}>
-                <a href={`/videoPlayer`}>
+              <Link
+                //as={`/videoPlayer/${this.props.vod[1].id}`}
+                href={`/videoPlayer`}
+              >
+                <a>
                   <ThumbnailBottom
-                    img="static/FT6A6133.jpg"
-                    name="The Battle Muay-Thai(4/4)"
-                    date="On air - Aug 11, 2017"
+                    img="static/FT6A6133.jpg" //{this.props.vod[1].thumbnail}
+                    name="The Battle Muay-Thai(4/4)" //{this.props.vod[1].title}
+                    date="On air - Aug 11, 2017" //{this.props.vod[1].onAirDate}
                     time="16:24"
                     bg="#021e3d"
                     pl="1em"
@@ -42,8 +41,11 @@ class latest_video extends Component {
             </Box>
             <Box width={1 / 35} />
             <Box width={8 / 35}>
-              <Link href={`/videoPlayer`}>
-                <a href={`/videoPlayer`}>
+              <Link
+                //as={`/videoPlayer/${this.props.vod[2].id}`}
+                href={`/videoPlayer`}
+              >
+                <a>
                   <ThumbnailBottom
                     img="static/FT6A6483.jpg"
                     name="The Battle Muay-Thai(3/4)"
@@ -57,8 +59,11 @@ class latest_video extends Component {
             </Box>
             <Box width={1 / 35} />
             <Box width={8 / 35}>
-              <Link href={`/videoPlayer`}>
-                <a href={`/videoPlayer`}>
+              <Link
+                //as={`/videoPlayer/${this.props.vod[3].id}`}
+                href={`/videoPlayer`}
+              >
+                <a>
                   <ThumbnailBottom
                     img="static/FT6A6495.jpg"
                     name="The Battle Muay-Thai(2/4)"
@@ -72,8 +77,11 @@ class latest_video extends Component {
             </Box>
             <Box width={1 / 35} />
             <Box width={8 / 35}>
-              <Link href={`/videoPlayer`}>
-                <a href={`/videoPlayer`}>
+              <Link
+                //as={`/videoPlayer/${this.props.vod[4].id}`}
+                href={`/videoPlayer`}
+              >
+                <a>
                   <ThumbnailBottom
                     img="static/FT6A6676.jpg"
                     name="The Battle Muay-Thai(1/4)"
@@ -93,11 +101,11 @@ class latest_video extends Component {
             }
             a {
               color: #fff;
-              TEXT-DECORATION: none;
+              text-decoration: none;
             }
             a:hover {
-              COLOR: #ff0000;
-              TEXT-DECORATION: none;
+              color: #ff0000;
+              text-decoration: none;
             }
           `}
         </style>
@@ -105,4 +113,7 @@ class latest_video extends Component {
     )
   }
 }
-export default latest_video
+
+const mapStateToProps = ({ vod }) => ({ vod })
+
+export default connect(mapStateToProps, null)(LatestVideo)

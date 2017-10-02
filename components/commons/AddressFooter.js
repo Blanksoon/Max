@@ -39,7 +39,7 @@ const Tel = styled.span`
 export default () => (
   <AddressFooter>
     <Container>
-      <Logo src="static/img_logo_white@2x.png" />
+      <Logo src="/static/img_logo_white@2x.png" />
       <AddressPanel>
         <Name>Max Muay Thai Co.,Ltd.</Name>
         <Address>42/108 Sukumvit Rd. Moo.9 Nongprue</Address>
