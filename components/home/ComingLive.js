@@ -32,36 +32,20 @@ const ComingLive = props => (
     </Box>
     <Flex>
       <Box w={1 / 2}>
-        <ThumbnailLive
-          text="Now! LIVE-on Fri. Aug 18th, 2017"
-          img="static/maxultimate-show.jpg"
-          urlimg="static/flightcard.jpg"
-        />
+        <ThumbnailLive live={props.lives[0]} />
       </Box>
       <Box w={1 / 32} />
       <Box w={1 / 2}>
-        <ThumbnailLive
-          text="NEXT-on Fri. Aug 18th, 2017"
-          img="static/thairath-show.jpg"
-          urlimg="static/logoinvidoplayer.jpg"
-        />
+        <ThumbnailLive live={props.lives[1]} />
       </Box>
     </Flex>
     <Flex pt="2%">
       <Box w={1 / 2}>
-        <ThumbnailLive
-          text="Now! LIVE-on Fri. Aug 18th, 2017"
-          img="static/thechampion-show.jpg"
-          urlimg="static/flightcard.jpg"
-        />
+        <ThumbnailLive live={props.lives[2]} />
       </Box>
       <Box w={1 / 32} />
       <Box w={1 / 2}>
-        <ThumbnailLive
-          text="NEXT-on Fri. Aug 18th, 2017"
-          img="static/thebattle-show.jpg"
-          urlimg="static/flightcard.jpg"
-        />
+        <ThumbnailLive live={props.lives[3]} />
       </Box>
     </Flex>
   </div>

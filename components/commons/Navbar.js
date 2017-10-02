@@ -15,7 +15,7 @@ const Navbar = styled(Fixed)`
   box-sizing: 'border-box';
   height: ${vars.navHeight};
   width: 100%;
-  z-index: 9999;
+  z-index: 1;
 `
 const Motto = styled.span`
   box-sizing: border-box;

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Flex, Box } from 'rebass'
 import Cookies from 'universal-cookie'
 import styled from 'styled-components'
+import withRedux from 'next-redux-wrapper'
 import { ComingLive } from '../components/home/ComingLive'
 import LatestVideo from '../components/home/LatestVideo'
 import MaxNew from '../components/home/MaxNew'
@@ -21,13 +22,13 @@ import vars from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
 import { fetchLives } from '../redux/modules/live'
-import withRedux from 'next-redux-wrapper'
 import {
   toogleModal,
   updateModalType,
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
+import { recentLivesSelector } from '../redux/selectors/live'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -35,7 +36,7 @@ const WrapperTop = styled.div`
 `
 const WrapperLive = styled.div`
   color: #fff;
-  background-image: url('static/bg-upcoming-home.jpg');
+  background-image: url('/static/bg-upcoming-home.jpg');
   background-size: cover;
   background-position-y: 0px;
 `
@@ -54,48 +55,20 @@ const WrapperAbout = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const GradientBg = styled.div`
-  background: linear-gradient(${vars.darkblue}, ${vars.blue});
+  background: -webkit-linear-gradient(
+    top,
+    #020f1f 0%,
+    #020f1f 12%,
+    #020f1f 64%,
+    #020f1f 75%,
+    #08488f 92%,
+    #08488f 100%
+  ); /* Chrome10-25,Safari5.1-6 */
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 
 class Index extends React.Component {
-  // static async getInitialProps({ store, isServer, query, req, state }) {
-  //   const res = await store.dispatch(fetchLives())
-  //   console.log('response', res)
-  //   //state = store.setState(response)
-  //   return {
-  //     res,
-  //     lives: [
-  //       {
-  //         bannerUrl: '/static/img_live_banner.jpg',
-  //         liveDate: '2017-09-30',
-  //         title:
-  //           'MAX Ultimate Tournament & MAX World Champions 7 International Fights',
-  //       },
-  //       {
-  //         bannerUrl: '/static/slide2.jpg',
-  //         liveDate: '2017-10-5',
-  //         title: 'The Battle Muay Thai',
-  //       },
-  //       {
-  //         bannerUrl: '/static/slide3.jpg',
-  //         liveDate: '2017-10-10',
-  //         title: 'Max World Champion 2013: DVD bookset',
-  //       },
-  //     ],
-  //   }
-  // }
-
-  componentDidMount() {
-    const cookies = new Cookies()
-    const cookie = cookies.get('token')
-    this.props.fetchLives(cookie)
-    return this.props.fetchVods(cookie)
-  }
   render() {
-    {
-      //console.log('aaaaaa', this.props)
-    }
     return (
       <div>
         <Head>
@@ -105,7 +78,7 @@ class Index extends React.Component {
           <NewModal />
           <GradientBg>
             <Container>
-              <Hero lives={this.props.lives} />
+              <Hero lives={this.props.lives.slice(0, 3)} />
               <LatestVideo name="Latest Video" />
             </Container>
           </GradientBg>
@@ -113,7 +86,7 @@ class Index extends React.Component {
             <Container>
               <Flex>
                 <Box w={12 / 12} pb="4em" pt="2em">
-                  <ComingLive />
+                  <ComingLive lives={this.props.lives} />
                 </Box>
               </Flex>
             </Container>
@@ -153,32 +126,20 @@ class Index extends React.Component {
   }
 }
 
-Index.getInitialProps = ({ store, isServer, query, req, state }) => {
-  const response = store.dispatch(fetchLives())
-  console.log('response', response)
-  //state = store.setState(response)
+const mapStateToProps = state => {
   return {
-    response,
-    lives: [
-      {
-        bannerUrl: '/static/img_live_banner.jpg',
-        liveDate: '2017-09-30',
-        title:
-          'MAX Ultimate Tournament & MAX World Champions 7 International Fights',
-      },
-      {
-        bannerUrl: '/static/slide2.jpg',
-        liveDate: '2017-10-5',
-        title: 'The Battle Muay Thai',
-      },
-      {
-        bannerUrl: '/static/slide3.jpg',
-        liveDate: '2017-10-10',
-        title: 'Max World Champion 2013: DVD bookset',
-      },
-    ],
+    lives: recentLivesSelector(state),
   }
 }
+Index.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  const token = state.auth.token
+  const response = await fetchLives(token)(store.dispatch)
+  state = store.getState()
+  const props = mapStateToProps(state)
+  return props
+}
+
 export default withRedux(initStore, null, {
   fetchVods,
   toogleModal,
