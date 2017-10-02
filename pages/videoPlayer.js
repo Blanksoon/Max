@@ -10,10 +10,11 @@ import { Container, Flex, Box } from 'rebass'
 import Main from '../layouts/Main'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
-import { fetchVods } from '../redux/modules/vod'
+import { fetchVod } from '../redux/modules/vod'
+import { currentVodSelector } from '../redux/selectors/vod'
 import NewModal from '../containers/NewModal'
 import {
-  toogleModal,
+  toggleModal,
   updateModalType,
   indexModalURL,
   closeModal,
@@ -23,21 +24,14 @@ const WrapperStadiumTicket = styled.div`
   color: #ffffff;
   background-color: #b71111;
 `
-const videoPlayer = ({ url }) => {
-  let i = 20
-  const countdown = setInterval(function() {
-    i--
-    if (i < 0) {
-      clearInterval(countdown)
-    }
-  }, 1000)
+const videoPlayer = ({ url, vod }) => {
   return (
     <div className="wrapper-index">
       <Head>
         <link href="/static/css/video-react.css" rel="stylesheet" />
       </Head>
       <Main url={url}>
-        <NewModal/>
+        <NewModal />
         <div className="wrapper-BackVideoCenter">
           <Container>
             <Flex>
@@ -51,7 +45,7 @@ const videoPlayer = ({ url }) => {
           <Container>
             <Flex>
               <Box w={12 / 12}>
-                <Players />
+                <Players vod={vod} />
               </Box>
             </Flex>
           </Container>
@@ -60,7 +54,7 @@ const videoPlayer = ({ url }) => {
           <Container>
             <Flex>
               <Box w={12 / 12} bg="white">
-                <Description />
+                <Description vod={vod} />
               </Box>
             </Flex>
           </Container>
@@ -100,8 +94,22 @@ const videoPlayer = ({ url }) => {
     </div>
   )
 }
-export default withRedux(initStore, null, {
-  toogleModal,
+
+const mapStateToProps = state => {
+  const vod = currentVodSelector(state)
+  return { vod }
+}
+videoPlayer.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  const token = state.auth.token
+  const response = await fetchVod(token, query.id)(store.dispatch)
+  state = store.getState()
+  const props = mapStateToProps(state)
+  return props
+}
+
+export default withRedux(initStore, mapStateToProps, {
+  toggleModal,
   updateModalType,
   indexModalURL,
   closeModal,

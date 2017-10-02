@@ -4,6 +4,9 @@ import * as api from '../../api'
 const FETCH_VODS_REQ = 'FETCH_VODS_REQ'
 const FETCH_VODS_SUCCESS = 'FETCH_VODS_SUCCESS'
 
+const FETCH_VOD_REQ = 'FETCH_VOD_REQ'
+const FETCH_VOD_SUCCESS = 'FETCH_VOD_SUCCESS'
+
 // actions
 export const fetchVodsSuccess = vods => ({
   type: FETCH_VODS_SUCCESS,
@@ -21,6 +24,25 @@ export const fetchVods = token => async dispatch => {
   }
 }
 
+export const fetchVodReq = () => ({
+  type: FETCH_VOD_REQ,
+})
+export const fetchVodSuccess = (id, vods) => ({
+  type: FETCH_VOD_SUCCESS,
+  payload: { current: id, vods },
+})
+export const fetchVod = (token, id) => async dispatch => {
+  dispatch(fetchVodReq())
+  const url = `${api.SERVER}/vods`
+  try {
+    const json = await api.post(url, { token })
+    // You should not return in Vods <-- change to something like data
+    dispatch(fetchVodSuccess(id, json.data))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // reducer
 const initialState = {
   recents: [],
@@ -30,6 +52,7 @@ const initialState = {
 }
 const vodReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FETCH_VOD_REQ:
     case FETCH_VODS_REQ:
       return {
         ...state,
@@ -68,6 +91,21 @@ const vodReducer = (state = initialState, action) => {
       })
       return {
         ...newState,
+        loaded: false,
+      }
+
+    case FETCH_VOD_SUCCESS:
+      const newData = {}
+      action.payload.vods.forEach(vod => {
+        newData[vod.id] = vod
+      })
+      return {
+        ...state,
+        current: action.payload.current,
+        data: {
+          ...state.data,
+          ...newData,
+        },
         loaded: false,
       }
     default: {
