@@ -78,7 +78,7 @@ class Index extends React.Component {
             <Container>
               <Flex>
                 <Box w={12 / 12} pb="4em" pt="2em">
-                  <ComingLive />
+                  <ComingLive lives={this.props.lives} />
                 </Box>
               </Flex>
             </Container>
