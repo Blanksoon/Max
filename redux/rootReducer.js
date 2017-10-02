@@ -13,7 +13,6 @@ const rootReducer = combineReducers({
   modal: modalReducer,
   vod: vodReducer,
   login: loginReducer,
-  live: livesReducer,
 })
 
 export default rootReducer

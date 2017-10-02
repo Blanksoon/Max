@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Flex, Box } from 'rebass'
 import Cookies from 'universal-cookie'
 import styled from 'styled-components'
+import withRedux from 'next-redux-wrapper'
 import { ComingLive } from '../components/home/ComingLive'
 import LatestVideo from '../components/home/LatestVideo'
 import MaxNew from '../components/home/MaxNew'
@@ -21,13 +22,13 @@ import vars from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
 import { fetchLives } from '../redux/modules/live'
-import withRedux from 'next-redux-wrapper'
 import {
   toogleModal,
   updateModalType,
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
+import { recentLivesSelector } from '../redux/selectors/live'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -59,33 +60,6 @@ const GradientBg = styled.div`
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 
 class Index extends React.Component {
-  // static async getInitialProps({ store, isServer, query, req, state }) {
-  //   const res = await store.dispatch(fetchLives())
-  //   console.log('response', res)
-  //   //state = store.setState(response)
-  //   return {
-  //     res,
-  //     lives: [
-  //       {
-  //         bannerUrl: '/static/img_live_banner.jpg',
-  //         liveDate: '2017-09-30',
-  //         title:
-  //           'MAX Ultimate Tournament & MAX World Champions 7 International Fights',
-  //       },
-  //       {
-  //         bannerUrl: '/static/slide2.jpg',
-  //         liveDate: '2017-10-5',
-  //         title: 'The Battle Muay Thai',
-  //       },
-  //       {
-  //         bannerUrl: '/static/slide3.jpg',
-  //         liveDate: '2017-10-10',
-  //         title: 'Max World Champion 2013: DVD bookset',
-  //       },
-  //     ],
-  //   }
-  // }
-
   componentDidMount() {
     const cookies = new Cookies()
     const cookie = cookies.get('token')
@@ -93,9 +67,6 @@ class Index extends React.Component {
     return this.props.fetchVods(cookie)
   }
   render() {
-    {
-      //console.log('aaaaaa', this.props)
-    }
     return (
       <div>
         <Head>
@@ -153,32 +124,20 @@ class Index extends React.Component {
   }
 }
 
-Index.getInitialProps = ({ store, isServer, query, req, state }) => {
-  const response = store.dispatch(fetchLives())
-  console.log('response', response)
-  //state = store.setState(response)
+const mapStateToProps = state => {
   return {
-    response,
-    lives: [
-      {
-        bannerUrl: '/static/img_live_banner.jpg',
-        liveDate: '2017-09-30',
-        title:
-          'MAX Ultimate Tournament & MAX World Champions 7 International Fights',
-      },
-      {
-        bannerUrl: '/static/slide2.jpg',
-        liveDate: '2017-10-5',
-        title: 'The Battle Muay Thai',
-      },
-      {
-        bannerUrl: '/static/slide3.jpg',
-        liveDate: '2017-10-10',
-        title: 'Max World Champion 2013: DVD bookset',
-      },
-    ],
+    lives: recentLivesSelector(state),
   }
 }
+Index.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  const token = state.auth.token
+  const response = await fetchLives(token)(store.dispatch)
+  state = store.getState()
+  const props = mapStateToProps(state)
+  return props
+}
+
 export default withRedux(initStore, null, {
   fetchVods,
   toogleModal,
