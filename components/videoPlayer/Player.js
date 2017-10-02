@@ -26,27 +26,17 @@ class Players extends React.Component {
   }
 
   onClickVideo = () => {
-    console.log('hello')
     this.refs.player.pause()
   }
 
-  // componentDidMount = () => {
-  //   this.refs.player.pause()
-  // }
-
   render() {
-    console.log('this.props.src', this.props)
+    console.log(this.props.vod)
     return (
       <div className="Player">
         <Box width={1} bg="pink">
           <Player ref="player" autoPlay={false}>
-            <HLSSource
-              isVideoChild
-              src={this.props.Url}
-              //src="https://wittestvod-vh.akamaihd-staging.net/i/wittestvod/SampleVideo/luke_,3,6,11,000k.mp4.csmil/master.m3u8"
-            />
+            <HLSSource isVideoChild src={this.props.vod.promoUrl} />
           </Player>
-          {/* <button onClick={this.onClickVideo}>pause</button> */}
         </Box>
       </div>
     )
