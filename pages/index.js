@@ -36,7 +36,7 @@ const WrapperTop = styled.div`
 `
 const WrapperLive = styled.div`
   color: #fff;
-  background-image: url('static/bg-upcoming-home.jpg');
+  background-image: url('/static/bg-upcoming-home.jpg');
   background-size: cover;
   background-position-y: 0px;
 `
@@ -55,7 +55,15 @@ const WrapperAbout = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const GradientBg = styled.div`
-background: -webkit-linear-gradient(top, #020f1f 0%,#020f1f 12%,#020f1f 64%,#020f1f 75%,#08488f 92%,#08488f 100%); /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-linear-gradient(
+    top,
+    #020f1f 0%,
+    #020f1f 12%,
+    #020f1f 64%,
+    #020f1f 75%,
+    #08488f 92%,
+    #08488f 100%
+  ); /* Chrome10-25,Safari5.1-6 */
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 
@@ -78,7 +86,7 @@ class Index extends React.Component {
             <Container>
               <Flex>
                 <Box w={12 / 12} pb="4em" pt="2em">
-                  <ComingLive />
+                  <ComingLive lives={this.props.lives} />
                 </Box>
               </Flex>
             </Container>

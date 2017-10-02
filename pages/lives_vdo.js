@@ -29,81 +29,84 @@ const WrapperLivePlayer = styled.div`
   background-color: ${props => props.color.lightBlue};
 `
 const LivePlayer = styled.div`height: 36rem;`
-const liveVdo = ({ url }) => (
-  <div>
-    <Head>
-      <link href="/static/css/video-react.css" rel="stylesheet" />
-    </Head>
-    <Main url={url}>
-      <NewModal />
-      <div>
-        <WrapperLivePlayer color={color}>
+const liveVdo = ({ url }) => {
+  console.log(url)
+  return (
+    <div>
+      <Head>
+        <link href="/static/css/video-react.css" rel="stylesheet" />
+      </Head>
+      <Main url={url}>
+        <NewModal />
+        <div style={{ paddingTop: '2rem' }}>
+          <WrapperLivePlayer color={color}>
+            <Container>
+              <Flex>
+                <Box w={12 / 12}>
+                  <BackVideoCenter name="Back to Live" url={url} />
+                </Box>
+              </Flex>
+            </Container>
+          </WrapperLivePlayer>
+        </div>
+        <div>
+          <WrapperLivePlayer color={color}>
+            <Container>
+              <LiveTop />
+            </Container>
+          </WrapperLivePlayer>
+        </div>
+        <div>
+          <WrapperLivePlayer color={color}>
+            <Container>
+              <Flex>
+                <Box w={12 / 12} bg="white">
+                  <LiveDescription />
+                  <Box width={12 / 12} pt="1rem" pl="1rem" pr="1rem">
+                    <hr size="0.1" />
+                  </Box>
+                </Box>
+              </Flex>
+            </Container>
+          </WrapperLivePlayer>
+        </div>
+        <div>
+          <WrapperLivePlayer color={color}>
+            <Container>
+              <Flex>
+                <Box w={12 / 12} bg="white">
+                  <UpNext name="THIS SHOW RELATED VIDEO" />
+                </Box>
+              </Flex>
+            </Container>
+          </WrapperLivePlayer>
+        </div>
+        <WrapperStadiumTicket>
           <Container>
             <Flex>
               <Box w={12 / 12}>
-                <BackVideoCenter name="Back to Live" />
+                <StadiumTicket />
               </Box>
             </Flex>
           </Container>
-        </WrapperLivePlayer>
-      </div>
-      <div>
-        <WrapperLivePlayer color={color}>
-          <Container>
-            <LiveTop />
-          </Container>
-        </WrapperLivePlayer>
-      </div>
-      <div>
-        <WrapperLivePlayer color={color}>
-          <Container>
-            <Flex>
-              <Box w={12 / 12} bg="white">
-                <LiveDescription />
-                <Box width={12 / 12} pt="1rem" pl="1rem" pr="1rem">
-                  <hr size="0.1" />
-                </Box>
-              </Box>
-            </Flex>
-          </Container>
-        </WrapperLivePlayer>
-      </div>
-      <div>
-        <WrapperLivePlayer color={color}>
-          <Container>
-            <Flex>
-              <Box w={12 / 12} bg="white">
-                <UpNext name="THIS SHOW RELATED VIDEO" />
-              </Box>
-            </Flex>
-          </Container>
-        </WrapperLivePlayer>
-      </div>
-      <WrapperStadiumTicket>
-        <Container>
-          <Flex>
-            <Box w={12 / 12}>
-              <StadiumTicket />
-            </Box>
-          </Flex>
-        </Container>
-      </WrapperStadiumTicket>
-      <style jsx global>
-        {`
-          body {
-            padding: 0 !important;
-            margin: 0 !important;
-          }
-           {
-            /* * {
+        </WrapperStadiumTicket>
+        <style jsx global>
+          {`
+            body {
+              padding: 0 !important;
+              margin: 0 !important;
+            }
+             {
+              /* * {
               box-sizing: border-box;
             } */
-          }
-        `}
-      </style>
-    </Main>
-  </div>
-)
+            }
+          `}
+        </style>
+      </Main>
+    </div>
+  )
+}
 
 export default withRedux(initStore, null, {
   fetchVods,
