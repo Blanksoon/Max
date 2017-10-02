@@ -29,7 +29,7 @@ const ButtonPromoClip = styled.button`
 `
 
 const LiveTelecom = styled.div`color: ${props => props.color.red};`
-const LiveDescription = () => (
+const LiveDescription = ({ live }) => (
   <div className="liveDescription">
     <Flex pt="1.5rem">
       <Box w={9 / 12} ml="1rem">
@@ -38,18 +38,15 @@ const LiveDescription = () => (
             <Image width="100%" src="/static/logoinvidoplayer.jpg" />
           </Box>
           <Box width={11 / 12} pb="1rem">
-            <HeadDesctiption>
-              Max Ultimate Tournament &MAX World Champions <br />
-              7 International Fights(1/4)
-            </HeadDesctiption>
+            <HeadDesctiption>{live.title_en}</HeadDesctiption>
           </Box>
         </Flex>
         <Flex pr="5%" pt="1rem" pb="0.6rem">
           <Box width={5 / 12}>
             <LiveTelecom color={color}>
-              <b>Live telecast on Channel 8</b>
+              <b>Live telecast on {live.channel}</b>
               <br />
-              <b>every Sunday 7.20 - 9.50pm</b>
+              <b>{live.OnAirDate}</b>
             </LiveTelecom>
           </Box>
           <Box width={7 / 12} pl="46%">
@@ -64,26 +61,12 @@ const LiveDescription = () => (
           <hr size="0.1" />
         </Box>
         <Box width={1} pb={3} pr="5%">
-          <P>
-            On sait depuis longtemps que travailler avec du texte lisible et
-            contenant du sens est source de distractions, et empêche de se
-            concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum
-            sur un texte générique comme 'Du texte. Du texte. Du texte.' est
-            qu'il possède une distribution de lettres plus ou moins normale, et
-            en tout cas comparable avec celle du français standard. De
-            nombreuses suites logicielles de mise en page ou éditeurs de sites
-            Web ont fait du Lorem Ipsum leur faux texte par défaut, et une
-            recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites
-            qui n'en sont encore qu'à leur phase de construction. Plusieurs
-            versions sont apparues avec le temps, parfois par accident, souvent
-            intentionnellement (histoire d'y rajouter de petits clins d'oeil,
-            voire des phrases embarassantes).
-          </P>
+          <P>{live.description_en}</P>
         </Box>
         <ModalButton
           buttonID={2}
           modalType={1}
-          modalURL="/static/flightcard.jpg"
+          modalURL={live.promoUrl}
           text="Watch Promo Clip"
         />
         {/* <ButtonPromoClip color={color}>Watch Promo Clip</ButtonPromoClip> */}
@@ -92,9 +75,9 @@ const LiveDescription = () => (
         <Box w={12 / 12} pt="1rem">
           <ModalImg
             modalType={2}
-            modalURL="/static/flightcard.jpg"
+            modalURL={live.fightcardUrl}
             w="100%"
-            img="/static/flightcard.jpg"
+            img={live.fightcardUrl}
           />
         </Box>
       </Box>

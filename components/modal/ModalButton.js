@@ -19,6 +19,11 @@ const ButtonPromoClip = styled.button`
   font-family: Helvetica, Arial, sans-serif;
   color: ${props => props.color.red};
   cursor: pointer;
+
+  &:hover {
+    background: ${props => props.color.red};
+    color: #ffffff;
+  }
 `
 const ButtonTickket = styled.button`
   bottom: 2%;

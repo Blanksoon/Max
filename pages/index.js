@@ -146,7 +146,7 @@ Index.getInitialProps = async ({ store, isServer, query, req }) => {
   return props
 }
 
-export default withRedux(initStore, null, {
+export default withRedux(initStore, mapStateToProps, {
   fetchVods,
   toogleModal,
   updateModalType,

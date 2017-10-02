@@ -9,16 +9,14 @@ import Container from '../components/commons/Container'
 import color from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
-import Cookies from 'universal-cookie'
 import NewModal from '../containers/NewModal'
+import { recentVodsSelector, hilightVodSelector } from '../redux/selectors/vod'
 import {
-  toogleModal,
+  toggleModal,
   updateModalType,
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
-
-const cookies = new Cookies()
 
 const WrapperNavbar = styled.div`background-color: #009999;`
 const WrapperVod = styled.div`
@@ -26,27 +24,9 @@ const WrapperVod = styled.div`
 `
 import Main from '../layouts/Main'
 
-let cookie = ''
 class Vods extends React.Component {
-  static getInitialProps({ store, isServer, query, req }) {
-    // console.log('isServer', isServer)
-    if (isServer) {
-      //token = req.cookies
-      //console.log('this is token ', token)
-    }
-    //console.log('req.cookies', req.cookies)
-    //store.dispatch(fetchVods(req.cookies))
-    return { isServer }
-  }
-
-  componentDidMount() {
-    cookie = cookies.get('token')
-    console.log('get cookie', cookie)
-    return this.props.fetchVods(cookie)
-  }
-
   render() {
-    //console.log(cookie)
+    const { hilight, vods } = this.props
     return (
       <Main url={this.props.url}>
         <NewModal />
@@ -54,7 +34,7 @@ class Vods extends React.Component {
           <WrapperVod color={color}>
             <Container>
               <Box pt="20px" bg="white">
-                <VideoBox />
+                <VideoBox hilight={hilight} vods={vods} />
               </Box>
             </Container>
           </WrapperVod>
@@ -76,10 +56,24 @@ class Vods extends React.Component {
     )
   }
 }
+const mapStateToProps = state => {
+  return {
+    hilight: hilightVodSelector(state),
+    vods: recentVodsSelector(state),
+  }
+}
+Vods.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  const token = state.auth.token
+  const response = await fetchVods(token)(store.dispatch)
+  state = store.getState()
+  const props = mapStateToProps(state)
+  return props
+}
 
-export default withRedux(initStore, null, { 
+export default withRedux(initStore, mapStateToProps, {
   fetchVods,
   updateModalType,
   indexModalURL,
-  closeModal, 
+  closeModal,
 })(Vods)

@@ -37,7 +37,7 @@ const videoPlayer = ({ url }) => {
         <link href="/static/css/video-react.css" rel="stylesheet" />
       </Head>
       <Main url={url}>
-        <NewModal/>
+        <NewModal />
         <div className="wrapper-BackVideoCenter">
           <Container>
             <Flex>
