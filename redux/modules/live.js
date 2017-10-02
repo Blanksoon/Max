@@ -25,22 +25,23 @@ export const fetchLives = token => async dispatch => {
 
 // reducer
 const initialState = {
-  current: {},
   live: {},
+  related: {},
 }
 const livesReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LIVE_SUCCESS:
-      const liveById = {}
+      const lives = {}
+      const current = {}
       if (Array.isArray(action.payload)) {
         action.payload.forEach(live => {
-          liveById[live.id] = live
+          lives[live.id] = live
         })
       }
       return {
-        ...current,
-        ...state.live,
-        ...liveById,
+        current,
+        lives,
+        related: state.related,
       }
     default: {
       return state
