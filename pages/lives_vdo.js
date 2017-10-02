@@ -13,10 +13,11 @@ import Main from '../layouts/Main'
 import color from '../components/commons/vars'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
-import { fetchVods } from '../redux/modules/vod'
+import { fetchLive } from '../redux/modules/live'
+import { currentLiveSelector } from '../redux/selectors/live'
 import NewModal from '../containers/NewModal'
 import {
-  toogleModal,
+  toggleModal,
   updateModalType,
   indexModalURL,
   closeModal,
@@ -29,8 +30,7 @@ const WrapperLivePlayer = styled.div`
   background-color: ${props => props.color.lightBlue};
 `
 const LivePlayer = styled.div`height: 36rem;`
-const liveVdo = ({ url }) => {
-  console.log(url)
+const LiveVdo = ({ url, live }) => {
   return (
     <div>
       <Head>
@@ -52,7 +52,7 @@ const liveVdo = ({ url }) => {
         <div>
           <WrapperLivePlayer color={color}>
             <Container>
-              <LiveTop />
+              <LiveTop live={live} />
             </Container>
           </WrapperLivePlayer>
         </div>
@@ -107,11 +107,23 @@ const liveVdo = ({ url }) => {
     </div>
   )
 }
+const mapStateToProps = state => {
+  const live = currentLiveSelector(state)
+  return { live }
+}
+LiveVdo.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  const token = state.auth.token
+  const response = await fetchLive(token, query.id)(store.dispatch)
+  state = store.getState()
+  const props = mapStateToProps(state)
+  return props
+}
 
-export default withRedux(initStore, null, {
-  fetchVods,
-  toogleModal,
+export default withRedux(initStore, mapStateToProps, {
+  fetchLive,
+  toggleModal,
   updateModalType,
   indexModalURL,
   closeModal,
-})(liveVdo)
+})(LiveVdo)

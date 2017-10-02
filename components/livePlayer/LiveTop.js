@@ -1,8 +1,11 @@
 import React from 'react'
+import Link from 'next/link'
 import styled from 'styled-components'
 import { Flex, Provider, Box, Text, overlay } from 'rebass'
+import Button from '../commons/Button'
 import Modal from '../modal/Modal'
 import color from '../commons/vars'
+import { formattedDate } from '../../util'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -27,17 +30,6 @@ const WrapperText = styled.div`
   right: 0;
   width: 100%;
   position: absolute;
-`
-const Button = styled.button`
-  bottom: 2%;
-  background-color: ${props => props.color};
-  border: 1px solid ${props => props.color};
-  color: white;
-  padding: 8px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: 700;
 `
 const ButtonBlue = styled.button`
   background-color: initial;
@@ -80,21 +72,23 @@ const Text4 = styled.div`
   font-size: 1em;
 `
 const Image = styled.img`width: 100%;`
-const LiveTop = props => (
+const LiveTop = ({ live }) => (
   <Wrapper>
     <WrapperText>
       <Flex>
-        <Box w={10 / 12} pl="1rem">
-          <TextBig color={color.white}>
-            MAX Ultimate Tournament & MAX World<br />Champions 7 International
-            Fights
-          </TextBig>
+        <Box w={6 / 12} pl="1rem" bg={color.transDarkblue} p={2}>
+          <TextBig color={color.white}>{live.title_en}</TextBig>
           <br />
-          <Date color={color.yellow}>Sun.Aug 27th, 2017</Date>
+          <Date color={color.yellow}>{formattedDate(live.OnAirTime)}</Date>
         </Box>
+        <Box w={4 / 12} />
         <Box w={2 / 12}>
           <Box pt="4rem" pl="2rem">
-            <Button color={color.red}>Buy Ticket</Button>
+            <Link href={`/getticket`}>
+              <a>
+                <Button color={color.red}>Buy Ticket</Button>
+              </a>
+            </Link>
           </Box>
         </Box>
       </Flex>

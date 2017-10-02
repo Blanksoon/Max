@@ -5,3 +5,4 @@ export const recentLivesSelector = state => {
   })
   return lives
 }
+export const currentLiveSelector = state => state.live.data[state.live.current]
