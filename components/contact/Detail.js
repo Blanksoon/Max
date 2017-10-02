@@ -1,6 +1,7 @@
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 import styled from 'styled-components'
 import { MapWithAMarker } from './GoogleMap'
+import Link from 'next/link'
 const Input = styled.input`
   padding: ${props => props.px} ${props => props.py};
   width: 90%;
@@ -41,10 +42,10 @@ const Detail = props => (
         fontSize="0.9em"
       />
       <Flex pt="1em" pb="1em">
-        {/* <LogoFooter mr="1em" w="100%" name="static/ic_facebook@2x.png" />
+        <LogoFooter mr="1em" w="100%" name="static/ic_facebook@2x.png" />
         <LogoFooter mr="1em" name="static/ic_googleplus@2x.png" />
         <LogoFooter mr="1em" name="static/ic_youtube@2x.png" />
-        <LogoFooter mr="1em" name="static/ic_instagram@2x.png" /> */}
+        <LogoFooter mr="1em" name="static/ic_instagram@2x.png" />
       </Flex>
       <Text
         pt="1em"
@@ -120,6 +121,14 @@ const Detail = props => (
       </Box>
     </Box>
   </Flex>
+)
+
+const LogoFooter = props => (
+  <Box w={1.6 / 12} mr={props.mr}>
+    <a href="https://www.google.com">
+      <Image width="100%" src={props.name} />
+    </a>
+  </Box>
 )
 
 export default Detail
