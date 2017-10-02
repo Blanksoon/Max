@@ -38,7 +38,9 @@ class LiveVdo extends Component {
     const curDate = new Date()
     const liveDate = new Date(props.live.OnAirTime)
     this.state = {
+      canWatch: props.live.videoUrl !== '',
       countdown: dateDiff(curDate, liveDate),
+      liveNow: false,
     }
   }
   componentWillUnmount() {
@@ -48,7 +50,10 @@ class LiveVdo extends Component {
     this.timerId = setInterval(() => {
       const curDate = new Date()
       const liveDate = new Date(this.props.live.OnAirTime)
-      this.setState({ countdown: dateDiff(curDate, liveDate) })
+      this.setState({
+        liveNow: liveDate.getTime() - curDate.getTime() < 0,
+        countdown: dateDiff(curDate, liveDate),
+      })
     }, 1000)
   }
   render() {
