@@ -85,7 +85,7 @@ export default class extends Component {
       month: 'short',
       day: 'numeric',
     }
-    const liveDateStr = activeLive.liveDate
+    const liveDateStr = activeLive.OnAirTime
     const liveDate = new Date(liveDateStr)
     const formattedLiveDate = liveDate.toLocaleDateString('en-US', options)
     const settings = {

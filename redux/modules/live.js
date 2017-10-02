@@ -44,13 +44,15 @@ const livesReducer = (state = initialState, action) => {
       const newState = Object.assign({}, state)
       lives.forEach(live => {
         if (typeof newState.recents === 'undefined') {
-          newState.recents = []
+          newState.recents = [live.id]
         } else {
           newState.recents.push(live.id)
         }
 
         if (typeof newState.data === 'undefined') {
-          newState.data = {}
+          newState.data = {
+            [live.id]: live,
+          }
         } else {
           newState.data[live.id] = live
         }

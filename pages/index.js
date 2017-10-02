@@ -60,12 +60,6 @@ const GradientBg = styled.div`
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 
 class Index extends React.Component {
-  componentDidMount() {
-    const cookies = new Cookies()
-    const cookie = cookies.get('token')
-    this.props.fetchLives(cookie)
-    return this.props.fetchVods(cookie)
-  }
   render() {
     return (
       <div>
@@ -76,7 +70,7 @@ class Index extends React.Component {
           <NewModal />
           <GradientBg>
             <Container>
-              <Hero lives={this.props.lives} />
+              <Hero lives={this.props.lives.slice(0, 3)} />
               <LatestVideo name="Latest Video" />
             </Container>
           </GradientBg>
