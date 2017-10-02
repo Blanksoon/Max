@@ -41,6 +41,12 @@ const ButtonBlue = styled.button`
   display: inline-block;
   font-weight: 700;
   font-family: Helvetica, Arial, sans-serif;
+
+  &:hover {
+    color: #ffffff;
+    cursor: pointer;
+    background: ${color.lightBlue};
+  }
 `
 const WrapperSky = styled.div`
   z-index: 1;
@@ -117,7 +123,11 @@ const LiveTop = ({ live }) => (
               <Text4>Hurry up! Buy ticket before live start</Text4>
             </Box>
             <Box pl="1.5rem">
-              <ButtonBlue>BUY</ButtonBlue>
+              <Link href={`/getticket`}>
+                <a>
+                  <ButtonBlue>BUY</ButtonBlue>
+                </a>
+              </Link>
             </Box>
           </Flex>
           <Box pt="1rem" />

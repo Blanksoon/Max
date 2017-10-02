@@ -61,7 +61,7 @@ const LiveVdo = ({ url, live }) => {
             <Container>
               <Flex>
                 <Box w={12 / 12} bg="white">
-                  <LiveDescription />
+                  <LiveDescription live={live} />
                   <Box width={12 / 12} pt="1rem" pl="1rem" pr="1rem">
                     <hr size="0.1" />
                   </Box>
