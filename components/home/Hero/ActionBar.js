@@ -25,12 +25,12 @@ export default ({
         </Link>
         <ModalButton
           modalType={2}
-          modalURL="static/flightcard.jpg"
+          modalURL={`${live.fightcardUrl}`}
           text="View Fightcard"
         />
         <ModalButton
           modalType={1}
-          modalURL="static/flightcard.jpg"
+          modalURL={`${live.promoUrl}`}
           text="Promo Clip"
         />
       </Flex>
