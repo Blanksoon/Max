@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { NavbarHead } from '../components/home/NavbarHead'
-import { Footer } from '../components/home/Footer'
 import { BackVideoCenter } from '../components/videoPlayer/BackVideoCenter'
 import Players from '../components/videoPlayer/Player'
 import { Description } from '../components/videoPlayer/Description'
@@ -36,7 +34,7 @@ const videoPlayer = ({ url }) => {
   return (
     <div className="wrapper-index">
       <Head>
-        <link href="../static/css/video-react.css" rel="stylesheet" />
+        <link href="/static/css/video-react.css" rel="stylesheet" />
       </Head>
       <Main url={url}>
         <div className="wrapper-BackVideoCenter">

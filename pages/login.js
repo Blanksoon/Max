@@ -61,43 +61,38 @@ class LoginFacebook extends React.Component {
     //return this.props.fetchVods(cookie)
   }
   render() {
-    console.log('loginSucessful', this.props)
-    if (this.props.checkLogin == true) {
-      this.props.url.back()
-    } else {
-      return (
-        <div>
-          <Head>
-            <link href="../static/css/video-react.css" rel="stylesheet" />
-          </Head>
-          <Main url={this.props.url}>
-            <NewModal />
-            <Container>
-              <Flex>
-                <Box w={2 / 12} />
-                <Box w={8 / 12} pt="7rem" pb="2rem">
-                  <Login />
-                </Box>
-              </Flex>
-            </Container>
+    return (
+      <div>
+        <Head>
+          <link href="/static/css/video-react.css" rel="stylesheet" />
+        </Head>
+        <Main url={this.props.url}>
+          <NewModal />
+          <Container>
+            <Flex>
+              <Box w={2 / 12} />
+              <Box w={8 / 12} pt="7rem" pb="2rem">
+                <Login />
+              </Box>
+            </Flex>
+          </Container>
 
-            <style jsx global>
-              {`
-                body {
-                  padding: 0 !important;
-                  margin: 0 !important;
-                }
-                 {
-                  /* * {
+          <style jsx global>
+            {`
+              body {
+                padding: 0 !important;
+                margin: 0 !important;
+              }
+               {
+                /* * {
               box-sizing: border-box;
             } */
-                }
-              `}
-            </style>
-          </Main>
-        </div>
-      )
-    }
+              }
+            `}
+          </style>
+        </Main>
+      </div>
+    )
   }
 }
 const mapStateToProps = state => {

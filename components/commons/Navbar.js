@@ -6,7 +6,7 @@ import Container from './Container'
 import NavItem from './NavItem'
 import vars from './vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
-import LoginLang from './LoginLang'
+import LoginLang from '../../containers/commons/LoginLang'
 
 //rgba(1, 15, 30, 0.8)
 const Navbar = styled(Fixed)`
@@ -66,7 +66,7 @@ export default class extends Component {
 
   render() {
     return (
-      <Navbar m={0} p={2} top left z={1} pathname={this.props.url.pathname}>
+      <Navbar pathname={this.props.url.pathname} m={0} p={2} top left z={1}>
         <Container>
           <Motto>
             The Most Exciting <br />Fightingsport in the World

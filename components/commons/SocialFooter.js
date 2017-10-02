@@ -24,16 +24,16 @@ export default () => (
   <SocialFooter>
     <Container>
       <a href="http://www.google.com" target="_blank">
-        <SocialIcon src="static/ic_facebook@2x.png" />
+        <SocialIcon src="/static/ic_facebook@2x.png" />
       </a>
       <a href="http://www.google.com" target="_blank">
-        <SocialIcon src="static/ic_googleplus@2x.png" />
+        <SocialIcon src="/static/ic_googleplus@2x.png" />
       </a>
       <a href="http://www.google.com" target="_blank">
-        <SocialIcon src="static/ic_youtube@2x.png" />
+        <SocialIcon src="/static/ic_youtube@2x.png" />
       </a>
       <a href="http://www.google.com" target="_blank">
-        <SocialIcon src="static/ic_instagram@2x.png" />
+        <SocialIcon src="/static/ic_instagram@2x.png" />
       </a>
       <CopyRight>Copyright © 2016 All Rights Reserved</CopyRight>
     </Container>

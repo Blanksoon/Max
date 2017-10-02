@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Login from '../login/Login'
 import {
   Flex,
   Provider,
@@ -11,6 +10,7 @@ import {
   Fixed,
   Heading,
 } from 'rebass'
+import Login from '../login/Login'
 
 export default class Modal extends Component {
   constructor(props) {

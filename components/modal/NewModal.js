@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
-import Player from '../videoPlayer/Player'
-import Login from '../login/Login'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { Image } from 'rebass'
+import Login from '../login/Login'
+import Player from '../videoPlayer/Player'
 
 const Wrapper = styled.div`
   color: blue;
@@ -53,8 +53,8 @@ const WrapperClose = styled.div`
 export default class Modal extends Component {
   static propTypes = {
     active: PropTypes.bool,
-    modalType: PropTypes.string,
-    toogleModalAction: PropTypes.func,
+    modalType: PropTypes.number,
+    toggleModalAction: PropTypes.func,
     modalURL: PropTypes.string,
     closeModal: PropTypes.func,
   }
@@ -63,7 +63,7 @@ export default class Modal extends Component {
   }
   handleOnClick = e => {
     console.log('click', e)
-    false ? this.props.toogleModalAction() : null
+    false ? this.props.toggleModalAction() : null
     // if (false) {
     //   this.props.toogleModalAction()
     // }

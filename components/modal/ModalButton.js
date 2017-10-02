@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
+import styled from 'styled-components'
+import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
 import { connect } from 'react-redux'
 import NewModal from './NewModal'
-import styled from 'styled-components'
-import { toogleModal } from '../../actions/modal'
-import { Flex, Provider, Box, Image, Text, Button, overlay } from 'rebass'
+import { toggleModal } from '../../redux/modules/modal'
 import BorderlessButton from '../commons/BorderlessButton'
 import color from '../commons/vars'
 
@@ -23,13 +23,13 @@ const ButtonPromoClip = styled.button`
 class ModalButton extends Component {
   static propTypes = {
     active: PropTypes.bool,
-    toogleModalAction: PropTypes.func,
+    toggleModalAction: PropTypes.func,
     modalType: PropTypes.number,
     modalURL: PropTypes.string,
     buttonID: PropTypes.number,
   }
   handleOnClickModal = () => {
-    this.props.toogleModalAction()
+    this.props.toggleModalAction()
     this.props.updateModalAction(this.props.modalType)
     this.props.indexModalURL(this.props.modalURL)
   }

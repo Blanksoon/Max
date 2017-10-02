@@ -1,28 +1,28 @@
 // types
-const TOOGLE_MODAL = 'TOOGLE_MODAL'
+const TOGGLE_MODAL = 'TOGGLE_MODAL'
 const MODAL_UPDATE_TYPE = 'MODAL_UPDATE_TYPE'
 const MODAL_URL = 'MODAL_URL'
 const CLOSE_MODAL = 'CLOSE_MODAL'
 
 // actions
-const toogleModal = () => {
+export const toggleModal = () => {
   return {
-    type: TOOGLE_MODAL,
+    type: TOGGLE_MODAL,
   }
 }
-const updateModalType = modalType => {
+export const updateModalType = modalType => {
   return {
     type: MODAL_UPDATE_TYPE,
     payload: { modalType },
   }
 }
-const indexModalURL = modalURL => {
+export const indexModalURL = modalURL => {
   return {
     type: MODAL_URL,
     URL: { modalURL },
   }
 }
-const closeModal = () => {
+export const closeModal = () => {
   return {
     type: CLOSE_MODAL,
   }
@@ -37,7 +37,7 @@ const initialState = {
 
 const modalReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TOOGLE_MODAL: {
+    case TOGGLE_MODAL: {
       return {
         ...state,
         activeModal: !state.activeModal,

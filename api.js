@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 //139.59.127.206
-export const SERVER = 'http://139.59.127.206:3001'
+export const SERVER = 'http://localhost:3001'
 export const get = url => {
   return fetch(url)
     .then(response => {
@@ -26,7 +26,6 @@ export const post = (url, json) => {
       if (!response.ok) {
         throw new Error(response.statusText)
       }
-      //console.log('response', response.json())
       return response.json()
     })
     .catch(err => Promise.reject(err))

@@ -50,7 +50,10 @@ const dateDiff = (date1, date2) => {
 }
 const pad = num => {
   const length = `${num}`.length
-  return `${'0'.repeat(2 - length)}${num}`
+  if (length < 2) {
+    return `${'0'.repeat(2 - length)}${num}`
+  }
+  return num
 }
 
 export default ({ liveDateStr }) => {

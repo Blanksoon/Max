@@ -1,4 +1,3 @@
-import { LogoFooter } from '../home/Footer'
 import styled from 'styled-components'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 

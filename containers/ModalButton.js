@@ -1,6 +1,10 @@
 import { connect } from 'react-redux'
 import ModalButton from '../components/modal/ModalButton'
-import { toogleModal, updateModalType, indexModalURL } from '../actions/modal'
+import {
+  toggleModal,
+  updateModalType,
+  indexModalURL,
+} from '../redux/modules/modal'
 
 const mapStateToProps = state => {
   return {
@@ -9,7 +13,7 @@ const mapStateToProps = state => {
 }
 //console.log('hi')
 const mapDispatchToProps = dispatch => ({
-  toogleModalAction: () => dispatch(toogleModal()),
+  toggleModalAction: () => dispatch(toggleModal()),
   updateModalAction: modalType => dispatch(updateModalType(modalType)),
   indexModalURL: modalURL => dispatch(indexModalURL(modalURL)),
 })
