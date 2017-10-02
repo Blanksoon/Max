@@ -1,28 +1,26 @@
 // This is the Link API
 import Head from 'next/head'
 import Link from 'next/link'
-import { NavbarHead } from '../components/home/NavbarHead'
-import { Footer } from '../components/home/Footer'
+import { Flex, Box } from 'rebass'
+import Cookies from 'universal-cookie'
+import styled from 'styled-components'
 import { ComingLive } from '../components/home/ComingLive'
 import LatestVideo from '../components/home/LatestVideo'
 import MaxNew from '../components/home/MaxNew'
 import StadiumTicket from '../components/home/StadiumTicket'
 import About from '../components/home/About'
 import Hero from '../components/home/Hero'
-import styled from 'styled-components'
 import OurShow from '../components/ourShow/OurShow'
 import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
 import ListVideo from '../components/maxNews/ListVideo'
 import Login from '../components/login/Login'
-import Modal from '../components/modal/Modal'
 import NewModal from '../containers/NewModal'
-import { Container, Flex, Box } from 'rebass'
+import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
-import { Provider } from 'react-redux'
-import Cookies from 'universal-cookie'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import { fetchLives } from '../redux/modules/live'
 import withRedux from 'next-redux-wrapper'
 import {
   toogleModal,
@@ -30,7 +28,6 @@ import {
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
-const cookies = new Cookies()
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -60,21 +57,49 @@ const GradientBg = styled.div`
   background: linear-gradient(${vars.darkblue}, ${vars.blue});
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
-//const cookies = new Cookies()
-//const token = cookies.get('token')
-//console.log('mk', token)
-let cookie = ''
+
 class Index extends React.Component {
+  // static async getInitialProps({ store, isServer, query, req, state }) {
+  //   const res = await store.dispatch(fetchLives())
+  //   console.log('response', res)
+  //   //state = store.setState(response)
+  //   return {
+  //     res,
+  //     lives: [
+  //       {
+  //         bannerUrl: '/static/img_live_banner.jpg',
+  //         liveDate: '2017-09-30',
+  //         title:
+  //           'MAX Ultimate Tournament & MAX World Champions 7 International Fights',
+  //       },
+  //       {
+  //         bannerUrl: '/static/slide2.jpg',
+  //         liveDate: '2017-10-5',
+  //         title: 'The Battle Muay Thai',
+  //       },
+  //       {
+  //         bannerUrl: '/static/slide3.jpg',
+  //         liveDate: '2017-10-10',
+  //         title: 'Max World Champion 2013: DVD bookset',
+  //       },
+  //     ],
+  //   }
+  // }
+
   componentDidMount() {
-    cookie = cookies.get('token')
-    //console.log('get cookie', cookie)
+    const cookies = new Cookies()
+    const cookie = cookies.get('token')
+    this.props.fetchLives(cookie)
     return this.props.fetchVods(cookie)
   }
   render() {
+    {
+      //console.log('aaaaaa', this.props)
+    }
     return (
       <div>
         <Head>
-          <link href="../static/css/video-react.css" rel="stylesheet" />
+          <link href="/static/css/video-react.css" rel="stylesheet" />
         </Head>
         <Main url={this.props.url}>
           <NewModal />
@@ -128,8 +153,12 @@ class Index extends React.Component {
   }
 }
 
-Index.getInitialProps = () => {
+Index.getInitialProps = ({ store, isServer, query, req, state }) => {
+  const response = store.dispatch(fetchLives())
+  console.log('response', response)
+  //state = store.setState(response)
   return {
+    response,
     lives: [
       {
         bannerUrl: '/static/img_live_banner.jpg',
@@ -156,4 +185,5 @@ export default withRedux(initStore, null, {
   updateModalType,
   indexModalURL,
   closeModal,
+  fetchLives,
 })(Index)

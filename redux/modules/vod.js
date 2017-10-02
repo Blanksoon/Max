@@ -11,15 +11,13 @@ export const fetchVodsSuccess = vods => ({
 })
 
 export const fetchVods = token => async dispatch => {
-  const url = `${api.SERVER}/vod`
+  //console.log('token', token)
+  const url = `${api.SERVER}/vods`
   try {
     const json = await api.post(url, { token })
+    //console.log('jsonData', json)
     // You should not return in Vods <-- change to something like data
-    if (json.data.Vods == undefined) {
-      dispatch(fetchVodsSuccess(json.data.vodslogin))
-    } else {
-      dispatch(fetchVodsSuccess(json.data.vods))
-    }
+    dispatch(fetchVodsSuccess(json.data))
   } catch (error) {
     console.log(error)
   }

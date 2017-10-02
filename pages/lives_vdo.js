@@ -1,15 +1,14 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { NavbarHead } from '../components/home/NavbarHead'
-import { Footer } from '../components/home/Footer'
 import { BackVideoCenter } from '../components/videoPlayer/BackVideoCenter'
 import Players from '../components/videoPlayer/Player'
 import { LiveDescription } from '../components/livePlayer/LiveDescription'
 import LiveTop from '../components/livePlayer/LiveTop'
 import UpNext from '../components/videoPlayer/UpNext'
 import StadiumTicket from '../components/home/StadiumTicket'
-import { Container, Flex, Box, Image, Text } from 'rebass'
+import { Flex, Box, Image, Text } from 'rebass'
+import Container from '../components/commons/Container'
 import NewModal from '../containers/NewModal'
 import Main from '../layouts/Main'
 import color from '../components/commons/vars'
@@ -33,7 +32,7 @@ const LivePlayer = styled.div`height: 36rem;`
 const liveVdo = ({ url }) => (
   <div>
     <Head>
-      <link href="./static/css/video-react.css" rel="stylesheet" />
+      <link href="/static/css/video-react.css" rel="stylesheet" />
     </Head>
     <Main url={url}>
       <NewModal />

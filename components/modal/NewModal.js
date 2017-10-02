@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
-import Player from '../videoPlayer/Player'
-import Login from '../login/Login'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { Image } from 'rebass'
+import Login from '../login/Login'
+import Player from '../videoPlayer/Player'
 
 const Wrapper = styled.div`
   color: blue;
@@ -34,11 +34,18 @@ const WrapperImg = styled.div`
   background: #fff;
   z-index: 240;
 `
+const WrapperLogin = styled.div`
+  position: relative;
+  width: 840px;
+  height: 550px;
+  background: #fff;
+  z-index: 240;
+`
 const WrapperClose = styled.div`
   position: absolute;
   color: #fff;
-  top: 0px;
-  right: 0px;
+  top: 20px;
+  right: 20px;
   width: 40px;
   height: 40px;
   //border: 3px solid #73ad81;
@@ -46,8 +53,8 @@ const WrapperClose = styled.div`
 export default class Modal extends Component {
   static propTypes = {
     active: PropTypes.bool,
-    modalType: PropTypes.string,
-    toogleModalAction: PropTypes.func,
+    modalType: PropTypes.number,
+    toggleModalAction: PropTypes.func,
     modalURL: PropTypes.string,
     closeModal: PropTypes.func,
   }
@@ -56,7 +63,7 @@ export default class Modal extends Component {
   }
   handleOnClick = e => {
     console.log('click', e)
-    false ? this.props.toogleModalAction() : null
+    false ? this.props.toggleModalAction() : null
     // if (false) {
     //   this.props.toogleModalAction()
     // }
@@ -85,7 +92,7 @@ export default class Modal extends Component {
         <WrapperVod onClick={e => this.handleOnClick(e)} visibility="hidden">
           <Player />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="static/close.jpg" />
+            <Image width="100%" src="static/close.png" />
           </WrapperClose>
         </WrapperVod>
       )
@@ -94,9 +101,18 @@ export default class Modal extends Component {
         <WrapperImg onClick={e => this.handleOnClick(e)}>
           <Image width="100%" src={this.props.modalURL} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="static/close.jpg" />
+            <Image width="100%" src="static/close.png" />
           </WrapperClose>
         </WrapperImg>
+      )
+    } else if (this.props.modalType === 3) {
+      renderUI = (
+        <WrapperLogin onClick={e => this.handleOnClick(e)}>
+          <Login />
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="static/close.png" />
+          </WrapperClose>
+        </WrapperLogin>
       )
     } else {
       renderUI = renderUI

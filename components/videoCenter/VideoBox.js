@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import React, { Component } from 'react'
 
 const BackgroundImage = styled.div`
-  background: '../../static/3.png';
+  background: '/static/3.png';
   background-repeat: no-repeat;
   background-position: center;
 `
@@ -21,16 +21,16 @@ const WrapperHilight = styled.div`
   position: relative;
 `
 const WrapperHilightText = styled.div`
-  bottom: 12%;
+  top: 0%;
   right: 0;
   width: 100%;
   position: absolute;
   background: -webkit-linear-gradient(
     top,
-    rgba(30, 87, 153, 0) 0%,
-    rgba(30, 87, 153, 1) 35%,
-    rgba(30, 87, 153, 1) 99%,
-    rgba(30, 87, 153, 1) 100%
+    rgba(1, 33, 71, 0.1) 0%,
+    rgba(1, 33, 71, 0.6) 76%,
+    rgba(1, 33, 71, 1) 85%,
+    rgba(1, 33, 71, 1) 100%
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const WrapperImg = styled.div`
@@ -112,6 +112,7 @@ class VideoBox extends Component {
               <Box w={12 / 12} pl="20px">
                 <WrapperHilightText>
                   <Text
+                    pt="25.5rem"
                     pl="1rem"
                     color="#57b1fe"
                     bold
@@ -165,7 +166,7 @@ class VideoBox extends Component {
             </WrapperHilight>
           </Box>
         </Flex>
-        <Box pl="1rem" pr="1rem">
+        <Box pt="1rem" pl="1rem" pr="1rem">
           <LabelSearch />
           <RowVideo />
           <RowVideo />

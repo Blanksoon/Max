@@ -2,19 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { Flex, Provider, Box, Image, Text, overlay } from 'rebass'
+import Button from '../commons/Button'
 import color from '../commons/vars'
 
-const Button = styled.button`
-  bottom: 2%;
-  background-color: ${props => props.color};
-  border: 1px solid ${props => props.color};
-  color: white;
-  padding: 8px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: 700;
-`
 const Wrapper = styled.div`
   font-family: Helvetica, Arial, sans-serif;
   background-color: #022346;
@@ -63,9 +53,14 @@ const ThumbnailBigLive = props => (
         </Text3>
       </Box>
       <Box pl="6rem">
-        <a href="/lives_vdo">
-          <Button color={color.red}>Watch</Button>
-        </a>
+        <Link
+          as={`/lives/${props.text2}`}
+          href={`/lives_vdo?id=${props.text2}`}
+        >
+          <a>
+            <Button color={color.red}>Watch</Button>
+          </a>
+        </Link>
       </Box>
     </Flex>
   </Wrapper>

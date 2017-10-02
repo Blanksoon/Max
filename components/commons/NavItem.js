@@ -3,12 +3,14 @@ import Link from 'next/link'
 import vars from './vars'
 
 const Inactive = styled.a`
+  box-sizing: border-box;
   color: ${vars.lightBlue};
   cursor: pointer;
+  height: ${vars.navHeight};
   float: left;
-  margin-top: 2.4rem;
-  padding: 0.5rem 1rem;
+  padding: 4rem 1rem 2.3rem;
   text-decorate: none;
+  vertical-align: bottom;
   &:hover {
     color: ${vars.white};
   }

@@ -31,13 +31,18 @@ const ThumbnailLive = props => (
         <Flex pt="2.3rem">
           <Box w={4 / 12} pl="20%">
             <center>
-              <ModalImg modalType={1} w="100%" img="static/01.jpg" />
+              <ModalImg
+                modalType={2}
+                modalURL={props.urlimg}
+                w="100%"
+                img="static/01.jpg"
+              />
             </center>
           </Box>
           <Box w={4 / 12}>
             <center>
               <ModalImg
-                modalType={2}
+                modalType={1}
                 modalURL={props.urlimg}
                 w="40%"
                 img="static/02.jpg"
@@ -56,7 +61,7 @@ const ThumbnailLive = props => (
         </Flex>
       </div>
     </div>
-    <Box bg="#022246" pt="2%" pb="2%">
+    <Box pt="2%" pb="2%">
       <center>
         <Text color="#d6ff00" bold children={props.text} fontSize="1em" />
       </center>
