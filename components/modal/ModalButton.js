@@ -20,6 +20,17 @@ const ButtonPromoClip = styled.button`
   color: ${props => props.color.red};
   cursor: pointer;
 `
+const ButtonTickket = styled.button`
+  bottom: 2%;
+  background-color: #b81111;
+  border: 1px solid #b81111;
+  color: white;
+  padding: 12px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
+`
 class ModalButton extends Component {
   static propTypes = {
     active: PropTypes.bool,
@@ -53,6 +64,15 @@ class ModalButton extends Component {
         >
           {this.props.text}
         </ButtonPromoClip>
+      )
+    } else if (this.props.buttonID === 3) {
+      renderUI = (
+        <ButtonTickket
+          onClick={this.handleOnClickModal}
+          visibility={this.props.active}
+        >
+          {this.props.text}
+        </ButtonTickket>
       )
     } else {
       renderUI = (

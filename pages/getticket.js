@@ -67,6 +67,7 @@ class getticket extends React.Component {
         this.setState({
           id: 3,
         })
+        return json
       }
       if (json.status.message == 'success') {
         this.setState({
@@ -74,7 +75,11 @@ class getticket extends React.Component {
         })
         //console.log('jjjj')
         //this.props.url.back()
+        return json
       }
+      this.setState({
+        id: 3,
+      })
       return json
     } catch (error) {
       console.error(error)
@@ -107,7 +112,7 @@ class getticket extends React.Component {
         </Head>
         {/* {status.message ?  : null } */}
         <Main url={this.props.url}>
-          <NewModal/>
+          <NewModal />
           <WrapperPromotion>
             <Container>
               <Box>

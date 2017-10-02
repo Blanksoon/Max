@@ -25,20 +25,44 @@ export const fetchVods = token => async dispatch => {
 
 // reducer
 const initialState = {
+  recents: [],
   vod: {},
 }
 const vodReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_VODS_SUCCESS:
-      const vodById = {}
-      if (Array.isArray(action.payload)) {
-        action.payload.forEach(vod => {
-          vodById[vod.id] = vod
-        })
-      }
+      //   const vodById = {}
+      //   if (Array.isArray(action.payload)) {
+      //     action.payload.forEach(vod => {
+      //       vodById[vod.id] = vod
+      //     })
+      //   }
+      //   return {
+      //     ...state.vod,
+      //     ...vodById,
+      //   }
+      // default: {
+      //   return state
+      // }
+      const vods = action.payload
+      const newState = Object.assign({}, state)
+      vods.forEach(vod => {
+        if (typeof newState.recents === 'undefined') {
+          newState.recents = [vod.id]
+        } else {
+          newState.recents.push(vod.id)
+        }
+
+        if (typeof newState.data === 'undefined') {
+          newState.data = {
+            [vod.id]: vod,
+          }
+        } else {
+          newState.data[vod.id] = vod
+        }
+      })
       return {
-        ...state.vod,
-        ...vodById,
+        ...newState,
       }
     default: {
       return state
