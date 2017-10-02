@@ -171,6 +171,12 @@ export default class Promocode extends Component {
             <Text1>GET TICKET</Text1>
           </Box>
           <Box pt="10rem" />
+          <Image/>
+          <center>
+          <Box w={2/12} >
+          <Image width="100%" src="static/img_thankgod.png" />
+          </Box>
+          </center>
           <center>{renderUI}</center>
         </Wrapper>
       </Provider>
