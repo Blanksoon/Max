@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import styled from 'styled-components'
 import vars from '../../commons/vars'
+import { dateDiff, pad } from '../../../util'
 
 const Countdown = styled.div`
   background: ${vars.transDarkblue};
@@ -35,26 +36,6 @@ const Label = styled.div`
   margin: 0 0.5rem;
   padding: 0.3rem 0.5rem;
 `
-// Calculate date2 - date2
-// date1 and date2 must be date object
-const dateDiff = (date1, date2) => {
-  const diff = date2.getTime() - date1.getTime()
-  const MS_IN_DAY = 1000 * 3600 * 24
-  const MS_IN_HRS = 1000 * 3600
-  const MS_IN_MIN = 1000 * 60
-  return {
-    day: Math.floor(diff / MS_IN_DAY),
-    hrs: Math.floor((diff % MS_IN_DAY) / MS_IN_HRS),
-    min: Math.floor(((diff % MS_IN_DAY) % MS_IN_HRS) / MS_IN_MIN),
-  }
-}
-const pad = num => {
-  const length = `${num}`.length
-  if (length < 2) {
-    return `${'0'.repeat(2 - length)}${num}`
-  }
-  return num
-}
 
 export default ({ liveDateStr }) => {
   const curDate = new Date()
