@@ -9,6 +9,7 @@ import ThumbnailBigLive from '../components/thumbnail/ThumbnailBigLive'
 import Container from '../components/commons/Container'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import { fetchLives } from '../redux/modules/live'
 import withRedux from 'next-redux-wrapper'
 import NewModal from '../containers/NewModal'
 import {
@@ -17,6 +18,7 @@ import {
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
+import { recentLivesSelector } from '../redux/selectors/live'
 
 const Text = styled.div`
   color: #b81111;
@@ -29,77 +31,89 @@ const Wrapper = styled.div`
 `
 const LivePlayer = styled.div`height: 36rem;`
 
-const lives = ({ url }) => (
-  <div>
-    <Main url={url}>
-      <NewModal />
-      <Wrapper>
-        <Container>
-          <Box pl="1.5rem" bg="#fff" pt="8rem">
-            <Text>LIVE</Text>
-          </Box>
-          <Flex bg="#fff" pt="2rem">
-            <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
-              <ThumbnailBigLive
-                img="/static/maxultimate-show.jpg"
-                text1="Now! LIVE-on Sun.Aug 20th, 2017"
-                text2="MAX Ultimate Tournament & MAX World Champions 7"
-                text3="InternationalFights"
-                text4="live telecast on Channel 8 HD 27"
-                text5="every Sunday 7.20-9.50 pm."
-              />
+class lives extends React.Component {
+  render(){
+      //console.log('live live',this.props.lives[0])
+    return(
+    <div>
+      <Main url={this.props.url}>
+        <NewModal />
+        <Wrapper>
+          <Container>
+            <Box pl="1.5rem" bg="#fff" pt="8rem">
+              <Text>LIVE</Text>
             </Box>
-            <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
-              <ThumbnailBigLive
-                img="/static/thairath-show.jpg"
-                text1="NEXT-on Sat. Aug 19th, 2017"
-                text2="Thairath Muay-Thai Figther"
-                text3={<br />}
-                text4="live telecast on ThairathTV HD 32"
-                text5="every Saturday 2.00-4.00 pm."
-              />
-            </Box>
-          </Flex>
-          <Flex bg="#fff" pt="2rem" pb="3rem">
-            <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
-              <ThumbnailBigLive
-                img="/static/thechampion-show.jpg"
-                text1="Now! LIVE-on Sun.Aug 20th, 2017"
-                text2="The Champion Muay-Thai"
-                text3={<br />}
-                text4="live telecast on Channel 8 HD 27"
-                text5="every Sunday 7.20-9.50 pm."
-              />
-            </Box>
-            <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
-              <ThumbnailBigLive
-                img="/static/thebattle-show.jpg"
-                text1="Now! LIVE-on Sun.Aug 20th, 2017"
-                text2="The Battle Muay-Thai"
-                text3={<br />}
-                text4="live telecast on Channel 8 HD 27"
-                text5="every Sunday 7.20-9.50 pm."
-              />
-            </Box>
-          </Flex>
-        </Container>
-      </Wrapper>
-    </Main>
-    <style jsx global>
-      {`
-        body {
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-         {
-          /* * {
-              box-sizing: border-box;
-            } */
-        }
-      `}
-    </style>
-  </div>
-)
+            <Flex bg="#fff" pt="2rem">
+              <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
+                <ThumbnailBigLive
+                  img={this.props.lives[0].thumbnailUrl}
+                  text1={this.props.lives[0].programName}
+                  text2={this.props.lives[0].description_en}
+                  text4={this.props.lives[0].title_en}
+                />
+              </Box>
+              <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
+                <ThumbnailBigLive
+                img={this.props.lives[1].thumbnailUrl}
+                text1={this.props.lives[1].programName}
+                text2={this.props.lives[1].description_en}
+                text3={<br/>}
+                text4={this.props.lives[1].title_en}
+                />
+              </Box>
+            </Flex>
+            <Flex bg="#fff" pt="2rem" pb="3rem">
+              <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
+                <ThumbnailBigLive
+                img={this.props.lives[2].thumbnailUrl}
+                text1={this.props.lives[2].programName}
+                text2={this.props.lives[2].description_en}
+                text4={this.props.lives[2].title_en}
+                />
+              </Box>
+              <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
+                <ThumbnailBigLive
+                img={this.props.lives[3].thumbnailUrl}
+                text1={this.props.lives[3].programName}
+                text2={this.props.lives[3].description_en}
+                text4={this.props.lives[3].title_en}
+                />
+              </Box>
+            </Flex>
+          </Container>
+        </Wrapper>
+      </Main>
+      <style jsx global>
+        {`
+          body {
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+           {
+            /* * {
+                box-sizing: border-box;
+              } */
+          }
+        `}
+      </style>
+    </div>
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    lives: recentLivesSelector(state),
+  }
+}
+lives.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  const token = state.auth.token
+  const response = await fetchLives(token)(store.dispatch)
+  state = store.getState()
+  const props = mapStateToProps(state)
+  return props
+}
 
 export default withRedux(initStore, null, {
   fetchVods,
@@ -107,4 +121,5 @@ export default withRedux(initStore, null, {
   updateModalType,
   indexModalURL,
   closeModal,
+  fetchLives,
 })(lives)
