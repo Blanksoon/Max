@@ -43,6 +43,7 @@ const ThumbnailBottom = props => (
       {`
         .thumbnailbottom {
           font-family: Helvetica, Arial, sans-serif;
+          background: #012147;
         }
       `}
     </style>

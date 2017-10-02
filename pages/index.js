@@ -55,7 +55,7 @@ const WrapperAbout = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const GradientBg = styled.div`
-  background: linear-gradient(${vars.darkblue}, ${vars.blue});
+background: -webkit-linear-gradient(top, #020f1f 0%,#020f1f 12%,#020f1f 64%,#020f1f 75%,#08488f 92%,#08488f 100%); /* Chrome10-25,Safari5.1-6 */
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 

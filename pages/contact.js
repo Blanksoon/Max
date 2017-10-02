@@ -34,6 +34,7 @@ const WrapperAbout = styled.div`
 `
 const Contact = ({ url }) => (
   <Main url={url}>
+    <NewModal/>
     <Wrapper>
       <WrapperAbout>
         <Container>
