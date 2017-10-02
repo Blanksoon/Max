@@ -1,22 +1,23 @@
 import * as api from '../../api'
 
 // types
-const FETCH_LIVES = 'FETCH_LIVES'
-const FETCH_LIVES_SUCCESS = 'FETCH_LIVES_SUCCESS'
+const FETCH_LIVE = 'FETCH_LIVE'
+const FETCH_LIVE_SUCCESS = 'FETCH_LIVE_SUCCESS'
 
 // actions
-export const fetchLivesSuccess = lives => ({
-  type: FETCH_LIVES_SUCCESS,
-  payload: lives,
+export const fetchLivesSuccess = live => ({
+  type: FETCH_LIVE_SUCCESS,
+  payload: live,
 })
 
 export const fetchLives = token => async dispatch => {
-  const url = `${api.SERVER}/vod`
+  //console.log('token', token)
+  const url = `${api.SERVER}/lives`
   try {
     const json = await api.post(url, { token })
-    if (json.data.lives != undefined) {
-      dispatch(fetchLivesSuccess(json.data.lives))
-    }
+    console.log('jsonData', json)
+    // You should not return in Vods <-- change to something like data
+    dispatch(fetchLivesSuccess(json.data))
   } catch (error) {
     console.log(error)
   }
@@ -24,20 +25,22 @@ export const fetchLives = token => async dispatch => {
 
 // reducer
 const initialState = {
-  vod: {},
+  current: {},
+  live: {},
 }
-const vodReducer = (state = initialState, action) => {
+const livesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_LIVES_SUCCESS:
-      const vodById = {}
+    case FETCH_LIVE_SUCCESS:
+      const liveById = {}
       if (Array.isArray(action.payload)) {
-        action.payload.forEach(vod => {
-          vodById[vod.id] = vod
+        action.payload.forEach(live => {
+          liveById[live.id] = live
         })
       }
       return {
-        ...state.vod,
-        ...vodById,
+        ...current,
+        ...state.live,
+        ...liveById,
       }
     default: {
       return state
@@ -45,4 +48,4 @@ const vodReducer = (state = initialState, action) => {
   }
 }
 
-export default vodReducer
+export default livesReducer

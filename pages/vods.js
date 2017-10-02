@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
 import withRedux from 'next-redux-wrapper'
-import { Footer } from '../components/home/Footer'
+//import { Footer } from '../components/home/Footer'
 import VideoBox from '../components/videoCenter/VideoBox'
 import { Flex, Box } from 'rebass'
 import Container from '../components/commons/Container'
@@ -35,7 +35,7 @@ class Vods extends React.Component {
 
   componentDidMount() {
     cookie = cookies.get('token')
-    //console.log('get cookie', cookie)
+    console.log('get cookie', cookie)
     return this.props.fetchVods(cookie)
   }
 

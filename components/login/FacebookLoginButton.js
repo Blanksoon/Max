@@ -89,5 +89,8 @@ class FacebookLoginButton extends React.Component {
     )
   }
 }
+const mapDispatchToProps = dispatch => ({
+  loginSuccess: () => dispatch(loginSuccess()),
+})
 
 export default connect(null, { fbLogin, closeModal })(FacebookLoginButton)

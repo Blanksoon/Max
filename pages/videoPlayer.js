@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { Footer } from '../components/home/Footer'
 import { BackVideoCenter } from '../components/videoPlayer/BackVideoCenter'
 import Players from '../components/videoPlayer/Player'
 import { Description } from '../components/videoPlayer/Description'

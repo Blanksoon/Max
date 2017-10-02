@@ -20,6 +20,7 @@ import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import { fetchLives } from '../redux/modules/live'
 import withRedux from 'next-redux-wrapper'
 import {
   toogleModal,
@@ -61,6 +62,7 @@ class Index extends React.Component {
   componentDidMount() {
     const cookies = new Cookies()
     const cookie = cookies.get('token')
+    this.props.fetchLives(cookie)
     return this.props.fetchVods(cookie)
   }
   render() {
@@ -145,6 +147,7 @@ Index.getInitialProps = props => {
 }
 export default withRedux(initStore, null, {
   fetchVods,
+  fetchLives,
   toogleModal,
   updateModalType,
   indexModalURL,

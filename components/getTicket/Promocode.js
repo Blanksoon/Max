@@ -67,11 +67,14 @@ export default class Promocode extends Component {
     this.handleOnKeyDown = this.handleOnKeyDown.bind(this)
   }
   subScribe() {
-    //console.log('test', this.state.promocode)
+    console.log('test', this.props.cookie)
     //promocode = '1003'
-    if (this.props.cookie == undefined) {
+    if (this.props.cookie == 'undefined' || this.props.cookie == undefined) {
       console.log('cookie not found')
       this.props.push('/login')
+    } else {
+      console.log('not undefiend', typeof this.props.cookie)
+      this.props.subScribe(this.state.promocode)
     }
     this.props.subScribe(this.state.promocode)
   }
@@ -92,9 +95,12 @@ export default class Promocode extends Component {
   }
   render() {
     let renderUI = <div />
+    {
+      //console.log('aaaaa', this.props.cookie)
+    }
     if (this.props.cookie == undefined) {
       {
-        console.log('login')
+        //console.log('loginaaaaaa')
       }
     }
     if (this.props.id === 1) {
