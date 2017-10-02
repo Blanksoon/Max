@@ -117,7 +117,7 @@ export default class extends Component {
             showPromovideo={this.showPromovideo}
           />
         </LiveInfo>
-        <Countdown liveDateStr={activeLive.liveDate} />
+        <Countdown liveDateStr={activeLive.OnAirTime} />
         <Slider {...settings}>
           {lives.map(live => (
             <Slide key={live.bannerUrl} src={live.bannerUrl} />
