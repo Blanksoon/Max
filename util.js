@@ -17,11 +17,12 @@ export const dateDiff = (date1, date2) => {
   const MS_IN_DAY = 1000 * 3600 * 24
   const MS_IN_HRS = 1000 * 3600
   const MS_IN_MIN = 1000 * 60
+  const MS_IN_SEC = 1000
   return {
     day: Math.floor(diff / MS_IN_DAY),
     hrs: Math.floor((diff % MS_IN_DAY) / MS_IN_HRS),
     min: Math.floor(((diff % MS_IN_DAY) % MS_IN_HRS) / MS_IN_MIN),
-    sec: Math.floor(),
+    sec: Math.floor((((diff % MS_IN_DAY) % MS_IN_HRS) % MS_IN_MIN) / MS_IN_SEC),
   }
 }
 

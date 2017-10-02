@@ -5,7 +5,7 @@ import { Flex, Provider, Box, Text, overlay } from 'rebass'
 import Button from '../commons/Button'
 import Modal from '../modal/Modal'
 import color from '../commons/vars'
-import { formattedDate } from '../../util'
+import { formattedDate, pad } from '../../util'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -78,7 +78,7 @@ const Text4 = styled.div`
   font-size: 1em;
 `
 const Image = styled.img`width: 100%;`
-const LiveTop = ({ live }) => (
+const LiveTop = ({ live, countdown }) => (
   <Wrapper>
     <WrapperText>
       <Flex>
@@ -106,7 +106,10 @@ const LiveTop = ({ live }) => (
             <Text1>LIVE in</Text1>
           </Box>
           <Box>
-            <Text2>00 : 00 : 00 : 12</Text2>
+            <Text2>
+              {pad(countdown.day)} : {pad(countdown.hrs)} : {pad(countdown.min)}{' '}
+              : {pad(countdown.sec)}
+            </Text2>
           </Box>
           <Box>
             <Text3>
