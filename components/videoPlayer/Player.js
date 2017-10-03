@@ -30,12 +30,12 @@ class Players extends React.Component {
   }
 
   render() {
-    console.log(this.props.vod)
+    console.log(this.props.Url)
     return (
       <div className="Player">
         <Box width={1} bg="pink">
           <Player ref="player" autoPlay={false}>
-            <HLSSource isVideoChild src={this.props.vod.promoUrl} />
+            <HLSSource isVideoChild src={this.props.Url} />
           </Player>
         </Box>
       </div>

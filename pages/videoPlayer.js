@@ -45,7 +45,7 @@ const videoPlayer = ({ url, vod }) => {
           <Container>
             <Flex>
               <Box w={12 / 12}>
-                <Players vod={vod} />
+                <Players Url={vod.promoUrl} />
               </Box>
             </Flex>
           </Container>
