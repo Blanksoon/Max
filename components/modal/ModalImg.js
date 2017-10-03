@@ -20,6 +20,7 @@ class ModalImg extends Component {
     return (
       <div>
         <Image
+          style={{ cursor: 'pointer' }}
           onClick={this.handleOnClickModal}
           width={this.props.w}
           src={this.props.img}

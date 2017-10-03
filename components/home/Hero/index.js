@@ -85,7 +85,7 @@ export default class extends Component {
       month: 'short',
       day: 'numeric',
     }
-    const liveDateStr = activeLive.liveDate
+    const liveDateStr = activeLive.OnAirTime
     const liveDate = new Date(liveDateStr)
     const formattedLiveDate = liveDate.toLocaleDateString('en-US', options)
     const settings = {
@@ -117,11 +117,9 @@ export default class extends Component {
             showPromovideo={this.showPromovideo}
           />
         </LiveInfo>
-        <Countdown liveDateStr={activeLive.liveDate} />
+        <Countdown liveDateStr={activeLive.OnAirTime} />
         <Slider {...settings}>
-          {lives.map(live => (
-            <Slide key={live.bannerUrl} src={live.bannerUrl} />
-          ))}
+          {lives.map(live => <Slide key={live.id} src={live.bannerUrl} />)}
         </Slider>
         <style global jsx>
           {slick}

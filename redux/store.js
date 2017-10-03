@@ -6,6 +6,7 @@ import rootReducer from './rootReducer'
 
 const initialState = {
   cookie: {},
+  live: {},
   modal: {},
   vod: {},
 }

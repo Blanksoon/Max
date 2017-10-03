@@ -7,7 +7,7 @@ const BackVideo = styled.div`
   padding-top: 6px;
   padding-bottom: 6px;
 `
-const Description = () => (
+const Description = ({ vod }) => (
   <div className="Description">
     <Flex pl="1rem">
       <Box width={1 / 12} pt="2%" mr="2%">
@@ -15,10 +15,7 @@ const Description = () => (
       </Box>
       <Box width={9 / 12} pb={1} pt={3}>
         <h2>
-          <b>
-            Max Ultimate Tournament &MAX World Champions<br />
-            7 International Fights(1/4)
-          </b>
+          <b>{vod.title}</b>
         </h2>
       </Box>
     </Flex>
@@ -26,9 +23,9 @@ const Description = () => (
       <Box width={5 / 12}>
         <div className="livetelecom">
           <h4>
-            <b>Live telecast on Channel 8</b>
+            <b>Live telecast on {vod.channel}</b>
             <br />
-            <b>every Sunday 7.20 - 9.50pm</b>
+            <b>{vod.onAirDate}</b>
           </h4>
         </div>
       </Box>
@@ -54,20 +51,7 @@ const Description = () => (
       <hr size="0.1" />
     </Box>
     <Box width={1} pb={3} pl="1rem" pr="1rem">
-      <P>
-        On sait depuis longtemps que travailler avec du texte lisible et
-        contenant du sens est source de distractions, et empêche de se
-        concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur
-        un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il
-        possède une distribution de lettres plus ou moins normale, et en tout
-        cas comparable avec celle du français standard. De nombreuses suites
-        logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem
-        Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum'
-        vous conduira vers de nombreux sites qui n'en sont encore qu'à leur
-        phase de construction. Plusieurs versions sont apparues avec le temps,
-        parfois par accident, souvent intentionnellement (histoire d'y rajouter
-        de petits clins d'oeil, voire des phrases embarassantes).
-      </P>
+      <P>{vod.descriptionEn}</P>
     </Box>
     <style jsx>
       {`
