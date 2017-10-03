@@ -24,8 +24,11 @@ class LatestVideo extends Component {
           </Flex>
           <Flex>
             <Box width={8 / 35}>
-              <Link href={`/videoPlayer`}>
-                <a href={`/videoPlayer`}>
+              <Link
+                as={`/vods/${this.props.vods[0].id}`}
+                href={`/videoPlayer?id=${this.props.vods[0].id}`}
+              >
+                <a>
                   <ThumbnailBottom
                     vod={this.props.vods[0]}
                     img="static/FT6A6133.jpg"
@@ -40,8 +43,11 @@ class LatestVideo extends Component {
             </Box>
             <Box width={1 / 35} />
             <Box width={8 / 35}>
-              <Link href={`/videoPlayer`}>
-                <a href={`/videoPlayer`}>
+              <Link
+                as={`/vods/${this.props.vods[1].id}`}
+                href={`/videoPlayer?id=${this.props.vods[1].id}`}
+              >
+                <a>
                   <ThumbnailBottom
                     vod={this.props.vods[1]}
                     img="static/FT6A6483.jpg"
@@ -56,8 +62,11 @@ class LatestVideo extends Component {
             </Box>
             <Box width={1 / 35} />
             <Box width={8 / 35}>
-              <Link href={`/videoPlayer`}>
-                <a href={`/videoPlayer`}>
+              <Link
+                as={`/vods/${this.props.vods[2].id}`}
+                href={`/videoPlayer?id=${this.props.vods[2].id}`}
+              >
+                <a>
                   <ThumbnailBottom
                     vod={this.props.vods[2]}
                     img="static/FT6A6495.jpg"
@@ -72,8 +81,11 @@ class LatestVideo extends Component {
             </Box>
             <Box width={1 / 35} />
             <Box width={8 / 35}>
-              <Link href={`/videoPlayer/` + `${this.props.vods[3]}`}>
-                <a href={`/videoPlayer/` + `${this.props.vods[3]}`}>
+              <Link
+                as={`/vods/${this.props.vods[3].id}`}
+                href={`/videoPlayer?id=${this.props.vods[3].id}`}
+              >
+                <a>
                   <ThumbnailBottom
                     img="static/FT6A6676.jpg"
                     name={this.props.vods[3].programName}
