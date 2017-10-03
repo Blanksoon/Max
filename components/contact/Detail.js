@@ -26,7 +26,7 @@ const Detail = props => (
   <Flex>
     <Box className="googleMaps" w={8 / 12} bg="gray">
       <MapWithAMarker
-        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx1PFatOg26tgLRPDqJ204-cmSlpqNeEM&callback=initMap"
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `100%` }} />}
         mapElement={<div style={{ height: `100%` }} />}
