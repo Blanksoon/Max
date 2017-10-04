@@ -55,10 +55,14 @@ class LiveVdo extends Component {
       this.state.i++
       const curDate = new Date()
       const liveDate = new Date(this.props.live.OnAirTime)
-      if (this.state.i <= 20) {
+      if (!this.liveNow) {
         this.state.renderUI = 1
       } else {
-        this.state.renderUI = 2
+        if (this.canWatch) {
+          this.state.renderUI = 2
+        } else {
+          this.state.renderUI = 3
+        }
       }
       this.setState({
         liveNow: liveDate.getTime() - curDate.getTime() < 0,
@@ -69,7 +73,7 @@ class LiveVdo extends Component {
   render() {
     const { url, live, vods } = this.props
     const { countdown } = this.state
-    console.log('timex', this.state.renderUI)
+    //console.log('time', this.state.renderUI)
     return (
       <div>
         <Head>
@@ -95,6 +99,7 @@ class LiveVdo extends Component {
                   id={this.state.renderUI}
                   live={live}
                   countdown={countdown}
+                  URL={this.props.live.videoUrl} //"https://wittestvod-vh.akamaihd-staging.net/i/mmt_live_preview/MuayThaiBattle_,48,72,108,0p.mp4.csmil/master.m3u8"
                 />
               </Container>
             </WrapperLivePlayer>
