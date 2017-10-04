@@ -1,11 +1,13 @@
 import styled from 'styled-components'
+import { Flex, Box, Image, Button, Text } from 'rebass'
+import { connect } from 'react-redux'
+import React, { Component } from 'react'
+import Link from 'next/link'
 import ThumbnailVideo from '../thumbnail/ThumbnailVideo'
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 import ThumbnailSky from '../thumbnail/ThumbnailSky'
 import { LabelSearch } from './LabelSearch'
-import { Flex, Box, Image, Button, Text } from 'rebass'
-import { connect } from 'react-redux'
-import React, { Component } from 'react'
+import { formattedDate } from '../../util'
 
 const BackgroundImage = styled.div`
   background: '/static/3.png';
@@ -13,11 +15,11 @@ const BackgroundImage = styled.div`
   background-position: center;
 `
 const WrapperHilight = styled.div`
+  cursor: pointer;
   width: 100%;
-  height: 114%;
+  height: 100%;
   background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
-  // background-image: url('static/FT6A2278.jpg');
   position: relative;
 `
 const WrapperHilightText = styled.div`
@@ -52,58 +54,17 @@ const WrapperText = styled.div`
 class VideoBox extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      hilightProgram: {},
-    }
-    this.fetchVod = this.fetchVod.bind(this)
-    this.renderVideo = this.renderVideo.bind(this)
   }
-  // let hilightProgram = {}
-  // let i = 1
-  // console.log('number', Object.keys(props.vod).length)
-  // console.log('action', props.vod[1].feature)
-  // while (i <= Object.keys(props.vod).length) {
-  //   if (props.vod[i].feature == 'active') {
-  //     hilightProgram = props.vod[i]
-  //   }
-  //   i++
-  // }
-
-  fetchVod() {
-    const data = Object.values(this.props.vod)
-    let i = 1
-    while (i <= 4) {
-      console.log(data[i].id)
-      if (this.props.vod[i].feature == 'active') {
-        this.setState({
-          hilightProgram: this.props.vod[i],
-        })
-      }
-      i++
+  renderVideos(vods) {
+    const rowVideos = []
+    const rowCount = vods.length / 4
+    for (let i = 0; i <= rowCount; i++) {
+      rowVideos.push(<RowVideo key={i} vods={vods.splice(0, 4)} />)
     }
-  }
-
-  renderVideo() {
-    const data = Object.values(this.props.vod)
-    return data.map(({ id }) => (
-      <Box>
-        <ThumbnailVideo
-          img="static/FT6A6133.jpg"
-          name="The Battle Muay-Thai(4/4)"
-          date="On air - Aug 11, 2017"
-          time="16.24"
-          pt="1em"
-        />
-      </Box>
-    ))
-    // const hilightProgram = data.filter(vod => vod.feature == 'active')
-    // console.log('cccc', hilightProgram[0])
-    // console.log('data', data[0])
-    //return console.log(data[1].id)
+    return rowVideos
   }
   render() {
-    //this.fetchVod()
-    // const vod = this.props
+    const { hilight, vods } = this.props
     return (
       <div>
         <Flex mb={3} pt="7rem">
@@ -114,73 +75,69 @@ class VideoBox extends Component {
         <Flex mb="3rem">
           <Box w={2.5 / 12} />
           <Box w={7.75 / 12} pl="1rem" mr="1em">
-            <WrapperHilight>
-              <Box w={12 / 12} className="imagesss">
-                <Image width="100%" pt={0} src="static/FT6A2278.jpg" />
-                {console.log(this.props.vod[1])}
-              </Box>
-              <Box w={12 / 12} pl="20px">
-                <WrapperHilightText>
-                  <Text
-                    pt="25.5rem"
-                    pl="1rem"
-                    color="#57b1fe"
-                    bold
-                    children="HILIGHT"
-                    fontSize="1em"
-                  />
-                  <Text
-                    pt="5px"
-                    pl="1rem"
-                    color="#fff"
-                    bold
-                    children="Max Ultimate Tournament : Epic fight"
-                    fontSize="1.3em"
-                  />
-                  <Text
-                    pl="1rem"
-                    pl="1rem"
-                    color="#fff"
-                    bold
-                    children="&quot;Double knockdow&quot;"
-                    fontSize="1.3em"
-                  />
-                  <Flex>
-                    <Box w={6 / 12}>
+            <Link
+              as={`/vods/${hilight.id}`}
+              href={`/videoPlayer?id=${hilight.id}`}
+            >
+              <a>
+                <WrapperHilight>
+                  <Box w={12 / 12} className="imagesss">
+                    <Image width="100%" pt={0} src="static/FT6A2278.jpg" />
+                  </Box>
+                  <Box w={12 / 12} pl="20px">
+                    <WrapperHilightText>
                       <Text
+                        pt="25.5rem"
                         pl="1rem"
-                        pt="15px"
-                        pb="15px"
-                        left
-                        color="#f7f704"
+                        color="#57b1fe"
                         bold
-                        children="On air-Aug11,2017"
-                        fontSize="0.9em"
+                        children="HILIGHT"
+                        fontSize="1em"
                       />
-                    </Box>
-                    <Box w={6 / 12}>
                       <Text
-                        pt="15px"
-                        pb="15px"
-                        pr="15px"
-                        right
-                        color="#f7f704"
+                        pt="5px"
+                        pl="1rem"
+                        color="#fff"
                         bold
-                        children="24.51"
-                        fontSize="0.9em"
+                        children={hilight.title}
+                        fontSize="1.3em"
                       />
-                    </Box>
-                  </Flex>
-                </WrapperHilightText>
-              </Box>
-            </WrapperHilight>
+                      <Flex>
+                        <Box w={6 / 12}>
+                          <Text
+                            pl="1rem"
+                            pt="15px"
+                            pb="15px"
+                            left
+                            color="#f7f704"
+                            bold
+                            children={hilight.onAirDate}
+                            fontSize="0.9em"
+                          />
+                        </Box>
+                        <Box w={6 / 12}>
+                          <Text
+                            pt="15px"
+                            pb="15px"
+                            pr="15px"
+                            right
+                            color="#f7f704"
+                            bold
+                            children="4.19"
+                            fontSize="0.9em"
+                          />
+                        </Box>
+                      </Flex>
+                    </WrapperHilightText>
+                  </Box>
+                </WrapperHilight>
+              </a>
+            </Link>
           </Box>
         </Flex>
         <Box pt="1rem" pl="1rem" pr="1rem">
           <LabelSearch />
-          <RowVideo />
-          <RowVideo />
-          <RowVideo />
+          {this.renderVideos(vods)}
         </Box>
         <Box w={12 / 12} pb="3rem" pt="2rem">
           <center>
@@ -237,54 +194,68 @@ class VideoBox extends Component {
   }
 }
 
-const RowVideo = () => (
-  <Flex mb={3}>
-    <Box w={6 / 12} mr="1em">
-      <Flex>
-        <Box w={6 / 12} pr="7.5px">
-          <ThumbnailVideo
-            img="static/FT6A6133.jpg"
-            name="The Battle Muay-Thai(4/4)"
-            date="On air - Aug 11, 2017"
-            time="16.24"
-            pt="1em"
-          />
-        </Box>
-        <Box w={6 / 12} pl="7.5px">
-          <ThumbnailVideo
-            img="static/FT6A6483.jpg"
-            name="The Battle Muay-Thai(3/4)"
-            date="On air - Aug 11, 2017"
-            time="16.24"
-            pt="1em"
-          />
-        </Box>
-      </Flex>
-    </Box>
-    <Box w={6 / 12}>
-      <Flex>
-        <Box w={6 / 12} pr="7.5px">
-          <ThumbnailVideo
-            img="static/FT6A6495.jpg"
-            name="The Battle Muay-Thai(2/4)"
-            date="On air - Aug 11, 2017"
-            time="16.24"
-            pt="1em"
-          />
-        </Box>
-        <Box w={6 / 12} pl="7.5px">
-          <ThumbnailVideo
-            img="static/FT6A6676.jpg"
-            name="The Battle Muay-Thai(1/4)"
-            date="On air - Aug 11, 2017"
-            time="16.24"
-            pt="1em"
-          />
-        </Box>
-      </Flex>
-    </Box>
-  </Flex>
-)
+const RowVideo = ({ vods }) => {
+  return (
+    <Flex mb={3}>
+      <Box w={6 / 12} mr="1em">
+        <Flex>
+          <Box w={6 / 12} pr="7.5px">
+            {vods[0] !== undefined && (
+              <ThumbnailVideo
+                id={vods[0].id}
+                img="static/FT6A6133.jpg"
+                name={vods[0].title}
+                date={vods[0].onAirDate}
+                time="16.24"
+                pt="1em"
+              />
+            )}
+          </Box>
+          <Box w={6 / 12} pl="7.5px">
+            {vods[1] !== undefined && (
+              <ThumbnailVideo
+                id={vods[1].id}
+                img="static/FT6A6133.jpg"
+                name={vods[1].title}
+                date={vods[1].onAirDate}
+                time="16.24"
+                pt="1em"
+              />
+            )}
+          </Box>
+        </Flex>
+      </Box>
+      <Box w={6 / 12}>
+        <Flex>
+          <Box w={6 / 12} pr="7.5px">
+            {vods[2] !== undefined && (
+              <ThumbnailVideo
+                id={vods[2].id}
+                img="static/FT6A6133.jpg"
+                name={vods[2].title}
+                date={vods[2].onAirDate}
+                time="16.24"
+                pt="1em"
+              />
+            )}
+          </Box>
+          <Box w={6 / 12} pl="7.5px">
+            {vods[3] !== undefined && (
+              <ThumbnailVideo
+                id={vods[3].id}
+                img="static/FT6A6133.jpg"
+                name={vods[3].title}
+                date={vods[3].onAirDate}
+                time="16.24"
+                pt="1em"
+              />
+            )}
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
+  )
+}
 
 const mapStateToProps = ({ vod }) => ({ vod })
 

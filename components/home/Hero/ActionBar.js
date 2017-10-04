@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import styled from 'styled-components'
+import Link from 'next/link'
 import { Overlay } from 'rebass'
 import Button from '../../commons/Button'
 import BorderlessButton from '../../commons/BorderlessButton'
@@ -8,7 +9,7 @@ import { Flex } from 'rebass'
 
 const ActionBar = styled.div`margin-top: 1rem;`
 export default ({
-  lives,
+  live,
   fightcardVisible,
   promovideoVisible,
   showFightcard,
@@ -17,25 +18,21 @@ export default ({
   return (
     <ActionBar>
       <Flex>
-        <Button>Buy Ticket</Button>
+        <Link as={`/lives/${live.id}`} href={`/lives_vdo?id=${live.id}`}>
+          <a>
+            <Button>Buy Ticket</Button>
+          </a>
+        </Link>
         <ModalButton
           modalType={2}
-          modalURL="static/flightcard.jpg"
+          modalURL={`${live.fightcardUrl}`}
           text="View Fightcard"
         />
         <ModalButton
           modalType={1}
-          modalURL="static/flightcard.jpg"
+          modalURL={`${live.promoUrl}`}
           text="Promo Clip"
         />
-        {/* <BorderlessButton onClick={() => showFightcard(true)}>
-        View Fightcard
-      </BorderlessButton>
-        <BorderlessButton onClick={() => showPromovideo(true)}>
-          Promo Clip
-        </BorderlessButton>
-        {fightcardVisible && <Overlay>Fightcard</Overlay>}
-        {promovideoVisible && <Overlay>Promo video</Overlay>} */}
       </Flex>
     </ActionBar>
   )

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 
 const WrapperAbout = styled.div`
-  background-image: url('static/bg-about-home.jpg');
+  background-image: url('/static/bg-about-home.jpg');
   background-position: left;
   background-position-x: 28%;
 `

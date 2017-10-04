@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 
 class LatestVideo extends Component {
   render() {
+    console.log(this.props.vods)
     return (
       <div>
         <Box pb="5%">
@@ -24,14 +25,15 @@ class LatestVideo extends Component {
           <Flex pt="2rem">
             <Box width={8 / 35}>
               <Link
-                //as={`/videoPlayer/${this.props.vod[1].id}`}
-                href={`/videoPlayer`}
+                as={`/vods/${this.props.vods[0].id}`}
+                href={`/videoPlayer?id=${this.props.vods[0].id}`}
               >
                 <a>
                   <ThumbnailBottom
-                    img="static/FT6A6133.jpg" //{this.props.vod[1].thumbnail}
-                    name="The Battle Muay-Thai(4/4)" //{this.props.vod[1].title}
-                    date="On air - Aug 11, 2017" //{this.props.vod[1].onAirDate}
+                    vod={this.props.vods[0]}
+                    img="static/FT6A6133.jpg"
+                    name={this.props.vods[0].programName}
+                    date={this.props.vods[0].onAirDate}
                     time="16:24"
                     bg="#021e3d"
                     pl="1em"
@@ -42,14 +44,15 @@ class LatestVideo extends Component {
             <Box width={1 / 35} />
             <Box width={8 / 35}>
               <Link
-                //as={`/videoPlayer/${this.props.vod[2].id}`}
-                href={`/videoPlayer`}
+                as={`/vods/${this.props.vods[1].id}`}
+                href={`/videoPlayer?id=${this.props.vods[1].id}`}
               >
                 <a>
                   <ThumbnailBottom
+                    vod={this.props.vods[1]}
                     img="static/FT6A6483.jpg"
-                    name="The Battle Muay-Thai(3/4)"
-                    date="On air - Aug 11, 2017"
+                    name={this.props.vods[1].programName}
+                    date={this.props.vods[1].onAirDate}
                     time="16:24"
                     bg="#021e3d"
                     pl="1em"
@@ -60,14 +63,15 @@ class LatestVideo extends Component {
             <Box width={1 / 35} />
             <Box width={8 / 35}>
               <Link
-                //as={`/videoPlayer/${this.props.vod[3].id}`}
-                href={`/videoPlayer`}
+                as={`/vods/${this.props.vods[2].id}`}
+                href={`/videoPlayer?id=${this.props.vods[2].id}`}
               >
                 <a>
                   <ThumbnailBottom
+                    vod={this.props.vods[2]}
                     img="static/FT6A6495.jpg"
-                    name="The Battle Muay-Thai(2/4)"
-                    date="On air - Aug 11, 2017"
+                    name={this.props.vods[2].programName}
+                    date={this.props.vods[2].onAirDate}
                     time="16:24"
                     bg="#021e3d"
                     pl="1em"
@@ -78,14 +82,14 @@ class LatestVideo extends Component {
             <Box width={1 / 35} />
             <Box width={8 / 35}>
               <Link
-                //as={`/videoPlayer/${this.props.vod[4].id}`}
-                href={`/videoPlayer`}
+                as={`/vods/${this.props.vods[3].id}`}
+                href={`/videoPlayer?id=${this.props.vods[3].id}`}
               >
                 <a>
                   <ThumbnailBottom
                     img="static/FT6A6676.jpg"
-                    name="The Battle Muay-Thai(1/4)"
-                    date="On air - Aug 11, 2017"
+                    name={this.props.vods[3].programName}
+                    date={this.props.vods[3].onAirDate}
                     time="16:24"
                     bg="#021e3d"
                     pl="1em"

@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { Flex, Box } from 'rebass'
 import Cookies from 'universal-cookie'
 import styled from 'styled-components'
-import ComingLive from '../components/home/ComingLive'
+import withRedux from 'next-redux-wrapper'
+import { ComingLive } from '../components/home/ComingLive'
 import LatestVideo from '../components/home/LatestVideo'
 import MaxNew from '../components/home/MaxNew'
 import StadiumTicket from '../components/home/StadiumTicket'
@@ -21,13 +22,14 @@ import vars from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
 import { fetchLives } from '../redux/modules/live'
-import withRedux from 'next-redux-wrapper'
 import {
   toogleModal,
   updateModalType,
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
+import { recentLivesSelector } from '../redux/selectors/live'
+import { recentVodsSelector } from '../redux/selectors/vod'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -35,7 +37,7 @@ const WrapperTop = styled.div`
 `
 const WrapperLive = styled.div`
   color: #fff;
-  background-image: url('static/bg-upcoming-home.jpg');
+  background-image: url('/static/bg-upcoming-home.jpg');
   background-size: cover;
   background-position-y: 0px;
 `
@@ -56,24 +58,17 @@ const WrapperAbout = styled.div`
 const GradientBg = styled.div`
   background: -webkit-linear-gradient(
     top,
-    rgba(2, 15, 31, 1) 0%,
-    rgba(2, 15, 31, 1) 12%,
-    rgba(2, 15, 31, 1) 26%,
-    rgba(2, 15, 31, 1) 39%,
-    rgba(2, 15, 31, 1) 70%,
-    rgba(9, 69, 139, 1) 86%,
-    rgba(9, 69, 139, 1) 100%
+    #020f1f 0%,
+    #020f1f 12%,
+    #020f1f 64%,
+    #020f1f 75%,
+    #08488f 92%,
+    #08488f 100%
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 
 class Index extends React.Component {
-  componentDidMount() {
-    const cookies = new Cookies()
-    const cookie = cookies.get('token')
-    this.props.fetchLives(cookie)
-    return this.props.fetchVods(cookie)
-  }
   render() {
     return (
       <div>
@@ -84,15 +79,18 @@ class Index extends React.Component {
           <NewModal />
           <GradientBg>
             <Container>
-              <Hero lives={this.props.lives} />
-              <LatestVideo name="Latest Video" />
+              <Hero lives={this.props.lives.slice(0, 3)} />
+              <LatestVideo
+                name="Latest Video"
+                vods={this.props.vods.slice(0, 4)}
+              />
             </Container>
           </GradientBg>
           <WrapperLive>
             <Container>
               <Flex>
                 <Box w={12 / 12} pb="4em" pt="2em">
-                  <ComingLive />
+                  <ComingLive lives={this.props.lives} />
                 </Box>
               </Flex>
             </Container>
@@ -132,33 +130,27 @@ class Index extends React.Component {
   }
 }
 
-Index.getInitialProps = props => {
+const mapStateToProps = state => {
   return {
-    lives: [
-      {
-        bannerUrl: '/static/img_live_banner.jpg',
-        liveDate: '2017-09-30',
-        title:
-          'MAX Ultimate Tournament & MAX World Champions 7 International Fights',
-      },
-      {
-        bannerUrl: '/static/slide2.jpg',
-        liveDate: '2017-10-5',
-        title: 'The Battle Muay Thai',
-      },
-      {
-        bannerUrl: '/static/slide3.jpg',
-        liveDate: '2017-10-10',
-        title: 'Max World Champion 2013: DVD bookset',
-      },
-    ],
+    lives: recentLivesSelector(state),
+    vods: recentVodsSelector(state),
   }
 }
-export default withRedux(initStore, null, {
+Index.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  const token = state.auth.token
+  const response = await fetchLives(token)(store.dispatch)
+  const responseVods = await fetchVods(token)(store.dispatch)
+  state = store.getState()
+  const props = mapStateToProps(state)
+  return props
+}
+
+export default withRedux(initStore, mapStateToProps, {
   fetchVods,
-  fetchLives,
   toogleModal,
   updateModalType,
   indexModalURL,
   closeModal,
+  fetchLives,
 })(Index)

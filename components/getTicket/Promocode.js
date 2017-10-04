@@ -4,6 +4,8 @@ import { Flex, Provider, Box, Text, overlay, Image } from 'rebass'
 import color from '../commons/vars'
 import Link from 'next/link'
 import ThumbnailTicket from '../thumbnail/ThumbnailTicket'
+import ModalButton from '../../containers/ModalButton'
+import { connect } from 'react-redux'
 
 const Button = styled.button`
   bottom: 2%;
@@ -41,8 +43,8 @@ const Input = styled.input`
 const WrapperClose = styled.div`
   position: absolute;
   color: #000;
-  top: 0.5rem;
-  right: 17rem;
+  top: 0.4rem;
+  right: 20.2rem;
   width: 40px;
   height: 40px;
   //border: 3px solid #73ad81;
@@ -55,8 +57,9 @@ const WrapperVod = styled.div`
   background: #fff;
   z-index: 240;
 `
+let token = ''
 const Wrapper = styled.div`background-color: #fff;`
-export default class Promocode extends Component {
+class Promocode extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -67,23 +70,22 @@ export default class Promocode extends Component {
     this.handleOnKeyDown = this.handleOnKeyDown.bind(this)
   }
   subScribe() {
-    console.log('test', this.props.cookie)
+    //console.log('test', this.props.cookie)
     //promocode = '1003'
-    if (this.props.cookie == 'undefined' || this.props.cookie == undefined) {
-      console.log('cookie not found')
-      this.props.push('/login')
-    } else {
-      console.log('not undefiend', typeof this.props.cookie)
-      this.props.subScribe(this.state.promocode)
-    }
+    ///if (this.props.cookie == 'undefined' || this.props.cookie == undefined) {
+    //console.log('cookie not found')
+    //this.props.push('/login')
+    //} else {
+    console.log('not undefiend', typeof this.props.cookie)
     this.props.subScribe(this.state.promocode)
+    //}
+    //this.props.subScribe(this.state.promocode)
   }
 
   handleOnChange(event) {
     this.setState({
       promocode: event.target.value,
     })
-    //console.log('OnChange', this.state.promocode)
   }
 
   handleOnKeyDown(event) {
@@ -93,17 +95,43 @@ export default class Promocode extends Component {
     event.preventDefault()
     this.subScribe()
   }
+
   render() {
+    console.log('props', this.props)
     let renderUI = <div />
-    {
-      //console.log('aaaaa', this.props.cookie)
-    }
-    if (this.props.cookie == undefined) {
-      {
-        //console.log('loginaaaaaa')
-      }
-    }
-    if (this.props.id === 1) {
+    if (this.props.login == undefined) {
+      renderUI = (
+        <Box>
+          <Box>
+            <Text2>
+              Please enter your pormotion code to enjoy all of our contents
+            </Text2>
+          </Box>
+          <Box pt="0.7rem">
+            <Flex w={12 / 12}>
+              <Box w={4.148 / 12} />
+              <Input
+                type="text"
+                id="fname"
+                name="firstname"
+                placeholder="Promo code here"
+                value={this.state.promocode}
+                onChange={this.handleOnChange}
+                onKeyDown={this.handleOnKeyDown}
+              />&nbsp;&nbsp;&nbsp;
+              <Box pt="0.45rem">
+                <ModalButton
+                  buttonID={3}
+                  modalType={3}
+                  modalURL=""
+                  text="Submit"
+                />
+              </Box>
+            </Flex>
+          </Box>
+        </Box>
+      )
+    } else if (this.props.id === 1) {
       renderUI = (
         <Box>
           <Box>
@@ -171,9 +199,23 @@ export default class Promocode extends Component {
             <Text1>GET TICKET</Text1>
           </Box>
           <Box pt="10rem" />
+          <Image/>
+          <center>
+          <Box w={2/12} >
+          <Image width="100%" src="static/img_thankgod.png" />
+          </Box>
+          </center>
           <center>{renderUI}</center>
         </Wrapper>
       </Provider>
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    login: state.auth.token,
+  }
+}
+
+export default connect(mapStateToProps, null)(Promocode)

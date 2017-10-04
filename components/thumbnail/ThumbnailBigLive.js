@@ -36,7 +36,7 @@ const ThumbnailBigLive = props => (
     </Box>
     <br />
     <br />
-    <Box pl="2rem">
+    <Box pl="2rem" pr="2rem">
       <Text2>
         {props.text2}
         <br />
@@ -45,18 +45,16 @@ const ThumbnailBigLive = props => (
     </Box>
     <br />
     <Flex>
-      <Box pl="2rem" pb="1.5rem">
+      <Box w={8 / 12} pl="2rem" pb="1.5rem">
         <Text3>
           {props.text4}
           <br />
           {props.text5}
         </Text3>
       </Box>
-      <Box pl="10rem">
-        <Link
-          as={`/lives/${props.text2}`}
-          href={`/lives_vdo?id=${props.text2}`}
-        >
+      <Box w={1 / 12} />
+      <Box w={3 / 12} pl="0rem">
+        <Link as={`/lives/${props.id}`} href={`/lives_vdo?id=${props.id}`}>
           <a>
             <Button color={color.red}>Watch</Button>
           </a>

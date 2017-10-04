@@ -86,17 +86,17 @@ export default class Modal extends Component {
   }
   render() {
     ;<div onKeyDown={this.closeModal} />
-    let renderUI = <div />
-    if (this.props.modalType === 1) {
+    let renderUI = <div />    
+    if (this.props.modalType === 1) {//promoclip
       renderUI = (
         <WrapperVod onClick={e => this.handleOnClick(e)} visibility="hidden">
-          <Player />
+          <Player Url={this.props.modalURL} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
             <Image width="100%" src="static/close.png" />
           </WrapperClose>
         </WrapperVod>
       )
-    } else if (this.props.modalType === 2) {
+    } else if (this.props.modalType === 2) {//fightcard
       renderUI = (
         <WrapperImg onClick={e => this.handleOnClick(e)}>
           <Image width="100%" src={this.props.modalURL} />
@@ -105,7 +105,7 @@ export default class Modal extends Component {
           </WrapperClose>
         </WrapperImg>
       )
-    } else if (this.props.modalType === 3) {
+    } else if (this.props.modalType === 3) {//login
       renderUI = (
         <WrapperLogin onClick={e => this.handleOnClick(e)}>
           <Login />
@@ -114,7 +114,7 @@ export default class Modal extends Component {
           </WrapperClose>
         </WrapperLogin>
       )
-    } else {
+    } else {//null
       renderUI = renderUI
     }
     return (
