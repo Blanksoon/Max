@@ -41,7 +41,8 @@ class LiveVdo extends Component {
       canWatch: props.live.videoUrl !== '',
       countdown: dateDiff(curDate, liveDate),
       liveNow: false,
-      i: 1,
+      i: 0,
+      renderUI: 1,
     }
   }
   componentWillUnmount() {
@@ -52,6 +53,11 @@ class LiveVdo extends Component {
       this.state.i++
       const curDate = new Date()
       const liveDate = new Date(this.props.live.OnAirTime)
+      if (this.state.i <= 20) {
+        this.state.renderUI = 1
+      } else {
+        this.state.renderUI = 2
+      }
       this.setState({
         liveNow: liveDate.getTime() - curDate.getTime() < 0,
         countdown: dateDiff(curDate, liveDate),
@@ -61,6 +67,7 @@ class LiveVdo extends Component {
   render() {
     const { url, live } = this.props
     const { countdown } = this.state
+    console.log('timex', this.state.renderUI)
     return (
       <div>
         <Head>
@@ -82,7 +89,11 @@ class LiveVdo extends Component {
           <div>
             <WrapperLivePlayer color={color}>
               <Container>
-                <LiveTop live={live} countdown={countdown} />
+                <LiveTop
+                  id={this.state.renderUI}
+                  live={live}
+                  countdown={countdown}
+                />
               </Container>
             </WrapperLivePlayer>
           </div>

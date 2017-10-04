@@ -1,4 +1,5 @@
 import React from 'react'
+import { Component } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { Flex, Provider, Box, Text, overlay } from 'rebass'
@@ -78,65 +79,82 @@ const Text4 = styled.div`
   font-size: 1em;
 `
 const Image = styled.img`width: 100%;`
-const LiveTop = ({ live, countdown }) => (
-  <Wrapper>
-    <WrapperText>
-      <Flex>
-        <Box w={6 / 12} pl="1rem" bg={color.transDarkblue} p={2}>
-          <TextBig color={color.white}>{live.title_en}</TextBig>
-          <br />
-          <Date color={color.yellow}>{formattedDate(live.OnAirTime)}</Date>
-        </Box>
-        <Box w={4 / 12} />
-        <Box w={2 / 12}>
-          <Box pt="4rem" pl="2rem">
-            <Link href={`/getticket`}>
-              <a>
-                <Button color={color.red}>Buy Ticket</Button>
-              </a>
-            </Link>
-          </Box>
-        </Box>
-      </Flex>
-    </WrapperText>
-    <WrapperSky>
-      <Box pt="1.5rem">
-        <center>
-          <Box>
-            <Text1>LIVE in</Text1>
-          </Box>
-          <Box>
-            <Text2>
-              {pad(countdown.day)} : {pad(countdown.hrs)} : {pad(countdown.min)}{' '}
-              : {pad(countdown.sec)}
-            </Text2>
-          </Box>
-          <Box>
-            <Text3>
-              DAY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              HRS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              MIN &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              SEC
-            </Text3>
-          </Box>
-          <br />
-          <br />
-          <Flex pl="30%">
-            <Box pt="0.2rem">
-              <Text4>Hurry up! Buy ticket before live start</Text4>
+class LiveTop extends Component {
+  render() {
+    let renderUI = <div />
+    if (this.props.id === 1) {
+      //promoclip
+      renderUI = <div />
+    }
+
+    return (
+      <Wrapper>
+        <WrapperText>
+          <Flex>
+            <Box w={6 / 12} pl="1rem" bg={color.transDarkblue} p={2}>
+              <TextBig color={color.white}>{this.props.live.title_en}</TextBig>
+              <br />
+              <Date color={color.yellow}>
+                {formattedDate(this.props.live.OnAirTime)}
+              </Date>
             </Box>
-            <Box pl="1.5rem">
-              <Link href={`/getticket`}>
-                <a>
-                  <ButtonBlue>BUY</ButtonBlue>
-                </a>
-              </Link>
+            <Box w={4 / 12} />
+            <Box w={2 / 12}>
+              <Box pt="4rem" pl="2rem">
+                <Link href={`/getticket`}>
+                  <a>
+                    <Button color={color.red}>Buy Ticket</Button>
+                  </a>
+                </Link>
+              </Box>
             </Box>
           </Flex>
-          <Box pt="1rem" />
-        </center>
-      </Box>
-    </WrapperSky>
-  </Wrapper>
-)
+        </WrapperText>
+        <WrapperSky>
+          <Box pt="1.5rem">
+            <center>
+              <Box>
+                <Text1>LIVE in</Text1>
+              </Box>
+              <Box>
+                <Text2>
+                  {pad(this.props.countdown.day)} :{' '}
+                  {pad(this.props.countdown.hrs)} :{' '}
+                  {pad(this.props.countdown.min)} :{' '}
+                  {pad(this.props.countdown.sec)}
+                </Text2>
+              </Box>
+              <Box>
+                <Text3>
+                  DAY
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  HRS
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  MIN
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  SEC
+                </Text3>
+              </Box>
+              <br />
+              <br />
+              <Flex pl="30%">
+                <Box pt="0.2rem">
+                  <Text4>Hurry up! Buy ticket before live start</Text4>
+                </Box>
+                <Box pl="1.5rem">
+                  <Link href={`/getticket`}>
+                    <a>
+                      <ButtonBlue>BUY</ButtonBlue>
+                    </a>
+                  </Link>
+                </Box>
+              </Flex>
+              <Box pt="1rem" />
+            </center>
+          </Box>
+        </WrapperSky>
+      </Wrapper>
+    )
+  }
+}
 export default LiveTop
