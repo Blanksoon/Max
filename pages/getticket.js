@@ -34,6 +34,7 @@ const LivePlayer = styled.div`height: 36rem;`
 const cookies = new Cookies()
 let token = ''
 let message = {}
+let json = {}
 class getticket extends React.Component {
   constructor(props) {
     super(props)
@@ -73,8 +74,6 @@ class getticket extends React.Component {
         this.setState({
           id: 2,
         })
-        //console.log('jjjj')
-        //this.props.url.back()
         return json
       }
       this.setState({
@@ -89,7 +88,7 @@ class getticket extends React.Component {
   async checkSubscribe(token) {
     const url = `${api.SERVER}/checksubscribe`
     try {
-      const json = await api.post(url, { token })
+      json = await api.post(url, { token })
       return json
     } catch (error) {
       console.error(error)
@@ -103,8 +102,6 @@ class getticket extends React.Component {
   }
 
   render() {
-    //console.log('this.state', this.state)
-    //console.log('props', this.props)
     return (
       <div>
         <Head>
@@ -122,6 +119,8 @@ class getticket extends React.Component {
                   subScribe={this.subScribe}
                   push={this.props.url.push}
                   backToPromo={this.backToInputCode}
+                  checkSubscribe={this.checkSubscribe}
+                  json={json}
                 />
               </Box>
             </Container>

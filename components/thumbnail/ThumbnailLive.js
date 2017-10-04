@@ -66,16 +66,18 @@ const ThumbnailLive = ({ live }) => {
           </Flex>
         </div>
       </div>
-      <Box pt="2%" pb="2%">
-        <center>
-          <Text
-            color="#d6ff00"
-            bold
-            children={`Next on ${live.OnAirTime}`}
-            fontSize="1em"
-          />
-        </center>
-      </Box>
+      <WrapperText>
+        <Box pt="2%" pb="2%">
+          <center>
+            <Text
+              color="#d6ff00"
+              bold
+              children={`Next on ${live.OnAirTime}`}
+              fontSize="1em"
+            />
+          </center>
+        </Box>
+      </WrapperText>
       <style jsx>
         {`
           .textlive {
