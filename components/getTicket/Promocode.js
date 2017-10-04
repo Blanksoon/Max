@@ -97,8 +97,8 @@ class Promocode extends Component {
   }
 
   render() {
-    console.log('props', this.props)
     let renderUI = <div />
+    this.props.checkSubscribe()
     if (this.props.login == undefined) {
       renderUI = (
         <Box>
@@ -119,7 +119,39 @@ class Promocode extends Component {
                 onChange={this.handleOnChange}
                 onKeyDown={this.handleOnKeyDown}
               />&nbsp;&nbsp;&nbsp;
-              <Box pt="0.45rem">
+              <Box pt="0.44rem">
+                <ModalButton
+                  buttonID={3}
+                  modalType={3}
+                  modalURL=""
+                  text="Submit"
+                />
+              </Box>
+            </Flex>
+          </Box>
+        </Box>
+      )
+    } else if (this.props.json == 'you do not have ticket') {
+      renderUI = (
+        <Box>
+          <Box>
+            <Text2>
+              Please enter your pormotion code to enjoy all of our contents
+            </Text2>
+          </Box>
+          <Box pt="0.7rem">
+            <Flex w={12 / 12}>
+              <Box w={4.148 / 12} />
+              <Input
+                type="text"
+                id="fname"
+                name="firstname"
+                placeholder="Promo code here"
+                value={this.state.promocode}
+                onChange={this.handleOnChange}
+                onKeyDown={this.handleOnKeyDown}
+              />&nbsp;&nbsp;&nbsp;
+              <Box pt="0.44rem">
                 <ModalButton
                   buttonID={3}
                   modalType={3}
@@ -140,16 +172,21 @@ class Promocode extends Component {
             </Text2>
           </Box>
           <Box pt="0.7rem">
-            <Input
-              type="text"
-              id="fname"
-              name="firstname"
-              placeholder="Promo code here"
-              value={this.state.promocode}
-              onChange={this.handleOnChange}
-              onKeyDown={this.handleOnKeyDown}
-            />&nbsp;&nbsp;&nbsp;
-            <Button onClick={() => this.subScribe()}>Submit</Button>
+            <Flex w={12 / 12}>
+              <Box w={4.148 / 12} />
+              <Input
+                type="text"
+                id="fname"
+                name="firstname"
+                placeholder="Promo code here"
+                value={this.state.promocode}
+                onChange={this.handleOnChange}
+                onKeyDown={this.handleOnKeyDown}
+              />&nbsp;&nbsp;&nbsp;
+              <Box pt="0.44rem">
+                <Button onClick={() => this.subScribe()}>Submit</Button>
+              </Box>
+            </Flex>
           </Box>
         </Box>
       )
@@ -199,11 +236,11 @@ class Promocode extends Component {
             <Text1>GET TICKET</Text1>
           </Box>
           <Box pt="10rem" />
-          <Image/>
+          <Image />
           <center>
-          <Box w={2/12} >
-          <Image width="100%" src="static/img_thankgod.png" />
-          </Box>
+            <Box w={2 / 12}>
+              <Image width="100%" src="static/img_thankgod.png" />
+            </Box>
           </center>
           <center>{renderUI}</center>
         </Wrapper>
