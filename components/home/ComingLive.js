@@ -14,6 +14,7 @@ import {
   BackgroundImage,
   Button,
 } from 'rebass'
+import { connect } from 'react-redux'
 
 const H1 = styled.h1`margin: 0px;`
 const ComingLive = props => (
@@ -67,4 +68,6 @@ const ComingLive = props => (
   </div>
 )
 
-export { ComingLive }
+const mapStateToProps = ({ vod }) => ({ vod })
+
+export default connect(mapStateToProps, null)(ComingLive)

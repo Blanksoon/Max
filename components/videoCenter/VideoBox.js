@@ -85,10 +85,20 @@ class VideoBox extends Component {
 
   renderVideo() {
     const data = Object.values(this.props.vod)
-    // return data.map(({ feature }) => <li>{feature}</li>)
-    const hilightProgram = data.filter(vod => vod.feature == 'active')
-    console.log('cccc', hilightProgram[0])
-    console.log('data', data[0])
+    return data.map(({ id }) => (
+      <Box>
+        <ThumbnailVideo
+          img="static/FT6A6133.jpg"
+          name="The Battle Muay-Thai(4/4)"
+          date="On air - Aug 11, 2017"
+          time="16.24"
+          pt="1em"
+        />
+      </Box>
+    ))
+    // const hilightProgram = data.filter(vod => vod.feature == 'active')
+    // console.log('cccc', hilightProgram[0])
+    // console.log('data', data[0])
     //return console.log(data[1].id)
   }
   render() {
@@ -168,7 +178,6 @@ class VideoBox extends Component {
         </Flex>
         <Box pt="1rem" pl="1rem" pr="1rem">
           <LabelSearch />
-          {/* {this.fetchVod()} */}
           <RowVideo />
           <RowVideo />
           <RowVideo />

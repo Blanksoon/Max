@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Flex, Box } from 'rebass'
 import Cookies from 'universal-cookie'
 import styled from 'styled-components'
-import { ComingLive } from '../components/home/ComingLive'
+import ComingLive from '../components/home/ComingLive'
 import LatestVideo from '../components/home/LatestVideo'
 import MaxNew from '../components/home/MaxNew'
 import StadiumTicket from '../components/home/StadiumTicket'
@@ -20,6 +20,7 @@ import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import { fetchLives } from '../redux/modules/live'
 import withRedux from 'next-redux-wrapper'
 import {
   toogleModal,
@@ -70,6 +71,7 @@ class Index extends React.Component {
   componentDidMount() {
     const cookies = new Cookies()
     const cookie = cookies.get('token')
+    this.props.fetchLives(cookie)
     return this.props.fetchVods(cookie)
   }
   render() {
@@ -154,6 +156,7 @@ Index.getInitialProps = props => {
 }
 export default withRedux(initStore, null, {
   fetchVods,
+  fetchLives,
   toogleModal,
   updateModalType,
   indexModalURL,

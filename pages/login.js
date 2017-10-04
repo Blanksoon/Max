@@ -10,8 +10,9 @@ import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
 import Cookies from 'universal-cookie'
 import { initStore } from '../redux/store'
-import { fetchVods } from '../redux/modules/vod'
+import { loginSuccess } from '../redux/modules/login'
 import withRedux from 'next-redux-wrapper'
+import React from 'react'
 import {
   toogleModal,
   updateModalType,
@@ -50,11 +51,14 @@ const GradientBg = styled.div`
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 let cookie = ''
 
-class login extends React.Component {
+class LoginFacebook extends React.Component {
+  constructor(props) {
+    super(props)
+  }
   componentDidMount() {
     cookie = cookies.get('token')
     //console.log('get cookie', cookie)
-    return this.props.fetchVods(cookie)
+    //return this.props.fetchVods(cookie)
   }
   render() {
     return (
@@ -91,10 +95,12 @@ class login extends React.Component {
     )
   }
 }
-export default withRedux(initStore, null, {
-  fetchVods,
-  toogleModal,
-  updateModalType,
-  indexModalURL,
-  closeModal,
-})(login)
+const mapStateToProps = state => {
+  return {
+    checkLogin: state.login.loginSucessful,
+  }
+}
+
+export default withRedux(initStore, mapStateToProps, {
+  loginSuccess,
+})(LoginFacebook)

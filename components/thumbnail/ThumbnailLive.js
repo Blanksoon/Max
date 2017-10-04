@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   z-index: 2;
   position: relative;
 `
+const WrapperText = styled.div`background: #012147;`
 const ThumbnailLive = props => (
   <Provider>
     <div className="wraperlive">
@@ -61,11 +62,13 @@ const ThumbnailLive = props => (
         </Flex>
       </div>
     </div>
-    <Box pt="2%" pb="2%">
-      <center>
-        <Text color="#d6ff00" bold children={props.text} fontSize="1em" />
-      </center>
-    </Box>
+    <WrapperText>
+      <Box pt="2%" pb="2%">
+        <center>
+          <Text color="#d6ff00" bold children={props.text} fontSize="1em" />
+        </center>
+      </Box>
+    </WrapperText>
     <style jsx>
       {`
         .textlive {
@@ -89,6 +92,7 @@ const ThumbnailLive = props => (
         .wraperlive {
           position: relative;
           font-family: Helvetica, Arial, sans-serif;
+          background: #012147;
         }
       `}
     </style>
