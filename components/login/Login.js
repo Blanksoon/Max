@@ -42,7 +42,7 @@ const Login = () => (
     <div>
       <Box>
         <center>
-          <Image width="100%" src="static/img_login.png" />
+          <Image width="100%" src="../../static/img_login.png" />
           <Text
             color="#B81111"
             pt="1rem"

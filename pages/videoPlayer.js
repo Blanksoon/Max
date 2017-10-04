@@ -10,8 +10,8 @@ import { Container, Flex, Box } from 'rebass'
 import Main from '../layouts/Main'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
-import { fetchVod } from '../redux/modules/vod'
-import { currentVodSelector } from '../redux/selectors/vod'
+import { fetchVod, fetchVods } from '../redux/modules/vod'
+import { currentVodSelector, recentVodsSelector } from '../redux/selectors/vod'
 import NewModal from '../containers/NewModal'
 import {
   toggleModal,
@@ -24,7 +24,7 @@ const WrapperStadiumTicket = styled.div`
   color: #ffffff;
   background-color: #b71111;
 `
-const videoPlayer = ({ url, vod }) => {
+const videoPlayer = ({ url, vod, vods }) => {
   return (
     <div className="wrapper-index">
       <Head>
@@ -63,7 +63,7 @@ const videoPlayer = ({ url, vod }) => {
           <Container>
             <Flex>
               <Box w={12 / 12} bg="white">
-                <UpNext name="Up next" />
+                <UpNext name="Up next" vods={vods} />
               </Box>
             </Flex>
           </Container>
@@ -97,12 +97,14 @@ const videoPlayer = ({ url, vod }) => {
 
 const mapStateToProps = state => {
   const vod = currentVodSelector(state)
-  return { vod }
+  const vods = recentVodsSelector(state)
+  return { vod, vods }
 }
 videoPlayer.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
   const response = await fetchVod(token, query.id)(store.dispatch)
+  const responesVods = await fetchVods(token)(store.dispatch)
   state = store.getState()
   const props = mapStateToProps(state)
   return props
