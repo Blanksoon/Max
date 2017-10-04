@@ -15,7 +15,7 @@ const Button = styled.button`
 `
 const Wrapper = styled.div`
   color: #ffffff;
-  background-image: url('static/stadiumticket_banner.jpg');
+  background-image: url('../../static/stadiumticket_banner.jpg');
   background-position-x: right;
 `
 const stadium_ticket = () => (
@@ -28,7 +28,7 @@ const stadium_ticket = () => (
         </Box>
         <Flex>
           <Box w={1 / 24}>
-            <Image width="100%" src="static/phone.png" />
+            <Image width="100%" src="../static/phone.png" />
           </Box>
           <Box pl="1em" pt="0.4em">
             <Button>(+66)038-416-999</Button>
