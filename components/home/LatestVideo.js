@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 class LatestVideo extends Component {
   render() {
-    console.log(this.props.vods)
+    //console.log(this.props.vods)
     return (
       <div>
         <Box pb="5%">
