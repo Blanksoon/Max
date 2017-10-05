@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 import Link from 'next/link'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
+import { connect } from 'react-redux'
+
 class LatestVideo extends Component {
   render() {
     //console.log(this.props.vods)
@@ -10,19 +12,17 @@ class LatestVideo extends Component {
         <Box pb="5%">
           <Flex>
             <Box width={1}>
-              <center>
-                <Text
-                  pt="2%"
-                  pb="2%"
-                  bold
-                  color="#fff"
-                  children={this.props.name}
-                  fontSize="1.5em"
-                />
-              </center>
+              <Text
+                pt="2%"
+                bold
+                color="#fff"
+                children={this.props.name}
+                fontSize="1.5em"
+              />
             </Box>
           </Flex>
-          <Flex>
+          <hr size="0.1" />
+          <Flex pt="2rem">
             <Box width={8 / 35}>
               <Link
                 as={`/vods/${this.props.vods[0].id}`}
@@ -117,4 +117,7 @@ class LatestVideo extends Component {
     )
   }
 }
-export default LatestVideo
+
+const mapStateToProps = ({ vod }) => ({ vod })
+
+export default connect(mapStateToProps, null)(LatestVideo)
