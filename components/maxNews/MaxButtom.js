@@ -68,92 +68,23 @@ const WrapperHilightText = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapper = styled.div`background-color: #fff;`
-const MaxTop = () => (
+const MaxButtom = () => (
   <Wrapper>
     <Box pl="1rem" pr="1rem" width={1}>
       <Flex>
-        <Box width={1}>
+        <Box>
+          <Flex />
+          <Thumbnailright />
+          <Thumbnailright />
+          <Thumbnailright />
+          <Thumbnailright />
+          <Thumbnailright />
+          <Thumbnailright />
           <Flex>
-            <Box pt="2em" pb="1em" width={1}>
-              <Text color="red" bold children="MAX NEWS" fontSize="1.5em" />
-            </Box>
-            <Box pt="1.5rem">
-              <AllShow>
-                <option value="Filter the show">Search</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
-              </AllShow>
-            </Box>
-          </Flex>
-          <Flex>
-            <Box w={7 / 12}>
-              <WrapperHilight>
-                <Box w={12 / 12} className="imagesss">
-                  <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
-                </Box>
-                <Box w={12 / 12} pl="20px">
-                  <WrapperHilightText>
-                    <Image
-                      width="10%"
-                      pl="90%"
-                      src="static/img_logo_white@2x.png"
-                    />
-                    <Box pt="15rem" pl="1rem" pr="1rem">
-                      <Box w={8 / 12}>
-                        <Text1>
-                          Headline consectetur adipicing elit, sed do eiusmod
-                          tempor
-                        </Text1>
-                      </Box>
-                      <Box pt="1rem">
-                        <Text2>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Donec ut lectus turpis. Mauris cursus mollis
-                          nisi.
-                        </Text2>
-                      </Box>
-                      <Flex>
-                        <Box w={6 / 12} pt="1rem">
-                          <Date>Aug 11, 2017</Date>
-                        </Box>
-                        <Box w={6 / 12}>
-                          <Button1>Read more</Button1>
-                        </Box>
-                      </Flex>
-                    </Box>
-                  </WrapperHilightText>
-                </Box>
-              </WrapperHilight>
-            </Box>
-            <Box width={5 / 12} ml="2%">
-              <Flex>
-                <ThumbnailRight
-                  w="100%"
-                  img="static/maxPromo.jpg"
-                  text1="Headline Headline consect adipicing elit sedid"
-                  text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                  date="Aug 11, 2017"
-                />
-              </Flex>
-              <Flex pt="3.5rem">
-                <ThumbnailRight
-                  w="100%"
-                  img="static/maxPromo.jpg"
-                  text1="Headline Headline consect adipicing elit sedid"
-                  text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                  date="Aug 11, 2017"
-                />
-              </Flex>
-              <Flex pt="3.5rem">
-                <ThumbnailRight
-                  w="100%"
-                  img="static/maxPromo.jpg"
-                  text1="Headline Headline consect adipicing elit sedid"
-                  text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                  date="Aug 11, 2017"
-                />
-              </Flex>
+            <Box w={1} pt="40px" pb="60px">
+              <center>
+                <button className="button-hunger">Hunger for more</button>
+              </center>
             </Box>
           </Flex>
         </Box>
@@ -191,7 +122,7 @@ const MaxTop = () => (
     </Box>
   </Wrapper>
 )
-export default MaxTop
+export default MaxButtom
 
 const Thumbnailright = props => (
   <Flex pt="3rem">
