@@ -85,8 +85,10 @@ class videoPlayer extends React.Component {
           </WrapperButtonPlayer>
         </WrapperPlayer>
       )
-    } else {
+    } else if (vod.videoUrl == '') {
       renderUI = <Players Url={vod.promoUrl} />
+    } else {
+      renderUI = <Players Url={vod.videoUrl} />
     }
     return (
       <div className="wrapper-index">
