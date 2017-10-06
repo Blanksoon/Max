@@ -13,7 +13,7 @@ const Button = styled.button`
   background-color: #b81111;
   border: 1px solid #b81111;
   color: white;
-  padding: 12px 10%;
+  padding: 12px 12%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -50,8 +50,8 @@ const Input = styled.input`
   padding: 5px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #000;
-  border-radius: 4px;
+  //border: 1px solid #000;
+  //border-radius: 4px;
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
 `
@@ -61,8 +61,8 @@ const Input2 = styled.input`
   padding: 8px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #000;
-  border-radius: 4px;
+  //border: 1px solid #000;
+  //border-radius: 4px;
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
 `
@@ -72,8 +72,8 @@ const Input3 = styled.input`
   padding: 8px 0px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #000;
-  border-radius: 4px;
+  //border: 1px solid #000;
+  //border-radius: 4px;
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
 `
@@ -116,7 +116,14 @@ const Wrapperin = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapperleft = styled.div`
-background: #fff:
+  background: #fff:
+`
+const Gender = styled.select`
+  width: 8em;
+  height: 2.2em;
+  font-size: 0.8em;
+  margin-bottom: 1rem;
+  padding-left: 5px;
 `
 const Wrapper = styled.div`background-color: #fff;`
 class Purchase extends Component {
@@ -198,22 +205,14 @@ class Purchase extends Component {
                   <Text4>Expiration date</Text4>
                 </Box>
                 <Box>
-                  <Input3
-                    type="text"
-                    id="CVV/CID"
-                    name="CVV/CID"
-                    placeholder=""
-                    value=""
-                  />
+                  <Gender>
+                    <option value="Select your gender">MM</option>
+                  </Gender>
                 </Box>
                 <Box pl="1rem">
-                  <Input3
-                    type="text"
-                    id="CVV/CID"
-                    name="CVV/CID"
-                    placeholder=""
-                    value=""
-                  />
+                  <Gender>
+                    <option value="Select your gender">YY</option>
+                  </Gender>
                 </Box>
               </Flex>
               <Flex pt="1rem">

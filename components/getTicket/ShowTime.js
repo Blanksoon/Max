@@ -62,8 +62,8 @@ const Input = styled.input`
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid red;
-  border-radius: 4px;
+  // border: 1px solid red;
+  // border-radius: 4px;
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
 `
