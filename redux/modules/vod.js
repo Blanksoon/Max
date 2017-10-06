@@ -89,6 +89,7 @@ const vodReducer = (state = initialState, action) => {
           newState.data[vod.id] = vod
         }
       })
+      //console.log('newState', newState)
       return {
         ...newState,
         loaded: false,
@@ -103,7 +104,7 @@ const vodReducer = (state = initialState, action) => {
         ...state,
         current: action.payload.current,
         data: {
-          ...state.data,
+          // ...state.data,
           ...newData,
         },
         loaded: false,

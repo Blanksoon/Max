@@ -16,6 +16,8 @@ import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
 import { fetchLive } from '../redux/modules/live'
 import { currentLiveSelector } from '../redux/selectors/live'
+import { recentVodsSelector } from '../redux/selectors/vod'
+import { fetchVods } from '../redux/modules/vod'
 import NewModal from '../containers/NewModal'
 import { dateDiff } from '../util'
 import {
@@ -57,7 +59,7 @@ class LiveVdo extends Component {
     }, 1000)
   }
   render() {
-    const { url, live } = this.props
+    const { url, live, vods } = this.props
     const { countdown } = this.state
     return (
       <div>
@@ -103,7 +105,7 @@ class LiveVdo extends Component {
               <Container>
                 <Flex>
                   <Box w={12 / 12} bg="white">
-                    <UpNext name="THIS SHOW RELATED VIDEO" />
+                    <UpNext name="THIS SHOW RELATED VIDEO" vods={vods} />
                   </Box>
                 </Flex>
               </Container>
@@ -138,12 +140,14 @@ class LiveVdo extends Component {
 }
 const mapStateToProps = state => {
   const live = currentLiveSelector(state)
-  return { live }
+  const vods = recentVodsSelector(state)
+  return { live, vods }
 }
 LiveVdo.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
   const response = await fetchLive(token, query.id)(store.dispatch)
+  const responesVods = await fetchVods(token)(store.dispatch)
   state = store.getState()
   const props = mapStateToProps(state)
   return props

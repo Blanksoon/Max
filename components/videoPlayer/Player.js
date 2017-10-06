@@ -30,7 +30,7 @@ class Players extends React.Component {
   }
 
   render() {
-    console.log(this.props.Url)
+    //console.log(this.props.Url)
     return (
       <div className="Player">
         <Box width={1} bg="pink">
