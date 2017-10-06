@@ -87,8 +87,41 @@ import { UserProfile } from '../components/profile/UserProfile'
 import { InputProfile } from '../components/profile/InputProfile'
 import { PurchaseHistory } from '../components/profile/PurchaseHistory'
 import { ListPurchase } from '../components/profile/ListPurchase'
+import NavbarProfile from '../components/profile/NavbarProfile'
 class Profile extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      pathname: 'Profile',
+    }
+    this.changeComponent = this.changeComponent.bind(this)
+  }
+
+  changeComponent(state) {
+    this.setState({
+      pathname: state,
+    })
+  }
   render() {
+    let renderUI = <div />
+    if (this.state.pathname == 'Profile') {
+      renderUI = (
+        <div>
+          <UserProfile />
+          <InputProfile />
+        </div>
+      )
+    } else {
+      renderUI = (
+        <div>
+          <PurchaseHistory />
+          <ListPurchase />
+          <ListPurchase />
+          <ListPurchase />
+          <ListPurchase />
+        </div>
+      )
+    }
     return (
       <div>
         <Head>
@@ -101,16 +134,16 @@ class Profile extends React.Component {
               <Container>
                 <Box px="3rem" pt="9rem" bg="white" pb="2rem">
                   <Welcome />
+                  <Box w={12 / 12} pb="1rem" pt="2rem" mx="1.2rem">
+                    <NavbarProfile
+                      url={this.state}
+                      changeComponent={this.changeComponent}
+                      pathname={this.state.pathname}
+                    />
+                  </Box>
                   <WrapperBoxProfile>
                     <WrapperBoxProfileMargin>
-                      <UserProfile />
-                      <InputProfile />
-
-                      {/* <PurchaseHistory />
-                      <ListPurchase />
-                      <ListPurchase />
-                      <ListPurchase />
-                      <ListPurchase /> */}
+                      {renderUI}
                     </WrapperBoxProfileMargin>
                   </WrapperBoxProfile>
                 </Box>

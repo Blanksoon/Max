@@ -22,6 +22,7 @@ const Button = styled.button`
   display: inline-block;
   font-weight: 700;
   font-family: Helvetica, Arial, sans-serif;
+  cursor: pointer;
 `
 export const ListPurchase = () => {
   return (

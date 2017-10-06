@@ -37,6 +37,7 @@ const Button = styled.button`
   font-weight: 700;
   font-family: Helvetica, Arial, sans-serif;
   margin-top: 0.3rem;
+  cursor: pointer;
 `
 
 const Gender = styled.select`

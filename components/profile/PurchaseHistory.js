@@ -39,6 +39,7 @@ const Button = styled.button`
   font-weight: 700;
   font-family: Helvetica, Arial, sans-serif;
   margin-top: 0.3rem;
+  cursor: pointer;
 `
 export const PurchaseHistory = () => {
   return (
