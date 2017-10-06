@@ -137,7 +137,7 @@ class LiveTop extends Component {
                 </Box>
                 <br />
                 <br />
-                <Flex pl="30%">
+                <Flex pl="35%">
                   <Box pt="0.2rem">
                     <Text4>Hurry up! Buy ticket before live start</Text4>
                   </Box>
@@ -184,24 +184,26 @@ class LiveTop extends Component {
             </Flex>
           </WrapperText>
           <WrapperSky>
-            <Box pt="2.5rem">
+            <Box pt="1.5rem">
               <center>
+                <Box>
+                  <Text1>Now showing</Text1>
+                </Box>
+                <br />
+                <br />
                 <Flex pl="35%">
-                  <Box>
-                    <Text1>Living Now</Text1>
+                  <Box pt="0.2rem">
+                    <Text4>Hurry up! Buy ticket before live start</Text4>
                   </Box>
                   <Box pl="1.5rem">
                     <Link href={`/getticket`}>
                       <a>
-                        <Button color={color.red}>Buy</Button>
+                        <ButtonBlue>BUY</ButtonBlue>
                       </a>
                     </Link>
                   </Box>
-                  <Box pl="1.5rem">
-                    <Text1>your ticket</Text1>
-                  </Box>
                 </Flex>
-                <Box pt="2.5rem" />
+                <Box pt="1rem" />
               </center>
             </Box>
           </WrapperSky>
