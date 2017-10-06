@@ -77,11 +77,16 @@ const WrapperBoxProfile = styled.div`
   border-width: 1px;
 `
 
+const WrapperBoxProfileMargin = styled.div`
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+`
+
 import { Welcome } from '../components/profile/Welcome'
 import { UserProfile } from '../components/profile/UserProfile'
 import { InputProfile } from '../components/profile/InputProfile'
 import { PurchaseHistory } from '../components/profile/PurchaseHistory'
-
+import { ListPurchase } from '../components/profile/ListPurchase'
 class Profile extends React.Component {
   render() {
     return (
@@ -94,13 +99,19 @@ class Profile extends React.Component {
           <div className="profile">
             <WrapperProfile color={color}>
               <Container>
-                <Box px="10rem" pt="9rem" bg="white" pb="2rem">
+                <Box px="3rem" pt="9rem" bg="white" pb="2rem">
                   <Welcome />
                   <WrapperBoxProfile>
-                    {/* <UserProfile />
-                    <InputProfile /> */}
+                    <WrapperBoxProfileMargin>
+                      <UserProfile />
+                      <InputProfile />
 
-                    <PurchaseHistory />
+                      {/* <PurchaseHistory />
+                      <ListPurchase />
+                      <ListPurchase />
+                      <ListPurchase />
+                      <ListPurchase /> */}
+                    </WrapperBoxProfileMargin>
                   </WrapperBoxProfile>
                 </Box>
               </Container>

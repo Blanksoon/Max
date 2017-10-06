@@ -3,10 +3,6 @@ import styled from 'styled-components'
 import color from '../commons/vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
 
-const WrapperBoxProfile = styled.div`
-  margin-left: 1.2rem;
-  margin-right: 1.2rem;
-`
 const Text1 = styled.div`
   color: ${color.black};
   font-weight: 700;
@@ -42,37 +38,35 @@ const Button = styled.button`
 export const UserProfile = () => {
   return (
     <Box w={12 / 12}>
-      <WrapperBoxProfile>
-        <Box w={12 / 12}>
-          <Flex className="Profile-pic">
-            <Box w={1 / 12} py="0.5rem">
-              <Image src="../../static/ic_profile@3x.png" width="80%" />
-            </Box>
-            <Box w={11.7 / 12} pt="1.4rem">
-              <Text1>Profile</Text1>
-            </Box>
-          </Flex>
-          <Flex className="Detail-user" pb="0.5rem">
-            <Box w={2 / 12} pt="1rem">
-              <Text2>Email</Text2>
-              <Text2>Password</Text2>
-            </Box>
-            <Box w={3 / 12} pt="1rem">
-              <Text2>youremail@email.com</Text2>
-              <Text2>......</Text2>
-              <Button>Change password</Button>
-            </Box>
-            <Box w={7 / 12}>
-              <Flex className="Social-login" pb="0.5rem">
-                <FacebookLoginButton />
-                &nbsp;&nbsp;
-                <FacebookLoginButton />
-              </Flex>
-            </Box>
-          </Flex>
-          <hr size="0.1" />
-        </Box>
-      </WrapperBoxProfile>
+      <Box w={12 / 12}>
+        <Flex className="Profile-pic" py="1rem">
+          <Box w={1 / 12} py="0.5rem">
+            <Image src="../../static/ic_profile@3x.png" width="80%" />
+          </Box>
+          <Box w={11.7 / 12} pt="1.8rem">
+            <Text1>Profile</Text1>
+          </Box>
+        </Flex>
+        <Flex className="Detail-user" pb="0.5rem">
+          <Box w={2 / 12} pt="1rem">
+            <Text2>Email</Text2>
+            <Text2>Password</Text2>
+          </Box>
+          <Box w={3 / 12} pt="1rem">
+            <Text2>youremail@email.com</Text2>
+            <Text2>......</Text2>
+            <Button>Change password</Button>
+          </Box>
+          <Box w={7 / 12}>
+            <Flex className="Social-login" pb="0.5rem">
+              <FacebookLoginButton />
+              &nbsp;&nbsp;
+              <FacebookLoginButton />
+            </Flex>
+          </Box>
+        </Flex>
+        <hr size="0.1" />
+      </Box>
     </Box>
   )
 }

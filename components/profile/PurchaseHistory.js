@@ -15,7 +15,7 @@ const Text1 = styled.div`
 `
 
 const Text2 = styled.div`
-  color: ${color.black};
+  color: ${color.red};
   font-weight: 700;
   font-size: 1.1em;
 
@@ -43,33 +43,31 @@ const Button = styled.button`
 export const PurchaseHistory = () => {
   return (
     <Box w={12 / 12}>
-      <WrapperBoxProfile>
-        <Box w={12 / 12}>
-          <Flex className="Profile-pic" pb="1rem">
-            <Box w={1 / 12} py="0.5rem">
-              <Image src="../../static/ic_purchase@3x.png" width="80%" />
-            </Box>
-            <Box w={11.7 / 12} pt="1.4rem">
-              <Text1>Purchase history</Text1>
-            </Box>
-          </Flex>
-          <hr size="0.1" />
-          <Flex className="Title-Purchase" pt="1.4rem">
-            <Box w={2 / 12}>
-              <Text2>Purchase data</Text2>
-            </Box>
-            <Box w={2 / 12}>
-              <Text2>Purchase ID</Text2>
-            </Box>
-            <Box w={4 / 12}>
-              <Text2>Type</Text2>
-            </Box>
-            <Box w={4 / 12}>
-              <Text2>Status</Text2>
-            </Box>
-          </Flex>
-        </Box>
-      </WrapperBoxProfile>
+      <Box w={12 / 12}>
+        <Flex className="Profile-pic" py="1rem">
+          <Box w={1 / 12} py="0.5rem">
+            <Image src="../../static/ic_purchase@3x.png" width="80%" />
+          </Box>
+          <Box w={11.7 / 12} pt="2.3rem">
+            <Text1>Purchase history</Text1>
+          </Box>
+        </Flex>
+        <hr size="0.1" />
+        <Flex className="Title-Purchase" pt="1.4rem" pb="1rem">
+          <Box w={2 / 12}>
+            <Text2>Purchase data</Text2>
+          </Box>
+          <Box w={2 / 12}>
+            <Text2>Purchase ID</Text2>
+          </Box>
+          <Box w={4 / 12}>
+            <Text2>Type</Text2>
+          </Box>
+          <Box w={4 / 12}>
+            <Text2>Status</Text2>
+          </Box>
+        </Flex>
+      </Box>
     </Box>
   )
 }
