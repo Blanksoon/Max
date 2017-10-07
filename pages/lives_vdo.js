@@ -63,9 +63,6 @@ class LiveVdo extends Component {
     const { countdown } = this.state
     return (
       <div>
-        <Head>
-          <link href="/static/css/video-react.css" rel="stylesheet" />
-        </Head>
         <Main url={url}>
           <NewModal />
           <div style={{ paddingTop: '2rem' }}>

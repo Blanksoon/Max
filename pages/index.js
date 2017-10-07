@@ -71,61 +71,43 @@ const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 class Index extends React.Component {
   render() {
     return (
-      <div>
-        <Head>
-          <link href="/static/css/video-react.css" rel="stylesheet" />
-        </Head>
-        <Main url={this.props.url}>
-          <NewModal />
-          <GradientBg>
-            <Container>
-              <Hero lives={this.props.lives.slice(0, 3)} />
-              <LatestVideo
-                name="Latest Video"
-                vods={this.props.vods.slice(0, 4)}
-              />
-            </Container>
-          </GradientBg>
-          <WrapperLive>
-            <Container>
-              <Flex>
-                <Box w={12 / 12} pb="4em" pt="2em">
-                  <ComingLive lives={this.props.lives} />
-                </Box>
-              </Flex>
-            </Container>
-          </WrapperLive>
-          <WrapperStadiumTicket>
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>
-                  <StadiumTicket />
-                </Box>
-              </Flex>
-            </Container>
-          </WrapperStadiumTicket>
-          <WrapperAbout>
-            <Container>
-              <Box w={12 / 12}>
-                <About />
+      <Main url={this.props.url}>
+        <NewModal />
+        <GradientBg>
+          <Container>
+            <Hero lives={this.props.lives.slice(0, 3)} />
+            <LatestVideo
+              name="Latest Video"
+              vods={this.props.vods.slice(0, 4)}
+            />
+          </Container>
+        </GradientBg>
+        <WrapperLive>
+          <Container>
+            <Flex>
+              <Box w={12 / 12} pb="4em" pt="2em">
+                <ComingLive lives={this.props.lives} />
               </Box>
-            </Container>
-          </WrapperAbout>
-          <style jsx global>
-            {`
-              body {
-                padding: 0 !important;
-                margin: 0 !important;
-              }
-               {
-                /* * {
-              box-sizing: border-box;
-            } */
-              }
-            `}
-          </style>
-        </Main>
-      </div>
+            </Flex>
+          </Container>
+        </WrapperLive>
+        <WrapperStadiumTicket>
+          <Container>
+            <Flex>
+              <Box w={12 / 12}>
+                <StadiumTicket />
+              </Box>
+            </Flex>
+          </Container>
+        </WrapperStadiumTicket>
+        <WrapperAbout>
+          <Container>
+            <Box w={12 / 12}>
+              <About />
+            </Box>
+          </Container>
+        </WrapperAbout>
+      </Main>
     )
   }
 }
