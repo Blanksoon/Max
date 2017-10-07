@@ -5,10 +5,8 @@ export const formattedDate = dateStr => {
     month: 'short',
     day: 'numeric',
   }
-  console.log(dateStr)
   const date = new Date(dateStr)
   const formatted = date.toLocaleDateString('en-US', options)
-  console.log(formatted)
   return formatted
 }
 
@@ -22,12 +20,14 @@ export const dateDiff = (date1, date2) => {
   if (diff < 0) {
     return { day: 0, hrs: 0, min: 0, sec: 0 }
   }
-  return {
+
+  const result = {
     day: Math.floor(diff / MS_IN_DAY),
     hrs: Math.floor((diff % MS_IN_DAY) / MS_IN_HRS),
     min: Math.floor(((diff % MS_IN_DAY) % MS_IN_HRS) / MS_IN_MIN),
     sec: Math.floor((((diff % MS_IN_DAY) % MS_IN_HRS) % MS_IN_MIN) / MS_IN_SEC),
   }
+  return result
 }
 
 export const pad = num => {
