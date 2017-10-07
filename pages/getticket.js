@@ -103,60 +103,41 @@ class getticket extends React.Component {
 
   render() {
     return (
-      <div>
-        <Head>
-          <link href="/static/css/video-react.css" rel="stylesheet" />
-        </Head>
-        {/* {status.message ?  : null } */}
-        <Main url={this.props.url}>
-          <NewModal />
-          <WrapperPromotion>
-            <Container>
-              <Box>
-                <Promocode
-                  id={this.state.id}
-                  cookie={token}
-                  subScribe={this.subScribe}
-                  push={this.props.url.push}
-                  backToPromo={this.backToInputCode}
-                  checkSubscribe={this.checkSubscribe}
-                  json={json}
-                />
+      <Main url={this.props.url}>
+        <NewModal />
+        <WrapperPromotion>
+          <Container>
+            <Box>
+              <Promocode
+                id={this.state.id}
+                cookie={token}
+                subScribe={this.subScribe}
+                push={this.props.url.push}
+                backToPromo={this.backToInputCode}
+                checkSubscribe={this.checkSubscribe}
+                json={json}
+              />
+            </Box>
+          </Container>
+        </WrapperPromotion>
+        <WrapperPromotion>
+          <Container>
+            <Box>
+              {/* <FacebookLoginButton /> */}
+              <Promotion />
+            </Box>
+          </Container>
+        </WrapperPromotion>
+        <WrapperStadiumTicket>
+          <Container>
+            <Flex>
+              <Box w={12 / 12}>
+                <StadiumTicket />
               </Box>
-            </Container>
-          </WrapperPromotion>
-          <WrapperPromotion>
-            <Container>
-              <Box>
-                {/* <FacebookLoginButton /> */}
-                <Promotion />
-              </Box>
-            </Container>
-          </WrapperPromotion>
-          <WrapperStadiumTicket>
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>
-                  <StadiumTicket />
-                </Box>
-              </Flex>
-            </Container>
-          </WrapperStadiumTicket>
-        </Main>
-        <style jsx global>
-          {`
-            body {
-              padding: 0 !important;
-              margin: 0 !important;
-            }
-             {
-              /* * {
-                box-sizing: border-box;
-              } */
-            }
-          `}
-        </style>
-      </div>
+            </Flex>
+          </Container>
+        </WrapperStadiumTicket>
+      </Main>
     )
   }
 }

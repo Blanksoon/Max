@@ -92,9 +92,6 @@ class videoPlayer extends React.Component {
     }
     return (
       <div className="wrapper-index">
-        <Head>
-          <link href="/static/css/video-react.css" rel="stylesheet" />
-        </Head>
         <Main url={url}>
           <NewModal />
           <div className="wrapper-BackVideoCenter">
@@ -140,19 +137,6 @@ class videoPlayer extends React.Component {
               </Flex>
             </Container>
           </WrapperStadiumTicket>
-          <style jsx global>
-            {`
-              body {
-                padding: 0 !important;
-                margin: 0 !important;
-              }
-               {
-                /* * {
-              box-sizing: border-box;
-            } */
-              }
-            `}
-          </style>
         </Main>
       </div>
     )

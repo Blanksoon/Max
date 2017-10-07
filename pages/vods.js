@@ -39,19 +39,6 @@ class Vods extends React.Component {
             </Container>
           </WrapperVod>
         </div>
-        <style jsx global>
-          {`
-            body {
-              padding: 0 !important;
-              margin: 0 !important;
-            }
-             {
-              /* * {
-              box-sizing: border-box;
-            } */
-            }
-          `}
-        </style>
       </Main>
     )
   }

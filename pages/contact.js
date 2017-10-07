@@ -34,7 +34,7 @@ const WrapperAbout = styled.div`
 `
 const Contact = ({ url }) => (
   <Main url={url}>
-    <NewModal/>
+    <NewModal />
     <Wrapper>
       <WrapperAbout>
         <Container>
@@ -52,19 +52,6 @@ const Contact = ({ url }) => (
         </Container>
       </Background>
     </Wrapper>
-    <style jsx global>
-      {`
-        body {
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-         {
-          /* * {
-              box-sizing: border-box;
-            } */
-        }
-      `}
-    </style>
   </Main>
 )
 export default withRedux(initStore, null, {
