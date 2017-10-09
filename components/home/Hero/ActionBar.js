@@ -23,16 +23,20 @@ export default ({
             <Button>Buy Ticket</Button>
           </a>
         </Link>
-        <ModalButton
-          modalType={2}
-          modalURL={`${live.fightcardUrl}`}
-          text="View Fightcard"
-        />
-        <ModalButton
-          modalType={1}
-          modalURL={`${live.promoUrl}`}
-          text="Promo Clip"
-        />
+        <Flex pt="0.3rem">
+          <ModalButton
+            modalType={2}
+            modalURL={`${live.fightcardUrl}`}
+            text="View Fightcard"
+          />
+        </Flex>
+        <Flex pt="0.3rem">
+          <ModalButton
+            modalType={1}
+            modalURL={`${live.promoUrl}`}
+            text="Promo Clip"
+          />
+        </Flex>
       </Flex>
     </ActionBar>
   )

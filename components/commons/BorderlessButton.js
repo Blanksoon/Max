@@ -5,6 +5,8 @@ import vars from './vars'
 const StyledButton = styled(ButtonOutline)`
   background: transparent;
   box-shadow: none;
+  font-weight: 500;
+  font-size: 1rem;
   cursor: pointer;
   color: ${vars.lightblue};
   &:hover {

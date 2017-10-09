@@ -34,7 +34,7 @@ class maxnew_detail extends React.Component {
           <Wrapper>
             <Container>
               <Flex>
-                <Box w={9 / 12} pt="7rem">
+                <Box w={8 / 12} pt="7rem">
                   <DetailLeft />
                 </Box>
                 <Box W={3 / 12} />

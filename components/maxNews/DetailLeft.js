@@ -24,21 +24,39 @@ const Text1 = styled.div`
 `
 const Text2 = styled.div`
   color: ${color.black};
-  font-weight: 700;
+  //font-weight: 700;
   font-size: 0.9em;
   font-family: Helvetica, Arial, sans-serif;
 `
 const Text3 = styled.div`
   color: ${color.blue};
   font-weight: 700;
+  font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
+`
+const Text4 = styled.div`
+  color: ${color.black};
+  font-weight: 700;
   font-size: 0.9em;
   font-family: Helvetica, Arial, sans-serif;
 `
-const Date = styled.div`
-  color: ${color.blue};
-  font-weight: 700;
-  font-size: 1.5em;
+const Text5 = styled.div`
+  color: ${color.black};
+  //font-weight: 700;
+  font-size: 1em;
   font-family: Helvetica, Arial, sans-serif;
+`
+const Date = styled.div`
+  color: ${color.lightBlue};
+  font-weight: 700;
+  font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
+`
+const Gender = styled.select`
+  //width: 3.5em;
+  height: 2.2em;
+  font-size: 0.8em;
+  margin-bottom: 1rem;
 `
 const WrapperHilight = styled.div`
   cursor: pointer;
@@ -65,7 +83,7 @@ const WrapperHilightText = styled.div`
 const Wrapper = styled.div`background-color: #fff;`
 const DetailLeft = () => (
   <Wrapper>
-    <Box pl="1rem" pr="1rem" width={1}>
+    <Box pt="2rem" pl="1rem" pr="1rem" width={1}>
       <Box>
         <Text1>
           Headline consectetur adipicing elit, sed do eiusmod tempor consectetur
@@ -73,7 +91,9 @@ const DetailLeft = () => (
         </Text1>
       </Box>
       <Box>
+        <br />
         <Date>Aug 11, 2017</Date>
+        <br />
       </Box>
       <Box>
         <WrapperHilight>
@@ -87,20 +107,56 @@ const DetailLeft = () => (
           </Box>
         </WrapperHilight>
       </Box>
-      <Box>
-        <Text2>lorem</Text2>
+      <Box pt="2rem">
+        <Text2>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum."
+        </Text2>
         <br />
-        <Text2>lorem</Text2>
+        <Text2>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+          id est laborum."
+        </Text2>
+        <br />
       </Box>
       <Flex>
-        <Box>
+        <Box w={2 / 12}>
           <Text3>Share on</Text3>
         </Box>
-        <Box>
-          <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
+        <Box w={1 / 12}>
+          <Image width="90%" pt={0} src="static/FT6A6495.jpg" />
         </Box>
-        <Box>
-          <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
+        <Box ml="0.5rem" w={1 / 12}>
+          <Image width="90%" pt={0} src="static/FT6A6495.jpg" />
+        </Box>
+      </Flex>
+      <Flex pl="1rem" pt="2rem">
+        <Box w={6 / 12}>
+          <Text4>184082 Comments</Text4>
+        </Box>
+        <Box w={6 / 12}>
+          <Flex>
+            <Box pr="0.5rem">
+              <Text5>Sort by</Text5>
+            </Box>
+            <Box>
+              <Gender>
+                <option value="Select your gender">Top</option>
+              </Gender>
+            </Box>
+          </Flex>
         </Box>
       </Flex>
     </Box>

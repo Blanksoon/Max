@@ -36,6 +36,12 @@ const ButtonTickket = styled.button`
   display: inline-block;
   font-weight: 700;
 `
+// const Text1 = styled.div`
+//   font-weight: 700;
+//   font-size: 1rem;
+//   color: #fff;
+// `
+
 class ModalButton extends Component {
   static propTypes = {
     active: PropTypes.bool,
