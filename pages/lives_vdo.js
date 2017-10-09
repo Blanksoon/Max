@@ -75,84 +75,65 @@ class LiveVdo extends Component {
     const { countdown } = this.state
     //console.log('time', this.state.renderUI)
     return (
-      <div>
-        <Head>
-          <link href="/static/css/video-react.css" rel="stylesheet" />
-        </Head>
-        <Main url={url}>
-          <NewModal />
-          <div style={{ paddingTop: '2rem' }}>
-            <WrapperLivePlayer color={color}>
-              <Container>
-                <Flex>
-                  <Box w={12 / 12}>
-                    <BackVideoCenter name="Back to Live" url={url} />
-                  </Box>
-                </Flex>
-              </Container>
-            </WrapperLivePlayer>
-          </div>
-          <div>
-            <WrapperLivePlayer color={color}>
-              <Container>
-                <LiveTop
-                  id={this.state.renderUI}
-                  live={live}
-                  countdown={countdown}
-                  URL={this.props.live.videoUrl} //"https://wittestvod-vh.akamaihd-staging.net/i/mmt_live_preview/MuayThaiBattle_,48,72,108,0p.mp4.csmil/master.m3u8"
-                />
-              </Container>
-            </WrapperLivePlayer>
-          </div>
-          <div>
-            <WrapperLivePlayer color={color}>
-              <Container>
-                <Flex>
-                  <Box w={12 / 12} bg="white">
-                    <LiveDescription live={live} />
-                    <Box width={12 / 12} pt="1rem" pl="1rem" pr="1rem">
-                      <hr size="0.1" />
-                    </Box>
-                  </Box>
-                </Flex>
-              </Container>
-            </WrapperLivePlayer>
-          </div>
-          <div>
-            <WrapperLivePlayer color={color}>
-              <Container>
-                <Flex>
-                  <Box w={12 / 12} bg="white">
-                    <UpNext name="THIS SHOW RELATED VIDEO" vods={vods} />
-                  </Box>
-                </Flex>
-              </Container>
-            </WrapperLivePlayer>
-          </div>
-          <WrapperStadiumTicket>
+      <Main url={url}>
+        <NewModal />
+        <div style={{ paddingTop: '2rem' }}>
+          <WrapperLivePlayer color={color}>
             <Container>
               <Flex>
                 <Box w={12 / 12}>
-                  <StadiumTicket />
+                  <BackVideoCenter name="Back to Live" url={url} />
                 </Box>
               </Flex>
             </Container>
-          </WrapperStadiumTicket>
-          <style jsx global>
-            {`
-              body {
-                padding: 0 !important;
-                margin: 0 !important;
-              }
-               {
-                /* * {
-              box-sizing: border-box;
-            } */
-              }
-            `}
-          </style>
-        </Main>
-      </div>
+          </WrapperLivePlayer>
+        </div>
+        <div>
+          <WrapperLivePlayer color={color}>
+            <Container>
+              <LiveTop
+                id={this.state.renderUI}
+                live={live}
+                countdown={countdown}
+              />
+            </Container>
+          </WrapperLivePlayer>
+        </div>
+        <div>
+          <WrapperLivePlayer color={color}>
+            <Container>
+              <Flex>
+                <Box w={12 / 12} bg="white">
+                  <LiveDescription live={live} />
+                  <Box width={12 / 12} pt="1rem" pl="1rem" pr="1rem">
+                    <hr size="0.1" />
+                  </Box>
+                </Box>
+              </Flex>
+            </Container>
+          </WrapperLivePlayer>
+        </div>
+        <div>
+          <WrapperLivePlayer color={color}>
+            <Container>
+              <Flex>
+                <Box w={12 / 12} bg="white">
+                  <UpNext name="THIS SHOW RELATED VIDEO" vods={vods} />
+                </Box>
+              </Flex>
+            </Container>
+          </WrapperLivePlayer>
+        </div>
+        <WrapperStadiumTicket>
+          <Container>
+            <Flex>
+              <Box w={12 / 12}>
+                <StadiumTicket />
+              </Box>
+            </Flex>
+          </Container>
+        </WrapperStadiumTicket>
+      </Main>
     )
   }
 }

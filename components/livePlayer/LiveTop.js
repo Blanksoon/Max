@@ -156,7 +156,7 @@ class LiveTop extends Component {
         </Wrapper>
       )
     } else if (this.props.id === 2) {
-      renderUI = <Player Url={this.props.URL} />
+      renderUI = <Player Url={this.props.live.videoUrl} />
     } else if (this.props.id === 3) {
       renderUI = (
         <Wrapper>

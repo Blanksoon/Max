@@ -9,5 +9,18 @@ export default ({ children, url }) => (
     {children}
     <AddressFooter />
     <SocialFooter />
+    <style jsx global>
+      {`
+        body {
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+         {
+          /* * {
+              box-sizing: border-box;
+            } */
+        }
+      `}
+    </style>
   </Provider>
 )

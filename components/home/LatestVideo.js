@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 class LatestVideo extends Component {
   render() {
-    console.log(this.props.vods)
+    //console.log(this.props.vods)
     return (
       <div>
         <Box pb="5%">
