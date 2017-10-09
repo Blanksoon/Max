@@ -52,8 +52,9 @@ class Detail extends React.Component {
     const url = `${api.SERVER}/email`
     try {
       const json = await api.post(url, { userEmail })
-      console.log(json)
+      //console.log(json)
       return json
+      la1za3da1
     } catch (error) {
       console.error(error)
     }
