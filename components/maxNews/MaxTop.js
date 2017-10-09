@@ -158,36 +158,6 @@ const MaxTop = () => (
           </Flex>
         </Box>
       </Flex>
-      <style jsx>
-        {`
-          .backgroundx {
-            color: #ffffff;
-            background-image: url('static/img_hilight_new_mockup.png');
-          }
-          .button {
-            background-color: red;
-            border: none;
-            color: white;
-            padding: 8px 25px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 700;
-            font-family: Helvetica, Arial, sans-serif;
-          }
-          .button-hunger {
-            background-color: white;
-            border: 1px solid red;
-            color: red;
-            padding: 8px 25px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 700;
-            font-family: Helvetica, Arial, sans-serif;
-          }
-        `}
-      </style>
     </Box>
   </Wrapper>
 )

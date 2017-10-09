@@ -90,13 +90,18 @@ const ThumbnailLive = ({ live }) => {
             height: 100%;
             width: 100%;
             color: #ffffff;
-            background: #000;
+            background: -webkit-linear-gradient(
+              top,
+              rgba(0, 0, 0, 0.65) 0%,
+              rgba(0, 0, 0, 0.65) 1%,
+              rgba(0, 0, 0, 0.65) 100%
+            ); /* Chrome10-25,Safari5.1-6 */
             position: absolute;
             top: 0;
             left: 0;
           }
           .livehover:hover {
-            opacity: 0.9;
+            opacity: 1;
           }
           .wraperlive {
             position: relative;
