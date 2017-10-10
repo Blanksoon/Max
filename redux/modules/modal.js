@@ -3,6 +3,7 @@ const TOGGLE_MODAL = 'TOGGLE_MODAL'
 const MODAL_UPDATE_TYPE = 'MODAL_UPDATE_TYPE'
 const MODAL_URL = 'MODAL_URL'
 const CLOSE_MODAL = 'CLOSE_MODAL'
+const MODAL_REGISTER = 'MODAL_REGISTER'
 
 // actions
 export const toggleModal = () => {
@@ -25,6 +26,12 @@ export const indexModalURL = modalURL => {
 export const closeModal = () => {
   return {
     type: CLOSE_MODAL,
+  }
+}
+export const registerModal = () => {
+  console.log('regggggxxxx')
+  return {
+    type: MODAL_REGISTER,
   }
 }
 
@@ -60,6 +67,12 @@ const modalReducer = (state = initialState, action) => {
         ...state,
         activeModal: false,
         modalType: 0,
+      }
+    }
+    case MODAL_REGISTER: {
+      return {
+        ...state,
+        modalType: 4,
       }
     }
     default: {

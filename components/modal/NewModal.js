@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { Image } from 'rebass'
 import Login from '../login/Login'
+import Register from '../login/Register'
 import Player from '../videoPlayer/Player'
 
 const Wrapper = styled.div`
@@ -38,6 +39,13 @@ const WrapperLogin = styled.div`
   position: relative;
   width: 840px;
   height: 550px;
+  background: #fff;
+  z-index: 240;
+`
+const WrapperRegister = styled.div`
+  position: relative;
+  width: 840px;
+  height: 600px;
   background: #fff;
   z-index: 240;
 `
@@ -116,6 +124,15 @@ export default class Modal extends Component {
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>
         </WrapperLogin>
+      )
+    } else if (this.props.modalType === 4) {
+      renderUI = (
+        <WrapperRegister onClick={e => this.handleOnClick(e)}>
+          <Register />
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="../../static/close.png" />
+          </WrapperClose>
+        </WrapperRegister>
       )
     } else {
       //null

@@ -87,7 +87,7 @@ class VideoBox extends Component {
                   <Box w={12 / 12} pl="20px">
                     <WrapperHilightText>
                       <Text
-                        pt="25.5rem"
+                        pt="26rem"
                         pl="1rem"
                         color="#57b1fe"
                         bold
@@ -136,7 +136,7 @@ class VideoBox extends Component {
           </Box>
         </Flex>
         <Box pt="1rem" pl="1rem" pr="1rem">
-          <LabelSearch />
+          <LabelSearch program_en={this.props.program_en} />
           {this.renderVideos(vods)}
         </Box>
         <Box w={12 / 12} pb="3rem" pt="2rem">

@@ -6,6 +6,7 @@ import modalReducer from './modules/modal'
 import vodReducer from './modules/vod'
 import loginReducer from './modules/login'
 import livesReducer from './modules/live'
+import programReducer from './modules/program'
 const rootReducer = combineReducers({
   auth: authReducer,
   cookie: cookieReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   modal: modalReducer,
   vod: vodReducer,
   login: loginReducer,
+  program: programReducer,
 })
 
 export default rootReducer

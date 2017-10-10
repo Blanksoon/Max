@@ -107,7 +107,7 @@ export default class extends Component {
         onKeyDown={this.closeModal}
       >
         <LiveInfo>
-          <Title>{activeLive.title}</Title>
+          <Title>{activeLive.title_en}</Title>
           <LiveDate>{formattedLiveDate}</LiveDate>
           <ActionBar
             live={activeLive}

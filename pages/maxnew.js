@@ -6,6 +6,7 @@ import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import color from '../components/commons/vars'
 import MaxTop from '../components/maxNews/MaxTop'
+import MaxButtom from '../components/maxNews/MaxButtom'
 import Purchase from '../components/getTicket/Purchase'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
@@ -34,6 +35,7 @@ class maxnew extends React.Component {
             <Container>
               <Box pt="7rem">
                 <MaxTop />
+                <MaxButtom />
               </Box>
             </Container>
           </Wrapper>

@@ -64,7 +64,7 @@ const Login = () => (
           <Image width="100%" src="../../static/img_login.png" />
         </Box>
         <Box pl="3rem">
-          <Text1>LOG IN</Text1>
+          <Text1>Didn't have an account?</Text1>
         </Box>
         <Flex pt="0.5rem" pl="3rem" pr="3rem">
           <Box w={5 / 12}>
@@ -74,6 +74,9 @@ const Login = () => (
               </Box>
               <Box>
                 <Input placeholder="Password" />
+              </Box>
+              <Box>
+                <Input placeholder="Re-type Password" />
               </Box>
               <Box pt="0.5rem" pl="10.4rem">
                 <Button>GO!</Button>

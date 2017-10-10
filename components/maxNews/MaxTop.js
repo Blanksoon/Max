@@ -1,115 +1,187 @@
 import ThumbnailRight from '../thumbnail/ThumbnailRight'
 import styled from 'styled-components'
+import color from '../commons/vars'
 import { Media, Subhead, Image, Flex, Box, Text, Button } from 'rebass'
 
+const Button1 = styled.button`
+  bottom: 2%;
+  background-color: #b81111;
+  border: 1px solid #b81111;
+  color: white;
+  padding: 8px 10%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 1em;
+  margin-left: 53%;
+`
+const Text1 = styled.div`
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5em;
+  font-family: Helvetica, Arial, sans-serif;
+`
+const Text2 = styled.div`
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9em;
+  font-family: Helvetica, Arial, sans-serif;
+`
+const Date = styled.div`
+  color: ${color.yellow};
+  font-weight: 700;
+  font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
+`
+const Select = styled.select`
+  width: 9em;
+  height: 2.4em;
+  font-size: 1em;
+`
+
+const AllShow = styled.select`
+  width: 18em;
+  height: 2.4em;
+  font-size: 1em;
+`
+const WrapperHilight = styled.div`
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  font-family: Helvetica, Arial, sans-serif;
+  position: relative;
+`
+const WrapperHilightText = styled.div`
+  top: 0%;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: -webkit-linear-gradient(
+    top,
+    rgba(1, 33, 71, 0.1) 0%,
+    rgba(1, 33, 71, 0.6) 76%,
+    rgba(1, 33, 71, 1) 85%,
+    rgba(1, 33, 71, 1) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+`
 const Wrapper = styled.div`background-color: #fff;`
 const MaxTop = () => (
   <Wrapper>
-    <Box width={1}>
+    <Box pl="1rem" pr="1rem" width={1}>
       <Flex>
         <Box width={1}>
           <Flex>
             <Box pt="2em" pb="1em" width={1}>
-              <Text color="red" bold children="Max News" fontSize="1.5em" />
+              <Text color="red" bold children="MAX NEWS" fontSize="1.5em" />
+            </Box>
+            <Box pt="1.5rem">
+              <AllShow>
+                <option value="Filter the show">Search</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+              </AllShow>
             </Box>
           </Flex>
           <Flex>
             <Box w={7 / 12}>
-              <div className="backgroundx">
-                <Box pb="1%" pt="27%" pl="1.5%" width={1}>
-                  <h3>
-                    Headline consectetur adipicing<br />elit, sed do eiusmod
-                    tempor
-                  </h3>
-                  <h>
-                    Incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud<br />
-                    exercitation ullamco laboris nisi ut aliquip ex
-                  </h>
-                  <Flex pt="1.5%">
-                    <Box w={8 / 12} pt="6px">
-                      <Text
-                        color="#ffeb3b"
-                        bold
-                        children="Aug 11, 2017"
-                        fontSize="0.9em"
-                      />
-                    </Box>
-                    <Box w={4 / 12}>
-                      <button className="button">Read more</button>
-                    </Box>
-                  </Flex>
+              <WrapperHilight>
+                <Box w={12 / 12} className="imagesss">
+                  <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
                 </Box>
-              </div>
+                <Box w={12 / 12} pl="20px">
+                  <WrapperHilightText>
+                    <Image
+                      width="10%"
+                      pl="90%"
+                      src="static/img_logo_white@2x.png"
+                    />
+                    <Box pt="15rem" pl="1rem" pr="1rem">
+                      <Box w={8 / 12}>
+                        <Text1>
+                          Headline consectetur adipicing elit, sed do eiusmod
+                          tempor
+                        </Text1>
+                      </Box>
+                      <Box pt="1rem">
+                        <Text2>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Donec ut lectus turpis. Mauris cursus mollis
+                          nisi.
+                        </Text2>
+                      </Box>
+                      <Flex>
+                        <Box w={6 / 12} pt="1rem">
+                          <Date>Aug 11, 2017</Date>
+                        </Box>
+                        <Box w={6 / 12}>
+                          <Button1>Read more</Button1>
+                        </Box>
+                      </Flex>
+                    </Box>
+                  </WrapperHilightText>
+                </Box>
+              </WrapperHilight>
             </Box>
             <Box width={5 / 12} ml="2%">
               <Flex>
                 <ThumbnailRight
+                  w="100%"
                   img="static/maxPromo.jpg"
-                  text1="Headline Headline consect"
-                  text2="adipicing elit sedid"
+                  text1="Headline Headline consect adipicing elit sedid"
+                  text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                   date="Aug 11, 2017"
                 />
               </Flex>
-              <Flex pt="5.2%">
+              <Flex pt="3.5rem">
                 <ThumbnailRight
+                  w="100%"
                   img="static/maxPromo.jpg"
-                  text1="Headline Headline consect"
-                  text2="adipicing elit sedid"
+                  text1="Headline Headline consect adipicing elit sedid"
+                  text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                   date="Aug 11, 2017"
                 />
               </Flex>
-              <Flex pt="5.2%">
+              <Flex pt="3.5rem">
                 <ThumbnailRight
+                  w="100%"
                   img="static/maxPromo.jpg"
-                  text1="Headline Headline consect"
-                  text2="adipicing elit sedid"
+                  text1="Headline Headline consect adipicing elit sedid"
+                  text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                   date="Aug 11, 2017"
                 />
               </Flex>
-            </Box>
-          </Flex>
-          <Flex />
-          <Flex>
-            <Box w={1} pt="40px" pb="60px">
-              <center>
-                <button className="button-hunger">Hunger for more</button>
-              </center>
             </Box>
           </Flex>
         </Box>
       </Flex>
-      <style jsx>
-        {`
-          .backgroundx {
-            color: #ffffff;
-            background-image: url('static/img_hilight_new_mockup.png');
-          }
-          .button {
-            background-color: red;
-            border: none;
-            color: white;
-            padding: 8px 25px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 700;
-            font-family: Helvetica, Arial, sans-serif;
-          }
-          .button-hunger {
-            background-color: white;
-            border: 1px solid red;
-            color: red;
-            padding: 8px 25px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 700;
-            font-family: Helvetica, Arial, sans-serif;
-          }
-        `}
-      </style>
     </Box>
   </Wrapper>
 )
 export default MaxTop
+
+const Thumbnailright = props => (
+  <Flex pt="3rem">
+    <Box w={6 / 12}>
+      <ThumbnailRight
+        w="100%"
+        img="static/maxPromo.jpg"
+        text1="Headline Headline consect adipicing elit sedid"
+        text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+        date="Aug 11, 2017"
+      />
+    </Box>
+    <Box w={6 / 12}>
+      <ThumbnailRight
+        w="100%"
+        img="static/maxPromo.jpg"
+        text1="Headline Headline consect adipicing elit sedid"
+        text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+        date="Aug 11, 2017"
+      />
+    </Box>
+  </Flex>
+)

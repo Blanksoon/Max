@@ -8,8 +8,10 @@ import Container from '../components/commons/Container'
 import color from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import { fetchPrograms } from '../redux/modules/program'
 import NewModal from '../containers/NewModal'
 import { recentVodsSelector, hilightVodSelector } from '../redux/selectors/vod'
+import { recentProgramsSelector } from '../redux/selectors/program'
 import {
   toggleModal,
   updateModalType,
@@ -33,7 +35,11 @@ class Vods extends React.Component {
           <WrapperVod color={color}>
             <Container>
               <Box pt="20px" bg="white">
-                <VideoBox hilight={hilight} vods={vods} />
+                <VideoBox
+                  hilight={hilight}
+                  vods={vods}
+                  program_en={this.props.programs.programname_en}
+                />
               </Box>
             </Container>
           </WrapperVod>
@@ -46,12 +52,14 @@ const mapStateToProps = state => {
   return {
     hilight: hilightVodSelector(state),
     vods: recentVodsSelector(state),
+    programs: state.program,
   }
 }
 Vods.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
   const response = await fetchVods(token)(store.dispatch)
+  const responseProgram = await fetchPrograms()(store.dispatch)
   state = store.getState()
   const props = mapStateToProps(state)
   return props
@@ -59,6 +67,7 @@ Vods.getInitialProps = async ({ store, isServer, query, req }) => {
 
 export default withRedux(initStore, mapStateToProps, {
   fetchVods,
+  fetchPrograms,
   updateModalType,
   indexModalURL,
   closeModal,
