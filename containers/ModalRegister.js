@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 }
 console.log('regggggg sfs')
 const mapDispatchToProps = dispatch => ({
-  registerModal: () => dispatch(registerModal()),
+  registerModal: modalType => dispatch(registerModal(modalType)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalRegister)

@@ -86,9 +86,12 @@ const Login = () => (
           <Box w={7 / 12}>
             <center>
               <FacebookLoginButton />
-              <Box>
+              <Box pt="1rem">
                 <a href="#">
-                  <ModalRegister text="Register with email" />
+                  <ModalRegister
+                    modalType={3}
+                    text="Already have an account, log in"
+                  />
                 </a>
               </Box>
             </center>

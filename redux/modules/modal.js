@@ -28,10 +28,11 @@ export const closeModal = () => {
     type: CLOSE_MODAL,
   }
 }
-export const registerModal = () => {
+export const registerModal = modalType => {
   console.log('regggggxxxx')
   return {
     type: MODAL_REGISTER,
+    payload: { modalType },
   }
 }
 
@@ -72,7 +73,7 @@ const modalReducer = (state = initialState, action) => {
     case MODAL_REGISTER: {
       return {
         ...state,
-        modalType: 4,
+        modalType: action.payload.modalType,
       }
     }
     default: {
