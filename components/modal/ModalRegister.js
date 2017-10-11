@@ -11,8 +11,7 @@ class ModalRegister extends Component {
     modalURL: PropTypes.string,
   }
   handleOnClickModal = () => {
-    console.log('reggggg')
-    this.props.registerModal()
+    this.props.registerModal(this.props.modalType)
   }
   render() {
     return <div onClick={this.handleOnClickModal}>{this.props.text}</div>
