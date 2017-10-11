@@ -26,9 +26,15 @@ export const fbLogin = providerData => async dispatch => {
       `${api.SERVER}/fb-login`,
       providerData
     )
-    dispatch(setCookie('email', data.email))
-    dispatch(setCookie('token', data.token))
-    dispatch(loginSuccess(data))
+    if (data.token == 'undefined' || data.token == undefined) {
+      dispatch({
+        type: LOGOUT,
+      })
+    } else {
+      dispatch(setCookie('email', data.email))
+      dispatch(setCookie('token', data.token))
+      dispatch(loginSuccess(data))
+    }
   } catch (error) {
     dispatch(
       loginFail({

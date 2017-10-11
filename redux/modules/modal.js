@@ -29,7 +29,6 @@ export const closeModal = () => {
   }
 }
 export const registerModal = () => {
-  console.log('regggggxxxx')
   return {
     type: MODAL_REGISTER,
   }
