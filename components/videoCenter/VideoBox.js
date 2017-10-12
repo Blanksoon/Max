@@ -16,7 +16,7 @@ const BackgroundImage = styled.div`
 `
 const WrapperHilight = styled.div`
   cursor: pointer;
-  width: 95%;
+  width: 100%;
   height: 100%;
   background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
@@ -75,8 +75,8 @@ class VideoBox extends Component {
           </Box>
         </Flex>
         <Flex mb="3rem">
-          <Box w={2.5 / 12} />
-          <Box w={7.75 / 12} pl="1rem" mr="1em">
+          <Box w={2.25 / 12} />
+          <Box w={7.75 / 12} mr="1em">
             <Link
               as={`/vods/${hilight.id}`}
               href={`/videoPlayer?id=${hilight.id}`}
@@ -85,7 +85,7 @@ class VideoBox extends Component {
                 <WrapperHilight>
                   <Box w={12 / 12} className="imagesss">
                     <center>
-                      <Image width="100%" pt={0} src={hilight.thumbnailUrl} />
+                      <Image width="100%" src={hilight.thumbnailUrl} />
                     </center>
                   </Box>
                   <Box w={12 / 12} pl="20px">
@@ -139,7 +139,7 @@ class VideoBox extends Component {
             </Link>
           </Box>
         </Flex>
-        <Box pt="1rem" pl="1rem" pr="1rem">
+        <Box pt="3rem" pl="1rem" pr="1rem">
           <LabelSearch program_en={this.props.program_en} />
           {this.renderVideos(vods)}
         </Box>

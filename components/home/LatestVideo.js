@@ -32,8 +32,8 @@ class LatestVideo extends Component {
                   <ThumbnailBottom
                     vod={this.props.vods[0]}
                     img="static/FT6A6133.jpg"
-                    name={this.props.vods[0].programName}
-                    date={this.props.vods[0].onAirDate}
+                    name={this.props.vods[0].programName_en}
+                    date={this.props.vods[0].onAirDateStr_en}
                     time="16:24"
                     bg="#021e3d"
                     pl="1em"
@@ -51,8 +51,8 @@ class LatestVideo extends Component {
                   <ThumbnailBottom
                     vod={this.props.vods[1]}
                     img="static/FT6A6483.jpg"
-                    name={this.props.vods[1].programName}
-                    date={this.props.vods[1].onAirDate}
+                    name={this.props.vods[1].programName_en}
+                    date={this.props.vods[1].onAirDateStr_en}
                     time="16:24"
                     bg="#021e3d"
                     pl="1em"
@@ -70,8 +70,8 @@ class LatestVideo extends Component {
                   <ThumbnailBottom
                     vod={this.props.vods[2]}
                     img="static/FT6A6495.jpg"
-                    name={this.props.vods[2].programName}
-                    date={this.props.vods[2].onAirDate}
+                    name={this.props.vods[2].programName_en}
+                    date={this.props.vods[2].onAirDateStr_en}
                     time="16:24"
                     bg="#021e3d"
                     pl="1em"
@@ -88,8 +88,8 @@ class LatestVideo extends Component {
                 <a>
                   <ThumbnailBottom
                     img="static/FT6A6676.jpg"
-                    name={this.props.vods[3].programName}
-                    date={this.props.vods[3].onAirDate}
+                    name={this.props.vods[3].programName_en}
+                    date={this.props.vods[3].onAirDateStr_en}
                     time="16:24"
                     bg="#021e3d"
                     pl="1em"

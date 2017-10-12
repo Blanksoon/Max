@@ -46,19 +46,19 @@ class lives extends React.Component {
               <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
                 <ThumbnailBigLive
                   id={this.props.lives[0].id}
-                  img={this.props.lives[0].thumbnailUrl}
+                  img={this.props.lives[0].bannerUrl}
                   text1={this.props.lives[0].programName}
-                  text2={this.props.lives[0].description_en}
+                  text2={this.props.lives[0].shortDesc1_en}
+                  text3={<br />}
                   text4={this.props.lives[0].title_en}
                 />
               </Box>
               <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
                 <ThumbnailBigLive
                   id={this.props.lives[1].id}
-                  img={this.props.lives[1].thumbnailUrl}
+                  img={this.props.lives[1].bannerUrl}
                   text1={this.props.lives[1].programName}
-                  text2={this.props.lives[1].description_en}
-                  text3={<br />}
+                  text2={this.props.lives[1].shortDesc1_en}
                   text4={this.props.lives[1].title_en}
                 />
               </Box>
@@ -67,18 +67,20 @@ class lives extends React.Component {
               <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
                 <ThumbnailBigLive
                   id={this.props.lives[2].id}
-                  img={this.props.lives[2].thumbnailUrl}
+                  img={this.props.lives[2].bannerUrl}
                   text1={this.props.lives[2].programName}
-                  text2={this.props.lives[2].description_en}
+                  text2={this.props.lives[2].shortDesc1_en}
+                  text3={<br />}
                   text4={this.props.lives[2].title_en}
                 />
               </Box>
               <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
                 <ThumbnailBigLive
                   id={this.props.lives[3].id}
-                  img={this.props.lives[3].thumbnailUrl}
+                  img={this.props.lives[3].bannerUrl}
                   text1={this.props.lives[3].programName}
-                  text2={this.props.lives[3].description_en}
+                  text2={this.props.lives[3].shortDesc1_en}
+                  text3={<br />}
                   text4={this.props.lives[3].title_en}
                 />
               </Box>

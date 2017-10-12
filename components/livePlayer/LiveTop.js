@@ -91,11 +91,12 @@ class LiveTop extends Component {
             <Flex>
               <Box w={6 / 12} pl="1rem" bg={color.transDarkblue} p={2}>
                 <TextBig color={color.white}>
-                  {this.props.live.title_en}
+                  {this.props.live.title_en}&nbsp;
+                  {this.props.live.liveDateStr_en}
                 </TextBig>
                 <br />
                 <Date color={color.yellow}>
-                  {formattedDate(this.props.live.OnAirTime)}
+                  {formattedDate(this.props.live.liveFromDate)}
                 </Date>
               </Box>
               <Box w={4 / 12} />
@@ -164,11 +165,12 @@ class LiveTop extends Component {
             <Flex>
               <Box w={6 / 12} pl="1rem" bg={color.transDarkblue} p={2}>
                 <TextBig color={color.white}>
-                  {this.props.live.title_en}
+                  {this.props.live.title_en}&nbsp;
+                  {this.props.live.liveDateStr_en}
                 </TextBig>
                 <br />
                 <Date color={color.yellow}>
-                  {formattedDate(this.props.live.OnAirTime)}
+                  {formattedDate(this.props.live.liveFromDate)}
                 </Date>
               </Box>
               <Box w={4 / 12} />
