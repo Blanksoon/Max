@@ -33,11 +33,11 @@ export const fetchVodSuccess = (id, vods) => ({
   type: FETCH_VOD_SUCCESS,
   payload: { current: id, vods },
 })
-export const fetchVod = (token, id) => async dispatch => {
+export const fetchVod = (token, id, progname) => async dispatch => {
   dispatch(fetchVodReq())
-  const url = `${api.SERVER}/vods`
+  const url = `${api.SERVER}/vods?progname=${progname}&token=${token}`
   try {
-    const json = await api.post(url, { token })
+    const json = await api.get(url)
     // You should not return in Vods <-- change to something like data
     dispatch(fetchVodSuccess(id, json.data))
   } catch (error) {

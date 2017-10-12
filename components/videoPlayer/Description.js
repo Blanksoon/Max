@@ -11,11 +11,11 @@ const Description = ({ vod }) => (
   <div className="Description">
     <Flex pl="1rem">
       <Box width={1 / 12} pt="2%" mr="2%">
-        <Image width="100%" src="/static/logoinvidoplayer.jpg" />
+        <Image width="100%" src={vod.logoUrl} />
       </Box>
       <Box width={9 / 12} pb={1} pt={3}>
         <h2>
-          <b>{vod.title}</b>
+          <b>{vod.title_en}</b>
         </h2>
       </Box>
     </Flex>
@@ -23,9 +23,7 @@ const Description = ({ vod }) => (
       <Box width={5 / 12}>
         <div className="livetelecom">
           <h4>
-            <b>Live telecast on {vod.channel}</b>
-            <br />
-            <b>{vod.onAirDate}</b>
+            <b>On air - {vod.onAirDateStr_en}</b>
           </h4>
         </div>
       </Box>
@@ -51,7 +49,7 @@ const Description = ({ vod }) => (
       <hr size="0.1" />
     </Box>
     <Box width={1} pb={3} pl="1rem" pr="1rem">
-      <P>{vod.descriptionEn}</P>
+      <P>{vod.desc_en}</P>
     </Box>
     <style jsx>
       {`

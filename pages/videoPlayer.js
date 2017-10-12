@@ -57,6 +57,7 @@ class videoPlayer extends React.Component {
     clearInterval(this.timerId)
   }
   componentDidMount() {
+    console.log('ffffff')
     this.timerId = setInterval(() => {
       //console.log('sec', this.state.sec)
       const curDate = new Date()
@@ -85,7 +86,7 @@ class videoPlayer extends React.Component {
           </WrapperButtonPlayer>
         </WrapperPlayer>
       )
-    } else if (vod.videoUrl == '') {
+    } else if (vod.videoUrl == 'null') {
       renderUI = <Players Url={vod.promoUrl} />
     } else {
       renderUI = <Players Url={vod.videoUrl} />
@@ -123,7 +124,11 @@ class videoPlayer extends React.Component {
             <Container>
               <Flex>
                 <Box w={12 / 12} bg="white">
-                  <UpNext name="Up next" vods={vods} />
+                  <UpNext
+                    name="Up next"
+                    vods={vods}
+                    progname={vod.programName_en}
+                  />
                 </Box>
               </Flex>
             </Container>
