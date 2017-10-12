@@ -51,6 +51,7 @@ class lives extends React.Component {
                   text2={this.props.lives[0].shortDesc1_en}
                   text3={<br />}
                   text4={this.props.lives[0].title_en}
+                  live={this.props.lives[0]}
                 />
               </Box>
               <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
@@ -60,6 +61,7 @@ class lives extends React.Component {
                   text1={this.props.lives[1].programName}
                   text2={this.props.lives[1].shortDesc1_en}
                   text4={this.props.lives[1].title_en}
+                  live={this.props.lives[1]}
                 />
               </Box>
             </Flex>
@@ -72,6 +74,7 @@ class lives extends React.Component {
                   text2={this.props.lives[2].shortDesc1_en}
                   text3={<br />}
                   text4={this.props.lives[2].title_en}
+                  live={this.props.lives[2]}
                 />
               </Box>
               <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
@@ -82,6 +85,7 @@ class lives extends React.Component {
                   text2={this.props.lives[3].shortDesc1_en}
                   text3={<br />}
                   text4={this.props.lives[3].title_en}
+                  live={this.props.lives[3]}
                 />
               </Box>
             </Flex>

@@ -38,7 +38,7 @@ const WrapperImg = styled.div`
 const WrapperLogin = styled.div`
   position: relative;
   width: 840px;
-  height: 550px;
+  height: 600px;
   background: #fff;
   z-index: 240;
 `

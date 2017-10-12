@@ -73,7 +73,6 @@ class LiveVdo extends Component {
   render() {
     const { url, live, vods } = this.props
     const { countdown } = this.state
-    //console.log('time', this.state.renderUI)
     return (
       <Main url={url}>
         <NewModal />
