@@ -101,11 +101,13 @@ class LiveTop extends Component {
               <Box w={4 / 12} />
               <Box w={2 / 12}>
                 <Box pt="4rem" pl="2rem">
-                  <Link href={`/getticket`}>
-                    <a>
-                      <Button color={color.red}>Buy Ticket</Button>
-                    </a>
-                  </Link>
+                  {this.props.live.videoUrl ? null : (
+                    <Link href={`/getticket`}>
+                      <a>
+                        <Button color={color.red}>Buy Ticket</Button>
+                      </a>
+                    </Link>
+                  )}
                 </Box>
               </Box>
             </Flex>
@@ -136,18 +138,30 @@ class LiveTop extends Component {
                 </Box>
                 <br />
                 <br />
-                <Flex pl="35%">
-                  <Box pt="0.2rem">
-                    <Text4>Hurry up! Buy ticket before live start</Text4>
-                  </Box>
-                  <Box pl="1.5rem">
-                    <Link href={`/getticket`}>
-                      <a>
-                        <ButtonBlue>BUY</ButtonBlue>
-                      </a>
-                    </Link>
-                  </Box>
-                </Flex>
+                {this.props.live.videoUrl ? (
+                  <Flex pl="35%">
+                    <Box pt="0.2rem">
+                      <Text4>
+                        Hooray! This content is already in your subscription
+                        plan.
+                      </Text4>
+                    </Box>
+                  </Flex>
+                ) : (
+                  <Flex pl="35%">
+                    <Box pt="0.2rem">
+                      <Text4>Hurry up! Buy ticket before live start</Text4>
+                    </Box>
+                    <Box pl="1.5rem">
+                      <Link href={`/getticket`}>
+                        <a>
+                          <ButtonBlue>BUY</ButtonBlue>
+                        </a>
+                      </Link>
+                    </Box>
+                  </Flex>
+                )}
+
                 <Box pt="1rem" />
               </center>
             </Box>
