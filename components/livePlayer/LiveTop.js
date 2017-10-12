@@ -139,7 +139,7 @@ class LiveTop extends Component {
                 <br />
                 <br />
                 {this.props.live.videoUrl ? (
-                  <Flex pl="35%">
+                  <Flex pl="30%">
                     <Box pt="0.2rem">
                       <Text4>
                         Hooray! This content is already in your subscription
