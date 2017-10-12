@@ -17,9 +17,9 @@ export const fetchLivesSuccess = lives => ({
 })
 export const fetchLives = token => async dispatch => {
   dispatch(fetchLivesReq())
-  const url = `${api.SERVER}/lives`
+  const url = `${api.SERVER}/lives?token=${token}`
   try {
-    const json = await api.post(url, { token })
+    const json = await api.get(url)
     // You should not return in Vods <-- change to something like data
     dispatch(fetchLivesSuccess(json.data))
   } catch (error) {
@@ -36,9 +36,9 @@ export const fetchLiveSuccess = lives => ({
 })
 export const fetchLive = (token, id) => async dispatch => {
   dispatch(fetchLiveReq())
-  const url = `${api.SERVER}/lives/${id}`
+  const url = `${api.SERVER}/lives/${id}?token=${token}`
   try {
-    const json = await api.post(url, { token })
+    const json = await api.get(url, { token })
     // You should not return in Vods <-- change to something like data
     dispatch(fetchLiveSuccess(json.data))
   } catch (error) {
