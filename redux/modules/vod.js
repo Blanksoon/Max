@@ -65,6 +65,11 @@ const vodReducer = (state = initialState, action) => {
       const newState = Object.assign({}, state)
       vods.forEach(vod => {
         // Recent index
+        console.log('vodddddd', typeof newState)
+        let ok = 0
+        // for(let i = 0 ; i< vods.length ;i++){
+        //   if()
+        // }
         if (typeof newState.recents === 'undefined') {
           newState.recents = [vod.id]
         } else {
