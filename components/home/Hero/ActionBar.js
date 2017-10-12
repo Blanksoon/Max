@@ -20,7 +20,7 @@ export default ({
       <Flex>
         <Link as={`/lives/${live.id}`} href={`/lives_vdo?id=${live.id}`}>
           <a>
-            <Button>Buy Ticket</Button>
+            <Button>{live.videoUrl ? 'Watch' : 'Buy Ticket'}</Button>
           </a>
         </Link>
         <Flex pl="1.5rem" pt="0.3rem">
