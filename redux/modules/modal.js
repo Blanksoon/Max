@@ -29,7 +29,6 @@ export const closeModal = () => {
   }
 }
 export const registerModal = modalType => {
-  console.log('regggggxxxx')
   return {
     type: MODAL_REGISTER,
     payload: { modalType },

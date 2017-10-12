@@ -11,7 +11,6 @@ const mapStateToProps = state => {
     // active: state.modal.activeModal,
   }
 }
-console.log('regggggg sfs')
 const mapDispatchToProps = dispatch => ({
   registerModal: modalType => dispatch(registerModal(modalType)),
 })

@@ -16,7 +16,7 @@ const BackgroundImage = styled.div`
 `
 const WrapperHilight = styled.div`
   cursor: pointer;
-  width: 100%;
+  width: 95%;
   height: 100%;
   background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
@@ -65,6 +65,8 @@ class VideoBox extends Component {
   }
   render() {
     const { hilight, vods } = this.props
+    console.log('vods', vods[0])
+    //{hilight.thumbnailUrl}
     return (
       <div>
         <Flex mb={3} pt="7rem">
@@ -82,7 +84,9 @@ class VideoBox extends Component {
               <a>
                 <WrapperHilight>
                   <Box w={12 / 12} className="imagesss">
-                    <Image width="100%" pt={0} src="static/FT6A2278.jpg" />
+                    <center>
+                      <Image width="100%" pt={0} src={hilight.thumbnailUrl} />
+                    </center>
                   </Box>
                   <Box w={12 / 12} pl="20px">
                     <WrapperHilightText>
@@ -99,7 +103,7 @@ class VideoBox extends Component {
                         pl="1rem"
                         color="#fff"
                         bold
-                        children={hilight.title}
+                        children={hilight.title_en}
                         fontSize="1.3em"
                       />
                       <Flex>
@@ -111,7 +115,7 @@ class VideoBox extends Component {
                             left
                             color="#f7f704"
                             bold
-                            children={hilight.onAirDate}
+                            children={hilight.onAirDateStr_en}
                             fontSize="0.9em"
                           />
                         </Box>
@@ -203,9 +207,9 @@ const RowVideo = ({ vods }) => {
             {vods[0] !== undefined && (
               <ThumbnailVideo
                 id={vods[0].id}
-                img="static/FT6A6133.jpg"
-                name={vods[0].title}
-                date={vods[0].onAirDate}
+                img={vods[0].thumbnailUrl}
+                name={vods[0].title_en}
+                date={vods[0].onAirDateStr_en}
                 time="16.24"
                 pt="1em"
               />
@@ -215,9 +219,9 @@ const RowVideo = ({ vods }) => {
             {vods[1] !== undefined && (
               <ThumbnailVideo
                 id={vods[1].id}
-                img="static/FT6A6133.jpg"
-                name={vods[1].title}
-                date={vods[1].onAirDate}
+                img={vods[1].thumbnailUrl}
+                name={vods[1].title_en}
+                date={vods[1].onAirDateStr_en}
                 time="16.24"
                 pt="1em"
               />
@@ -231,9 +235,9 @@ const RowVideo = ({ vods }) => {
             {vods[2] !== undefined && (
               <ThumbnailVideo
                 id={vods[2].id}
-                img="static/FT6A6133.jpg"
-                name={vods[2].title}
-                date={vods[2].onAirDate}
+                img={vods[2].thumbnailUrl}
+                name={vods[2].title_en}
+                date={vods[2].onAirDateStr_en}
                 time="16.24"
                 pt="1em"
               />
@@ -243,9 +247,9 @@ const RowVideo = ({ vods }) => {
             {vods[3] !== undefined && (
               <ThumbnailVideo
                 id={vods[3].id}
-                img="static/FT6A6133.jpg"
-                name={vods[3].title}
-                date={vods[3].onAirDate}
+                img={vods[3].thumbnailUrl}
+                name={vods[3].title_en}
+                date={vods[3].onAirDateStr_en}
                 time="16.24"
                 pt="1em"
               />

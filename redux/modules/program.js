@@ -9,12 +9,12 @@ export const fetchProgramName = program => ({
 })
 
 export const fetchPrograms = () => async dispatch => {
-  console.log('hi')
+  //console.log('hi')
   const url = `${api.SERVER}/program-name`
   try {
     const json = await api.get(url)
     // You should not return in Vods <-- change to something like data
-    console.log(json.data)
+    //console.log(json.data)
     dispatch(fetchProgramName(json.data))
   } catch (error) {
     console.log(error)
