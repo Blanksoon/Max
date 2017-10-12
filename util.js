@@ -22,11 +22,15 @@ export const dateDiff = (date1, date2) => {
   }
 
   const result = {
+    month1: Math.floor(date1.getTime() / MS_IN_DAY),
+    month2: Math.floor(date2.getTime() / MS_IN_DAY),
     day: Math.floor(diff / MS_IN_DAY),
     hrs: Math.floor((diff % MS_IN_DAY) / MS_IN_HRS),
     min: Math.floor(((diff % MS_IN_DAY) % MS_IN_HRS) / MS_IN_MIN),
     sec: Math.floor((((diff % MS_IN_DAY) % MS_IN_HRS) % MS_IN_MIN) / MS_IN_SEC),
   }
+
+  console.log('timeeeeee', result)
   return result
 }
 

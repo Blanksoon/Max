@@ -47,7 +47,7 @@ const ThumbnailBigLive = props => (
     <Flex>
       <Box w={8 / 12} pl="2rem" pb="1.5rem">
         <Text3>
-          {props.text4}
+          {props.text4} / {props.live.liveDateStr_en}
           <br />
           {props.text5}
         </Text3>

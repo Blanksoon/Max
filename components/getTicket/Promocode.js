@@ -239,10 +239,14 @@ class Promocode extends Component {
           <Image />
           <center>
             <Box w={2 / 12}>
-              <Image width="100%" src="static/img_thankgod.png" />
+              <Image
+                width="100%"
+                src="static/MAx-Special-Promotion_Small.png"
+              />
             </Box>
+            <br />
+            {renderUI}
           </center>
-          <center>{renderUI}</center>
         </Wrapper>
       </Provider>
     )

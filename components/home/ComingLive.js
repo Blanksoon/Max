@@ -19,7 +19,7 @@ import { connect } from 'react-redux'
 const H1 = styled.h1`margin: 0px;`
 const ComingLive = props => (
   <div className="ComingLive">
-    <Box w={1} pt="2em" pb="1em">
+    <Box w={1} pb="1em">
       <center>
         <Text
           pt="2%"
