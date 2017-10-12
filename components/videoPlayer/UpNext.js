@@ -2,9 +2,7 @@ import ThumbnailVideo from '../thumbnail/ThumbnailVideo'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 
 const UpNext = ({ name, vods, progname }) => {
-  console.log(progname)
   const relateVods = vods.filter(vod => vod.programName_en == progname)
-  console.log('type', relateVods)
   return (
     <div>
       <Box pb="5%" ml="1rem" mr="1rem">
@@ -22,7 +20,7 @@ const UpNext = ({ name, vods, progname }) => {
               img={relateVods[0].thumbnailUrl}
               name={relateVods[0].title_en}
               date={relateVods[0].onAirDateStr_en}
-              time="16.24"
+              time={relateVods[0].duration}
               id={relateVods[0].id}
             />
           </Box>
@@ -32,7 +30,7 @@ const UpNext = ({ name, vods, progname }) => {
               img={relateVods[1].thumbnailUrl}
               name={relateVods[1].title_en}
               date={relateVods[1].onAirDateStr_en}
-              time="16.24"
+              time={relateVods[1].duration}
               id={relateVods[1].id}
             />
           </Box>
@@ -42,7 +40,7 @@ const UpNext = ({ name, vods, progname }) => {
               img={relateVods[2].thumbnailUrl}
               name={relateVods[2].title_en}
               date={relateVods[2].onAirDateStr_en}
-              time="16.24"
+              time={relateVods[2].duration}
               id={relateVods[2].id}
             />
           </Box>
@@ -52,7 +50,7 @@ const UpNext = ({ name, vods, progname }) => {
               img={relateVods[3].thumbnailUrl}
               name={relateVods[3].title_en}
               date={relateVods[3].onAirDateStr_en}
-              time="16.24"
+              time={relateVods[3].duration}
               id={relateVods[3].id}
             />
           </Box>

@@ -63,6 +63,11 @@ class VideoBox extends Component {
     }
     return rowVideos
   }
+
+  filterProgram() {
+    console.log('ssss')
+  }
+
   render() {
     const { hilight, vods } = this.props
     console.log('vods', vods[0])
@@ -140,7 +145,10 @@ class VideoBox extends Component {
           </Box>
         </Flex>
         <Box pt="3rem" pl="1rem" pr="1rem">
-          <LabelSearch program_en={this.props.program_en} />
+          <LabelSearch
+            program_en={this.props.program_en}
+            filter={this.filterProgram}
+          />
           {this.renderVideos(vods)}
         </Box>
         <Box w={12 / 12} pb="3rem" pt="2rem">
@@ -210,7 +218,7 @@ const RowVideo = ({ vods }) => {
                 img={vods[0].thumbnailUrl}
                 name={vods[0].title_en}
                 date={vods[0].onAirDateStr_en}
-                time="16.24"
+                time={vods[0].duration}
                 pt="1em"
               />
             )}
@@ -222,7 +230,7 @@ const RowVideo = ({ vods }) => {
                 img={vods[1].thumbnailUrl}
                 name={vods[1].title_en}
                 date={vods[1].onAirDateStr_en}
-                time="16.24"
+                time={vods[1].duration}
                 pt="1em"
               />
             )}
@@ -238,7 +246,7 @@ const RowVideo = ({ vods }) => {
                 img={vods[2].thumbnailUrl}
                 name={vods[2].title_en}
                 date={vods[2].onAirDateStr_en}
-                time="16.24"
+                time={vods[2].duration}
                 pt="1em"
               />
             )}
@@ -250,7 +258,7 @@ const RowVideo = ({ vods }) => {
                 img={vods[3].thumbnailUrl}
                 name={vods[3].title_en}
                 date={vods[3].onAirDateStr_en}
-                time="16.24"
+                time={vods[3].duration}
                 pt="1em"
               />
             )}

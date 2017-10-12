@@ -31,11 +31,12 @@ const ButtonPromoClip = styled.button`
 const LiveTelecom = styled.div`color: ${props => props.color.red};`
 const LiveDescription = ({ live }) => (
   <div className="liveDescription">
+    {console.log(live.logoUrl)}
     <Flex pt="1.5rem">
       <Box w={9 / 12} ml="1rem">
         <Flex pt="1rem">
           <Box width={1 / 12} mr="1rem">
-            <Image width="100%" src="/static/logoinvidoplayer.jpg" />
+            <Image width="100%" src={live.logoUrl} />
           </Box>
           <Box width={11 / 12} pb="1rem">
             <HeadDesctiption>{live.liveDateStr_en}</HeadDesctiption>

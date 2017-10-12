@@ -45,7 +45,9 @@ const LabelSearch = props => (
       <Box className="2" w={3 / 12}>
         <AllShow>
           <option value="Filter the show"> {props.program_en[0]} </option>
-          <option value="saab">{props.program_en[1]}</option>
+          <option value="saab" onChange={props.filter}>
+            {props.program_en[1]}
+          </option>
           <option value="opel">{props.program_en[2]}</option>
           <option value="audi">{props.program_en[3]}</option>
         </AllShow>
