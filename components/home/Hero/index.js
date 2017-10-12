@@ -85,7 +85,7 @@ export default class extends Component {
       month: 'short',
       day: 'numeric',
     }
-    const liveDateStr = activeLive.OnAirTime
+    const liveDateStr = activeLive.liveFromDate
     const liveDate = new Date(liveDateStr)
     const formattedLiveDate = liveDate.toLocaleDateString('en-US', options)
     const settings = {
@@ -107,7 +107,10 @@ export default class extends Component {
         onKeyDown={this.closeModal}
       >
         <LiveInfo>
-          <Title>{activeLive.title_en}</Title>
+          <Title>
+            {activeLive.title_en}&nbsp;
+            {activeLive.liveDateStr_en}
+          </Title>
           <LiveDate>{formattedLiveDate}</LiveDate>
           <ActionBar
             live={activeLive}
@@ -117,7 +120,7 @@ export default class extends Component {
             showPromovideo={this.showPromovideo}
           />
         </LiveInfo>
-        <Countdown liveDateStr={activeLive.OnAirTime} />
+        <Countdown liveDateStr={activeLive.liveFromDate} />
         <Slider {...settings}>
           {lives.map(live => <Slide key={live.id} src={live.bannerUrl} />)}
         </Slider>

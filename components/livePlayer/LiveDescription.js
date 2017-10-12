@@ -38,15 +38,15 @@ const LiveDescription = ({ live }) => (
             <Image width="100%" src="/static/logoinvidoplayer.jpg" />
           </Box>
           <Box width={11 / 12} pb="1rem">
-            <HeadDesctiption>{live.title_en}</HeadDesctiption>
+            <HeadDesctiption>{live.liveDateStr_en}</HeadDesctiption>
           </Box>
         </Flex>
         <Flex pr="5%" pt="1rem" pb="0.6rem">
           <Box width={5 / 12}>
             <LiveTelecom color={color}>
-              <b>Live telecast on {live.channel}</b>
+              <b>Live telecast on {live.title_en}</b>
               <br />
-              <b>{live.OnAirDate}</b>
+              <b>{live.shortDesc2_en}</b>
             </LiveTelecom>
           </Box>
           <Box width={7 / 12} pl="46%">
@@ -61,7 +61,7 @@ const LiveDescription = ({ live }) => (
           <hr size="0.1" />
         </Box>
         <Box width={1} pb={3} pr="5%">
-          <P>{live.description_en}</P>
+          <P>{live.desc_en}</P>
         </Box>
         <ModalButton
           buttonID={2}

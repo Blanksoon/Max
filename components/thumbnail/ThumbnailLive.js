@@ -10,6 +10,30 @@ const Wrapper = styled.div`
   z-index: 2;
   position: relative;
 `
+const WrapperFight = styled.div`
+  //height: 100%;
+  width: 13%;
+  bottom: 10%;
+  left: 20%;
+  z-index: 2;
+  position: absolute;
+`
+const WrapperPromo = styled.div`
+  //height: 100%;
+  width: 13%;
+  bottom: 10%;
+  left: 40%;
+  z-index: 2;
+  position: absolute;
+`
+const WrapperMore = styled.div`
+  //height: 100%;
+  width: 13%;
+  bottom: 10%;
+  left: 60%;
+  z-index: 2;
+  position: absolute;
+`
 const WrapperText = styled.div`background: #012147;`
 const ThumbnailLive = ({ live }) => {
   return (
@@ -20,48 +44,53 @@ const ThumbnailLive = ({ live }) => {
         </Box>
         <div className="livehover">
           <Box pl="5%" pt="5%">
-            <Text bold children={live.title} fontSize="0.9em" />
-            <Text children={live.shortDescription_en} fontSize="0.8em" />
+            <Text bold children={live.title_en} fontSize="0.9em" />
+            <Text children={live.desc_en} fontSize="0.8em" />
             <br />
-            <br />
-            <Text
-              children={`live telecast on ${live.channel}`}
+            {/* <Text
+              children={`live telecast on ${live.title_en}`}
               fontSize="0.8em"
-            />
-            <Text children={live.OnAirDate} fontSize="0.8em" />
+            /> */}
+            <Text children={live.shortDesc2_en} fontSize="0.8em" />
           </Box>
           <Flex pt="2.3rem">
             <Box w={4 / 12} pl="20%">
-              <center>
-                <ModalImg
-                  modalType={2}
-                  modalURL={live.fightcardUrl}
-                  w="100%"
-                  img="/static/01.jpg"
-                />
-              </center>
+              <WrapperFight>
+                <center>
+                  <ModalImg
+                    modalType={2}
+                    modalURL={live.fightcardUrl}
+                    w="100%"
+                    img="/static/01.jpg"
+                  />
+                </center>
+              </WrapperFight>
             </Box>
             <Box w={4 / 12}>
-              <center>
-                <ModalImg
-                  modalType={1}
-                  modalURL={live.promoUrl}
-                  w="40%"
-                  img="static/02.jpg"
-                />
-              </center>
+              <WrapperPromo>
+                <center>
+                  <ModalImg
+                    modalType={1}
+                    modalURL={live.promoUrl}
+                    w="100%"
+                    img="static/02.jpg"
+                  />
+                </center>
+              </WrapperPromo>
             </Box>
             <Box w={4 / 12} pr="20%">
-              <center>
-                <Link
-                  as={`/lives/${live.id}`}
-                  href={`/lives_vdo?id=${live.id}`}
-                >
-                  <a>
-                    <Image width="100%" src="/static/03.jpg" />
-                  </a>
-                </Link>
-              </center>
+              <WrapperMore>
+                <center>
+                  <Link
+                    as={`/lives/${live.id}`}
+                    href={`/lives_vdo?id=${live.id}`}
+                  >
+                    <a>
+                      <Image width="100%" src="/static/03.jpg" />
+                    </a>
+                  </Link>
+                </center>
+              </WrapperMore>
             </Box>
           </Flex>
         </div>
@@ -72,7 +101,7 @@ const ThumbnailLive = ({ live }) => {
             <Text
               color="#d6ff00"
               bold
-              children={`Next on ${live.OnAirTime}`}
+              children={`Next on ${live.liveDateStr_en}`}
               fontSize="1em"
             />
           </center>
