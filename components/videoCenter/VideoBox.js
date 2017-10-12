@@ -68,8 +68,18 @@ class VideoBox extends Component {
   renderVideos(vods) {
     const rowVideos = []
     const rowCount = vods.length / 4
+    //console.log('voddddddddddddddd', vods[0])
     for (let i = 0; i <= rowCount; i++) {
+      //console.log('voddddddddddd', vods)
       rowVideos.push(<RowVideo key={i} vods={vods.splice(0, 4)} />)
+      // let n = 4
+      // for (let j = 0; j <= n; j++) {
+      //   if (vods[i].programName_en == 'Max Muay Thai') {
+      //     rowVideos.push(<RowVideo key={i} vods={vods.splice(j)} />)
+      //   } else {
+      //     n++
+      //   }
+      // }
     }
     return rowVideos
   }

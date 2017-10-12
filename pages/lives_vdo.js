@@ -58,7 +58,7 @@ class LiveVdo extends Component {
       if (!this.state.liveNow) {
         this.state.renderUI = 1
       } else {
-        if (this.canWatch) {
+        if (this.state.canWatch) {
           this.state.renderUI = 2
         } else {
           this.state.renderUI = 3
