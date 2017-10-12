@@ -6,6 +6,7 @@ const FETCH_VODS_SUCCESS = 'FETCH_VODS_SUCCESS'
 
 const FETCH_VOD_REQ = 'FETCH_VOD_REQ'
 const FETCH_VOD_SUCCESS = 'FETCH_VOD_SUCCESS'
+const FLITER_VOD = 'FLITER_VOD'
 
 // actions
 export const fetchVodsSuccess = vods => ({
@@ -44,12 +45,17 @@ export const fetchVod = (token, id, progname) => async dispatch => {
     console.log(error)
   }
 }
+export const filterVods = progname => ({
+  type: FETCH_VOD_SUCCESS,
+  payload: { progname },
+})
 
 // reducer
 const initialState = {
   recents: [],
   related: {},
   data: {},
+  filters: {},
   loaded: false,
 }
 const vodReducer = (state = initialState, action) => {
@@ -63,23 +69,29 @@ const vodReducer = (state = initialState, action) => {
     case FETCH_VODS_SUCCESS:
       const vods = action.payload
       const newState = Object.assign({}, state)
+      let i = 0
       vods.forEach(vod => {
         // Recent index
         if (typeof newState.recents === 'undefined') {
           newState.recents = [vod.id]
+        } else if (newState.recents[i] == vod.id) {
+          console.log('else')
         } else {
+          //newState.recents = []
           newState.recents.push(vod.id)
         }
-
+        i++
         // Related index
         if (typeof newState.related === 'undefined') {
           newState.related = {
-            [vod.programName]: [vod.id],
+            [vod.programName_en]: [vod.id],
           }
-        } else if (typeof newState.related[vod.programName] === 'undefined') {
-          newState.related[vod.programName] = [vod.id]
+        } else if (
+          typeof newState.related[vod.programName_en] === 'undefined'
+        ) {
+          newState.related[vod.programName_en] = [vod.id]
         } else {
-          newState.related[vod.programName].push(vod.id)
+          newState.related[vod.programName_en].push(vod.id)
         }
 
         // Cached data
@@ -87,8 +99,12 @@ const vodReducer = (state = initialState, action) => {
           newState.data = {
             [vod.id]: vod,
           }
+          newState.filters = {
+            [vod.id]: vod,
+          }
         } else {
           newState.data[vod.id] = vod
+          newState.filters[vod.id] = vod
         }
       })
       //console.log('newState', newState)
@@ -110,6 +126,14 @@ const vodReducer = (state = initialState, action) => {
           ...newData,
         },
         loaded: false,
+      }
+
+    case FLITER_VOD:
+      return {
+        ...state,
+        filters: state.filters.filter(
+          vod => vod.programName_en == action.payload.current.progname
+        ),
       }
     default: {
       return state

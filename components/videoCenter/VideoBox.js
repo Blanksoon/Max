@@ -54,7 +54,17 @@ const WrapperText = styled.div`
 class VideoBox extends Component {
   constructor(props) {
     super(props)
+    // this.state = {
+    //   value: 'Filter the show',
+    // }
+    // this.handleChange = this.handleChange.bind(this)
   }
+
+  // handleChange(event) {
+  //   console.log('event', event.target.value)
+  //this.setState({ value: event.target.value })
+  //}
+
   renderVideos(vods) {
     const rowVideos = []
     const rowCount = vods.length / 4
@@ -64,14 +74,27 @@ class VideoBox extends Component {
     return rowVideos
   }
 
-  filterProgram() {
-    console.log('ssss')
-  }
-
   render() {
     const { hilight, vods } = this.props
-    console.log('vods', vods[0])
+    //let filterVods = vods.filter(vod => vod.programName_en == 'Max Muay Thai')
+    //console.log('state', this.state)
+    //console.log('vods', vods[0])
     //{hilight.thumbnailUrl}
+    // if (this.state.value == 'Filter the show') {
+    //   filterVods = vods
+    // } else if (this.state.value == 'Max Muay Thai') {
+    //   //filterVods = vods.filter(vod => vod.programName_en == 'Max Muay Thai')
+    //   //console.log('filter', vods)
+    //   filterVods = vods
+    // } else if (this.state.value == 'The Champion Muay Thai') {
+    //   filterVods = vods.filter(
+    //     vod => vod.programName_en == 'The Champion Muay Thai'
+    //   )
+    // } else if (this.state.value == 'Muay Thai Fighter') {
+    //   filterVods = vods.filter(vod => vod.programName_en == 'Muay Thai Fighter')
+    // } else {
+    //   filterVods = vods.filter(vod => vod.programName_en == 'Battle Muay Thai')
+    // }
     return (
       <div>
         <Flex mb={3} pt="7rem">
@@ -147,7 +170,8 @@ class VideoBox extends Component {
         <Box pt="3rem" pl="1rem" pr="1rem">
           <LabelSearch
             program_en={this.props.program_en}
-            filter={this.filterProgram}
+            handleChange={this.props.handleChange}
+            value={this.props.value}
           />
           {this.renderVideos(vods)}
         </Box>
@@ -269,7 +293,5 @@ const RowVideo = ({ vods }) => {
   )
 }
 
-const mapStateToProps = ({ vod }) => ({ vod })
-
-export default connect(mapStateToProps, null)(VideoBox)
+export default VideoBox
 //export { VideoBox }
