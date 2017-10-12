@@ -26,6 +26,19 @@ const WrapperVod = styled.div`
 import Main from '../layouts/Main'
 
 class Vods extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: 'Filter the show',
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(event) {
+    console.log('event', event.target.value)
+    this.setState({ value: event.target.value })
+  }
+
   render() {
     const { hilight, vods } = this.props
     return (
@@ -39,6 +52,8 @@ class Vods extends React.Component {
                   hilight={hilight}
                   vods={vods}
                   program_en={this.props.programs.programname_en}
+                  value={this.state.value}
+                  handleChange={this.handleChange}
                 />
               </Box>
             </Container>
@@ -49,6 +64,7 @@ class Vods extends React.Component {
   }
 }
 const mapStateToProps = state => {
+  //console.log(recentVodsSelector(state))
   return {
     hilight: hilightVodSelector(state),
     vods: recentVodsSelector(state),

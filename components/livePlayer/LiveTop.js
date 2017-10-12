@@ -10,11 +10,10 @@ import { formattedDate, pad } from '../../util'
 import Player from '../videoPlayer/Player'
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 74vh;
+  height: 675px;
   background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
-  background-image: url('/static/img_live_banner.jpg');
+  background: ${props => `url('${props.bannerUrl}')`} no-repeat center center;
   position: relative;
 `
 const TextBig = styled.div`
@@ -86,7 +85,7 @@ class LiveTop extends Component {
     if (this.props.id === 1) {
       //promoclip
       renderUI = (
-        <Wrapper>
+        <Wrapper bannerUrl={this.props.live.bannerUrl}>
           <WrapperText>
             <Flex>
               <Box w={6 / 12} pl="1rem" bg={color.transDarkblue} p={2}>

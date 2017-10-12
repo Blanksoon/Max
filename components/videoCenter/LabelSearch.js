@@ -25,6 +25,7 @@ const AllShow = styled.select`
 const LabelSearch = props => (
   <div className="LabelSearch">
     <Flex pb="1rem">
+      {console.log(props)}
       {/* <Box className="1" w={2 / 12}>
         <Select>
           <option value="Filter month">Filter month</option>
@@ -43,13 +44,12 @@ const LabelSearch = props => (
       </Box> */}
       {/* <Box className="2" pl="30px" w={3 / 12}>  เอาตัวนี้*/}
       <Box className="2" w={3 / 12}>
-        <AllShow>
-          <option value="Filter the show"> {props.program_en[0]} </option>
-          <option value="saab" onChange={props.filter}>
-            {props.program_en[1]}
-          </option>
-          <option value="opel">{props.program_en[2]}</option>
-          <option value="audi">{props.program_en[3]}</option>
+        <AllShow value={props.value} onChange={props.handleChange}>
+          <option value="Filter the show"> Filter the show </option>
+          <option value="Max Muay Thai"> {props.program_en[0]} </option>
+          <option value="The Champion Muay Thai">{props.program_en[1]}</option>
+          <option value="Muay Thai Fighter">{props.program_en[2]}</option>
+          <option value="Battle Muay Thai">{props.program_en[3]}</option>
         </AllShow>
       </Box>
       <Box w={2 / 12} />
