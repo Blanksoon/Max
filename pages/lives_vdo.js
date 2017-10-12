@@ -118,11 +118,7 @@ class LiveVdo extends Component {
             <Container>
               <Flex>
                 <Box w={12 / 12} bg="white">
-                  <UpNext
-                    name="THIS SHOW RELATED VIDEO"
-                    vods={vods}
-                    progname={live.programName_en}
-                  />
+                  <UpNext name="THIS SHOW RELATED VIDEO" vods={vods} />
                 </Box>
               </Flex>
             </Container>
