@@ -1,16 +1,5 @@
 export const recentVodsSelector = state => {
-  let vods = []
-  // let i = 0
-  // while (i < Object.keys(state.vod.data).length) {
-  //   console.log('vods', i)
-  //   vods.push(state.vod.data[i])
-  //   i++
-  // }
-  // console.log('state', Object.keys(state.vod.data).length)
-  state.vod.recents.forEach(recent => {
-    vods.push(state.vod.data[recent])
-  })
-  //console.log('vods', vods)
+  const vods = state.vod.recents.map(recent => state.vod.data[recent])
   return vods
 }
 export const hilightVodSelector = state => {

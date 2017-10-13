@@ -52,59 +52,19 @@ const WrapperText = styled.div`
   position: absolute;
 `
 class VideoBox extends Component {
-  constructor(props) {
-    super(props)
-    // this.state = {
-    //   value: 'Filter the show',
-    // }
-    // this.handleChange = this.handleChange.bind(this)
-  }
-
-  // handleChange(event) {
-  //   console.log('event', event.target.value)
-  //this.setState({ value: event.target.value })
-  //}
-
   renderVideos(vods) {
     const rowVideos = []
     const rowCount = vods.length / 4
-    //console.log('voddddddddddddddd', vods[0])
+    // Use splice on clone object, DONT MODIFY props
+    const tmpVods = [...vods]
     for (let i = 0; i <= rowCount; i++) {
-      //console.log('voddddddddddd', vods)
-      rowVideos.push(<RowVideo key={i} vods={vods.splice(0, 4)} />)
-      // let n = 4
-      // for (let j = 0; j <= n; j++) {
-      //   if (vods[i].programName_en == 'Max Muay Thai') {
-      //     rowVideos.push(<RowVideo key={i} vods={vods.splice(j)} />)
-      //   } else {
-      //     n++
-      //   }
-      // }
+      rowVideos.push(<RowVideo key={i} vods={tmpVods.splice(0, 4)} />)
     }
     return rowVideos
   }
 
   render() {
     const { hilight, vods } = this.props
-    //let filterVods = vods.filter(vod => vod.programName_en == 'Max Muay Thai')
-    //console.log('state', this.state)
-    //console.log('vods', vods[0])
-    //{hilight.thumbnailUrl}
-    // if (this.state.value == 'Filter the show') {
-    //   filterVods = vods
-    // } else if (this.state.value == 'Max Muay Thai') {
-    //   //filterVods = vods.filter(vod => vod.programName_en == 'Max Muay Thai')
-    //   //console.log('filter', vods)
-    //   filterVods = vods
-    // } else if (this.state.value == 'The Champion Muay Thai') {
-    //   filterVods = vods.filter(
-    //     vod => vod.programName_en == 'The Champion Muay Thai'
-    //   )
-    // } else if (this.state.value == 'Muay Thai Fighter') {
-    //   filterVods = vods.filter(vod => vod.programName_en == 'Muay Thai Fighter')
-    // } else {
-    //   filterVods = vods.filter(vod => vod.programName_en == 'Battle Muay Thai')
-    // }
     return (
       <div>
         <Flex mb={3} pt="7rem">
@@ -304,4 +264,3 @@ const RowVideo = ({ vods }) => {
 }
 
 export default VideoBox
-//export { VideoBox }

@@ -29,18 +29,24 @@ class Vods extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: 'Filter the show',
+      filter: 'All shows',
     }
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(event) {
-    console.log('event', event.target.value)
-    this.setState({ value: event.target.value })
+    this.setState({ filter: event.target.value })
   }
 
   render() {
     const { hilight, vods } = this.props
+    const filteredVods = vods.filter(vod => {
+      if (this.state.filter === 'All shows') {
+        return true
+      } else {
+        return vod.programName_en === this.state.filter
+      }
+    })
     return (
       <Main url={this.props.url}>
         <NewModal />
@@ -50,7 +56,7 @@ class Vods extends React.Component {
               <Box pt="20px" bg="white">
                 <VideoBox
                   hilight={hilight}
-                  vods={vods}
+                  vods={filteredVods}
                   program_en={this.props.programs.programname_en}
                   value={this.state.value}
                   handleChange={this.handleChange}
@@ -64,12 +70,12 @@ class Vods extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  //console.log(recentVodsSelector(state))
-  return {
+  const props = {
     hilight: hilightVodSelector(state),
     vods: recentVodsSelector(state),
     programs: state.program,
   }
+  return props
 }
 Vods.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
