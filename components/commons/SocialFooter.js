@@ -23,16 +23,16 @@ const SocialIcon = styled(Image)`
 export default () => (
   <SocialFooter>
     <Container>
-      <a href="http://www.google.com" target="_blank">
+      <a href="https://www.facebook.com/maxmuaythaipage/" target="_blank">
         <SocialIcon src="/static/ic_facebook@2x.png" />
       </a>
-      <a href="http://www.google.com" target="_blank">
+      <a href="https://plus.google.com/109034798571741545704" target="_blank">
         <SocialIcon src="/static/ic_googleplus@2x.png" />
       </a>
-      <a href="http://www.google.com" target="_blank">
+      <a href="https://www.youtube.com/user/maxmuaythaichannel" target="_blank">
         <SocialIcon src="/static/ic_youtube@2x.png" />
       </a>
-      <a href="http://www.google.com" target="_blank">
+      <a href="https://www.instagram.com/maxmuaythai.th/" target="_blank">
         <SocialIcon src="/static/ic_instagram@2x.png" />
       </a>
       <CopyRight>Copyright © 2016 All Rights Reserved</CopyRight>
