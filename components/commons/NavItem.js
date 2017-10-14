@@ -3,10 +3,9 @@ import Link from 'next/link'
 import vars from './vars'
 
 const Inactive = styled.a`
-  box-sizing: border-box;
   color: ${vars.lightBlue};
   cursor: pointer;
-  height: ${vars.navHeight};
+  height: 6.5rem;
   float: left;
   padding: 4rem 1rem 2.3rem;
   text-decorate: none;

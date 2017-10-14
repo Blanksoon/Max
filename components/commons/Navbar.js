@@ -17,19 +17,18 @@ const Navbar = styled(Fixed)`
   z-index: 2;
 `
 const Motto = styled.span`
-  box-sizing: border-box;
   color: ${vars.white};
   display: inline-block;
   font-style: italic;
   float: left;
-  height: ${vars.navHeight};
+  height: 7rem;
   padding: 1.5rem 1rem;
   text-align: right;
   vertical-align: middle;
 `
 const Logo = styled(Image)`
   cursor: pointer;
-  height: 6rem;
+  height: 7rem;
   float: right;
   margin-right: 2rem;
 `
