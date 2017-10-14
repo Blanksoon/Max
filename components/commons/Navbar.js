@@ -12,7 +12,6 @@ import LoginLang from '../../containers/commons/LoginLang'
 const Navbar = styled(Fixed)`
   background: ${props =>
     props.pathname == '/' ? 'rgba(1, 15, 30, 0.8)' : 'rgba(1, 15, 30, 10)'};
-  box-sizing: 'border-box';
   height: ${vars.navHeight};
   width: 100%;
   z-index: 2;
