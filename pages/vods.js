@@ -7,7 +7,7 @@ import { Flex, Box } from 'rebass'
 import Container from '../components/commons/Container'
 import color from '../components/commons/vars'
 import { initStore } from '../redux/store'
-import { fetchVods } from '../redux/modules/vod'
+import { fetchVods, setFetchFilter, resetFetchData } from '../redux/modules/vod'
 import { fetchPrograms } from '../redux/modules/program'
 import NewModal from '../containers/NewModal'
 import { recentVodsSelector, hilightVodSelector } from '../redux/selectors/vod'
@@ -29,24 +29,21 @@ class Vods extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      filter: 'All shows',
+      filteredProgram: 'All shows',
     }
-    this.handleChange = this.handleChange.bind(this)
+    this.onFilteredProgramChange = this.onFilteredProgramChange.bind(this)
   }
 
-  handleChange(event) {
-    this.setState({ filter: event.target.value })
+  onFilteredProgramChange(event) {
+    const filteredProgram = event.target.value
+    this.setState({ filteredProgram })
+    this.props.resetFetchData()
+    this.props.setFetchFilter('progname', filteredProgram)
+    this.props.fetchVods(this.props.token)
   }
 
   render() {
     const { hilight, vods } = this.props
-    const filteredVods = vods.filter(vod => {
-      if (this.state.filter === 'All shows') {
-        return true
-      } else {
-        return vod.programName_en === this.state.filter
-      }
-    })
     return (
       <Main url={this.props.url}>
         <NewModal />
@@ -56,10 +53,10 @@ class Vods extends React.Component {
               <Box pt="20px" bg="white">
                 <VideoBox
                   hilight={hilight}
-                  vods={filteredVods}
-                  program_en={this.props.programs.programname_en}
-                  value={this.state.value}
-                  handleChange={this.handleChange}
+                  vods={vods}
+                  programEns={this.props.programs.programname_en}
+                  filteredProgram={this.state.filteredProgram}
+                  onFilteredProgramChange={this.onFilteredProgramChange}
                 />
               </Box>
             </Container>
@@ -74,13 +71,14 @@ const mapStateToProps = state => {
     hilight: hilightVodSelector(state),
     vods: recentVodsSelector(state),
     programs: state.program,
+    token: state.auth.token,
   }
   return props
 }
 Vods.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
-  const response = await fetchVods(token)(store.dispatch)
+  const response = await fetchVods(token)(store.dispatch, store.getState)
   const responseProgram = await fetchPrograms()(store.dispatch)
   state = store.getState()
   const props = mapStateToProps(state)
@@ -90,6 +88,8 @@ Vods.getInitialProps = async ({ store, isServer, query, req }) => {
 export default withRedux(initStore, mapStateToProps, {
   fetchVods,
   fetchPrograms,
+  setFetchFilter,
+  resetFetchData,
   updateModalType,
   indexModalURL,
   closeModal,

@@ -16,27 +16,25 @@ const Select = styled.select`
   font-size: 1em;
 `
 
-const AllShow = styled.select`
+const ProgramList = styled.select`
   width: 18em;
   height: 2.4em;
   font-size: 1em;
 `
 
-const LabelSearch = props => (
+export default ({ filteredProgram, onFilteredProgramChange, programEns }) => (
   <div className="LabelSearch">
     <Flex pb="1rem">
       <Box className="2" w={3 / 12}>
-        <AllShow value={props.value} onChange={props.handleChange}>
+        <ProgramList value={filteredProgram} onChange={onFilteredProgramChange}>
           <option value="All shows">All shows</option>
-          <option value="Max Muay Thai"> {props.program_en[0]} </option>
-          <option value="The Champion Muay Thai">{props.program_en[1]}</option>
-          <option value="Muay Thai Fighter">{props.program_en[2]}</option>
-          <option value="Battle Muay Thai">{props.program_en[3]}</option>
-        </AllShow>
+          <option value="Max Muay Thai"> {programEns[0]} </option>
+          <option value="The Champion Muay Thai">{programEns[1]}</option>
+          <option value="Muay Thai Fighter">{programEns[2]}</option>
+          <option value="Battle Muay Thai">{programEns[3]}</option>
+        </ProgramList>
       </Box>
       <Box w={2 / 12} />
     </Flex>
   </div>
 )
-
-export { LabelSearch }

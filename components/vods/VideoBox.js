@@ -7,7 +7,7 @@ import ThumbnailVideo from '../thumbnail/ThumbnailVideo'
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 import ThumbnailSky from '../thumbnail/ThumbnailSky'
 import Hilight from './Hilight'
-import { LabelSearch } from './LabelSearch'
+import ProgramFilter from './ProgramFilter'
 import { formattedDate } from '../../util'
 import vars from '../commons/vars'
 
@@ -54,10 +54,10 @@ class VideoBox extends Component {
           <Hilight hilight={hilight} />
         </WrapperHilight>
         <Box pt="3rem" pl="1rem" pr="1rem">
-          <LabelSearch
-            program_en={this.props.program_en}
-            handleChange={this.props.handleChange}
-            value={this.props.value}
+          <ProgramFilter
+            programEns={this.props.programEns}
+            onFilteredProgramChange={this.props.onFilteredProgramChange}
+            filteredProgram={this.props.filteredProgram}
           />
           {this.renderVideos(vods)}
         </Box>

@@ -1,12 +1,15 @@
+import querystring from 'querystring'
 import * as api from '../../api'
 
 // types
-const FETCH_VODS_REQ = 'FETCH_VODS_REQ'
-const FETCH_VODS_SUCCESS = 'FETCH_VODS_SUCCESS'
+const FETCH_VODS_REQ = '@VOD/FETCH_VODS_REQ'
+const FETCH_VODS_SUCCESS = '@VOD/FETCH_VODS_SUCCESS'
 
-const FETCH_VOD_REQ = 'FETCH_VOD_REQ'
-const FETCH_VOD_SUCCESS = 'FETCH_VOD_SUCCESS'
-const FLITER_VOD = 'FLITER_VOD'
+const FETCH_VOD_REQ = '@VOD/FETCH_VOD_REQ'
+const FETCH_VOD_SUCCESS = '@VOD/FETCH_VOD_SUCCESS'
+
+const SET_FETCH_FILTER = '@VOD/SET_FETCH_FILTER'
+const RESET_FETCH_DATA = '@VOD/RESET_FETCH_DATA'
 
 // actions
 export const fetchVodsSuccess = vods => ({
@@ -14,10 +17,18 @@ export const fetchVodsSuccess = vods => ({
   payload: vods,
 })
 
-export const fetchVods = (token, progname) => async dispatch => {
-  //console.log('progname', progname)
-  const url = `${api.SERVER}/vods?progname=${progname}&token=${token}`
-  //url = `${api.SERVER}/vods?progname=&token=`
+export const fetchVods = token => async (dispatch, getState) => {
+  const state = getState()
+  const filter = Object.assign({}, state.vod.filter)
+  if (typeof filter.progname == 'undefined') {
+    filter.progname = ''
+  }
+  const query = {
+    ...filter,
+    token,
+  }
+  const queryStr = querystring.stringify(query)
+  const url = `${api.SERVER}/vods?${queryStr}`
   try {
     const json = await api.get(url)
     // You should not return in Vods <-- change to something like data
@@ -45,9 +56,15 @@ export const fetchVod = (token, id, progname) => async dispatch => {
     console.log(error)
   }
 }
-export const filterVods = progname => ({
-  type: FETCH_VOD_SUCCESS,
-  payload: { progname },
+
+export const setFetchFilter = (key, value) => {
+  return {
+    type: SET_FETCH_FILTER,
+    payload: { key, value },
+  }
+}
+export const resetFetchData = () => ({
+  type: RESET_FETCH_DATA,
 })
 
 // reducer
@@ -55,7 +72,7 @@ const initialState = {
   recents: [],
   related: {},
   data: {},
-  filters: {},
+  filter: {},
   loaded: false,
 }
 const vodReducer = (state = initialState, action) => {
@@ -72,7 +89,6 @@ const vodReducer = (state = initialState, action) => {
       let i = 0
       vods.forEach(vod => {
         // Recent index
-        console.log('vodddddd', typeof newState)
         let ok = 0
         // for(let i = 0 ; i< vods.length ;i++){
         //   if()
@@ -104,12 +120,8 @@ const vodReducer = (state = initialState, action) => {
           newState.data = {
             [vod.id]: vod,
           }
-          newState.filters = {
-            [vod.id]: vod,
-          }
         } else {
           newState.data[vod.id] = vod
-          newState.filters[vod.id] = vod
         }
       })
       //console.log('newState', newState)
@@ -133,13 +145,23 @@ const vodReducer = (state = initialState, action) => {
         loaded: false,
       }
 
-    case FLITER_VOD:
+    case SET_FETCH_FILTER:
+      const filter = {
+        ...state.filter,
+        [action.payload.key]: action.payload.value,
+      }
       return {
         ...state,
-        filters: state.filters.filter(
-          vod => vod.programName_en == action.payload.current.progname
-        ),
+        filter,
       }
+    case RESET_FETCH_DATA:
+      return {
+        ...state,
+        recents: [],
+        related: [],
+        data: {},
+      }
+
     default: {
       return state
     }
