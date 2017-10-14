@@ -6,45 +6,23 @@ import Link from 'next/link'
 import ThumbnailVideo from '../thumbnail/ThumbnailVideo'
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 import ThumbnailSky from '../thumbnail/ThumbnailSky'
+import Hilight from './Hilight'
 import { LabelSearch } from './LabelSearch'
 import { formattedDate } from '../../util'
+import vars from '../commons/vars'
 
-const BackgroundImage = styled.div`
-  background: '/static/3.png';
-  background-repeat: no-repeat;
-  background-position: center;
-`
 const WrapperHilight = styled.div`
-  cursor: pointer;
   width: 100%;
-  height: 100%;
   background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
-  position: relative;
 `
-const WrapperHilightText = styled.div`
-  top: 0%;
-  right: 0;
-  width: 100%;
-  position: absolute;
-  background: -webkit-linear-gradient(
-    top,
-    rgba(1, 33, 71, 0.1) 0%,
-    rgba(1, 33, 71, 0.6) 76%,
-    rgba(1, 33, 71, 1) 85%,
-    rgba(1, 33, 71, 1) 100%
-  ); /* Chrome10-25,Safari5.1-6 */
-`
+
 const WrapperImg = styled.div`
-  // width: 100%;
-  // height: 114%;
-  // background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
-  // background-image: url('static/FT6A2278.jpg');
   position: relative;
 `
 const WrapperText = styled.div`
-  color: #fff;
+  color: ${vars.white};
   top: 24%;
   left: 29%;
   font-weight: 700;
@@ -72,71 +50,9 @@ class VideoBox extends Component {
             <Text color="red" bold children="ON DEMAND" fontSize="2em" />
           </Box>
         </Flex>
-        <Flex mb="3rem">
-          <Box w={2.25 / 12} />
-          <Box w={7.75 / 12} mr="1em">
-            <Link
-              as={`/vods/${hilight.id}`}
-              href={`/videoPlayer?id=${hilight.id}`}
-            >
-              <a>
-                <WrapperHilight>
-                  <Box w={12 / 12} className="imagesss">
-                    <center>
-                      <Image width="100%" src={hilight.thumbnailUrl} />
-                    </center>
-                  </Box>
-                  <Box w={12 / 12} pl="20px">
-                    <WrapperHilightText>
-                      <Text
-                        pt="26rem"
-                        pl="1rem"
-                        color="#57b1fe"
-                        bold
-                        children="HILIGHT"
-                        fontSize="1em"
-                      />
-                      <Text
-                        pt="5px"
-                        pl="1rem"
-                        color="#fff"
-                        bold
-                        children={hilight.title_en}
-                        fontSize="1.3em"
-                      />
-                      <Flex>
-                        <Box w={6 / 12}>
-                          <Text
-                            pl="1rem"
-                            pt="15px"
-                            pb="15px"
-                            left
-                            color="#f7f704"
-                            bold
-                            children={hilight.onAirDateStr_en}
-                            fontSize="0.9em"
-                          />
-                        </Box>
-                        <Box w={6 / 12}>
-                          <Text
-                            pt="15px"
-                            pb="15px"
-                            pr="15px"
-                            right
-                            color="#f7f704"
-                            bold
-                            children="4.19"
-                            fontSize="0.9em"
-                          />
-                        </Box>
-                      </Flex>
-                    </WrapperHilightText>
-                  </Box>
-                </WrapperHilight>
-              </a>
-            </Link>
-          </Box>
-        </Flex>
+        <WrapperHilight>
+          <Hilight hilight={hilight} />
+        </WrapperHilight>
         <Box pt="3rem" pl="1rem" pr="1rem">
           <LabelSearch
             program_en={this.props.program_en}

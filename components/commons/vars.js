@@ -1,6 +1,6 @@
 export default {
   navHeight: '6rem',
-  lightBlue: '#3D7FB8',
+  lightBlue: '#57B3FE',
   blue: '#022346',
   darkblue: '#010F1E',
   black: '#000000',

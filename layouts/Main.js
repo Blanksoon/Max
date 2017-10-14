@@ -15,10 +15,8 @@ export default ({ children, url }) => (
           padding: 0 !important;
           margin: 0 !important;
         }
-         {
-          /* * {
-              box-sizing: border-box;
-            } */
+        * {
+          box-sizing: border-box;
         }
       `}
     </style>
