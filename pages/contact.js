@@ -5,13 +5,10 @@ import { Flex, Box } from 'rebass'
 import Container from '../components/commons/Container'
 import styled from 'styled-components'
 import About from '../components/home/About'
-import { LabelSearch } from '../components/videoCenter/LabelSearch'
 import Detail from '../components/contact/Detail'
-import { VideoBox } from '../components/videoCenter/VideoBox'
 import Main from '../layouts/Main'
 import NewModal from '../containers/NewModal'
 import { initStore } from '../redux/store'
-import { fetchVods } from '../redux/modules/vod'
 import withRedux from 'next-redux-wrapper'
 import {
   toogleModal,
@@ -55,7 +52,6 @@ const Contact = ({ url }) => (
   </Main>
 )
 export default withRedux(initStore, null, {
-  fetchVods,
   toogleModal,
   updateModalType,
   indexModalURL,
