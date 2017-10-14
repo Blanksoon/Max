@@ -35,10 +35,13 @@ class Vods extends React.Component {
   }
 
   onFilteredProgramChange(event) {
-    const filteredProgram = event.target.value
+    const filteredProgram =
+      event.target.value === 'All shows' ? '' : event.target.value
     this.setState({ filteredProgram })
     this.props.resetFetchData()
-    this.props.setFetchFilter('progname', filteredProgram)
+    this.props.setFetchFilter({
+      progname: filteredProgram,
+    })
     this.props.fetchVods(this.props.token)
   }
 
@@ -78,8 +81,9 @@ const mapStateToProps = state => {
 Vods.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
-  const response = await fetchVods(token)(store.dispatch, store.getState)
-  const responseProgram = await fetchPrograms()(store.dispatch)
+  const vodsPromise = fetchVods(token)(store.dispatch, store.getState)
+  const programsPromise = fetchPrograms()(store.dispatch)
+  await Promise.all([vodsPromise, programsPromise])
   state = store.getState()
   const props = mapStateToProps(state)
   return props

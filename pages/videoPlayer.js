@@ -10,8 +10,8 @@ import { Container, Flex, Box } from 'rebass'
 import Main from '../layouts/Main'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
-import { fetchVod, fetchVods } from '../redux/modules/vod'
-import { currentVodSelector, recentVodsSelector } from '../redux/selectors/vod'
+import { fetchVod, fetchVods, setFetchFilter } from '../redux/modules/vod'
+import { currentVodSelector, relatedVodsSelector } from '../redux/selectors/vod'
 import NewModal from '../containers/NewModal'
 import Button from '../components/commons/Button'
 import color from '../components/commons/vars'
@@ -57,7 +57,6 @@ class videoPlayer extends React.Component {
     clearInterval(this.timerId)
   }
   componentDidMount() {
-    console.log('ffffff')
     this.timerId = setInterval(() => {
       //console.log('sec', this.state.sec)
       const curDate = new Date()
@@ -150,15 +149,26 @@ class videoPlayer extends React.Component {
 
 const mapStateToProps = state => {
   const vod = currentVodSelector(state)
-  const vods = recentVodsSelector(state)
+  const vods = relatedVodsSelector(vod.programName_en)(state)
   const token = state.auth.token
   return { vod, vods, token }
 }
 videoPlayer.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
-  const token = state.auth.token
-  const response = await fetchVod(token, query.id)(store.dispatch)
-  const responesVods = await fetchVods(token)(store.dispatch)
+  const token = state.auth.toke
+
+  // Fetch current vod
+  await fetchVod(token, query.id)(store.dispatch)
+  const vod = currentVodSelector(store.getState())
+
+  // Fetch other vod with same program name
+  store.dispatch(
+    setFetchFilter({
+      progname: vod.programName_en,
+    })
+  )
+  await fetchVods(token)(store.dispatch, store.getState)
+
   state = store.getState()
   const props = mapStateToProps(state)
   return props

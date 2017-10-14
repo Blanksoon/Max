@@ -19,7 +19,13 @@ export const fetchVodsSuccess = vods => ({
 
 export const fetchVods = token => async (dispatch, getState) => {
   const state = getState()
-  const filter = Object.assign({}, state.vod.filter)
+  let filter
+  if (typeof state.vod.filter === 'undefined') {
+    filter = {}
+  } else {
+    filter = Object.assign({}, state.vod.filter)
+  }
+
   if (typeof filter.progname == 'undefined') {
     filter.progname = ''
   }
@@ -57,10 +63,10 @@ export const fetchVod = (token, id, progname) => async dispatch => {
   }
 }
 
-export const setFetchFilter = (key, value) => {
+export const setFetchFilter = filter => {
   return {
     type: SET_FETCH_FILTER,
-    payload: { key, value },
+    payload: filter,
   }
 }
 export const resetFetchData = () => ({
@@ -90,30 +96,15 @@ const vodReducer = (state = initialState, action) => {
       vods.forEach(vod => {
         // Recent index
         let ok = 0
-        // for(let i = 0 ; i< vods.length ;i++){
-        //   if()
-        // }
         if (typeof newState.recents === 'undefined') {
           newState.recents = [vod.id]
         } else if (newState.recents[i] == vod.id) {
-          console.log('else')
+          // Do no thing
         } else {
           //newState.recents = []
           newState.recents.push(vod.id)
         }
         i++
-        // Related index
-        if (typeof newState.related === 'undefined') {
-          newState.related = {
-            [vod.programName_en]: [vod.id],
-          }
-        } else if (
-          typeof newState.related[vod.programName_en] === 'undefined'
-        ) {
-          newState.related[vod.programName_en] = [vod.id]
-        } else {
-          newState.related[vod.programName_en].push(vod.id)
-        }
 
         // Cached data
         if (typeof newState.data === 'undefined') {
@@ -146,13 +137,9 @@ const vodReducer = (state = initialState, action) => {
       }
 
     case SET_FETCH_FILTER:
-      const filter = {
-        ...state.filter,
-        [action.payload.key]: action.payload.value,
-      }
       return {
         ...state,
-        filter,
+        filter: action.payload,
       }
     case RESET_FETCH_DATA:
       return {

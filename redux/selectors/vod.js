@@ -12,3 +12,7 @@ export const hilightVodSelector = state => {
   return hilight
 }
 export const currentVodSelector = state => state.vod.data[state.vod.current]
+export const relatedVodsSelector = programName_en => state => {
+  const recents = recentVodsSelector(state)
+  return recents.filter(recent => recent.programName_en === programName_en)
+}

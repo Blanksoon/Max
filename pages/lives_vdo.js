@@ -16,8 +16,8 @@ import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
 import { fetchLive } from '../redux/modules/live'
 import { currentLiveSelector } from '../redux/selectors/live'
-import { recentVodsSelector } from '../redux/selectors/vod'
-import { fetchVods } from '../redux/modules/vod'
+import { relatedVodsSelector } from '../redux/selectors/vod'
+import { fetchVods, setFetchFilter } from '../redux/modules/vod'
 import NewModal from '../containers/NewModal'
 import { dateDiff } from '../util'
 import {
@@ -142,14 +142,25 @@ class LiveVdo extends Component {
 }
 const mapStateToProps = state => {
   const live = currentLiveSelector(state)
-  const vods = recentVodsSelector(state)
+  const vods = relatedVodsSelector(live.programName)(state)
   return { live, vods }
 }
 LiveVdo.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
-  const response = await fetchLive(token, query.id)(store.dispatch)
-  const responesVods = await fetchVods(token)(store.dispatch)
+
+  // Fetch current live
+  await fetchLive(token, query.id)(store.dispatch)
+  const live = currentLiveSelector(store.getState())
+
+  // Fetch vods with same program name
+  store.dispatch(
+    setFetchFilter({
+      progname: live.programName,
+    })
+  )
+  await fetchVods(token)(store.dispatch, store.getState)
+
   state = store.getState()
   const props = mapStateToProps(state)
   return props
