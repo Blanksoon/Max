@@ -44,7 +44,7 @@ class VideoBox extends Component {
   render() {
     const { hilight, vods, filteredProgram } = this.props
     const filteredVods = vods.filter(vod => {
-      if (filteredProgram === 'All shows') {
+      if (filteredProgram === '') {
         return true
       }
       return vod.programName_en === filteredProgram

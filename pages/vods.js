@@ -37,9 +37,11 @@ class Vods extends React.Component {
   }
 
   onFilteredProgramChange(event) {
+    const filteredProgram =
+      event.target.value === 'All shows' ? '' : event.target.value
     this.props.resetFetchData()
     this.props.setFetchFilter({
-      progname: event.target.value,
+      progname: filteredProgram,
     })
     this.props.fetchFeaturedVod(this.props.token)
     this.props.fetchVods(this.props.token)
