@@ -120,8 +120,9 @@ const mapStateToProps = state => {
 Index.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
-  const response = await fetchLives(token)(store.dispatch)
-  const responseVods = await fetchVods(token)(store.dispatch)
+  const livePromise = fetchLives(token)(store.dispatch)
+  const vodPromise = fetchVods(token)(store.dispatch, store.getState)
+  await Promise.all([livePromise, vodPromise])
   state = store.getState()
   const props = mapStateToProps(state)
   return props

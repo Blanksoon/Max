@@ -82,7 +82,7 @@ const Image = styled.img`width: 100%;`
 class LiveTop extends Component {
   render() {
     let renderUI = <div />
-    if (this.props.id === 1) {
+    if (this.props.ui === 'COUNTDOWN') {
       //promoclip
       renderUI = (
         <Wrapper bannerUrl={this.props.live.bannerUrl}>
@@ -168,11 +168,11 @@ class LiveTop extends Component {
           </WrapperSky>
         </Wrapper>
       )
-    } else if (this.props.id === 2) {
+    } else if (this.props.ui === 'VIDEO_PLAYER') {
       renderUI = <Player Url={this.props.live.videoUrl} />
-    } else if (this.props.id === 3) {
+    } else if (this.props.ui === 'NOW_SHOWING') {
       renderUI = (
-        <Wrapper>
+        <Wrapper bannerUrl={this.props.live.bannerUrl}>
           <WrapperText>
             <Flex>
               <Box w={6 / 12} pl="1rem" bg={color.transDarkblue} p={2}>
