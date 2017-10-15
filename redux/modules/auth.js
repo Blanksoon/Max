@@ -53,7 +53,7 @@ export const logout = () => async dispatch => {
 }
 
 const initialState = {
-  loaded: false,
+  loading: false,
   error: {},
 }
 const authReducer = (state = initialState, action) => {
@@ -61,19 +61,19 @@ const authReducer = (state = initialState, action) => {
     case LOGIN_REQ:
       return {
         ...state,
-        loaded: true,
+        loading: true,
       }
     case LOGIN_SUCCESS:
       return {
         ...state,
-        loaded: false,
+        loading: false,
         email: action.payload.email,
         token: action.payload.token,
       }
     case LOGIN_FAIL:
       return {
         ...state,
-        loaded: false,
+        loading: false,
         error: {
           code: action.payload.code,
           message: action.payload.message,

@@ -50,7 +50,7 @@ export const fetchLive = (token, id) => async dispatch => {
 const initialState = {
   recents: [],
   data: {},
-  loaded: false,
+  loading: false,
 }
 const livesReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -58,7 +58,7 @@ const livesReducer = (state = initialState, action) => {
     case FETCH_LIVES_REQ:
       return {
         ...state,
-        loaded: true,
+        loading: true,
       }
     case FETCH_LIVES_SUCCESS:
       const lives = action.payload
@@ -80,7 +80,7 @@ const livesReducer = (state = initialState, action) => {
       })
       return {
         ...newState,
-        loaded: false,
+        loading: false,
       }
     case FETCH_LIVE_SUCCESS:
       return {
@@ -90,7 +90,7 @@ const livesReducer = (state = initialState, action) => {
           ...state.data,
           [action.payload[0].id]: action.payload[0],
         },
-        loaded: false,
+        loading: false,
       }
     default: {
       return state

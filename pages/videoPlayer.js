@@ -155,7 +155,7 @@ const mapStateToProps = state => {
 }
 videoPlayer.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
-  const token = state.auth.toke
+  const token = state.auth.token
 
   // Fetch current vod
   await fetchVod(token, query.id)(store.dispatch)

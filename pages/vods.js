@@ -7,7 +7,12 @@ import { Flex, Box } from 'rebass'
 import Container from '../components/commons/Container'
 import color from '../components/commons/vars'
 import { initStore } from '../redux/store'
-import { fetchVods, setFetchFilter, resetFetchData } from '../redux/modules/vod'
+import {
+  fetchVods,
+  setFetchFilter,
+  resetFetchData,
+  fetchFeaturedVod,
+} from '../redux/modules/vod'
 import { fetchPrograms } from '../redux/modules/program'
 import NewModal from '../containers/NewModal'
 import { recentVodsSelector, hilightVodSelector } from '../redux/selectors/vod'
@@ -42,6 +47,7 @@ class Vods extends React.Component {
     this.props.setFetchFilter({
       progname: filteredProgram,
     })
+    this.props.fetchFeaturedVod(this.props.token)
     this.props.fetchVods(this.props.token)
   }
 
@@ -74,6 +80,7 @@ const mapStateToProps = state => {
     hilight: hilightVodSelector(state),
     vods: recentVodsSelector(state),
     programs: state.program,
+    filter: state.filter,
     token: state.auth.token,
   }
   return props
@@ -82,8 +89,9 @@ Vods.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
   const vodsPromise = fetchVods(token)(store.dispatch, store.getState)
+  const featuredPromise = fetchFeaturedVod(token)(store.dispatch)
   const programsPromise = fetchPrograms()(store.dispatch)
-  await Promise.all([vodsPromise, programsPromise])
+  await Promise.all([vodsPromise, featuredPromise, programsPromise])
   state = store.getState()
   const props = mapStateToProps(state)
   return props
@@ -91,6 +99,7 @@ Vods.getInitialProps = async ({ store, isServer, query, req }) => {
 
 export default withRedux(initStore, mapStateToProps, {
   fetchVods,
+  fetchFeaturedVod,
   fetchPrograms,
   setFetchFilter,
   resetFetchData,

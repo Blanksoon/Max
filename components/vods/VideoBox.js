@@ -42,7 +42,13 @@ class VideoBox extends Component {
   }
 
   render() {
-    const { hilight, vods } = this.props
+    const { hilight, vods, filteredProgram } = this.props
+    const filteredVods = vods.filter(vod => {
+      if (filteredProgram === 'All shows') {
+        return true
+      }
+      return vod.programName_en === filteredProgram
+    })
     return (
       <div>
         <Flex mb={3} pt="7rem">
@@ -59,7 +65,7 @@ class VideoBox extends Component {
             onFilteredProgramChange={this.props.onFilteredProgramChange}
             filteredProgram={this.props.filteredProgram}
           />
-          {this.renderVideos(vods)}
+          {this.renderVideos(filteredVods)}
         </Box>
         <Box w={12 / 12} pb="3rem" pt="2rem">
           <center>
