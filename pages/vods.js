@@ -33,26 +33,28 @@ import Main from '../layouts/Main'
 class Vods extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      filteredProgram: 'All shows',
-    }
     this.onFilteredProgramChange = this.onFilteredProgramChange.bind(this)
   }
 
   onFilteredProgramChange(event) {
-    const filteredProgram =
-      event.target.value === 'All shows' ? '' : event.target.value
-    this.setState({ filteredProgram })
     this.props.resetFetchData()
     this.props.setFetchFilter({
-      progname: filteredProgram,
+      progname: event.target.value,
     })
     this.props.fetchFeaturedVod(this.props.token)
     this.props.fetchVods(this.props.token)
   }
 
   render() {
-    const { hilight, vods } = this.props
+    const { hilight, vods, filter } = this.props
+    let filteredProgram = 'All shows'
+    console.log(filter)
+    if (typeof filter !== 'undefined') {
+      if (typeof filter.progname !== 'undefined') {
+        filteredProgram = filter.progname
+      }
+    }
+
     return (
       <Main url={this.props.url}>
         <NewModal />
@@ -64,7 +66,7 @@ class Vods extends React.Component {
                   hilight={hilight}
                   vods={vods}
                   programEns={this.props.programs.programname_en}
-                  filteredProgram={this.state.filteredProgram}
+                  filteredProgram={filteredProgram}
                   onFilteredProgramChange={this.onFilteredProgramChange}
                 />
               </Box>
@@ -80,7 +82,7 @@ const mapStateToProps = state => {
     hilight: hilightVodSelector(state),
     vods: recentVodsSelector(state),
     programs: state.program,
-    filter: state.filter,
+    filter: state.vod.filter,
     token: state.auth.token,
   }
   return props
