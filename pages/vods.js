@@ -49,8 +49,7 @@ class Vods extends React.Component {
 
   render() {
     const { hilight, vods, filter } = this.props
-    let filteredProgram = 'All shows'
-    console.log(filter)
+    let filteredProgram = ''
     if (typeof filter !== 'undefined') {
       if (typeof filter.progname !== 'undefined') {
         filteredProgram = filter.progname
