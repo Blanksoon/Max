@@ -36,7 +36,7 @@ const Label = styled.div`
   margin: 0 0.5rem;
   padding: 0.3rem 0.5rem;
 `
-const LabelWithoutUnderLine = styled(Label)`border-bottom: 0;`
+const LabelWithoutUnderLine = styled(Label)`border-bottom: 0px;`
 
 const renderCounter = diff => (
   <div>
