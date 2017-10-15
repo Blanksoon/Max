@@ -56,6 +56,19 @@ class videoPlayer extends React.Component {
   componentWillUnmount() {
     clearInterval(this.timerId)
   }
+  componentWillReceiveProps(nextProps) {
+    const { vod } = this.props
+    const { vod: nextVod } = nextProps
+    if (
+      vod.videoUrl !== nextVod.videoUrl ||
+      vod.promoUrl !== nextVod.promoUrl
+    ) {
+      clearInterval(this.timerId)
+      this.setState({
+        sec: 0,
+      })
+    }
+  }
   componentDidMount() {
     this.timerId = setInterval(() => {
       //console.log('sec', this.state.sec)

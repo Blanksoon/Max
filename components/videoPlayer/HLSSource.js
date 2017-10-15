@@ -27,6 +27,13 @@ export default class HLSSource extends Component {
       // })
     }
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.src !== prevProps.src) {
+      const { src, video } = this.props
+      this.hls.loadSource(src)
+      this.hls.attachMedia(video)
+    }
+  }
 
   render() {
     //console.log('this.props', this.props)

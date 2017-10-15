@@ -7,11 +7,7 @@ import HLSSource from './HLSSource'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-//const store = createStore(rootReducer, composeWithDevTools())
-const sources = {
-  promoClip:
-    'https://wittestvod-vh.akamaihd-staging.net/i/wittestvod/SampleVideo/luke_,3,6,11,000k.mp4.csmil/master.m3u8',
-}
+
 class Players extends React.Component {
   static propTypes = {
     videoPause: PropTypes.bool,
@@ -21,9 +17,6 @@ class Players extends React.Component {
   }
   constructor(props, context) {
     super(props, context)
-    this.state = {
-      source: sources['bunnyMovie'],
-    }
   }
 
   onClickVideo = () => {
@@ -31,7 +24,6 @@ class Players extends React.Component {
   }
 
   render() {
-    //console.log(this.props.Url)
     return (
       <div className="Player">
         <Box width={1} bg="pink">
