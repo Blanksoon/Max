@@ -44,6 +44,32 @@ export const fbLogin = providerData => async dispatch => {
     )
   }
 }
+export const localLogin = providerData => async dispatch => {
+  console.log('providerData', providerData)
+  dispatch(loginReq())
+  try {
+    const { data, status } = await api.post(
+      `${api.SERVER}/local-login`,
+      providerData
+    )
+    if (data.token == 'undefined' || data.token == undefined) {
+      dispatch({
+        type: LOGOUT,
+      })
+    } else {
+      dispatch(setCookie('email', data.email))
+      dispatch(setCookie('token', data.token))
+      dispatch(loginSuccess(data))
+    }
+  } catch (error) {
+    dispatch(
+      loginFail({
+        code: status.code,
+        message: status.message,
+      })
+    )
+  }
+}
 export const logout = () => async dispatch => {
   dispatch(removeCookie('email'))
   dispatch(removeCookie('token'))

@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 //139.59.127.206
-export const SERVER = 'http://139.59.127.206:3002'
+export const SERVER = 'http://localhost:3002'
 export const get = url => {
   return fetch(url)
     .then(response => {
