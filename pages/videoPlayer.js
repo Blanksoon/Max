@@ -63,7 +63,6 @@ class videoPlayer extends React.Component {
       vod.videoUrl !== nextVod.videoUrl ||
       vod.promoUrl !== nextVod.promoUrl
     ) {
-      clearInterval(this.timerId)
       this.setState({
         sec: 0,
       })
