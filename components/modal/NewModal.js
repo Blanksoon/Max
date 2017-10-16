@@ -38,14 +38,14 @@ const WrapperImg = styled.div`
 const WrapperLogin = styled.div`
   position: relative;
   width: 840px;
-  height: 600px;
+  height: 615px;
   background: #fff;
   z-index: 240;
 `
 const WrapperRegister = styled.div`
   position: relative;
   width: 840px;
-  height: 600px;
+  height: 615px;
   background: #fff;
   z-index: 240;
 `
