@@ -60,6 +60,14 @@ const Input = styled.input`
   margin: 8px 0;
   box-sizing: border-box;
 `
+const Text2 = styled.div`
+  color: ${color.red};
+  font-weight: 100;
+  font-size: 11px;
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 0;
+  text-align: center;
+`
 class Login extends React.Component {
   constructor(props) {
     super(props)
@@ -121,6 +129,7 @@ class Login extends React.Component {
                         onChange={this.handleOnChangeId}
                       />
                     </Box>
+                    <Text2>Error</Text2>
                     <Box>
                       <Input
                         placeholder="Password"
@@ -128,6 +137,7 @@ class Login extends React.Component {
                         onChange={this.handleOnChangePassword}
                       />
                     </Box>
+                    <Text2>Error</Text2>
                     <Box pt="0.5rem" pl="10.4rem">
                       <Button onClick={this.loginLocal}>GO!</Button>{' '}
                       {/*  แก้จาก go เป็น login ให้ด้วย */}
