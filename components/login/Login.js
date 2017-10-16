@@ -72,6 +72,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      status: '',
       data: {
         email: '',
         password: '',
@@ -87,8 +88,19 @@ class Login extends React.Component {
       provider_name: 'local',
       provider_data: this.state.data,
     }
-    this.props.localLogin(providerData)
-    this.props.closeModal()
+    await this.props.localLogin(providerData)
+    if (this.props.auth.token != undefined) {
+      console.log('success')
+      this.setState({
+        status: '',
+      })
+      //this.props.closeModal()
+    } else {
+      this.setState({
+        status: this.props.auth.error.message,
+      })
+      console.log('false')
+    }
   }
 
   handleOnChangeId(event) {
@@ -109,6 +121,7 @@ class Login extends React.Component {
     })
   }
   render() {
+    console.log('props', this.props)
     return (
       <Provider>
         <div>
@@ -136,12 +149,11 @@ class Login extends React.Component {
                         onChange={this.handleOnChangePassword}
                       />
                     </Box>
-                    <Text2 />
+                    <Text2>{this.state.status} </Text2>
                     <Flex>
                       <Box w={6.4 / 12} />
                       <Box pt="0.5rem">
                         <Button onClick={this.loginLocal}>Log in</Button>{' '}
-                        {/*  แก้จาก go เป็น login ให้ด้วย */}
                       </Box>
                     </Flex>
                   </form>
@@ -181,8 +193,19 @@ class Login extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  loginSuccess: () => dispatch(loginSuccess()),
-})
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+  }
+}
 
-export default connect(null, { localLogin, closeModal })(Login)
+// Login.getInitialProps = async ({ store, isServer, query, req }) => {
+//   let state = store.getState()
+//   const token = state.auth.token
+//   await Promise.all([livePromise, vodPromise])
+//   state = store.getState()
+//   const props = mapStateToProps(state)
+//   return props
+// }
+
+export default connect(mapStateToProps, { localLogin, closeModal })(Login)

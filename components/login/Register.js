@@ -104,7 +104,6 @@ export default class Login extends React.Component {
         let json = await api.post(url, jsonData)
         console.log('success', json)
         if (json.status.code == 400) {
-          // if user have register yet
           this.setState({
             errMessageEmail: '',
             errMessageConfirmPwd: `You already register with this email`,
