@@ -92,7 +92,6 @@ export default class Login extends React.Component {
   }
 
   async submitRegister() {
-    console.log('this.state', this.state)
     const jsonData = {
       provider_name: 'local',
       provider_data: {
@@ -106,44 +105,35 @@ export default class Login extends React.Component {
       chkEmail.test(this.state.email) &&
       this.state.password == this.state.confirmPassword
     ) {
-      console.log('0')
       this.setState({ loading: true })
       const url = `${api.SERVER}/local-register`
       try {
         let json = await api.post(url, jsonData)
-        console.log('success', json)
         if (json.status.code == 400) {
           this.setState({
             errMessageEmail: '',
             errMessageConfirmPwd: `You already register with this email`,
           })
-          return console.log('error')
         } else {
           this.props.closeModal()
-          Router.push('/successRegister')
-          return console.log('success register')
+          Router.push(`/successRegister?email=${json.data.email}`)
         }
-      } catch (error) {
-        return console.log(error)
-      }
+      } catch (error) {}
       this.setState({ loading: false })
     } else if (
       chkEmail.test(this.state.email) == false &&
       this.state.password != this.state.confirmPassword
     ) {
-      console.log('3')
       this.setState({
         errMessageEmail: 'Email is invalid',
         errMessageConfirmPwd: `confirm password doesn't match with password`,
       })
     } else if (chkEmail.test(this.state.email) == false) {
-      console.log('2')
       this.setState({
         errMessageEmail: 'Email is invalid',
         errMessageConfirmPwd: ``,
       })
     } else {
-      console.log('1')
       this.setState({
         errMessageEmail: '',
         errMessageConfirmPwd: `confirm password doesn't match with password`,
