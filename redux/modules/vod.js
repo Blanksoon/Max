@@ -108,11 +108,15 @@ const merge = (recents = [], newVods = [], data) => {
 
     // Another array is empty array
     if (i >= recents.length) {
-      merged.push(newVods[j].id)
+      if (merged.indexOf(newVods[j].id) === -1) {
+        merged.push(newVods[j].id)
+      }
       j++
       continue
     } else if (j >= newVods.length) {
-      merged.push(recents[i])
+      if (merged.indexOf(recents[i]) === -1) {
+        merged.push(recents[i])
+      }
       i++
       continue
     }
