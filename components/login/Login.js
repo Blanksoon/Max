@@ -9,6 +9,8 @@ import { localLogin } from '../../redux/modules/auth'
 import { fbLogin } from '../../redux/modules/auth'
 import { closeModal } from '../../redux/modules/modal'
 import { connect } from 'react-redux'
+import vars from '../commons/vars'
+import Spinner from '../commons/Spinner'
 
 const A = styled.a`TEXT-DECORATION: none;`
 const Wrapper = styled.div`position: absolute;`
@@ -44,8 +46,8 @@ const ButtonFace = styled.button`
 `
 const Button = styled.button`
   bottom: 2%;
-  background-color: #b81111;
-  border: 1px solid #b81111;
+  background-color: ${vars.red};
+  border: 1px solid ${vars.red};
   color: white;
   padding: 10px 40px;
   text-align: center;
@@ -53,6 +55,10 @@ const Button = styled.button`
   display: inline-block;
   font-weight: 600;
   font-size: 1em;
+  &:disabled {
+    background-color: ${vars.lightRed};
+    border: 1px solid ${vars.lightRed};
+  }
 `
 const Input = styled.input`
   width: 100%;
@@ -77,6 +83,7 @@ class Login extends React.Component {
         email: '',
         password: '',
       },
+      loading: false,
     }
     this.loginLocal = this.loginLocal.bind(this)
     this.handleOnChangeId = this.handleOnChangeId.bind(this)
@@ -88,6 +95,7 @@ class Login extends React.Component {
       provider_name: 'local',
       provider_data: this.state.data,
     }
+    this.setState({ loading: true })
     await this.props.localLogin(providerData)
     if (this.props.auth.token != undefined) {
       console.log('success')
@@ -101,6 +109,7 @@ class Login extends React.Component {
       })
       console.log('false')
     }
+    this.setState({ loading: false })
   }
 
   handleOnChangeId(event) {
@@ -153,7 +162,13 @@ class Login extends React.Component {
                     <Flex>
                       <Box w={6.4 / 12} />
                       <Box pt="0.5rem">
-                        <Button onClick={this.loginLocal}>Log in</Button>{' '}
+                        <Button
+                          style={{ width: '148px' }}
+                          onClick={this.loginLocal}
+                          disabled={this.state.loading}
+                        >
+                          {this.state.loading ? <Spinner /> : 'Log in'}
+                        </Button>{' '}
                       </Box>
                     </Flex>
                   </form>
