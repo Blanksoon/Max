@@ -136,7 +136,6 @@ class Login extends React.Component {
                           onChange={this.handleOnChangePassword}
                         />
                       </Box>
-                      <Text2>Error</Text2>
                       <Flex>
                         <Box w={6.4/12}/>
                         <Box pt="0.5rem">

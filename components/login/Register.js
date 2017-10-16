@@ -200,11 +200,14 @@ export default class Login extends React.Component {
                     />
                     <Text2>{this.state.errMessageConfirmPwd}</Text2>
                   </Box>
-                  <Box pt="0.5rem" pl="10.4rem">
-                    <Button type="submit" onClick={this.submitRegister}>
-                      GO! {/*  แก้จาก go เป็น Register ให้ด้วย */}
-                    </Button>
-                  </Box>
+                  <Flex>
+                    <Box w={6.4/12}/>
+                    <Box pt="0.5rem">
+                      <Button type="submit" onClick={this.submitRegister}>
+                      Register {/*  แก้จาก go เป็น Register ให้ด้วย */}
+                      </Button>
+                    </Box>
+                  </Flex>
                 </WrapperLogin>
               </Box>
               <Box w={7 / 12}>
