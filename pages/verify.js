@@ -5,30 +5,12 @@ import { Flex, Box } from 'rebass'
 import Cookies from 'universal-cookie'
 import styled from 'styled-components'
 import withRedux from 'next-redux-wrapper'
-import { ComingLive } from '../components/home/ComingLive'
-import LatestVideo from '../components/home/LatestVideo'
-import StadiumTicket from '../components/home/StadiumTicket'
-import About from '../components/home/About'
-import Hero from '../components/home/Hero'
-import OurShow from '../components/ourShow/OurShow'
-import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
-import ListVideo from '../components/maxNews/ListVideo'
 import Login from '../components/login/Login'
 import NewModal from '../containers/NewModal'
 import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
 import { initStore } from '../redux/store'
-import { fetchVods } from '../redux/modules/vod'
-import { fetchLives } from '../redux/modules/live'
-import {
-  toogleModal,
-  updateModalType,
-  indexModalURL,
-  closeModal,
-} from '../redux/modules/modal'
-import { recentLivesSelector } from '../redux/selectors/live'
-import { recentVodsSelector } from '../redux/selectors/vod'
 import * as api from '../api'
 
 const WrapperTop = styled.div`
@@ -91,7 +73,21 @@ class Verify extends React.Component {
         <NewModal />
         <Container pt="10rem" pb="5rem">
           <center>
-            <h1> Thank you for register</h1>
+            <h1 style={{ color: vars.lightBlue }}>Congratulation</h1>
+            <h3
+              style={{
+                color: vars.lightBlue,
+                fontWeight: 'normal',
+                position: 'relative',
+                top: '-1rem',
+              }}
+            >
+              You have successfully verify your email
+            </h3>
+            <h4 style={{ color: vars.black, fontWeight: 'normal' }}>
+              Please enjoy the most exciting fightingsport in the world at Max
+              Muay Thai
+            </h4>
           </center>
         </Container>
       </Main>
@@ -99,11 +95,4 @@ class Verify extends React.Component {
   }
 }
 
-export default withRedux(initStore, null, {
-  fetchVods,
-  toogleModal,
-  updateModalType,
-  indexModalURL,
-  closeModal,
-  fetchLives,
-})(Verify)
+export default withRedux(initStore)(Verify)
