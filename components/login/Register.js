@@ -113,7 +113,10 @@ export default class Login extends React.Component {
         let json = await api.post(url, jsonData)
         console.log('success', json)
         if (json.status.code == 400) {
-          // if user have register yet
+          this.setState({
+            errMessageEmail: '',
+            errMessageConfirmPwd: `You already register with this email`,
+          })
           return console.log('error')
         } else {
           this.props.closeModal()
@@ -129,19 +132,19 @@ export default class Login extends React.Component {
       this.state.password != this.state.confirmPassword
     ) {
       console.log('3')
-      return this.setState({
+      this.setState({
         errMessageEmail: 'Email is invalid',
         errMessageConfirmPwd: `confirm password doesn't match with password`,
       })
     } else if (chkEmail.test(this.state.email) == false) {
       console.log('2')
-      return this.setState({
+      this.setState({
         errMessageEmail: 'Email is invalid',
         errMessageConfirmPwd: ``,
       })
-    } else if (this.state.password != this.state.confirmPassword) {
+    } else {
       console.log('1')
-      return this.setState({
+      this.setState({
         errMessageEmail: '',
         errMessageConfirmPwd: `confirm password doesn't match with password`,
       })
