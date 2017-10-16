@@ -1,13 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 import { Flex, Box, Image, Text, Border } from 'rebass'
 import styled from 'styled-components'
 import FacebookLoginButton from './FacebookLoginButton'
 import color from '../commons/vars'
 import ModalRegister from '../../containers/ModalRegister'
 import * as api from '../../api'
-import Router from 'next/router'
-//import { closeModal } from '../../redux/modules/modal'
+import Spinner from '../commons/Spinner'
+import vars from '../commons/vars'
+
 const A = styled.a`TEXT-DECORATION: none;`
 const Wrapper = styled.div`position: absolute;`
 const WrapperLogin = styled.div`
@@ -50,8 +52,8 @@ const ButtonFace = styled.button`
 `
 const Button = styled.button`
   bottom: 2%;
-  background-color: #b81111;
-  border: 1px solid #b81111;
+  background-color: ${vars.red};
+  border: 1px solid ${vars.red};
   color: white;
   padding: 10px 40px;
   text-align: center;
@@ -59,6 +61,10 @@ const Button = styled.button`
   display: inline-block;
   font-weight: 600;
   font-size: 1em;
+  &:disabled {
+    background-color: ${vars.lightRed};
+    border: 1px solid ${vars.lightRed};
+  }
 `
 const Input = styled.input`
   width: 100%;
@@ -75,6 +81,7 @@ export default class Login extends React.Component {
       confirmPassword: '',
       errMessageEmail: '',
       errMessageConfirmPwd: '',
+      loading: false,
     }
     this.submitRegister = this.submitRegister.bind(this)
     this.handleOnChangeId = this.handleOnChangeId.bind(this)
@@ -100,6 +107,7 @@ export default class Login extends React.Component {
       this.state.password == this.state.confirmPassword
     ) {
       console.log('0')
+      this.setState({ loading: true })
       const url = `${api.SERVER}/local-register`
       try {
         let json = await api.post(url, jsonData)
@@ -115,6 +123,7 @@ export default class Login extends React.Component {
       } catch (error) {
         return console.log(error)
       }
+      this.setState({ loading: false })
     } else if (
       chkEmail.test(this.state.email) == false &&
       this.state.password != this.state.confirmPassword
@@ -200,9 +209,17 @@ export default class Login extends React.Component {
                     />
                     <Text2>{this.state.errMessageConfirmPwd}</Text2>
                   </Box>
-                  <Box pt="0.5rem" pl="10.4rem">
-                    <Button type="submit" onClick={this.submitRegister}>
-                      GO! {/*  แก้จาก go เป็น Register ให้ด้วย */}
+                  <Box pt="0.5rem" pl="8.2rem">
+                    <Button
+                      style={{
+                        cursor: this.state.loading ? 'arrow' : 'pointer',
+                        width: '148px',
+                      }}
+                      disabled={this.state.loading}
+                      type="submit"
+                      onClick={this.submitRegister}
+                    >
+                      {this.state.loading ? <Spinner /> : 'Register'}
                     </Button>
                   </Box>
                 </WrapperLogin>
