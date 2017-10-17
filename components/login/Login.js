@@ -120,32 +120,33 @@ class Login extends React.Component {
               <Text1>LOG IN</Text1>
             </Box>
             <Flex pt="0.5rem" pl="3rem" pr="3rem">
-                <Box w={5 / 12}>
-                  <WrapperLogin>
-                    <form>
-                      <Box w={1} >
-                        <Input
-                          placeholder="Email"
-                          onChange={this.handleOnChangeId}
-                        />
+              <Box w={5 / 12}>
+                <WrapperLogin>
+                  <form>
+                    <Box w={1}>
+                      <Input
+                        placeholder="Email"
+                        onChange={this.handleOnChangeId}
+                      />
+                    </Box>
+                    <Box>
+                      <Input
+                        placeholder="Password"
+                        type="password"
+                        onChange={this.handleOnChangePassword}
+                      />
+                    </Box>
+                    <Text2 />
+                    <Flex>
+                      <Box w={6.4 / 12} />
+                      <Box pt="0.5rem">
+                        <Button onClick={this.loginLocal}>Log in</Button>{' '}
+                        {/*  แก้จาก go เป็น login ให้ด้วย */}
                       </Box>
-                      <Box>
-                        <Input
-                          placeholder="Password"
-                          type="password"
-                          onChange={this.handleOnChangePassword}
-                        />
-                      </Box>
-                      <Flex>
-                        <Box w={6.4/12}/>
-                        <Box pt="0.5rem">
-                          <Button onClick={this.loginLocal}>Log in</Button>{' '}
-                          {/*  แก้จาก go เป็น login ให้ด้วย */}
-                        </Box>
-                      </Flex>
-                    </form>
-                  </WrapperLogin>
-                </Box>
+                    </Flex>
+                  </form>
+                </WrapperLogin>
+              </Box>
               <Box w={7 / 12}>
                 <center>
                   <FacebookLoginButton />
