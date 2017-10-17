@@ -1,6 +1,9 @@
 import * as api from '../../api'
 import { setCookie, removeCookie } from './cookie'
 import { closeModal } from './modal'
+import { fetchVods } from './vod'
+import { fetchLives } from './live'
+
 // types
 const LOGIN_REQ = 'LOGIN_REQ'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
@@ -68,6 +71,8 @@ export const localLogin = providerData => async dispatch => {
       dispatch(setCookie('token', data.token))
       dispatch(loginSuccess(data))
       dispatch(closeModal())
+      dispatch(fetchLives(data.token))
+      dispatch(fetchVods(data.token))
       dispatch(loginFail())
     }
   } catch (error) {
@@ -82,6 +87,8 @@ export const localLogin = providerData => async dispatch => {
 export const logout = () => async dispatch => {
   dispatch(removeCookie('email'))
   dispatch(removeCookie('token'))
+  dispatch(fetchLives())
+  dispatch(fetchVods())
   dispatch({
     type: LOGOUT,
   })
