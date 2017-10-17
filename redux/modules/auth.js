@@ -1,5 +1,8 @@
 import * as api from '../../api'
 import { setCookie, removeCookie } from './cookie'
+import { closeModal } from './modal'
+import { fetchVods } from './vod'
+import { fetchLives } from './live'
 
 // types
 const LOGIN_REQ = 'LOGIN_REQ'
@@ -52,14 +55,25 @@ export const localLogin = providerData => async dispatch => {
       `${api.SERVER}/local-login`,
       providerData
     )
+    console.log(status.code)
     if (data.token == 'undefined' || data.token == undefined) {
       dispatch({
         type: LOGOUT,
       })
+      dispatch(
+        loginFail({
+          code: status.code,
+          message: status.message,
+        })
+      )
     } else {
       dispatch(setCookie('email', data.email))
       dispatch(setCookie('token', data.token))
       dispatch(loginSuccess(data))
+      dispatch(closeModal())
+      dispatch(fetchLives(data.token))
+      dispatch(fetchVods(data.token))
+      dispatch(loginFail())
     }
   } catch (error) {
     dispatch(
@@ -73,6 +87,8 @@ export const localLogin = providerData => async dispatch => {
 export const logout = () => async dispatch => {
   dispatch(removeCookie('email'))
   dispatch(removeCookie('token'))
+  dispatch(fetchLives())
+  dispatch(fetchVods())
   dispatch({
     type: LOGOUT,
   })

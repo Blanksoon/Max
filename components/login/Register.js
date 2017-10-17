@@ -1,12 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 import { Flex, Box, Image, Text, Border } from 'rebass'
 import styled from 'styled-components'
 import FacebookLoginButton from './FacebookLoginButton'
 import color from '../commons/vars'
 import ModalRegister from '../../containers/ModalRegister'
 import * as api from '../../api'
-import Router from 'next/router'
+import Spinner from '../commons/Spinner'
+import vars from '../commons/vars'
+
 const A = styled.a`TEXT-DECORATION: none;`
 const Wrapper = styled.div`position: absolute;`
 const WrapperLogin = styled.div`
@@ -49,8 +52,8 @@ const ButtonFace = styled.button`
 `
 const Button = styled.button`
   bottom: 2%;
-  background-color: #b81111;
-  border: 1px solid #b81111;
+  background-color: ${vars.red};
+  border: 1px solid ${vars.red};
   color: white;
   padding: 10px 40px;
   text-align: center;
@@ -58,6 +61,10 @@ const Button = styled.button`
   display: inline-block;
   font-weight: 600;
   font-size: 1em;
+  &:disabled {
+    background-color: ${vars.lightRed};
+    border: 1px solid ${vars.lightRed};
+  }
 `
 const Input = styled.input`
   width: 100%;
@@ -74,6 +81,7 @@ export default class Login extends React.Component {
       confirmPassword: '',
       errMessageEmail: '',
       errMessageConfirmPwd: '',
+      loading: false,
     }
     this.submitRegister = this.submitRegister.bind(this)
     this.handleOnChangeId = this.handleOnChangeId.bind(this)
@@ -84,7 +92,6 @@ export default class Login extends React.Component {
   }
 
   async submitRegister() {
-    console.log('this.state', this.state)
     const jsonData = {
       provider_name: 'local',
       provider_data: {
@@ -98,43 +105,35 @@ export default class Login extends React.Component {
       chkEmail.test(this.state.email) &&
       this.state.password == this.state.confirmPassword
     ) {
-      console.log('0')
+      this.setState({ loading: true })
       const url = `${api.SERVER}/local-register`
       try {
         let json = await api.post(url, jsonData)
-        console.log('success', json)
         if (json.status.code == 400) {
-          // if user have register yet
           this.setState({
             errMessageEmail: '',
             errMessageConfirmPwd: `You already register with this email`,
           })
-          return console.log('error')
         } else {
           this.props.closeModal()
-          Router.push('/successRegister')
-          return console.log('success register')
+          Router.push(`/successRegister?email=${json.data.email}`)
         }
-      } catch (error) {
-        return console.log(error)
-      }
+      } catch (error) {}
+      this.setState({ loading: false })
     } else if (
       chkEmail.test(this.state.email) == false &&
       this.state.password != this.state.confirmPassword
     ) {
-      console.log('3')
       this.setState({
         errMessageEmail: 'Email is invalid',
         errMessageConfirmPwd: `confirm password doesn't match with password`,
       })
     } else if (chkEmail.test(this.state.email) == false) {
-      console.log('2')
       this.setState({
         errMessageEmail: 'Email is invalid',
         errMessageConfirmPwd: ``,
       })
     } else {
-      console.log('1')
       this.setState({
         errMessageEmail: '',
         errMessageConfirmPwd: `confirm password doesn't match with password`,
@@ -203,14 +202,19 @@ export default class Login extends React.Component {
                     />
                     <Text2>{this.state.errMessageConfirmPwd}</Text2>
                   </Box>
-                  <Flex>
-                    <Box w={6.4/12}/>
-                    <Box pt="0.5rem">
-                      <Button type="submit" onClick={this.submitRegister}>
-                      Register {/*  แก้จาก go เป็น Register ให้ด้วย */}
-                      </Button>
-                    </Box>
-                  </Flex>
+                  <Box pt="0.5rem" pl="8.2rem">
+                    <Button
+                      style={{
+                        cursor: this.state.loading ? 'arrow' : 'pointer',
+                        width: '148px',
+                      }}
+                      disabled={this.state.loading}
+                      type="submit"
+                      onClick={this.submitRegister}
+                    >
+                      {this.state.loading ? <Spinner /> : 'Register'}
+                    </Button>
+                  </Box>
                 </WrapperLogin>
               </Box>
               <Box w={7 / 12}>

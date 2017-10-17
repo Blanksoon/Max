@@ -235,7 +235,7 @@ class Promocode extends Component {
           <Box pl="1rem" pt="8rem">
             <Text1>GET TICKET</Text1>
           </Box>
-          <Box pt="10rem" />
+          <Box pt="5rem" />
           <Image />
           <center>
             <Box w={2 / 12}>
@@ -244,7 +244,7 @@ class Promocode extends Component {
                 src="static/MAx-Special-Promotion_Small.png"
               />
             </Box>
-            <br />
+            <Box pt="2rem" />
             {renderUI}
           </center>
         </Wrapper>

@@ -80,7 +80,7 @@ class videoPlayer extends React.Component {
   render() {
     const { url, vod, vods, token } = this.props
     let renderUI = <div />
-    if (this.state.sec > 20 && (token == undefined || token == 'undefined')) {
+    if (this.state.sec > 20 && vod.videoUrl == 'null') {
       renderUI = (
         <WrapperPlayer>
           <Players Url={vod.promoUrl} />

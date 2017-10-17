@@ -30,6 +30,7 @@ const ButtonTickket = styled.button`
   background-color: #b81111;
   border: 1px solid #b81111;
   color: white;
+  cursor: pointer;
   padding: 12px 25px;
   text-align: center;
   text-decoration: none;

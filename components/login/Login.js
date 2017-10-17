@@ -9,6 +9,8 @@ import { localLogin } from '../../redux/modules/auth'
 import { fbLogin } from '../../redux/modules/auth'
 import { closeModal } from '../../redux/modules/modal'
 import { connect } from 'react-redux'
+import vars from '../commons/vars'
+import Spinner from '../commons/Spinner'
 
 const A = styled.a`TEXT-DECORATION: none;`
 const Wrapper = styled.div`position: absolute;`
@@ -44,15 +46,20 @@ const ButtonFace = styled.button`
 `
 const Button = styled.button`
   bottom: 2%;
-  background-color: #b81111;
-  border: 1px solid #b81111;
+  background-color: ${vars.red};
+  border: 1px solid ${vars.red};
   color: white;
+  cursor: pointer;
   padding: 10px 40px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-weight: 600;
   font-size: 1em;
+  &:disabled {
+    background-color: ${vars.lightRed};
+    border: 1px solid ${vars.lightRed};
+  }
 `
 const Input = styled.input`
   width: 100%;
@@ -72,10 +79,12 @@ class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      status: '',
       data: {
         email: '',
         password: '',
       },
+      loading: false,
     }
     this.loginLocal = this.loginLocal.bind(this)
     this.handleOnChangeId = this.handleOnChangeId.bind(this)
@@ -87,8 +96,21 @@ class Login extends React.Component {
       provider_name: 'local',
       provider_data: this.state.data,
     }
-    this.props.localLogin(providerData)
-    this.props.closeModal()
+    this.setState({ loading: true })
+    await this.props.localLogin(providerData)
+    if (this.props.auth.token != undefined) {
+      console.log('success')
+      this.setState({
+        status: '',
+      })
+      //this.props.closeModal()
+    } else {
+      this.setState({
+        status: this.props.auth.error.message,
+      })
+      console.log('false')
+    }
+    this.setState({ loading: false })
   }
 
   handleOnChangeId(event) {
@@ -109,6 +131,7 @@ class Login extends React.Component {
     })
   }
   render() {
+    console.log('props', this.props)
     return (
       <Provider>
         <div>
@@ -136,12 +159,17 @@ class Login extends React.Component {
                         onChange={this.handleOnChangePassword}
                       />
                     </Box>
-                    <Text2 />
+                    <Text2>{this.state.status} </Text2>
                     <Flex>
                       <Box w={6.4 / 12} />
                       <Box pt="0.5rem">
-                        <Button onClick={this.loginLocal}>Log in</Button>{' '}
-                        {/*  แก้จาก go เป็น login ให้ด้วย */}
+                        <Button
+                          style={{ width: '148px' }}
+                          onClick={this.loginLocal}
+                          disabled={this.state.loading}
+                        >
+                          {this.state.loading ? <Spinner /> : 'Log in'}
+                        </Button>{' '}
                       </Box>
                     </Flex>
                   </form>
@@ -181,8 +209,19 @@ class Login extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  loginSuccess: () => dispatch(loginSuccess()),
-})
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+  }
+}
 
-export default connect(null, { localLogin, closeModal })(Login)
+// Login.getInitialProps = async ({ store, isServer, query, req }) => {
+//   let state = store.getState()
+//   const token = state.auth.token
+//   await Promise.all([livePromise, vodPromise])
+//   state = store.getState()
+//   const props = mapStateToProps(state)
+//   return props
+// }
+
+export default connect(mapStateToProps, { localLogin, closeModal })(Login)
