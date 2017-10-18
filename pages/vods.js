@@ -91,6 +91,12 @@ const mapStateToProps = state => {
 Vods.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
+  // Remove any filters
+  store.dispatch(
+    setFetchFilter({
+      progname: '',
+    })
+  )
   const vodsPromise = fetchVods(token)(store.dispatch, store.getState)
   const featuredPromise = fetchFeaturedVod(token)(store.dispatch)
   const programsPromise = fetchPrograms()(store.dispatch)

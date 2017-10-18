@@ -30,7 +30,7 @@ export const dateDiff = (date1, date2) => {
     sec: Math.floor((((diff % MS_IN_DAY) % MS_IN_HRS) % MS_IN_MIN) / MS_IN_SEC),
   }
 
-  console.log('timeeeeee', result)
+  //console.log('timeeeeee', result)
   return result
 }
 

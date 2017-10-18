@@ -106,6 +106,14 @@ const merge = (recents = [], newVods = [], data) => {
   while (k < n) {
     k++
 
+    // Recents array already contain newVods just skip
+    if (j < newVods.length) {
+      if (recents.indexOf(newVods[j].id) !== -1) {
+        j++
+        continue
+      }
+    }
+
     // Another array is empty array
     if (i >= recents.length) {
       merged.push(newVods[j].id)
@@ -114,12 +122,6 @@ const merge = (recents = [], newVods = [], data) => {
     } else if (j >= newVods.length) {
       merged.push(recents[i])
       i++
-      continue
-    }
-
-    // Recents array already contain newVods just skip
-    if (recents[i] === newVods[j].id) {
-      j++
       continue
     }
 

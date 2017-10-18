@@ -38,14 +38,14 @@ const WrapperImg = styled.div`
 const WrapperLogin = styled.div`
   position: relative;
   width: 840px;
-  height: 600px;
+  height: 615px;
   background: #fff;
   z-index: 240;
 `
 const WrapperRegister = styled.div`
   position: relative;
   width: 840px;
-  height: 600px;
+  height: 615px;
   background: #fff;
   z-index: 240;
 `
@@ -128,7 +128,7 @@ export default class Modal extends Component {
     } else if (this.props.modalType === 4) {
       renderUI = (
         <WrapperRegister onClick={e => this.handleOnClick(e)}>
-          <Register />
+          <Register closeModal={this.props.closeModal} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>

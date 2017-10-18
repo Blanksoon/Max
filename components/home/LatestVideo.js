@@ -31,10 +31,10 @@ class LatestVideo extends Component {
                 <a>
                   <ThumbnailBottom
                     vod={this.props.vods[0]}
-                    img="static/FT6A6133.jpg"
+                    img={this.props.vods[0].thumbnailUrl}
                     name={this.props.vods[0].programName_en}
                     date={this.props.vods[0].onAirDateStr_en}
-                    time="16:24"
+                    time={this.props.vods[0].duration}
                     bg="#021e3d"
                     pl="1em"
                   />
@@ -50,10 +50,10 @@ class LatestVideo extends Component {
                 <a>
                   <ThumbnailBottom
                     vod={this.props.vods[1]}
-                    img="static/FT6A6483.jpg"
+                    img={this.props.vods[1].thumbnailUrl}
                     name={this.props.vods[1].programName_en}
                     date={this.props.vods[1].onAirDateStr_en}
-                    time="16:24"
+                    time={this.props.vods[1].duration}
                     bg="#021e3d"
                     pl="1em"
                   />
@@ -69,10 +69,10 @@ class LatestVideo extends Component {
                 <a>
                   <ThumbnailBottom
                     vod={this.props.vods[2]}
-                    img="static/FT6A6495.jpg"
+                    img={this.props.vods[2].thumbnailUrl}
                     name={this.props.vods[2].programName_en}
                     date={this.props.vods[2].onAirDateStr_en}
-                    time="16:24"
+                    time={this.props.vods[2].duration}
                     bg="#021e3d"
                     pl="1em"
                   />
@@ -87,10 +87,11 @@ class LatestVideo extends Component {
               >
                 <a>
                   <ThumbnailBottom
-                    img="static/FT6A6676.jpg"
+                    vod={this.props.vods[3]}
+                    img={this.props.vods[3].thumbnailUrl}
                     name={this.props.vods[3].programName_en}
                     date={this.props.vods[3].onAirDateStr_en}
-                    time="16:24"
+                    time={this.props.vods[3].duration}
                     bg="#021e3d"
                     pl="1em"
                   />
