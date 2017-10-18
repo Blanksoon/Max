@@ -22,7 +22,7 @@ const WrapperPromo = styled.div`
   //height: 100%;
   width: 13%;
   bottom: 10%;
-  left: 40%;
+  left: 43.5%;
   z-index: 2;
   position: absolute;
 `
@@ -30,7 +30,7 @@ const WrapperMore = styled.div`
   //height: 100%;
   width: 13%;
   bottom: 10%;
-  left: 60%;
+  right: 20%;
   z-index: 2;
   position: absolute;
 `
@@ -56,14 +56,12 @@ const ThumbnailLive = ({ live }) => {
           <Flex pt="2.3rem">
             <Box w={4 / 12} pl="20%">
               <WrapperFight>
-                <center>
-                  <ModalImg
-                    modalType={2}
-                    modalURL={live.fightcardUrl}
-                    w="100%"
-                    img="/static/01.jpg"
-                  />
-                </center>
+                <ModalImg
+                  modalType={2}
+                  modalURL={live.fightcardUrl}
+                  w="100%"
+                  img="/static/01.jpg"
+                />
               </WrapperFight>
             </Box>
             <Box w={4 / 12}>
