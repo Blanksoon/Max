@@ -126,6 +126,7 @@ export default class Modal extends Component {
         </WrapperLogin>
       )
     } else if (this.props.modalType === 4) {
+      //register
       renderUI = (
         <WrapperRegister onClick={e => this.handleOnClick(e)}>
           <Register closeModal={this.props.closeModal} />

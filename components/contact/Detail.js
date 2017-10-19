@@ -1,8 +1,11 @@
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
+import vars from '../commons/vars'
+import Spinner from '../commons/Spinner'
 import styled from 'styled-components'
 import { MapWithAMarker } from './GoogleMap'
 import Link from 'next/link'
 import * as api from '../../api'
+
 const Input = styled.input`
   padding: ${props => props.px} ${props => props.py};
   width: 90%;
@@ -15,12 +18,28 @@ const Button = styled.button`
 `
 
 const ButtonEmail = styled.button`
+  background: ${vars.red};
+  color: ${vars.white};
   background-color: #b81111;
+  cursor: pointer;
   text-align: center;
   border: 0;
-  width: 100%;
+  width: 90%;
   height: 36px;
-  cursor: pointer;
+  display: inline-block;
+  fontSize: 1.3em;
+
+  &:active {
+    background: ${vars.red};
+  }
+`
+const Text1 = styled.div`
+  color: ${vars.white};
+  font-weight: 100;
+  font-size: 0.9em;
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 0;
+  text-align: center;
 `
 
 class Detail extends React.Component {
@@ -29,6 +48,8 @@ class Detail extends React.Component {
     this.state = {
       email: '',
       message: '',
+      status: '',
+      loading: false,
     }
     this.handleOnChangeEmail = this.handleOnChangeEmail.bind(this)
     this.handleOnChangeMessage = this.handleOnChangeMessage.bind(this)
@@ -50,9 +71,12 @@ class Detail extends React.Component {
   async sendEmail() {
     const userEmail = this.state
     const url = `${api.SERVER}/email`
+    this.setState({ loading: true })
     try {
       const json = await api.post(url, { userEmail })
       //console.log(json)
+      this.setState({ status: 'thank your for your inquiry' })
+      this.setState({ loading: false })
       return json
       la1za3da1
     } catch (error) {
@@ -81,10 +105,27 @@ class Detail extends React.Component {
             fontSize="0.9em"
           />
           <Flex pt="1em" pb="1em">
-            <LogoFooter mr="1em" w="100%" name="static/ic_facebook@2x.png" />
-            <LogoFooter mr="1em" name="static/ic_googleplus@2x.png" />
-            <LogoFooter mr="1em" name="static/ic_youtube@2x.png" />
-            <LogoFooter mr="1em" name="static/ic_instagram@2x.png" />
+            <LogoFooter
+              mr="1em"
+              w="100%"
+              name="static/ic_facebook@2x.png"
+              src="https://www.facebook.com/maxmuaythaipage/"
+            />
+            <LogoFooter
+              mr="1em"
+              name="static/ic_googleplus@2x.png"
+              src="https://plus.google.com/109034798571741545704"
+            />
+            <LogoFooter
+              mr="1em"
+              name="static/ic_youtube@2x.png"
+              src="https://www.youtube.com/user/maxmuaythaichannel"
+            />
+            <LogoFooter
+              mr="1em"
+              name="static/ic_instagram@2x.png"
+              src="https://www.instagram.com/maxmuaythai.th/"
+            />
           </Flex>
           <Text
             pt="1em"
@@ -158,11 +199,18 @@ class Detail extends React.Component {
             />
           </Box>
           <Box w={12 / 12} mb="3.5em">
-            <ButtonEmail type="email" onClick={() => this.sendEmail()}>
+            <Box>
+              <ButtonEmail type="email" onClick={() => this.sendEmail()}>
+                <center>
+                  {this.state.loading ? <Spinner /> : 'Send email'}
+                </center>
+              </ButtonEmail>
+            </Box>
+            <Box pr="10%" pt="1rem">
               <center>
-                <Text color="#fff" children="Send email" fontSize="1.3em" />
+                <Text1>{this.state.status}</Text1>
               </center>
-            </ButtonEmail>
+            </Box>
           </Box>
         </Box>
       </Flex>
@@ -172,7 +220,7 @@ class Detail extends React.Component {
 
 const LogoFooter = props => (
   <Box w={1.6 / 12} mr={props.mr}>
-    <a href="https://www.google.com">
+    <a href={props.src} target="_blank">
       <Image width="100%" src={props.name} />
     </a>
   </Box>

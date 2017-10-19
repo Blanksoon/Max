@@ -6,6 +6,7 @@ import NewModal from './NewModal'
 import { toggleModal } from '../../redux/modules/modal'
 import BorderlessButton from '../commons/BorderlessButton'
 import color from '../commons/vars'
+import ButtonRed from '../commons/ButtonSmall'
 
 const ButtonPromoClip = styled.button`
   background-color: white;
@@ -79,12 +80,18 @@ class ModalButton extends Component {
       )
     } else if (this.props.buttonID === 3) {
       renderUI = (
-        <ButtonTickket
+        // <ButtonTickket
+        //   onClick={this.handleOnClickModal}
+        //   visibility={this.props.active}
+        // >
+        //   {this.props.text}
+        // </ButtonTickket>
+        <ButtonRed
           onClick={this.handleOnClickModal}
           visibility={this.props.active}
         >
           {this.props.text}
-        </ButtonTickket>
+        </ButtonRed>
       )
     } else {
       renderUI = (
