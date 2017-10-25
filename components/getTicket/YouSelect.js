@@ -8,6 +8,7 @@ import ModalButton from '../../containers/ModalButton'
 import { connect } from 'react-redux'
 
 const Button = styled.button`
+  cursor: pointer;
   bottom: 2%;
   background-color: #b81111;
   border: 1px solid #b81111;

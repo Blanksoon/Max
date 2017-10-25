@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import YouSelect from './YouSelect'
 
 const Button = styled.button`
+  cursor: pointer;
   bottom: 2%;
   background-color: #b81111;
   border: 1px solid #b81111;
@@ -137,10 +138,10 @@ class Purchase extends Component {
                 <Box w={6 / 12} pt="1rem">
                   <Text1>GET TICKET</Text1>
                 </Box>
-                <Box w={6 / 12}>
+                <Box w={6 / 12} pr="1rem">
                   <Image
                     pl="9rem"
-                    width="60%"
+                    width="90%"
                     src="/static/progress-bar_3.png"
                   />
                 </Box>

@@ -44,7 +44,7 @@ const WrapperClose = styled.div`
   position: absolute;
   color: #000;
   top: 0.4rem;
-  right: 20.2rem;
+  right: 19.5rem;
   width: 40px;
   height: 40px;
   //border: 3px solid #73ad81;

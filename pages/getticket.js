@@ -64,6 +64,7 @@ class getticket extends React.Component {
     const url = `${api.SERVER}/subscribe`
     try {
       const json = await api.post(url, { token, promocode })
+      console.log('JSON', json)
       if (json.status.message == 'invalid promocode') {
         this.setState({
           id: 3,

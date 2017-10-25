@@ -9,14 +9,19 @@ const Inactive = styled.div`
   height: 1rem;
   vertical-align: bottom;
   &:hover {
-    color: ${vars.yellow};
+    color: ${vars.black};
   }
   text-align: center;
+  font-weight: 700;
+  font-family: Helvetica, Arial, sans-serif;
 `
 const Active = styled.div`
   text-align: center;
   color: ${vars.lightBlue};
-  border-bottom: 2px solid ${vars.lightBlue};
+  padding-bottom: 10px;
+  border-bottom: 4px solid ${vars.lightBlue};
+  font-weight: 700;
+  font-family: Helvetica, Arial, sans-serif;
 `
 const Logo = styled(Image)`
   height: 1.5rem;

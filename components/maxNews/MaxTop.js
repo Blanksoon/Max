@@ -46,7 +46,6 @@ const AllShow = styled.select`
   font-size: 1em;
 `
 const WrapperHilight = styled.div`
-  cursor: pointer;
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -63,8 +62,8 @@ const WrapperHilightText = styled.div`
     top,
     rgba(1, 33, 71, 0.1) 0%,
     rgba(1, 33, 71, 0.6) 76%,
-    rgba(1, 33, 71, 1) 85%,
-    rgba(1, 33, 71, 1) 100%
+    rgba(1, 33, 71, 0.95) 85%,
+    rgba(1, 33, 71, 0.97) 100%
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapper = styled.div`background-color: #fff;`
@@ -99,7 +98,7 @@ const MaxTop = () => (
                       pl="90%"
                       src="static/img_logo_white@2x.png"
                     />
-                    <Box pt="15rem" pl="1rem" pr="1rem">
+                    <Box pt="18rem" pl="1rem" pr="1rem">
                       <Box w={8 / 12}>
                         <Text1>
                           Headline consectetur adipicing elit, sed do eiusmod
@@ -114,10 +113,10 @@ const MaxTop = () => (
                         </Text2>
                       </Box>
                       <Flex>
-                        <Box w={6 / 12} pt="1rem">
+                        <Box w={5 / 12} pt="1rem">
                           <Date>Aug 11, 2017</Date>
                         </Box>
-                        <Box w={6 / 12}>
+                        <Box w={7 / 12}>
                           <Button1>Read more</Button1>
                         </Box>
                       </Flex>
