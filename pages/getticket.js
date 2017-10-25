@@ -44,11 +44,14 @@ class getticket extends React.Component {
     this.subScribe = this.subScribe.bind(this)
     this.backToInputCode = this.backToInputCode.bind(this)
   }
+  //id:1 = can input code
+  //id:2 = success
+  //id:3 = invalid promocode
+  //id:4 = you have purchase
   async componentDidMount() {
     token = cookies.get('token')
     //console.log(token)
     message = await this.checkSubscribe(token)
-    //console.log(message.status)
     if (message.status.message == 'you have purchase') {
       //console.log('jfjfj')
       this.setState({
@@ -64,13 +67,14 @@ class getticket extends React.Component {
     const url = `${api.SERVER}/subscribe`
     try {
       const json = await api.post(url, { token, promocode })
+      console.log('json', json)
+      console.log('state', this.state.id)
       if (json.status.message == 'invalid promocode') {
         this.setState({
           id: 3,
         })
         return json
-      }
-      if (json.status.message == 'success') {
+      } else if (json.status.message == 'success') {
         this.setState({
           id: 2,
         })
@@ -102,6 +106,7 @@ class getticket extends React.Component {
   }
 
   render() {
+    console.log('state', this.state.id)
     return (
       <Main url={this.props.url}>
         <NewModal />

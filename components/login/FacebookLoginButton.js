@@ -13,6 +13,7 @@ class FacebookLoginButton extends React.Component {
     this.facebookResponse = this.facebookResponse.bind(this)
   }
   async facebookResponse(response) {
+    console.log('response', response)
     const providerData = {
       provider_name: 'facebook',
       provider_data: response,

@@ -66,8 +66,12 @@ class Verify extends React.Component {
       return console.log(error)
     }
   }
-  render() {
+  componentDidMount() {
+    console.log('hi')
     this.verify(this.props.url.query.token)
+  }
+
+  render() {
     return (
       <Main url={this.props.url}>
         <NewModal />

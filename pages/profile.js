@@ -28,8 +28,8 @@ import {
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
-import { recentLivesSelector } from '../redux/selectors/live'
-import { recentVodsSelector } from '../redux/selectors/vod'
+// import { recentLivesSelector } from '../redux/selectors/live'
+// import { recentVodsSelector } from '../redux/selectors/vod'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -168,23 +168,23 @@ class Profile extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    lives: recentLivesSelector(state),
-    vods: recentVodsSelector(state),
-  }
-}
-Profile.getInitialProps = async ({ store, isServer, query, req }) => {
-  let state = store.getState()
-  const token = state.auth.token
-  const response = await fetchLives(token)(store.dispatch)
-  const responseVods = await fetchVods(token)(store.dispatch)
-  state = store.getState()
-  const props = mapStateToProps(state)
-  return props
-}
+// const mapStateToProps = state => {
+//   return {
+//     lives: recentLivesSelector(state),
+//     vods: recentVodsSelector(state),
+//   }
+// }
+// Profile.getInitialProps = async ({ store, isServer, query, req }) => {
+//   let state = store.getState()
+//   const token = state.auth.token
+//   const response = await fetchLives(token)(store.dispatch)
+//   const responseVods = await fetchVods(token)(store.dispatch)
+//   state = store.getState()
+//   const props = mapStateToProps(state)
+//   return props
+// }
 
-export default withRedux(initStore, mapStateToProps, {
+export default withRedux(initStore, null, {
   fetchVods,
   toogleModal,
   updateModalType,
@@ -192,3 +192,5 @@ export default withRedux(initStore, mapStateToProps, {
   closeModal,
   fetchLives,
 })(Profile)
+
+//export default Profile
