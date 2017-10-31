@@ -5,12 +5,13 @@ import styled from 'styled-components'
 import FacebookLoginButton from './FacebookLoginButton'
 import color from '../commons/vars'
 import ModalRegister from '../../containers/ModalRegister'
-import { localLogin } from '../../redux/modules/auth'
+import { forgotPassword } from '../../redux/modules/auth'
 import { fbLogin } from '../../redux/modules/auth'
 import { closeModal } from '../../redux/modules/modal'
 import { connect } from 'react-redux'
 import vars from '../commons/vars'
 import Spinner from '../commons/Spinner'
+import * as api from '../../api'
 
 const A = styled.a`TEXT-DECORATION: none;`
 const Wrapper = styled.div`position: absolute;`
@@ -22,6 +23,12 @@ const Text1 = styled.div`
   color: ${color.red};
   font-weight: 700;
   font-size: 1.5em;
+  font-family: Helvetica, Arial, sans-serif;
+`
+const Text3 = styled.div`
+  color: ${color.black};
+  font-weight: 200;
+  font-size: 1em;
   font-family: Helvetica, Arial, sans-serif;
 `
 const ButtonLeft = styled.button`
@@ -82,34 +89,26 @@ class Login extends React.Component {
       status: '',
       data: {
         email: '',
-        password: '',
       },
       loading: false,
     }
-    this.loginLocal = this.loginLocal.bind(this)
+    this.forgotPassword = this.forgotPassword.bind(this)
     this.handleOnChangeId = this.handleOnChangeId.bind(this)
-    this.handleOnChangePassword = this.handleOnChangePassword.bind(this)
   }
-  async loginLocal() {
+
+  async forgotPassword() {
     console.log('data', this.state.data)
     const providerData = {
-      provider_name: 'local',
-      provider_data: this.state.data,
+      email: this.state.data.email,
     }
     this.setState({ loading: true })
-    await this.props.localLogin(providerData)
-    if (this.props.auth.token != undefined) {
-      console.log('success')
-      this.setState({
-        status: '',
-      })
-      //this.props.closeModal()
-    } else {
-      this.setState({
-        status: this.props.auth.error.message,
-      })
-      console.log('false')
-    }
+    const { data, status } = await api.post(
+      `${api.SERVER}/forgot-password`,
+      providerData
+    )
+    this.setState({
+      status: status.message,
+    })
     this.setState({ loading: false })
   }
 
@@ -122,14 +121,6 @@ class Login extends React.Component {
     })
   }
 
-  handleOnChangePassword(event) {
-    this.setState({
-      data: {
-        ...this.state.data,
-        password: event.target.value,
-      },
-    })
-  }
   render() {
     console.log('props', this.props)
     return (
@@ -140,23 +131,17 @@ class Login extends React.Component {
               <Image width="100%" src="../../static/img_login.png" />
             </Box>
             <Box pl="3rem">
-              <Text1>LOG IN</Text1>
+              <Text1>Forgot pasword</Text1>
             </Box>
             <Flex pt="0.5rem" pl="3rem" pr="3rem">
               <Box w={5 / 12}>
                 <WrapperLogin>
+                  <Text3>Please enter your email for change password</Text3>
                   <form>
                     <Box w={1}>
                       <Input
                         placeholder="Email"
                         onChange={this.handleOnChangeId}
-                      />
-                    </Box>
-                    <Box>
-                      <Input
-                        placeholder="Password"
-                        type="password"
-                        onChange={this.handleOnChangePassword}
                       />
                     </Box>
                     <Text2>{this.state.status} </Text2>
@@ -165,14 +150,11 @@ class Login extends React.Component {
                       <Box pt="0.5rem">
                         <Button
                           style={{ width: '148px' }}
-                          onClick={this.loginLocal}
+                          onClick={this.forgotPassword}
                           disabled={this.state.loading}
                         >
-                          {this.state.loading ? <Spinner /> : 'Log in'}
+                          {this.state.loading ? <Spinner /> : 'Submit'}
                         </Button>{' '}
-                        <a href="#">
-                          <ModalRegister modalType={7} text="Forgot password" />
-                        </a>
                       </Box>
                     </Flex>
                   </form>
@@ -186,10 +168,17 @@ class Login extends React.Component {
                       <ModalRegister modalType={4} text="Register with email" />
                     </a>
                   </Box>
+                  <Box pt="1rem">
+                    <a href="#">
+                      <ModalRegister
+                        modalType={3}
+                        text="Already have an account, log in"
+                      />
+                    </a>
+                  </Box>
                 </center>
               </Box>
             </Flex>
-            {/* <ButtonFace>f &nbsp;&nbsp; Log in with Facebook</ButtonFace> fffff */}
           </Box>
         </div>
         <style jsx>
@@ -227,4 +216,4 @@ const mapStateToProps = state => {
 //   return props
 // }
 
-export default connect(mapStateToProps, { localLogin, closeModal })(Login)
+export default connect(mapStateToProps, { forgotPassword, closeModal })(Login)

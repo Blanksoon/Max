@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import styled from 'styled-components'
 import vars from './vars'
-
+import Link from 'next/link'
 const Username = styled.div`
   color: ${vars.white};
   cursor: pointer;
@@ -70,6 +70,9 @@ class UserInfo extends Component {
           <MenuTrigger showMenu={showMenu} />
         </Username>
         <MenuContent showMenu={showMenu}>
+          <Link href={`/profile`}>
+            <MenuItem>Profile</MenuItem>
+          </Link>
           <MenuItem onClick={logout}>Log Out</MenuItem>
         </MenuContent>
       </Menu>

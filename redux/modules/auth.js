@@ -47,6 +47,7 @@ export const fbLogin = providerData => async dispatch => {
     )
   }
 }
+
 export const localLogin = providerData => async dispatch => {
   console.log('providerData', providerData)
   dispatch(loginReq())

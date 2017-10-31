@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Image } from 'rebass'
 import Login from '../login/Login'
 import Register from '../login/Register'
+import ForgotPassword from '../login/ForgotPassword'
 import Player from '../videoPlayer/Player'
 
 const Wrapper = styled.div`
@@ -130,6 +131,16 @@ export default class Modal extends Component {
       renderUI = (
         <WrapperRegister onClick={e => this.handleOnClick(e)}>
           <Register closeModal={this.props.closeModal} />
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="../../static/close.png" />
+          </WrapperClose>
+        </WrapperRegister>
+      )
+    } else if (this.props.modalType === 7) {
+      //Forgot password
+      renderUI = (
+        <WrapperRegister onClick={e => this.handleOnClick(e)}>
+          <ForgotPassword closeModal={this.props.closeModal} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>
