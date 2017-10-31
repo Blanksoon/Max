@@ -4,6 +4,8 @@ const MODAL_UPDATE_TYPE = 'MODAL_UPDATE_TYPE'
 const MODAL_URL = 'MODAL_URL'
 const CLOSE_MODAL = 'CLOSE_MODAL'
 const MODAL_REGISTER = 'MODAL_REGISTER'
+const MODAL_CHANGEPASS = 'MODAL_CHANGEPASS'
+const NEW_PASSWORD = 'NEW_PASSWORD'
 
 // actions
 export const toggleModal = () => {
@@ -28,9 +30,22 @@ export const closeModal = () => {
     type: CLOSE_MODAL,
   }
 }
+export const newPassword = modalType => {
+  console.log('newPassword')
+  return {
+    type: NEW_PASSWORD,
+    payload: { modalType },
+  }
+}
 export const registerModal = modalType => {
   return {
     type: MODAL_REGISTER,
+    payload: { modalType },
+  }
+}
+export const changepassModal = modalType => {
+  return {
+    type: MODAL_CHANGEPASS,
     payload: { modalType },
   }
 }
@@ -70,6 +85,18 @@ const modalReducer = (state = initialState, action) => {
       }
     }
     case MODAL_REGISTER: {
+      return {
+        ...state,
+        modalType: action.payload.modalType,
+      }
+    }
+    case NEW_PASSWORD: {
+      return {
+        ...state,
+        modalType: 6,
+      }
+    }
+    case MODAL_CHANGEPASS: {
       return {
         ...state,
         modalType: action.payload.modalType,

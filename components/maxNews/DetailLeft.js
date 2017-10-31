@@ -84,7 +84,7 @@ const WrapperLogo = styled.div`
 const Wrapper = styled.div`background-color: #fff;`
 const DetailLeft = () => (
   <Wrapper>
-    <Box pt="2rem" pl="1rem" pr="1rem" width={1}>
+    <Box pl="1rem" pr="1rem">
       <Box>
         <Text1>
           Headline consectetur adipicing elit, sed do eiusmod tempor consectetur
@@ -98,13 +98,13 @@ const DetailLeft = () => (
       </Box>
       <Box>
         <WrapperHilight>
-          <Box w={12 / 12}>
+          <Box>
             <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
             <WrapperLogo>
               <Image width="10%" pt={0} src="static/img_logo_white@2x.png" />
             </WrapperLogo>
           </Box>
-          <Box w={12 / 12}>
+          <Box>
             <WrapperHilightText>
               <Image width="10%" pl="90%" src="static/img_logo_white@2x.png" />
             </WrapperHilightText>

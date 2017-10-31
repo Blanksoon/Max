@@ -22,6 +22,14 @@ export const loginFail = ({ code, message }) => ({
   type: LOGIN_FAIL,
   payload: { code, message },
 })
+export const currentReq = () => ({
+  type: CURRENT_REQ,
+})
+export const currentSucess = ({ password, token }) => ({
+  type: CURRENT_SUCCESS,
+  payload: { password, token },
+})
+
 export const fbLogin = providerData => async dispatch => {
   dispatch(loginReq())
   try {
@@ -55,7 +63,6 @@ export const localLogin = providerData => async dispatch => {
       `${api.SERVER}/local-login`,
       providerData
     )
-    console.log(status.code)
     if (data.token == 'undefined' || data.token == undefined) {
       dispatch({
         type: LOGOUT,
@@ -92,6 +99,21 @@ export const logout = () => async dispatch => {
   dispatch({
     type: LOGOUT,
   })
+}
+export const currentpassword = providerData => async dispatch => {
+  dispatch(loginReq())
+  try {
+    const { status, data } = await api.post(
+      `${api.SERVER}/check-old-password?token=${providerData.token}`,
+      providerData
+    )
+  } catch (error) {
+    dispatch(
+      loginFail({
+        message: status.message,
+      })
+    )
+  }
 }
 
 const initialState = {

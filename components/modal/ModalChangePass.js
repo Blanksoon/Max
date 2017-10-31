@@ -9,16 +9,16 @@ import color from '../commons/vars'
 import ButtonRed from '../commons/ButtonSmall'
 
 const ButtonPromoClip = styled.button`
-  background-color: ${color.white};
+  background-color: white;
   border: 1px solid ${props => props.color.red};
-  padding: 8px 30px;
+  padding: 8px 50px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-weight: bold;
   font-size: 14px;
   font-family: Helvetica, Arial, sans-serif;
-  color: ${color.red};
+  color: ${props => props.color.red};
   cursor: pointer;
 
   &:hover {
@@ -53,9 +53,7 @@ class ModalButton extends Component {
     buttonID: PropTypes.number,
   }
   handleOnClickModal = () => {
-    this.props.toggleModalAction()
-    this.props.updateModalAction(this.props.modalType)
-    this.props.indexModalURL(this.props.modalURL)
+    this.props.registerModal(this.props.modalType)
   }
   render() {
     let renderUI = <div />

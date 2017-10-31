@@ -2,6 +2,7 @@ import { Box, Image, Text, Flex } from 'rebass'
 import styled from 'styled-components'
 import color from '../commons/vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
+import ModalButton from '../../containers/ModalButton'
 
 const Text1 = styled.div`
   color: ${color.black};
@@ -56,7 +57,7 @@ export const UserProfile = () => {
           <Box w={3 / 12} pt="1rem">
             <Text2>youremail@email.com</Text2>
             <Text2>......</Text2>
-            <Button>Change password</Button>
+            <ModalButton buttonID={2} modalType={5} text="Change password" />
           </Box>
           <Box w={7 / 12}>
             <Flex className="Social-login" pb="0.5rem">

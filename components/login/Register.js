@@ -40,16 +40,6 @@ const ButtonLeft = styled.button`
   display: inline-block;
   font-size: 1em;
 `
-const ButtonFace = styled.button`
-  background-color: #3a559f;
-  border: none;
-  color: white;
-  padding: 10px 30px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 1em;
-`
 const Button = styled.button`
   bottom: 2%;
   background-color: ${vars.red};

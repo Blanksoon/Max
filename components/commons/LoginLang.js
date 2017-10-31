@@ -57,9 +57,7 @@ export default class extends Component {
         {email !== undefined ? (
           <UserInfo email={email} />
         ) : (
-          <Login>
-            <ModalText modalType={3} text="Register/Login" />
-          </Login>
+          <ModalText modalType={3} text="Register/Login" />
         )}
         <ClearFix />
         <LanguagePanel>
