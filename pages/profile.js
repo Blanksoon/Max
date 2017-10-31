@@ -1,7 +1,7 @@
 // This is the Link API
 import Head from 'next/head'
 import Link from 'next/link'
-import { Flex, Box } from 'rebass'
+import { Flex, Box, Provider } from 'rebass'
 import Cookies from 'universal-cookie'
 import styled from 'styled-components'
 import withRedux from 'next-redux-wrapper'
@@ -71,10 +71,7 @@ const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 const WrapperProfile = styled.div`
   background-color: ${props => props.color.lightBlue};
 `
-const WrapperBoxProfile = styled.div`
-  border-style: solid;
-  border-width: 1px;
-`
+const WrapperBoxProfile = styled.div`border: 1px solid #c1c1c1;`
 
 const WrapperBoxProfileMargin = styled.div`
   margin-left: 1.2rem;
@@ -133,7 +130,7 @@ class Profile extends React.Component {
               <Container>
                 <Box px="3rem" pt="9rem" bg="white" pb="2rem">
                   <Welcome />
-                  <Box w={12 / 12} pb="1rem" pt="2rem" mx="1.2rem">
+                  <Box w={12 / 12} pb="1rem" pt="2rem">
                     <NavbarProfile
                       url={this.state}
                       changeComponent={this.changeComponent}

@@ -146,6 +146,7 @@ class LiveVdo extends Component {
 }
 const mapStateToProps = state => {
   const live = currentLiveSelector(state)
+  console.log('live', live)
   const vods = relatedVodsSelector(live.programName)(state)
   return { live, vods }
 }

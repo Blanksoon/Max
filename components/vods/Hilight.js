@@ -41,39 +41,41 @@ export default ({ hilight }) => {
   }
   return (
     <Link as={`/vods/${hilight.id}`} href={`/videoPlayer?id=${hilight.id}`}>
-      <Hilight>
-        <Image width="100%" src={hilight.thumbnailUrl} />
-        <Gradient>
-          <StickToBottom>
-            <Text color={vars.lightBlue} bold children="HILIGHT" />
-            <Text
-              pt="1rem"
-              color={vars.white}
-              bold
-              children={hilight.title_en}
-              fontSize="1.3em"
-            />
-            <OnAirInfo>
-              <Left>
-                <Text
-                  color={vars.yellow}
-                  bold
-                  children={hilight.onAirDateStr_en}
-                  fontSize="0.9em"
-                />
-              </Left>
-              <Right>
-                <Text
-                  color={vars.yellow}
-                  bold
-                  children={hilight.duration}
-                  fontSize="0.9em"
-                />
-              </Right>
-            </OnAirInfo>
-          </StickToBottom>
-        </Gradient>
-      </Hilight>
+      <a>
+        <Hilight>
+          <Image width="100%" src={hilight.thumbnailUrl} />
+          <Gradient>
+            <StickToBottom>
+              <Text color={vars.lightBlue} bold children="HILIGHT" />
+              <Text
+                pt="1rem"
+                color={vars.white}
+                bold
+                children={hilight.title_en}
+                fontSize="1.3em"
+              />
+              <OnAirInfo>
+                <Left>
+                  <Text
+                    color={vars.yellow}
+                    bold
+                    children={hilight.onAirDateStr_en}
+                    fontSize="0.9em"
+                  />
+                </Left>
+                <Right>
+                  <Text
+                    color={vars.yellow}
+                    bold
+                    children={hilight.duration}
+                    fontSize="0.9em"
+                  />
+                </Right>
+              </OnAirInfo>
+            </StickToBottom>
+          </Gradient>
+        </Hilight>
+      </a>
     </Link>
   )
 }

@@ -5,6 +5,8 @@ import { Image } from 'rebass'
 import Login from '../login/Login'
 import Register from '../login/Register'
 import ForgotPassword from '../login/ForgotPassword'
+import ChangePassStep1 from '../login/ChangePassStep1'
+import ChangePassStep2 from '../login/ChangePassStep2'
 import Player from '../videoPlayer/Player'
 
 const Wrapper = styled.div`
@@ -47,6 +49,13 @@ const WrapperRegister = styled.div`
   position: relative;
   width: 840px;
   height: 615px;
+  background: #fff;
+  z-index: 240;
+`
+const WrapperChangePass = styled.div`
+  position: relative;
+  width: 650px;
+  height: 250px;
   background: #fff;
   z-index: 240;
 `
@@ -135,6 +144,26 @@ export default class Modal extends Component {
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>
         </WrapperRegister>
+      )
+    } else if (this.props.modalType === 5) {
+      //changePassword_step1
+      renderUI = (
+        <WrapperChangePass onClick={e => this.handleOnClick(e)}>
+          <ChangePassStep1 />
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="../../static/close.png" />
+          </WrapperClose>
+        </WrapperChangePass>
+      )
+    } else if (this.props.modalType === 6) {
+      //changePassword_step2
+      renderUI = (
+        <WrapperChangePass onClick={e => this.handleOnClick(e)}>
+          <ChangePassStep2 />
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="../../static/close.png" />
+          </WrapperClose>
+        </WrapperChangePass>
       )
     } else if (this.props.modalType === 7) {
       //Forgot password

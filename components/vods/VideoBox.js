@@ -12,7 +12,8 @@ import { formattedDate } from '../../util'
 import vars from '../commons/vars'
 
 const WrapperHilight = styled.div`
-  width: 100%;
+  width: 55%;
+  padding-left: 23%;
   background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
 `

@@ -27,7 +27,7 @@ export default class NavbarProfile extends Component {
 
   componentWillMount() {
     console.log('..', this.props.url.pathname)
-    this.setActiveUrl(this.props.url.pathname)
+    //this.setActiveUrl(this.props.url.pathname)
   }
 
   setActiveUrl(activeUrl) {

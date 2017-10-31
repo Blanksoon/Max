@@ -71,19 +71,20 @@ const WrapperHilightText = styled.div`
   right: 0;
   width: 100%;
   height: 100%;
+  position: relative;
+`
+const WrapperLogo = styled.div`
+  cursor: pointer;
+  top: 0px;
+  left: 90%;
+  width: 100%;
+  height: 100%;
   position: absolute;
-  background: -webkit-linear-gradient(
-    top,
-    rgba(1, 33, 71, 0.1) 0%,
-    rgba(1, 33, 71, 0.6) 76%,
-    rgba(1, 33, 71, 1) 85%,
-    rgba(1, 33, 71, 1) 100%
-  ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapper = styled.div`background-color: #fff;`
 const DetailLeft = () => (
   <Wrapper>
-    <Box pt="2rem" pl="1rem" pr="1rem" width={1}>
+    <Box pl="1rem" pr="1rem">
       <Box>
         <Text1>
           Headline consectetur adipicing elit, sed do eiusmod tempor consectetur
@@ -97,10 +98,13 @@ const DetailLeft = () => (
       </Box>
       <Box>
         <WrapperHilight>
-          <Box w={12 / 12}>
+          <Box>
             <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
+            <WrapperLogo>
+              <Image width="10%" pt={0} src="static/img_logo_white@2x.png" />
+            </WrapperLogo>
           </Box>
-          <Box w={12 / 12}>
+          <Box>
             <WrapperHilightText>
               <Image width="10%" pl="90%" src="static/img_logo_white@2x.png" />
             </WrapperHilightText>
@@ -132,14 +136,14 @@ const DetailLeft = () => (
         <br />
       </Box>
       <Flex>
-        <Box w={2 / 12}>
+        <Box w={1.5 / 12} pt="0.5rem">
           <Text3>Share on</Text3>
         </Box>
-        <Box w={1 / 12}>
-          <Image width="90%" pt={0} src="static/FT6A6495.jpg" />
+        <Box w={0.6 / 12}>
+          <Image width="100%" pt={0} src="static/ic_facebook.png" />
         </Box>
-        <Box ml="0.5rem" w={1 / 12}>
-          <Image width="90%" pt={0} src="static/FT6A6495.jpg" />
+        <Box ml="0.5rem" w={0.6 / 12}>
+          <Image width="100%" pt={0} src="static/ic_share_twitter.png" />
         </Box>
       </Flex>
       <Flex pl="1rem" pt="2rem">
