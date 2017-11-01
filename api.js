@@ -1,7 +1,8 @@
 import fetch from 'isomorphic-fetch'
 //139.59.127.206
 //api.maxmuaythai.com
-export const SERVER = 'http://localhost:3002'
+//159.203.140.5
+export const SERVER = 'http://159.203.140.5:3002'
 export const get = url => {
   return fetch(url)
     .then(response => {
