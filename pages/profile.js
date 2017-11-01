@@ -79,7 +79,7 @@ const WrapperBoxProfileMargin = styled.div`
 `
 
 import { Welcome } from '../components/profile/Welcome'
-import { UserProfile } from '../components/profile/UserProfile'
+import UserProfile from '../components/profile/UserProfile'
 import { InputProfile } from '../components/profile/InputProfile'
 import { PurchaseHistory } from '../components/profile/PurchaseHistory'
 import { ListPurchase } from '../components/profile/ListPurchase'

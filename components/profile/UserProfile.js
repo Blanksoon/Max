@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import color from '../commons/vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
 import ModalButton from '../../containers/ModalButton'
+import { closeModal } from '../../redux/modules/modal'
+import { connect } from 'react-redux'
+import * as api from '../../api'
 
 const Text1 = styled.div`
   color: ${color.black};
@@ -37,38 +40,77 @@ const Button = styled.button`
   margin-top: 0.3rem;
   cursor: pointer;
 `
-export const UserProfile = () => {
-  return (
-    <Box w={12 / 12}>
+class UserProfile extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      email: '',
+      errMessageEmail: '',
+      loading: false,
+    }
+    this.dataProfile = this.dataProfile.bind(this)
+  }
+  componentDidMount() {
+    {
+      this.dataProfile()
+    }
+  }
+  async dataProfile() {
+    const { status, data } = await api.get(
+      `${api.SERVER}/profile?token=${this.props.auth.token}`
+    )
+    this.setState({ email: data[0].email })
+  }
+  render() {
+    return (
       <Box w={12 / 12}>
-        <Flex className="Profile-pic" py="1rem">
-          <Box w={1 / 12} py="0.5rem">
-            <Image src="../../static/ic_profile@3x.png" width="80%" />
-          </Box>
-          <Box w={11.7 / 12} pt="1.8rem">
-            <Text1>Profile</Text1>
-          </Box>
-        </Flex>
-        <Flex className="Detail-user" pb="0.5rem">
-          <Box w={2 / 12} pt="1rem">
-            <Text2>Email</Text2>
-            <Text2>Password</Text2>
-          </Box>
-          <Box w={3 / 12} pt="1rem">
-            <Text2>youremail@email.com</Text2>
-            <Text2>......</Text2>
-            <ModalButton buttonID={2} modalType={5} text="Change password" />
-          </Box>
-          <Box w={7 / 12}>
-            {/* <Flex className="Social-login" pb="0.5rem">
-              <FacebookLoginButton />
-              &nbsp;&nbsp;
-              <FacebookLoginButton />
-            </Flex> */}
-          </Box>
-        </Flex>
-        <hr size="0.1" />
+        <Box w={12 / 12}>
+          <Flex className="Profile-pic" py="1rem">
+            <Box w={1 / 12} py="0.5rem">
+              <Image src="../../static/ic_profile@3x.png" width="80%" />
+            </Box>
+            <Box w={11.7 / 12} pt="1.8rem">
+              <Text1>Profile</Text1>
+            </Box>
+          </Flex>
+          <Flex className="Detail-user" pb="0.5rem">
+            <Box w={2 / 12} pt="1rem">
+              <Text2>Email</Text2>
+              <Text2>Password</Text2>
+            </Box>
+            <Box w={3 / 12} pt="1rem">
+              <Text2>{this.state.email}</Text2>
+              <Text2>......</Text2>
+              <ModalButton buttonID={2} modalType={5} text="Change password" />
+            </Box>
+            <Box w={7 / 12}>
+              {/* <Flex className="Social-login" pb="0.5rem">
+                <FacebookLoginButton />
+                &nbsp;&nbsp;
+                <FacebookLoginButton />
+              </Flex> */}
+            </Box>
+          </Flex>
+          <hr size="0.1" />
+        </Box>
       </Box>
-    </Box>
-  )
+    )
+  }
 }
+
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+  }
+}
+
+// Login.getInitialProps = async ({ store, isServer, query, req }) => {
+//   let state = store.getState()
+//   const token = state.auth.token
+//   await Promise.all([livePromise, vodPromise])
+//   state = store.getState()
+//   const props = mapStateToProps(state)
+//   return props
+// }
+
+export default connect(mapStateToProps, { closeModal })(UserProfile)

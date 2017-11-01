@@ -18,6 +18,10 @@ const WrapperLogin = styled.div`
   padding-right: 30px;
   border-right: 1px solid #a9a9a9;
 `
+const WrapperForgot = styled.div`
+  text-align: right;
+  padding-top: 5px;
+`
 const Text1 = styled.div`
   color: ${color.red};
   font-weight: 700;
@@ -171,7 +175,12 @@ class Login extends React.Component {
                           {this.state.loading ? <Spinner /> : 'Log in'}
                         </Button>{' '}
                         <a href="#">
-                          <ModalRegister modalType={7} text="Forgot password" />
+                          <WrapperForgot>
+                            <ModalRegister
+                              modalType={7}
+                              text="Forgot password"
+                            />
+                          </WrapperForgot>
                         </a>
                       </Box>
                     </Flex>
