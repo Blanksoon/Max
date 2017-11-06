@@ -6,32 +6,35 @@ import Modal from '../components/modal/Modal'
 import Login from '../components/login/Login'
 import color from '../components/commons/vars'
 import Test from '../components/Test'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
 
-const Wrapper = styled.div`
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: #022346;
-`
-const Image = styled.image`width: 100%;`
-const Text1 = styled.div`
-  color: #fff;
-  font-weight: 700;
-  font-size: 1em;
-`
-const Text2 = styled.div`
-  color: #fff;
-  font-size: 1em;
-`
-const Hr = styled.div`
-  &::before {
-    content: '●';
-    color: #fff;
-    font-weight: bold;
+// CSS Modules, react-datepicker-cssmodules.css
+// import '../node_modules/react-datepicker/dist/datepicker-cssmodules.css'
+
+class Example extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      startDate: moment(),
+    }
+    this.handleChange = this.handleChange.bind(this)
   }
-`
-const test = props => (
-  <div>
-    <Test />
-  </div>
-)
 
-export default test
+  handleChange(date) {
+    this.setState({
+      startDate: date,
+    })
+  }
+
+  render() {
+    return (
+      <DatePicker
+        selected={this.state.startDate}
+        onChange={this.handleChange}
+      />
+    )
+  }
+}
+
+export default Example
