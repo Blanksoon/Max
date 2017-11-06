@@ -5,6 +5,7 @@ import Container from '../components/commons/Container'
 import Modal from '../components/modal/Modal'
 import Login from '../components/login/Login'
 import color from '../components/commons/vars'
+import Test from '../components/Test'
 
 const Wrapper = styled.div`
   font-family: Helvetica, Arial, sans-serif;
@@ -29,7 +30,8 @@ const Hr = styled.div`
 `
 const test = props => (
   <div>
-    <Login />
+    <Test />
   </div>
 )
+
 export default test
