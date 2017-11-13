@@ -98,6 +98,7 @@ class Profile extends React.Component {
       pathname: state,
     })
   }
+
   render() {
     let renderUI = <div />
     if (this.state.pathname == 'Profile') {

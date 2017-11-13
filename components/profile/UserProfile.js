@@ -76,11 +76,9 @@ class UserProfile extends React.Component {
           <Flex className="Detail-user" pb="0.5rem">
             <Box w={2 / 12} pt="1rem">
               <Text2>Email</Text2>
-              <Text2>Password</Text2>
             </Box>
             <Box w={3 / 12} pt="1rem">
               <Text2>{this.state.email}</Text2>
-              <Text2>......</Text2>
               <ModalButton buttonID={2} modalType={5} text="Change password" />
             </Box>
             <Box w={7 / 12}>

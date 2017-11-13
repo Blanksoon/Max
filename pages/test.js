@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Provider, Box, Text, overlay } from 'rebass'
+import { Flex, Provider, Box, Text, overlay, Head } from 'rebass'
 import Container from '../components/commons/Container'
 import Modal from '../components/modal/Modal'
 import Login from '../components/login/Login'
@@ -10,8 +10,8 @@ import DatePicker from 'react-datepicker'
 import moment from 'moment'
 
 // CSS Modules, react-datepicker-cssmodules.css
-// import '../node_modules/react-datepicker/dist/datepicker-cssmodules.css'
-
+//import { stylesheet } from './datepicker-cssmodules.css'
+//import './datepicker-cssmodules.css'
 class Example extends React.Component {
   constructor(props) {
     super(props)
@@ -29,10 +29,13 @@ class Example extends React.Component {
 
   render() {
     return (
+      //<Head>
+      //<style dangerouslySetInnerHTML={{ __html: stylesheet }} />
       <DatePicker
         selected={this.state.startDate}
         onChange={this.handleChange}
       />
+      //</Head>
     )
   }
 }
