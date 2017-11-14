@@ -41,7 +41,7 @@ class Example extends React.Component {
           playerId={uniqid}
           playerScript="https://link-to-my-jw-player/script.js"
           playlist="https://link-to-my-playlist.json"
-        />,
+        />
         <DatePicker
           selected={this.state.startDate}
           onChange={this.handleChange}

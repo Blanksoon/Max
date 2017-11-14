@@ -1,20 +1,20 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 import ReactJWPlayer from 'react-jw-player'
 
 const displayName = 'ReactJWPlayerContainer'
 
-const propTypes = {
-  playlist: PropTypes.string.isRequired,
-  playerScript: PropTypes.string.isRequired,
-}
+// const propTypes = {
+//   playlist: PropTypes.string.isRequired,
+//   playerScript: PropTypes.string.isRequired,
+// }
 
 class ReactJWPlayerContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      videoTitle: '',
+      videoTitle: 'test jwplayer',
     }
 
     this.onAdPlay = this.onAdPlay.bind(this)
@@ -41,8 +41,7 @@ class ReactJWPlayerContainer extends React.Component {
   render() {
     const playlist = [
       {
-        file:
-          'https://maxmuaythaivod-vh.akamaihd-staging.net/i/MaxMuayThai/MAXMuayThai011017_,48,72,108,0p.mp4.csmil/master.m3u8',
+        file: 'http://techslides.com/demos/sample-videos/small.mp4',
         image: 'https://link-to-my-poster.jpg',
         tracks: [
           {
@@ -54,7 +53,8 @@ class ReactJWPlayerContainer extends React.Component {
         ],
       },
       {
-        file: 'https://link-to-my-other-video.mp4',
+        file:
+          'https://maxmuaythaivod-vh.akamaihd-staging.net/i/MaxMuayThai/MAXMuayThai011017_,48,72,108,0p.mp4.csmil/master.m3u8',
         image: 'https://link-to-my-other-poster.jpg',
       },
     ]
@@ -64,20 +64,21 @@ class ReactJWPlayerContainer extends React.Component {
       <div className="react-jw-player-container">
         <h1>{this.state.videoTitle}</h1>
         <ReactJWPlayer
-          playlist={this.playlist}
+          //playlist={this.playlist}
           //licenseKey="your-license-key"
-          onAdPlay={this.onAdPlay}
-          onReady={this.onReady}
-          onVideoLoad={this.onVideoLoad}
+          //onAdPlay={this.onAdPlay}
+          //onReady={this.onReady}
+          //onVideoLoad={this.onVideoLoad}
           playerId="my-jw-player-instance" // bring in the randomly generated playerId
           playerScript="https://content.jwplatform.com/players/52DYyhwS-N3wYEi72.js"
+          //file="http://techslides.com/demos/sample-videos/small.mp4"
         />
       </div>
     )
   }
 }
 
-ReactJWPlayerContainer.propTypes = propTypes
+//ReactJWPlayerContainer.propTypes = propTypes
 //ReactJWPlayerContainer.defaultProps = defaultProps
 ReactJWPlayerContainer.displayName = displayName
 export default ReactJWPlayerContainer
