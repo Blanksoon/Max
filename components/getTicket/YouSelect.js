@@ -75,7 +75,7 @@ let token = ''
 const Wrapperright = styled.div`
   position: relative;
   width: 100%;
-  height: 880px;
+  height: 72rem;
   background-position: center;
   background-position-y: 20%;
   //background: #022346;

@@ -199,7 +199,7 @@ class ShowTime extends Component {
                 />
               </Box>
             </Box>
-            <Box w={4 / 12}>
+            <Box w={4 / 12} ml="0.1em">
               <YouSelect />
             </Box>
           </Flex>
