@@ -8,12 +8,13 @@ import color from '../components/commons/vars'
 import Test from '../components/Test'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
+import ReactJWPlayer from '../components/ReactJWPlayerContainer'
 
 // CSS Modules, react-datepicker-cssmodules.css
 //import { stylesheet } from './datepicker-cssmodules.css'
 //import './datepicker-cssmodules.css'
 //import './datepicker.css'
-//import { datepickerStyled } from '../components/profile/datepickerStyle'
+import { datepickerStyled } from '../components/profile/datepickerStyle'
 class Example extends React.Component {
   constructor(props) {
     super(props)
@@ -30,10 +31,17 @@ class Example extends React.Component {
   }
 
   render() {
+    var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26))
+    var uniqid = randLetter + Date.now()
     return (
       //<Head>
       //<style dangerouslySetInnerHTML={{ __html: stylesheet }} />
       <div>
+        <ReactJWPlayer
+          playerId={uniqid}
+          playerScript="https://link-to-my-jw-player/script.js"
+          playlist="https://link-to-my-playlist.json"
+        />,
         <DatePicker
           selected={this.state.startDate}
           onChange={this.handleChange}

@@ -26,7 +26,7 @@ const Text1 = styled.div`
   padding-top: 1rem;
   color: ${props => props.color};
   font-weight: 700;
-  font-size: 1.3em;
+  font-size: 1em;
   font-family: Helvetica, Arial, sans-serif;
 `
 const Text2 = styled.div`
@@ -57,7 +57,7 @@ const ThumbnailShowTime = props => (
             <Text2>{props.text4}</Text2>
           </center>
         </Box>
-        <Box w={4 / 12}>
+        <Box w={4 / 12} mt="0.2em" ml="0em">
           <Image w="100%" src={props.img} />
         </Box>
         <Box w={6 / 12}>

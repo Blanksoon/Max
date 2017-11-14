@@ -19,6 +19,12 @@ const Button = styled.button`
   display: inline-block;
   font-weight: 700;
 `
+const Text2 = styled.div`
+  color: #8e97a9;
+  font-weight: 700;
+  font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
+`
 const Text3 = styled.div`
   color: #fff;
   //font-weight: 700;
@@ -88,6 +94,7 @@ class YouSelect extends Component {
           <Wrapper>
             <Box pt="2rem" pl="1.5rem" pr="1.5rem">
               <Text3>You select</Text3>
+              <Text2>1 TIME LIVE STREAMING</Text2>
               <br />
               <Text4>
                 MAX Ultimate Tournament & MAX World Champions 7 International
