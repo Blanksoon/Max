@@ -12,6 +12,8 @@ import moment from 'moment'
 // CSS Modules, react-datepicker-cssmodules.css
 //import { stylesheet } from './datepicker-cssmodules.css'
 //import './datepicker-cssmodules.css'
+//import './datepicker.css'
+//import { datepickerStyled } from '../components/profile/datepickerStyle'
 class Example extends React.Component {
   constructor(props) {
     super(props)
@@ -31,10 +33,15 @@ class Example extends React.Component {
     return (
       //<Head>
       //<style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-      <DatePicker
-        selected={this.state.startDate}
-        onChange={this.handleChange}
-      />
+      <div>
+        <DatePicker
+          selected={this.state.startDate}
+          onChange={this.handleChange}
+        />
+        <style jsx global>
+          {datepickerStyled}
+        </style>
+      </div>
       //</Head>
     )
   }

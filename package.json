@@ -12,6 +12,7 @@
   "dependencies": {
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
+    "css-loader": "^0.28.7",
     "emailjs": "^1.0.12",
     "es6-promise": "^4.1.1",
     "express": "^4.15.5",
@@ -43,6 +44,7 @@
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
+    "style-loader": "^0.19.0",
     "styled-components": "^2.1.2",
     "trash": "^4.1.0",
     "universal-cookie": "^2.1.0",
