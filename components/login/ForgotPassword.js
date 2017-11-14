@@ -110,6 +110,10 @@ class Login extends React.Component {
       status: status.message,
     })
     this.setState({ loading: false })
+    if (status.code == 200) {
+      this.props.closeModal()
+      Router.push(`/successForgotPass`)
+    }
   }
 
   handleOnChangeId(event) {

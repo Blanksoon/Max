@@ -103,6 +103,11 @@ class ChangePassStep2 extends React.Component {
       this.setState({
         status: status.message,
       })
+      if (status.code == 200) {
+        this.setState({ loading: false })
+        this.props.closeModal()
+        Router.push(`/successChangePass`)
+      }
       //this.props.closeModal()
       //this.props.newPassword()
     } else if (this.state.password != this.state.confirmPassword) {
@@ -111,6 +116,10 @@ class ChangePassStep2 extends React.Component {
       })
     }
     this.setState({ loading: false })
+    if (status.code == 200) {
+      this.props.closeModal()
+      Router.push(`/successChangePass`)
+    }
   }
 
   handleOnChangePassword(event) {
