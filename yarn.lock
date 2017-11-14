@@ -1444,6 +1444,10 @@ deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
+deepmerge@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.0.1.tgz#25c1c24f110fb914f80001b925264dd77f3f4312"
+
 default-require-extensions@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/default-require-extensions/-/default-require-extensions-1.0.0.tgz#f37ea15d3e13ffd9b437d33e1a75b5fb97874cb8"
@@ -3023,6 +3027,10 @@ load-json-file@^2.0.0:
     pify "^2.0.0"
     strip-bom "^3.0.0"
 
+load-script@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/load-script/-/load-script-1.0.0.tgz#0491939e0bee5643ee494a7e3da3d2bac70c6ca4"
+
 loader-runner@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.3.0.tgz#f482aea82d543e07921700d5a46ef26fdac6b8a2"
@@ -3820,7 +3828,7 @@ prop-types@15.5.10, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8:
     fbjs "^0.8.9"
     loose-envify "^1.3.1"
 
-prop-types@^15.5.7, prop-types@^15.6.0:
+prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -3984,12 +3992,18 @@ react-hot-loader@3.0.0-beta.7:
     redbox-react "^1.3.6"
     source-map "^0.4.4"
 
-react-jw-player@^1.12.0:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/react-jw-player/-/react-jw-player-1.12.0.tgz#920da3292f8f436ada0821b0cc84f2e6f1c8bcfa"
+react-jw-player@^1.13.0:
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/react-jw-player/-/react-jw-player-1.13.0.tgz#157631d5c49dc7be45f433d5685e6946c24db25f"
   dependencies:
     prop-types "^15.5.10"
     react "^15.4.1"
+
+react-jwplayer@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/react-jwplayer/-/react-jwplayer-0.3.2.tgz#0d6e534f8f8c2a7b6bd9364e331f9702aeef23c4"
+  dependencies:
+    react "^15.3.2"
 
 react-modal@^2.3.2:
   version "2.3.2"
@@ -4013,6 +4027,14 @@ react-overlays@^0.8.0:
     prop-types-extra "^1.0.1"
     react-transition-group "^2.0.0-beta.0"
     warning "^3.0.0"
+
+react-player@^0.25.3:
+  version "0.25.3"
+  resolved "https://registry.yarnpkg.com/react-player/-/react-player-0.25.3.tgz#dc86010855fefe7e4460a341971e8e0d558ecf63"
+  dependencies:
+    deepmerge "^2.0.0"
+    load-script "^1.0.0"
+    prop-types "^15.5.6"
 
 react-popper@^0.7.4:
   version "0.7.4"
@@ -4065,7 +4087,7 @@ react-transition-group@^2.0.0-beta.0:
     prop-types "^15.5.8"
     warning "^3.0.0"
 
-react@^15.4.1:
+react@^15.3.2, react@^15.4.1:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.2.tgz#dba0434ab439cfe82f108f0f511663908179aa72"
   dependencies:

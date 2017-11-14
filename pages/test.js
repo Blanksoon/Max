@@ -1,33 +1,11 @@
 import React from 'react'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
+import ReactDOM from 'react-dom'
+import JWPlayer from 'react-jwplayer'
 
-// CSS Modules, react-datepicker-cssmodules.css
-// import '../node_modules/react-datepicker/dist/datepicker-cssmodules.css'
-
-class Example extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      startDate: moment(),
-    }
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange(date) {
-    this.setState({
-      startDate: date,
-    })
-  }
-
-  render() {
-    return (
-      <DatePicker
-        selected={this.state.startDate}
-        onChange={this.handleChange}
-      />
-    )
-  }
-}
-
-export default Example
+ReactDOM.render(
+  <JWPlayer
+    videoId="<your-id-here>"
+    url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+  />,
+  document.body
+)
