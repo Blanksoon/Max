@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 import * as api from '../../api'
 import Spinner from '../commons/Spinner'
 import vars from '../commons/vars'
+import { datepickerStyled } from './datepickerStyle'
 
 const Text1 = styled.div`
   color: ${color.black};
@@ -241,24 +242,19 @@ class InputProfile extends React.Component {
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <Text2>Birthday</Text2>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <Age>
-                      <option value="Select your Month">Day</option>
-                    </Age>&nbsp;
-                    <Age>
-                      <option value="Select your Month">Month</option>
-                    </Age>&nbsp;
-                    <Age>
-                      <option value="Select your Month">Year</option>
-                    </Age>
-                    {/* <DatePicker
+                    <DatePicker
+                      //selected={this.state.startDate}
+                      //onChange={this.handleChange}
                       selected={this.state.startDate}
                       onChange={this.handleChange}
                       showMonthDropdown
                       showYearDropdown
-                      inline
-                      dateFormat="DD/MM/YYYY"
                       dropdownMode="select"
-                    /> */}
+                      dateFormat="DD/MM/YYYY"
+                    />
+                    <style jsx global>
+                      {datepickerStyled}
+                    </style>
                   </Flex>
                 </Box>
               </Flex>
