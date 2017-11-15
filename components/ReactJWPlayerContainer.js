@@ -1,14 +1,14 @@
 import React from 'react'
-//import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 import ReactJWPlayer from 'react-jw-player'
-
+import defaultProps from './DefaultProps'
 const displayName = 'ReactJWPlayerContainer'
 
-// const propTypes = {
-//   playlist: PropTypes.string.isRequired,
-//   playerScript: PropTypes.string.isRequired,
-// }
+const propTypes = {
+  playlist: PropTypes.string.isRequired,
+  playerScript: PropTypes.string.isRequired,
+}
 
 class ReactJWPlayerContainer extends React.Component {
   constructor(props) {
@@ -70,15 +70,15 @@ class ReactJWPlayerContainer extends React.Component {
           //onReady={this.onReady}
           //onVideoLoad={this.onVideoLoad}
           playerId="my-jw-player-instance" // bring in the randomly generated playerId
-          playerScript="https://content.jwplatform.com/players/52DYyhwS-N3wYEi72.js"
-          //file="http://techslides.com/demos/sample-videos/small.mp4"
+          playerScript="https://content.jwplatform.com/libraries/uOQEiWJS.js"
+          file="https://maxmuaythaivod-vh.akamaihd-staging.net/i/MaxMuayThai/MAXMuayThai011017_,48,72,108,0p.mp4.csmil/master.m3u8"
         />
       </div>
     )
   }
 }
 
-//ReactJWPlayerContainer.propTypes = propTypes
-//ReactJWPlayerContainer.defaultProps = defaultProps
+ReactJWPlayerContainer.propTypes = propTypes
+ReactJWPlayerContainer.defaultProps = defaultProps
 ReactJWPlayerContainer.displayName = displayName
 export default ReactJWPlayerContainer

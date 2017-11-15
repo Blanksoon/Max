@@ -176,6 +176,7 @@ class InputProfile extends React.Component {
   }
 
   async sumbitProfile() {
+    console.log(this.state)
     this.setState({ loading: true })
     const { status, data } = await api.post(
       `${api.SERVER}/update-user?token=${this.props.auth.token}`,
