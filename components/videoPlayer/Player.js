@@ -1,42 +1,52 @@
-import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
-import React, { PropTypes } from 'react'
-import { Player } from 'video-react'
-import videoReactStyle from './videoReactStyle'
-import HLSSource from './HLSSource'
-//import rootReducer from '../../reducers'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
+import React from 'react'
+import styled from 'styled-components'
+import { Flex, Provider, Box, Text, overlay, Head } from 'rebass'
+import Container from '../commons/Container'
+import Modal from '../modal/Modal'
+import Login from '../login/Login'
+import color from '../commons/vars'
+import Test from '../Test'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
+import ReactJWPlayer from '../ReactJWPlayerContainer'
 
-class Players extends React.Component {
-  static propTypes = {
-    videoPause: PropTypes.bool,
-  }
-  static defaultProps = {
-    videoPause: true,
-  }
-  constructor(props, context) {
-    super(props, context)
+// CSS Modules, react-datepicker-cssmodules.css
+//import { stylesheet } from './datepicker-cssmodules.css'
+//import './datepicker-cssmodules.css'
+//import './datepicker.css'
+import { datepickerStyled } from '../profile/datepickerStyle'
+class Player extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      startDate: moment(),
+    }
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  onClickVideo = () => {
-    this.refs.player.pause()
+  handleChange(date) {
+    this.setState({
+      startDate: date,
+    })
   }
 
   render() {
+    var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26))
+    var uniqid = randLetter + Date.now()
     return (
-      <div className="Player">
-        <Box width={1} bg="pink">
-          <Player ref="player" autoPlay={false}>
-            <HLSSource isVideoChild src={this.props.Url} />
-          </Player>
-          <style global jsx>
-            {videoReactStyle}
-          </style>
-        </Box>
+      //<Head>
+      //<style dangerouslySetInnerHTML={{ __html: stylesheet }} />
+      <div>
+        <ReactJWPlayer
+          playerId={uniqid}
+          playerScript="https://content.jwplatform.com/libraries/uOQEiWJS.js"
+          playlist="https://link-to-my-playlist.json"
+          file={this.props.Url}
+        />
       </div>
+      //</Head>
     )
   }
 }
 
-export default Players
+export default Player
