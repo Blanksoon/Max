@@ -94,14 +94,14 @@ class InputProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      startDate: moment(),
-      name: '',
-      lastname: '',
-      gender: 'Select your gender',
+      birthDay: moment(),
+      name: 'Na',
+      lastname: 'Na',
+      oldGender: 'Select your gender',
       country: 'Select you country',
       status: '',
       loading: false,
-      newGender: '',
+      gender: '',
     }
     this.toggleCalendar = this.toggleCalendar.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -120,7 +120,7 @@ class InputProfile extends React.Component {
 
   handleChange(date) {
     this.setState({
-      startDate: date,
+      birthDay: date,
     })
     this.toggleCalendar()
   }
@@ -135,17 +135,21 @@ class InputProfile extends React.Component {
     const { status, data } = await api.get(
       `${api.SERVER}/profile?token=${this.props.auth.token}`
     )
-    //console.log('dataaaa', data)
-    if (data[0].name != 'Undefined') {
+    console.log('dataaaa', data)
+    if (data[0].name != 'undefined') {
       this.setState({ name: data[0].name })
     }
-    if (data[0].lastname != 'Undefined') {
+    if (data[0].lastname != 'undefined') {
       this.setState({ lastname: data[0].lastname })
     }
-    // if (data[0].country != 'Undefined') {
-    //   this.setState({ country: data[0].country })
-    // }
-    if (data[0].gender != 'Undefined') {
+    if (data[0].date_birth != undefined) {
+      console.log('test', data[0].date_birth)
+      const birthDate = moment(new Date(data[0].date_birth))
+      console.log('birthDate', birthDate)
+      this.setState({ birthDay: birthDate })
+    }
+    if (data[0].gender != 'undefined') {
+      this.setState({ oldGender: data[0].gender })
       this.setState({ gender: data[0].gender })
     }
     //this.setState({ email: data[0].email })
@@ -165,7 +169,7 @@ class InputProfile extends React.Component {
 
   onChangeGender(event) {
     this.setState({
-      newGender: event.target.value,
+      gender: event.target.value,
     })
   }
 
@@ -176,7 +180,7 @@ class InputProfile extends React.Component {
   }
 
   async sumbitProfile() {
-    console.log(this.state)
+    console.log('numberone', this.state.birthDay)
     this.setState({ loading: true })
     const { status, data } = await api.post(
       `${api.SERVER}/update-user?token=${this.props.auth.token}`,
@@ -190,16 +194,19 @@ class InputProfile extends React.Component {
   }
 
   render() {
-    let gender = ''
-    if (this.state.gender == 'male') {
-      gender = (
+    // console.log('startDate', this.state.startDate.format('YYYY-MM-DD HH:mm:ss'))
+    // let today = new Date(moment().format('YYYY-MM-DD HH:mm:ss'))
+    // console.log('today', today)
+    let genderDiv = ''
+    if (this.state.oldGender == 'male') {
+      genderDiv = (
         <Gender onChange={this.onChangeGender}>
           <option value="male">male</option>
           <option value="female">female</option>
         </Gender>
       )
     } else {
-      gender = (
+      genderDiv = (
         <Gender onChange={this.onChangeGender}>
           <option value="female">female</option>
           <option value="male">male</option>
@@ -239,14 +246,14 @@ class InputProfile extends React.Component {
                 </Box>
                 <Box w={10 / 12}>
                   <Flex>
-                    {gender}
+                    {genderDiv}
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <Text2>Birthday</Text2>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <DatePicker
                       //selected={this.state.startDate}
                       //onChange={this.handleChange}
-                      selected={this.state.startDate}
+                      selected={this.state.birthDay}
                       onChange={this.handleChange}
                       showMonthDropdown
                       showYearDropdown

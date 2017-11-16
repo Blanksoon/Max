@@ -9,6 +9,7 @@ import Test from '../components/Test'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import ReactJWPlayer from '../components/ReactJWPlayerContainer'
+import FacebookProvider, { Comments } from 'react-facebook'
 
 // CSS Modules, react-datepicker-cssmodules.css
 //import { stylesheet } from './datepicker-cssmodules.css'
@@ -39,13 +40,16 @@ class Example extends React.Component {
       <div>
         <ReactJWPlayer
           playerId={uniqid}
-          playerScript="https://link-to-my-jw-player/script.js"
+          playerScript="https://content.jwplatform.com/libraries/uOQEiWJS.js"
           playlist="https://link-to-my-playlist.json"
         />
         <DatePicker
           selected={this.state.startDate}
           onChange={this.handleChange}
         />
+        <FacebookProvider appId="135776387080938">
+          <Comments href="http://www.facebook.com" />
+        </FacebookProvider>
         <style jsx global>
           {datepickerStyled}
         </style>
