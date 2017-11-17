@@ -62,7 +62,6 @@ class ReactJWPlayerContainer extends React.Component {
     //"http://p.jwpcdn.com/player/v/7.1.4/jwplayer.js"
     return (
       <div className="react-jw-player-container">
-        <h1>{this.state.videoTitle}</h1>
         <ReactJWPlayer
           //playlist={this.playlist}
           //licenseKey="your-license-key"
@@ -70,8 +69,8 @@ class ReactJWPlayerContainer extends React.Component {
           //onReady={this.onReady}
           //onVideoLoad={this.onVideoLoad}
           playerId="my-jw-player-instance" // bring in the randomly generated playerId
-          playerScript="https://content.jwplatform.com/libraries/uOQEiWJS.js"
-          file="https://maxmuaythaivod-vh.akamaihd-staging.net/i/MaxMuayThai/MAXMuayThai011017_,48,72,108,0p.mp4.csmil/master.m3u8"
+          playerScript={this.props.playerScript}
+          file={this.props.file}
         />
       </div>
     )

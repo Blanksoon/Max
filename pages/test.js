@@ -41,7 +41,8 @@ class Example extends React.Component {
         <ReactJWPlayer
           playerId={uniqid}
           playerScript="https://content.jwplatform.com/libraries/uOQEiWJS.js"
-          playlist="https://link-to-my-playlist.json"
+          //playlist="https://link-to-my-playlist.json"
+          file="https://content.jwplatform.com/manifests/AVUqhsXA.m3u8"
         />
         <DatePicker
           selected={this.state.startDate}
