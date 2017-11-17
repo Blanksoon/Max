@@ -39,6 +39,7 @@ export const fetchLive = (token, id) => async dispatch => {
   const url = `${api.SERVER}/lives/${id}?token=${token}`
   try {
     const json = await api.get(url, { token })
+    console.log('json', json)
     // You should not return in Vods <-- change to something like data
     dispatch(fetchLiveSuccess(json.data))
   } catch (error) {
