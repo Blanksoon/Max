@@ -40,10 +40,12 @@ export const fetchVods = token => async (dispatch, getState) => {
     token,
   }
   const queryStr = querystring.stringify(query)
+  //console.log('queryStr', queryStr)
   const url = `${api.SERVER}/vods?${queryStr}`
   try {
     const json = await api.get(url)
     // You should not return in Vods <-- change to something like data
+    //console.log('jsonssss', json)
     dispatch(fetchVodsSuccess(json.data))
   } catch (error) {
     console.log(error)

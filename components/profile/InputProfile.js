@@ -8,6 +8,9 @@ import moment from 'moment'
 import { closeModal } from '../../redux/modules/modal'
 import { connect } from 'react-redux'
 import * as api from '../../api'
+import Spinner from '../commons/Spinner'
+import vars from '../commons/vars'
+import { datepickerStyled } from './datepickerStyle'
 
 const Text1 = styled.div`
   color: ${color.black};
@@ -23,6 +26,15 @@ const Text2 = styled.div`
   font-family: Helvetica, Arial, sans-serif;
   margin-top: 0.35rem;
   margin-bottom: 0.5rem;
+`
+
+const Text3 = styled.div`
+  color: ${vars.red};
+  font-weight: 100;
+  font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 0;
+  text-align: center;
 `
 
 const InputEmail = styled.input`
@@ -64,55 +76,143 @@ const Country = styled.select`
   height: 2.2em;
   font-size: 0.8em;
 `
+
+const ButtonSubmit = styled.button`
+  bottom: 2%;
+  background-color: #b81111;
+  border: 1px solid #b81111;
+  color: white;
+  padding: 5px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 300;
+  font-size: 1em;
+  cursor: pointer;
+`
 class InputProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      startDate: moment(),
-      name: '',
-      lastname: '',
-      gender: 'Select your gender',
+      birthDay: moment(),
+      name: 'Na',
+      lastname: 'Na',
+      oldGender: 'Select your gender',
       country: 'Select you country',
+      status: '',
+      loading: false,
+      gender: '',
     }
     this.toggleCalendar = this.toggleCalendar.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.dataProfile = this.dataProfile.bind(this)
+    this.onChangeName = this.onChangeName.bind(this)
+    this.onChangeLastName = this.onChangeLastName.bind(this)
+    this.onChangeGender = this.onChangeGender.bind(this)
+    this.onChangeCountry = this.onChangeCountry.bind(this)
+    this.sumbitProfile = this.sumbitProfile.bind(this)
   }
+
   toggleCalendar(event) {
     event && event.preventDefault()
     this.setState({ isOpen: !this.state.isOpen })
   }
+
   handleChange(date) {
     this.setState({
-      startDate: date,
+      birthDay: date,
     })
     this.toggleCalendar()
   }
+
   componentDidMount() {
     {
       this.dataProfile()
     }
   }
+
   async dataProfile() {
     const { status, data } = await api.get(
       `${api.SERVER}/profile?token=${this.props.auth.token}`
     )
     console.log('dataaaa', data)
-    if (data[0].name != 'Undefined') {
+    if (data[0].name != 'undefined') {
       this.setState({ name: data[0].name })
     }
-    if (data[0].lastname != 'Undefined') {
+    if (data[0].lastname != 'undefined') {
       this.setState({ lastname: data[0].lastname })
     }
-    if (data[0].country != 'Undefined') {
-      this.setState({ country: data[0].country })
+    if (data[0].date_birth != undefined) {
+      console.log('test', data[0].date_birth)
+      const birthDate = moment(new Date(data[0].date_birth))
+      console.log('birthDate', birthDate)
+      this.setState({ birthDay: birthDate })
     }
-    if (data[0].gender != 'Undefined') {
+    if (data[0].gender != 'undefined') {
+      this.setState({ oldGender: data[0].gender })
       this.setState({ gender: data[0].gender })
     }
     //this.setState({ email: data[0].email })
   }
+
+  onChangeName(event) {
+    this.setState({
+      name: event.target.value,
+    })
+  }
+
+  onChangeLastName(event) {
+    this.setState({
+      lastname: event.target.value,
+    })
+  }
+
+  onChangeGender(event) {
+    this.setState({
+      gender: event.target.value,
+    })
+  }
+
+  onChangeCountry(event) {
+    this.setState({
+      country: event.target.value,
+    })
+  }
+
+  async sumbitProfile() {
+    console.log('numberone', this.state.birthDay)
+    this.setState({ loading: true })
+    const { status, data } = await api.post(
+      `${api.SERVER}/update-user?token=${this.props.auth.token}`,
+      this.state
+    )
+    if (status.code == 200) {
+      this.setState({ status: 'Successful to update profile' })
+    }
+    this.setState({ loading: false })
+    console.log('status', status)
+  }
+
   render() {
+    // console.log('startDate', this.state.startDate.format('YYYY-MM-DD HH:mm:ss'))
+    // let today = new Date(moment().format('YYYY-MM-DD HH:mm:ss'))
+    // console.log('today', today)
+    let genderDiv = ''
+    if (this.state.oldGender == 'male') {
+      genderDiv = (
+        <Gender onChange={this.onChangeGender}>
+          <option value="male">male</option>
+          <option value="female">female</option>
+        </Gender>
+      )
+    } else {
+      genderDiv = (
+        <Gender onChange={this.onChangeGender}>
+          <option value="female">female</option>
+          <option value="male">male</option>
+        </Gender>
+      )
+    }
     return (
       <Box w={12 / 12}>
         <Box w={12 / 12}>
@@ -123,7 +223,10 @@ class InputProfile extends React.Component {
                   <Text2>Name</Text2>
                 </Box>
                 <Box w={10 / 12}>
-                  <InputEmail value={this.state.name} />
+                  <InputEmail
+                    value={this.state.name}
+                    onChange={this.onChangeName}
+                  />
                 </Box>
               </Flex>
               <Flex>
@@ -131,7 +234,10 @@ class InputProfile extends React.Component {
                   <Text2>Lastname</Text2>
                 </Box>
                 <Box w={10 / 12}>
-                  <InputEmail value={this.state.lastname} />
+                  <InputEmail
+                    value={this.state.lastname}
+                    onChange={this.onChangeLastName}
+                  />
                 </Box>
               </Flex>
               <Flex>
@@ -140,34 +246,23 @@ class InputProfile extends React.Component {
                 </Box>
                 <Box w={10 / 12}>
                   <Flex>
-                    <Gender>
-                      <option value="Select your gender">
-                        {this.state.gender}
-                      </option>
-                      <option value="Select your gender">male</option>
-                      <option value="Select your gender">female</option>
-                    </Gender>
+                    {genderDiv}
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <Text2>Birthday</Text2>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <Age>
-                      <option value="Select your Month">Day</option>
-                    </Age>&nbsp;
-                    <Age>
-                      <option value="Select your Month">Month</option>
-                    </Age>&nbsp;
-                    <Age>
-                      <option value="Select your Month">Year</option>
-                    </Age>
-                    {/* <DatePicker
-                      selected={this.state.startDate}
+                    <DatePicker
+                      //selected={this.state.startDate}
+                      //onChange={this.handleChange}
+                      selected={this.state.birthDay}
                       onChange={this.handleChange}
                       showMonthDropdown
                       showYearDropdown
-                      inline
-                      dateFormat="DD/MM/YYYY"
                       dropdownMode="select"
-                    /> */}
+                      dateFormat="DD/MM/YYYY"
+                    />
+                    <style jsx global>
+                      {datepickerStyled}
+                    </style>
                   </Flex>
                 </Box>
               </Flex>
@@ -176,19 +271,33 @@ class InputProfile extends React.Component {
                   <Text2>Country</Text2>
                 </Box>
                 <Box w={10 / 12}>
-                  <Country>
-                    <option value="Select you country">
-                      {this.state.country}
-                    </option>
-                    <option value="Select you country">
-                      Select you country2
-                    </option>
-                    <option value="Select you country">
-                      Select you country3
-                    </option>
+                  <Country onChange={this.onChangeCountry}>
+                    <option value="Thailand">Thailand</option>
+                    <option value="United States">United States</option>
+                    <option value="England">England</option>
+                    <option value="China">China</option>
+                    <option value="Other">Other</option>
                   </Country>
                 </Box>
               </Flex>
+              <Box w={12 / 12} pt="0.5em" pb="0.5em">
+                <center>
+                  <ButtonSubmit onClick={this.sumbitProfile}>
+                    <center>
+                      {this.state.loading ? <Spinner /> : 'Submit'}
+                    </center>
+                  </ButtonSubmit>
+                  {/* <ButtonSubmit onClick={this.sumbitProfile}>
+                  {' '}
+                  Submit{' '}
+                </ButtonSubmit> */}
+                </center>
+              </Box>
+              <Box w={12 / 12} pt="0.3em">
+                <center>
+                  <Text3>{this.state.status}</Text3>
+                </center>
+              </Box>
             </Box>
           </Flex>
         </Box>

@@ -78,7 +78,7 @@ const WrapperBoxProfileMargin = styled.div`
   margin-right: 1.2rem;
 `
 
-import { Welcome } from '../components/profile/Welcome'
+import Welcome from '../components/profile/Welcome'
 import UserProfile from '../components/profile/UserProfile'
 import InputProfile from '../components/profile/InputProfile'
 import { PurchaseHistory } from '../components/profile/PurchaseHistory'
@@ -98,6 +98,7 @@ class Profile extends React.Component {
       pathname: state,
     })
   }
+
   render() {
     let renderUI = <div />
     if (this.state.pathname == 'Profile') {
