@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 import { Flex, Provider, Box, Image, Text, Border } from 'rebass'
 import styled from 'styled-components'
 import FacebookLoginButton from './FacebookLoginButton'
@@ -111,6 +112,7 @@ class Login extends React.Component {
     })
     this.setState({ loading: false })
     if (status.code == 200) {
+      console.log('hissss')
       this.props.closeModal()
       Router.push(`/successForgotPass`)
     }
