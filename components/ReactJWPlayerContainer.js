@@ -10,6 +10,15 @@ const propTypes = {
   playerScript: PropTypes.string.isRequired,
 }
 
+const tokenUrl = (path, secret, timeout, domain) => {
+  if (timeout) {
+    expires = time() + timeout
+  } else {
+    expires = time() + 3600
+  }
+  signature = md5({ path }`:`)
+}
+
 class ReactJWPlayerContainer extends React.Component {
   constructor(props) {
     super(props)
