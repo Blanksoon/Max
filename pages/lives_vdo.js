@@ -121,6 +121,7 @@ class LiveVdo extends Component {
             <Container>
               <Flex>
                 <Box w={12 / 12} bg="white">
+                  {console.log(vods)}
                   <UpNext
                     name="THIS SHOW RELATED VIDEO"
                     vods={vods}
@@ -146,8 +147,9 @@ class LiveVdo extends Component {
 }
 const mapStateToProps = state => {
   const live = currentLiveSelector(state)
-  console.log('live', live)
+  //console.log('live', live)
   const vods = relatedVodsSelector(live.programName)(state)
+  //console.log('vods', vods)
   return { live, vods }
 }
 LiveVdo.getInitialProps = async ({ store, isServer, query, req }) => {
