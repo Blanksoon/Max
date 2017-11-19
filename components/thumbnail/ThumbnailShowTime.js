@@ -7,7 +7,7 @@ const Button = styled.button`
   background-color: ${color.white};
   border: 1px solid ${color.red};
   color: ${color.red};
-  padding: 12px 25px;
+  padding: 12px 50px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -49,7 +49,7 @@ const Setposition2 = styled.div`
 const ThumbnailShowTime = props => (
   <Provider>
     <Wrapper>
-      <Flex>
+      <Flex bg={color.white} pl="1em" pr="1em" pt="1em" pb="1em">
         <Box w={2 / 12}>
           <center>
             <Image w="80%" src={props.imglogo} />
@@ -63,7 +63,7 @@ const ThumbnailShowTime = props => (
         <Box w={6 / 12}>
           <Text1>{props.text1}</Text1>
           {props.textrb}
-          <Box pt="2.4rem" pl="1rem">
+          <Box pt="1rem" pl="1rem">
             <Button>
               <Textbutton>{props.text2}</Textbutton>
             </Button>

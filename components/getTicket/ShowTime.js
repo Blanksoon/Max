@@ -103,9 +103,9 @@ class ShowTime extends Component {
     return (
       <Provider>
         <Wrapper>
-          <Flex>
+          <Flex pl="1em" pr="1em" pb="3em">
             <Box w={12 / 12} pl="0rem">
-              <Flex pt="2rem" pb="2rem">
+              <Flex pt="2rem" pb="1rem">
                 <Box w={6 / 12} pt="1rem">
                   <Text1>GET TICKET</Text1>
                   <Text2>Please select your package.</Text2>
@@ -114,13 +114,13 @@ class ShowTime extends Component {
                   <Text8>PACKAGE.</Text8>
                 </Box>
               </Flex>
-              <Flex pb="2em">
-                <Box w={6 / 12}>
+              <Flex pb="1em">
+                <Box w={6 / 12} pr="0.5em">
                   <Flex bg={color.red} pb="1em">
                     <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="f-option" name="selector" />
                     </Box>
-                    <Box w={4 / 12} pt="2em" pl="2em">
+                    <Box w={4.25 / 12} pt="2em" pl="2em" pb="0px">
                       <label htmlFor="f-option">
                         <Image w="100%" src="static/img_VDO+LIVE.png" />
                       </label>
@@ -142,7 +142,7 @@ class ShowTime extends Component {
                     </Box>
                   </Flex>
                 </Box>
-                <Box w={6 / 12}>
+                <Box w={6 / 12} pl="0.5em">
                   <Flex bg={color.blue} pb="1em">
                     <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="f-option" name="selector" />
@@ -170,74 +170,69 @@ class ShowTime extends Component {
                   </Flex>
                 </Box>
               </Flex>
-              <Flex>
-                <Box w={5 / 12} />
-                <Box w={1 / 12}>
-                  <Image w="100%" src="static/ic_live.png" />
-                </Box>
-                <Box w={2 / 12} pt="1em">
-                  <Text7>$0.99</Text7>
-                </Box>
-              </Flex>
-              <Flex pt="1em">
-                <Box w={4 / 12} />
-                <Box w={4 / 12}>
-                  <center>
-                    <Text5>GET 1 TIME LIVE STREAMING</Text5>
-                    <Text6>
-                      Watch 1 time of specific show live streaming on any
-                      platfrom
-                    </Text6>
-                  </center>
-                </Box>
-              </Flex>
-              <Flex>
-                <Box w={6 / 12} pt="2em">
-                  <ThumbnailShowTime
-                    imglogo="/static/logo_max.png"
-                    img="/static/maxultimate-show.jpg"
-                    text1="MAX Ultimate Tournament & MAX World Champions 7 International"
-                    text2="07.20-10.00 pm."
-                    text3="SUN"
-                    text4="10 SEP"
-                  />
-                </Box>
-                <Box w={6 / 12} pt="2rem">
-                  <ThumbnailShowTime
-                    imglogo="/static/logo_battle.png"
-                    img="/static/thebattle-show.jpg"
-                    text1="The Battle Muay Thai"
-                    text2="06.10-08.00 pm."
-                    text3="FRI"
-                    text4="15 SEP"
-                    textrb={<br />}
-                  />
-                </Box>
-              </Flex>
-              <Flex>
-                <Box w={6 / 12} pt="2rem">
-                  <ThumbnailShowTime
-                    imglogo="/static/logo_fighter.png"
-                    img="/static/thairath-show.jpg"
-                    text1="Thairath Muay Thai Fighter"
-                    text2="02.00-04.00 pm."
-                    text3="SAT"
-                    text4="16 SEP"
-                    textrb={<br />}
-                  />
-                </Box>
-                <Box w={6 / 12} pt="2rem" pb="4rem">
-                  <ThumbnailShowTime
-                    imglogo="/static/logo_champion.png"
-                    img="/static/thechampion-show.jpg"
-                    text1="The Champion Muay Thai"
-                    text2="07.20-10.00 pm."
-                    text3="SAT"
-                    text4="16 SEP"
-                    textrb={<br />}
-                  />
-                </Box>
-              </Flex>
+              <Box bg={color.blue} pb="1em">
+                <Flex>
+                  <Box w={3 / 12} />
+                  <Box w={1 / 12} pt="1em">
+                    <Image w="100%" src="static/ic_live.png" />
+                  </Box>
+                  <Box w={5 / 12} pt="3em">
+                    <center>
+                      <Text5>GET 1 TIME LIVE STREAMING</Text5>
+                      <Text6>
+                        What 1 time of specilic show live streaming on any
+                        platfrom
+                      </Text6>
+                    </center>
+                  </Box>
+                </Flex>
+                <Flex pl="0.5em" pt="1em">
+                  <Text5>PLEASE SELECT THE LIVE</Text5>
+                </Flex>
+                <Flex pl="0.5em" pr="0.5em">
+                  <Box w={6 / 12} pr="0.5em" pt="1em">
+                    <ThumbnailShowTime
+                      imglogo="/static/logo_max.png"
+                      img="/static/maxultimate-show.jpg"
+                      text1="MAX Ultimate Tournament & MAX World Champions 7 International"
+                      text2="07.20-10.00 pm."
+                      text3="$0.99"
+                    />
+                  </Box>
+                  <Box w={6 / 12} pl="0.5em" pt="1rem">
+                    <ThumbnailShowTime
+                      imglogo="/static/logo_battle.png"
+                      img="/static/thebattle-show.jpg"
+                      text1="The Battle Muay Thai"
+                      text2="06.10-08.00 pm."
+                      text3="$0.99"
+                      textrb={<br />}
+                    />
+                  </Box>
+                </Flex>
+                <Flex pl="0.5em" pr="0.5em">
+                  <Box w={6 / 12} pr="0.5em" pt="1rem">
+                    <ThumbnailShowTime
+                      imglogo="/static/logo_fighter.png"
+                      img="/static/thairath-show.jpg"
+                      text1="Thairath Muay Thai Fighter"
+                      text2="02.00-04.00 pm."
+                      text3="$0.99"
+                      textrb={<br />}
+                    />
+                  </Box>
+                  <Box w={6 / 12} pl="0.5em" pt="1rem">
+                    <ThumbnailShowTime
+                      imglogo="/static/logo_champion.png"
+                      img="/static/thechampion-show.jpg"
+                      text1="The Champion Muay Thai"
+                      text2="07.20-10.00 pm."
+                      text3="$0.99"
+                      textrb={<br />}
+                    />
+                  </Box>
+                </Flex>
+              </Box>
             </Box>
           </Flex>
         </Wrapper>
