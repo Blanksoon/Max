@@ -120,7 +120,7 @@ class ShowTime extends Component {
                     <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="f-option" name="selector" />
                     </Box>
-                    <Box w={4 / 12} pt="2em" pl="2em">
+                    <Box w={4 / 12} pt="2em" pl="2em" pb='6px' >
                       <label htmlFor="f-option">
                         <Image w="100%" src="static/img_VDO+LIVE.png" />
                       </label>
