@@ -145,15 +145,15 @@ class ShowTime extends Component {
                 <Box w={6 / 12} pl="0.5em">
                   <Flex bg={color.blue} pb="1em">
                     <Box w={1 / 12} pt="4em" pl="1em">
-                      <Input type="radio" id="f-option" name="selector" />
+                      <Input type="radio" id="g-option" name="selector" />
                     </Box>
                     <Box w={4 / 12} pt="2em" pl="2em">
-                      <label htmlFor="f-option">
+                      <label htmlFor="g-option">
                         <Image w="100%" src="static/img_vodondemand@3x.png" />
                       </label>
                     </Box>
                     <Box w={7 / 12} pt="1em" pr="1em">
-                      <label htmlFor="f-option">
+                      <label htmlFor="g-option">
                         <center>
                           <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
                           <Text6>
@@ -173,10 +173,10 @@ class ShowTime extends Component {
               <Box bg={color.blue} pb="1em">
                 <Flex>
                   <Box w={3 / 12} />
-                  <Box w={1 / 12} pt="1em">
-                    <Image w="100%" src="static/ic_live.png" />
+                  <Box w={2 / 12} pt="1em">
+                    <Image w="100%" src="static/img_livestream@2x.png" />
                   </Box>
-                  <Box w={5 / 12} pt="3em">
+                  <Box w={5 / 12} pt="5em">
                     <center>
                       <Text5>GET 1 TIME LIVE STREAMING</Text5>
                       <Text6>
@@ -192,20 +192,24 @@ class ShowTime extends Component {
                 <Flex pl="0.5em" pr="0.5em">
                   <Box w={6 / 12} pr="0.5em" pt="1em">
                     <ThumbnailShowTime
+                      id="1"
                       imglogo="/static/logo_max.png"
                       img="/static/maxultimate-show.jpg"
-                      text1="MAX Ultimate Tournament & MAX World Champions 7 International"
+                      text1="MAX Ultimate Tournament & MAX World Champions 7" // International"
                       text2="07.20-10.00 pm."
                       text3="$0.99"
+                      text4="SUN 10 SEP"
                     />
                   </Box>
                   <Box w={6 / 12} pl="0.5em" pt="1rem">
                     <ThumbnailShowTime
+                      id="2"
                       imglogo="/static/logo_battle.png"
                       img="/static/thebattle-show.jpg"
                       text1="The Battle Muay Thai"
                       text2="06.10-08.00 pm."
                       text3="$0.99"
+                      text4="FRI 15 SEP"
                       textrb={<br />}
                     />
                   </Box>
@@ -213,21 +217,25 @@ class ShowTime extends Component {
                 <Flex pl="0.5em" pr="0.5em">
                   <Box w={6 / 12} pr="0.5em" pt="1rem">
                     <ThumbnailShowTime
+                      id="3"
                       imglogo="/static/logo_fighter.png"
                       img="/static/thairath-show.jpg"
                       text1="Thairath Muay Thai Fighter"
                       text2="02.00-04.00 pm."
                       text3="$0.99"
+                      text4="SAT 16 SEP"
                       textrb={<br />}
                     />
                   </Box>
                   <Box w={6 / 12} pl="0.5em" pt="1rem">
                     <ThumbnailShowTime
+                      id="4"
                       imglogo="/static/logo_champion.png"
                       img="/static/thechampion-show.jpg"
                       text1="The Champion Muay Thai"
                       text2="07.20-10.00 pm."
                       text3="$0.99"
+                      text4="SAT 16 SEP"
                       textrb={<br />}
                     />
                   </Box>
