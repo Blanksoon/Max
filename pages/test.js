@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import withRedux from 'next-redux-wrapper'
 import { Flex, Provider, Box, Text, overlay, Head } from 'rebass'
+import { initStore } from '../redux/store'
+import { fetchVods } from '../redux/modules/vod'
+import { fetchLives } from '../redux/modules/live'
 import Container from '../components/commons/Container'
 import Modal from '../components/modal/Modal'
 import Login from '../components/login/Login'
@@ -10,6 +14,7 @@ import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import ReactJWPlayer from '../components/ReactJWPlayerContainer'
 import FacebookProvider, { Comments } from 'react-facebook'
+import Paypal from '../components/payment/Paypal'
 
 // CSS Modules, react-datepicker-cssmodules.css
 //import { stylesheet } from './datepicker-cssmodules.css'
@@ -35,10 +40,9 @@ class Example extends React.Component {
     var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26))
     var uniqid = randLetter + Date.now()
     return (
-      //<Head>
-      //<style dangerouslySetInnerHTML={{ __html: stylesheet }} />
       <div>
-        <ReactJWPlayer
+        <Paypal />
+        {/* <ReactJWPlayer
           playerId={uniqid}
           playerScript="https://content.jwplatform.com/libraries/uOQEiWJS.js"
           //playlist="https://link-to-my-playlist.json"
@@ -53,11 +57,12 @@ class Example extends React.Component {
         </FacebookProvider>
         <style jsx global>
           {datepickerStyled}
-        </style>
+        </style> */}
       </div>
-      //</Head>
     )
   }
 }
 
-export default Example
+export default withRedux(initStore, null, {
+  fetchVods,
+})(Example)

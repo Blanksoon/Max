@@ -3,6 +3,7 @@ import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 
 const UpNext = ({ name, vods, progname }) => {
   const relateVods = vods.filter(vod => vod.programName_en == progname)
+  console.log(relateVods[0].thumbnailUrl)
   return (
     <div>
       <Box pb="5%" ml="1rem" mr="1rem">

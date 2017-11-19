@@ -126,7 +126,7 @@ class Verify extends React.Component {
       })
       this.setState({ loading: false })
       if (status.code == 200) {
-        this.props.url.push(`/successForgotPass`)
+        this.props.url.push(`/successChangePass`)
       }
     }
     // try {
