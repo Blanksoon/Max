@@ -20,6 +20,7 @@ export default class NavbarProfile extends Component {
       navItems: [
         { label: 'Profile', active: false },
         { label: 'Purchase history', active: false },
+        { label: 'Subscribe', active: false },
       ],
     }
     this.setActiveUrl = this.setActiveUrl.bind(this)
