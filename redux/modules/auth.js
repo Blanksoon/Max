@@ -37,6 +37,7 @@ export const fbLogin = providerData => async dispatch => {
       `${api.SERVER}/fb-login`,
       providerData
     )
+    console.log('status', status)
     if (data.token == 'undefined' || data.token == undefined) {
       dispatch({
         type: LOGOUT,

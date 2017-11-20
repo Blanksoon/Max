@@ -2,6 +2,7 @@ import { Box, Image, Text, Flex } from 'rebass'
 import styled from 'styled-components'
 import color from '../commons/vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
+import moment from 'moment'
 
 const Text3 = styled.div`
   color: ${color.Black};
@@ -24,29 +25,30 @@ const Button = styled.button`
   font-family: Helvetica, Arial, sans-serif;
   cursor: pointer;
 `
-export const ListPurchase = () => {
+export const ListPurchase = purchaseList => {
+  const purchaseDate = moment(purchaseList.purchase.purchaseDate).format(
+    'D MMM YYYY'
+  )
   return (
     <Box w={12 / 12}>
       <Flex className="List-Purchase" pb="1rem">
         <Box w={2 / 12}>
-          <Text3>Aug 10 2017</Text3>
+          <Text3>{purchaseDate}</Text3>
         </Box>
         <Box w={2 / 12}>
-          <Text3>1549925700</Text3>
+          <Text3>{purchaseList.purchase.orderId}</Text3>
         </Box>
         <Box w={4 / 12}>
           <Text3>
-            <b>Live</b>: The Battle Muay-thai
+            <b>Live</b>: {purchaseList.purchase.productName}
           </Text3>
         </Box>
         <Box w={3 / 12}>
           <Flex className="Status-purchase">
-            <Text3>Expired</Text3>
+            <Text3>{purchaseList.purchase.status}</Text3>
           </Flex>
         </Box>
-        <Box w={1 / 12}>
-          <Button>Recipt</Button>
-        </Box>
+        <Box w={1 / 12}>{/* <Button>Receipt</Button> */}</Box>
       </Flex>
     </Box>
   )
