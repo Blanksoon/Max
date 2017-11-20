@@ -9,6 +9,7 @@ import ChangePassStep1 from '../login/ChangePassStep1'
 import ChangePassStep2 from '../login/ChangePassStep2'
 import Player from '../videoPlayer/Player'
 import PurchaseItem from '../getTicket/PurchaseItem'
+import SuccessPurchase from '../getTicket/SuccessPurchase'
 
 const Text1 = styled.div`
   padding-left: 1rem;
@@ -21,7 +22,7 @@ const Text1 = styled.div`
 const Wrapper = styled.div`
   color: blue;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
   position: fixed;
@@ -78,7 +79,7 @@ const WrapperChangePass = styled.div`
 const WrapperSuccessPurchase = styled.div`
   position: relative;
   width: 650px;
-  height: 250px;
+  height: 300px;
   background: #fff;
   z-index: 240;
 `
@@ -106,6 +107,7 @@ export default class Modal extends Component {
     toggleModalAction: PropTypes.func,
     modalURL: PropTypes.string,
     closeModal: PropTypes.func,
+    live: PropTypes.object,
   }
   static defaultProps = {
     modalType: 2,
@@ -130,7 +132,7 @@ export default class Modal extends Component {
   }
 
   closeModal = () => {
-    console.log('props', this.props)
+    // console.log('props', this.props)
     this.props.closeModal()
   }
   render() {
@@ -207,12 +209,13 @@ export default class Modal extends Component {
         </WrapperRegister>
       )
     } else if (this.props.modalType === 8) {
+      // console.log('1111111112',this.props)
       //Forgot password
       renderUI = (
         <WrapperPurchaseItem onClick={e => this.handleOnClick(e)}>
           <PurchaseItem
             closeModal={this.props.closeModal}
-            live={this.props.live}
+            live={this.props.modalURL}
           />
           <WrapperCancle onClick={true ? this.props.closeModal : ''}>
             <Text1>Cancle</Text1>

@@ -2,6 +2,9 @@ import React from 'react'
 import { Flex, Provider, Box, Image, Text } from 'rebass'
 import styled from 'styled-components'
 import color from '../commons/vars'
+import { closeModal } from '../../redux/modules/modal'
+import { connect } from 'react-redux'
+import * as api from '../../api'
 
 const Button = styled.button`
   background-color: ${color.white};
@@ -95,59 +98,97 @@ const Input = styled.input`
   width: 20px;
   height: 20px;
 `
-const ThumbnailShowTime = props => (
-  <Provider>
-    <Wrapper>
-      <Flex pl="0.5em" pr="0.5em" pt="1em" pb="1em">
-        <Box w={0.4 / 12} />
-        <Box w={2 / 12} mr="5px">
-          <br />
-          <center>
-            <Image w="100%" src={props.imglogo} />
-            <Text3>${props.text3}</Text3>
-          </center>
-        </Box>
-        <Box w={4 / 12}>
-          <Text2>{props.text4}</Text2>
-          <Image w="100%" src={props.img} />
-        </Box>
-        <Box w={5 / 12}>
-          <Flex>
-            <Box w={2 / 12} ml="12px">
+class ThumbnailShowTime extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      live: '',
+    }
+    this.dataProfile = this.dataProfile.bind(this)
+  }
+  componentDidMount() {
+    {
+      this.dataProfile()
+    }
+  }
+  async dataProfile() {
+    const { status, data } = await api.get(
+      `${api.SERVER}/product?token=${this.props.auth.token}`
+    )
+    this.setState({ live: data.lives })
+    console.log('thummmmmmmmmmmmm',this.state.live[0].price)
+  }
+  render(){
+    return(
+      <Provider>
+        <Wrapper>
+          <Flex pl="0.5em" pr="0.5em" pt="1em" pb="1em">
+            <Box w={0.4 / 12} />
+            <Box w={2 / 12} mr="5px">
               <br />
-              <Image w="100%" src="static/ic_liveblack@2x.png" />
+              <center>
+                <Image w="100%" src={this.props.imglogo} />
+                <Text3>{this.props.text3}</Text3>
+              </center>
             </Box>
-            <Box w={10 / 12}>
-              <Text1>{props.text1}</Text1>
-              {props.textrb}
+            <Box w={4 / 12}>
+              <Text2>{this.props.text4}</Text2>
+              <Image w="100%" src={this.props.img} />
+            </Box>
+            <Box w={5 / 12}>
+              <Flex>
+                <Box w={2 / 12} ml="12px">
+                  <br />
+                  <Image w="100%" src="static/ic_liveblack@2x.png" />
+                </Box>
+                <Box w={10 / 12}>
+                  <Text1>{this.props.text1}</Text1>
+                  {this.props.textrb}
+                </Box>
+              </Flex>
             </Box>
           </Flex>
-        </Box>
-      </Flex>
-      <WrapperButton>
-        <Button>
-          <Textbutton>
-            {props.text5}-{props.text2} pm
-          </Textbutton>
-        </Button>
-      </WrapperButton>
-      <WrapperHover>
-        <Flex>
-          <Box w={2 / 12} pt="2.5em" ml="5em">
-            <Image w="100%" src="static/ic_you-bought.png" />
-          </Box>
-          <Box w={10 / 12}>
-            <Box pl="2.5em" pt="2em">
-              <Text4>YOU BOUGHT</Text4>
-            </Box>
-            <Box pl="2em" pt="0.5em">
-              <ButtonWatch>WATCH</ButtonWatch>
-            </Box>
-          </Box>
-        </Flex>
-      </WrapperHover>
-    </Wrapper>
-  </Provider>
-)
+          <WrapperButton>
+            <Button>
+              <Textbutton>
+                {this.props.text5}-{this.props.text2}
+              </Textbutton>
+            </Button>
+          </WrapperButton>
+          <WrapperHover>
+            <Flex>
+              <Box w={2 / 12} pt="2.5em" ml="5em">
+                <Image w="100%" src="static/ic_you-bought.png" />
+              </Box>
+              <Box w={10 / 12}>
+                <Box pl="2.5em" pt="2em">
+                  <Text4>YOU BOUGHT</Text4>
+                </Box>
+                <Box pl="2em" pt="0.5em">
+                  <ButtonWatch>WATCH</ButtonWatch>
+                </Box>
+              </Box>
+            </Flex>
+          </WrapperHover>
+        </Wrapper>
+      </Provider>
+    )
+  }
+}
 
-export default ThumbnailShowTime
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+  }
+}
+
+// Login.getInitialProps = async ({ store, isServer, query, req }) => {
+//   let state = store.getState()
+//   const token = state.auth.token
+//   await Promise.all([livePromise, vodPromise])
+//   state = store.getState()
+//   const props = mapStateToProps(state)
+//   return props
+// }
+
+export default connect(mapStateToProps, { closeModal })(ThumbnailShowTime)

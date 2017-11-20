@@ -64,10 +64,10 @@ export const purchaseItemModal = modalType => {
     payload: { modalType },
   }
 }
-export const liveProduct = live => {
+export const liveProduct = modalURL => {
   return {
     type: LIVE_PRODUCT,
-    payload: { live },
+    URL: { modalURL },
   }
 }
 
@@ -136,9 +136,10 @@ const modalReducer = (state = initialState, action) => {
       }
     }
     case LIVE_PRODUCT: {
+      // console.log('111111111111',action.payload.live)
       return {
         ...state,
-        live: action.payload.live,
+        modalURL: action.URL.modalURL,
       }
     }
     default: {

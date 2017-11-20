@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import vars from '../commons/vars'
 import Spinner from '../commons/Spinner'
 import * as api from '../../api'
+import fetch from 'isomorphic-fetch'
 
 const A = styled.a`TEXT-DECORATION: none;`
 const WrapperLogin = styled.div`
@@ -76,7 +77,7 @@ const Input = styled.input`
 `
 const WrapperTop = styled.div`background-color: ${color.blue};`
 const WrapperDown = styled.div`
-  background-color: ${color.lightBlue};
+  background-color: #094992;
   height: 100%;
 `
 const Wrapper = styled.div`
@@ -90,6 +91,31 @@ const WrapperPrice = styled.div`
   top: 51%;
 `
 class PurchaseItem extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+    this.purchase = this.purchase.bind(this)
+  }
+
+  async purchase() {
+    console.log(this.props.auth.token, this.props.live.id)
+    const response = await fetch(
+      `${api.SERVER}/ppcheckout/` +
+        this.props.live.id +
+        '?token=' +
+        this.props.auth.token,
+      {
+        method: 'POST',
+        headers: {
+          //Accept: 'application/json',
+          // 'Content-Type': 'application/json',
+          // 'Access-Control-Allow-Origin': '*',
+        },
+        mode: 'no-cors',
+      }
+    )
+    console.log('response', response)
+  }
   render() {
     console.log('sxxxxx', this.props)
     return (
@@ -106,19 +132,17 @@ class PurchaseItem extends React.Component {
           </Box>
           <Flex pr="3em" pl="3em" pt="1em">
             <Box w={6 / 12} pr="0.5em">
-              <Image width="100%" src="../../static/maxultimate-show.jpg" />
+              <Image width="100%" src={this.props.live.bannerUrl} />
             </Box>
             <Box w={6 / 12} pl="0.5em">
-              <Text3>
-                MAX Ultimate Tournament & MAX World Champions 7 International
-              </Text3>
+              <Text3>{this.props.live.programName}</Text3>
               <Flex pt="0.5em">
-                <Box w={6 / 12}>
-                  <Date>Sep 10th, 2017</Date>
+                <Box w={12 / 12}>
+                  <Date>{this.props.live.liveDateStr_en}</Date>
                 </Box>
-                <Box w={6 / 12}>
+                {/* <Box w={6 / 12}>
                   <Time>07.20-09.50 pm.</Time>
-                </Box>
+                </Box> */}
               </Flex>
               <WrapperPrice>
                 <Text3>$0.99</Text3>
@@ -143,7 +167,7 @@ class PurchaseItem extends React.Component {
           </Box>
           <Flex pl="3em" pr="3em" pt="1em">
             <Box w={6 / 12} pr="0.5em">
-              <Button>
+              <Button on onClick={this.purchase}>
                 <Image width="100%" src="../../static/btn_paypal.png" />
               </Button>
             </Box>

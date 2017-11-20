@@ -3,206 +3,149 @@ import Link from 'next/link'
 import Router from 'next/router'
 import { Flex, Provider, Box, Image, Text, Border } from 'rebass'
 import styled from 'styled-components'
-import FacebookLoginButton from './FacebookLoginButton'
 import color from '../commons/vars'
 import ModalRegister from '../../containers/ModalRegister'
 import { forgotPassword } from '../../redux/modules/auth'
 import { fbLogin } from '../../redux/modules/auth'
 import { closeModal } from '../../redux/modules/modal'
 import { connect } from 'react-redux'
-import vars from '../commons/vars'
 import Spinner from '../commons/Spinner'
 import * as api from '../../api'
 
 const A = styled.a`TEXT-DECORATION: none;`
-const Wrapper = styled.div`position: absolute;`
 const WrapperLogin = styled.div`
   padding-right: 30px;
   border-right: 1px solid #a9a9a9;
 `
 const Text1 = styled.div`
-  color: ${color.red};
+  color: ${color.lightBlue};
   font-weight: 700;
   font-size: 1.5em;
   font-family: Helvetica, Arial, sans-serif;
 `
-const Text3 = styled.div`
-  color: ${color.black};
-  font-weight: 200;
-  font-size: 1em;
-  font-family: Helvetica, Arial, sans-serif;
-`
-const ButtonLeft = styled.button`
-  font-weight: bold;
-  background-color: #b81111;
-  border: none;
-  color: white;
-  padding: 10px 50px;
-  text-align: center;
-  display: inline-block;
-  font-size: 1em;
-`
-const ButtonFace = styled.button`
-  background-color: #3a559f;
-  border: none;
-  color: white;
-  padding: 10px 30px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 1em;
-`
-const Button = styled.button`
-  bottom: 2%;
-  background-color: ${vars.red};
-  border: 1px solid ${vars.red};
-  color: white;
-  cursor: pointer;
-  padding: 10px 40px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: 600;
-  font-size: 1em;
-  &:disabled {
-    background-color: ${vars.lightRed};
-    border: 1px solid ${vars.lightRed};
-  }
-`
-const Input = styled.input`
-  width: 100%;
-  padding: 6px 15px;
-  margin: 8px 0;
-  box-sizing: border-box;
-`
 const Text2 = styled.div`
-  color: ${color.red};
+  color: ${color.white};
   font-weight: 100;
-  font-size: 11px;
+  font-size: 1em;
   font-family: Helvetica, Arial, sans-serif;
   padding: 0;
-  text-align: center;
 `
-class SuccessPurchase extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      status: '',
-      data: {
-        email: '',
-      },
-      loading: false,
-    }
-    this.forgotPassword = this.forgotPassword.bind(this)
-    this.handleOnChangeId = this.handleOnChangeId.bind(this)
-  }
-
-  async forgotPassword() {
-    console.log('data', this.state.data)
-    const providerData = {
-      email: this.state.data.email,
-    }
-    this.setState({ loading: true })
-    const { data, status } = await api.post(
-      `${api.SERVER}/forgot-password`,
-      providerData
-    )
-    this.setState({
-      status: status.message,
-    })
-    this.setState({ loading: false })
-    if (status.code == 200) {
-      console.log('hissss')
-      this.props.closeModal()
-      Router.push(`/successForgotPass`)
-    }
-  }
-
-  handleOnChangeId(event) {
-    this.setState({
-      data: {
-        ...this.state.data,
-        email: event.target.value,
-      },
-    })
-  }
-
+const Text3 = styled.div`
+  color: ${color.white};
+  font-weight: 700;
+  font-size: 1.5em;
+  font-family: Helvetica, Arial, sans-serif;
+`
+const Date = styled.div`
+  color: ${color.yellow};
+  font-weight: 700;
+  font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: left;
+`
+const Time = styled.div`
+  color: ${color.yellow};
+  font-weight: 700;
+  font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: right;
+`
+const Button = styled.button`
+  width: 100px;
+  background-color: ${color.red};
+  color: ${color.white};
+  cursor: pointer;
+  padding: 13px 10px;
+  border: 1px solid ${color.red};
+  display: inline-block;
+  font-family: Helvetica, Arial, sans-serif;
+  // &:disabled {
+  //   background-color: ${color.lightRed};
+  //   border: 1px solid ${color.lightRed};
+  // }
+`
+const Input = styled.input`
+  background-color: #fffbbe;
+  width: 100%;
+  padding: 5px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  //border: 1px solid #000;
+  //border-radius: 4px;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+`
+const WrapperTop = styled.div`background-color: ${color.blue};`
+const WrapperDown = styled.div`
+  background-color: #094992;
+  height: 100%;
+`
+const Wrapper = styled.div`
+  position: relative;
+  height: 100%;
+  background-size: cover;
+  background-image: url('/static/FT6A6483.jpg');
+`
+const WrapperPrice = styled.div`
+  position: absolute;
+  top: 51%;
+`
+class PurchaseItem extends React.Component {
   render() {
-    //console.log('props', this.props)
     return (
-      <Provider>
-        <div>
-          <Box>
-            <Box>
-              <Image width="100%" src="../../static/img_login.png" />
+      <Wrapper>
+        <WrapperTop>
+          <Flex pl="3em" pr="3em" pt="1em" pb="1em">
+            <Box w={2/12} >
+              <Image width="100%" src="../../static/ic_sucessful.png" />
             </Box>
-            <Box pl="3rem">
-              <Text1>Forgot pasword</Text1>
+            <Box w={10/12} pt='1.5em' pl='2em' >
+              <Text1>Thank you for yout purchase</Text1>
+              <Text2>You will receive an email confirmation shortly.</Text2>
             </Box>
-            <Flex pt="0.5rem" pl="3rem" pr="3rem">
-              <Box w={5 / 12}>
-                <WrapperLogin>
-                  <Text3>Please enter your email for change password</Text3>
-                  <form>
-                    <Box w={1}>
-                      <Input
-                        placeholder="Email"
-                        onChange={this.handleOnChangeId}
-                      />
-                    </Box>
-                    <Text2>{this.state.status} </Text2>
-                    <Flex>
-                      <Box w={6.4 / 12} />
-                      <Box pt="0.5rem">
-                        <Button
-                          style={{ width: '148px' }}
-                          onClick={this.forgotPassword}
-                          disabled={this.state.loading}
-                        >
-                          {this.state.loading ? <Spinner /> : 'Submit'}
-                        </Button>{' '}
-                      </Box>
-                    </Flex>
-                  </form>
-                </WrapperLogin>
-              </Box>
-              <Box w={7 / 12}>
-                <center>
-                  <FacebookLoginButton />
-                  <Box pt="1rem">
-                    <a href="#">
-                      <ModalRegister modalType={4} text="Register with email" />
-                    </a>
-                  </Box>
-                  <Box pt="1rem">
-                    <a href="#">
-                      <ModalRegister
-                        modalType={3}
-                        text="Already have an account, log in"
-                      />
-                    </a>
-                  </Box>
-                </center>
-              </Box>
-            </Flex>
+          </Flex>
+        </WrapperTop>
+        <WrapperDown>
+          <Box pl="3em" pr="3em" pt="1em">
+            <Text2>Your order ID : 251485039</Text2>
           </Box>
-        </div>
-        <style jsx>
-          {`
-            a:link {
-              COLOR: #660000;
-            }
-            a:visited {
-              COLOR: #660000;
-              TEXT-DECORATION: none;
-            }
-            a:hover {
-              COLOR: #ff0000;
-              //TEXT-DECORATION: none;
-            }
-          `}
-        </style>
-      </Provider>
+          <Flex pr="3em" pl="3em" pt="1em">
+            <Box w={6 / 12} pr="0.5em">
+              <Image width="100%" src="../../static/maxultimate-show.jpg" />
+            </Box>
+            <Box w={6 / 12} pl="0.5em">
+              <Text3>
+                MAX Ultimate Tournament & MAX World Champions 7 International
+              </Text3>
+              <Flex pt="0.5em">
+                <Box w={6 / 12}>
+                  <Date>Sep 10th, 2017</Date>
+                </Box>
+                <Box w={6 / 12}>
+                  <Time>07.20-09.50 pm.</Time>
+                </Box>
+              </Flex>
+            </Box>
+          </Flex>
+          <Flex pt='1em' >
+            <Box w={7/12} />
+            <Box w={5/12} >
+              <Flex>
+                <Box w={4/12} pt='0.7em' >
+                  <Text2>
+                    Later
+                  </Text2>
+                </Box>
+                <Box w={8/12} >
+                  <Button>
+                    Watch new!
+                  </Button>
+                </Box>
+              </Flex>
+            </Box>
+          </Flex>
+        </WrapperDown>
+      </Wrapper>
     )
   }
 }
@@ -223,5 +166,5 @@ const mapStateToProps = state => {
 // }
 
 export default connect(mapStateToProps, { forgotPassword, closeModal })(
-  SuccessPurchase
+  PurchaseItem
 )

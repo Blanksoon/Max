@@ -144,25 +144,6 @@ const Input = styled.input`
 `
 const Wrapper = styled.div`background: #fff;`
 class ShowTime extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      live: [],
-    }
-    this.fetchProduct = this.fetchProduct.bind(this)
-  }
-  async componentDidMount() {
-    {
-      await this.fetchProduct()
-    }
-  }
-  async fetchProduct() {
-    const { status, data } = await api.get(
-      `${api.SERVER}/product?token=${this.props.auth.token}`
-    )
-    console.log('data', data)
-    this.setState({ live: data.lives.data })
-  }
   render() {
     // if(this.state.live != undefined){
 
@@ -302,10 +283,11 @@ class ShowTime extends React.Component {
                     live={this.props.product.products.lives[0]}
                     logo="/static/logo_max.png"
                     img="/static/maxultimate-show.jpg"
-                    text1="MAX Ultimate Tournament & MAX World Champions 7"
-                    text2="07.20-10.00 pm."
+                    text1="MAX Ultimate Tournament & MAX World Champions 7" // International"
+                    text2="10.00 pm."
                     text3="$0.99"
                     text4="SUN 10 SEP"
+                    text5="07.20"
                   />
                 </Box>
                 <Box w={6 / 12} pl="0.5em" pt="1rem">
@@ -315,9 +297,10 @@ class ShowTime extends React.Component {
                     logo="/static/logo_battle.png"
                     img="/static/thebattle-show.jpg"
                     text1="The Battle Muay Thai"
-                    text2="06.10-08.00 pm."
+                    text2="08.00 pm."
                     text3="$0.99"
                     text4="FRI 15 SEP"
+                    text5="06.10"
                   />
                 </Box>
               </Flex>
@@ -329,9 +312,10 @@ class ShowTime extends React.Component {
                     logo="/static/logo_fighter.png"
                     img="/static/thairath-show.jpg"
                     text1="Thairath Muay Thai Fighter"
-                    text2="02.00-04.00 pm."
+                    text2="04.00 pm."
                     text3="$0.99"
                     text4="SAT 16 SEP"
+                    text5="02.00"
                   />
                 </Box>
                 <Box w={6 / 12} pl="0.5em" pt="1rem">
@@ -341,9 +325,10 @@ class ShowTime extends React.Component {
                     logo="/static/logo_champion.png"
                     img="/static/thechampion-show.jpg"
                     text1="The Champion Muay Thai"
-                    text2="07.20-10.00 pm."
+                    text2="10.00 pm."
                     text3="$0.99"
                     text4="SAT 16 SEP"
+                    text5="07.20"
                   />
                 </Box>
               </Flex>
