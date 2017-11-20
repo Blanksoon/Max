@@ -117,54 +117,54 @@ class ShowTime extends Component {
               <Flex pb="1em">
                 <Box w={6 / 12} pr="0.5em">
                   <Flex bg={color.red} pb="1em">
-                    <Box w={1 / 12} pt="4em" pl="1em">
+                    {/* <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="f-option" name="selector" />
-                    </Box>
+                    </Box> */}
                     <Box w={4.25 / 12} pt="2em" pl="2em" pb="0px">
-                      <label htmlFor="f-option">
-                        <Image w="100%" src="static/img_VDO+LIVE.png" />
-                      </label>
+                      {/* <label htmlFor="f-option"> */}
+                      <Image w="100%" src="static/img_VDO+LIVE.png" />
+                      {/* </label> */}
                     </Box>
                     <Box w={7 / 12} pt="1em" pr="1em">
-                      <label htmlFor="f-option">
-                        <center>
-                          <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
-                          <Text6>
-                            Enjoy all video and live streamingthru all
-                          </Text6>
-                          <Text6>
-                            the month, so you never missany extreme shot
-                          </Text6>
-                          <Text3>$29.99</Text3>
-                        </center>
-                      </label>
+                      {/* <label htmlFor="f-option"> */}
+                      <center>
+                        <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
+                        <Text6>
+                          Enjoy all video and live streamingthru all
+                        </Text6>
+                        <Text6>
+                          the month, so you never missany extreme shot
+                        </Text6>
+                        <Text3>$29.99</Text3>
+                      </center>
+                      {/* </label> */}
                       <Text4>1MONTH</Text4>
                     </Box>
                   </Flex>
                 </Box>
                 <Box w={6 / 12} pl="0.5em">
                   <Flex bg={color.blue} pb="1em">
-                    <Box w={1 / 12} pt="4em" pl="1em">
+                    {/* <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="g-option" name="selector" />
-                    </Box>
+                    </Box> */}
                     <Box w={4 / 12} pt="2em" pl="2em">
-                      <label htmlFor="g-option">
-                        <Image w="100%" src="static/img_vodondemand@3x.png" />
-                      </label>
+                      {/* <label htmlFor="g-option"> */}
+                      <Image w="100%" src="static/img_vodondemand@3x.png" />
+                      {/* </label> */}
                     </Box>
                     <Box w={7 / 12} pt="1em" pr="1em">
-                      <label htmlFor="g-option">
-                        <center>
-                          <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
-                          <Text6>
-                            Enjoy all video and live streamingthru all
-                          </Text6>
-                          <Text6>
-                            the month, so you never missany extreme shot
-                          </Text6>
-                          <Text3>$29.99</Text3>
-                        </center>
-                      </label>
+                      {/* <label htmlFor="g-option"> */}
+                      <center>
+                        <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
+                        <Text6>
+                          Enjoy all video and live streamingthru all
+                        </Text6>
+                        <Text6>
+                          the month, so you never missany extreme shot
+                        </Text6>
+                        <Text3>$29.99</Text3>
+                      </center>
+                      {/* </label> */}
                       <Text4>1MONTH</Text4>
                     </Box>
                   </Flex>

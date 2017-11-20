@@ -69,23 +69,16 @@ const ThumbnailShowTime = props => (
   <Provider>
     <Wrapper>
       <Flex pl="0.5em" pr="0.5em" pt="1em" pb="1em">
-        <Box w={1 / 12} pt="3.2em" pl="0.5em">
-          <Input type="radio" id={props.id} name="selector" />
+        <Box w={2 / 12} mr="5px">
+          <br />
+          <center>
+            <Image w="100%" src={props.imglogo} />
+            <Text3>{props.text3}</Text3>
+          </center>
         </Box>
-        <Box w={2 / 12}>
-          <label htmlFor={props.id}>
-            <br />
-            <center>
-              <Image w="100%" src={props.imglogo} />
-              <Text3>{props.text3}</Text3>
-            </center>
-          </label>
-        </Box>
-        <Box w={4 / 12} ml="0em">
-          <label htmlFor={props.id}>
-            <Text2>{props.text4}</Text2>
-            <Image w="100%" src={props.img} />
-          </label>
+        <Box w={4 / 12}>
+          <Text2>{props.text4}</Text2>
+          <Image w="100%" src={props.img} />
         </Box>
         <Box w={5 / 12}>
           <Flex>
@@ -94,10 +87,8 @@ const ThumbnailShowTime = props => (
               <Image w="100%" src="static/ic_liveblack@2x.png" />
             </Box>
             <Box w={10 / 12}>
-              <label htmlFor={props.id}>
-                <Text1>{props.text1}</Text1>
-                {props.textrb}
-              </label>
+              <Text1>{props.text1}</Text1>
+              {props.textrb}
             </Box>
           </Flex>
         </Box>
