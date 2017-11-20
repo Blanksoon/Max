@@ -126,7 +126,9 @@ const ThumbnailShowTime = props => (
       </Flex>
       <WrapperButton>
         <Button>
-          <Textbutton>{props.text2}</Textbutton>
+          <Textbutton>
+            {props.text5}-{props.text2}
+          </Textbutton>
         </Button>
       </WrapperButton>
       <WrapperHover>
