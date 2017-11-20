@@ -5,7 +5,8 @@ import FacebookLogin from 'react-facebook-login'
 import * as api from '../../api'
 import { fbLogin } from '../../redux/modules/auth'
 import { closeModal } from '../../redux/modules/modal'
-
+// stagingAppIdFacebook = 450605862001815
+// developAppIdFacebbok = 135776387080938
 const cookies = new Cookies()
 class FacebookLoginButton extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class FacebookLoginButton extends React.Component {
         <FacebookLogin
           onClick={this.facebookLogin}
           size="small"
-          appId="450605862001815"
+          appId="135776387080938"
           autoLoad={false}
           fields="name,email,id,gender,locale,age_range,birthday,picture"
           cssClass="loginBtn loginBtn--facebook"

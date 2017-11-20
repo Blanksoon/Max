@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Router from 'next/router'
 import { Flex, Provider, Box, Image, Text, Border } from 'rebass'
 import styled from 'styled-components'
-import FacebookLoginButton from './FacebookLoginButton'
 import color from '../commons/vars'
 import ModalRegister from '../../containers/ModalRegister'
 import { forgotPassword } from '../../redux/modules/auth'
@@ -128,7 +127,7 @@ class Login extends React.Component {
   }
 
   render() {
-    //console.log('props', this.props)
+    console.log('props', this.props)
     return (
       <Provider>
         <div>
@@ -168,7 +167,6 @@ class Login extends React.Component {
               </Box>
               <Box w={7 / 12}>
                 <center>
-                  <FacebookLoginButton />
                   <Box pt="1rem">
                     <a href="#">
                       <ModalRegister modalType={4} text="Register with email" />

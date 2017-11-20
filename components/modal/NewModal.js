@@ -8,6 +8,7 @@ import ForgotPassword from '../login/ForgotPassword'
 import ChangePassStep1 from '../login/ChangePassStep1'
 import ChangePassStep2 from '../login/ChangePassStep2'
 import Player from '../videoPlayer/Player'
+import PurchaseItem from '../getTicket/PurchaseItem'
 
 const Wrapper = styled.div`
   color: blue;
@@ -170,6 +171,16 @@ export default class Modal extends Component {
       renderUI = (
         <WrapperRegister onClick={e => this.handleOnClick(e)}>
           <ForgotPassword closeModal={this.props.closeModal} />
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="../../static/close.png" />
+          </WrapperClose>
+        </WrapperRegister>
+      )
+    } else if (this.props.modalType === 8) {
+      //Forgot password
+      renderUI = (
+        <WrapperRegister onClick={e => this.handleOnClick(e)}>
+          <PurchaseItem closeModal={this.props.closeModal} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>
