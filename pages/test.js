@@ -13,20 +13,28 @@ import Test from '../components/Test'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import ReactJWPlayer from '../components/ReactJWPlayerContainer'
-import FacebookProvider, { Comments } from 'react-facebook'
 import Paypal from '../components/payment/Paypal'
+import SuccessPurchase from '../components/getTicket/SuccessPurchase'
 
 
 // CSS Modules, react-datepicker-cssmodules.css
 //import { stylesheet } from './datepicker-cssmodules.css'
 //import './datepicker-cssmodules.css'
 //import './datepicker.css'
+const WrapperSuccessPurchase = styled.div`
+position: relative;
+width: 650px;
+height: 450px;
+background: #fff;
+z-index: 240;
+`
 import { datepickerStyled } from '../components/profile/datepickerStyle'
 class Example extends React.Component {
   render() {
     return (
-      <div>
-      </div>
+      <WrapperSuccessPurchase>
+          <SuccessPurchase />
+      </WrapperSuccessPurchase>
     )
   }
 }

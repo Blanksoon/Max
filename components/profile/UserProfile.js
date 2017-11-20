@@ -60,6 +60,7 @@ class UserProfile extends React.Component {
       `${api.SERVER}/profile?token=${this.props.auth.token}`
     )
     this.setState({ email: data[0].email })
+    console.log('aaaaaaaaaaaaaaaaaaa',data)
   }
   render() {
     return (

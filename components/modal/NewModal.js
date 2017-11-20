@@ -9,6 +9,7 @@ import ChangePassStep1 from '../login/ChangePassStep1'
 import ChangePassStep2 from '../login/ChangePassStep2'
 import Player from '../videoPlayer/Player'
 import PurchaseItem from '../getTicket/PurchaseItem'
+import SuccessPurchase from '../getTicket/SuccessPurchase'
 
 const Text1 = styled.div`
   padding-left: 1rem;
@@ -78,7 +79,7 @@ const WrapperChangePass = styled.div`
 const WrapperSuccessPurchase = styled.div`
   position: relative;
   width: 650px;
-  height: 250px;
+  height: 300px;
   background: #fff;
   z-index: 240;
 `

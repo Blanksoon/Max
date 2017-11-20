@@ -26,12 +26,13 @@ class ModalButton extends Component {
     if (this.props.live == undefined) {
       renderUI = (
         <ThumbnailShowTime
-          imglogo=""
-          img=""
-          text1=""
-          text2=""
-          text3=""
-          text4=""
+          imglogo={this.props.logo}
+          img={this.props.img}
+          text1={this.props.text1}
+          text2={this.props.text2}
+          text3={this.props.text3}
+          text4={this.props.text4}
+          text5={this.props.text5}
         />
       )
     } else {

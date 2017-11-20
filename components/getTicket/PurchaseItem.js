@@ -76,7 +76,7 @@ const Input = styled.input`
 `
 const WrapperTop = styled.div`background-color: ${color.blue};`
 const WrapperDown = styled.div`
-  background-color: ${color.lightBlue};
+  background-color: #094992;
   height: 100%;
 `
 const Wrapper = styled.div`
