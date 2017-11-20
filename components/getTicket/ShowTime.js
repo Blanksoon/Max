@@ -141,211 +141,212 @@ const Input = styled.input`
   height: 20px;
 `
 const Wrapper = styled.div`background: #fff;`
-class ShowTime extends Component {
+class ShowTime extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       live: [],
     }
-    this.dataProfile = this.dataProfile.bind(this)
+    this.fetchProduct = this.fetchProduct.bind(this)
   }
-  componentDidMount() {
+  async componentDidMount() {
     {
-      this.dataProfile()
+      await this.fetchProduct()
     }
   }
-  async dataProfile() {
+  async fetchProduct() {
     const { status, data } = await api.get(
       `${api.SERVER}/product?token=${this.props.auth.token}`
     )
     this.setState({ live: data.lives.data })
-    //console.log('tokennnn', this.state.live[1])
   }
   render() {
-    console.log('sksadkldjaslkd', this.state)
+    // if(this.state.live != undefined){
+
+    // }else{
+
+    // }
     return (
-      <Provider>
-        <Wrapper>
-          <Flex pl="1em" pr="1em" pb="3em">
-            <Box w={12 / 12} pl="0rem">
-              <Flex pt="2rem" pb="1rem">
-                <Box w={6 / 12} pt="1rem">
-                  <Text1>GET TICKET</Text1>
-                  <Text2>Please select your package.</Text2>
-                  <br />
-                  <br />
-                  <Text8>PACKAGE.</Text8>
-                </Box>
-              </Flex>
-              <Flex pb="1em">
-                <Box w={6 / 12} pr="0.5em">
-                  <WrapperPackage color={color.red}>
-                    <Flex pb="1em">
-                      {/* <Box w={1 / 12} pt="4em" pl="1em">
+      <Wrapper>
+        <Flex pl="1em" pr="1em" pb="3em">
+          <Box w={12 / 12} pl="0rem">
+            <Flex pt="2rem" pb="1rem">
+              <Box w={6 / 12} pt="1rem">
+                <Text1>GET TICKET</Text1>
+                <Text2>Please select your package.</Text2>
+                <br />
+                <br />
+                <Text8>PACKAGE.</Text8>
+              </Box>
+            </Flex>
+            <Flex pb="1em">
+              <Box w={6 / 12} pr="0.5em">
+                <WrapperPackage color={color.red}>
+                  <Flex pb="1em">
+                    {/* <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="f-option" name="selector" />
                     </Box> */}
-                      <Box w={4.17 / 12} pt="2em" pl="2em" pb="0px">
-                        {/* <label htmlFor="f-option"> */}
-                        <Image w="100%" src="static/img_VDO+LIVE.png" />
-                        {/* </label> */}
-                      </Box>
-                      <Box w={7 / 12} pt="1em" pr="1em">
-                        {/* <label htmlFor="f-option"> */}
-                        <center>
-                          <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
-                          <Text6>
-                            Enjoy all video and live streamingthru all
-                          </Text6>
-                          <Text6>
-                            the month, so you never missany extreme shot
-                          </Text6>
-                          <Text3>$29.99</Text3>
-                        </center>
-                        {/* </label> */}
-                        <Text4>1MONTH</Text4>
-                      </Box>
-                    </Flex>
-                    <Wrapperin>
+                    <Box w={4.17 / 12} pt="2em" pl="2em" pb="0px">
+                      {/* <label htmlFor="f-option"> */}
+                      <Image w="100%" src="static/img_VDO+LIVE.png" />
+                      {/* </label> */}
+                    </Box>
+                    <Box w={7 / 12} pt="1em" pr="1em">
+                      {/* <label htmlFor="f-option"> */}
                       <center>
-                        <Box pt="2em">
-                          <Text5>SUBSCRIBE VOD</Text5>
-                          <Text5>AND LIVE STREAMING</Text5>
-                        </Box>
-                        <Box pt="1em">
-                          <ButtonWatch>WATCH NOW</ButtonWatch>
-                        </Box>
-                        <Box pt="1em">
-                          <Text10>VALID THRU</Text10>
-                          <Text9>Aug 30th, 2017</Text9>
-                        </Box>
+                        <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
+                        <Text6>
+                          Enjoy all video and live streamingthru all
+                        </Text6>
+                        <Text6>
+                          the month, so you never missany extreme shot
+                        </Text6>
+                        <Text3>$29.99</Text3>
                       </center>
-                    </Wrapperin>
-                  </WrapperPackage>
-                </Box>
-                <Box w={6 / 12} pl="0.5em">
-                  <WrapperPackage color={color.blue}>
-                    <Flex pb="1em">
-                      {/* <Box w={1 / 12} pt="4em" pl="1em">
+                      {/* </label> */}
+                      <Text4>1MONTH</Text4>
+                    </Box>
+                  </Flex>
+                  <Wrapperin>
+                    <center>
+                      <Box pt="2em">
+                        <Text5>SUBSCRIBE VOD</Text5>
+                        <Text5>AND LIVE STREAMING</Text5>
+                      </Box>
+                      <Box pt="1em">
+                        <ButtonWatch>WATCH NOW</ButtonWatch>
+                      </Box>
+                      <Box pt="1em">
+                        <Text10>VALID THRU</Text10>
+                        <Text9>Aug 30th, 2017</Text9>
+                      </Box>
+                    </center>
+                  </Wrapperin>
+                </WrapperPackage>
+              </Box>
+              <Box w={6 / 12} pl="0.5em">
+                <WrapperPackage color={color.blue}>
+                  <Flex pb="1em">
+                    {/* <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="g-option" name="selector" />
                     </Box> */}
-                      <Box w={4 / 12} pt="2em" pl="2em">
-                        {/* <label htmlFor="g-option"> */}
-                        <Image w="100%" src="static/img_vodondemand@3x.png" />
-                        {/* </label> */}
-                      </Box>
-                      <Box w={7 / 12} pt="1em" pr="1em">
-                        {/* <label htmlFor="g-option"> */}
-                        <center>
-                          <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
-                          <Text6>
-                            Enjoy all video and live streamingthru all
-                          </Text6>
-                          <Text6>
-                            the month, so you never missany extreme shot
-                          </Text6>
-                          <Text3>$29.99</Text3>
-                        </center>
-                        {/* </label> */}
-                        <Text4>1MONTH</Text4>
-                      </Box>
-                    </Flex>
-                    <Wrapperin>
-                      <Box pt="1em" pl="1em">
-                        <Text11>YOUR PACKAGE.</Text11>
-                      </Box>
+                    <Box w={4 / 12} pt="2em" pl="2em">
+                      {/* <label htmlFor="g-option"> */}
+                      <Image w="100%" src="static/img_vodondemand@3x.png" />
+                      {/* </label> */}
+                    </Box>
+                    <Box w={7 / 12} pt="1em" pr="1em">
+                      {/* <label htmlFor="g-option"> */}
                       <center>
-                        <Box>
-                          <Text5>SUBSCRIBE VOD</Text5>
-                          <Text5>ON DEMAND</Text5>
-                        </Box>
-                        <Box pt="1em">
-                          <ButtonWatch>WATCH NOW</ButtonWatch>
-                        </Box>
-                        <Box pt="1em">
-                          <Text10>VALID THRU</Text10>
-                          <Text9>Aug 30th, 2017</Text9>
-                        </Box>
+                        <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
+                        <Text6>
+                          Enjoy all video and live streamingthru all
+                        </Text6>
+                        <Text6>
+                          the month, so you never missany extreme shot
+                        </Text6>
+                        <Text3>$29.99</Text3>
                       </center>
-                    </Wrapperin>
-                  </WrapperPackage>
+                      {/* </label> */}
+                      <Text4>1MONTH</Text4>
+                    </Box>
+                  </Flex>
+                  <Wrapperin>
+                    <Box pt="1em" pl="1em">
+                      <Text11>YOUR PACKAGE.</Text11>
+                    </Box>
+                    <center>
+                      <Box>
+                        <Text5>SUBSCRIBE VOD</Text5>
+                        <Text5>ON DEMAND</Text5>
+                      </Box>
+                      <Box pt="1em">
+                        <ButtonWatch>WATCH NOW</ButtonWatch>
+                      </Box>
+                      <Box pt="1em">
+                        <Text10>VALID THRU</Text10>
+                        <Text9>Aug 30th, 2017</Text9>
+                      </Box>
+                    </center>
+                  </Wrapperin>
+                </WrapperPackage>
+              </Box>
+            </Flex>
+            <Box bg={color.blue} pb="1em">
+              <Flex>
+                <Box w={3 / 12} />
+                <Box w={2 / 12} pt="1em">
+                  <Image w="100%" src="static/img_livestream@2x.png" />
+                </Box>
+                <Box w={5 / 12} pt="5em">
+                  <center>
+                    <Text5>GET 1 TIME LIVE STREAMING</Text5>
+                    <Text6>
+                      What 1 time of specilic show live streaming on any
+                      platfrom
+                    </Text6>
+                  </center>
                 </Box>
               </Flex>
-              <Box bg={color.blue} pb="1em">
-                <Flex>
-                  <Box w={3 / 12} />
-                  <Box w={2 / 12} pt="1em">
-                    <Image w="100%" src="static/img_livestream@2x.png" />
-                  </Box>
-                  <Box w={5 / 12} pt="5em">
-                    <center>
-                      <Text5>GET 1 TIME LIVE STREAMING</Text5>
-                      <Text6>
-                        What 1 time of specilic show live streaming on any
-                        platfrom
-                      </Text6>
-                    </center>
-                  </Box>
-                </Flex>
-                <Flex pl="0.5em" pt="1em">
-                  <Text5>PLEASE SELECT THE LIVE</Text5>
-                </Flex>
-                <Flex pl="0.5em" pr="0.5em">
-                  <Box w={6 / 12} pr="0.5em" pt="1em">
-                    <ModalLiveItem
-                      modalType={8}
-                      live={this.state.live[0]}
-                      logo="/static/logo_max.png"
-                      img="/static/maxultimate-show.jpg"
-                      text1="MAX Ultimate Tournament & MAX World Champions 7" // International"
-                      text2="07.20-10.00 pm."
-                      text3="$0.99"
-                      text4="SUN 10 SEP"
-                    />
-                  </Box>
-                  <Box w={6 / 12} pl="0.5em" pt="1rem">
-                    <ModalLiveItem
-                      modalType={8}
-                      live={this.state.live[1]}
-                      logo="/static/logo_battle.png"
-                      img="/static/thebattle-show.jpg"
-                      text1="The Battle Muay Thai"
-                      text2="06.10-08.00 pm."
-                      text3="$0.99"
-                      text4="FRI 15 SEP"
-                    />
-                  </Box>
-                </Flex>
-                <Flex pl="0.5em" pr="0.5em">
-                  <Box w={6 / 12} pr="0.5em" pt="1rem">
-                    <ModalLiveItem
-                      modalType={8}
-                      live={this.state.live[2]}
-                      logo="/static/logo_fighter.png"
-                      img="/static/thairath-show.jpg"
-                      text1="Thairath Muay Thai Fighter"
-                      text2="02.00-04.00 pm."
-                      text3="$0.99"
-                      text4="SAT 16 SEP"
-                    />
-                  </Box>
-                  <Box w={6 / 12} pl="0.5em" pt="1rem">
-                    <ModalLiveItem
-                      modalType={8}
-                      live={this.state.live[3]}
-                      logo="/static/logo_champion.png"
-                      img="/static/thechampion-show.jpg"
-                      text1="The Champion Muay Thai"
-                      text2="07.20-10.00 pm."
-                      text3="$0.99"
-                      text4="SAT 16 SEP"
-                    />
-                  </Box>
-                </Flex>
-              </Box>
+              <Flex pl="0.5em" pt="1em">
+                <Text5>PLEASE SELECT THE LIVE</Text5>
+              </Flex>
+              <Flex pl="0.5em" pr="0.5em">
+                <Box w={6 / 12} pr="0.5em" pt="1em">
+                  <ModalLiveItem
+                    modalType={8}
+                    live={this.state.live[0]}
+                    logo="/static/logo_max.png"
+                    img="/static/maxultimate-show.jpg"
+                    text1="MAX Ultimate Tournament & MAX World Champions 7" // International"
+                    text2="07.20-10.00 pm."
+                    text3="$0.99"
+                    text4="SUN 10 SEP"
+                  />
+                </Box>
+                <Box w={6 / 12} pl="0.5em" pt="1rem">
+                  <ModalLiveItem
+                    modalType={8}
+                    live={this.state.live[1]}
+                    logo="/static/logo_battle.png"
+                    img="/static/thebattle-show.jpg"
+                    text1="The Battle Muay Thai"
+                    text2="06.10-08.00 pm."
+                    text3="$0.99"
+                    text4="FRI 15 SEP"
+                  />
+                </Box>
+              </Flex>
+              <Flex pl="0.5em" pr="0.5em">
+                <Box w={6 / 12} pr="0.5em" pt="1rem">
+                  <ModalLiveItem
+                    modalType={8}
+                    live={this.state.live[2]}
+                    logo="/static/logo_fighter.png"
+                    img="/static/thairath-show.jpg"
+                    text1="Thairath Muay Thai Fighter"
+                    text2="02.00-04.00 pm."
+                    text3="$0.99"
+                    text4="SAT 16 SEP"
+                  />
+                </Box>
+                <Box w={6 / 12} pl="0.5em" pt="1rem">
+                  <ModalLiveItem
+                    modalType={8}
+                    live={this.state.live[3]}
+                    logo="/static/logo_champion.png"
+                    img="/static/thechampion-show.jpg"
+                    text1="The Champion Muay Thai"
+                    text2="07.20-10.00 pm."
+                    text3="$0.99"
+                    text4="SAT 16 SEP"
+                  />
+                </Box>
+              </Flex>
             </Box>
-          </Flex>
-        </Wrapper>
-      </Provider>
+          </Box>
+        </Flex>
+      </Wrapper>
     )
   }
 }
