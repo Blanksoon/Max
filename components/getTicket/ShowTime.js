@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import YouSelect from './YouSelect'
 import ModalLiveItem from '../../containers/ModalLiveItem'
 import * as api from '../../api'
-
+import { fetchProduct } from './FetchProduct'
 const Button = styled.button`
   bottom: 2%;
   background-color: #b81111;
@@ -158,6 +158,7 @@ class ShowTime extends React.Component {
     const { status, data } = await api.get(
       `${api.SERVER}/product?token=${this.props.auth.token}`
     )
+    console.log('data', data)
     this.setState({ live: data.lives.data })
   }
   render() {
@@ -166,6 +167,7 @@ class ShowTime extends React.Component {
     // }else{
 
     // }
+    console.log('0', this.state.live)
     return (
       <Wrapper>
         <Flex pl="1em" pr="1em" pb="3em">

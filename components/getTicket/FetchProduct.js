@@ -1,6 +1,5 @@
-export const fetchProduct = (token) => {
-    const { status, data } = await api.get(
-      `${api.SERVER}/product?token=${this.props.auth.token}`
-    )
-    this.setState({ live: data.lives.data })
-  }
+import * as api from '../../api'
+export const fetchProduct = async token => {
+  const { status, data } = await api.get(`${api.SERVER}/product?token=${token}`)
+  return data
+}
