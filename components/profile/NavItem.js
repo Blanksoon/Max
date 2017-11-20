@@ -55,7 +55,7 @@ export default ({ label, active, changeComponent, pathname }) => {
     return (
       <div>
         <Flex>
-          <Box w={2 / 12}>
+          <Box w={3 / 12}>
             <Inactive onClick={() => changeComponent('Profile')}>
               Profile
             </Inactive>
@@ -78,7 +78,7 @@ export default ({ label, active, changeComponent, pathname }) => {
     return (
       <div>
         <Flex>
-          <Box w={2 / 12}>
+          <Box w={3 / 12}>
             <Inactive onClick={() => changeComponent('Profile')}>
               Profile
             </Inactive>

@@ -75,6 +75,13 @@ const WrapperChangePass = styled.div`
   background: #fff;
   z-index: 240;
 `
+const WrapperSuccessPurchase = styled.div`
+  position: relative;
+  width: 650px;
+  height: 250px;
+  background: #fff;
+  z-index: 240;
+`
 const WrapperClose = styled.div`
   position: absolute;
   color: #fff;
@@ -208,6 +215,16 @@ export default class Modal extends Component {
             <Text1>Cancle</Text1>
           </WrapperCancle>
         </WrapperPurchaseItem>
+      )
+    } else if (this.props.modalType === 9) {
+      //Forgot password
+      renderUI = (
+        <WrapperSuccessPurchase onClick={e => this.handleOnClick(e)}>
+          <SuccessPurchase closeModal={this.props.closeModal} />
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="../../static/close.png" />
+          </WrapperClose>
+        </WrapperSuccessPurchase>
       )
     } else {
       //null
