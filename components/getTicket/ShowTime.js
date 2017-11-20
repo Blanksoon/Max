@@ -169,7 +169,7 @@ class ShowTime extends React.Component {
     // }else{
 
     // }
-    //console.log('0', this.props.product.products.lives[0])
+    console.log('0', this.props.product.products.lives[0])
     return (
       <Wrapper>
         <Flex pl="1em" pr="1em" pb="3em">
