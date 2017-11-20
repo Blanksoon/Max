@@ -8,11 +8,20 @@ import ForgotPassword from '../login/ForgotPassword'
 import ChangePassStep1 from '../login/ChangePassStep1'
 import ChangePassStep2 from '../login/ChangePassStep2'
 import Player from '../videoPlayer/Player'
+import PurchaseItem from '../getTicket/PurchaseItem'
 
+const Text1 = styled.div`
+  padding-left: 1rem;
+  padding-top: 1rem;
+  color: #8a8a8a;
+  font-weight: 700;
+  font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
+`
 const Wrapper = styled.div`
   color: blue;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
   position: fixed;
@@ -52,6 +61,13 @@ const WrapperRegister = styled.div`
   background: #fff;
   z-index: 240;
 `
+const WrapperPurchaseItem = styled.div`
+  position: relative;
+  width: 750px;
+  height: 550px;
+  background: #fff;
+  z-index: 240;
+`
 const WrapperChangePass = styled.div`
   position: relative;
   width: 650px;
@@ -67,6 +83,14 @@ const WrapperClose = styled.div`
   width: 40px;
   height: 40px;
   //border: 3px solid #73ad81;
+`
+const WrapperCancle = styled.div`
+  position: absolute;
+  color: #fff;
+  bottom: 0;
+  right: 80px;
+  //border: 3px solid #73ad81;
+  cursor: pointer;
 `
 export default class Modal extends Component {
   static propTypes = {
@@ -174,6 +198,16 @@ export default class Modal extends Component {
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>
         </WrapperRegister>
+      )
+    } else if (this.props.modalType === 8) {
+      //Forgot password
+      renderUI = (
+        <WrapperPurchaseItem onClick={e => this.handleOnClick(e)}>
+          <PurchaseItem closeModal={this.props.closeModal} />
+          <WrapperCancle onClick={true ? this.props.closeModal : ''}>
+            <Text1>Cancle</Text1>
+          </WrapperCancle>
+        </WrapperPurchaseItem>
       )
     } else {
       //null

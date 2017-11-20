@@ -5,6 +5,7 @@ const MODAL_URL = 'MODAL_URL'
 const CLOSE_MODAL = 'CLOSE_MODAL'
 const MODAL_REGISTER = 'MODAL_REGISTER'
 const MODAL_FORGOTPASS = 'MODAL_FORGOTPASS'
+const MODAL_PURCHASEITEM = 'MODAL_PURCHASEITEM'
 const MODAL_CHANGEPASS = 'MODAL_CHANGEPASS'
 const NEW_PASSWORD = 'NEW_PASSWORD'
 
@@ -56,6 +57,12 @@ export const changepassModal = modalType => {
     payload: { modalType },
   }
 }
+export const purchaseItemModal = modalType => {
+  return {
+    type: MODAL_PURCHASEITEM,
+    payload: { modalType },
+  }
+}
 
 const initialState = {
   activeModal: false,
@@ -97,16 +104,22 @@ const modalReducer = (state = initialState, action) => {
         modalType: action.payload.modalType,
       }
     }
-    case MODAL_FORGOTPASS: {
+    case NEW_PASSWORD: {
       return {
         ...state,
         modalType: 6,
       }
     }
-    case NEW_PASSWORD: {
+    case MODAL_FORGOTPASS: {
       return {
         ...state,
-        modalType: 6,
+        modalType: 7,
+      }
+    }
+    case MODAL_PURCHASEITEM: {
+      return {
+        ...state,
+        modalType: 8,
       }
     }
     case MODAL_CHANGEPASS: {

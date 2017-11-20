@@ -7,7 +7,17 @@ const Button = styled.button`
   background-color: ${color.white};
   border: 1px solid ${color.red};
   color: ${color.red};
-  padding: 12px 40px;
+  padding: 12px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
+`
+const ButtonWatch = styled.button`
+  background-color: ${color.red};
+  border: 1px solid ${color.red};
+  color: ${color.white};
+  padding: 12px 70px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -30,6 +40,20 @@ const WrapperButton = styled.div`
   Bottom: 25px;
   right: 30px;
 `
+const WrapperHover = styled.div`
+  top: 0;
+  background-color: ${color.black};
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  font-family: Helvetica, Arial, sans-serif;
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+`
 const Text1 = styled.div`
   padding-left: 1rem;
   padding-top: 1rem;
@@ -46,6 +70,12 @@ const Text2 = styled.div`
 `
 const Text3 = styled.div`
   color: #000;
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-family: Helvetica, Arial, sans-serif;
+`
+const Text4 = styled.div`
+  color: #fff;
   font-weight: 700;
   font-size: 1.5rem;
   font-family: Helvetica, Arial, sans-serif;
@@ -69,23 +99,17 @@ const ThumbnailShowTime = props => (
   <Provider>
     <Wrapper>
       <Flex pl="0.5em" pr="0.5em" pt="1em" pb="1em">
-        <Box w={1 / 12} pt="3.2em" pl="0.5em">
-          <Input type="radio" id={props.id} name="selector" />
-        </Box>
-        <Box w={2 / 12} pr='5px' >
-          <label htmlFor={props.id}>
-            <br />
-            <center>
-              <Image w="100%" src={props.imglogo} />
-              <Text3>{props.text3}</Text3>
-            </center>
-          </label>
+        <Box w={0.4 / 12} />
+        <Box w={2 / 12} mr="5px">
+          <br />
+          <center>
+            <Image w="100%" src={props.imglogo} />
+            <Text3>{props.text3}</Text3>
+          </center>
         </Box>
         <Box w={4 / 12}>
-          <label htmlFor={props.id}>
-            <Text2>{props.text4}</Text2>
-            <Image w="100%" src={props.img} />
-          </label>
+          <Text2>{props.text4}</Text2>
+          <Image w="100%" src={props.img} />
         </Box>
         <Box w={5 / 12}>
           <Flex>
@@ -94,10 +118,8 @@ const ThumbnailShowTime = props => (
               <Image w="100%" src="static/ic_liveblack@2x.png" />
             </Box>
             <Box w={10 / 12}>
-              <label htmlFor={props.id}>
-                <Text1>{props.text1}</Text1>
-                {props.textrb}
-              </label>
+              <Text1>{props.text1}</Text1>
+              {props.textrb}
             </Box>
           </Flex>
         </Box>
@@ -107,6 +129,21 @@ const ThumbnailShowTime = props => (
           <Textbutton>{props.text2}</Textbutton>
         </Button>
       </WrapperButton>
+      <WrapperHover>
+        <Flex>
+          <Box w={2 / 12} pt="2.5em" ml="5em">
+            <Image w="100%" src="static/ic_you-bought.png" />
+          </Box>
+          <Box w={10 / 12}>
+            <Box pl="2.5em" pt="2em">
+              <Text4>YOU BOUGHT</Text4>
+            </Box>
+            <Box pl="2em" pt="0.5em">
+              <ButtonWatch>WATCH</ButtonWatch>
+            </Box>
+          </Box>
+        </Flex>
+      </WrapperHover>
     </Wrapper>
   </Provider>
 )
