@@ -46,7 +46,7 @@ const WrapperButton = styled.div`
 const WrapperHover = styled.div`
   top: 0;
   background-color: ${color.black};
-  z-index: -1;
+  z-index: ${props => props.zin};
   height: 100%;
   width: 100%;
   position: absolute;
@@ -99,26 +99,11 @@ const Input = styled.input`
   height: 20px;
 `
 class ThumbnailShowTime extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      live: '',
-    }
-    this.dataProfile = this.dataProfile.bind(this)
-  }
-  componentDidMount() {
-    {
-      this.dataProfile()
-    }
-  }
-  async dataProfile() {
-    const { status, data } = await api.get(
-      `${api.SERVER}/product?token=${this.props.auth.token}`
-    )
-    this.setState({ live: data.lives })
-    console.log('thummmmmmmmmmmmm',this.state.live[0].price)
-  }
   render(){
+    let zin = -1
+    if(this.props.status==="unenable"){ 
+      zin = 1
+    }
     return(
       <Provider>
         <Wrapper>
@@ -155,7 +140,7 @@ class ThumbnailShowTime extends React.Component {
               </Textbutton>
             </Button>
           </WrapperButton>
-          <WrapperHover>
+          <WrapperHover zin={zin} style={{ cursor: 'pointer' }} onClick=''>
             <Flex>
               <Box w={2 / 12} pt="2.5em" ml="5em">
                 <Image w="100%" src="static/ic_you-bought.png" />

@@ -8,6 +8,25 @@ import BorderlessButton from '../commons/BorderlessButton'
 import color from '../commons/vars'
 import ThumbnailShowTime from '../thumbnail/ThumbnailShowTime'
 
+const Wrapper = styled.div`
+position: relative;
+height: 160px;
+width: 100%;
+`
+const WrapperHover = styled.div`
+top: 0;
+background-color: ${color.black};
+z-index: ${props => props.zin};
+height: 100%;
+width: 100%;
+position: absolute;
+font-family: Helvetica, Arial, sans-serif;
+background: -webkit-linear-gradient(
+  top,
+  rgba(0, 0, 0, 0.8) 0%,
+  rgba(0, 0, 0, 0.8) 100%
+); /* Chrome10-25,Safari5.1-6 */
+`
 class ModalButton extends Component {
   static propTypes = {
     active: PropTypes.bool,
@@ -18,9 +37,13 @@ class ModalButton extends Component {
     live: PropTypes.object,
   }
   handleOnClickModal = () => {
-    this.props.toggleModalAction()
-    this.props.updateModalAction(this.props.modalType)
-    this.props.liveProductAction(this.props.live)
+    if(this.props.live.status==="unenable"){
+
+    }else{
+        this.props.toggleModalAction()
+        this.props.updateModalAction(this.props.modalType)
+        this.props.liveProductAction(this.props.live)
+    }
   }
   render() {
     let renderUI = <div />
@@ -39,6 +62,7 @@ class ModalButton extends Component {
     } else {
       renderUI = (
         <ThumbnailShowTime
+          status={this.props.live.status}
           imglogo={this.props.live.logoUrl}
           img={this.props.live.bannerUrl}
           text1={this.props.live.title_en}
