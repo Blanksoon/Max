@@ -59,7 +59,8 @@ class UserProfile extends React.Component {
     const { status, data } = await api.get(
       `${api.SERVER}/profile?token=${this.props.auth.token}`
     )
-    this.setState({ email: data[0].email })
+    console.log('datadddd', data)
+    this.setState({ email: data.email })
   }
   render() {
     return (

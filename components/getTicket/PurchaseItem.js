@@ -91,6 +91,7 @@ const WrapperPrice = styled.div`
 `
 class PurchaseItem extends React.Component {
   render() {
+    console.log('sxxxxx', this.props)
     return (
       <Wrapper>
         <WrapperTop>

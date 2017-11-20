@@ -104,7 +104,7 @@ const ThumbnailShowTime = props => (
           <br />
           <center>
             <Image w="100%" src={props.imglogo} />
-            <Text3>{props.text3}</Text3>
+            <Text3>${props.text3}</Text3>
           </center>
         </Box>
         <Box w={4 / 12}>
@@ -127,7 +127,7 @@ const ThumbnailShowTime = props => (
       <WrapperButton>
         <Button>
           <Textbutton>
-            {props.text5}-{props.text2}
+            {props.text5}-{props.text2} pm
           </Textbutton>
         </Button>
       </WrapperButton>

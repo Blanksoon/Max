@@ -9,6 +9,7 @@ import ShowTime from '../components/getTicket/ShowTime'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import { fetchProducts } from '../redux/modules/product'
 import NewModal from '../containers/NewModal'
 import {
   toogleModal,
@@ -53,6 +54,23 @@ class selectShowtime extends React.Component {
       </div>
     )
   }
+}
+
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+    product: state.product,
+  }
+}
+
+selectShowtime.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  const token = state.auth.token
+  const productPromise = fetchProducts(token)(store.dispatch)
+  await Promise.all([productPromise])
+  state = store.getState()
+  const props = mapStateToProps(state)
+  return props
 }
 
 export default withRedux(initStore, null, {

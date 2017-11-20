@@ -20,33 +20,34 @@ class ModalButton extends Component {
     this.props.toggleModalAction()
     this.props.updateModalAction(this.props.modalType)
     this.props.indexModalURL(this.props.modalURL)
+    this.props.liveProductAction(this.props.live)
   }
   render() {
     let renderUI = <div />
-    if (this.props.live == undefined) {
-      renderUI = (
-        <ThumbnailShowTime
-          imglogo=""
-          img=""
-          text1=""
-          text2=""
-          text3=""
-          text4=""
-        />
-      )
-    } else {
-      renderUI = (
-        <ThumbnailShowTime
-          imglogo={this.props.live.logoUrl}
-          img={this.props.live.bannerUrl}
-          text1={this.props.live.title_en}
-          text2={this.props.live.endTime}
-          text3={this.props.live.price}
-          text4={this.props.live.liveDateStr_en}
-          text5={this.props.live.startTime}
-        />
-      )
-    }
+    // if (this.props.live == undefined) {
+    //   renderUI = (
+    //     <ThumbnailShowTime
+    //       imglogo=""
+    //       img=""
+    //       text1=""
+    //       text2=""
+    //       text3=""
+    //       text4=""
+    //     />
+    //   )
+    // } else {
+    renderUI = (
+      <ThumbnailShowTime
+        imglogo={this.props.live.logoUrl}
+        img={this.props.live.bannerUrl}
+        text1={this.props.live.title_en}
+        text2={this.props.live.endTime}
+        text3={this.props.live.price}
+        text4={this.props.live.liveDateStr_en}
+        text5={this.props.live.startTime}
+      />
+    )
+    //}
     //  console.log('liveeeeeeeee', this.props.live)
     // renderUI = (
     //   <ThumbnailShowTime

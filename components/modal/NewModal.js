@@ -210,7 +210,10 @@ export default class Modal extends Component {
       //Forgot password
       renderUI = (
         <WrapperPurchaseItem onClick={e => this.handleOnClick(e)}>
-          <PurchaseItem closeModal={this.props.closeModal} />
+          <PurchaseItem
+            closeModal={this.props.closeModal}
+            live={this.props.live}
+          />
           <WrapperCancle onClick={true ? this.props.closeModal : ''}>
             <Text1>Cancle</Text1>
           </WrapperCancle>

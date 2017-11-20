@@ -9,7 +9,9 @@ import { connect } from 'react-redux'
 import YouSelect from './YouSelect'
 import ModalLiveItem from '../../containers/ModalLiveItem'
 import * as api from '../../api'
-import { fetchProduct } from './FetchProduct'
+import { fetchProducts } from '../../redux/modules/product'
+import withRedux from 'next-redux-wrapper'
+import { initStore } from '../../redux/store'
 const Button = styled.button`
   bottom: 2%;
   background-color: #b81111;
@@ -167,7 +169,7 @@ class ShowTime extends React.Component {
     // }else{
 
     // }
-    console.log('0', this.state.live)
+    //console.log('0', this.props.product.products.lives[0])
     return (
       <Wrapper>
         <Flex pl="1em" pr="1em" pb="3em">
@@ -297,10 +299,10 @@ class ShowTime extends React.Component {
                 <Box w={6 / 12} pr="0.5em" pt="1em">
                   <ModalLiveItem
                     modalType={8}
-                    live={this.state.live[0]}
+                    live={this.props.product.products.lives[0]}
                     logo="/static/logo_max.png"
                     img="/static/maxultimate-show.jpg"
-                    text1="MAX Ultimate Tournament & MAX World Champions 7" // International"
+                    text1="MAX Ultimate Tournament & MAX World Champions 7"
                     text2="07.20-10.00 pm."
                     text3="$0.99"
                     text4="SUN 10 SEP"
@@ -309,7 +311,7 @@ class ShowTime extends React.Component {
                 <Box w={6 / 12} pl="0.5em" pt="1rem">
                   <ModalLiveItem
                     modalType={8}
-                    live={this.state.live[1]}
+                    live={this.props.product.products.lives[1]}
                     logo="/static/logo_battle.png"
                     img="/static/thebattle-show.jpg"
                     text1="The Battle Muay Thai"
@@ -323,7 +325,7 @@ class ShowTime extends React.Component {
                 <Box w={6 / 12} pr="0.5em" pt="1rem">
                   <ModalLiveItem
                     modalType={8}
-                    live={this.state.live[2]}
+                    live={this.props.product.products.lives[2]}
                     logo="/static/logo_fighter.png"
                     img="/static/thairath-show.jpg"
                     text1="Thairath Muay Thai Fighter"
@@ -335,7 +337,7 @@ class ShowTime extends React.Component {
                 <Box w={6 / 12} pl="0.5em" pt="1rem">
                   <ModalLiveItem
                     modalType={8}
-                    live={this.state.live[3]}
+                    live={this.props.product.products.lives[3]}
                     logo="/static/logo_champion.png"
                     img="/static/thechampion-show.jpg"
                     text1="The Champion Muay Thai"
@@ -356,7 +358,20 @@ class ShowTime extends React.Component {
 const mapStateToProps = state => {
   return {
     auth: state.auth,
+    product: state.product,
   }
 }
 
+// ShowTime.getInitialProps = async ({ store, isServer, query, req }) => {
+//   let state = store.getState()
+//   const token = state.auth.token
+//   const productPromise = fetchProducts(token)(store.dispatch)
+//   await Promise.all([productPromise])
+//   state = store.getState()
+//   const props = mapStateToProps(state)
+//   return props
+// }
 export default connect(mapStateToProps, null)(ShowTime)
+// export default withRedux(initStore, mapStateToProps, {
+//   fetchProducts,
+// })(ShowTime)

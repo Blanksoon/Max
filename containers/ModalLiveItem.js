@@ -15,6 +15,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   toggleModalAction: () => dispatch(toggleModal()),
   updateModalAction: modalType => dispatch(updateModalType(modalType)),
+  liveProductAction: live => dispatch(liveProduct(live)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalLiveItem)

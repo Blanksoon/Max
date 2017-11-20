@@ -8,6 +8,7 @@ const MODAL_FORGOTPASS = 'MODAL_FORGOTPASS'
 const MODAL_PURCHASEITEM = 'MODAL_PURCHASEITEM'
 const MODAL_CHANGEPASS = 'MODAL_CHANGEPASS'
 const NEW_PASSWORD = 'NEW_PASSWORD'
+const LIVE_PRODUCT = 'LIVE_PRODUCT'
 
 // actions
 export const toggleModal = () => {
@@ -61,6 +62,12 @@ export const purchaseItemModal = modalType => {
   return {
     type: MODAL_PURCHASEITEM,
     payload: { modalType },
+  }
+}
+export const liveProduct = live => {
+  return {
+    type: LIVE_PRODUCT,
+    payload: { live },
   }
 }
 
@@ -126,6 +133,12 @@ const modalReducer = (state = initialState, action) => {
       return {
         ...state,
         modalType: action.payload.modalType,
+      }
+    }
+    case LIVE_PRODUCT: {
+      return {
+        ...state,
+        live: action.payload.live,
       }
     }
     default: {

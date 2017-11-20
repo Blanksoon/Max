@@ -7,6 +7,7 @@ import vodReducer from './modules/vod'
 import loginReducer from './modules/login'
 import livesReducer from './modules/live'
 import programReducer from './modules/program'
+import productsReducer from './modules/product'
 const rootReducer = combineReducers({
   auth: authReducer,
   cookie: cookieReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   vod: vodReducer,
   login: loginReducer,
   program: programReducer,
+  product: productsReducer,
 })
 
 export default rootReducer
