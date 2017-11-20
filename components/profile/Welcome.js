@@ -30,7 +30,7 @@ class Welcome extends React.Component {
     const { status, data } = await api.get(
       `${api.SERVER}/profile?token=${this.props.auth.token}`
     )
-    this.setState({ email: data[0].email })
+    this.setState({ email: data.email })
   }
   render() {
     return (

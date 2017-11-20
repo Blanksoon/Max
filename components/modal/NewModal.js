@@ -107,6 +107,7 @@ export default class Modal extends Component {
     toggleModalAction: PropTypes.func,
     modalURL: PropTypes.string,
     closeModal: PropTypes.func,
+    live: PropTypes.object,
   }
   static defaultProps = {
     modalType: 2,
@@ -131,7 +132,7 @@ export default class Modal extends Component {
   }
 
   closeModal = () => {
-    console.log('props', this.props)
+    // console.log('props', this.props)
     this.props.closeModal()
   }
   render() {
@@ -208,10 +209,14 @@ export default class Modal extends Component {
         </WrapperRegister>
       )
     } else if (this.props.modalType === 8) {
+      // console.log('1111111112',this.props)
       //Forgot password
       renderUI = (
         <WrapperPurchaseItem onClick={e => this.handleOnClick(e)}>
-          <PurchaseItem closeModal={this.props.closeModal} />
+          <PurchaseItem
+            closeModal={this.props.closeModal}
+            live={this.props.modalURL}
+          />
           <WrapperCancle onClick={true ? this.props.closeModal : ''}>
             <Text1>Cancle</Text1>
           </WrapperCancle>

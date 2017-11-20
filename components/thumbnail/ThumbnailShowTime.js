@@ -128,7 +128,7 @@ class ThumbnailShowTime extends React.Component {
               <br />
               <center>
                 <Image w="100%" src={this.props.imglogo} />
-                <Text3>{this.state.live[0].price}</Text3>
+                <Text3>{this.props.text3}</Text3>
               </center>
             </Box>
             <Box w={4 / 12}>

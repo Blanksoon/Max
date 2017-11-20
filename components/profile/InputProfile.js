@@ -136,21 +136,21 @@ class InputProfile extends React.Component {
       `${api.SERVER}/profile?token=${this.props.auth.token}`
     )
     console.log('dataaaa', data)
-    if (data[0].name != 'undefined') {
-      this.setState({ name: data[0].name })
+    if (data.name != 'undefined') {
+      this.setState({ name: data.name })
     }
-    if (data[0].lastname != 'undefined') {
-      this.setState({ lastname: data[0].lastname })
+    if (data.lastname != 'undefined') {
+      this.setState({ lastname: data.lastname })
     }
-    if (data[0].date_birth != undefined) {
-      console.log('test', data[0].date_birth)
-      const birthDate = moment(new Date(data[0].date_birth))
+    if (data.date_birth != undefined) {
+      console.log('test', data.date_birth)
+      const birthDate = moment(new Date(data.date_birth))
       console.log('birthDate', birthDate)
       this.setState({ birthDay: birthDate })
     }
-    if (data[0].gender != 'undefined') {
-      this.setState({ oldGender: data[0].gender })
-      this.setState({ gender: data[0].gender })
+    if (data.gender != 'undefined') {
+      this.setState({ oldGender: data.gender })
+      this.setState({ gender: data.gender })
     }
     //this.setState({ email: data[0].email })
   }

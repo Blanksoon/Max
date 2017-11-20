@@ -91,6 +91,7 @@ const WrapperPrice = styled.div`
 `
 class PurchaseItem extends React.Component {
   render() {
+    console.log('sxxxxx', this.props)
     return (
       <Wrapper>
         <WrapperTop>
@@ -105,19 +106,19 @@ class PurchaseItem extends React.Component {
           </Box>
           <Flex pr="3em" pl="3em" pt="1em">
             <Box w={6 / 12} pr="0.5em">
-              <Image width="100%" src="../../static/maxultimate-show.jpg" />
+              <Image width="100%" src={this.props.live.bannerUrl} />
             </Box>
             <Box w={6 / 12} pl="0.5em">
               <Text3>
-                MAX Ultimate Tournament & MAX World Champions 7 International
+                {this.props.live.programName}
               </Text3>
               <Flex pt="0.5em">
-                <Box w={6 / 12}>
-                  <Date>Sep 10th, 2017</Date>
+                <Box w={12 / 12}>
+                  <Date>{this.props.live.liveDateStr_en}</Date>
                 </Box>
-                <Box w={6 / 12}>
+                {/* <Box w={6 / 12}>
                   <Time>07.20-09.50 pm.</Time>
-                </Box>
+                </Box> */}
               </Flex>
               <WrapperPrice>
                 <Text3>$0.99</Text3>

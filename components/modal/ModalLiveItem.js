@@ -15,11 +15,12 @@ class ModalButton extends Component {
     modalType: PropTypes.number,
     modalURL: PropTypes.string,
     buttonID: PropTypes.number,
+    live: PropTypes.object,
   }
   handleOnClickModal = () => {
     this.props.toggleModalAction()
     this.props.updateModalAction(this.props.modalType)
-    this.props.indexModalURL(this.props.modalURL)
+    this.props.liveProductAction(this.props.live)
   }
   render() {
     let renderUI = <div />
@@ -48,7 +49,7 @@ class ModalButton extends Component {
         />
       )
     }
-    //  console.log('liveeeeeeeee', this.props.live)
+     console.log('liveeeeeeeee', this.props.live)
     // renderUI = (
     //   <ThumbnailShowTime
     //     imglogo={this.props.logo}
