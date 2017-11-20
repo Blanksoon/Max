@@ -7,6 +7,8 @@ import ThumbnailShowTime from '../thumbnail/ThumbnailShowTime'
 import ModalButton from '../../containers/ModalButton'
 import { connect } from 'react-redux'
 import YouSelect from './YouSelect'
+import ModalLiveItem from '../../containers/ModalLiveItem'
+import * as api from '../../api'
 
 const Button = styled.button`
   bottom: 2%;
@@ -14,6 +16,16 @@ const Button = styled.button`
   border: 1px solid #b81111;
   color: white;
   padding: 12px 36.5%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
+`
+const ButtonWatch = styled.button`
+  background-color: ${color.red};
+  border: 1px solid ${color.red};
+  color: ${color.white};
+  padding: 12px 70px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -64,9 +76,27 @@ const Text7 = styled.div`
   font-family: Helvetica, Arial, sans-serif;
 `
 const Text8 = styled.div`
-  color: ${color.black};
+  color: #8a8a8a;
   font-weight: 700;
   font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
+`
+const Text9 = styled.div`
+  color: ${color.yellow};
+  font-weight: 700;
+  font-size: 0.8em;
+  font-family: Helvetica, Arial, sans-serif;
+`
+const Text10 = styled.div`
+  color: ${color.white};
+  font-weight: 700;
+  font-size: 0.8em;
+  font-family: Helvetica, Arial, sans-serif;
+`
+const Text11 = styled.div`
+  color: #8a8a8a;
+  font-weight: 700;
+  font-size: 0.8em;
   font-family: Helvetica, Arial, sans-serif;
 `
 let token = ''
@@ -83,15 +113,28 @@ const Wrapperright = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapperin = styled.div`
+  top: 0;
+  background-color: ${color.black};
+  z-index: -1;
+  height: 100%;
+  width: 100%;
   position: absolute;
+  font-family: Helvetica, Arial, sans-serif;
   background: -webkit-linear-gradient(
     top,
-    rgba(10, 74, 148, 0.65) 0%,
-    rgba(10, 74, 148, 0.65) 100%
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.8) 100%
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapperprice = styled.div`
   background: #fff:
+`
+const WrapperPackage = styled.div`
+  background-color: ${props => props.color};
+  text-align: -webkit-auto;
+  position: relative;
+  height: 180px;
+  width: 100%;
 `
 const Input = styled.input`
   width: 20px;
@@ -99,7 +142,27 @@ const Input = styled.input`
 `
 const Wrapper = styled.div`background: #fff;`
 class ShowTime extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      live: [],
+    }
+    this.dataProfile = this.dataProfile.bind(this)
+  }
+  componentDidMount() {
+    {
+      this.dataProfile()
+    }
+  }
+  async dataProfile() {
+    const { status, data } = await api.get(
+      `${api.SERVER}/product?token=${this.props.auth.token}`
+    )
+    this.setState({ live: data.lives.data })
+    //console.log('tokennnn', this.state.live[1])
+  }
   render() {
+    console.log('sksadkldjaslkd', this.state)
     return (
       <Provider>
         <Wrapper>
@@ -116,58 +179,95 @@ class ShowTime extends Component {
               </Flex>
               <Flex pb="1em">
                 <Box w={6 / 12} pr="0.5em">
-                  <Flex bg={color.red} pb="1em">
-                    {/* <Box w={1 / 12} pt="4em" pl="1em">
+                  <WrapperPackage color={color.red}>
+                    <Flex pb="1em">
+                      {/* <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="f-option" name="selector" />
                     </Box> */}
-                    <Box w={4.25 / 12} pt="2em" pl="2em" pb="0px">
-                      {/* <label htmlFor="f-option"> */}
-                      <Image w="100%" src="static/img_VDO+LIVE.png" />
-                      {/* </label> */}
-                    </Box>
-                    <Box w={7 / 12} pt="1em" pr="1em">
-                      {/* <label htmlFor="f-option"> */}
+                      <Box w={4.17 / 12} pt="2em" pl="2em" pb="0px">
+                        {/* <label htmlFor="f-option"> */}
+                        <Image w="100%" src="static/img_VDO+LIVE.png" />
+                        {/* </label> */}
+                      </Box>
+                      <Box w={7 / 12} pt="1em" pr="1em">
+                        {/* <label htmlFor="f-option"> */}
+                        <center>
+                          <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
+                          <Text6>
+                            Enjoy all video and live streamingthru all
+                          </Text6>
+                          <Text6>
+                            the month, so you never missany extreme shot
+                          </Text6>
+                          <Text3>$29.99</Text3>
+                        </center>
+                        {/* </label> */}
+                        <Text4>1MONTH</Text4>
+                      </Box>
+                    </Flex>
+                    <Wrapperin>
                       <center>
-                        <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
-                        <Text6>
-                          Enjoy all video and live streamingthru all
-                        </Text6>
-                        <Text6>
-                          the month, so you never missany extreme shot
-                        </Text6>
-                        <Text3>$29.99</Text3>
+                        <Box pt="2em">
+                          <Text5>SUBSCRIBE VOD</Text5>
+                          <Text5>AND LIVE STREAMING</Text5>
+                        </Box>
+                        <Box pt="1em">
+                          <ButtonWatch>WATCH NOW</ButtonWatch>
+                        </Box>
+                        <Box pt="1em">
+                          <Text10>VALID THRU</Text10>
+                          <Text9>Aug 30th, 2017</Text9>
+                        </Box>
                       </center>
-                      {/* </label> */}
-                      <Text4>1MONTH</Text4>
-                    </Box>
-                  </Flex>
+                    </Wrapperin>
+                  </WrapperPackage>
                 </Box>
                 <Box w={6 / 12} pl="0.5em">
-                  <Flex bg={color.blue} pb="1em">
-                    {/* <Box w={1 / 12} pt="4em" pl="1em">
+                  <WrapperPackage color={color.blue}>
+                    <Flex pb="1em">
+                      {/* <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="g-option" name="selector" />
                     </Box> */}
-                    <Box w={4 / 12} pt="2em" pl="2em">
-                      {/* <label htmlFor="g-option"> */}
-                      <Image w="100%" src="static/img_vodondemand@3x.png" />
-                      {/* </label> */}
-                    </Box>
-                    <Box w={7 / 12} pt="1em" pr="1em">
-                      {/* <label htmlFor="g-option"> */}
+                      <Box w={4 / 12} pt="2em" pl="2em">
+                        {/* <label htmlFor="g-option"> */}
+                        <Image w="100%" src="static/img_vodondemand@3x.png" />
+                        {/* </label> */}
+                      </Box>
+                      <Box w={7 / 12} pt="1em" pr="1em">
+                        {/* <label htmlFor="g-option"> */}
+                        <center>
+                          <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
+                          <Text6>
+                            Enjoy all video and live streamingthru all
+                          </Text6>
+                          <Text6>
+                            the month, so you never missany extreme shot
+                          </Text6>
+                          <Text3>$29.99</Text3>
+                        </center>
+                        {/* </label> */}
+                        <Text4>1MONTH</Text4>
+                      </Box>
+                    </Flex>
+                    <Wrapperin>
+                      <Box pt="1em" pl="1em">
+                        <Text11>YOUR PACKAGE.</Text11>
+                      </Box>
                       <center>
-                        <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
-                        <Text6>
-                          Enjoy all video and live streamingthru all
-                        </Text6>
-                        <Text6>
-                          the month, so you never missany extreme shot
-                        </Text6>
-                        <Text3>$29.99</Text3>
+                        <Box>
+                          <Text5>SUBSCRIBE VOD</Text5>
+                          <Text5>ON DEMAND</Text5>
+                        </Box>
+                        <Box pt="1em">
+                          <ButtonWatch>WATCH NOW</ButtonWatch>
+                        </Box>
+                        <Box pt="1em">
+                          <Text10>VALID THRU</Text10>
+                          <Text9>Aug 30th, 2017</Text9>
+                        </Box>
                       </center>
-                      {/* </label> */}
-                      <Text4>1MONTH</Text4>
-                    </Box>
-                  </Flex>
+                    </Wrapperin>
+                  </WrapperPackage>
                 </Box>
               </Flex>
               <Box bg={color.blue} pb="1em">
@@ -191,9 +291,10 @@ class ShowTime extends Component {
                 </Flex>
                 <Flex pl="0.5em" pr="0.5em">
                   <Box w={6 / 12} pr="0.5em" pt="1em">
-                    <ThumbnailShowTime
-                      id="1"
-                      imglogo="/static/logo_max.png"
+                    <ModalLiveItem
+                      modalType={8}
+                      live={this.state.live[0]}
+                      logo="/static/logo_max.png"
                       img="/static/maxultimate-show.jpg"
                       text1="MAX Ultimate Tournament & MAX World Champions 7" // International"
                       text2="07.20-10.00 pm."
@@ -202,41 +303,41 @@ class ShowTime extends Component {
                     />
                   </Box>
                   <Box w={6 / 12} pl="0.5em" pt="1rem">
-                    <ThumbnailShowTime
-                      id="2"
-                      imglogo="/static/logo_battle.png"
+                    <ModalLiveItem
+                      modalType={8}
+                      live={this.state.live[1]}
+                      logo="/static/logo_battle.png"
                       img="/static/thebattle-show.jpg"
                       text1="The Battle Muay Thai"
                       text2="06.10-08.00 pm."
                       text3="$0.99"
                       text4="FRI 15 SEP"
-                      textrb={<br />}
                     />
                   </Box>
                 </Flex>
                 <Flex pl="0.5em" pr="0.5em">
                   <Box w={6 / 12} pr="0.5em" pt="1rem">
-                    <ThumbnailShowTime
-                      id="3"
-                      imglogo="/static/logo_fighter.png"
+                    <ModalLiveItem
+                      modalType={8}
+                      live={this.state.live[2]}
+                      logo="/static/logo_fighter.png"
                       img="/static/thairath-show.jpg"
                       text1="Thairath Muay Thai Fighter"
                       text2="02.00-04.00 pm."
                       text3="$0.99"
                       text4="SAT 16 SEP"
-                      textrb={<br />}
                     />
                   </Box>
                   <Box w={6 / 12} pl="0.5em" pt="1rem">
-                    <ThumbnailShowTime
-                      id="4"
-                      imglogo="/static/logo_champion.png"
+                    <ModalLiveItem
+                      modalType={8}
+                      live={this.state.live[3]}
+                      logo="/static/logo_champion.png"
                       img="/static/thechampion-show.jpg"
                       text1="The Champion Muay Thai"
                       text2="07.20-10.00 pm."
                       text3="$0.99"
                       text4="SAT 16 SEP"
-                      textrb={<br />}
                     />
                   </Box>
                 </Flex>
@@ -251,7 +352,7 @@ class ShowTime extends Component {
 
 const mapStateToProps = state => {
   return {
-    login: state.auth.token,
+    auth: state.auth,
   }
 }
 
