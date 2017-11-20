@@ -15,6 +15,8 @@ import moment from 'moment'
 import ReactJWPlayer from '../components/ReactJWPlayerContainer'
 import FacebookProvider, { Comments } from 'react-facebook'
 import Paypal from '../components/payment/Paypal'
+import SuccessPurchase from '../components/getTicket/SuccessPurchase'
+
 
 // CSS Modules, react-datepicker-cssmodules.css
 //import { stylesheet } from './datepicker-cssmodules.css'
@@ -22,42 +24,10 @@ import Paypal from '../components/payment/Paypal'
 //import './datepicker.css'
 import { datepickerStyled } from '../components/profile/datepickerStyle'
 class Example extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      startDate: moment(),
-    }
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange(date) {
-    this.setState({
-      startDate: date,
-    })
-  }
-
   render() {
-    var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26))
-    var uniqid = randLetter + Date.now()
     return (
       <div>
-        <Paypal />
-        {/* <ReactJWPlayer
-          playerId={uniqid}
-          playerScript="https://content.jwplatform.com/libraries/uOQEiWJS.js"
-          //playlist="https://link-to-my-playlist.json"
-          file="https://content.jwplatform.com/manifests/AVUqhsXA.m3u8"
-        />
-        <DatePicker
-          selected={this.state.startDate}
-          onChange={this.handleChange}
-        />
-        <FacebookProvider appId="135776387080938">
-          <Comments href="http://www.facebook.com" />
-        </FacebookProvider>
-        <style jsx global>
-          {datepickerStyled}
-        </style> */}
+        <SuccessPurchase />
       </div>
     )
   }
