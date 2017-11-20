@@ -15,7 +15,6 @@ import moment from 'moment'
 import ReactJWPlayer from '../components/ReactJWPlayerContainer'
 import FacebookProvider, { Comments } from 'react-facebook'
 import Paypal from '../components/payment/Paypal'
-import SuccessPurchase from '../components/getTicket/SuccessPurchase'
 
 
 // CSS Modules, react-datepicker-cssmodules.css
@@ -27,7 +26,6 @@ class Example extends React.Component {
   render() {
     return (
       <div>
-        <SuccessPurchase />
       </div>
     )
   }

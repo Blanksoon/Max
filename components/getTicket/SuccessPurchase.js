@@ -131,77 +131,7 @@ class SuccessPurchase extends React.Component {
     //console.log('props', this.props)
     return (
       <Provider>
-        <div>
-          <Box>
-            <Box>
-              <Image width="100%" src="../../static/img_login.png" />
-            </Box>
-            <Box pl="3rem">
-              <Text1>Forgot pasword</Text1>
-            </Box>
-            <Flex pt="0.5rem" pl="3rem" pr="3rem">
-              <Box w={5 / 12}>
-                <WrapperLogin>
-                  <Text3>Please enter your email for change password</Text3>
-                  <form>
-                    <Box w={1}>
-                      <Input
-                        placeholder="Email"
-                        onChange={this.handleOnChangeId}
-                      />
-                    </Box>
-                    <Text2>{this.state.status} </Text2>
-                    <Flex>
-                      <Box w={6.4 / 12} />
-                      <Box pt="0.5rem">
-                        <Button
-                          style={{ width: '148px' }}
-                          onClick={this.forgotPassword}
-                          disabled={this.state.loading}
-                        >
-                          {this.state.loading ? <Spinner /> : 'Submit'}
-                        </Button>{' '}
-                      </Box>
-                    </Flex>
-                  </form>
-                </WrapperLogin>
-              </Box>
-              <Box w={7 / 12}>
-                <center>
-                  <FacebookLoginButton />
-                  <Box pt="1rem">
-                    <a href="#">
-                      <ModalRegister modalType={4} text="Register with email" />
-                    </a>
-                  </Box>
-                  <Box pt="1rem">
-                    <a href="#">
-                      <ModalRegister
-                        modalType={3}
-                        text="Already have an account, log in"
-                      />
-                    </a>
-                  </Box>
-                </center>
-              </Box>
-            </Flex>
-          </Box>
-        </div>
-        <style jsx>
-          {`
-            a:link {
-              COLOR: #660000;
-            }
-            a:visited {
-              COLOR: #660000;
-              TEXT-DECORATION: none;
-            }
-            a:hover {
-              COLOR: #ff0000;
-              //TEXT-DECORATION: none;
-            }
-          `}
-        </style>
+        
       </Provider>
     )
   }
