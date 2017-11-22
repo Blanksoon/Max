@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Provider, Box, Image, Text } from 'rebass'
+import { Flex, Provider, Box, Image, Text, Link } from 'rebass'
 import styled from 'styled-components'
 import color from '../commons/vars'
 import { closeModal } from '../../redux/modules/modal'
@@ -21,7 +21,7 @@ const ButtonWatch = styled.button`
   background-color: ${color.red};
   border: 1px solid ${color.red};
   color: ${color.white};
-  padding: 12px 70px;
+  padding: 12px 18%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -42,7 +42,7 @@ const Wrapper = styled.div`
 const WrapperButton = styled.div`
   position: absolute;
   Bottom: 25px;
-  right: 30px;
+  right: 6%;
 `
 const WrapperHover = styled.div`
   top: 0;
@@ -100,16 +100,7 @@ const Input = styled.input`
   height: 20px;
 `
 class ThumbnailShowTime extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-    this.pushToVod = this.pushToVod.bind(this)
-  }
-  // pushToVod() {
-  //   Router.push(`/vods/` + this.props.id)
-  // }
   render() {
-    //console.log('this.props', this.props.id)
     let zin = -1
     if (this.props.status === 'unenable') {
       zin = 1
@@ -117,7 +108,13 @@ class ThumbnailShowTime extends React.Component {
     return (
       <Provider>
         <Wrapper>
-          <Flex pl="0.5em" pr="0.5em" pt="1em" pb="1em">
+          <Flex
+            pl="0.5em"
+            pr="0.5em"
+            pt="1em"
+            pb="1em"
+            style={{ cursor: 'pointer' }}
+          >
             <Box w={0.4 / 12} />
             <Box w={2 / 12} mr="5px">
               <br />
@@ -144,13 +141,13 @@ class ThumbnailShowTime extends React.Component {
             </Box>
           </Flex>
           <WrapperButton>
-            <Button>
+            <Button style={{ cursor: 'pointer' }}>
               <Textbutton>
                 {this.props.text5}-{this.props.text2}
               </Textbutton>
             </Button>
           </WrapperButton>
-          <WrapperHover zin={zin} style={{ cursor: 'pointer' }} onClick="">
+          <WrapperHover zin={zin} onClick="">
             <Flex>
               <Box w={2 / 12} pt="2.5em" ml="5em">
                 <Image w="100%" src="static/ic_you-bought.png" />
@@ -160,7 +157,14 @@ class ThumbnailShowTime extends React.Component {
                   <Text4>YOU BOUGHT</Text4>
                 </Box>
                 <Box pl="2em" pt="0.5em">
-                  <ButtonWatch>WATCH</ButtonWatch>
+                  <Link
+                    //as={`/lives/${this.props.id}`}
+                    href={`/lives_vdo?id=${this.props.id}`}
+                  >
+                    <ButtonWatch style={{ cursor: 'pointer' }}>
+                      WATCH
+                    </ButtonWatch>
+                  </Link>
                 </Box>
               </Box>
             </Flex>

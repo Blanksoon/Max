@@ -129,7 +129,16 @@ const Wrapperin = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapperprice = styled.div`
+  position: absolute;
+  bottom: 40px;
+  right: 125px;
   background: #fff:
+`
+const WrapperMonth = styled.div`
+position: absolute;
+bottom: 10px;
+right: 50px;
+background: #fff:
 `
 const WrapperPackage = styled.div`
   background-color: ${props => props.color};
@@ -169,12 +178,20 @@ class ShowTime extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.token != undefined && this.state.token == 1) {
+    console.log('new', nextProps.auth.authTicket)
+    if (
+      nextProps.auth.token != undefined &&
+      nextProps.auth.authTicket == false
+    ) {
+      console.log('fit')
       nextProps.fetchProducts(nextProps.auth.token)
       this.setState({
         token: 2,
       })
-    } else if (nextProps.auth.token == undefined && this.state.token == 2) {
+    } else if (
+      nextProps.auth.token == undefined &&
+      nextProps.auth.authTicket == true
+    ) {
       nextProps.fetchProducts(undefined)
       this.setState({
         token: 1,
@@ -209,7 +226,7 @@ class ShowTime extends React.Component {
                     {/* <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="f-option" name="selector" />
                     </Box> */}
-                    <Box w={4.17 / 12} pt="2em" pl="2em" pb="0px">
+                    <Box w={5 / 12} pt="0.8em" pl="2em" pb="0px">
                       {/* <label htmlFor="f-option"> */}
                       <Image w="100%" src="static/img_VDO+LIVE.png" />
                       {/* </label> */}
@@ -217,17 +234,25 @@ class ShowTime extends React.Component {
                     <Box w={7 / 12} pt="1em" pr="1em">
                       {/* <label htmlFor="f-option"> */}
                       <center>
-                        <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
-                        <Text6>
-                          Enjoy all video and live streamingthru all
-                        </Text6>
-                        <Text6>
-                          the month, so you never missany extreme shot
-                        </Text6>
-                        <Text3>$29.99</Text3>
+                        <Box>
+                          <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
+                        </Box>
+                        <Box w={8 / 12} pt="0.5em">
+                          <Text6>
+                            Enjoy all video and live streamingthru all the
+                            month.
+                          </Text6>
+                        </Box>
                       </center>
-                      {/* </label> */}
-                      <Text4>1MONTH</Text4>
+                      <Wrapperprice>
+                        <Box pt="0.5em">
+                          <Text3>$29.99</Text3>
+                        </Box>
+                        {/* </label> */}
+                      </Wrapperprice>
+                      <WrapperMonth>
+                        <Text4>1MONTH</Text4>
+                      </WrapperMonth>
                     </Box>
                   </Flex>
                   <Wrapperin>
@@ -253,7 +278,7 @@ class ShowTime extends React.Component {
                     {/* <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="g-option" name="selector" />
                     </Box> */}
-                    <Box w={4 / 12} pt="2em" pl="2em">
+                    <Box w={5 / 12} pt="0.7em" pl="2em">
                       {/* <label htmlFor="g-option"> */}
                       <Image w="100%" src="static/img_vodondemand@3x.png" />
                       {/* </label> */}
@@ -261,17 +286,25 @@ class ShowTime extends React.Component {
                     <Box w={7 / 12} pt="1em" pr="1em">
                       {/* <label htmlFor="g-option"> */}
                       <center>
-                        <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
-                        <Text6>
-                          Enjoy all video and live streamingthru all
-                        </Text6>
-                        <Text6>
-                          the month, so you never missany extreme shot
-                        </Text6>
-                        <Text3>$29.99</Text3>
+                        <Box>
+                          <Text5>SUBSCRIBE VDO ON DEMAND</Text5>
+                        </Box>
+                        <Box w={8 / 12} pt="0.5em">
+                          <Text6>
+                            All video all month, so you never missany extreme
+                            shot
+                          </Text6>
+                        </Box>
                       </center>
-                      {/* </label> */}
-                      <Text4>1MONTH</Text4>
+                      <Wrapperprice>
+                        <Box pt="0.5em">
+                          <Text3>$29.99</Text3>
+                        </Box>
+                        {/* </label> */}
+                      </Wrapperprice>
+                      <WrapperMonth>
+                        <Text4>1MONTH</Text4>
+                      </WrapperMonth>
                     </Box>
                   </Flex>
                   <Wrapperin>

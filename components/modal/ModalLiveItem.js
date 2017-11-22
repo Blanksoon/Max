@@ -46,6 +46,7 @@ class ModalButton extends Component {
   }
   render() {
     let renderUI = <div />
+    // console.log('111111111111',this.props.)
     if (this.props.live == undefined) {
       renderUI = (
         <ThumbnailShowTime
@@ -61,6 +62,7 @@ class ModalButton extends Component {
     } else {
       renderUI = (
         <ThumbnailShowTime
+          id={this.props.live.id}
           status={this.props.live.status}
           imglogo={this.props.live.logoUrl}
           img={this.props.live.bannerUrl}
@@ -86,11 +88,7 @@ class ModalButton extends Component {
     //   />
     //)
 
-    return (
-      <div style={{ cursor: 'pointer' }} onClick={this.handleOnClickModal}>
-        {renderUI}
-      </div>
-    )
+    return <div onClick={this.handleOnClickModal}>{renderUI}</div>
   }
 }
 
