@@ -65,7 +65,7 @@ const WrapperRegister = styled.div`
 const WrapperPurchaseItem = styled.div`
   position: relative;
   width: 750px;
-  height: 550px;
+  height: 480px;
   background: #fff;
   z-index: 240;
 `
@@ -95,7 +95,7 @@ const WrapperClose = styled.div`
 const WrapperCancle = styled.div`
   position: absolute;
   color: #fff;
-  bottom: 0;
+  bottom: -57px;
   right: 80px;
   //border: 3px solid #73ad81;
   cursor: pointer;
@@ -209,8 +209,7 @@ export default class Modal extends Component {
         </WrapperRegister>
       )
     } else if (this.props.modalType === 8) {
-      // console.log('1111111112',this.props)
-      //Forgot password
+      // Purchase
       renderUI = (
         <WrapperPurchaseItem onClick={e => this.handleOnClick(e)}>
           <PurchaseItem
@@ -223,7 +222,7 @@ export default class Modal extends Component {
         </WrapperPurchaseItem>
       )
     } else if (this.props.modalType === 9) {
-      //Forgot password
+      //SuccessPurchase
       renderUI = (
         <WrapperSuccessPurchase onClick={e => this.handleOnClick(e)}>
           <SuccessPurchase closeModal={this.props.closeModal} />
