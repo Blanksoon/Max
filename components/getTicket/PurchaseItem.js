@@ -127,9 +127,9 @@ class PurchaseItem extends React.Component {
           </Box>
         </WrapperTop>
         <WrapperDown>
-          <Box pl="3em" pr="3em" pt="1em">
+          {/* <Box pl="3em" pr="3em" pt="1em">
             <Text2>Your order ID : 251485039</Text2>
-          </Box>
+          </Box> */}
           <Flex pr="3em" pl="3em" pt="1em">
             <Box w={6 / 12} pr="0.5em">
               <Image width="100%" src={this.props.live.bannerUrl} />
@@ -149,7 +149,7 @@ class PurchaseItem extends React.Component {
               </WrapperPrice>
             </Box>
           </Flex>
-          <Box pl="3em" pr="3em" pt="1em">
+          {/* <Box pl="3em" pr="3em" pt="1em">
             <Text2>
               Please check your contact email, This' ll be use to send the
               receipt.
@@ -161,7 +161,7 @@ class PurchaseItem extends React.Component {
               placeholder="@email"
               value="autofill@cenedit.com"
             />
-          </Box>
+          </Box> */}
           <Box pl="3em" pr="3em" pt="1em">
             <Text2>SELECT PAYMENT METHOD</Text2>
           </Box>

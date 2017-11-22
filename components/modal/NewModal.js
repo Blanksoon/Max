@@ -65,7 +65,7 @@ const WrapperRegister = styled.div`
 const WrapperPurchaseItem = styled.div`
   position: relative;
   width: 750px;
-  height: 480px;
+  height: 370px;
   background: #fff;
   z-index: 240;
 `

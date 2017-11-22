@@ -31,11 +31,10 @@ const ImageHlight = styled.img`
   src: ${props => props.src};
 `
 const Wrapper = styled.div`
-  //border: 1px solid ${props => props.color};
-  background-color: ${color.white};
+  background-color: ${props => props.color};
   text-align: -webkit-auto;
   position: relative;
-  height: 160px;
+  height: 180px;
   width: 100%;
 `
 const WrapperButton = styled.div`
@@ -56,6 +55,32 @@ const WrapperHover = styled.div`
     rgba(0, 0, 0, 0.8) 0%,
     rgba(0, 0, 0, 0.8) 100%
   ); /* Chrome10-25,Safari5.1-6 */
+`
+const Wrapperin = styled.div`
+  top: 0;
+  background-color: ${color.black};
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  font-family: Helvetica, Arial, sans-serif;
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+`
+const Wrapperprice = styled.div`
+position: absolute;
+bottom: 40px;
+right: 125px;
+background: #fff:
+`
+const WrapperMonth = styled.div`
+position: absolute;
+bottom: 10px;
+right: 50px;
+background: #fff:
 `
 const Text1 = styled.div`
   padding-left: 1rem;
@@ -98,7 +123,7 @@ const Input = styled.input`
   width: 20px;
   height: 20px;
 `
-class ThumbnailShowTime extends React.Component {
+class ModalSubscribe extends React.Component {
   render() {
     let zin = -1
     if (this.props.status === 'unenable') {
@@ -106,65 +131,54 @@ class ThumbnailShowTime extends React.Component {
     }
     return (
       <Provider>
-        <Wrapper>
-          <Flex
-            pl="0.5em"
-            pr="0.5em"
-            pt="1em"
-            pb="1em"
-            style={{ cursor: 'pointer' }}
-          >
-            <Box w={0.4 / 12} />
-            <Box w={2 / 12} mr="5px">
-              <br />
+        <Wrapper color={color.red}>
+          <Flex pb="1em">
+            {/* <Box w={1 / 12} pt="4em" pl="1em">
+                      <Input type="radio" id="f-option" name="selector" />
+                    </Box> */}
+            <Box w={5 / 12} pt="0.8em" pl="2em" pb="0px">
+              {/* <label htmlFor="f-option"> */}
+              <Image w="100%" src="static/img_VDO+LIVE.png" />
+              {/* </label> */}
+            </Box>
+            <Box w={7 / 12} pt="1em" pr="1em">
+              {/* <label htmlFor="f-option"> */}
               <center>
-                <Image w="100%" src={this.props.imglogo} />
-                <Text3>{this.props.text3}</Text3>
+                <Box>
+                  <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
+                </Box>
+                <Box w={8 / 12} pt="0.5em">
+                  <Text6>
+                    Enjoy all video and live streamingthru all the month.
+                  </Text6>
+                </Box>
               </center>
-            </Box>
-            <Box w={4 / 12}>
-              <Text2>{this.props.text4}</Text2>
-              <Image w="100%" src={this.props.img} />
-            </Box>
-            <Box w={5 / 12}>
-              <Flex>
-                <Box w={2 / 12} ml="12px">
-                  <br />
-                  <Image w="100%" src="static/ic_liveblack@2x.png" />
+              <Wrapperprice>
+                <Box pt="0.5em">
+                  <Text3>$29.99</Text3>
                 </Box>
-                <Box w={10 / 12}>
-                  <Text1>{this.props.text1}</Text1>
-                  {this.props.textrb}
-                </Box>
-              </Flex>
+                {/* </label> */}
+              </Wrapperprice>
+              <WrapperMonth>
+                <Text4>1MONTH</Text4>
+              </WrapperMonth>
             </Box>
           </Flex>
-          <WrapperButton>
-            <Button style={{ cursor: 'pointer' }}>
-              <Textbutton>
-                {this.props.text5}-{this.props.text2}
-              </Textbutton>
-            </Button>
-          </WrapperButton>
-          <WrapperHover zin={zin} onClick="">
-            <Flex>
-              <Box w={2 / 12} pt="2.5em" ml="5em">
-                <Image w="100%" src="static/ic_you-bought.png" />
+          <Wrapperin>
+            <center>
+              <Box pt="2em">
+                <Text5>SUBSCRIBE VOD</Text5>
+                <Text5>AND LIVE STREAMING</Text5>
               </Box>
-              <Box w={10 / 12}>
-                <Box pl="2.5em" pt="2em">
-                  <Text4>YOU BOUGHT</Text4>
-                </Box>
-                <Box pl="2em" pt="0.5em">
-                  <Link href={`/lives_vdo?id=${this.props.id}`}>
-                    <ButtonWatch style={{ cursor: 'pointer' }}>
-                      WATCH
-                    </ButtonWatch>
-                  </Link>
-                </Box>
+              <Box pt="1em">
+                <ButtonWatch>WATCH NOW</ButtonWatch>
               </Box>
-            </Flex>
-          </WrapperHover>
+              <Box pt="1em">
+                <Text10>VALID THRU</Text10>
+                <Text9>Aug 30th, 2017</Text9>
+              </Box>
+            </center>
+          </Wrapperin>
         </Wrapper>
       </Provider>
     )
@@ -177,13 +191,4 @@ const mapStateToProps = state => {
   }
 }
 
-// Login.getInitialProps = async ({ store, isServer, query, req }) => {
-//   let state = store.getState()
-//   const token = state.auth.token
-//   await Promise.all([livePromise, vodPromise])
-//   state = store.getState()
-//   const props = mapStateToProps(state)
-//   return props
-// }
-
-export default connect(mapStateToProps, { closeModal })(ThumbnailShowTime)
+export default connect(mapStateToProps, { closeModal })(ModalSubscribe)
