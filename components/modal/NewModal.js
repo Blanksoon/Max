@@ -113,7 +113,7 @@ export default class Modal extends Component {
     modalType: 2,
   }
   handleOnClick = e => {
-    console.log('click', e)
+    //console.log('click', e)
     false ? this.props.toggleModalAction() : null
     // if (false) {
     //   this.props.toogleModalAction()
@@ -126,7 +126,7 @@ export default class Modal extends Component {
     })
     // Show carousel only after initiate to avoid flicker
     document.addEventListener('keydown', e => {
-      console.log('eventcode', e.keyCode)
+      //console.log('eventcode', e.keyCode)
       if (e.keyCode === 27) this.closeModal()
     })
   }

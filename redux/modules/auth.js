@@ -37,7 +37,7 @@ export const fbLogin = providerData => async dispatch => {
       `${api.SERVER}/fb-login`,
       providerData
     )
-    console.log('status', status)
+    //console.log('status', status)
     if (data.token == 'undefined' || data.token == undefined) {
       dispatch({
         type: LOGOUT,
@@ -82,7 +82,7 @@ export const localLogin = providerData => async dispatch => {
       dispatch(closeModal())
       dispatch(fetchLives(data.token))
       dispatch(fetchVods(data.token))
-      dispatch(loginFail())
+      //dispatch(loginFail())
     }
   } catch (error) {
     dispatch(

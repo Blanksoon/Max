@@ -51,6 +51,7 @@ export default class extends Component {
     this.props.setCookie('lang', lang)
   }
   render() {
+    //console.log('LoginLang', this.props)
     const { url, lang, email } = this.props
     return (
       <LoginLang>

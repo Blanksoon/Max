@@ -21,7 +21,13 @@ import * as api from '../api'
 
 const Wrapper = styled.div`background-color: #3c5c83;`
 class selectShowtime extends React.Component {
+  constructor(props) {
+    super(props)
+    //this.purchase = this.purchase.bind(this)
+  }
+
   render() {
+    //console.log('render', this.props.url)
     return (
       <div>
         <Head>

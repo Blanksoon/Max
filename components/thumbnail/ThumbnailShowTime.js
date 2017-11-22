@@ -5,6 +5,7 @@ import color from '../commons/vars'
 import { closeModal } from '../../redux/modules/modal'
 import { connect } from 'react-redux'
 import * as api from '../../api'
+import Router from 'next/router'
 
 const Button = styled.button`
   background-color: ${color.white};
@@ -99,12 +100,21 @@ const Input = styled.input`
   height: 20px;
 `
 class ThumbnailShowTime extends React.Component {
-  render(){
+  constructor(props) {
+    super(props)
+    this.state = {}
+    this.pushToVod = this.pushToVod.bind(this)
+  }
+  // pushToVod() {
+  //   Router.push(`/vods/` + this.props.id)
+  // }
+  render() {
+    //console.log('this.props', this.props.id)
     let zin = -1
-    if(this.props.status==="unenable"){ 
+    if (this.props.status === 'unenable') {
       zin = 1
     }
-    return(
+    return (
       <Provider>
         <Wrapper>
           <Flex pl="0.5em" pr="0.5em" pt="1em" pb="1em">
@@ -140,7 +150,7 @@ class ThumbnailShowTime extends React.Component {
               </Textbutton>
             </Button>
           </WrapperButton>
-          <WrapperHover zin={zin} style={{ cursor: 'pointer' }} onClick=''>
+          <WrapperHover zin={zin} style={{ cursor: 'pointer' }} onClick="">
             <Flex>
               <Box w={2 / 12} pt="2.5em" ml="5em">
                 <Image w="100%" src="static/ic_you-bought.png" />

@@ -17,11 +17,11 @@ export const fetchProductsSuccess = products => ({
 })
 export const fetchProducts = token => async dispatch => {
   dispatch(fetchLivesReq())
-  console.log('hhhh')
   const url = `${api.SERVER}/product?token=${token}`
   try {
+    console.log('fetchProducts')
     const json = await api.get(url)
-    console.log('json', json)
+    //console.log('json', json)
     // You should not return in Vods <-- change to something like data
     dispatch(fetchProductsSuccess(json.data))
   } catch (error) {
@@ -41,7 +41,7 @@ export const fetchLive = (token, id) => async dispatch => {
   const url = `${api.SERVER}/lives/${id}?token=${token}`
   try {
     const json = await api.get(url, { token })
-    console.log('json', json)
+    //console.log('json', json)
     // You should not return in Vods <-- change to something like data
     dispatch(fetchLiveSuccess(json.data))
   } catch (error) {
