@@ -98,7 +98,7 @@ class PurchaseItem extends React.Component {
   }
 
   async purchase() {
-    console.log(this.props.auth.token, this.props.live.id)
+    //console.log(this.props.auth.token, this.props.live.id)
     const response = await fetch(
       `${api.SERVER}/ppcheckout/` +
         this.props.live.id +
@@ -114,10 +114,10 @@ class PurchaseItem extends React.Component {
         mode: 'no-cors',
       }
     )
-    console.log('response', response)
+    //console.log('response', response)
   }
   render() {
-    console.log('sxxxxx', this.props)
+    //console.log('sxxxxx', this.props)
     return (
       <Wrapper>
         <WrapperTop>

@@ -74,7 +74,7 @@ class Paypal extends React.Component {
   }
 
   post(url, json) {
-    console.log('json')
+    //console.log('json')
     return fetch(url, {
       method: 'POST',
       headers: {

@@ -153,13 +153,59 @@ const Input = styled.input`
 `
 const Wrapper = styled.div`background: #fff;`
 class ShowTime extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      modalNumber: 8,
+    }
+    //this.purchase = this.purchase.bind(this)
+  }
+  componentDidMount() {
+    //console.log(this.props)
+    if (this.props.auth.token == undefined) {
+      this.setState({
+        modalNumber: 3,
+        token: 1,
+      })
+    }
+    // Show carousel only after initiate to avoid flicker
+    // this.setState({
+    //   visibility: 'visible',
+    // })
+    // document.addEventListener('keydown', e => {
+    //   if (e.keyCode === 27) this.closeModal()
+    // })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('new', nextProps.auth.authTicket)
+    if (
+      nextProps.auth.token != undefined &&
+      nextProps.auth.authTicket == false
+    ) {
+      console.log('fit')
+      nextProps.fetchProducts(nextProps.auth.token)
+      this.setState({
+        token: 2,
+      })
+    } else if (
+      nextProps.auth.token == undefined &&
+      nextProps.auth.authTicket == true
+    ) {
+      nextProps.fetchProducts(undefined)
+      this.setState({
+        token: 1,
+      })
+    }
+  }
   render() {
-    // if(this.state.live != undefined){
-
-    // }else{
-
-    // }
-    console.log('0', this.props.product.products.lives[0])
+    let type = 8
+    if (this.props.auth.token == undefined) {
+      type = 3
+    } else {
+      type = 8
+    }
+    //console.log('0', this.props.product.products.lives[0])
     return (
       <Wrapper>
         <Flex pl="1em" pr="1em" pb="3em">
@@ -304,7 +350,8 @@ class ShowTime extends React.Component {
               <Flex pl="0.5em" pr="0.5em">
                 <Box w={6 / 12} pr="0.5em" pt="1em">
                   <ModalLiveItem
-                    modalType={8}
+                    modalType={type}
+                    auth={this.props.auth}
                     live={this.props.product.products.lives[0]}
                     logo="/static/logo_max.png"
                     img="/static/maxultimate-show.jpg"
@@ -317,7 +364,8 @@ class ShowTime extends React.Component {
                 </Box>
                 <Box w={6 / 12} pl="0.5em" pt="1rem">
                   <ModalLiveItem
-                    modalType={8}
+                    modalType={type}
+                    auth={this.props.auth}
                     live={this.props.product.products.lives[1]}
                     logo="/static/logo_battle.png"
                     img="/static/thebattle-show.jpg"
@@ -332,7 +380,7 @@ class ShowTime extends React.Component {
               <Flex pl="0.5em" pr="0.5em">
                 <Box w={6 / 12} pr="0.5em" pt="1rem">
                   <ModalLiveItem
-                    modalType={8}
+                    modalType={type}
                     live={this.props.product.products.lives[2]}
                     logo="/static/logo_fighter.png"
                     img="/static/thairath-show.jpg"
@@ -345,7 +393,7 @@ class ShowTime extends React.Component {
                 </Box>
                 <Box w={6 / 12} pl="0.5em" pt="1rem">
                   <ModalLiveItem
-                    modalType={8}
+                    modalType={type}
                     live={this.props.product.products.lives[3]}
                     logo="/static/logo_champion.png"
                     img="/static/thechampion-show.jpg"
@@ -372,16 +420,16 @@ const mapStateToProps = state => {
   }
 }
 
-// ShowTime.getInitialProps = async ({ store, isServer, query, req }) => {
-//   let state = store.getState()
-//   const token = state.auth.token
-//   const productPromise = fetchProducts(token)(store.dispatch)
-//   await Promise.all([productPromise])
-//   state = store.getState()
-//   const props = mapStateToProps(state)
-//   return props
-// }
-export default connect(mapStateToProps, null)(ShowTime)
+ShowTime.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  const token = state.auth.token
+  const productPromise = fetchProducts(token)(store.dispatch)
+  await Promise.all([productPromise])
+  state = store.getState()
+  const props = mapStateToProps(state)
+  return props
+}
+export default connect(mapStateToProps, { fetchProducts })(ShowTime)
 // export default withRedux(initStore, mapStateToProps, {
 //   fetchProducts,
 // })(ShowTime)

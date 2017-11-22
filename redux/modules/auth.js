@@ -14,9 +14,9 @@ const LOGOUT = 'LOGOUT'
 export const loginReq = () => ({
   type: LOGIN_REQ,
 })
-export const loginSuccess = ({ token, email }) => ({
+export const loginSuccess = ({ token, email, authTicket }) => ({
   type: LOGIN_SUCCESS,
-  payload: { token, email },
+  payload: { token, email, authTicket },
 })
 export const loginFail = ({ code, message }) => ({
   type: LOGIN_FAIL,
@@ -37,7 +37,7 @@ export const fbLogin = providerData => async dispatch => {
       `${api.SERVER}/fb-login`,
       providerData
     )
-    console.log('status', status)
+    //console.log('status', status)
     if (data.token == 'undefined' || data.token == undefined) {
       dispatch({
         type: LOGOUT,
@@ -78,11 +78,12 @@ export const localLogin = providerData => async dispatch => {
     } else {
       dispatch(setCookie('email', data.email))
       dispatch(setCookie('token', data.token))
+      data.authTicket = true
       dispatch(loginSuccess(data))
       dispatch(closeModal())
       dispatch(fetchLives(data.token))
       dispatch(fetchVods(data.token))
-      dispatch(loginFail())
+      //dispatch(loginFail())
     }
   } catch (error) {
     dispatch(
@@ -121,6 +122,7 @@ export const currentpassword = providerData => async dispatch => {
 const initialState = {
   loading: false,
   error: {},
+  authTicket: false,
 }
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -135,6 +137,7 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         email: action.payload.email,
         token: action.payload.token,
+        authTicket: action.payload.authTicket,
       }
     case LOGIN_FAIL:
       return {

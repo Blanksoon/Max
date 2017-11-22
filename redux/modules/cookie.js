@@ -27,10 +27,13 @@ export const removeCookie = key => dispatch => {
 }
 
 // cookies must be an object contain key/value of all cookies
-export const loadAllCookies = cookies => ({
-  type: LOAD_ALL_COOKIES,
-  payload: cookies,
-})
+export const loadAllCookies = cookies => {
+  console.log('hisss', cookies)
+  return {
+    type: LOAD_ALL_COOKIES,
+    payload: cookies,
+  }
+}
 
 // reducer
 const initialState = {}

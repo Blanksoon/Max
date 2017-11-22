@@ -5,6 +5,7 @@ import color from '../commons/vars'
 import { closeModal } from '../../redux/modules/modal'
 import { connect } from 'react-redux'
 import * as api from '../../api'
+import Router from 'next/router'
 
 const Button = styled.button`
   background-color: ${color.white};
