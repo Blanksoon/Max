@@ -172,8 +172,8 @@ class ModalSubscribe extends React.Component {
     return (
       <Provider>
         <div onClick={this.handleOnClickModal}>
-          <Wrapper color={this.props.color} style={{ cursor: 'pointer' }}>
-            <Flex pb="1em">
+          <Wrapper color={this.props.color}>
+            <Flex pb="2.6em" style={{ cursor: 'pointer' }}>
               {/* <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="f-option" name="selector" />
                     </Box> */}
@@ -210,7 +210,11 @@ class ModalSubscribe extends React.Component {
                   <Text5>AND LIVE STREAMING</Text5>
                 </Box>
                 <Box pt="1em">
-                  <ButtonWatch>WATCH NOW</ButtonWatch>
+                  <Link href="#">
+                    <ButtonWatch style={{ cursor: 'pointer' }}>
+                      WATCH NOW
+                    </ButtonWatch>
+                  </Link>
                 </Box>
                 <Box pt="1em">
                   <Text10>VALID THRU</Text10>

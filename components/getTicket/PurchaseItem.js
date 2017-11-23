@@ -110,7 +110,7 @@ class PurchaseItem extends React.Component {
     //console.log(this.props.auth.token, this.props.product.id)
     const response = await fetch(
       `${api.SERVER}/ppcheckout/` +
-        this.props.product.id +
+        this.props.product._id +
         '?token=' +
         this.props.auth.token,
       {
@@ -123,13 +123,14 @@ class PurchaseItem extends React.Component {
         mode: 'no-cors',
       }
     )
-    console.log('response', response)
+    // console.log('response', this.props.product._idnse)
   }
   render() {
+    console.log('response', this.props.product._id)
     //console.log('sxxxxx', this.props)
     let renderUI = <div />
     let packagee = 'SUBSCRIBE VDO AND LIVE STREAMING'
-    let img = 'static/img_VDO+LIVE.png'
+    let img = 'static/subandvod.jpg'
     let price = '$29.99'
     // console.log('iffffffffff', this.props)
     if (this.props.id == 'live') {
@@ -182,16 +183,18 @@ class PurchaseItem extends React.Component {
               <Text2>SELECT PAYMENT METHOD</Text2>
             </Box>
             <Flex pl="3em" pr="3em" pt="1em" pb="2.1em">
-              <Box w={6 / 12} pr="0.5em">
-                <Buttonpaypal on onClick={this.purchase}>
-                  <Image width="100%" src="../../static/PayPal.png" />
-                </Buttonpaypal>
+              <Box w={12 / 12} pr="0.5em">
+                <center>
+                  <Buttonpaypal on onClick={this.purchase}>
+                    <Image width="100%" src="../../static/PayPal.png" />
+                  </Buttonpaypal>
+                </center>
               </Box>
-              <Box w={6 / 12} pl="0.5em">
+              {/* <Box w={6 / 12} pl="0.5em">
                 <Button>
                   <Image width="100%" src="../../static/btn_wechat.png" />
                 </Button>
-              </Box>
+              </Box> */}
             </Flex>
           </WrapperDown>
         </Wrapper>
@@ -200,7 +203,7 @@ class PurchaseItem extends React.Component {
       console.log('if22222222222222222', this.props)
       if (this.props.product.productId === '2002') {
         packagee = 'SUBSCRIBE VDO ON DEMAND'
-        img = 'static/img_vodondemand@3x.png'
+        img = 'static/ondemand.jpg'
         price = '$19.99'
       }
       renderUI = (
@@ -217,7 +220,7 @@ class PurchaseItem extends React.Component {
         </Box> */}
             <Flex pr="3em" pl="3em" pt="2em">
               <Box w={6 / 12} pr="0.5em">
-                <Image width="80%" src={img} />
+                <Image width="100%" src={img} />
               </Box>
               <Box w={6 / 12} pl="0.5em">
                 <Text3>{packagee}</Text3>
@@ -239,20 +242,22 @@ class PurchaseItem extends React.Component {
             value="autofill@cenedit.com"
           />
         </Box> */}
-            <Box pl="3em" pr="3em" pt="1em">
+            <Box pl="3em" pr="3em" pt="2.2em">
               <Text2>SELECT PAYMENT METHOD</Text2>
             </Box>
-            <Flex pl="3em" pr="3em" pt="1em" pb="2.1em">
-              <Box w={6 / 12} pr="0.5em">
-                <Buttonpaypal on onClick={this.purchase}>
-                  <Image width="100%" src="../../static/PayPal.png" />
-                </Buttonpaypal>
+            <Flex pl="3em" pr="3em" pt="2em" pb="2.1em">
+              <Box w={12 / 12} pr="0.5em">
+                <center>
+                  <Buttonpaypal on onClick={this.purchase}>
+                    <Image width="100%" src="../../static/PayPal.png" />
+                  </Buttonpaypal>
+                </center>
               </Box>
-              <Box w={6 / 12} pl="0.5em">
+              {/* <Box w={6 / 12} pl="0.5em">
                 <Button>
                   <Image width="100%" src="../../static/btn_wechat.png" />
                 </Button>
-              </Box>
+              </Box> */}
             </Flex>
           </WrapperDown>
         </Wrapper>

@@ -213,7 +213,7 @@ export default class Modal extends Component {
       )
     } else if (this.props.modalType === 8) {
       // Purchase
-      // console.log('ifffffff', this.props)
+      console.log('ifffffff', this.props)
       renderUI = (
         <WrapperPurchaseItem onClick={e => this.handleOnClick(e)}>
           <PurchaseItem product={this.props.product} id={this.props.id} />
