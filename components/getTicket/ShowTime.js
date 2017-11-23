@@ -8,6 +8,7 @@ import ModalButton from '../../containers/ModalButton'
 import { connect } from 'react-redux'
 import YouSelect from './YouSelect'
 import ModalLiveItem from '../../containers/ModalLiveItem'
+import ModalSubscribe from '../../containers/ModalSubscribe'
 import * as api from '../../api'
 import { fetchProducts } from '../../redux/modules/product'
 import withRedux from 'next-redux-wrapper'
@@ -157,45 +158,20 @@ class ShowTime extends React.Component {
     super(props)
     this.state = {
       modalNumber: 8,
+      token: 1,
     }
-    //this.purchase = this.purchase.bind(this)
   }
   componentDidMount() {
-    //console.log(this.props)
     if (this.props.auth.token == undefined) {
       this.setState({
         modalNumber: 3,
-        token: 1,
       })
     }
-    // Show carousel only after initiate to avoid flicker
-    // this.setState({
-    //   visibility: 'visible',
-    // })
-    // document.addEventListener('keydown', e => {
-    //   if (e.keyCode === 27) this.closeModal()
-    // })
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('new', nextProps.auth.authTicket)
-    if (
-      nextProps.auth.token != undefined &&
-      nextProps.auth.authTicket == false
-    ) {
-      console.log('fit')
+    if (this.props.auth.token !== nextProps.auth.token) {
       nextProps.fetchProducts(nextProps.auth.token)
-      this.setState({
-        token: 2,
-      })
-    } else if (
-      nextProps.auth.token == undefined &&
-      nextProps.auth.authTicket == true
-    ) {
-      nextProps.fetchProducts(undefined)
-      this.setState({
-        token: 1,
-      })
     }
   }
   render() {
@@ -221,111 +197,32 @@ class ShowTime extends React.Component {
             </Flex>
             <Flex pb="1em">
               <Box w={6 / 12} pr="0.5em">
-                <WrapperPackage color={color.red}>
-                  <Flex pb="1em">
-                    {/* <Box w={1 / 12} pt="4em" pl="1em">
-                      <Input type="radio" id="f-option" name="selector" />
-                    </Box> */}
-                    <Box w={5 / 12} pt="0.8em" pl="2em" pb="0px">
-                      {/* <label htmlFor="f-option"> */}
-                      <Image w="100%" src="static/img_VDO+LIVE.png" />
-                      {/* </label> */}
-                    </Box>
-                    <Box w={7 / 12} pt="1em" pr="1em">
-                      {/* <label htmlFor="f-option"> */}
-                      <center>
-                        <Box>
-                          <Text5>SUBSCRIBE VDO AND LIVE STREAMING</Text5>
-                        </Box>
-                        <Box w={8 / 12} pt="0.5em">
-                          <Text6>
-                            Enjoy all video and live streamingthru all the
-                            month.
-                          </Text6>
-                        </Box>
-                      </center>
-                      <Wrapperprice>
-                        <Box pt="0.5em">
-                          <Text3>$29.99</Text3>
-                        </Box>
-                        {/* </label> */}
-                      </Wrapperprice>
-                      <WrapperMonth>
-                        <Text4>1MONTH</Text4>
-                      </WrapperMonth>
-                    </Box>
-                  </Flex>
-                  <Wrapperin>
-                    <center>
-                      <Box pt="2em">
-                        <Text5>SUBSCRIBE VOD</Text5>
-                        <Text5>AND LIVE STREAMING</Text5>
-                      </Box>
-                      <Box pt="1em">
-                        <ButtonWatch>WATCH NOW</ButtonWatch>
-                      </Box>
-                      <Box pt="1em">
-                        <Text10>VALID THRU</Text10>
-                        <Text9>Aug 30th, 2017</Text9>
-                      </Box>
-                    </center>
-                  </Wrapperin>
-                </WrapperPackage>
+                <ModalSubscribe
+                  id="sub"
+                  modalType={type}
+                  live={undefined}
+                  subscribe={this.props.product.products.subscribe[0]}
+                  color={color.red}
+                  img="static/img_VDO+LIVE.png"
+                  text1="SUBSCRIBE VDO AND LIVE STREAMING"
+                  text2="Enjoy all video and live streamingthru all the month."
+                  price="$29.99"
+                  month="/1MONTH"
+                />
               </Box>
               <Box w={6 / 12} pl="0.5em">
-                <WrapperPackage color={color.blue}>
-                  <Flex pb="1em">
-                    {/* <Box w={1 / 12} pt="4em" pl="1em">
-                      <Input type="radio" id="g-option" name="selector" />
-                    </Box> */}
-                    <Box w={5 / 12} pt="0.7em" pl="2em">
-                      {/* <label htmlFor="g-option"> */}
-                      <Image w="100%" src="static/img_vodondemand@3x.png" />
-                      {/* </label> */}
-                    </Box>
-                    <Box w={7 / 12} pt="1em" pr="1em">
-                      {/* <label htmlFor="g-option"> */}
-                      <center>
-                        <Box>
-                          <Text5>SUBSCRIBE VDO ON DEMAND</Text5>
-                        </Box>
-                        <Box w={8 / 12} pt="0.5em">
-                          <Text6>
-                            All video all month, so you never missany extreme
-                            shot
-                          </Text6>
-                        </Box>
-                      </center>
-                      <Wrapperprice>
-                        <Box pt="0.5em">
-                          <Text3>$29.99</Text3>
-                        </Box>
-                        {/* </label> */}
-                      </Wrapperprice>
-                      <WrapperMonth>
-                        <Text4>1MONTH</Text4>
-                      </WrapperMonth>
-                    </Box>
-                  </Flex>
-                  <Wrapperin>
-                    <Box pt="1em" pl="1em">
-                      <Text11>YOUR PACKAGE.</Text11>
-                    </Box>
-                    <center>
-                      <Box>
-                        <Text5>SUBSCRIBE VOD</Text5>
-                        <Text5>ON DEMAND</Text5>
-                      </Box>
-                      <Box pt="1em">
-                        <ButtonWatch>WATCH NOW</ButtonWatch>
-                      </Box>
-                      <Box pt="1em">
-                        <Text10>VALID THRU</Text10>
-                        <Text9>Aug 30th, 2017</Text9>
-                      </Box>
-                    </center>
-                  </Wrapperin>
-                </WrapperPackage>
+                <ModalSubscribe
+                  id="sub"
+                  modalType={type}
+                  live={undefined}
+                  subscribe={this.props.product.products.subscribe[1]}
+                  color={color.blue}
+                  img="static/img_vodondemand@3x.png"
+                  text1="SUBSCRIBE VDO ON DEMAND"
+                  text2="All video all month, so you never missany extreme shot"
+                  price="$19.99"
+                  month="/1MONTH"
+                />
               </Box>
             </Flex>
             <Box bg={color.blue} pb="1em">
@@ -350,6 +247,7 @@ class ShowTime extends React.Component {
               <Flex pl="0.5em" pr="0.5em">
                 <Box w={6 / 12} pr="0.5em" pt="1em">
                   <ModalLiveItem
+                    id="live"
                     modalType={type}
                     auth={this.props.auth}
                     live={this.props.product.products.lives[0]}
@@ -364,6 +262,7 @@ class ShowTime extends React.Component {
                 </Box>
                 <Box w={6 / 12} pl="0.5em" pt="1rem">
                   <ModalLiveItem
+                    id="live"
                     modalType={type}
                     auth={this.props.auth}
                     live={this.props.product.products.lives[1]}
@@ -380,6 +279,7 @@ class ShowTime extends React.Component {
               <Flex pl="0.5em" pr="0.5em">
                 <Box w={6 / 12} pr="0.5em" pt="1rem">
                   <ModalLiveItem
+                    id="live"
                     modalType={type}
                     live={this.props.product.products.lives[2]}
                     logo="/static/logo_fighter.png"
@@ -393,6 +293,7 @@ class ShowTime extends React.Component {
                 </Box>
                 <Box w={6 / 12} pl="0.5em" pt="1rem">
                   <ModalLiveItem
+                    id="live"
                     modalType={type}
                     live={this.props.product.products.lives[3]}
                     logo="/static/logo_champion.png"

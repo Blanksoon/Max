@@ -4,7 +4,8 @@ import {
   toggleModal,
   updateModalType,
   indexModalURL,
-  liveProduct,
+  buyProduct,
+  updateID,
 } from '../redux/modules/modal'
 
 const mapStateToProps = state => {
@@ -15,7 +16,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   toggleModalAction: () => dispatch(toggleModal()),
   updateModalAction: modalType => dispatch(updateModalType(modalType)),
-  liveProductAction: modalURL => dispatch(liveProduct(modalURL)),
+  buyProductAction: product => dispatch(buyProduct(product)),
+  updateIDAction: id => dispatch(updateID(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalLiveItem)

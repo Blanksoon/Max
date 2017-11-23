@@ -41,7 +41,8 @@ class ModalButton extends Component {
     } else {
       this.props.toggleModalAction()
       this.props.updateModalAction(this.props.modalType)
-      this.props.liveProductAction(this.props.live)
+      this.props.buyProductAction(this.props.live)
+      this.props.updateIDAction(this.props.id)
     }
   }
   render() {

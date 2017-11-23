@@ -36,7 +36,7 @@ const Wrapper = styled.div`
   background-color: ${color.white};
   text-align: -webkit-auto;
   position: relative;
-  height: 170px;
+  height: 160px;
   width: 100%;
 `
 const WrapperButton = styled.div`

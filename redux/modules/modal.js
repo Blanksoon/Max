@@ -8,7 +8,8 @@ const MODAL_FORGOTPASS = 'MODAL_FORGOTPASS'
 const MODAL_PURCHASEITEM = 'MODAL_PURCHASEITEM'
 const MODAL_CHANGEPASS = 'MODAL_CHANGEPASS'
 const NEW_PASSWORD = 'NEW_PASSWORD'
-const LIVE_PRODUCT = 'LIVE_PRODUCT'
+const BUY_PRODUCT = 'BUY_PRODUCT'
+const UPDATE_ID = 'UPDATE_ID'
 
 // actions
 export const toggleModal = () => {
@@ -64,10 +65,16 @@ export const purchaseItemModal = modalType => {
     payload: { modalType },
   }
 }
-export const liveProduct = modalURL => {
+export const buyProduct = product => {
   return {
-    type: LIVE_PRODUCT,
-    URL: { modalURL },
+    type: BUY_PRODUCT,
+    payload: { product },
+  }
+}
+export const updateID = id => {
+  return {
+    type: UPDATE_ID,
+    payload: { id },
   }
 }
 
@@ -75,10 +82,13 @@ const initialState = {
   activeModal: false,
   modalType: 2,
   modalURL: 'static/flightcard.jpg',
+  id: 0,
   video: false,
+  product: '',
 }
 
 const modalReducer = (state = initialState, action) => {
+  console.log('ifliveProduct', action.type)
   switch (action.type) {
     case TOGGLE_MODAL: {
       return {
@@ -135,11 +145,17 @@ const modalReducer = (state = initialState, action) => {
         modalType: action.payload.modalType,
       }
     }
-    case LIVE_PRODUCT: {
-      // console.log('111111111111',action.payload.live)
+    case BUY_PRODUCT: {
+      // console.log('iff111111111111', action.URL)
       return {
         ...state,
-        modalURL: action.URL.modalURL,
+        product: action.payload.product,
+      }
+    }
+    case UPDATE_ID: {
+      return {
+        ...state,
+        id: action.payload.id,
       }
     }
     default: {
