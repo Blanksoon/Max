@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import ModalLiveItem from '../components/modal/ModalLiveItem'
+import ModalSubscribe from '../components/modal/ModalSubscribe'
 import {
   toggleModal,
   updateModalType,
@@ -20,4 +20,4 @@ const mapDispatchToProps = dispatch => ({
   updateIDAction: id => dispatch(updateID(id)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalLiveItem)
+export default connect(mapStateToProps, mapDispatchToProps)(ModalSubscribe)

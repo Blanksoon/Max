@@ -6,6 +6,8 @@ const mapStateToProps = state => ({
   active: state.modal.activeModal,
   modalType: state.modal.modalType,
   modalURL: state.modal.modalURL,
+  product: state.modal.product,
+  id: state.modal.id,
 })
 
 const mapDispatchToProps = dispatch => ({

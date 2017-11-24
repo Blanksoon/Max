@@ -36,7 +36,7 @@ const Wrapper = styled.div`
   background-color: ${color.white};
   text-align: -webkit-auto;
   position: relative;
-  height: 160px;
+  height: 170px;
   width: 100%;
 `
 const WrapperButton = styled.div`
@@ -157,10 +157,7 @@ class ThumbnailShowTime extends React.Component {
                   <Text4>YOU BOUGHT</Text4>
                 </Box>
                 <Box pl="2em" pt="0.5em">
-                  <Link
-                    //as={`/lives/${this.props.id}`}
-                    href={`/lives_vdo?id=${this.props.id}`}
-                  >
+                  <Link href={`/lives_vdo?id=${this.props.id}`}>
                     <ButtonWatch style={{ cursor: 'pointer' }}>
                       WATCH
                     </ButtonWatch>
