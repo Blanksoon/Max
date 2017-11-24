@@ -179,19 +179,13 @@ class ShowTime extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     console.log('new', nextProps.auth.authTicket)
-    if (
-      nextProps.auth.token != undefined &&
-      nextProps.auth.authTicket == false
-    ) {
+    if (nextProps.auth.token != undefined && this.state.token == 1) {
       console.log('fit')
       nextProps.fetchProducts(nextProps.auth.token)
       this.setState({
         token: 2,
       })
-    } else if (
-      nextProps.auth.token == undefined &&
-      nextProps.auth.authTicket == true
-    ) {
+    } else if (nextProps.auth.token == undefined && this.state.token == 2) {
       nextProps.fetchProducts(undefined)
       this.setState({
         token: 1,
