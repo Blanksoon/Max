@@ -69,6 +69,7 @@ const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 
 class Index extends React.Component {
   render() {
+    console.log('this.props', this.props.url)
     return (
       <Main url={this.props.url}>
         <NewModal />

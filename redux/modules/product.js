@@ -2,7 +2,7 @@ import * as api from '../../api'
 
 // types
 const FETCH_LIVES_REQ = 'FETCH_LIVES_REQ'
-const FETCH_LIVES_SUCCESS = 'FETCH_LIVES_SUCCESS'
+const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS'
 
 const FETCH_LIVE_REQ = 'FETCH_LIVE_REQ'
 const FETCH_LIVE_SUCCESS = 'FETCH_LIVE_SUCCESS'
@@ -11,17 +11,19 @@ const FETCH_LIVE_SUCCESS = 'FETCH_LIVE_SUCCESS'
 export const fetchLivesReq = () => ({
   type: FETCH_LIVES_REQ,
 })
-export const fetchLivesSuccess = lives => ({
-  type: FETCH_LIVES_SUCCESS,
-  payload: lives,
+export const fetchProductsSuccess = products => ({
+  type: FETCH_PRODUCTS_SUCCESS,
+  payload: products,
 })
-export const fetchLives = token => async dispatch => {
+export const fetchProducts = token => async dispatch => {
   dispatch(fetchLivesReq())
-  const url = `${api.SERVER}/lives?token=${token}`
+  const url = `${api.SERVER}/product?token=${token}`
   try {
+    console.log('fetchProducts')
     const json = await api.get(url)
+    //console.log('json', json)
     // You should not return in Vods <-- change to something like data
-    dispatch(fetchLivesSuccess(json.data))
+    dispatch(fetchProductsSuccess(json.data))
   } catch (error) {
     console.log(error)
   }
@@ -53,7 +55,7 @@ const initialState = {
   data: {},
   loading: false,
 }
-const livesReducer = (state = initialState, action) => {
+const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LIVE_REQ:
     case FETCH_LIVES_REQ:
@@ -61,26 +63,11 @@ const livesReducer = (state = initialState, action) => {
         ...state,
         loading: true,
       }
-    case FETCH_LIVES_SUCCESS:
-      const lives = action.payload
+    case FETCH_PRODUCTS_SUCCESS:
+      const products = action.payload
       const newState = Object.assign({}, state)
-      lives.forEach(live => {
-        if (typeof newState.recents === 'undefined') {
-          newState.recents = [live.id]
-        } else {
-          newState.recents.push(live.id)
-        }
-
-        if (typeof newState.data === 'undefined') {
-          newState.data = {
-            [live.id]: live,
-          }
-        } else {
-          newState.data[live.id] = live
-        }
-      })
       return {
-        ...newState,
+        products,
         loading: false,
       }
     case FETCH_LIVE_SUCCESS:
@@ -99,4 +86,4 @@ const livesReducer = (state = initialState, action) => {
   }
 }
 
-export default livesReducer
+export default productsReducer

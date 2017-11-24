@@ -88,9 +88,9 @@ class videoPlayer extends React.Component {
             <center>
               <Box pt="17rem">
                 <Link href={`/getticket`}>
-                  <a>
-                    <Button>Buy Ticket</Button>
-                  </a>
+                  {/* <a> */}
+                  <Button>Buy Ticket</Button>
+                  {/* </a> */}
                 </Link>
               </Box>
             </center>

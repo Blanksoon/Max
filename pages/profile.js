@@ -81,9 +81,11 @@ const WrapperBoxProfileMargin = styled.div`
 import Welcome from '../components/profile/Welcome'
 import UserProfile from '../components/profile/UserProfile'
 import InputProfile from '../components/profile/InputProfile'
-import { PurchaseHistory } from '../components/profile/PurchaseHistory'
+import PurchaseHistory from '../components/profile/PurchaseHistory'
 import { ListPurchase } from '../components/profile/ListPurchase'
+import { Subscribe } from '../components/profile/Subscribe'
 import NavbarProfile from '../components/profile/NavbarProfile'
+import { ListSubscribe } from '../components/profile/ListSubscribe'
 class Profile extends React.Component {
   constructor(props) {
     super(props)
@@ -108,14 +110,18 @@ class Profile extends React.Component {
           <InputProfile />
         </div>
       )
-    } else {
+    } else if (this.state.pathname == 'Purchase history') {
       renderUI = (
         <div>
           <PurchaseHistory />
-          <ListPurchase />
-          <ListPurchase />
-          <ListPurchase />
-          <ListPurchase />
+        </div>
+      )
+    } else {
+      renderUI = (
+        <div>
+          <Subscribe />
+          <ListSubscribe />
+          <Box w={12 / 12} p="6em" />
         </div>
       )
     }

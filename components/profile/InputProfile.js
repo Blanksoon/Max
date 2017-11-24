@@ -102,6 +102,7 @@ class InputProfile extends React.Component {
       status: '',
       loading: false,
       gender: '',
+      country: ['Thailand', 'United States', 'England', 'China', 'Other'],
     }
     this.toggleCalendar = this.toggleCalendar.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -136,23 +137,35 @@ class InputProfile extends React.Component {
       `${api.SERVER}/profile?token=${this.props.auth.token}`
     )
     console.log('dataaaa', data)
-    if (data[0].name != 'undefined') {
-      this.setState({ name: data[0].name })
+    if (data.name != 'undefined') {
+      this.setState({ name: data.name })
     }
-    if (data[0].lastname != 'undefined') {
-      this.setState({ lastname: data[0].lastname })
+    if (data.lastname != 'undefined') {
+      this.setState({ lastname: data.lastname })
     }
-    if (data[0].date_birth != undefined) {
-      console.log('test', data[0].date_birth)
-      const birthDate = moment(new Date(data[0].date_birth))
+    if (data.date_birth != undefined) {
+      console.log('test', data.date_birth)
+      const birthDate = moment(new Date(data.date_birth))
       console.log('birthDate', birthDate)
       this.setState({ birthDay: birthDate })
     }
-    if (data[0].gender != 'undefined') {
-      this.setState({ oldGender: data[0].gender })
-      this.setState({ gender: data[0].gender })
+    if (data.gender != 'undefined') {
+      this.setState({ oldGender: data.gender })
+      this.setState({ gender: data.gender })
     }
     //this.setState({ email: data[0].email })
+  }
+
+  renderVideos() {
+    const rowVideos = []
+    const rowCount = 5
+    // Use splice on clone object, DONT MODIFY props
+    for (let i = 0; i < rowCount; i++) {
+      rowVideos.push(
+        <option value={this.state.country[i]}>{this.state.country[i]}</option>
+      )
+    }
+    return rowVideos
   }
 
   onChangeName(event) {
@@ -192,7 +205,6 @@ class InputProfile extends React.Component {
     this.setState({ loading: false })
     console.log('status', status)
   }
-
   render() {
     // console.log('startDate', this.state.startDate.format('YYYY-MM-DD HH:mm:ss'))
     // let today = new Date(moment().format('YYYY-MM-DD HH:mm:ss'))
@@ -272,11 +284,7 @@ class InputProfile extends React.Component {
                 </Box>
                 <Box w={10 / 12}>
                   <Country onChange={this.onChangeCountry}>
-                    <option value="Thailand">Thailand</option>
-                    <option value="United States">United States</option>
-                    <option value="England">England</option>
-                    <option value="China">China</option>
-                    <option value="Other">Other</option>
+                    {this.renderVideos()}
                   </Country>
                 </Box>
               </Flex>

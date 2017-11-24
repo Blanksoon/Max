@@ -95,7 +95,7 @@ class Login extends React.Component {
     this.handleOnChangePassword = this.handleOnChangePassword.bind(this)
   }
   async loginLocal() {
-    console.log('data', this.state.data)
+    //console.log('data', this.state.data)
     const providerData = {
       provider_name: 'local',
       provider_data: this.state.data,
@@ -103,7 +103,7 @@ class Login extends React.Component {
     this.setState({ loading: true })
     await this.props.localLogin(providerData)
     if (this.props.auth.token != undefined) {
-      console.log('success')
+      //console.log('success')
       this.setState({
         status: '',
       })
@@ -112,7 +112,7 @@ class Login extends React.Component {
       this.setState({
         status: this.props.auth.error.message,
       })
-      console.log('false')
+      //console.log('false')
     }
     this.setState({ loading: false })
   }
@@ -135,7 +135,7 @@ class Login extends React.Component {
     })
   }
   render() {
-    console.log('props', this.props)
+    //console.log('props', this.props)
     return (
       <Provider>
         <div>

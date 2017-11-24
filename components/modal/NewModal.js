@@ -8,11 +8,21 @@ import ForgotPassword from '../login/ForgotPassword'
 import ChangePassStep1 from '../login/ChangePassStep1'
 import ChangePassStep2 from '../login/ChangePassStep2'
 import Player from '../videoPlayer/Player'
+import PurchaseItem from '../getTicket/PurchaseItem'
+import SuccessPurchase from '../getTicket/SuccessPurchase'
 
+const Text1 = styled.div`
+  padding-left: 1rem;
+  padding-top: 1rem;
+  color: #8a8a8a;
+  font-weight: 700;
+  font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
+`
 const Wrapper = styled.div`
   color: blue;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
   position: fixed;
@@ -52,10 +62,24 @@ const WrapperRegister = styled.div`
   background: #fff;
   z-index: 240;
 `
+const WrapperPurchaseItem = styled.div`
+  position: relative;
+  width: 750px;
+  height: 430px;
+  background: #fff;
+  z-index: 240;
+`
 const WrapperChangePass = styled.div`
   position: relative;
   width: 650px;
   height: 250px;
+  background: #fff;
+  z-index: 240;
+`
+const WrapperSuccessPurchase = styled.div`
+  position: relative;
+  width: 650px;
+  height: 300px;
   background: #fff;
   z-index: 240;
 `
@@ -68,6 +92,14 @@ const WrapperClose = styled.div`
   height: 40px;
   //border: 3px solid #73ad81;
 `
+const WrapperCancle = styled.div`
+  position: absolute;
+  color: #fff;
+  bottom: 5%;
+  right: 80px;
+  //border: 3px solid #73ad81;
+  cursor: pointer;
+`
 export default class Modal extends Component {
   static propTypes = {
     active: PropTypes.bool,
@@ -75,12 +107,15 @@ export default class Modal extends Component {
     toggleModalAction: PropTypes.func,
     modalURL: PropTypes.string,
     closeModal: PropTypes.func,
+    live: PropTypes.object,
+    subscribe: PropTypes.object,
+    id: PropTypes.number,
   }
   static defaultProps = {
     modalType: 2,
   }
   handleOnClick = e => {
-    console.log('click', e)
+    //console.log('click', e)
     false ? this.props.toggleModalAction() : null
     // if (false) {
     //   this.props.toogleModalAction()
@@ -93,16 +128,17 @@ export default class Modal extends Component {
     })
     // Show carousel only after initiate to avoid flicker
     document.addEventListener('keydown', e => {
-      console.log('eventcode', e.keyCode)
+      //console.log('eventcode', e.keyCode)
       if (e.keyCode === 27) this.closeModal()
     })
   }
 
   closeModal = () => {
-    console.log('props', this.props)
+    // console.log('props', this.props)
     this.props.closeModal()
   }
   render() {
+    console.log('ififififififififfifif', this.props)
     ;<div onKeyDown={this.closeModal} />
     let renderUI = <div />
     if (this.props.modalType === 1) {
@@ -174,6 +210,30 @@ export default class Modal extends Component {
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>
         </WrapperRegister>
+      )
+    } else if (this.props.modalType === 8) {
+      // Purchase
+      console.log('ifffffff', this.props)
+      renderUI = (
+        <WrapperPurchaseItem onClick={e => this.handleOnClick(e)}>
+          <PurchaseItem product={this.props.product} id={this.props.id} />
+          {/* <WrapperCancle onClick={true ? this.props.closeModal : ''}>
+            <Text1>Cancle</Text1>
+          </WrapperCancle> */}
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="../../static/close.png" />
+          </WrapperClose>
+        </WrapperPurchaseItem>
+      )
+    } else if (this.props.modalType === 9) {
+      //SuccessPurchase
+      renderUI = (
+        <WrapperSuccessPurchase onClick={e => this.handleOnClick(e)}>
+          <SuccessPurchase closeModal={this.props.closeModal} />
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="../../static/close.png" />
+          </WrapperClose>
+        </WrapperSuccessPurchase>
       )
     } else {
       //null
