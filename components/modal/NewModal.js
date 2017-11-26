@@ -65,7 +65,7 @@ const WrapperRegister = styled.div`
 const WrapperPurchaseItem = styled.div`
   position: relative;
   width: 750px;
-  height: 480px;
+  height: 430px;
   background: #fff;
   z-index: 240;
 `
@@ -95,7 +95,7 @@ const WrapperClose = styled.div`
 const WrapperCancle = styled.div`
   position: absolute;
   color: #fff;
-  bottom: -57px;
+  bottom: 5%;
   right: 80px;
   //border: 3px solid #73ad81;
   cursor: pointer;
@@ -108,6 +108,8 @@ export default class Modal extends Component {
     modalURL: PropTypes.string,
     closeModal: PropTypes.func,
     live: PropTypes.object,
+    subscribe: PropTypes.object,
+    id: PropTypes.number,
   }
   static defaultProps = {
     modalType: 2,
@@ -136,6 +138,7 @@ export default class Modal extends Component {
     this.props.closeModal()
   }
   render() {
+    console.log('ififififififififfifif', this.props)
     ;<div onKeyDown={this.closeModal} />
     let renderUI = <div />
     if (this.props.modalType === 1) {
@@ -210,15 +213,16 @@ export default class Modal extends Component {
       )
     } else if (this.props.modalType === 8) {
       // Purchase
+      console.log('ifffffff', this.props)
       renderUI = (
         <WrapperPurchaseItem onClick={e => this.handleOnClick(e)}>
-          <PurchaseItem
-            closeModal={this.props.closeModal}
-            live={this.props.modalURL}
-          />
-          <WrapperCancle onClick={true ? this.props.closeModal : ''}>
+          <PurchaseItem product={this.props.product} id={this.props.id} />
+          {/* <WrapperCancle onClick={true ? this.props.closeModal : ''}>
             <Text1>Cancle</Text1>
-          </WrapperCancle>
+          </WrapperCancle> */}
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="../../static/close.png" />
+          </WrapperClose>
         </WrapperPurchaseItem>
       )
     } else if (this.props.modalType === 9) {

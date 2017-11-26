@@ -64,6 +64,18 @@ const Button = styled.button`
   //   border: 1px solid ${vars.lightRed};
   // }
 `
+const Buttonpaypal = styled.button`
+  width: 318px;
+  background-color: ${vars.white};
+  cursor: pointer;
+  padding: 13px 101px;
+  border: 1px solid ${vars.white};
+  display: inline-block;
+  // &:disabled {
+  //   background-color: ${vars.lightRed};
+  //   border: 1px solid ${vars.lightRed};
+  // }
+`
 const Input = styled.input`
   background-color: #fffbbe;
   width: 100%;
@@ -76,10 +88,7 @@ const Input = styled.input`
   font-family: Helvetica, Arial, sans-serif;
 `
 const WrapperTop = styled.div`background-color: ${color.blue};`
-const WrapperDown = styled.div`
-  background-color: #094992;
-  height: 100%;
-`
+const WrapperDown = styled.div`background-color: #094992;`
 const Wrapper = styled.div`
   position: relative;
   height: 100%;
@@ -98,10 +107,10 @@ class PurchaseItem extends React.Component {
   }
 
   async purchase() {
-    //console.log(this.props.auth.token, this.props.live.id)
+    //console.log(this.props.auth.token, this.props.product.id)
     const response = await fetch(
       `${api.SERVER}/ppcheckout/` +
-        this.props.live.id +
+        this.props.product._id +
         '?token=' +
         this.props.auth.token,
       {
@@ -114,42 +123,50 @@ class PurchaseItem extends React.Component {
         mode: 'no-cors',
       }
     )
-    //console.log('response', response)
+    // console.log('response', this.props.product._idnse)
   }
   render() {
+    console.log('response', this.props.product._id)
     //console.log('sxxxxx', this.props)
-    return (
-      <Wrapper>
-        <WrapperTop>
-          <Box pl="3em" pr="3em" pt="1em" pb="1em">
-            <Text1>YOUR SELECT</Text1>
-            <Text2>1 TIME LIVE STREAMING PACKGAE.</Text2>
-          </Box>
-        </WrapperTop>
-        <WrapperDown>
-          <Box pl="3em" pr="3em" pt="1em">
-            <Text2>Your order ID : 251485039</Text2>
-          </Box>
-          <Flex pr="3em" pl="3em" pt="1em">
-            <Box w={6 / 12} pr="0.5em">
-              <Image width="100%" src={this.props.live.bannerUrl} />
+    let renderUI = <div />
+    let packagee = 'SUBSCRIBE VDO AND LIVE STREAMING'
+    let img = 'static/subandvod.jpg'
+    let price = '$29.99'
+    // console.log('iffffffffff', this.props)
+    if (this.props.id == 'live') {
+      console.log('if11111111111')
+      renderUI = (
+        <Wrapper>
+          <WrapperTop>
+            <Box pl="3em" pr="3em" pt="1em" pb="1em">
+              <Text1>YOUR SELECT</Text1>
+              <Text2>1 TIME LIVE STREAMING PACKGAE.</Text2>
             </Box>
-            <Box w={6 / 12} pl="0.5em">
-              <Text3>{this.props.live.programName}</Text3>
-              <Flex pt="0.5em">
-                <Box w={12 / 12}>
-                  <Date>{this.props.live.liveDateStr_en}</Date>
-                </Box>
-                {/* <Box w={6 / 12}>
+          </WrapperTop>
+          <WrapperDown>
+            {/* <Box pl="3em" pr="3em" pt="1em">
+            <Text2>Your order ID : 251485039</Text2>
+            </Box> */}
+            <Flex pr="3em" pl="3em" pt="2em">
+              <Box w={6 / 12} pr="0.5em">
+                <Image width="100%" src={this.props.product.bannerUrl} />
+              </Box>
+              <Box w={6 / 12} pl="0.5em">
+                <Text3>{this.props.product.programName}</Text3>
+                <Flex pt="0.5em">
+                  <Box w={12 / 12}>
+                    <Date>{this.props.product.liveDateStr_en}</Date>
+                  </Box>
+                  {/* <Box w={6 / 12}>
                   <Time>07.20-09.50 pm.</Time>
                 </Box> */}
-              </Flex>
-              <WrapperPrice>
-                <Text3>$0.99</Text3>
-              </WrapperPrice>
-            </Box>
-          </Flex>
-          <Box pl="3em" pr="3em" pt="1em">
+                </Flex>
+                <WrapperPrice>
+                  <Text3>$0.99</Text3>
+                </WrapperPrice>
+              </Box>
+            </Flex>
+            {/* <Box pl="3em" pr="3em" pt="1em">
             <Text2>
               Please check your contact email, This' ll be use to send the
               receipt.
@@ -161,25 +178,92 @@ class PurchaseItem extends React.Component {
               placeholder="@email"
               value="autofill@cenedit.com"
             />
-          </Box>
-          <Box pl="3em" pr="3em" pt="1em">
-            <Text2>SELECT PAYMENT METHOD</Text2>
-          </Box>
-          <Flex pl="3em" pr="3em" pt="1em">
-            <Box w={6 / 12} pr="0.5em">
-              <Button on onClick={this.purchase}>
-                <Image width="100%" src="../../static/btn_paypal.png" />
-              </Button>
+          </Box> */}
+            <Box pl="3em" pr="3em" pt="1em">
+              <Text2>SELECT PAYMENT METHOD</Text2>
             </Box>
-            <Box w={6 / 12} pl="0.5em">
-              <Button>
-                <Image width="100%" src="../../static/btn_wechat.png" />
-              </Button>
+            <Flex pl="3em" pr="3em" pt="1em" pb="2.1em">
+              <Box w={12 / 12} pr="0.5em">
+                <center>
+                  <Buttonpaypal on onClick={this.purchase}>
+                    <Image width="100%" src="../../static/PayPal.png" />
+                  </Buttonpaypal>
+                </center>
+              </Box>
+              {/* <Box w={6 / 12} pl="0.5em">
+                <Button>
+                  <Image width="100%" src="../../static/btn_wechat.png" />
+                </Button>
+              </Box> */}
+            </Flex>
+          </WrapperDown>
+        </Wrapper>
+      )
+    } else {
+      console.log('if22222222222222222', this.props)
+      if (this.props.product.productId === '2002') {
+        packagee = 'SUBSCRIBE VDO ON DEMAND'
+        img = 'static/ondemand.jpg'
+        price = '$19.99'
+      }
+      renderUI = (
+        <Wrapper>
+          <WrapperTop>
+            <Box pl="3em" pr="3em" pt="1em" pb="1em">
+              <Text1>YOUR SELECT</Text1>
+              <Text2>1 TIME LIVE STREAMING PACKGAE.</Text2>
             </Box>
-          </Flex>
-        </WrapperDown>
-      </Wrapper>
-    )
+          </WrapperTop>
+          <WrapperDown>
+            {/* <Box pl="3em" pr="3em" pt="1em">
+          <Text2>Your order ID : 251485039</Text2>
+        </Box> */}
+            <Flex pr="3em" pl="3em" pt="2em">
+              <Box w={6 / 12} pr="0.5em">
+                <Image width="100%" src={img} />
+              </Box>
+              <Box w={6 / 12} pl="0.5em">
+                <Text3>{packagee}</Text3>
+                <WrapperPrice>
+                  <Text3>{price}</Text3>
+                </WrapperPrice>
+              </Box>
+            </Flex>
+            {/* <Box pl="3em" pr="3em" pt="1em">
+          <Text2>
+            Please check your contact email, This' ll be use to send the
+            receipt.
+          </Text2>
+          <Input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="@email"
+            value="autofill@cenedit.com"
+          />
+        </Box> */}
+            <Box pl="3em" pr="3em" pt="2.2em">
+              <Text2>SELECT PAYMENT METHOD</Text2>
+            </Box>
+            <Flex pl="3em" pr="3em" pt="2em" pb="2.1em">
+              <Box w={12 / 12} pr="0.5em">
+                <center>
+                  <Buttonpaypal on onClick={this.purchase}>
+                    <Image width="100%" src="../../static/PayPal.png" />
+                  </Buttonpaypal>
+                </center>
+              </Box>
+              {/* <Box w={6 / 12} pl="0.5em">
+                <Button>
+                  <Image width="100%" src="../../static/btn_wechat.png" />
+                </Button>
+              </Box> */}
+            </Flex>
+          </WrapperDown>
+        </Wrapper>
+      )
+    }
+    return <div>{renderUI}</div>
   }
 }
 
@@ -188,15 +272,6 @@ const mapStateToProps = state => {
     auth: state.auth,
   }
 }
-
-// Login.getInitialProps = async ({ store, isServer, query, req }) => {
-//   let state = store.getState()
-//   const token = state.auth.token
-//   await Promise.all([livePromise, vodPromise])
-//   state = store.getState()
-//   const props = mapStateToProps(state)
-//   return props
-// }
 
 export default connect(mapStateToProps, { forgotPassword, closeModal })(
   PurchaseItem
