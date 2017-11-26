@@ -137,19 +137,19 @@ class InputProfile extends React.Component {
       `${api.SERVER}/profile?token=${this.props.auth.token}`
     )
     console.log('dataaaa', data)
-    if (data.name != 'undefined') {
+    if (data.name != null) {
       this.setState({ name: data.name })
     }
-    if (data.lastname != 'undefined') {
+    if (data.lastname != null) {
       this.setState({ lastname: data.lastname })
     }
-    if (data.date_birth != undefined) {
+    if (data.date_birth != null) {
       console.log('test', data.date_birth)
       const birthDate = moment(new Date(data.date_birth))
       console.log('birthDate', birthDate)
       this.setState({ birthDay: birthDate })
     }
-    if (data.gender != 'undefined') {
+    if (data.gender != null) {
       this.setState({ oldGender: data.gender })
       this.setState({ gender: data.gender })
     }
