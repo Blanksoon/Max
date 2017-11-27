@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { Box, Image, Text, Flex } from 'rebass'
+import { Box, Image, Text, Flex, ButtonOutline } from 'rebass'
 import moment from 'moment'
 import styled from 'styled-components'
 import color from '../commons/vars'
@@ -52,7 +52,7 @@ const Button = styled.button`
   cursor: pointer;
 `
 
-const CancelButton = styled(Button)`
+const CancelButton = styled(ButtonOutline)`
   background-color: ${color.white};
   border: 1px solid ${color.red};
   padding: 8px 62px;
@@ -64,6 +64,11 @@ const CancelButton = styled(Button)`
   font-family: Helvetica, Arial, sans-serif;
   color: ${color.red};
   cursor: pointer;
+
+  &:hover {
+    background-color: ${color.red};
+    color: ${color.white};
+  }
 `
 class ListSubscribe extends Component {
   constructor(props) {
@@ -85,6 +90,15 @@ class ListSubscribe extends Component {
       return 'Subscribe Lives and Video on Demands'
     }
     return 'Subscribe Video on Demands'
+  }
+  async cancel(subscription) {
+    const json = await api.post(
+      `${api.SERVER}/ppcheckout/${subscription.orderId}/cancel/subscribe`,
+      {}
+    )
+    this.setState({
+      subscription: undefined,
+    })
   }
   render() {
     const { subscription } = this.state
@@ -142,7 +156,9 @@ class ListSubscribe extends Component {
             </Flex>
           </Box>
           <Box w={2 / 12} pt="6em">
-            {/* <CancelButton>Cancel</CancelButton> */}
+            <CancelButton onClick={() => this.cancel(subscription)}>
+              Cancel
+            </CancelButton>
           </Box>
         </Flex>
         <hr size="0.1" />
