@@ -150,9 +150,9 @@ class PurchaseItem extends React.Component {
     // console.log('response', this.props.auth.token)
     //console.log('sxxxxx', this.props)
     let renderUI = <div />
-    let packagee = 'SUBSCRIBE VDO AND LIVE STREAMING'
-    let img = 'static/subandvod.jpg'
-    let price = '$29.99'
+    let packagee = 'SUBSCRIBE VDO ON DEMAND'
+    let img = 'static/ondemand.jpg'
+    let price = '$2.99'
     // console.log('iffffffffff', this.props)
     if (this.props.id == 'live') {
       // console.log('if11111111111')
@@ -230,9 +230,9 @@ class PurchaseItem extends React.Component {
     } else {
       // console.log('if22222222222222222', this.props)
       if (this.props.product.productId === '2002') {
-        packagee = 'SUBSCRIBE VDO ON DEMAND'
-        img = 'static/ondemand.jpg'
-        price = '$19.99'
+        packagee = "SUBSCRIBE VDO AND LIVE STREAMING"
+        img = 'static/subandvod.jpg'
+        price = '$3.99'
       }
       renderUI = (
         <Wrapper>
