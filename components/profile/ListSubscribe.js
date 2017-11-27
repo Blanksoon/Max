@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { Box, Image, Text, Flex } from 'rebass'
+import moment from 'moment'
 import styled from 'styled-components'
 import color from '../commons/vars'
 import * as api from '../../api'
@@ -79,7 +80,15 @@ class ListSubscribe extends Component {
       })
     }
   }
+  description(productName) {
+    if (productName === 'subscribe vods') {
+      return 'Subscribe Lives and Video on Demands'
+    }
+    return 'Subscribe Video on Demands'
+  }
   render() {
+    const { subscription } = this.state
+    console.log(subscription)
     return this.state.subscription !== undefined ? (
       <Box w={12 / 12}>
         <Flex className="List-Purchase" pb="1rem">
@@ -88,7 +97,9 @@ class ListSubscribe extends Component {
             <Flex>
               <Text3>Purchase date</Text3>
               &nbsp;&nbsp;
-              <Text1>Jun 30,2017</Text1>
+              <Text1>
+                {moment(subscription.purchaseDate).format('MMM DD, YYYY')}
+              </Text1>
             </Flex>
           </Box>
           <Box w={7 / 12} />
@@ -104,27 +115,29 @@ class ListSubscribe extends Component {
               <Box w={7 / 12} color="white">
                 <Box w={12 / 12} pt={3} />
                 <center>
-                  <Text4>SUBSCRIBE VIDEO</Text4>
-                  <Text4>ON DEMAND</Text4>
+                  <Text4>Subscription Package</Text4>
                 </center>
               </Box>
             </Flex>
           </Box>
           <Box w={4.5 / 12}>
-            <Text3>Subscribe Video on Demand</Text3>
+            <Text3>{this.description(subscription.productName)}</Text3>
             <Text2>1 Month</Text2>
             <br />
             <br />
             <Flex>
-              <Text3>Purchase ID:&nbsp;&nbsp;</Text3>
+              <Text3>Order ID:&nbsp;&nbsp;</Text3>
               <Box w={6 / 12} pt="0.4em">
-                <Text2>4852625700</Text2>
+                <Text2>{subscription.orderId}</Text2>
               </Box>
             </Flex>
             <Flex>
               <Text3>Status&nbsp;&nbsp;</Text3>
               <Box w={6 / 12} pt="0.45em">
-                <Text2>Valid thru Aug 30,2017</Text2>
+                <Text2>
+                  Valid thru{' '}
+                  {moment(subscription.expiredDate).format('MMM DD,YYYY')}
+                </Text2>
               </Box>
             </Flex>
           </Box>
