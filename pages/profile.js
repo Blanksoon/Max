@@ -85,7 +85,7 @@ import PurchaseHistory from '../components/profile/PurchaseHistory'
 import { ListPurchase } from '../components/profile/ListPurchase'
 import Subscribe from '../components/profile/Subscribe'
 import NavbarProfile from '../components/profile/NavbarProfile'
-import { ListSubscribe } from '../components/profile/ListSubscribe'
+import ListSubscribe from '../components/profile/ListSubscribe'
 class Profile extends React.Component {
   constructor(props) {
     super(props)
