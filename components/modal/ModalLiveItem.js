@@ -72,7 +72,7 @@ class ModalButton extends Component {
           text3={this.props.live.price}
           text4={this.props.live.liveDateStr_en}
           text5={this.props.live.startTime}
-          id={this.props.live.id}
+          id={this.props.live._id}
           token={this.props.token}
         />
       )

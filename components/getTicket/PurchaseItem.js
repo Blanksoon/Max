@@ -87,8 +87,21 @@ const Input = styled.input`
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
 `
-const WrapperTop = styled.div`background-color: ${color.blue};`
-const WrapperDown = styled.div`background-color: #094992;`
+const WrapperTop = styled.div`
+  background: -webkit-linear-gradient(
+    top,
+    rgba(2, 35, 70, 0.9) 0%,
+    rgba(2, 35, 70, 0.9) 99%,
+    rgba(2, 35, 70, 0.9) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+`
+const WrapperDown = styled.div`
+  background: -webkit-linear-gradient(
+    top,
+    rgba(9, 73, 146, 0.9) 0%,
+    rgba(9, 73, 146, 0.9) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+`
 const Wrapper = styled.div`
   position: relative;
   height: 100%;
@@ -102,31 +115,39 @@ const WrapperPrice = styled.div`
 class PurchaseItem extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
-    this.purchase = this.purchase.bind(this)
+    this.state = {
+      loading: false,
+    }
+    this.purchaselive = this.purchaselive.bind(this)
+    this.purchasesub = this.purchasesub.bind(this)
   }
 
-  async purchase() {
-    //console.log(this.props.auth.token, this.props.product.id)
-    const response = await fetch(
-      `${api.SERVER}/ppcheckout/` +
-        this.props.product._id +
-        '?token=' +
-        this.props.auth.token,
-      {
-        method: 'POST',
-        headers: {
-          //Accept: 'application/json',
-          // 'Content-Type': 'application/json',
-          // 'Access-Control-Allow-Origin': '*',
-        },
-        mode: 'no-cors',
-      }
+  async purchaselive() {
+    this.setState({ loading: true })
+    const response = await api.post(
+      `${api.SERVER}/ppcheckout/${this.props.product._id}?token=${this.props
+        .auth.token}`
     )
-    // console.log('response', this.props.product._idnse)
+    console.log('responseee', response)
+    if (response) {
+      Router.push(`${response.approvalUrl}`)
+    }
   }
+
+  async purchasesub() {
+    this.setState({ loading: true })
+    const response = await api.post(
+      `${api.SERVER}/subscribe/${this.props.product._id}?token=${this.props.auth
+        .token}`
+    )
+    console.log('responseee', response)
+    if (response) {
+      Router.push(`${response.approvalUrl}`)
+    }
+  }
+
   render() {
-    console.log('response', this.props.product._id)
+    // console.log('response', this.props.auth.token)
     //console.log('sxxxxx', this.props)
     let renderUI = <div />
     let packagee = 'SUBSCRIBE VDO AND LIVE STREAMING'
@@ -134,7 +155,7 @@ class PurchaseItem extends React.Component {
     let price = '$29.99'
     // console.log('iffffffffff', this.props)
     if (this.props.id == 'live') {
-      console.log('if11111111111')
+      // console.log('if11111111111')
       renderUI = (
         <Wrapper>
           <WrapperTop>
@@ -182,11 +203,18 @@ class PurchaseItem extends React.Component {
             <Box pl="3em" pr="3em" pt="1em">
               <Text2>SELECT PAYMENT METHOD</Text2>
             </Box>
-            <Flex pl="3em" pr="3em" pt="1em" pb="2.1em">
+            <Flex pl="3em" pr="3em" pt="1em" pb="3.1em">
               <Box w={12 / 12} pr="0.5em">
                 <center>
-                  <Buttonpaypal on onClick={this.purchase}>
-                    <Image width="100%" src="../../static/PayPal.png" />
+                  <Buttonpaypal
+                    onClick={this.purchaselive}
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loading ? (
+                      <Spinner />
+                    ) : (
+                      <Image width="100%" src="../../static/PayPal.png" />
+                    )}
                   </Buttonpaypal>
                 </center>
               </Box>
@@ -200,7 +228,7 @@ class PurchaseItem extends React.Component {
         </Wrapper>
       )
     } else {
-      console.log('if22222222222222222', this.props)
+      // console.log('if22222222222222222', this.props)
       if (this.props.product.productId === '2002') {
         packagee = 'SUBSCRIBE VDO ON DEMAND'
         img = 'static/ondemand.jpg'
@@ -245,11 +273,19 @@ class PurchaseItem extends React.Component {
             <Box pl="3em" pr="3em" pt="2.2em">
               <Text2>SELECT PAYMENT METHOD</Text2>
             </Box>
-            <Flex pl="3em" pr="3em" pt="2em" pb="2.1em">
+            <Flex pl="3em" pr="3em" pt="2em" pb="3.1em">
               <Box w={12 / 12} pr="0.5em">
                 <center>
-                  <Buttonpaypal on onClick={this.purchase}>
-                    <Image width="100%" src="../../static/PayPal.png" />
+                  <Buttonpaypal
+                    on
+                    onClick={this.purchasesub}
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loading ? (
+                      <Spinner />
+                    ) : (
+                      <Image width="100%" src="../../static/PayPal.png" />
+                    )}
                   </Buttonpaypal>
                 </center>
               </Box>

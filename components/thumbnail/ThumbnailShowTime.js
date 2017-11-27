@@ -148,7 +148,7 @@ class ThumbnailShowTime extends React.Component {
             </Button>
           </WrapperButton>
           <WrapperHover zin={zin} onClick="">
-            <Flex>
+            <Flex pl="2em" pt="1em">
               <Box w={2 / 12} pt="2.5em" ml="5em">
                 <Image w="100%" src="static/ic_you-bought.png" />
               </Box>

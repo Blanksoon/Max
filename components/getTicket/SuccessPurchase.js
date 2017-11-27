@@ -90,16 +90,16 @@ const WrapperPrice = styled.div`
   position: absolute;
   top: 51%;
 `
-class PurchaseItem extends React.Component {
+class SuccessPurchase extends React.Component {
   render() {
     return (
       <Wrapper>
         <WrapperTop>
           <Flex pl="3em" pr="3em" pt="1em" pb="1em">
-            <Box w={2/12} >
+            <Box w={2 / 12}>
               <Image width="100%" src="../../static/ic_sucessful.png" />
             </Box>
-            <Box w={10/12} pt='1.5em' pl='2em' >
+            <Box w={10 / 12} pt="1.5em" pl="2em">
               <Text1>Thank you for yout purchase</Text1>
               <Text2>You will receive an email confirmation shortly.</Text2>
             </Box>
@@ -127,19 +127,15 @@ class PurchaseItem extends React.Component {
               </Flex>
             </Box>
           </Flex>
-          <Flex pt='1em' >
-            <Box w={7/12} />
-            <Box w={5/12} >
+          <Flex pt="1em">
+            <Box w={7 / 12} />
+            <Box w={5 / 12}>
               <Flex>
-                <Box w={4/12} pt='0.7em' >
-                  <Text2>
-                    Later
-                  </Text2>
+                <Box w={4 / 12} pt="0.7em">
+                  <Text2>Later</Text2>
                 </Box>
-                <Box w={8/12} >
-                  <Button>
-                    Watch new!
-                  </Button>
+                <Box w={8 / 12}>
+                  <Button>Watch new!</Button>
                 </Box>
               </Flex>
             </Box>
@@ -166,5 +162,5 @@ const mapStateToProps = state => {
 // }
 
 export default connect(mapStateToProps, { forgotPassword, closeModal })(
-  PurchaseItem
+  SuccessPurchase
 )

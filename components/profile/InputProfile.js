@@ -38,6 +38,8 @@ const Text3 = styled.div`
 `
 
 const InputEmail = styled.input`
+  width: 16em;
+  height: 2.2em;
   color: ${color.black};
   font-weight: 400;
   font-size: 0.8em;
@@ -59,20 +61,19 @@ const Button = styled.button`
 `
 
 const Gender = styled.select`
-  width: 11em;
+  width: 16em;
   height: 2.2em;
   font-size: 0.8em;
   margin-bottom: 1rem;
 `
 
-const Age = styled.select`
-  width: 5em;
+const Age = styled.div`
+  width: 16em;
   height: 2.2em;
-  font-size: 0.8em;
 `
 
 const Country = styled.select`
-  width: 15.7em;
+  width: 16em;
   height: 2.2em;
   font-size: 0.8em;
 `
@@ -94,15 +95,22 @@ class InputProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      birthDay: moment(),
-      name: 'Na',
-      lastname: 'Na',
-      oldGender: 'Select your gender',
+      birthDay: '', //moment(),
+      name: '',
+      lastname: '',
+      oldGender: 'Select you gender',
       country: 'Select you country',
       status: '',
       loading: false,
       gender: '',
-      country: ['Thailand', 'United States', 'England', 'China', 'Other'],
+      countryy: [
+        'Select you country',
+        'Thailand',
+        'United States',
+        'England',
+        'China',
+        'Other',
+      ],
     }
     this.toggleCalendar = this.toggleCalendar.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -153,19 +161,32 @@ class InputProfile extends React.Component {
       this.setState({ oldGender: data.gender })
       this.setState({ gender: data.gender })
     }
+    if (data.country != null) {
+      this.setState({ country: data.country })
+    }
     //this.setState({ email: data[0].email })
   }
 
-  renderVideos() {
-    const rowVideos = []
-    const rowCount = 5
+  renderCountry() {
+    const rowCountry = []
+    const rowCount = this.state.countryy.length
     // Use splice on clone object, DONT MODIFY props
     for (let i = 0; i < rowCount; i++) {
-      rowVideos.push(
-        <option value={this.state.country[i]}>{this.state.country[i]}</option>
-      )
+      if (this.state.country == this.state.countryy[i]) {
+        rowCountry.push(
+          <option selected value={this.state.countryy[i]}>
+            {this.state.countryy[i]}
+          </option>
+        )
+      } else {
+        rowCountry.push(
+          <option value={this.state.countryy[i]}>
+            {this.state.countryy[i]}
+          </option>
+        )
+      }
     }
-    return rowVideos
+    return rowCountry
   }
 
   onChangeName(event) {
@@ -205,6 +226,7 @@ class InputProfile extends React.Component {
     this.setState({ loading: false })
     console.log('status', status)
   }
+
   render() {
     // console.log('startDate', this.state.startDate.format('YYYY-MM-DD HH:mm:ss'))
     // let today = new Date(moment().format('YYYY-MM-DD HH:mm:ss'))
@@ -217,11 +239,21 @@ class InputProfile extends React.Component {
           <option value="female">female</option>
         </Gender>
       )
-    } else {
+    } else if (this.state.oldGender == 'female') {
       genderDiv = (
         <Gender onChange={this.onChangeGender}>
           <option value="female">female</option>
           <option value="male">male</option>
+        </Gender>
+      )
+    } else {
+      genderDiv = (
+        <Gender onChange={this.onChangeGender}>
+          <option value="please select you gender">
+            please select you gender
+          </option>
+          <option value="male">male</option>
+          <option value="female">female</option>
         </Gender>
       )
     }
@@ -266,6 +298,11 @@ class InputProfile extends React.Component {
                     <DatePicker
                       //selected={this.state.startDate}
                       //onChange={this.handleChange}
+                      //width: 16em;
+                      //height: 2.2em;
+                      style={{ height: '16em' }}
+                      fixedHeight
+                      placeholderText="Click to select a date"
                       selected={this.state.birthDay}
                       onChange={this.handleChange}
                       showMonthDropdown
@@ -285,7 +322,7 @@ class InputProfile extends React.Component {
                 </Box>
                 <Box w={10 / 12}>
                   <Country onChange={this.onChangeCountry}>
-                    {this.renderVideos()}
+                    {this.renderCountry()}
                   </Country>
                 </Box>
               </Flex>
