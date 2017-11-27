@@ -1,3 +1,5 @@
+import { Component } from 'react'
+import { connect } from 'react-redux'
 import { Box, Image, Text, Flex } from 'rebass'
 import styled from 'styled-components'
 import color from '../commons/vars'
@@ -41,20 +43,34 @@ const Button = styled.button`
   margin-top: 0.3rem;
   cursor: pointer;
 `
-export const Subscribe = () => {
-  return (
-    <Box w={12 / 12}>
+
+class Subscribe extends Component {
+  componentDidMount() {
+    console.log(this.props.token)
+  }
+  render() {
+    return (
       <Box w={12 / 12}>
-        <Flex className="Profile-pic" py="1rem">
-          <Box w={1 / 12} py="0.5rem">
-            <Image src="../../static/ic_vod.png" width="80%" />
-          </Box>
-          <Box w={11.7 / 12} pt="1.8rem">
-            <Text1>Subscribe</Text1>
-          </Box>
-        </Flex>
-        <hr size="0.1" />
+        <Box w={12 / 12}>
+          <Flex className="Profile-pic" py="1rem">
+            <Box w={1 / 12} py="0.5rem">
+              <Image src="../../static/ic_vod.png" width="80%" />
+            </Box>
+            <Box w={11.7 / 12} pt="1.8rem">
+              <Text1>Subscribe</Text1>
+            </Box>
+          </Flex>
+          <hr size="0.1" />
+        </Box>
       </Box>
-    </Box>
-  )
+    )
+  }
 }
+
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token,
+  }
+}
+
+export default connect(mapStateToProps)(Subscribe)
