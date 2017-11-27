@@ -87,8 +87,21 @@ const Input = styled.input`
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
 `
-const WrapperTop = styled.div`background-color: ${color.blue};`
-const WrapperDown = styled.div`background-color: #094992;`
+const WrapperTop = styled.div`
+  background: -webkit-linear-gradient(
+    top,
+    rgba(2, 35, 70, 0.9) 0%,
+    rgba(2, 35, 70, 0.9) 99%,
+    rgba(2, 35, 70, 0.9) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+`
+const WrapperDown = styled.div`
+  background: -webkit-linear-gradient(
+    top,
+    rgba(9, 73, 146, 0.9) 0%,
+    rgba(9, 73, 146, 0.9) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+`
 const Wrapper = styled.div`
   position: relative;
   height: 100%;
@@ -102,12 +115,15 @@ const WrapperPrice = styled.div`
 class PurchaseItem extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      loading: false,
+    }
     this.purchaselive = this.purchaselive.bind(this)
     this.purchasesub = this.purchasesub.bind(this)
   }
 
   async purchaselive() {
+    this.setState({ loading: true })
     const response = await api.post(
       `${api.SERVER}/ppcheckout/${this.props.product._id}?token=${this.props
         .auth.token}`
@@ -119,6 +135,7 @@ class PurchaseItem extends React.Component {
   }
 
   async purchasesub() {
+    this.setState({ loading: true })
     const response = await api.post(
       `${api.SERVER}/subscribe/${this.props.product._id}?token=${this.props.auth
         .token}`
@@ -186,11 +203,18 @@ class PurchaseItem extends React.Component {
             <Box pl="3em" pr="3em" pt="1em">
               <Text2>SELECT PAYMENT METHOD</Text2>
             </Box>
-            <Flex pl="3em" pr="3em" pt="1em" pb="2.1em">
+            <Flex pl="3em" pr="3em" pt="1em" pb="3.1em">
               <Box w={12 / 12} pr="0.5em">
                 <center>
-                  <Buttonpaypal onClick={this.purchaselive}>
-                    <Image width="100%" src="../../static/PayPal.png" />
+                  <Buttonpaypal
+                    onClick={this.purchaselive}
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loading ? (
+                      <Spinner />
+                    ) : (
+                      <Image width="100%" src="../../static/PayPal.png" />
+                    )}
                   </Buttonpaypal>
                 </center>
               </Box>
@@ -249,11 +273,19 @@ class PurchaseItem extends React.Component {
             <Box pl="3em" pr="3em" pt="2.2em">
               <Text2>SELECT PAYMENT METHOD</Text2>
             </Box>
-            <Flex pl="3em" pr="3em" pt="2em" pb="2.1em">
+            <Flex pl="3em" pr="3em" pt="2em" pb="3.1em">
               <Box w={12 / 12} pr="0.5em">
                 <center>
-                  <Buttonpaypal on onClick={this.purchasesub}>
-                    <Image width="100%" src="../../static/PayPal.png" />
+                  <Buttonpaypal
+                    on
+                    onClick={this.purchasesub}
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loading ? (
+                      <Spinner />
+                    ) : (
+                      <Image width="100%" src="../../static/PayPal.png" />
+                    )}
                   </Buttonpaypal>
                 </center>
               </Box>

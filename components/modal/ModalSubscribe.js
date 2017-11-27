@@ -209,19 +209,19 @@ class ModalSubscribe extends React.Component {
                   <Text5>SUBSCRIBE VOD</Text5>
                   <Text5>AND LIVE STREAMING</Text5>
                 </Box>
-                <Box pt="1em">
+                <Box pt="2em">
+                  {/* 1em */}
                   <Link href="#">
                     <ButtonWatch style={{ cursor: 'pointer' }}>
                       WATCH NOW
                     </ButtonWatch>
                   </Link>
                 </Box>
-                <Box pt="1em">
+                <Box pt="1.5em">
+                  {/* 1em */}
                   <Text10>VALID THRU</Text10>
                 </Box>
-                <Box pt="0.5em">
-                  <Text9>Aug 30th, 2017</Text9>
-                </Box>
+                <Box pt="0.5em">{/* <Text9>Aug 30th, 2017</Text9> */}</Box>
               </center>
             </Wrapperin>
           </Wrapper>
