@@ -103,30 +103,34 @@ class PurchaseItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
-    this.purchase = this.purchase.bind(this)
+    this.purchaselive = this.purchaselive.bind(this)
+    this.purchasesub = this.purchasesub.bind(this)
   }
 
-  async purchase() {
-    //console.log(this.props.auth.token, this.props.product.id)
-    const response = await fetch(
-      `${api.SERVER}/ppcheckout/` +
-        this.props.product._id +
-        '?token=' +
-        this.props.auth.token,
-      {
-        method: 'POST',
-        headers: {
-          //Accept: 'application/json',
-          // 'Content-Type': 'application/json',
-          // 'Access-Control-Allow-Origin': '*',
-        },
-        mode: 'no-cors',
-      }
+  async purchaselive() {
+    const response = await api.post(
+      `${api.SERVER}/ppcheckout/${this.props.product._id}?token=${this.props
+        .auth.token}`
     )
-    // console.log('response', this.props.product._idnse)
+    console.log('responseee', response)
+    if (response) {
+      Router.push(`${response.approvalUrl}`)
+    }
   }
+
+  async purchasesub() {
+    const response = await api.post(
+      `${api.SERVER}/subscribe/${this.props.product._id}?token=${this.props.auth
+        .token}`
+    )
+    console.log('responseee', response)
+    if (response) {
+      Router.push(`${response.approvalUrl}`)
+    }
+  }
+
   render() {
-    console.log('response', this.props.product._id)
+    // console.log('response', this.props.auth.token)
     //console.log('sxxxxx', this.props)
     let renderUI = <div />
     let packagee = 'SUBSCRIBE VDO AND LIVE STREAMING'
@@ -134,7 +138,7 @@ class PurchaseItem extends React.Component {
     let price = '$29.99'
     // console.log('iffffffffff', this.props)
     if (this.props.id == 'live') {
-      console.log('if11111111111')
+      // console.log('if11111111111')
       renderUI = (
         <Wrapper>
           <WrapperTop>
@@ -185,7 +189,7 @@ class PurchaseItem extends React.Component {
             <Flex pl="3em" pr="3em" pt="1em" pb="2.1em">
               <Box w={12 / 12} pr="0.5em">
                 <center>
-                  <Buttonpaypal on onClick={this.purchase}>
+                  <Buttonpaypal onClick={this.purchaselive}>
                     <Image width="100%" src="../../static/PayPal.png" />
                   </Buttonpaypal>
                 </center>
@@ -200,7 +204,7 @@ class PurchaseItem extends React.Component {
         </Wrapper>
       )
     } else {
-      console.log('if22222222222222222', this.props)
+      // console.log('if22222222222222222', this.props)
       if (this.props.product.productId === '2002') {
         packagee = 'SUBSCRIBE VDO ON DEMAND'
         img = 'static/ondemand.jpg'
@@ -248,7 +252,7 @@ class PurchaseItem extends React.Component {
             <Flex pl="3em" pr="3em" pt="2em" pb="2.1em">
               <Box w={12 / 12} pr="0.5em">
                 <center>
-                  <Buttonpaypal on onClick={this.purchase}>
+                  <Buttonpaypal on onClick={this.purchasesub}>
                     <Image width="100%" src="../../static/PayPal.png" />
                   </Buttonpaypal>
                 </center>

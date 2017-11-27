@@ -19,6 +19,10 @@ import {
 } from '../redux/modules/modal'
 import * as api from '../api'
 
+const WrapperShowTime = styled.div`
+  position: relative;
+  wight: 100%;
+`
 const Wrapper = styled.div`background-color: #3c5c83;`
 class selectShowtime extends React.Component {
   constructor(props) {
