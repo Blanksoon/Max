@@ -87,9 +87,9 @@ class ListSubscribe extends Component {
   }
   description(productName) {
     if (productName === 'subscribe vods') {
-      return 'Subscribe Lives and Video on Demands'
+      return 'Subscribe Video on Demands'
     }
-    return 'Subscribe Video on Demands'
+    return 'Subscribe Lives and Video on Demands'
   }
   async cancel(subscription) {
     const json = await api.post(
