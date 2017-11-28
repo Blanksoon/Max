@@ -194,7 +194,7 @@ class ModalSubscribe extends React.Component {
                 </center>
                 <Wrapperprice>
                   <Box pt="0.5em">
-                    <Text3>{this.props.price}</Text3>
+                    <Text3>{this.props.subscribe.price}</Text3>
                   </Box>
                   {/* </label> */}
                 </Wrapperprice>
@@ -219,7 +219,7 @@ class ModalSubscribe extends React.Component {
                 </Box>
                 <Box pt="1.5em">
                   {/* 1em */}
-                  <Text10>VALID THRU</Text10>
+                  {/* <Text10>VALID THRU</Text10> */}
                 </Box>
                 <Box pt="0.5em">{/* <Text9>Aug 30th, 2017</Text9> */}</Box>
               </center>
