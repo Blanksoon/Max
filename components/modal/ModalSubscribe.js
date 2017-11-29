@@ -167,13 +167,13 @@ class ModalSubscribe extends React.Component {
     // console.log('ifmodalSubscribe', this.props)
     let zin = -1
     if (this.props.subscribe.status === 'unenable') {
-      zin = 1
+      zin = 2
     }
     return (
       <Provider>
-        <div onClick={this.handleOnClickModal}>
+        <div >
           <Wrapper color={this.props.color}>
-            <Flex pb="2.6em" style={{ cursor: 'pointer' }}>
+            <Flex pb="2.6em" style={{ cursor: 'pointer' }}onClick={this.handleOnClickModal} >
               {/* <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="f-option" name="selector" />
                     </Box> */}
@@ -194,7 +194,7 @@ class ModalSubscribe extends React.Component {
                 </center>
                 <Wrapperprice>
                   <Box pt="0.5em">
-                    <Text3>{this.props.price}</Text3>
+                    <Text3>{this.props.subscribe.price}</Text3>
                   </Box>
                   {/* </label> */}
                 </Wrapperprice>
@@ -211,7 +211,7 @@ class ModalSubscribe extends React.Component {
                 </Box>
                 <Box pt="2em">
                   {/* 1em */}
-                  <Link href="#">
+                  <Link href="http://159.203.140.5:8080">
                     <ButtonWatch style={{ cursor: 'pointer' }}>
                       WATCH NOW
                     </ButtonWatch>
@@ -219,7 +219,7 @@ class ModalSubscribe extends React.Component {
                 </Box>
                 <Box pt="1.5em">
                   {/* 1em */}
-                  <Text10>VALID THRU</Text10>
+                  {/* <Text10>VALID THRU</Text10> */}
                 </Box>
                 <Box pt="0.5em">{/* <Text9>Aug 30th, 2017</Text9> */}</Box>
               </center>

@@ -202,11 +202,10 @@ class ShowTime extends React.Component {
                   modalType={type}
                   live={undefined}
                   subscribe={this.props.product.products.subscribe[1]}
-                  color={color.blue}
-                  img="static/img_vodondemand@3x.png"
-                  text1="SUBSCRIBE VDO ON DEMAND"
-                  text2="All video all month, so you never missany extreme shot"
-                  price="$19.99"
+                  color={color.red}
+                  img="static/img_VDO+LIVE.png"
+                  text1="SUBSCRIBE VDO AND LIVE STREAMING"
+                  text2="Enjoy all video and live streamingthru all the month."
                   month="/1MONTH"
                 />
               </Box>
@@ -216,11 +215,10 @@ class ShowTime extends React.Component {
                   modalType={type}
                   live={undefined}
                   subscribe={this.props.product.products.subscribe[0]}
-                  color={color.red}
-                  img="static/img_VDO+LIVE.png"
-                  text1="SUBSCRIBE VDO AND LIVE STREAMING"
-                  text2="Enjoy all video and live streamingthru all the month."
-                  price="$29.99"
+                  color={color.blue}
+                  img="static/img_vodondemand@3x.png"
+                  text1="SUBSCRIBE VDO ON DEMAND"
+                  text2="All video all month, so you never missany extreme shot"
                   month="/1MONTH"
                 />
               </Box>
