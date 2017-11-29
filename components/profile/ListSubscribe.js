@@ -5,6 +5,7 @@ import moment from 'moment'
 import styled from 'styled-components'
 import color from '../commons/vars'
 import * as api from '../../api'
+import Spinner from '../commons/Spinner'
 
 const Text3 = styled.div`
   color: ${color.red};
@@ -105,7 +106,7 @@ class ListSubscribe extends Component {
   }
   render() {
     const { subscription } = this.state
-    console.log(subscription)
+    console.log('subbbbbbbbb', this.state.subscription)
     return this.state.subscription !== undefined ? (
       <Box w={12 / 12}>
         <Flex className="List-Purchase" pb="1rem">
@@ -163,7 +164,7 @@ class ListSubscribe extends Component {
               onClick={() => this.cancel(subscription)}
               disabled={this.state.loading}
             >
-              {this.state.loading ? <Spinner /> : Cancel}
+              {this.state.loading ? <Spinner /> : 'Cancel'}
             </CancelButton>
           </Box>
         </Flex>
