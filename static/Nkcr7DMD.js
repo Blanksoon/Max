@@ -47,4 +47,4 @@ var jwDefaults = {
   "stretching": "uniform",
   "width": "100%"
 };
-//jwplayer.defaults = jwDefaults;
+jwplayer.defaults = jwDefaults;
