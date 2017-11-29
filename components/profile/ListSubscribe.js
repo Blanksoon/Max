@@ -92,17 +92,19 @@ class ListSubscribe extends Component {
     return 'Subscribe Lives and Video on Demands'
   }
   async cancel(subscription) {
+    console.log('subscription.orderId', subscription.orderId)
     const json = await api.post(
       `${api.SERVER}/ppcheckout/${subscription.orderId}/cancel/subscribe`,
       {}
     )
+    console.log('json', json)
     this.setState({
       subscription: undefined,
     })
   }
   render() {
     const { subscription } = this.state
-    console.log(subscription)
+    console.log('subscript', subscription)
     return this.state.subscription !== undefined ? (
       <Box w={12 / 12}>
         <Flex className="List-Purchase" pb="1rem">
