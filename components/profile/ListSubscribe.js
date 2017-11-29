@@ -5,6 +5,7 @@ import moment from 'moment'
 import styled from 'styled-components'
 import color from '../commons/vars'
 import * as api from '../../api'
+import Spinner from '../commons/Spinner'
 
 const Text3 = styled.div`
   color: ${color.red};
@@ -73,7 +74,9 @@ const CancelButton = styled(ButtonOutline)`
 class ListSubscribe extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      loading: false,
+    }
   }
   async componentDidMount() {
     const json = await api.get(
@@ -92,7 +95,7 @@ class ListSubscribe extends Component {
     return 'Subscribe Lives and Video on Demands'
   }
   async cancel(subscription) {
-    console.log('subscription.orderId', subscription.orderId)
+    this.setState({ loading: true })
     const json = await api.post(
       `${api.SERVER}/ppcheckout/${subscription.orderId}/cancel/subscribe`,
       {}
@@ -105,6 +108,7 @@ class ListSubscribe extends Component {
   render() {
     const { subscription } = this.state
     console.log('subscript', subscription)
+    console.log('subbbbbbbbb', this.state.subscription)
     return this.state.subscription !== undefined ? (
       <Box w={12 / 12}>
         <Flex className="List-Purchase" pb="1rem">
@@ -158,8 +162,11 @@ class ListSubscribe extends Component {
             </Flex>
           </Box>
           <Box w={2 / 12} pt="6em">
-            <CancelButton onClick={() => this.cancel(subscription)}>
-              Cancel
+            <CancelButton
+              onClick={() => this.cancel(subscription)}
+              disabled={this.state.loading}
+            >
+              {this.state.loading ? <Spinner /> : 'Cancel'}
             </CancelButton>
           </Box>
         </Flex>

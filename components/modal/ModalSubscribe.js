@@ -171,9 +171,13 @@ class ModalSubscribe extends React.Component {
     }
     return (
       <Provider>
-        <div >
+        <div>
           <Wrapper color={this.props.color}>
-            <Flex pb="2.6em" style={{ cursor: 'pointer' }}onClick={this.handleOnClickModal} >
+            <Flex
+              pb="2.6em"
+              style={{ cursor: 'pointer' }}
+              onClick={this.handleOnClickModal}
+            >
               {/* <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="f-option" name="selector" />
                     </Box> */}
@@ -194,7 +198,7 @@ class ModalSubscribe extends React.Component {
                 </center>
                 <Wrapperprice>
                   <Box pt="0.5em">
-                    <Text3>{this.props.subscribe.price}</Text3>
+                    <Text3>{this.props.subscribe.price}$</Text3>
                   </Box>
                   {/* </label> */}
                 </Wrapperprice>
