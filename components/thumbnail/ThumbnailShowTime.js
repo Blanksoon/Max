@@ -102,7 +102,7 @@ const Input = styled.input`
 class ThumbnailShowTime extends React.Component {
   render() {
     let zin = -1
-    if (this.props.status === 'unenable') {
+    if (this.props.status === 'unenable' || this.props.subAll === 'unenable') {
       zin = 1
     }
     return (

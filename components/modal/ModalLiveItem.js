@@ -74,6 +74,7 @@ class ModalButton extends Component {
           text5={this.props.live.startTime}
           id={this.props.live._id}
           token={this.props.token}
+          subAll={this.props.subAll}
         />
       )
     }

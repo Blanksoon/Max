@@ -26,9 +26,16 @@ const Button = styled.button`
   cursor: pointer;
 `
 export const ListPurchase = purchaseList => {
+  let type = 'Live'
   const purchaseDate = moment(purchaseList.purchase.purchaseDate).format(
     'D MMM YYYY'
   )
+  if (
+    purchaseList.purchase.productName === 'subscribe vods' ||
+    purchaseList.purchase.productName === 'subscribe lives and vods'
+  ) {
+    type = 'Subscribe'
+  }
   return (
     <Box w={12 / 12}>
       <Flex className="List-Purchase" pb="1rem">
@@ -40,7 +47,7 @@ export const ListPurchase = purchaseList => {
         </Box>
         <Box w={4 / 12}>
           <Text3>
-            <b>Live</b>: {purchaseList.purchase.productName}
+            <b>{type}</b>: {purchaseList.purchase.productName}
           </Text3>
         </Box>
         <Box w={3 / 12}>
