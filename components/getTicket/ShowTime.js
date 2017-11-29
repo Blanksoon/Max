@@ -202,6 +202,7 @@ class ShowTime extends React.Component {
                   modalType={type}
                   live={undefined}
                   subscribe={this.props.product.products.subscribe[1]}
+                  subAll={this.props.product.products.subscribe[1].status}
                   color={color.red}
                   img="static/img_VDO+LIVE.png"
                   text1="SUBSCRIBE VDO AND LIVE STREAMING"
@@ -215,6 +216,7 @@ class ShowTime extends React.Component {
                   modalType={type}
                   live={undefined}
                   subscribe={this.props.product.products.subscribe[0]}
+                  subAll={this.props.product.products.subscribe[1].status}
                   color={color.blue}
                   img="static/img_vodondemand@3x.png"
                   text1="SUBSCRIBE VDO ON DEMAND"
@@ -249,6 +251,7 @@ class ShowTime extends React.Component {
                     modalType={type}
                     auth={this.props.auth}
                     live={this.props.product.products.lives[0]}
+                    subAll={this.props.product.products.subscribe[1].status}
                     logo="/static/logo_max.png"
                     img="/static/maxultimate-show.jpg"
                     text1="MAX Ultimate Tournament & MAX World Champions 7" // International"
@@ -264,6 +267,7 @@ class ShowTime extends React.Component {
                     modalType={type}
                     auth={this.props.auth}
                     live={this.props.product.products.lives[1]}
+                    subAll={this.props.product.products.subscribe[1].status}
                     logo="/static/logo_battle.png"
                     img="/static/thebattle-show.jpg"
                     text1="The Battle Muay Thai"
@@ -280,6 +284,7 @@ class ShowTime extends React.Component {
                     id="live"
                     modalType={type}
                     live={this.props.product.products.lives[2]}
+                    subAll={this.props.product.products.subscribe[1].status}
                     logo="/static/logo_fighter.png"
                     img="/static/thairath-show.jpg"
                     text1="Thairath Muay Thai Fighter"
@@ -294,6 +299,7 @@ class ShowTime extends React.Component {
                     id="live"
                     modalType={type}
                     live={this.props.product.products.lives[3]}
+                    subAll={this.props.product.products.subscribe[1].status}
                     logo="/static/logo_champion.png"
                     img="/static/thechampion-show.jpg"
                     text1="The Champion Muay Thai"

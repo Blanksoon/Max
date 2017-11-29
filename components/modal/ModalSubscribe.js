@@ -166,8 +166,11 @@ class ModalSubscribe extends React.Component {
   render() {
     // console.log('ifmodalSubscribe', this.props)
     let zin = -1
-    if (this.props.subscribe.status === 'unenable') {
-      zin = 2
+    if (
+      this.props.subscribe.status === 'unenable' ||
+      this.props.subAll === 'unenable'
+    ) {
+      zin = 1
     }
     return (
       <Provider>
