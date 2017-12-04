@@ -39,7 +39,7 @@ class Player extends React.Component {
       <div>
         <ReactJWPlayer
           playerId={uniqid}
-          playerScript="/static/Nkcr7DMD.js" //"/static/uOQEiWJS.js"
+          playerScript="http://content.jwplatform.com/libraries/Nkcr7DMD.js" //"/static/uOQEiWJS.js"
           playlist="https://link-to-my-playlist.json"
           file={this.props.Url} //"https://content.jwplatform.com/manifests/AVUqhsXA.m3u8?sig=fdc6d3a6ab2c403b41454ea822ac0a5c&exp=1510895248&sig=fdc6d3a6ab2c403b41454ea822ac0a5c&exp=1510895248" //{this.props.Url}
         />
