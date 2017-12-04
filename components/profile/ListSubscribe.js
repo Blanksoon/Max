@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import color from '../commons/vars'
 import * as api from '../../api'
 import Spinner from '../commons/Spinner'
+import Router from 'next/router'
 
 const Text3 = styled.div`
   color: ${color.red};
@@ -77,6 +78,7 @@ class ListSubscribe extends Component {
     this.state = {
       loading: false,
     }
+    this.logout = this.logout.bind(this)
   }
   async componentDidMount() {
     const json = await api.get(
@@ -87,6 +89,9 @@ class ListSubscribe extends Component {
         subscription: json.data[0],
       })
     }
+  }
+  logout() {
+    Router.push(`http://localhost:8080/index`)
   }
   description(productName) {
     if (productName === 'subscribe vods') {
@@ -105,6 +110,12 @@ class ListSubscribe extends Component {
     })
   }
   render() {
+    if (this.props.token === undefined) {
+      // console.log('tokennnnnmmm', this.props.token)
+      {
+        this.logout()
+      }
+    }
     const { subscription } = this.state
     console.log('subbbbbbbbb', this.state.subscription)
     return this.state.subscription !== undefined ? (

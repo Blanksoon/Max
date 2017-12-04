@@ -371,6 +371,11 @@ export const datepickerStyled = `.react-datepicker-popper[data-placement^="botto
   display: inline-block;
 }
 
+.react-datepicker__input-container input {
+  width: 16em;
+  height: 2.2em;
+}
+
 .react-datepicker__year-read-view,
 .react-datepicker__month-read-view {
   border: 1px solid transparent;
