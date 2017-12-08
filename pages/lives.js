@@ -32,6 +32,94 @@ const Wrapper = styled.div`
 const LivePlayer = styled.div`height: 36rem;`
 
 class lives extends React.Component {
+
+  renderUI() {
+    //console.log('llllllllllll',this.props.live)
+    const rowLive = []
+    const rowCount = this.props.lives.length
+    let n = 0
+    let br = [<br/>,'',<br/>,<br/>,<br/>,<br/>]
+    // Use splice on clone object, DONT MODIFY props
+    if(rowCount%2 == 0){
+      for(let i = 0; i< rowCount; i+=2){
+        rowLive.push(
+          <Flex bg="#fff" pb="2rem">
+            <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
+              <ThumbnailBigLive
+                id={this.props.lives[i].id}
+                img={this.props.lives[i].bannerUrl}
+                text1={this.props.lives[i].programName}
+                text2={this.props.lives[i].shortDesc1_en}
+                text3={br[i]}
+                text4={this.props.lives[i].title_en}
+                live={this.props.lives[i]}
+              />
+            </Box>
+            <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
+              <ThumbnailBigLive
+                id={this.props.lives[i+1].id}
+                img={this.props.lives[i+1].bannerUrl}
+                text1={this.props.lives[i+1].programName}
+                text2={this.props.lives[i+1].shortDesc1_en}
+                text3={br[i+1]}
+                text4={this.props.lives[i+1].title_en}
+                live={this.props.lives[i+1]}
+              />
+            </Box>
+          </Flex>
+        )
+      }
+    } else {
+      for(let i = 0; i< rowCount-1; i+=2){
+        rowLive.push(
+          <Flex bg="#fff" pb="2rem">
+            <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
+              <ThumbnailBigLive
+                id={this.props.lives[i].id}
+                img={this.props.lives[i].bannerUrl}
+                text1={this.props.lives[i].programName}
+                text2={this.props.lives[i].shortDesc1_en}
+                text3={br[i]}
+                text4={this.props.lives[i].title_en}
+                live={this.props.lives[i]}
+              />
+            </Box>
+            <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
+              <ThumbnailBigLive
+                id={this.props.lives[i+1].id}
+                img={this.props.lives[i+1].bannerUrl}
+                text1={this.props.lives[i+1].programName}
+                text2={this.props.lives[i+1].shortDesc1_en}
+                text3={br[i+1]}
+                text4={this.props.lives[i+1].title_en}
+                live={this.props.lives[i+1]}
+              />
+            </Box>
+          </Flex>
+        )
+        n=i+2
+      }
+      rowLive.push(
+        <Flex bg="#fff" pb="2rem">
+            <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
+              <ThumbnailBigLive
+                id={this.props.lives[n].id}
+                img={this.props.lives[n].bannerUrl}
+                text1={this.props.lives[n].programName}
+                text2={this.props.lives[n].shortDesc1_en}
+                text3={br[n]}
+                text4={this.props.lives[n].title_en}
+                live={this.props.lives[n]}
+              />
+            </Box>
+            <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
+            </Box>
+          </Flex>
+      )
+    }
+    return rowLive
+  }
+
   render() {
     //console.log('live live',this.props.lives[0])
     return (
@@ -39,56 +127,10 @@ class lives extends React.Component {
         <NewModal />
         <Wrapper>
           <Container>
-            <Box pl="1.5rem" bg="#fff" pt="8rem">
+            <Box pl="1.5rem" bg="#fff" pt="8rem" pb='2rem'>
               <Text>LIVE</Text>
             </Box>
-            <Flex bg="#fff" pt="2rem">
-              <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
-                <ThumbnailBigLive
-                  id={this.props.lives[0].id}
-                  img={this.props.lives[0].bannerUrl}
-                  text1={this.props.lives[0].programName}
-                  text2={this.props.lives[0].shortDesc1_en}
-                  text3={<br />}
-                  text4={this.props.lives[0].title_en}
-                  live={this.props.lives[0]}
-                />
-              </Box>
-              <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
-                <ThumbnailBigLive
-                  id={this.props.lives[1].id}
-                  img={this.props.lives[1].bannerUrl}
-                  text1={this.props.lives[1].programName}
-                  text2={this.props.lives[1].shortDesc1_en}
-                  text4={this.props.lives[1].title_en}
-                  live={this.props.lives[1]}
-                />
-              </Box>
-            </Flex>
-            <Flex bg="#fff" pt="2rem" pb="3rem">
-              <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
-                <ThumbnailBigLive
-                  id={this.props.lives[2].id}
-                  img={this.props.lives[2].bannerUrl}
-                  text1={this.props.lives[2].programName}
-                  text2={this.props.lives[2].shortDesc1_en}
-                  text3={<br />}
-                  text4={this.props.lives[2].title_en}
-                  live={this.props.lives[2]}
-                />
-              </Box>
-              <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
-                <ThumbnailBigLive
-                  id={this.props.lives[3].id}
-                  img={this.props.lives[3].bannerUrl}
-                  text1={this.props.lives[3].programName}
-                  text2={this.props.lives[3].shortDesc1_en}
-                  text3={<br />}
-                  text4={this.props.lives[3].title_en}
-                  live={this.props.lives[3]}
-                />
-              </Box>
-            </Flex>
+            {this.renderUI()}
           </Container>
         </Wrapper>
       </Main>
