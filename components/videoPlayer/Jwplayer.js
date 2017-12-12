@@ -14,7 +14,7 @@ export const Jwplayer = path => {
   let expire = ''
   // Cache missed
   if (!cached(path) || expired(path)) {
-    expire = Date.now() + '3600'
+    expire = Date.now() + '7200'
     signature = md5(`${path}:${expire}:${'93pia1YERFQ9VXWeNQVbDU97'}`)
     cache[path] = {
       signature,

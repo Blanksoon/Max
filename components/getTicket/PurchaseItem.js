@@ -117,32 +117,23 @@ class PurchaseItem extends React.Component {
     super(props)
     this.state = {
       loading: false,
+      link: 'ppcheckout',
     }
-    this.purchaselive = this.purchaselive.bind(this)
-    this.purchasesub = this.purchasesub.bind(this)
+    this.purchase = this.purchase.bind(this)
   }
 
-  async purchaselive() {
+  async purchase() {
     this.setState({ loading: true })
     const response = await api.post(
-      `${api.SERVER}/ppcheckout/${this.props.product._id}?token=${this.props
-        .auth.token}`
+      `${api.SERVER}/${this.state.link}/${this.props.product._id}?token=${this
+        .props.auth.token}`
     )
-    console.log('responseee', response)
-    if (response) {
+    //console.log('responseee', response)
+    if (response.approvalUrl) {
       Router.push(`${response.approvalUrl}`)
-    }
-  }
-
-  async purchasesub() {
-    this.setState({ loading: true })
-    const response = await api.post(
-      `${api.SERVER}/subscribe/${this.props.product._id}?token=${this.props.auth
-        .token}`
-    )
-    console.log('responseee', response)
-    if (response) {
-      Router.push(`${response.approvalUrl}`)
+    } else {
+      this.props.closeModal()
+      Router.push(`http://localhost:8080/error`)
     }
   }
 
@@ -152,7 +143,6 @@ class PurchaseItem extends React.Component {
     let renderUI = <div />
     let packagee = 'SUBSCRIBE VDO ON DEMAND'
     let img = 'static/ondemand.jpg'
-    let price = '$2.99'
     // console.log('iffffffffff', this.props)
     if (this.props.id == 'live') {
       // console.log('if11111111111')
@@ -207,7 +197,7 @@ class PurchaseItem extends React.Component {
               <Box w={12 / 12} pr="0.5em">
                 <center>
                   <Buttonpaypal
-                    onClick={this.purchaselive}
+                    onClick={this.purchase}
                     disabled={this.state.loading}
                   >
                     {this.state.loading ? (
@@ -228,11 +218,11 @@ class PurchaseItem extends React.Component {
         </Wrapper>
       )
     } else {
+      this.state.link = 'subscribe'
       // console.log('if22222222222222222', this.props)
       if (this.props.product.productId === '2002') {
         packagee = 'SUBSCRIBE VDO AND LIVE STREAMING'
         img = 'static/subandvod.jpg'
-        price = '$3.99'
       }
       renderUI = (
         <Wrapper>
@@ -278,7 +268,7 @@ class PurchaseItem extends React.Component {
                 <center>
                   <Buttonpaypal
                     on
-                    onClick={this.purchasesub}
+                    onClick={this.purchase}
                     disabled={this.state.loading}
                   >
                     {this.state.loading ? (

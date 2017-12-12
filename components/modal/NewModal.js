@@ -41,9 +41,9 @@ const WrapperVod = styled.div`
   z-index: 240;
 `
 const WrapperImg = styled.div`
+  margin-bottom: 2%;
   position: relative;
-  color: blue;
-  width: 440px;
+  width: 450px;
   height: 500px;
   background: #fff;
   z-index: 240;
@@ -138,7 +138,7 @@ export default class Modal extends Component {
     this.props.closeModal()
   }
   render() {
-    console.log('ififififififififfifif', this.props)
+    //console.log('ififififififififfifif', this.props)
     ;<div onKeyDown={this.closeModal} />
     let renderUI = <div />
     if (this.props.modalType === 1) {
