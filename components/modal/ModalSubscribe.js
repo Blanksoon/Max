@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   background-color: ${props => props.color};
   text-align: -webkit-auto;
   position: relative;
-  height: 180px;
+  height: 100%;
   width: 100%;
 `
 const WrapperButton = styled.div`
@@ -177,7 +177,7 @@ class ModalSubscribe extends React.Component {
         <div>
           <Wrapper color={this.props.color}>
             <Flex
-              pb="2.6em"
+              pb="1.1em"
               style={{ cursor: 'pointer' }}
               onClick={this.handleOnClickModal}
             >
@@ -186,7 +186,7 @@ class ModalSubscribe extends React.Component {
                     </Box> */}
               <Box w={5 / 12} pt="0.7em" pl="2em" pb="0px">
                 {/* <label htmlFor="f-option"> */}
-                <Image w="100%" src={this.props.img} />
+                <Image w={this.props.w} src={this.props.img} />
                 {/* </label> */}
               </Box>
               <Box w={7 / 12} pt="1em" pr="1em">

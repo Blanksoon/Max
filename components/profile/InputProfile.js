@@ -11,6 +11,7 @@ import * as api from '../../api'
 import Spinner from '../commons/Spinner'
 import vars from '../commons/vars'
 import { datepickerStyled } from './datepickerStyle'
+import Router from 'next/router'
 
 const Text1 = styled.div`
   color: ${color.black};
@@ -120,6 +121,7 @@ class InputProfile extends React.Component {
     this.onChangeGender = this.onChangeGender.bind(this)
     this.onChangeCountry = this.onChangeCountry.bind(this)
     this.sumbitProfile = this.sumbitProfile.bind(this)
+    this.logout = this.logout.bind(this)
   }
 
   toggleCalendar(event) {
@@ -139,11 +141,14 @@ class InputProfile extends React.Component {
       this.dataProfile()
     }
   }
-
+  logout() {
+    Router.push(`http://localhost:8080/index`)
+  }
   async dataProfile() {
     const { status, data } = await api.get(
       `${api.SERVER}/profile?token=${this.props.auth.token}`
     )
+    this.setState({ profile: data })
     console.log('dataaaa', data)
     if (data.name != null) {
       this.setState({ name: data.name })
@@ -232,6 +237,12 @@ class InputProfile extends React.Component {
     // let today = new Date(moment().format('YYYY-MM-DD HH:mm:ss'))
     // console.log('today', today)
     let genderDiv = ''
+    if (this.props.auth.token === undefined) {
+      // console.log('tokennnnnmmm', this.props.auth.token)
+      {
+        this.logout()
+      }
+    }
     if (this.state.oldGender == 'male') {
       genderDiv = (
         <Gender onChange={this.onChangeGender}>

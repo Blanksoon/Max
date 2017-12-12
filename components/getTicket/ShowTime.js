@@ -204,6 +204,7 @@ class ShowTime extends React.Component {
                   subscribe={this.props.product.products.subscribe[1]}
                   subAll={this.props.product.products.subscribe[1].status}
                   color={color.red}
+                  w="100%"
                   img="static/img_VDO+LIVE.png"
                   text1="SUBSCRIBE VDO AND LIVE STREAMING"
                   text2="Enjoy all video and live streamingthru all the month."
@@ -218,6 +219,7 @@ class ShowTime extends React.Component {
                   subscribe={this.props.product.products.subscribe[0]}
                   subAll={this.props.product.products.subscribe[1].status}
                   color={color.blue}
+                  w="95%"
                   img="static/img_vodondemand@3x.png"
                   text1="SUBSCRIBE VDO ON DEMAND"
                   text2="All video all month, so you never missany extreme shot"
