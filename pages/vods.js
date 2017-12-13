@@ -9,13 +9,18 @@ import color from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import {
   fetchVods,
+  fetchVodOnDemand,
   setFetchFilter,
   resetFetchData,
   fetchFeaturedVod,
 } from '../redux/modules/vod'
 import { fetchPrograms } from '../redux/modules/program'
 import NewModal from '../containers/NewModal'
-import { recentVodsSelector, hilightVodSelector } from '../redux/selectors/vod'
+import {
+  recentVodsSelector,
+  hilightVodSelector,
+  NumberOfVods,
+} from '../redux/selectors/vod'
 import { recentProgramsSelector } from '../redux/selectors/program'
 import {
   toggleModal,
@@ -48,7 +53,7 @@ class Vods extends React.Component {
   }
 
   render() {
-    const { hilight, vods, filter } = this.props
+    const { hilight, vods, filter, numberOfVods } = this.props
     let filteredProgram = ''
     if (typeof filter !== 'undefined') {
       if (typeof filter.progname !== 'undefined') {
@@ -66,6 +71,7 @@ class Vods extends React.Component {
                 <VideoBox
                   hilight={hilight}
                   vods={vods}
+                  numberOfVods={numberOfVods}
                   programEns={this.props.programs.programname_en}
                   filteredProgram={filteredProgram}
                   onFilteredProgramChange={this.onFilteredProgramChange}
@@ -82,6 +88,7 @@ const mapStateToProps = state => {
   const props = {
     hilight: hilightVodSelector(state),
     vods: recentVodsSelector(state),
+    numberOfVods: NumberOfVods(state),
     programs: state.program,
     filter: state.vod.filter,
     token: state.auth.token,
@@ -97,7 +104,7 @@ Vods.getInitialProps = async ({ store, isServer, query, req }) => {
       progname: '',
     })
   )
-  const vodsPromise = fetchVods(token)(store.dispatch, store.getState)
+  const vodsPromise = fetchVodOnDemand(token)(store.dispatch, store.getState)
   const featuredPromise = fetchFeaturedVod(token)(store.dispatch)
   const programsPromise = fetchPrograms()(store.dispatch)
   await Promise.all([vodsPromise, featuredPromise, programsPromise])
@@ -108,6 +115,7 @@ Vods.getInitialProps = async ({ store, isServer, query, req }) => {
 
 export default withRedux(initStore, mapStateToProps, {
   fetchVods,
+  fetchVodOnDemand,
   fetchFeaturedVod,
   fetchPrograms,
   setFetchFilter,

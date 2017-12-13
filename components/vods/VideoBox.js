@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Flex, Box, Image, Button, Text } from 'rebass'
+import { Flex, Box, Image, Text } from 'rebass'
 import { connect } from 'react-redux'
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Link from 'next/link'
 import ThumbnailVideo from '../thumbnail/ThumbnailVideo'
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
@@ -10,6 +10,12 @@ import Hilight from './Hilight'
 import ProgramFilter from './ProgramFilter'
 import { formattedDate } from '../../util'
 import vars from '../commons/vars'
+import {
+  fetchVodsSuccess,
+  pagination,
+  startindex,
+} from '../../redux/modules/vod'
+import * as api from '../../api'
 
 const WrapperHilight = styled.div`
   width: 55%;
@@ -30,10 +36,41 @@ const WrapperText = styled.div`
   font-size: 2.5em;
   position: absolute;
 `
+const Button = styled.button`
+  background-color: white;
+  border: 1px solid red;
+  color: red;
+  padding: 8px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
+  font-family: Helvetica, Arial, sans-serif;
+`
 class VideoBox extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      vodmax: 0,
+    }
+    this.check = this.check.bind(this)
+  }
+
+  async check() {
+    if (this.props.vod.index < this.props.numberOfVods) {
+      const json = await api.get(
+        `${api.SERVER}/vods-ondemand?token=${this.props.auth.token}&index=${this
+          .props.vod.index}`
+      )
+      console.log('dddddddddddfgdgd', json)
+      this.props.fetchVodsSuccess(json)
+      this.props.pagination()
+    }
+  }
+
   renderVideos(vods) {
     const rowVideos = []
-    const rowCount = vods.length / 4
+    const rowCount = this.props.vod.index / 4
     // Use splice on clone object, DONT MODIFY props
     const tmpVods = [...vods]
     for (let i = 0; i <= rowCount; i++) {
@@ -42,7 +79,25 @@ class VideoBox extends Component {
     return rowVideos
   }
 
+  componentDidMount() {
+    {
+      this.props.startindex(4)
+    }
+  }
+
   render() {
+    if (
+      this.props.vod.index >= this.props.numberOfVods &&
+      this.state.vodmax != 1
+    ) {
+      this.setState({ vodmax: 1 })
+    } else if (
+      this.props.vod.index < this.props.numberOfVods &&
+      this.state.vodmax != 0
+    ) {
+      this.setState({ vodmax: 0 })
+    }
+    let renderUI = ''
     const { hilight, vods, filteredProgram } = this.props
     const filteredVods = vods.filter(vod => {
       if (filteredProgram === '') {
@@ -50,6 +105,15 @@ class VideoBox extends Component {
       }
       return vod.programName_en === filteredProgram
     })
+    if (this.state.vodmax === 0) {
+      renderUI = (
+        <Button onClick={this.check} className="button-hunger">
+          Hunger for more
+        </Button>
+      )
+    } else {
+      renderUI = ''
+    }
     return (
       <div>
         <Flex mb={3} pt="7rem">
@@ -69,9 +133,7 @@ class VideoBox extends Component {
           {this.renderVideos(filteredVods)}
         </Box>
         <Box w={12 / 12} pb="3rem" pt="2rem">
-          <center>
-            <button className="button-hunger">Hunger for more</button>
-          </center>
+          <center>{renderUI}</center>
         </Box>
         <style jsx>
           {`
@@ -186,4 +248,15 @@ const RowVideo = ({ vods }) => {
   )
 }
 
-export default VideoBox
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+    vod: state.vod,
+  }
+}
+
+export default connect(mapStateToProps, {
+  fetchVodsSuccess,
+  pagination,
+  startindex,
+})(VideoBox)

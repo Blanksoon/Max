@@ -64,12 +64,14 @@ const livesReducer = (state = initialState, action) => {
     case FETCH_LIVES_SUCCESS:
       const lives = action.payload
       const newState = Object.assign({}, state)
+      let i = 0
       lives.forEach(live => {
         if (typeof newState.recents === 'undefined') {
           newState.recents = [live.id]
         } else {
-          newState.recents.push(live.id)
+          if (newState.recents[i] !== live.id) newState.recents.push(live.id)
         }
+        i++
 
         if (typeof newState.data === 'undefined') {
           newState.data = {
