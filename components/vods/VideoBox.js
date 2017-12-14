@@ -57,6 +57,9 @@ class VideoBox extends Component {
   }
 
   async check() {
+    if (this.props.vod.index == 0) {
+      this.props.vod.index = 4
+    }
     if (this.props.vod.index < this.props.numberOfVods) {
       const json = await api.get(
         `${api.SERVER}/vods-ondemand?token=${this.props.auth.token}&index=${this
@@ -81,7 +84,7 @@ class VideoBox extends Component {
 
   componentDidMount() {
     {
-      this.props.startindex(4)
+      this.props.startindex(0)
     }
   }
 
@@ -99,10 +102,12 @@ class VideoBox extends Component {
     }
     let renderUI = ''
     const { hilight, vods, filteredProgram } = this.props
+
     const filteredVods = vods.filter(vod => {
       if (filteredProgram === '') {
         return true
       }
+      //this.props.startindex(4)
       return vod.programName_en === filteredProgram
     })
     if (this.state.vodmax === 0) {
@@ -114,6 +119,7 @@ class VideoBox extends Component {
     } else {
       renderUI = ''
     }
+
     return (
       <div>
         <Flex mb={3} pt="7rem">

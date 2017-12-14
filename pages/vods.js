@@ -9,6 +9,7 @@ import color from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import {
   fetchVods,
+  startindex,
   fetchVodOnDemand,
   setFetchFilter,
   resetFetchData,
@@ -49,7 +50,9 @@ class Vods extends React.Component {
       progname: filteredProgram,
     })
     this.props.fetchFeaturedVod(this.props.token)
-    this.props.fetchVods(this.props.token)
+    //this.props.fetchVods(this.props.token)
+    this.props.startindex(4)
+    this.props.fetchVodOnDemand(this.props.token)
   }
 
   render() {
@@ -118,6 +121,7 @@ export default withRedux(initStore, mapStateToProps, {
   fetchVodOnDemand,
   fetchFeaturedVod,
   fetchPrograms,
+  startindex,
   setFetchFilter,
   resetFetchData,
   updateModalType,

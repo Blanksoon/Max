@@ -43,7 +43,7 @@ export const fetchVods = token => async (dispatch, getState) => {
     token,
   }
   const queryStr = querystring.stringify(query)
-  console.log('queryStr', queryStr)
+  //console.log('queryStr', queryStr)
   const url = `${api.SERVER}/vods?${queryStr}`
   try {
     const json = await api.get(url)
@@ -204,7 +204,6 @@ const vodReducer = (state = initialState, action) => {
     }
 
     case FETCH_VODS_SUCCESS: {
-      console.log('ddddddd1231232', action)
       const vods = action.payload.data
       const newData = {}
       let i = 0
