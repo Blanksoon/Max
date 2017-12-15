@@ -88,6 +88,7 @@ class Vods extends React.Component {
   }
 }
 const mapStateToProps = state => {
+  //console.log('ddddddd', state)
   const props = {
     hilight: hilightVodSelector(state),
     vods: recentVodsSelector(state),

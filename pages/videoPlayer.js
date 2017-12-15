@@ -57,15 +57,18 @@ class videoPlayer extends React.Component {
     clearInterval(this.timerId)
   }
   componentWillReceiveProps(nextProps) {
+    let Vod = vod
     const { vod } = this.props
     const { vod: nextVod } = nextProps
-    if (
-      vod.videoUrl !== nextVod.videoUrl ||
-      vod.promoUrl !== nextVod.promoUrl
-    ) {
-      this.setState({
-        sec: 0,
-      })
+    if (Vod !== undefined) {
+      if (
+        vod.videoUrl !== nextVod.videoUrl ||
+        vod.promoUrl !== nextVod.promoUrl
+      ) {
+        this.setState({
+          sec: 0,
+        })
+      }
     }
   }
   componentDidMount() {
@@ -80,27 +83,35 @@ class videoPlayer extends React.Component {
   render() {
     const { url, vod, vods, token } = this.props
     let renderUI = <div />
-    if (this.state.sec > 20 && vod.videoUrl == 'null') {
-      renderUI = (
-        <WrapperPlayer>
-          <Players Url={vod.promoUrl} />
-          <WrapperButtonPlayer>
-            <center>
-              <Box pt="17rem">
-                <Link href={`/getticket`}>
-                  {/* <a> */}
-                  <Button>Buy Ticket</Button>
-                  {/* </a> */}
-                </Link>
-              </Box>
-            </center>
-          </WrapperButtonPlayer>
-        </WrapperPlayer>
+    let renderUpnext = ''
+    let renderDescription = ''
+    if (vod !== undefined) {
+      if (this.state.sec > 20 && vod.videoUrl == 'null') {
+        renderUI = (
+          <WrapperPlayer>
+            <Players Url={vod.promoUrl} />
+            <WrapperButtonPlayer>
+              <center>
+                <Box pt="17rem">
+                  <Link href={`/getticket`}>
+                    {/* <a> */}
+                    <Button>Buy Ticket</Button>
+                    {/* </a> */}
+                  </Link>
+                </Box>
+              </center>
+            </WrapperButtonPlayer>
+          </WrapperPlayer>
+        )
+      } else if (vod.videoUrl == 'null') {
+        renderUI = <Players Url={vod.promoUrl} />
+      } else {
+        renderUI = <Players Url={vod.videoUrl} />
+      }
+      renderUpnext = (
+        <UpNext name="Up next" vods={vods} progname={vod.programName_en} />
       )
-    } else if (vod.videoUrl == 'null') {
-      renderUI = <Players Url={vod.promoUrl} />
-    } else {
-      renderUI = <Players Url={vod.videoUrl} />
+      renderDescription = <Description vod={vod} />
     }
     return (
       <div className="wrapper-index">
@@ -126,7 +137,7 @@ class videoPlayer extends React.Component {
             <Container>
               <Flex>
                 <Box w={12 / 12} bg="white">
-                  <Description vod={vod} />
+                  {renderDescription}
                 </Box>
               </Flex>
             </Container>
@@ -135,11 +146,7 @@ class videoPlayer extends React.Component {
             <Container>
               <Flex>
                 <Box w={12 / 12} bg="white">
-                  <UpNext
-                    name="Up next"
-                    vods={vods}
-                    progname={vod.programName_en}
-                  />
+                  {renderUpnext}
                 </Box>
               </Flex>
             </Container>
@@ -161,7 +168,10 @@ class videoPlayer extends React.Component {
 
 const mapStateToProps = state => {
   const vod = currentVodSelector(state)
-  const vods = relatedVodsSelector(vod.programName_en)(state)
+  let vods = ''
+  if (vod !== undefined) {
+    vods = relatedVodsSelector(vod.programName_en)(state)
+  }
   const token = state.auth.token
   return { vod, vods, token }
 }

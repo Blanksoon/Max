@@ -26,6 +26,7 @@ export const fetchVodsSuccess = vods => ({
   payload: vods,
 })
 export const fetchVods = token => async (dispatch, getState) => {
+  dispatch(resetFetchData())
   dispatch(fetchVodsReq())
   const state = getState()
   let filter
@@ -56,7 +57,9 @@ export const fetchVods = token => async (dispatch, getState) => {
 }
 
 export const fetchVodOnDemand = token => async (dispatch, getState) => {
+  //console.log('dddddddvvvvvvvvv11', state)
   dispatch(resetFetchData())
+  //console.log('dddddddvvvvvvvvv33')
   dispatch(fetchVodsReq())
   const state = getState()
   let filter
@@ -65,7 +68,6 @@ export const fetchVodOnDemand = token => async (dispatch, getState) => {
   } else {
     filter = Object.assign({}, state.vod.filter)
   }
-
   if (typeof filter.progname == 'undefined') {
     filter.progname = ''
   }
@@ -266,6 +268,7 @@ const vodReducer = (state = initialState, action) => {
       }
     }
     case RESET_FETCH_DATA: {
+      //console.log('dddddddvvvvvvvvv22', state)
       return {
         ...state,
         recents: [],

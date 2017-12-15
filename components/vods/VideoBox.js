@@ -65,7 +65,7 @@ class VideoBox extends Component {
         `${api.SERVER}/vods-ondemand?token=${this.props.auth.token}&index=${this
           .props.vod.index}`
       )
-      console.log('dddddddddddfgdgd', json)
+      //console.log('dddddddddddfgdgd', json)
       this.props.fetchVodsSuccess(json)
       this.props.pagination()
     }
@@ -76,7 +76,7 @@ class VideoBox extends Component {
     const rowCount = this.props.vod.index / 4
     // Use splice on clone object, DONT MODIFY props
     const tmpVods = [...vods]
-    for (let i = 0; i <= rowCount; i++) {
+    for (let i = 0; i < rowCount; i++) {
       rowVideos.push(<RowVideo key={i} vods={tmpVods.splice(0, 4)} />)
     }
     return rowVideos
@@ -84,7 +84,7 @@ class VideoBox extends Component {
 
   componentDidMount() {
     {
-      this.props.startindex(0)
+      this.props.startindex(4)
     }
   }
 
