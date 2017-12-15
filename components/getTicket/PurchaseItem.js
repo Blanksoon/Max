@@ -64,6 +64,18 @@ const Button = styled.button`
   //   border: 1px solid ${vars.lightRed};
   // }
 `
+const ButtonCredit = styled.button`
+width: 318px;
+background-color: ${vars.white};
+cursor: pointer;
+padding: 1px 41px;
+border: 1px solid ${vars.white};
+display: inline-block;
+// &:disabled {
+//   background-color: ${vars.lightRed};
+//   border: 1px solid ${vars.lightRed};
+// }
+`
 const Buttonpaypal = styled.button`
   width: 318px;
   background-color: ${vars.white};
@@ -213,6 +225,21 @@ class PurchaseItem extends React.Component {
                   <Image width="100%" src="../../static/btn_wechat.png" />
                 </Button>
               </Box> */}
+              {/* <Box w={6 / 12} pl="0.5em">
+                <Button>
+                  <Image width="100%" src="../../static/btn_alipay.png" />
+                </Button>
+              </Box> */}
+              <Box w={6 / 12} pl="0.5em">
+                <ButtonCredit>
+                  <center>
+                    <Image
+                      width="100%"
+                      src="../../static/109-credit-cards-accepted-logo.png"
+                    />
+                  </center>
+                </ButtonCredit>
+              </Box>
             </Flex>
           </WrapperDown>
         </Wrapper>
@@ -281,9 +308,24 @@ class PurchaseItem extends React.Component {
               </Box>
               {/* <Box w={6 / 12} pl="0.5em">
                 <Button>
-                  <Image width="100%" src="../../static/btn_wechat.png" />
+                  <Image width="100%" src="../../static/btn_wechat.png" />btn_alipay
                 </Button>
               </Box> */}
+              {/* <Box w={6 / 12} pl="0.5em">
+                <Button>
+                  <Image width="100%" src="../../static/btn_alipay.png" />
+                </Button>
+              </Box> */}
+              <Box w={6 / 12} pl="0.5em">
+                <ButtonCredit>
+                  <center>
+                    <Image
+                      width="100%"
+                      src="../../static/109-credit-cards-accepted-logo.png"
+                    />
+                  </center>
+                </ButtonCredit>
+              </Box>
             </Flex>
           </WrapperDown>
         </Wrapper>
