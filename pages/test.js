@@ -47,7 +47,7 @@
 //     super(props)
 //     this.state = {
 //       id: 'login_container',
-//       appid: 'wx497a7a1712c5d2cb',
+//       appid: 'wx21719d032238ebdc',
 //       redirect_uri: 'https%3A%2F%2Fbeta-api.maxmuaythai.com%2Fwechat',
 //       response_type: 'code',
 //       scope: 'snsapi_login',
@@ -66,8 +66,7 @@
 //     )
 //   }
 //   render() {
-//     //return <Wechat onClick={this.Gowechat}>Login with WeChat</Wechat>
-
+//     return <Wechat onClick={this.Gowechat}>Login with WeChat</Wechat>
 //   }
 // }
 
@@ -75,15 +74,34 @@
 //   fetchVods,
 // })(Example)
 
-import React, { Component } from 'react'
-import FacebookProvider, { Comments } from 'react-facebook'
+import React from 'react'
+import StripeCheckout from 'react-stripe-checkout'
 
-export default class Example extends Component {
+export default class TakeMoney extends React.Component {
+  onToken = token => {
+    console.log('111111111111111111111', token)
+    fetch('/save-stripe-token', {
+      method: 'POST',
+      body: JSON.stringify(token),
+    }).then(response => {
+      response.json().then(data => {
+        alert(`We are in business, ${data.email}`)
+      })
+    })
+  }
+
+  // ...
+
   render() {
+    const onToken = 'pii_1BahYHD4qrfRtagsYMQdbwyU'
     return (
-      <FacebookProvider appId="135776387080938">
-        <Comments href="https://beta.maxmuaythai.com/" />
-      </FacebookProvider>
+      <StripeCheckout
+        token={this.onToken}
+        name="test store"
+        stripeKey="pk_test_qghYMOBiEuWIDjedt7DNPA0w"
+        email="xza_nakub@hotmail.com"
+        amount="499"
+      />
     )
   }
 }

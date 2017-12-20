@@ -221,7 +221,6 @@ export default class Login extends React.Component {
                 </center>
               </Box>
             </Flex>
-            {/* <ButtonFace>f &nbsp;&nbsp; Log in with Facebook</ButtonFace> fffff */}
           </Box>
         </form>
         <style jsx>

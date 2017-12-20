@@ -149,7 +149,7 @@ class InputProfile extends React.Component {
       `${api.SERVER}/profile?token=${this.props.auth.token}`
     )
     this.setState({ profile: data })
-    console.log('dataaaa', data)
+    //console.log('dataaaa', data)
     if (data.name != null) {
       this.setState({ name: data.name })
     }

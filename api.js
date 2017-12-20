@@ -4,7 +4,7 @@ import fetch from 'isomorphic-fetch'
 //localhost
 //api.maxmuaythai.com
 //beta-api.maxmuaythai.com
-export const SERVER = 'https://beta-api.maxmuaythai.com'
+export const SERVER = 'http://localhost:3002'
 export const get = url => {
   return fetch(url)
     .then(response => {
@@ -17,6 +17,8 @@ export const get = url => {
 }
 
 export const post = (url, json) => {
+  console.log('ddddddurl', url)
+  console.log('ddddddjson', json)
   return fetch(url, {
     method: 'POST',
     headers: {
