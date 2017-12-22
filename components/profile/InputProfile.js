@@ -305,7 +305,7 @@ class InputProfile extends React.Component {
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <Text2>Birthday</Text2>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {console.log('aaaaa', this.state.birthDay)}
+                    {/* {console.log('aaaaa', this.state.birthDay)} */}
                     <DatePicker
                       //selected={this.state.startDate}
                       //onChange={this.handleChange}

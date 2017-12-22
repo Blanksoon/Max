@@ -100,12 +100,21 @@ class ListSubscribe extends Component {
     return 'Subscribe Lives and Video on Demands'
   }
   async cancel(subscription) {
+    //console.log('jjjjjjjjjjjjjjjjj', subscription)
     this.setState({ loading: true })
-    const json = await api.post(
-      `${api.SERVER}/ppcheckout/${subscription.orderId}/cancel/subscribe`,
-      {}
-    )
-    console.log('json', json)
+    if (subscription.stripe.paymentId != undefined) {
+      const json = await api.get(
+        `${api.SERVER}/stripe/cancel-subscribe?orderId=${subscription._id}`
+      )
+      this.setState({ loading: false })
+    } else {
+      const json = await api.post(
+        `${api.SERVER}/ppcheckout/${subscription.orderId}/cancel/subscribe`,
+        {}
+      )
+      this.setState({ loading: false })
+    }
+    //console.log('json', json)
     this.setState({
       subscription: undefined,
     })
@@ -118,8 +127,8 @@ class ListSubscribe extends Component {
       }
     }
     const { subscription } = this.state
-    console.log('subscript', subscription)
-    console.log('subbbbbbbbb', this.state.subscription)
+    //console.log('subscript', subscription)
+    //console.log('subbbbbbbbb', this.state.subscription)
     return this.state.subscription !== undefined ? (
       <Box w={12 / 12}>
         <Flex className="List-Purchase" pb="1rem">
