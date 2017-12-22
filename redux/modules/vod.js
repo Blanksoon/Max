@@ -14,6 +14,9 @@ const RESET_FETCH_DATA = '@VOD/RESET_FETCH_DATA'
 const FETCH_FEATURED_VOD_REQ = '@VOD/FETCH_FEATURED_VOD_REQ'
 const FETCH_FEATURED_VOD_SUCCESS = '@VOD/FETCH_FEATURED_VOD_SUCCESS'
 
+const PAGINATION = 'PAGINATION'
+const STARTINDEX = 'STARTINDEX'
+
 // actions
 export const fetchVodsReq = () => ({
   type: FETCH_VODS_REQ,
@@ -23,6 +26,7 @@ export const fetchVodsSuccess = vods => ({
   payload: vods,
 })
 export const fetchVods = token => async (dispatch, getState) => {
+  dispatch(resetFetchData())
   dispatch(fetchVodsReq())
   const state = getState()
   let filter
@@ -46,7 +50,39 @@ export const fetchVods = token => async (dispatch, getState) => {
     const json = await api.get(url)
     // You should not return in Vods <-- change to something like data
     //console.log('jsonssss', json)
-    dispatch(fetchVodsSuccess(json.data))
+    dispatch(fetchVodsSuccess(json))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const fetchVodOnDemand = token => async (dispatch, getState) => {
+  //console.log('dddddddvvvvvvvvv11', state)
+  dispatch(resetFetchData())
+  //console.log('dddddddvvvvvvvvv33')
+  dispatch(fetchVodsReq())
+  const state = getState()
+  let filter
+  if (typeof state.vod.filter === 'undefined') {
+    filter = {}
+  } else {
+    filter = Object.assign({}, state.vod.filter)
+  }
+  if (typeof filter.progname == 'undefined') {
+    filter.progname = ''
+  }
+  const query = {
+    ...filter,
+    token,
+  }
+  const queryStr = querystring.stringify(query)
+  console.log('queryStr', queryStr)
+  const url = `${api.SERVER}/vods-ondemand?${queryStr}`
+  try {
+    const json = await api.get(url)
+    // You should not return in Vods <-- change to something like data
+    //console.log('jsonssss', json)
+    dispatch(fetchVodsSuccess(json))
   } catch (error) {
     console.log(error)
   }
@@ -98,6 +134,13 @@ export const fetchFeaturedVod = token => async dispatch => {
     console.log(error)
   }
 }
+export const pagination = () => ({
+  type: PAGINATION,
+})
+export const startindex = num => ({
+  type: STARTINDEX,
+  payload: num,
+})
 
 const merge = (recents = [], newVods = [], data) => {
   let i = 0
@@ -148,6 +191,8 @@ const initialState = {
   data: {},
   filter: {},
   loading: false,
+  index: 0,
+  limit: 4,
 }
 const vodReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -161,7 +206,7 @@ const vodReducer = (state = initialState, action) => {
     }
 
     case FETCH_VODS_SUCCESS: {
-      const vods = action.payload
+      const vods = action.payload.data
       const newData = {}
       let i = 0
       vods.forEach(vod => {
@@ -175,6 +220,7 @@ const vodReducer = (state = initialState, action) => {
           ...newData,
         },
         recents: merged,
+        numberOfVods: action.payload.numberOfVods,
         loading: false,
       }
     }
@@ -222,6 +268,7 @@ const vodReducer = (state = initialState, action) => {
       }
     }
     case RESET_FETCH_DATA: {
+      //console.log('dddddddvvvvvvvvv22', state)
       return {
         ...state,
         recents: [],
@@ -229,7 +276,19 @@ const vodReducer = (state = initialState, action) => {
         data: {},
       }
     }
-
+    case PAGINATION: {
+      return {
+        ...state,
+        index: state.index + 4,
+        //index: state.index+1,
+      }
+    }
+    case STARTINDEX: {
+      return {
+        ...state,
+        index: action.payload,
+      }
+    }
     default: {
       return state
     }

@@ -14,7 +14,7 @@ const renderThumbnail = vod => (
 )
 const UpNext = ({ name, vods, progname }) => {
   const relateVods = vods.filter(vod => vod.programName_en == progname)
-
+  //console.log('ddddddddd', progname)
   return (
     <div>
       <Box pb="5%" ml="1rem" mr="1rem">

@@ -184,7 +184,7 @@ class ModalSubscribe extends React.Component {
               {/* <Box w={1 / 12} pt="4em" pl="1em">
                       <Input type="radio" id="f-option" name="selector" />
                     </Box> */}
-              <Box w={5 / 12} pt="0.7em" pl="2em" pb="0px">
+              <Box w={5 / 12} pt="0.7em" pl="2em" mt="0.5em">
                 {/* <label htmlFor="f-option"> */}
                 <Image w={this.props.w} src={this.props.img} />
                 {/* </label> */}

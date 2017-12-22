@@ -69,9 +69,7 @@ const livesReducer = (state = initialState, action) => {
         if (typeof newState.recents === 'undefined') {
           newState.recents = [live.id]
         } else {
-          if (newState.recents[i] !== live.id) {
-            newState.recents.push(live.id)
-          }
+          if (newState.recents[i] !== live.id) newState.recents.push(live.id)
         }
         i++
 

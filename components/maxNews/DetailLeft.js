@@ -2,6 +2,7 @@ import ThumbnailRight from '../thumbnail/ThumbnailRight'
 import styled from 'styled-components'
 import color from '../commons/vars'
 import { Media, Subhead, Image, Flex, Box, Text, Button } from 'rebass'
+import FacebookProvider, { Comments } from 'react-facebook'
 
 const Button1 = styled.button`
   bottom: 2%;
@@ -146,23 +147,11 @@ const DetailLeft = () => (
           <Image width="100%" pt={0} src="static/ic_share_twitter.png" />
         </Box>
       </Flex>
-      <Flex pl="1rem" pt="2rem">
-        <Box w={6 / 12}>
-          <Text4>184082 Comments</Text4>
-        </Box>
-        <Box w={6 / 12}>
-          <Flex>
-            <Box pr="0.5rem">
-              <Text5>Sort by</Text5>
-            </Box>
-            <Box>
-              <Gender>
-                <option value="Select your gender">Top</option>
-              </Gender>
-            </Box>
-          </Flex>
-        </Box>
-      </Flex>
+      <Box>
+        <FacebookProvider appId="135776387080938">
+          <Comments href="http://localhost:8080/maxnew_detail" />
+        </FacebookProvider>
+      </Box>
     </Box>
   </Wrapper>
 )

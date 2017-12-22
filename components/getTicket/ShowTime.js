@@ -182,6 +182,43 @@ class ShowTime extends React.Component {
       type = 8
     }
     //console.log('0', this.props.product.products.lives[0])
+    let renderSubscribe = ''
+    if (this.props.product.products.subscribe !== undefined) {
+      renderSubscribe = (
+        <Flex pb="1em">
+          <Box w={6 / 12} pr="0.5em">
+            <ModalSubscribe
+              id="sub"
+              modalType={type}
+              live={undefined}
+              subscribe={this.props.product.products.subscribe[1]}
+              subAll={this.props.product.products.subscribe[1].status}
+              color={color.red}
+              w="100%"
+              img="static/img_VDO+LIVE.png"
+              text1="SUBSCRIBE VDO AND LIVE STREAMING"
+              text2="Enjoy all video and live streamingthru all the month."
+              month="/1MONTH"
+            />
+          </Box>
+          <Box w={6 / 12} pl="0.5em">
+            <ModalSubscribe
+              id="sub"
+              modalType={type}
+              live={undefined}
+              subscribe={this.props.product.products.subscribe[0]}
+              subAll={this.props.product.products.subscribe[1].status}
+              color={color.blue}
+              w="95%"
+              img="static/img_vodondemand@3x.png"
+              text1="SUBSCRIBE VDO ON DEMAND"
+              text2="All video all month, so you never missany extreme shot"
+              month="/1MONTH"
+            />
+          </Box>
+        </Flex>
+      )
+    }
     return (
       <Wrapper>
         <Flex pl="1em" pr="1em" pb="3em">
@@ -195,38 +232,7 @@ class ShowTime extends React.Component {
                 <Text8>PACKAGE.</Text8>
               </Box>
             </Flex>
-            <Flex pb="1em">
-              <Box w={6 / 12} pr="0.5em">
-                <ModalSubscribe
-                  id="sub"
-                  modalType={type}
-                  live={undefined}
-                  subscribe={this.props.product.products.subscribe[1]}
-                  subAll={this.props.product.products.subscribe[1].status}
-                  color={color.red}
-                  w="100%"
-                  img="static/img_VDO+LIVE.png"
-                  text1="SUBSCRIBE VDO AND LIVE STREAMING"
-                  text2="Enjoy all video and live streamingthru all the month."
-                  month="/1MONTH"
-                />
-              </Box>
-              <Box w={6 / 12} pl="0.5em">
-                <ModalSubscribe
-                  id="sub"
-                  modalType={type}
-                  live={undefined}
-                  subscribe={this.props.product.products.subscribe[0]}
-                  subAll={this.props.product.products.subscribe[1].status}
-                  color={color.blue}
-                  w="95%"
-                  img="static/img_vodondemand@3x.png"
-                  text1="SUBSCRIBE VDO ON DEMAND"
-                  text2="All video all month, so you never missany extreme shot"
-                  month="/1MONTH"
-                />
-              </Box>
-            </Flex>
+            {renderSubscribe}
             <Box bg={color.blue} pb="1em">
               <Flex>
                 <Box w={3 / 12} />

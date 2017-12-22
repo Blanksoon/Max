@@ -13,6 +13,7 @@ import vars from '../commons/vars'
 import Spinner from '../commons/Spinner'
 import * as api from '../../api'
 import fetch from 'isomorphic-fetch'
+import StripeCheckout from 'react-stripe-checkout'
 
 const A = styled.a`TEXT-DECORATION: none;`
 const WrapperLogin = styled.div`
@@ -52,20 +53,31 @@ const Time = styled.div`
   font-family: Helvetica, Arial, sans-serif;
   text-align: right;
 `
-const Button = styled.button`
+const ButtonAlipay = styled.button`
   width: 318px;
+  height: 60px;
   background-color: ${vars.white};
   cursor: pointer;
   padding: 13px 100px;
   border: 1px solid ${vars.white};
   display: inline-block;
-  // &:disabled {
-  //   background-color: ${vars.lightRed};
-  //   border: 1px solid ${vars.lightRed};
-  // }
+`
+const ButtonCredit = styled.button`
+  width: 318px;
+  height: 60px;
+  background-color: ${vars.white};
+  color: ${vars.white};
+  font-weight: 700;
+  font-size: 1.8em;
+  font-family: Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  padding: 0px 0px;
+  border: 1px solid ${vars.blue};
+  display: inline-block;
 `
 const Buttonpaypal = styled.button`
   width: 318px;
+  height: 60px;
   background-color: ${vars.white};
   cursor: pointer;
   padding: 13px 101px;
@@ -112,38 +124,109 @@ const WrapperPrice = styled.div`
   position: absolute;
   top: 51%;
 `
+const Img = styled.img`
+  width: 318px;
+  height: 60px;
+`
 class PurchaseItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: false,
+      loadingPayPal: false,
+      loadingCard: false,
+      loadingAlipay: false,
+      link: 'ppcheckout',
     }
-    this.purchaselive = this.purchaselive.bind(this)
-    this.purchasesub = this.purchasesub.bind(this)
+    this.purchasePayPal = this.purchasePayPal.bind(this)
+    this.purchaseCard = this.purchaseCard.bind(this)
+    this.purchaseAlipay = this.purchaseAlipay.bind(this)
   }
 
-  async purchaselive() {
-    this.setState({ loading: true })
+  componentWillMount() {
+    console.log('ddddddd1111')
+
+    const script = document.createElement('script')
+
+    script.src = '//checkout.stripe.com/v2/checkout.js'
+    script.class = 'stripe-button'
+    script.async = true
+
+    document.body.appendChild(script)
+
+    console.log('ddddddd2222', script)
+  }
+
+  async purchasePayPal() {
+    this.setState({ loadingPayPal: true })
     const response = await api.post(
-      `${api.SERVER}/ppcheckout/${this.props.product._id}?token=${this.props
-        .auth.token}`
+      `${api.SERVER}/${this.state.link}/${this.props.product._id}?token=${this
+        .props.auth.token}`
     )
-    console.log('responseee', response)
-    if (response) {
+    //console.log('responseee', response)
+    if (response.approvalUrl) {
       Router.push(`${response.approvalUrl}`)
+    } else {
+      this.props.closeModal()
+      Router.push(`http://localhost:8080/error`)
     }
   }
 
-  async purchasesub() {
-    this.setState({ loading: true })
+  async purchaseCard() {
+    // this.setState({ loadingCard: true })
+    // const response = await api.post(
+    //   `${api.SERVER}/${this.state.link}/${this.props.product._id}?token=${this
+    //     .props.auth.token}`
+    // )
+    // this.setState({ loadingCard: false })
+    // //console.log('responseee', response)
+    // if (response.approvalUrl) {
+    //   Router.push(`${response.approvalUrl}`)
+    // } else {
+    //   this.props.closeModal()
+    //   Router.push(`http://localhost:8080/error`)
+    // }
+  }
+
+  async purchaseAlipay() {
+    this.setState({ loadingAlipay: true })
     const response = await api.post(
-      `${api.SERVER}/subscribe/${this.props.product._id}?token=${this.props.auth
-        .token}`
+      `${api.SERVER}/${this.state.link}/${this.props.product._id}?token=${this
+        .props.auth.token}`
     )
-    console.log('responseee', response)
-    if (response) {
-      Router.push(`${response.approvalUrl}`)
-    }
+    this.setState({ loadingAlipay: false })
+    //console.log('responseee', response)
+    // if (response.approvalUrl) {
+    //   Router.push(`${response.approvalUrl}`)
+    // } else {
+    //   this.props.closeModal()
+    //   Router.push(`http://localhost:8080/error`)
+    // }
+  }
+
+  onToken = async token => {
+    this.setState({ loadingCard: true })
+    console.log('ddddd111111111', token)
+    fetch('/save-stripe-token', {
+      method: 'POST',
+      body: JSON.stringify(token),
+    }).then(response => {
+      response.json().then(data => {
+        alert(`We are in business, ${data.email}`)
+      })
+    })
+    console.log(
+      'ddddd22222222',
+      `${api.SERVER}/stripe/creditcard?token=${this.props.auth
+        .token}&sourceId=${token.id}
+    &liveId=${this.props.product._id}`
+    )
+    const response = await api.get(
+      `${api.SERVER}/stripe/creditcard?token=${this.props.auth
+        .token}&sourceId=${token.id}
+      &liveId=${this.props.product._id}`
+    )
+    console.log('dddddd333333', response)
+    this.setState({ loadingCard: false })
   }
 
   render() {
@@ -152,7 +235,7 @@ class PurchaseItem extends React.Component {
     let renderUI = <div />
     let packagee = 'SUBSCRIBE VDO ON DEMAND'
     let img = 'static/ondemand.jpg'
-    let price = '$2.99'
+    let amo = this.props.product.price * 100
     // console.log('iffffffffff', this.props)
     if (this.props.id == 'live') {
       // console.log('if11111111111')
@@ -203,36 +286,78 @@ class PurchaseItem extends React.Component {
             <Box pl="3em" pr="3em" pt="1em">
               <Text2>SELECT PAYMENT METHOD</Text2>
             </Box>
-            <Flex pl="3em" pr="3em" pt="1em" pb="3.1em">
-              <Box w={12 / 12} pr="0.5em">
+            <Flex pl="3em" pr="3em" pt="1em">
+              <Box w={6 / 12} pr="0.5em">
                 <center>
                   <Buttonpaypal
-                    onClick={this.purchaselive}
+                    onClick={this.purchasePayPal}
                     disabled={this.state.loading}
                   >
-                    {this.state.loading ? (
-                      <Spinner />
+                    {this.state.loadingPayPal ? (
+                      <Box pt="0.37em" pb="0.37em">
+                        <Spinner />
+                      </Box>
                     ) : (
                       <Image width="100%" src="../../static/PayPal.png" />
                     )}
                   </Buttonpaypal>
                 </center>
               </Box>
-              {/* <Box w={6 / 12} pl="0.5em">
-                <Button>
-                  <Image width="100%" src="../../static/btn_wechat.png" />
-                </Button>
-              </Box> */}
+              <Box w={6 / 12} pl="0.5em">
+                <center>
+                  <ButtonCredit
+                    onClick={this.purchaseCard}
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loadingCard ? (
+                      <Box pt="0.23em" pb="0.23em">
+                        <Spinner />
+                      </Box>
+                    ) : (
+                      <StripeCheckout
+                        token={this.onToken}
+                        name={packagee}
+                        stripeKey="pk_test_qghYMOBiEuWIDjedt7DNPA0w"
+                        email={this.props.auth.email}
+                        amount={amo}
+                        allowRememberMe="false"
+                      >
+                        <center>
+                          <Img src="../../static/109-credit-cards-accepted-logo.png" />
+                        </center>
+                      </StripeCheckout>
+                    )}
+                  </ButtonCredit>
+                </center>
+              </Box>
+            </Flex>
+            <Flex pl="3em" pr="3em" pt="1em" pb="3.1em">
+              <Box w={12 / 12} pr="0.5em">
+                <center>
+                  <ButtonAlipay
+                    onClick={this.purchaseAlipay}
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loadingAlipay ? (
+                      <Box pt="0.38em" pb="0.38em">
+                        <Spinner />
+                      </Box>
+                    ) : (
+                      <Image width="100%" src="../../static/btn_alipay.png" />
+                    )}
+                  </ButtonAlipay>
+                </center>
+              </Box>
             </Flex>
           </WrapperDown>
         </Wrapper>
       )
     } else {
+      this.state.link = 'subscribe'
       // console.log('if22222222222222222', this.props)
       if (this.props.product.productId === '2002') {
         packagee = 'SUBSCRIBE VDO AND LIVE STREAMING'
         img = 'static/subandvod.jpg'
-        price = '$3.99'
       }
       renderUI = (
         <Wrapper>
@@ -273,28 +398,68 @@ class PurchaseItem extends React.Component {
             <Box pl="3em" pr="3em" pt="2.2em">
               <Text2>SELECT PAYMENT METHOD</Text2>
             </Box>
-            <Flex pl="3em" pr="3em" pt="2em" pb="3.1em">
-              <Box w={12 / 12} pr="0.5em">
+            <Flex pl="3em" pr="3em" pt="2em" pb="3em">
+              <Box w={6 / 12} pr="0.5em">
                 <center>
                   <Buttonpaypal
-                    on
-                    onClick={this.purchasesub}
+                    onClick={this.purchasePayPal}
                     disabled={this.state.loading}
                   >
-                    {this.state.loading ? (
-                      <Spinner />
+                    {this.state.loadingPayPal ? (
+                      <Box pt="0.37em" pb="0.37em">
+                        <Spinner />
+                      </Box>
                     ) : (
                       <Image width="100%" src="../../static/PayPal.png" />
                     )}
                   </Buttonpaypal>
                 </center>
               </Box>
-              {/* <Box w={6 / 12} pl="0.5em">
-                <Button>
-                  <Image width="100%" src="../../static/btn_wechat.png" />
-                </Button>
-              </Box> */}
+              <Box w={6 / 12} pl="0.5em">
+                <center>
+                  <ButtonCredit
+                    onClick={this.purchaseCard}
+                    disabled={this.state.loading}
+                    //token={this.onToken}
+                  >
+                    {this.state.loadingCard ? (
+                      <Box pt="0.23em" pb="0.23em">
+                        <Spinner />
+                      </Box>
+                    ) : (
+                      <StripeCheckout
+                        token={this.onToken}
+                        name={packagee}
+                        stripeKey="pk_test_qghYMOBiEuWIDjedt7DNPA0w"
+                        email={this.props.auth.email}
+                        amount={amo}
+                        allowRememberMe="false"
+                      >
+                        <center>
+                          <Img src="../../static/109-credit-cards-accepted-logo.png" />
+                        </center>
+                      </StripeCheckout>
+                    )}
+                  </ButtonCredit>
+                </center>
+              </Box>
             </Flex>
+            {/* <Flex pl="3em" pr="3em" pt="1em" pb="3.1em">
+              <Box w={12 / 12} pr="0.5em">
+                <center>
+                  <ButtonAlipay
+                    onClick={this.purchaseAlipay}
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loadingAlipay ? (
+                      <Spinner />
+                    ) : (
+                      <Image width="100%" src="../../static/btn_alipay.png" />
+                    )}
+                  </ButtonAlipay>
+                </center>
+              </Box>
+            </Flex> */}
           </WrapperDown>
         </Wrapper>
       )
