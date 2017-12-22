@@ -183,7 +183,7 @@ class PurchaseItem extends React.Component {
                 </Box> */}
                 </Flex>
                 <WrapperPrice>
-                  <Text3>$0.99</Text3>
+                  <Text3>${this.props.product.price}</Text3>
                 </WrapperPrice>
               </Box>
             </Flex>
@@ -230,7 +230,7 @@ class PurchaseItem extends React.Component {
     } else {
       // console.log('if22222222222222222', this.props)
       if (this.props.product.productId === '2002') {
-        packagee = "SUBSCRIBE VDO AND LIVE STREAMING"
+        packagee = 'SUBSCRIBE VDO AND LIVE STREAMING'
         img = 'static/subandvod.jpg'
         price = '$3.99'
       }
@@ -253,7 +253,7 @@ class PurchaseItem extends React.Component {
               <Box w={6 / 12} pl="0.5em">
                 <Text3>{packagee}</Text3>
                 <WrapperPrice>
-                  <Text3>{price}</Text3>
+                  <Text3>${this.props.product.price}</Text3>
                 </WrapperPrice>
               </Box>
             </Flex>

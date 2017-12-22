@@ -54,6 +54,11 @@ class PurchaseHistory extends React.Component {
       puschaseList: {},
     }
     this.fetchPurchaseHistory = this.fetchPurchaseHistory.bind(this)
+    this.logout = this.logout.bind(this)
+  }
+
+  logout() {
+    Router.push(`http://localhost:8080/index`)
   }
 
   async fetchPurchaseHistory() {
@@ -81,7 +86,14 @@ class PurchaseHistory extends React.Component {
   componentDidMount() {
     this.fetchPurchaseHistory()
   }
+
   render() {
+    if (this.props.auth.token === undefined) {
+      // console.log('tokennnnnmmm', this.props.auth.token)
+      {
+        this.logout()
+      }
+    }
     return (
       <Box w={12 / 12}>
         <Box w={12 / 12}>
