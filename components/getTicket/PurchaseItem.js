@@ -189,10 +189,16 @@ class PurchaseItem extends React.Component {
 
   async purchaseAlipay() {
     this.setState({ loadingAlipay: true })
-    const response = await api.post(
-      `${api.SERVER}/${this.state.link}/${this.props.product._id}?token=${this
-        .props.auth.token}`
+    // console.log('dddddd333333', this.props.product._id)
+    const response = await api.get(
+      `${api.SERVER}/stripe/alipay?token=${this
+        .props.auth.token}&liveId=${this.props.product._id}`
     )
+    if(response){
+      //this.props.closeModal()
+      Router.push(`${response.url}`)
+    }
+    //console.log('dddddd333333', response)
     this.setState({ loadingAlipay: false })
     //console.log('responseee', response)
     // if (response.approvalUrl) {
@@ -206,26 +212,29 @@ class PurchaseItem extends React.Component {
   onToken = async token => {
     this.setState({ loadingCard: true })
     console.log('ddddd111111111', token)
-    fetch('/save-stripe-token', {
-      method: 'POST',
-      body: JSON.stringify(token),
-    }).then(response => {
-      response.json().then(data => {
-        alert(`We are in business, ${data.email}`)
-      })
-    })
-    console.log(
-      'ddddd22222222',
-      `${api.SERVER}/stripe/creditcard?token=${this.props.auth
-        .token}&sourceId=${token.id}
-    &liveId=${this.props.product._id}`
-    )
+    // fetch('/save-stripe-token', {
+    //   method: 'POST',
+    //   body: JSON.stringify(token),
+    // }).then(response => {
+    //   response.json().then(data => {
+    //     alert(`We are in business, ${data.email}`)
+    //   })
+    // })
+    // console.log(
+    //   'ddddd22222222',
+    //   `${api.SERVER}/stripe/creditcard?token=${this.props.auth
+    //     .token}&sourceId=${token.id}
+    // &liveId=${this.props.product._id}`
+    // )
     const response = await api.get(
       `${api.SERVER}/stripe/creditcard?token=${this.props.auth
-        .token}&sourceId=${token.id}
-      &liveId=${this.props.product._id}`
+        .token}&sourceId=${token.id}&liveId=${this.props.product._id}`
     )
-    console.log('dddddd333333', response)
+    if(response){
+      this.props.closeModal()
+      Router.push(`${response.url}`)
+    }
+    //console.log('dddddd333333', response)
     this.setState({ loadingCard: false })
   }
 
