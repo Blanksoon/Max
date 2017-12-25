@@ -210,32 +210,33 @@ class PurchaseItem extends React.Component {
   }
 
   onToken = async token => {
-    this.setState({ loadingCard: true })
-    console.log('ddddd111111111', token)
-    // fetch('/save-stripe-token', {
-    //   method: 'POST',
-    //   body: JSON.stringify(token),
-    // }).then(response => {
-    //   response.json().then(data => {
-    //     alert(`We are in business, ${data.email}`)
-    //   })
-    // })
-    // console.log(
-    //   'ddddd22222222',
-    //   `${api.SERVER}/stripe/creditcard?token=${this.props.auth
-    //     .token}&sourceId=${token.id}
-    // &liveId=${this.props.product._id}`
-    // )
-    const response = await api.get(
-      `${api.SERVER}/stripe/creditcard?token=${this.props.auth
-        .token}&sourceId=${token.id}&liveId=${this.props.product._id}`
-    )
-    if (response) {
-      this.props.closeModal()
-      Router.push(`${response.url}`)
+    if(this.props.id == 'live'){
+      this.setState({ loadingCard: true })
+      console.log('ddddd111111111live', token)
+      const response = await api.get(
+        `${api.SERVER}/stripe/creditcard?token=${this.props.auth
+          .token}&sourceId=${token.id}&liveId=${this.props.product._id}`
+      )
+      if (response) {
+        this.props.closeModal()
+        Router.push(`${response.url}`)
+      }
+      //console.log('dddddd333333', response)
+      this.setState({ loadingCard: false })
+    }else {
+      this.setState({ loadingCard: true })
+      console.log('ddddd111111111sub', token)
+      const response = await api.get(
+        `${api.SERVER}/stripe/subscribe/creditcard?token=${this.props.auth
+          .token}&sourceId=${token.id}&subscribeId=${this.props.product._id}`
+      )
+      if (response) {
+        this.props.closeModal()
+        Router.push(`${response.url}`)
+      }
+      //console.log('dddddd333333', response)
+      this.setState({ loadingCard: false })
     }
-    //console.log('dddddd333333', response)
-    this.setState({ loadingCard: false })
   }
 
   render() {
