@@ -210,7 +210,7 @@ class PurchaseItem extends React.Component {
   }
 
   onToken = async token => {
-    if(this.props.id == 'live'){
+    if (this.props.id == 'live') {
       this.setState({ loadingCard: true })
       console.log('ddddd111111111live', token)
       const response = await api.get(
@@ -223,7 +223,7 @@ class PurchaseItem extends React.Component {
       }
       //console.log('dddddd333333', response)
       this.setState({ loadingCard: false })
-    }else {
+    } else {
       this.setState({ loadingCard: true })
       console.log('ddddd111111111sub', token)
       const response = await api.get(
@@ -327,10 +327,11 @@ class PurchaseItem extends React.Component {
                       <StripeCheckout
                         token={this.onToken}
                         name={packagee}
-                        stripeKey="pk_test_qghYMOBiEuWIDjedt7DNPA0w"
+                        //stripeKey="pk_test_qghYMOBiEuWIDjedt7DNPA0w" //dev
+                        stripeKey="pk_live_trWuol5XDXULmz0mK9eWwihA" //live
                         email={this.props.auth.email}
                         amount={amo}
-                        allowRememberMe="false"
+                        //allowRememberMe={false}
                       >
                         <center>
                           <Img src="../../static/109-credit-cards-accepted-logo.png" />
