@@ -441,10 +441,11 @@ class PurchaseItem extends React.Component {
                       <StripeCheckout
                         token={this.onToken}
                         name={packagee}
-                        stripeKey="pk_test_qghYMOBiEuWIDjedt7DNPA0w"
+                        //stripeKey="pk_test_qghYMOBiEuWIDjedt7DNPA0w" //dev
+                        stripeKey="pk_live_trWuol5XDXULmz0mK9eWwihA" //live
                         email={this.props.auth.email}
                         amount={amo}
-                        allowRememberMe="false"
+                        //allowRememberMe="false"
                       >
                         <center>
                           <Img src="../../static/109-credit-cards-accepted-logo.png" />
