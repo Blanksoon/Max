@@ -105,6 +105,7 @@ class ListSubscribe extends Component {
       `${api.SERVER}/ppcheckout/${subscription.orderId}/cancel/subscribe`,
       {}
     )
+    console.log('json', json)
     this.setState({
       subscription: undefined,
     })
@@ -117,6 +118,7 @@ class ListSubscribe extends Component {
       }
     }
     const { subscription } = this.state
+    console.log('subscript', subscription)
     console.log('subbbbbbbbb', this.state.subscription)
     return this.state.subscription !== undefined ? (
       <Box w={12 / 12}>

@@ -5,7 +5,7 @@ import { Flex, Box } from 'rebass'
 import Cookies from 'universal-cookie'
 import styled from 'styled-components'
 import withRedux from 'next-redux-wrapper'
-import { ComingLive } from '../components/home/ComingLive'
+import ComingLive from '../components/home/ComingLive'
 import LatestVideo from '../components/home/LatestVideo'
 import StadiumTicket from '../components/home/StadiumTicket'
 import About from '../components/home/About'
@@ -27,7 +27,7 @@ import {
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
-import { recentLivesSelector } from '../redux/selectors/live'
+import { recentLivesSelector, dataLivesSelector } from '../redux/selectors/live'
 import { recentVodsSelector } from '../redux/selectors/vod'
 
 const WrapperTop = styled.div`
@@ -114,7 +114,7 @@ class Index extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    lives: recentLivesSelector(state),
+    lives: dataLivesSelector(state),
     vods: recentVodsSelector(state),
   }
 }
@@ -131,6 +131,7 @@ Index.getInitialProps = async ({ store, isServer, query, req }) => {
 
 export default withRedux(initStore, mapStateToProps, {
   fetchVods,
+  dataLivesSelector,
   toogleModal,
   updateModalType,
   indexModalURL,
