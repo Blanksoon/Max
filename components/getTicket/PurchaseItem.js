@@ -189,24 +189,34 @@ class PurchaseItem extends React.Component {
 
   async purchaseAlipay() {
     this.setState({ loadingAlipay: true })
-    // console.log('dddddd333333', this.props.product._id)
-    const response = await api.get(
-      `${api.SERVER}/stripe/alipay?token=${this.props.auth.token}&liveId=${this
-        .props.product._id}`
-    )
-    if (response) {
-      //this.props.closeModal()
-      Router.push(`${response.url}`)
+    if (this.props.id == 'live') {
+      // console.log('dddddd333333', this.props.product._id)
+      const response = await api.get(
+        `${api.SERVER}/stripe/alipay?token=${this.props.auth
+          .token}&liveId=${this.props.product._id}`
+      )
+      if (response) {
+        //this.props.closeModal()
+        Router.push(`${response.url}`)
+      }
+      //console.log('dddddd333333', response)
+    } else {
+      // console.log(
+      //   'dddddd333333',
+      //   `${api.SERVER}/stripe/alipay?token=${this.props.auth
+      //     .token}&subscribeId=${this.props.product._id}`
+      // )
+      // const response = await api.get(
+      //   `${api.SERVER}/stripe/alipay?token=${this.props.auth
+      //     .token}&subscribeId=${this.props.product._id}`
+      // )
+      // console.log('dddddd333333', response)
+      // if (response) {
+      //   //this.props.closeModal()
+      //   Router.push(`${response.url}`)
+      // }
     }
-    //console.log('dddddd333333', response)
     this.setState({ loadingAlipay: false })
-    //console.log('responseee', response)
-    // if (response.approvalUrl) {
-    //   Router.push(`${response.approvalUrl}`)
-    // } else {
-    //   this.props.closeModal()
-    //   Router.push(`http://localhost:8080/error`)
-    // }
   }
 
   onToken = async token => {
@@ -409,7 +419,7 @@ class PurchaseItem extends React.Component {
             <Box pl="3em" pr="3em" pt="2.2em">
               <Text2>SELECT PAYMENT METHOD</Text2>
             </Box>
-            <Flex pl="3em" pr="3em" pt="2em" pb="3em">
+            <Flex pl="3em" pr="3em" pt="2em" pb="0em">
               <Box w={6 / 12} pr="0.5em">
                 <center>
                   <Buttonpaypal
@@ -456,7 +466,7 @@ class PurchaseItem extends React.Component {
                 </center>
               </Box>
             </Flex>
-            {/* <Flex pl="3em" pr="3em" pt="1em" pb="3.1em">
+            <Flex pl="3em" pr="3em" pt="1em" pb="3.1em">
               <Box w={12 / 12} pr="0.5em">
                 <center>
                   <ButtonAlipay
@@ -464,14 +474,16 @@ class PurchaseItem extends React.Component {
                     disabled={this.state.loading}
                   >
                     {this.state.loadingAlipay ? (
-                      <Spinner />
+                      <Box pt="0.38em" pb="0.38em">
+                        <Spinner />
+                      </Box>
                     ) : (
                       <Image width="100%" src="../../static/btn_alipay.png" />
                     )}
                   </ButtonAlipay>
                 </center>
               </Box>
-            </Flex> */}
+            </Flex>
           </WrapperDown>
         </Wrapper>
       )
