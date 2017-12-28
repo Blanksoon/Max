@@ -11,6 +11,7 @@ import { closeModal } from '../../redux/modules/modal'
 import { connect } from 'react-redux'
 import vars from '../commons/vars'
 import Spinner from '../commons/Spinner'
+import Router from 'next/router'
 
 const A = styled.a`TEXT-DECORATION: none;`
 const Wrapper = styled.div`position: absolute;`
@@ -114,6 +115,8 @@ class Login extends React.Component {
       })
       //console.log('false')
     }
+    console.log('ddddddd')
+    Router.push(`http://localhost:8080/index`)
     this.setState({ loading: false })
   }
 
