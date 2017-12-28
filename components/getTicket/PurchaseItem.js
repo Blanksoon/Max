@@ -419,7 +419,7 @@ class PurchaseItem extends React.Component {
             <Box pl="3em" pr="3em" pt="2.2em">
               <Text2>SELECT PAYMENT METHOD</Text2>
             </Box>
-            <Flex pl="3em" pr="3em" pt="2em" pb="0em">
+            <Flex pl="3em" pr="3em" pt="2em" pb="3em">
               <Box w={6 / 12} pr="0.5em">
                 <center>
                   <Buttonpaypal
@@ -466,7 +466,7 @@ class PurchaseItem extends React.Component {
                 </center>
               </Box>
             </Flex>
-            <Flex pl="3em" pr="3em" pt="1em" pb="3.1em">
+            {/* <Flex pl="3em" pr="3em" pt="1em" pb="3.1em">
               <Box w={12 / 12} pr="0.5em">
                 <center>
                   <ButtonAlipay
@@ -483,7 +483,7 @@ class PurchaseItem extends React.Component {
                   </ButtonAlipay>
                 </center>
               </Box>
-            </Flex>
+            </Flex> */}
           </WrapperDown>
         </Wrapper>
       )
