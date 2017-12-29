@@ -116,7 +116,7 @@ class Login extends React.Component {
       //console.log('false')
     }
     console.log('ddddddd')
-    Router.push(`http://localhost:8080/index`)
+    Router.push(`https://beta.maxmuaythai.com/`)
     this.setState({ loading: false })
   }
 
