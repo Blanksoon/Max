@@ -59,7 +59,7 @@ const WrapperHover = styled.div`
 const Wrapperin = styled.div`
   top: 0;
   background-color: ${color.black};
-  z-index: ${props => props.zin};
+  z-index: -1//${props => props.zin};
   height: 100%;
   width: 100%;
   position: absolute;
@@ -218,7 +218,7 @@ class ModalSubscribe extends React.Component {
                 </Box>
                 <Box pt="2em">
                   {/* 1em */}
-                  <Link href="http://159.203.140.5:8080">
+                  <Link href={`/lives_vdo?id=${this.props.id}`}>
                     <ButtonWatch style={{ cursor: 'pointer' }}>
                       WATCH NOW
                     </ButtonWatch>
