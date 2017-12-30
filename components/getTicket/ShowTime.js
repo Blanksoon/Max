@@ -197,6 +197,7 @@ class ShowTime extends React.Component {
                 modalType={type}
                 auth={this.props.auth}
                 live={this.props.product.products.lives[i]}
+                status={this.props.product.products.lives[i].status}
                 subAll={this.props.product.products.subscribe[1].status}
                 logo="/static/logo_max.png"
                 img="/static/maxultimate-show.jpg"
@@ -213,6 +214,7 @@ class ShowTime extends React.Component {
                 modalType={type}
                 auth={this.props.auth}
                 live={this.props.product.products.lives[i + 1]}
+                status={this.props.product.products.lives[i + 1].status}
                 subAll={this.props.product.products.subscribe[1].status}
                 logo="/static/logo_battle.png"
                 img="/static/thebattle-show.jpg"
@@ -236,6 +238,7 @@ class ShowTime extends React.Component {
                 modalType={type}
                 auth={this.props.auth}
                 live={this.props.product.products.lives[i]}
+                status={this.props.product.products.lives[i].status}
                 subAll={this.props.product.products.subscribe[1].status}
                 logo="/static/logo_max.png"
                 img="/static/maxultimate-show.jpg"
@@ -252,6 +255,7 @@ class ShowTime extends React.Component {
                 modalType={type}
                 auth={this.props.auth}
                 live={this.props.product.products.lives[i + 1]}
+                status={this.props.product.products.lives[i + 1].status}
                 subAll={this.props.product.products.subscribe[1].status}
                 logo="/static/logo_battle.png"
                 img="/static/thebattle-show.jpg"
@@ -274,6 +278,7 @@ class ShowTime extends React.Component {
               modalType={type}
               auth={this.props.auth}
               live={this.props.product.products.lives[n]}
+              status={this.props.product.products.lives[n].status}
               subAll={this.props.product.products.subscribe[1].status}
               logo="/static/logo_max.png"
               img="/static/maxultimate-show.jpg"
@@ -369,7 +374,7 @@ class ShowTime extends React.Component {
               <Flex pl="0.5em" pt="1em">
                 <Text5>PLEASE SELECT THE LIVE</Text5>
               </Flex>
-              
+
               {this.renderLive()}
             </Box>
           </Box>
