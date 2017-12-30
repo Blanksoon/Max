@@ -78,7 +78,6 @@ class lives extends React.Component {
                   text4={this.props.lives[i].title_en}
                   live={this.props.lives[i]}
                 />
-                <WrapperBlack />
               </WrapperThumbnail>
             </Box>
             <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
@@ -92,7 +91,6 @@ class lives extends React.Component {
                   text4={this.props.lives[i + 1].title_en}
                   live={this.props.lives[i + 1]}
                 />
-                <WrapperBlack />
               </WrapperThumbnail>
             </Box>
           </Flex>
@@ -113,7 +111,6 @@ class lives extends React.Component {
                   text4={this.props.lives[i].title_en}
                   live={this.props.lives[i]}
                 />
-                <WrapperBlack />
               </WrapperThumbnail>
             </Box>
             <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
@@ -127,7 +124,6 @@ class lives extends React.Component {
                   text4={this.props.lives[i + 1].title_en}
                   live={this.props.lives[i + 1]}
                 />
-                <WrapperBlack />
               </WrapperThumbnail>
             </Box>
           </Flex>
@@ -147,7 +143,6 @@ class lives extends React.Component {
                 text4={this.props.lives[n].title_en}
                 live={this.props.lives[n]}
               />
-              <WrapperBlack />
             </WrapperThumbnail>
           </Box>
           <Box w={6 / 12} pl="0.75rem" pr="1.5rem" />
