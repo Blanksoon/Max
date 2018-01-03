@@ -1,64 +1,63 @@
 import React, { Component, PropTypes } from 'react'
 import styled from 'styled-components'
-import { Flex, Provider, Box, Image, Text,  overlay , Link} from 'rebass'
+import { Flex, Provider, Box, Image, Text, overlay, Link } from 'rebass'
 import { connect } from 'react-redux'
 import NewModal from './NewModal'
 import { toggleModal } from '../../redux/modules/modal'
 import BorderlessButton from '../commons/BorderlessButton'
 import color from '../commons/vars'
-import ThumbnailShowTime from '../thumbnail/ThumbnailShowTime'
 
 const Button = styled.button`
-background-color: ${color.white};
-border: 1px solid ${color.red};
-color: ${color.red};
-padding: 12px 50px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-weight: 700;
+  background-color: ${color.white};
+  border: 1px solid ${color.red};
+  color: ${color.red};
+  padding: 12px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
 `
 const ButtonWatch = styled.button`
-background-color: ${color.red};
-border: 1px solid ${color.red};
-color: ${color.white};
-padding: 12px 18%;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-weight: 700;
+  background-color: ${color.red};
+  border: 1px solid ${color.red};
+  color: ${color.white};
+  padding: 12px 18%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
 `
 const Text1 = styled.div`
-padding-left: 1rem;
-padding-top: 1rem;
-color: ${props => props.color};
-font-weight: 700;
-font-size: 1em;
-font-family: Helvetica, Arial, sans-serif;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  color: ${props => props.color};
+  font-weight: 700;
+  font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
 `
 const Text2 = styled.div`
-color: #000;
-font-weight: 700;
-font-size: 1rem;
-font-family: Helvetica, Arial, sans-serif;
+  color: #000;
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: Helvetica, Arial, sans-serif;
 `
 const Text3 = styled.div`
-color: #000;
-font-weight: 700;
-font-size: 1.5rem;
-font-family: Helvetica, Arial, sans-serif;
+  color: #000;
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-family: Helvetica, Arial, sans-serif;
 `
 const Text4 = styled.div`
-color: #fff;
-font-weight: 700;
-font-size: 1.5rem;
-font-family: Helvetica, Arial, sans-serif;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-family: Helvetica, Arial, sans-serif;
 `
 const Textbutton = styled.div`
-color: ${color.red};
-font-weight: 700;
-font-size: 0.9rem;
-font-family: Helvetica, Arial, sans-serif;
+  color: ${color.red};
+  font-weight: 700;
+  font-size: 0.9rem;
+  font-family: Helvetica, Arial, sans-serif;
 `
 const Wrapper = styled.div`
 //border: 1px solid ${props => props.color};
@@ -69,23 +68,23 @@ height: 170px;
 width: 100%;
 `
 const WrapperButton = styled.div`
-position: absolute;
-Bottom: 25px;
-right: 6%;
+  position: absolute;
+  Bottom: 25px;
+  right: 6%;
 `
 const WrapperHover = styled.div`
-top: 0;
-background-color: ${color.black};
-z-index: ${props => props.zin};
-height: 100%;
-width: 100%;
-position: absolute;
-font-family: Helvetica, Arial, sans-serif;
-background: -webkit-linear-gradient(
-  top,
-  rgba(0, 0, 0, 0.8) 0%,
-  rgba(0, 0, 0, 0.8) 100%
-); /* Chrome10-25,Safari5.1-6 */
+  top: 0;
+  background-color: ${color.black};
+  z-index: ${props => props.zin};
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  font-family: Helvetica, Arial, sans-serif;
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
 `
 class ModalButton extends Component {
   static propTypes = {
@@ -106,41 +105,6 @@ class ModalButton extends Component {
     }
   }
   render() {
-    // let renderUI = <div />
-    // // console.log('111111111111',this.props.)
-    // if (this.props.live == undefined) {
-    //   renderUI = (
-    //     <ThumbnailShowTime
-    //       imglogo={this.props.logo}
-    //       img={this.props.img}
-    //       text1={this.props.text1}
-    //       text2={this.props.text2}
-    //       text3={this.props.text3}
-    //       text4={this.props.text4}
-    //       text5={this.props.text5}
-    //     />
-    //   )
-    // } else {
-    //   renderUI = (
-    //     <ThumbnailShowTime
-    //       live={this.props.live}
-    //       id={this.props.live.id}
-    //       modalType={this.props.modalType}
-    //       status={this.props.live.status}
-    //       imglogo={this.props.live.logoUrl}
-    //       img={this.props.live.bannerUrl}
-    //       text1={this.props.live.title_en}
-    //       text2={this.props.live.endTime}
-    //       text3={this.props.live.price}
-    //       text4={this.props.live.liveDateStr_en}
-    //       text5={this.props.live.startTime}
-    //       id={this.props.live._id}
-    //       token={this.props.token}
-    //       subAll={this.props.subAll}
-    //     />
-    //   )
-    // }
-    // return <div>{renderUI}</div>
     let zin = -1
     if (this.props.status === 'unenable' || this.props.subAll === 'unenable') {
       zin = 1
