@@ -218,7 +218,7 @@ class ModalSubscribe extends React.Component {
                 </Box>
                 <Box pt="2em">
                   {/* 1em */}
-                  <Link href="http://159.203.140.5:8080">
+                  <Link href={`/index`}>
                     <ButtonWatch style={{ cursor: 'pointer' }}>
                       WATCH NOW
                     </ButtonWatch>

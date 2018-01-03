@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Flex, Provider, Box, Image, Text, Link } from 'rebass'
 import styled from 'styled-components'
 import color from '../commons/vars'
+import NewModal from '../modal/NewModal'
+import { toggleModal } from '../../redux/modules/modal'
 import { closeModal } from '../../redux/modules/modal'
 import { connect } from 'react-redux'
 import * as api from '../../api'
@@ -100,6 +102,23 @@ const Input = styled.input`
   height: 20px;
 `
 class ThumbnailShowTime extends React.Component {
+  static propTypes = {
+    active: PropTypes.bool,
+    toggleModalAction: PropTypes.func,
+    modalType: PropTypes.number,
+    modalURL: PropTypes.string,
+    buttonID: PropTypes.number,
+    subscribe: PropTypes.object,
+  }
+  handleOnClickModal = () => {
+    if (this.props.live.status === 'unenable') {
+    } else {
+      this.props.toggleModalAction()
+      this.props.updateModalAction(this.props.modalType)
+      this.props.buyProductAction(this.props.live)
+      this.props.updateIDAction(this.props.id)
+    }
+  }
   render() {
     let zin = -1
     if (this.props.status === 'unenable' || this.props.subAll === 'unenable') {
@@ -114,6 +133,7 @@ class ThumbnailShowTime extends React.Component {
             pt="1em"
             pb="1em"
             style={{ cursor: 'pointer' }}
+            onClick={this.handleOnClickModal}
           >
             <Box w={0.4 / 12} />
             <Box w={2 / 12} mr="5px">
@@ -177,14 +197,5 @@ const mapStateToProps = state => {
     auth: state.auth,
   }
 }
-
-// Login.getInitialProps = async ({ store, isServer, query, req }) => {
-//   let state = store.getState()
-//   const token = state.auth.token
-//   await Promise.all([livePromise, vodPromise])
-//   state = store.getState()
-//   const props = mapStateToProps(state)
-//   return props
-// }
 
 export default connect(mapStateToProps, { closeModal })(ThumbnailShowTime)

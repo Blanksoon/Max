@@ -142,7 +142,7 @@ class InputProfile extends React.Component {
     }
   }
   logout() {
-    Router.push(`http://localhost:8080/index`)
+    Router.push(`https://beta.maxmuaythai.com/`)
   }
   async dataProfile() {
     const { status, data } = await api.get(
