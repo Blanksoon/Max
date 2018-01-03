@@ -198,13 +198,6 @@ class ShowTime extends React.Component {
                 auth={this.props.auth}
                 live={this.props.product.products.lives[i]}
                 subAll={this.props.product.products.subscribe[1].status}
-                logo="/static/logo_max.png"
-                img="/static/maxultimate-show.jpg"
-                text1="MAX Ultimate Tournament & MAX World Champions 7" // International"
-                text2="10.00 pm."
-                text3="$0.99"
-                text4="SUN 10 SEP"
-                text5="07.20"
               />
             </Box>
             <Box w={6 / 12} pl="0.5em" pt="1rem">
@@ -214,13 +207,6 @@ class ShowTime extends React.Component {
                 auth={this.props.auth}
                 live={this.props.product.products.lives[i + 1]}
                 subAll={this.props.product.products.subscribe[1].status}
-                logo="/static/logo_battle.png"
-                img="/static/thebattle-show.jpg"
-                text1="The Battle Muay Thai"
-                text2="08.00 pm."
-                text3="$0.99"
-                text4="FRI 15 SEP"
-                text5="06.10"
               />
             </Box>
           </Flex>
@@ -237,13 +223,6 @@ class ShowTime extends React.Component {
                 auth={this.props.auth}
                 live={this.props.product.products.lives[i]}
                 subAll={this.props.product.products.subscribe[1].status}
-                logo="/static/logo_max.png"
-                img="/static/maxultimate-show.jpg"
-                text1="MAX Ultimate Tournament & MAX World Champions 7" // International"
-                text2="10.00 pm."
-                text3="$0.99"
-                text4="SUN 10 SEP"
-                text5="07.20"
               />
             </Box>
             <Box w={6 / 12} pl="0.5em" pt="1rem">
@@ -253,13 +232,6 @@ class ShowTime extends React.Component {
                 auth={this.props.auth}
                 live={this.props.product.products.lives[i + 1]}
                 subAll={this.props.product.products.subscribe[1].status}
-                logo="/static/logo_battle.png"
-                img="/static/thebattle-show.jpg"
-                text1="The Battle Muay Thai"
-                text2="08.00 pm."
-                text3="$0.99"
-                text4="FRI 15 SEP"
-                text5="06.10"
               />
             </Box>
           </Flex>
@@ -275,13 +247,6 @@ class ShowTime extends React.Component {
               auth={this.props.auth}
               live={this.props.product.products.lives[n]}
               subAll={this.props.product.products.subscribe[1].status}
-              logo="/static/logo_max.png"
-              img="/static/maxultimate-show.jpg"
-              text1="MAX Ultimate Tournament & MAX World Champions 7" // International"
-              text2="10.00 pm."
-              text3="$0.99"
-              text4="SUN 10 SEP"
-              text5="07.20"
             />
           </Box>
           <Box w={6 / 12} pl="0.5em" pt="1rem" />
@@ -369,72 +334,6 @@ class ShowTime extends React.Component {
               <Flex pl="0.5em" pt="1em">
                 <Text5>PLEASE SELECT THE LIVE</Text5>
               </Flex>
-              {/* <Flex pl="0.5em" pr="0.5em">
-                <Box w={6 / 12} pr="0.5em" pt="1em">
-                  <ModalLiveItem
-                    id="live"
-                    modalType={type}
-                    auth={this.props.auth}
-                    live={this.props.product.products.lives[0]}
-                    subAll={this.props.product.products.subscribe[1].status}
-                    logo="/static/logo_max.png"
-                    img="/static/maxultimate-show.jpg"
-                    text1="MAX Ultimate Tournament & MAX World Champions 7" // International"
-                    text2="10.00 pm."
-                    text3="$0.99"
-                    text4="SUN 10 SEP"
-                    text5="07.20"
-                  />
-                </Box>
-                <Box w={6 / 12} pl="0.5em" pt="1rem">
-                  <ModalLiveItem
-                    id="live"
-                    modalType={type}
-                    auth={this.props.auth}
-                    live={this.props.product.products.lives[1]}
-                    subAll={this.props.product.products.subscribe[1].status}
-                    logo="/static/logo_battle.png"
-                    img="/static/thebattle-show.jpg"
-                    text1="The Battle Muay Thai"
-                    text2="08.00 pm."
-                    text3="$0.99"
-                    text4="FRI 15 SEP"
-                    text5="06.10"
-                  />
-                </Box>
-              </Flex>
-              <Flex pl="0.5em" pr="0.5em">
-                <Box w={6 / 12} pr="0.5em" pt="1rem">
-                  <ModalLiveItem
-                    id="live"
-                    modalType={type}
-                    live={this.props.product.products.lives[2]}
-                    subAll={this.props.product.products.subscribe[1].status}
-                    logo="/static/logo_fighter.png"
-                    img="/static/thairath-show.jpg"
-                    text1="Thairath Muay Thai Fighter"
-                    text2="04.00 pm."
-                    text3="$0.99"
-                    text4="SAT 16 SEP"
-                    text5="02.00"
-                  />
-                </Box>
-                <Box w={6 / 12} pl="0.5em" pt="1rem">
-                  <ModalLiveItem
-                    id="live"
-                    modalType={type}
-                    live={this.props.product.products.lives[3]}
-                    subAll={this.props.product.products.subscribe[1].status}
-                    logo="/static/logo_champion.png"
-                    img="/static/thechampion-show.jpg"
-                    text1="The Champion Muay Thai"
-                    text2="10.00 pm."
-                    text3="$0.99"
-                    text4="SAT 16 SEP"
-                    text5="07.20"
-                  />
-                </Box>
-              </Flex> */}
               {this.renderLive()}
             </Box>
           </Box>
@@ -461,6 +360,3 @@ ShowTime.getInitialProps = async ({ store, isServer, query, req }) => {
   return props
 }
 export default connect(mapStateToProps, { fetchProducts })(ShowTime)
-// export default withRedux(initStore, mapStateToProps, {
-//   fetchProducts,
-// })(ShowTime)
