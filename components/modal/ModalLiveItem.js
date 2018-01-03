@@ -11,11 +11,13 @@ const Button = styled.button`
   background-color: ${color.white};
   border: 1px solid ${color.red};
   color: ${color.red};
-  padding: 12px 50px;
+  //padding: 0.9em 60%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-weight: 700;
+  width: 200%;
+  height: 3em;
 `
 const ButtonWatch = styled.button`
   background-color: ${color.red};
@@ -68,9 +70,10 @@ height: 170px;
 width: 100%;
 `
 const WrapperButton = styled.div`
-  position: absolute;
-  Bottom: 25px;
+  // position: absolute;
+  Bottom: 1.1em;
   right: 6%;
+  width: 50%;
 `
 const WrapperHover = styled.div`
   top: 0;
@@ -143,15 +146,18 @@ class ModalButton extends Component {
                   {this.props.textrb}
                 </Box>
               </Flex>
+              <Flex pt="2.5em" pl="3.2em">
+                <WrapperButton>
+                  <Button style={{ cursor: 'pointer' }}>
+                    <Textbutton>
+                      {this.props.live.startTime}-{this.props.live.endTime}
+                    </Textbutton>
+                  </Button>
+                </WrapperButton>
+              </Flex>
             </Box>
           </Flex>
-          <WrapperButton>
-            <Button style={{ cursor: 'pointer' }}>
-              <Textbutton>
-                {this.props.live.startTime}-{this.props.live.endTime}
-              </Textbutton>
-            </Button>
-          </WrapperButton>
+
           <WrapperHover zin={zin} onClick="">
             <Flex pl="2em" pt="1em">
               <Box w={2 / 12} pt="2.5em" ml="5em">
