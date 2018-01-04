@@ -99,13 +99,13 @@ const Text2 = styled.div`
 const Text3 = styled.div`
   color: ${color.white};
   font-weight: 700;
-  font-size: 2em;
+  font-size: 2vw;
   font-family: Helvetica, Arial, sans-serif;
 `
 const Text4 = styled.div`
   color: #fff;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.5vw;
   font-family: Helvetica, Arial, sans-serif;
 `
 const Text5 = styled.div`
