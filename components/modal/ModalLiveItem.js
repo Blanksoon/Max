@@ -28,6 +28,7 @@ const ButtonWatch = styled.button`
   text-decoration: none;
   display: inline-block;
   font-weight: 700;
+  // font-size: 1vw;
 `
 const Text1 = styled.div`
   padding-left: 1rem;
@@ -58,8 +59,8 @@ const Text4 = styled.div`
 const Textbutton = styled.div`
   color: ${color.red};
   font-weight: 700;
-  font-size: 0.9rem;
   font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
 `
 const Wrapper = styled.div`
 //border: 1px solid ${props => props.color};
