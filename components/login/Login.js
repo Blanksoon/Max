@@ -116,7 +116,7 @@ class Login extends React.Component {
       //console.log('false')
     }
     console.log('ddddddd')
-    Router.push(`https://beta.maxmuaythai.com/`)
+    Router.push(`https://www.maxmuaythai.com/`)
     this.setState({ loading: false })
   }
 

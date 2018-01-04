@@ -167,7 +167,7 @@ class PurchaseItem extends React.Component {
       Router.push(`${response.approvalUrl}`)
     } else {
       this.props.closeModal()
-      Router.push(`https://beta.maxmuaythai.com/error`)
+      Router.push(`https://www.maxmuaythai.com/error`)
     }
   }
 
