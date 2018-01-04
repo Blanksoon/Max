@@ -23,7 +23,7 @@ class FacebookLoginButton extends React.Component {
     }
     this.props.fbLogin(providerData)
     this.props.closeModal()
-    Router.push(`http://localhost:8080/`)
+    Router.push(`https://www.maxmuaythai.com/`)
   }
   render() {
     return (
