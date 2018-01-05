@@ -167,11 +167,25 @@ class PurchaseItem extends React.Component {
       Router.push(`${response.approvalUrl}`)
     } else {
       this.props.closeModal()
-      Router.push(`https://beta.maxmuaythai.com/error`)
+      Router.push(`http://localhost:8080/error`)
     }
   }
 
-  async purchaseCard() {}
+  async purchaseCard() {
+    // this.setState({ loadingCard: true })
+    // const response = await api.post(
+    //   `${api.SERVER}/${this.state.link}/${this.props.product._id}?token=${this
+    //     .props.auth.token}`
+    // )
+    // this.setState({ loadingCard: false })
+    // //console.log('responseee', response)
+    // if (response.approvalUrl) {
+    //   Router.push(`${response.approvalUrl}`)
+    // } else {
+    //   this.props.closeModal()
+    //   Router.push(`http://localhost:8080/error`)
+    // }
+  }
 
   async purchaseAlipay() {
     this.setState({ loadingAlipay: true })
@@ -215,7 +229,7 @@ class PurchaseItem extends React.Component {
       )
       if (response) {
         this.props.closeModal()
-        Router.push(`${response.data.url}`)
+        Router.push(`${response.url}`)
       }
       //console.log('dddddd333333', response)
       this.setState({ loadingCard: false })
@@ -228,7 +242,7 @@ class PurchaseItem extends React.Component {
       )
       if (response) {
         this.props.closeModal()
-        Router.push(`${response.data.url}`)
+        Router.push(`${response.url}`)
       }
       //console.log('dddddd333333', response)
       this.setState({ loadingCard: false })
@@ -323,8 +337,8 @@ class PurchaseItem extends React.Component {
                       <StripeCheckout
                         token={this.onToken}
                         name={packagee}
-                        stripeKey="pk_test_qghYMOBiEuWIDjedt7DNPA0w" //dev
-                        //stripeKey="pk_live_trWuol5XDXULmz0mK9eWwihA" //live
+                        //stripeKey="pk_test_qghYMOBiEuWIDjedt7DNPA0w" //dev
+                        stripeKey="pk_live_trWuol5XDXULmz0mK9eWwihA" //live
                         email={this.props.auth.email}
                         amount={amo}
                         //allowRememberMe={false}
