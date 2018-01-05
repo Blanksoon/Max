@@ -214,6 +214,9 @@ class PurchaseItem extends React.Component {
           .token}&sourceId=${token.id}&liveId=${this.props.product._id}`
       )
       if (response) {
+        if (response.status.code == 500) {
+          Router.push(`https://www.maxmuaythai.com/error`)
+        }
         this.props.closeModal()
         Router.push(`${response.data.url}`)
       }
@@ -226,7 +229,11 @@ class PurchaseItem extends React.Component {
         `${api.SERVER}/stripe/subscribe/creditcard?token=${this.props.auth
           .token}&sourceId=${token.id}&subscribeId=${this.props.product._id}`
       )
+      //console.log('ddddddd443r43', response)
       if (response) {
+        if (response.status.code == 500) {
+          Router.push(`https://www.maxmuaythai.com/error`)
+        }
         this.props.closeModal()
         Router.push(`${response.data.url}`)
       }
@@ -437,8 +444,8 @@ class PurchaseItem extends React.Component {
                       <StripeCheckout
                         token={this.onToken}
                         name={packagee}
-                        //stripeKey="pk_test_qghYMOBiEuWIDjedt7DNPA0w" //dev
-                        stripeKey="pk_live_trWuol5XDXULmz0mK9eWwihA" //live
+                        stripeKey="pk_test_qghYMOBiEuWIDjedt7DNPA0w" //dev
+                        //stripeKey="pk_live_trWuol5XDXULmz0mK9eWwihA" //live
                         email={this.props.auth.email}
                         amount={amo}
                         //allowRememberMe="false"

@@ -5,6 +5,7 @@ import Cookies from 'universal-cookie'
 import ModalText from '../../containers/ModalText'
 import UserInfo from '../../containers/commons/UserInfo'
 import vars from '../commons/vars'
+import Router from 'next/router'
 
 const LoginLang = styled.span`
   color: ${vars.white};
@@ -49,6 +50,7 @@ export default class extends Component {
   }
   setLang(lang) {
     this.props.setCookie('lang', lang)
+    Router.push(`http://localhost:8080/`)
   }
   render() {
     //console.log('LoginLang', this.props)

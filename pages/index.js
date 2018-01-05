@@ -29,6 +29,9 @@ import {
 } from '../redux/modules/modal'
 import { recentLivesSelector, dataLivesSelector } from '../redux/selectors/live'
 import { recentVodsSelector } from '../redux/selectors/vod'
+import { I18nextProvider } from 'react-i18next'
+import startI18n from '../tools/startI18n'
+import { getTranslation } from '../tools/translationHelpers'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -66,56 +69,82 @@ const GradientBg = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
-
+const lang = 'th'
+let navbar = ''
 class Index extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+  }
+
   render() {
     console.log('this.props', this.props.url)
+    // console.log('ddddddddddprops', this.props)
     return (
-      <Main url={this.props.url}>
-        <NewModal />
-        <GradientBg>
-          <Container>
-            <Hero lives={this.props.lives.slice(0, 3)} />
-            <LatestVideo
-              name="Latest Video"
-              vods={this.props.vods.slice(0, 4)}
-            />
-          </Container>
-        </GradientBg>
-        <WrapperLive>
-          <Container>
-            <Flex>
-              <Box w={12 / 12} pb="4em" pt="2em">
-                <ComingLive lives={this.props.lives} />
-              </Box>
-            </Flex>
-          </Container>
-        </WrapperLive>
-        <WrapperStadiumTicket>
-          <Container>
-            <Flex>
+      <I18nextProvider i18n={this.i18n}>
+        <Main
+          url={this.props.url}
+          nav={
+            this.props.cookie.lang === 'th' ? (
+              this.props.translations.th.navbar
+            ) : (
+              this.props.translations.en.navbar
+            )
+          }
+        >
+          <NewModal />
+          <GradientBg>
+            <Container>
+              <Hero lives={this.props.lives.slice(0, 3)} />
+              <LatestVideo
+                name="Latest Video"
+                vods={this.props.vods.slice(0, 4)}
+              />
+            </Container>
+          </GradientBg>
+          <WrapperLive>
+            <Container>
+              <Flex>
+                <Box w={12 / 12} pb="4em" pt="2em">
+                  <ComingLive lives={this.props.lives} />
+                </Box>
+              </Flex>
+            </Container>
+          </WrapperLive>
+          <WrapperStadiumTicket>
+            <Container>
+              <Flex>
+                <Box w={12 / 12}>
+                  <StadiumTicket />
+                </Box>
+              </Flex>
+            </Container>
+          </WrapperStadiumTicket>
+          <WrapperAbout>
+            <Container>
               <Box w={12 / 12}>
-                <StadiumTicket />
+                <About />
               </Box>
-            </Flex>
-          </Container>
-        </WrapperStadiumTicket>
-        <WrapperAbout>
-          <Container>
-            <Box w={12 / 12}>
-              <About />
-            </Box>
-          </Container>
-        </WrapperAbout>
-      </Main>
+            </Container>
+          </WrapperAbout>
+        </Main>
+      </I18nextProvider>
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = async state => {
+  // console.log('ddddddsss', state.cookie)
   return {
+    cookie: state.cookie,
     lives: dataLivesSelector(state),
     vods: recentVodsSelector(state),
+    translations: await getTranslation(
+      state.cookie.lang,
+      ['navbar'],
+      'http://localhost:8080/static/locales/'
+    ),
   }
 }
 Index.getInitialProps = async ({ store, isServer, query, req }) => {
