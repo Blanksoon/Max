@@ -91,7 +91,8 @@ class Profile extends React.Component {
       <I18nextProvider i18n={this.i18n}>
         <Main
           url={this.props.url}
-          nav={this.props.translations.translation.navbar}
+          nav={this.props.translations.translation.common}
+          www="profile"
         >
           <NewModal />
           <div className="profile">
@@ -141,7 +142,7 @@ const mapStateToProps = async state => {
     cookie: state.cookie,
     translations: await getTranslation(
       state.cookie.lang,
-      ['navbar'],
+      ['common', 'navbar'],
       'http://localhost:8080/static/locales/'
     ),
   }
