@@ -181,7 +181,7 @@ class ShowTime extends React.Component {
     } else {
       type = 8
     }
-    console.log('llllllllllll', this.props.product.products.lives.length)
+    // console.log('llllllllllll', this.props.product.products.lives.length)
     const rowLive = []
     const rowCount = this.props.product.products.lives.length
     let n = 0
@@ -198,6 +198,7 @@ class ShowTime extends React.Component {
                 live={this.props.product.products.lives[i]}
                 status={this.props.product.products.lives[i].status}
                 subAll={this.props.product.products.subscribe[1].status}
+                lang={this.props.lang}
               />
             </Box>
             <Box w={6 / 12} pl="0.5em" pt="1rem">
@@ -208,6 +209,7 @@ class ShowTime extends React.Component {
                 live={this.props.product.products.lives[i + 1]}
                 status={this.props.product.products.lives[i + 1].status}
                 subAll={this.props.product.products.subscribe[1].status}
+                lang={this.props.lang}
               />
             </Box>
           </Flex>
@@ -225,6 +227,7 @@ class ShowTime extends React.Component {
                 live={this.props.product.products.lives[i]}
                 status={this.props.product.products.lives[i].status}
                 subAll={this.props.product.products.subscribe[1].status}
+                lang={this.props.lang}
               />
             </Box>
             <Box w={6 / 12} pl="0.5em" pt="1rem">
@@ -235,6 +238,7 @@ class ShowTime extends React.Component {
                 live={this.props.product.products.lives[i + 1]}
                 status={this.props.product.products.lives[i + 1].status}
                 subAll={this.props.product.products.subscribe[1].status}
+                lang={this.props.lang}
               />
             </Box>
           </Flex>
@@ -251,6 +255,7 @@ class ShowTime extends React.Component {
               live={this.props.product.products.lives[n]}
               status={this.props.product.products.lives[n].status}
               subAll={this.props.product.products.subscribe[1].status}
+              lang={this.props.lang}
             />
           </Box>
           <Box w={6 / 12} pl="0.5em" pt="1rem" />
@@ -282,9 +287,9 @@ class ShowTime extends React.Component {
               color={color.red}
               w="100%"
               img="static/img_VDO+LIVE.png"
-              text1="SUBSCRIBE VDO AND LIVE STREAMING"
-              text2="Enjoy all video and live streamingthru all the month."
-              month="/1MONTH"
+              text1={this.props.common.SUBSCRIBEVDO}
+              text2={this.props.common.Enjoyall}
+              month={this.props.common.MONTH}
             />
           </Box>
           <Box w={6 / 12} pl="0.5em">
@@ -297,9 +302,9 @@ class ShowTime extends React.Component {
               color={color.blue}
               w="95%"
               img="static/img_vodondemand@3x.png"
-              text1="SUBSCRIBE VDO ON DEMAND"
-              text2="All video all month, so you never missany extreme shot"
-              month="/1MONTH"
+              text1={this.props.common.SUBSCRIBEVDO}
+              text2={this.props.common.Allvideo}
+              month={this.props.common.MONTH}
             />
           </Box>
         </Flex>
@@ -311,11 +316,11 @@ class ShowTime extends React.Component {
           <Box w={12 / 12} pl="0rem">
             <Flex pt="2rem" pb="1rem">
               <Box w={6 / 12} pt="1rem">
-                <Text1>GET TICKET</Text1>
-                <Text2>Please select your package.</Text2>
+                <Text1>{this.props.common.GETTICKET}</Text1>
+                <Text2>{this.props.common.Pleaseselect}</Text2>
                 <br />
                 <br />
-                <Text8>PACKAGE.</Text8>
+                <Text8>{this.props.common.PACKAGE}</Text8>
               </Box>
             </Flex>
             {renderSubscribe}
@@ -327,16 +332,13 @@ class ShowTime extends React.Component {
                 </Box>
                 <Box w={5 / 12} pt="5em">
                   <center>
-                    <Text5>GET 1 TIME LIVE STREAMING</Text5>
-                    <Text6>
-                      What 1 time of specilic show live streaming on any
-                      platfrom
-                    </Text6>
+                    <Text5>{this.props.common.GETTIME}</Text5>
+                    <Text6>{this.props.common.Whattime}</Text6>
                   </center>
                 </Box>
               </Flex>
               <Flex pl="0.5em" pt="1em">
-                <Text5>PLEASE SELECT THE LIVE</Text5>
+                <Text5>{this.props.common.PLEASESELECT}</Text5>
               </Flex>
               {this.renderLive()}
             </Box>

@@ -50,7 +50,10 @@ class selectShowtime extends React.Component {
           <Wrapper>
             <Container>
               <Box pt="7rem">
-                <ShowTime />
+                <ShowTime
+                  common={this.props.translations.translation.common}
+                  lang={this.props.cookie.lang}
+                />
               </Box>
             </Container>
           </Wrapper>

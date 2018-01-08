@@ -133,7 +133,13 @@ class ModalButton extends Component {
               </center>
             </Box>
             <Box w={4 / 12}>
-              <Text2>{this.props.live.liveDateStr_en}</Text2>
+              <Text2>
+                {this.props.lang === 'en' ? (
+                  this.props.live.liveDateStr_en
+                ) : (
+                  this.props.live.liveDateStr_th
+                )}
+              </Text2>
               <Image w="100%" src={this.props.live.bannerUrl} />
             </Box>
             <Box w={5 / 12}>
@@ -143,7 +149,13 @@ class ModalButton extends Component {
                   <Image w="100%" src="static/ic_liveblack@2x.png" />
                 </Box>
                 <Box w={10 / 12}>
-                  <Text1>{this.props.live.title_en}</Text1>
+                  <Text1>
+                    {this.props.lang === 'en' ? (
+                      this.props.live.title_en
+                    ) : (
+                      this.props.live.title_th
+                    )}
+                  </Text1>
                   {this.props.textrb}
                 </Box>
               </Flex>
