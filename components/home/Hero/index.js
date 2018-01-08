@@ -87,7 +87,8 @@ export default class extends Component {
     }
     const liveDateStr = activeLive.liveFromDate
     const liveDate = new Date(liveDateStr)
-    const formattedLiveDate = liveDate.toLocaleDateString('en-US', options)
+    const formattedLiveDateEn = liveDate.toLocaleDateString('en-US', options)
+    const formattedLiveDateTh = liveDate.toLocaleDateString('th-US', options)
     const settings = {
       afterChange: i => this.setActiveLive(i),
       autoplay: true,
@@ -101,6 +102,7 @@ export default class extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
     }
+    // console.log('ddddddddddddddffff', this.lang)
     return (
       <div
         style={{ visibility: this.state.visibility, position: 'relative' }}
@@ -108,19 +110,37 @@ export default class extends Component {
       >
         <LiveInfo>
           <Title>
-            {activeLive.title_en}&nbsp;
-            {activeLive.liveDateStr_en}
+            {this.props.lang === 'en' ? (
+              activeLive.title_en
+            ) : (
+              activeLive.title_th
+            )}&nbsp;
+            {this.props.lang === 'en' ? (
+              activeLive.liveDateStr_en
+            ) : (
+              activeLive.liveDateStr_th
+            )}
           </Title>
-          <LiveDate>{formattedLiveDate}</LiveDate>
+          <LiveDate>
+            {this.props.lang === 'en' ? (
+              formattedLiveDateEn
+            ) : (
+              formattedLiveDateTh
+            )}
+          </LiveDate>
           <ActionBar
             live={activeLive}
             fightcardVisible={this.state.fightcardVisible}
             promovideoVisible={this.state.promovideoVisible}
             showFightcard={this.showFightcard}
             showPromovideo={this.showPromovideo}
+            common={this.props.common}
           />
         </LiveInfo>
-        <Countdown liveDateStr={activeLive.liveFromDate} />
+        <Countdown
+          common={this.props.common}
+          liveDateStr={activeLive.liveFromDate}
+        />
         <Slider {...settings}>
           {lives.map(live => <Slide key={live.id} src={live.bannerUrl} />)}
         </Slider>

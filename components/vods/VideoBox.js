@@ -71,13 +71,15 @@ class VideoBox extends Component {
     }
   }
 
-  renderVideos(vods) {
+  renderVideos(lang, vods) {
     const rowVideos = []
     const rowCount = this.props.vod.index / 4
     // Use splice on clone object, DONT MODIFY props
     const tmpVods = [...vods]
     for (let i = 0; i < rowCount; i++) {
-      rowVideos.push(<RowVideo key={i} vods={tmpVods.splice(0, 4)} />)
+      rowVideos.push(
+        <RowVideo key={i} lang={lang} vods={tmpVods.splice(0, 4)} />
+      )
     }
     return rowVideos
   }
@@ -113,7 +115,7 @@ class VideoBox extends Component {
     if (this.state.vodmax === 0) {
       renderUI = (
         <Button onClick={this.check} className="button-hunger">
-          Hunger for more
+          {this.props.lang === 'en' ? 'Hunger for more' : 'กดเพื่อดูเพิ่ม'}
         </Button>
       )
     } else {
@@ -124,19 +126,29 @@ class VideoBox extends Component {
       <div>
         <Flex mb={3} pt="7rem">
           <Box w={1} pl="1rem">
-            <Text color="red" bold children="ON DEMAND" fontSize="2em" />
+            <Text
+              color="red"
+              bold
+              children={this.props.common.vod}
+              fontSize="2em"
+            />
           </Box>
         </Flex>
         <WrapperHilight>
-          <Hilight hilight={hilight} />
+          <Hilight
+            lang={this.props.lang}
+            common={this.props.common}
+            hilight={hilight}
+          />
         </WrapperHilight>
         <Box pt="3rem" pl="1rem" pr="1rem">
           <ProgramFilter
+            lang={this.props.lang}
             programEns={this.props.programEns}
             onFilteredProgramChange={this.props.onFilteredProgramChange}
             filteredProgram={this.props.filteredProgram}
           />
-          {this.renderVideos(filteredVods)}
+          {this.renderVideos(this.props.lang, filteredVods)}
         </Box>
         <Box w={12 / 12} pb="3rem" pt="2rem">
           <center>{renderUI}</center>
@@ -191,7 +203,7 @@ class VideoBox extends Component {
   }
 }
 
-const RowVideo = ({ vods }) => {
+const RowVideo = ({ lang, vods }) => {
   return (
     <Flex mb={3}>
       <Box w={6 / 12} mr="1em">
@@ -201,8 +213,14 @@ const RowVideo = ({ vods }) => {
               <ThumbnailVideo
                 id={vods[0].id}
                 img={vods[0].thumbnailUrl}
-                name={vods[0].title_en}
-                date={vods[0].onAirDateStr_en}
+                name={lang === 'en' ? vods[0].title_en : vods[0].title_th}
+                date={
+                  lang === 'en' ? (
+                    vods[0].onAirDateStr_en
+                  ) : (
+                    vods[0].onAirDateStr_en
+                  )
+                }
                 time={vods[0].duration}
                 pt="1em"
               />
@@ -213,8 +231,14 @@ const RowVideo = ({ vods }) => {
               <ThumbnailVideo
                 id={vods[1].id}
                 img={vods[1].thumbnailUrl}
-                name={vods[1].title_en}
-                date={vods[1].onAirDateStr_en}
+                name={lang === 'en' ? vods[1].title_en : vods[1].programName_th}
+                date={
+                  lang === 'en' ? (
+                    vods[1].onAirDateStr_en
+                  ) : (
+                    vods[1].onAirDateStr_en
+                  )
+                }
                 time={vods[1].duration}
                 pt="1em"
               />
@@ -229,8 +253,14 @@ const RowVideo = ({ vods }) => {
               <ThumbnailVideo
                 id={vods[2].id}
                 img={vods[2].thumbnailUrl}
-                name={vods[2].title_en}
-                date={vods[2].onAirDateStr_en}
+                name={lang === 'en' ? vods[2].title_en : vods[2].title_th}
+                date={
+                  lang === 'en' ? (
+                    vods[2].onAirDateStr_en
+                  ) : (
+                    vods[2].onAirDateStr_en
+                  )
+                }
                 time={vods[2].duration}
                 pt="1em"
               />
@@ -241,8 +271,14 @@ const RowVideo = ({ vods }) => {
               <ThumbnailVideo
                 id={vods[3].id}
                 img={vods[3].thumbnailUrl}
-                name={vods[3].title_en}
-                date={vods[3].onAirDateStr_en}
+                name={lang === 'en' ? vods[3].title_en : vods[3].title_th}
+                date={
+                  lang === 'en' ? (
+                    vods[3].onAirDateStr_en
+                  ) : (
+                    vods[3].onAirDateStr_en
+                  )
+                }
                 time={vods[3].duration}
                 pt="1em"
               />
@@ -255,6 +291,7 @@ const RowVideo = ({ vods }) => {
 }
 
 const mapStateToProps = state => {
+  // console.log('dddddddd', state)
   return {
     auth: state.auth,
     vod: state.vod,

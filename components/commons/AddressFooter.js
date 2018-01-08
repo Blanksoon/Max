@@ -36,15 +36,15 @@ const Tel = styled.span`
   display: block;
   margin-top: 1rem;
 `
-export default () => (
+export default ({ common }) => (
   <AddressFooter>
     <Container>
       <Logo src="/static/img_logo_white@2x.png" />
       <AddressPanel>
-        <Name>Max Muay Thai Co.,Ltd.</Name>
-        <Address>42/108 Sukumvit Rd. Moo.9 Nongprue</Address>
-        <Address>Banglamung Chon Buri 20150 (Thailand)</Address>
-        <Tel>Tel(+66) 038-416-999,08-2495-5549</Tel>
+        <Name>{common.NameAddress}</Name>
+        <Address>{common.Address1}</Address>
+        <Address>{common.Address2}</Address>
+        <Tel>{common.tel}</Tel>
       </AddressPanel>
     </Container>
   </AddressFooter>

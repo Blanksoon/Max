@@ -18,13 +18,13 @@ const Wrapper = styled.div`
   background-image: url('../../static/stadiumticket_banner.jpg');
   background-position-x: right;
 `
-const stadium_ticket = () => (
+const stadium_ticket = ({ common }) => (
   <Wrapper>
     <Flex>
       <Box w={1} pt="2em" pb="1em">
         <Box w={1}>
-          <h1>Witness the ultimate extreme MuayThai</h1>
-          <h4>Call for stadium ticket reservation</h4>
+          <h1>{common.Witness}</h1>
+          <h4>{common.Call}</h4>
         </Box>
         <Flex>
           <Box w={1 / 24}>

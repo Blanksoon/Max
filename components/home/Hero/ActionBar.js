@@ -14,27 +14,28 @@ export default ({
   promovideoVisible,
   showFightcard,
   showPromovideo,
+  common,
 }) => {
   return (
     <ActionBar>
       <Flex>
         <Link as={`/lives/${live.id}`} href={`/lives_vdo?id=${live.id}`}>
           <a>
-            <Button>{live.videoUrl ? 'Watch' : 'Buy Ticket'}</Button>
+            <Button>{live.videoUrl ? common.Watch : common.BuyTicket}</Button>
           </a>
         </Link>
         <Flex pl="1.5rem" pt="0.3rem">
           <ModalButton
             modalType={2}
             modalURL={`${live.fightcardUrl}`}
-            text="View Fightcard"
+            text={common.ViewFightcard}
           />
         </Flex>
         <Flex pl="1.5rem" pt="0.3rem">
           <ModalButton
             modalType={1}
             modalURL={`${live.promoUrl}`}
-            text="Promo Clip"
+            text={common.PromoClip}
           />
         </Flex>
       </Flex>

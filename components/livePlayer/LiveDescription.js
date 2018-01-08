@@ -29,7 +29,7 @@ const ButtonPromoClip = styled.button`
 `
 
 const LiveTelecom = styled.div`color: ${props => props.color.red};`
-const LiveDescription = ({ live }) => (
+const LiveDescription = ({ lang, common, live }) => (
   <div className="liveDescription">
     {console.log(live.logoUrl)}
     <Flex pt="1.5rem">
@@ -39,15 +39,20 @@ const LiveDescription = ({ live }) => (
             <Image width="100%" src={live.logoUrl} />
           </Box>
           <Box width={11 / 12} pb="1rem">
-            <HeadDesctiption>{live.liveDateStr_en}</HeadDesctiption>
+            <HeadDesctiption>
+              {lang === 'en' ? live.liveDateStr_en : live.liveDateStr_th}
+            </HeadDesctiption>
           </Box>
         </Flex>
         <Flex pr="5%" pt="1rem" pb="0.6rem">
           <Box width={5 / 12}>
             <LiveTelecom color={color}>
-              <b>Live telecast on {live.title_en}</b>
+              <b>
+                {common.Livetelecaston}
+                {lang === 'en' ? live.title_en : live.title_th}
+              </b>
               <br />
-              <b>{live.shortDesc2_en}</b>
+              <b>{lang === 'en' ? live.shortDesc2_en : live.shortDesc2_en}</b>
             </LiveTelecom>
           </Box>
           <Box width={7 / 12} pl="46%">
@@ -62,13 +67,13 @@ const LiveDescription = ({ live }) => (
           <hr size="0.1" />
         </Box>
         <Box width={1} pb={3} pr="5%">
-          <P>{live.desc_en}</P>
+          <P>{lang === 'en' ? live.desc_en : live.desc_en}</P>
         </Box>
         <ModalButton
           buttonID={2}
           modalType={1}
           modalURL={live.promoUrl}
-          text="Watch Promo Clip"
+          text={common.WatchPromoClip}
         />
         {/* <ButtonPromoClip color={color}>Watch Promo Clip</ButtonPromoClip> */}
       </Box>

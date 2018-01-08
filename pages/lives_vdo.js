@@ -26,6 +26,10 @@ import {
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
+import { I18nextProvider } from 'react-i18next'
+import startI18n from '../tools/startI18n'
+import { getTranslation } from '../tools/translationHelpers'
+
 const WrapperStadiumTicket = styled.div`
   color: #ffffff;
   background-color: #b71111;
@@ -46,6 +50,7 @@ class LiveVdo extends Component {
       i: 0,
     }
     this.state.renderUI = this.getRenderUI(this.state)
+    this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
   }
   getRenderUI(state) {
     if (!state.liveNow) {
@@ -77,80 +82,96 @@ class LiveVdo extends Component {
   render() {
     const { url, live, vods } = this.props
     const { countdown } = this.state
+    const common = this.props.translations.translation.common
+    // console.log('ddddddd', this.props)
     return (
-      <Main url={url}>
-        <NewModal />
-        <div style={{ paddingTop: '2rem' }}>
-          <WrapperLivePlayer color={color}>
+      <I18nextProvider i18n={this.i18n}>
+        <Main url={url} nav={this.props.translations.translation.common}>
+          <NewModal />
+          <div style={{ paddingTop: '2rem' }}>
+            <WrapperLivePlayer color={color}>
+              <Container>
+                <Flex>
+                  <Box w={12 / 12}>
+                    <BackVideoCenter name={common.BackToLive} url={url} />
+                  </Box>
+                </Flex>
+              </Container>
+            </WrapperLivePlayer>
+          </div>
+          <div>
+            <WrapperLivePlayer color={color}>
+              <Container>
+                <LiveTop
+                  ui={this.state.renderUI}
+                  live={live}
+                  countdown={countdown}
+                  common={common}
+                />
+              </Container>
+            </WrapperLivePlayer>
+          </div>
+          <div>
+            <WrapperLivePlayer color={color}>
+              <Container>
+                <Flex>
+                  <Box w={12 / 12} bg="white">
+                    <LiveDescription
+                      lang={this.props.cookie.lang}
+                      common={common}
+                      live={live}
+                    />
+                    <Box width={12 / 12} pt="1rem" pl="1rem" pr="1rem">
+                      <hr size="0.1" />
+                    </Box>
+                  </Box>
+                </Flex>
+              </Container>
+            </WrapperLivePlayer>
+          </div>
+          <div>
+            <WrapperLivePlayer color={color}>
+              <Container>
+                <Flex>
+                  <Box w={12 / 12} bg="white">
+                    {console.log(vods)}
+                    <UpNext
+                      lang={this.props.cookie.lang}
+                      name={common.THISSHOWRELATEDVIDEO}
+                      vods={vods}
+                      progname={live.programName}
+                    />
+                  </Box>
+                </Flex>
+              </Container>
+            </WrapperLivePlayer>
+          </div>
+          <WrapperStadiumTicket>
             <Container>
               <Flex>
                 <Box w={12 / 12}>
-                  <BackVideoCenter name="Back to Live" url={url} />
+                  <StadiumTicket common={common} />
                 </Box>
               </Flex>
             </Container>
-          </WrapperLivePlayer>
-        </div>
-        <div>
-          <WrapperLivePlayer color={color}>
-            <Container>
-              <LiveTop
-                ui={this.state.renderUI}
-                live={live}
-                countdown={countdown}
-              />
-            </Container>
-          </WrapperLivePlayer>
-        </div>
-        <div>
-          <WrapperLivePlayer color={color}>
-            <Container>
-              <Flex>
-                <Box w={12 / 12} bg="white">
-                  <LiveDescription live={live} />
-                  <Box width={12 / 12} pt="1rem" pl="1rem" pr="1rem">
-                    <hr size="0.1" />
-                  </Box>
-                </Box>
-              </Flex>
-            </Container>
-          </WrapperLivePlayer>
-        </div>
-        <div>
-          <WrapperLivePlayer color={color}>
-            <Container>
-              <Flex>
-                <Box w={12 / 12} bg="white">
-                  {console.log(vods)}
-                  <UpNext
-                    name="THIS SHOW RELATED VIDEO"
-                    vods={vods}
-                    progname={live.programName}
-                  />
-                </Box>
-              </Flex>
-            </Container>
-          </WrapperLivePlayer>
-        </div>
-        <WrapperStadiumTicket>
-          <Container>
-            <Flex>
-              <Box w={12 / 12}>
-                <StadiumTicket />
-              </Box>
-            </Flex>
-          </Container>
-        </WrapperStadiumTicket>
-      </Main>
+          </WrapperStadiumTicket>
+        </Main>
+      </I18nextProvider>
     )
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = async state => {
   const live = currentLiveSelector(state)
   //console.log('live', live)
   const vods = relatedVodsSelector(live.programName)(state)
+  const cookie = state.cookie
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    'http://localhost:8080/static/locales/'
+  )
   //console.log('vods', vods)
-  return { live, vods }
+  return { live, vods, translations, cookie }
 }
 LiveVdo.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()

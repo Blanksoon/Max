@@ -50,10 +50,10 @@ export default class extends Component {
   }
   setLang(lang) {
     this.props.setCookie('lang', lang)
-    Router.push(`http://localhost:8080/`)
+    Router.push(`http://localhost:8080/${this.props.www}`)
   }
   render() {
-    //console.log('LoginLang', this.props)
+    // console.log('dddddddytry', this.props.www)
     const { url, lang, email } = this.props
     return (
       <LoginLang>

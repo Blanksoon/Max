@@ -69,7 +69,7 @@ const GradientBg = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
-const lang = 'th'
+let lang = 'th'
 let navbar = ''
 class Index extends React.Component {
   constructor(props) {
@@ -79,26 +79,26 @@ class Index extends React.Component {
   }
 
   render() {
-    console.log('this.props', this.props.url)
+    // console.log('this.props', this.props.url)
     // console.log('ddddddddddprops', this.props)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
           url={this.props.url}
-          nav={
-            this.props.cookie.lang === 'th' ? (
-              this.props.translations.th.navbar
-            ) : (
-              this.props.translations.en.navbar
-            )
-          }
+          nav={this.props.translations.translation.common}
+          www="index"
         >
           <NewModal />
           <GradientBg>
             <Container>
-              <Hero lives={this.props.lives.slice(0, 3)} />
+              <Hero
+                lang={this.props.cookie.lang}
+                lives={this.props.lives.slice(0, 3)}
+                common={this.props.translations.translation.common}
+              />
               <LatestVideo
-                name="Latest Video"
+                lang={this.props.cookie.lang}
+                name={this.props.translations.translation.common.LatestVideo}
                 vods={this.props.vods.slice(0, 4)}
               />
             </Container>
@@ -107,7 +107,11 @@ class Index extends React.Component {
             <Container>
               <Flex>
                 <Box w={12 / 12} pb="4em" pt="2em">
-                  <ComingLive lives={this.props.lives} />
+                  <ComingLive
+                    lang={this.props.cookie.lang}
+                    common={this.props.translations.translation.common}
+                    lives={this.props.lives}
+                  />
                 </Box>
               </Flex>
             </Container>
@@ -116,7 +120,9 @@ class Index extends React.Component {
             <Container>
               <Flex>
                 <Box w={12 / 12}>
-                  <StadiumTicket />
+                  <StadiumTicket
+                    common={this.props.translations.translation.common}
+                  />
                 </Box>
               </Flex>
             </Container>
@@ -124,7 +130,7 @@ class Index extends React.Component {
           <WrapperAbout>
             <Container>
               <Box w={12 / 12}>
-                <About />
+                <About common={this.props.translations.translation.common} />
               </Box>
             </Container>
           </WrapperAbout>
@@ -142,7 +148,7 @@ const mapStateToProps = async state => {
     vods: recentVodsSelector(state),
     translations: await getTranslation(
       state.cookie.lang,
-      ['navbar'],
+      ['common', 'navbar'],
       'http://localhost:8080/static/locales/'
     ),
   }

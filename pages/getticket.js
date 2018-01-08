@@ -18,6 +18,9 @@ import {
   closeModal,
 } from '../redux/modules/modal'
 import * as api from '../api'
+import { I18nextProvider } from 'react-i18next'
+import startI18n from '../tools/startI18n'
+import { getTranslation } from '../tools/translationHelpers'
 
 const WrapperShowTime = styled.div`
   position: relative;
@@ -27,18 +30,22 @@ const Wrapper = styled.div`background-color: #3c5c83;`
 class selectShowtime extends React.Component {
   constructor(props) {
     super(props)
-    //this.purchase = this.purchase.bind(this)
+
+    this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
   }
 
   render() {
     //console.log('render', this.props.url)
     return (
-      <div>
-        <Head>
+      <I18nextProvider i18n={this.i18n}>
+        {/* <Head>
           <link href="/static/css/video-react.css" rel="stylesheet" />
-        </Head>
-        {/* {status.message ?  : null } */}
-        <Main url={this.props.url}>
+        </Head> */}
+        <Main
+          url={this.props.url}
+          nav={this.props.translations.translation.common}
+          www="getticket"
+        >
           <NewModal />
           <Wrapper>
             <Container>
@@ -47,29 +54,35 @@ class selectShowtime extends React.Component {
               </Box>
             </Container>
           </Wrapper>
+          <style jsx global>
+            {`
+              body {
+                padding: 0 !important;
+                margin: 0 !important;
+              }
+               {
+                /* * {
+                box-sizing: border-box;
+              } */
+              }
+            `}
+          </style>
         </Main>
-        <style jsx global>
-          {`
-            body {
-              padding: 0 !important;
-              margin: 0 !important;
-            }
-             {
-              /* * {
-              box-sizing: border-box;
-            } */
-            }
-          `}
-        </style>
-      </div>
+      </I18nextProvider>
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = async state => {
   return {
+    cookie: state.cookie,
     auth: state.auth,
     product: state.product,
+    translations: await getTranslation(
+      state.cookie.lang,
+      ['common', 'navbar'],
+      'http://localhost:8080/static/locales/'
+    ),
   }
 }
 

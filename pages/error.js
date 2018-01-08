@@ -10,6 +10,7 @@ import MaxButtom from '../components/maxNews/MaxButtom'
 import Purchase from '../components/getTicket/Purchase'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
+import { fetchLives } from '../redux/modules/live'
 import { fetchVods } from '../redux/modules/vod'
 import NewModal from '../containers/NewModal'
 import {
@@ -19,6 +20,10 @@ import {
   closeModal,
 } from '../redux/modules/modal'
 import * as api from '../api'
+import { recentLivesSelector } from '../redux/selectors/live'
+import { I18nextProvider } from 'react-i18next'
+import startI18n from '../tools/startI18n'
+import { getTranslation } from '../tools/translationHelpers'
 
 const Text1 = styled.div`
   padding-left: 1rem;
@@ -74,14 +79,18 @@ const Wrapperr = styled.div`
   background-size: cover;
 `
 class test extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+  }
   render() {
     return (
-      <div>
-        <Head>
-          <link href="/static/css/video-react.css" rel="stylesheet" />
-        </Head>
-        {/* {status.message ?  : null } */}
-        <Main url={this.props.url}>
+      <I18nextProvider i18n={this.i18n}>
+        <Main
+          url={this.props.url}
+          nav={this.props.translations.translation.navbar}
+        >
           <NewModal />
           <Wrapperr>
             <Wrapper>
@@ -109,25 +118,43 @@ class test extends React.Component {
               </Container>
             </Wrapper>
           </Wrapperr>
-        </Main>
-        <style jsx global>
-          {`
-            body {
-              padding: 0 !important;
-              margin: 0 !important;
-            }
-             {
-              /* * {
+          <style jsx global>
+            {`
+              body {
+                padding: 0 !important;
+                margin: 0 !important;
+              }
+               {
+                /* * {
               box-sizing: border-box;
             } */
-            }
-          `}
-        </style>
-      </div>
+              }
+            `}
+          </style>
+        </Main>
+      </I18nextProvider>
     )
   }
 }
-
+const mapStateToProps = async state => {
+  return {
+    lives: recentLivesSelector(state),
+    cookie: state.cookie,
+    translations: await getTranslation(
+      state.cookie.lang,
+      ['navbar'],
+      'http://localhost:8080/static/locales/'
+    ),
+  }
+}
+test.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  const token = state.auth.token
+  const response = await fetchLives(token)(store.dispatch)
+  state = store.getState()
+  const props = mapStateToProps(state)
+  return props
+}
 export default withRedux(initStore, null, {
   toogleModal,
   updateModalType,

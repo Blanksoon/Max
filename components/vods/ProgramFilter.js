@@ -22,7 +22,18 @@ const ProgramList = styled.select`
   font-size: 1em;
 `
 
-export default ({ filteredProgram, onFilteredProgramChange, programEns }) => {
+export default ({
+  lang,
+  filteredProgram,
+  onFilteredProgramChange,
+  programEns,
+}) => {
+  let all = ''
+  if (lang == 'en') {
+    all = 'All shows'
+  } else {
+    all = 'ทั้งหมด'
+  }
   return (
     <div className="LabelSearch">
       <Flex pb="1rem">
@@ -31,7 +42,7 @@ export default ({ filteredProgram, onFilteredProgramChange, programEns }) => {
             value={filteredProgram}
             onChange={onFilteredProgramChange}
           >
-            <option value="All shows">All shows</option>
+            <option value="All shows">{all}</option>
             <option value="Max Muay Thai"> {programEns[0]} </option>
             <option value="Battle Muay Thai">{programEns[1]}</option>
             <option value="Muay Thai Fighter">{programEns[2]}</option>

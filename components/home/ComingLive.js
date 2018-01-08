@@ -29,11 +29,17 @@ class ComingLive extends React.Component {
         rowLive.push(
           <Flex pb="1em">
             <Box w={1 / 2}>
-              <ThumbnailLive live={this.props.lives[i]} />
+              <ThumbnailLive
+                lang={this.props.lang}
+                live={this.props.lives[i]}
+              />
             </Box>
             <Box w={1 / 32} />
             <Box w={1 / 2}>
-              <ThumbnailLive live={this.props.lives[i + 1]} />
+              <ThumbnailLive
+                lang={this.props.lang}
+                live={this.props.lives[i + 1]}
+              />
             </Box>
           </Flex>
         )
@@ -43,11 +49,17 @@ class ComingLive extends React.Component {
         rowLive.push(
           <Flex pb="1em">
             <Box w={1 / 2}>
-              <ThumbnailLive live={this.props.lives[i]} />
+              <ThumbnailLive
+                lang={this.props.lang}
+                live={this.props.lives[i]}
+              />
             </Box>
             <Box w={1 / 32} />
             <Box w={1 / 2}>
-              <ThumbnailLive live={this.props.lives[i + 1]} />
+              <ThumbnailLive
+                lang={this.props.lang}
+                live={this.props.lives[i + 1]}
+              />
             </Box>
           </Flex>
         )
@@ -56,7 +68,7 @@ class ComingLive extends React.Component {
       rowLive.push(
         <Flex>
           <Box w={1 / 2}>
-            <ThumbnailLive live={this.props.lives[n]} />
+            <ThumbnailLive lang={this.props.lang} live={this.props.lives[n]} />
           </Box>
           <Box w={1 / 32} />
           <Box w={1 / 2} />
@@ -76,7 +88,7 @@ class ComingLive extends React.Component {
               pb="2%"
               bold
               color="#fff"
-              children="UP COMING LIVE"
+              children={this.props.common.UPCOMINGLIVE}
               fontSize="1.5em"
             />
           </center>

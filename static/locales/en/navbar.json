@@ -1,7 +1,19 @@
 {
-  "home": "Home",
-  "live": "Live",
+  "Home": "Home",
+  "Live": "Live",
   "vod": "On Demand",
-  "buyticket": "Get Ticket",
-  "contact": "Contact Us"
+  "GetTicket": "Get Ticket",
+  "ContactUs": "Contact Us",
+  "Register/Login": "Register/Login",
+  "Livein": "Live in",
+  "DAY": "DAY",
+  "HRS": "HRS",
+  "MIN": "MIN",
+  "ViewFightcard": "View Fightcard",
+  "PromoClip": "Promo Clip",
+  "LatestVideo": "Latest Video",
+  "UPCOMINGLIVE": "UP COMING LIVE",
+  "ABOUTUS": "ABOUT US",
+  "Profile": "Profile",
+  "LogOut": "Log Out"
 }

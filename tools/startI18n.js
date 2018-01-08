@@ -11,8 +11,8 @@ const startI18n = (files, lang) =>
     lng: lang, // active language http://i18next.com/translate/
     fallbackLng: 'th',
     resources: files,
-    ns: ['navbar'],
-    defaultNS: 'navbar',
+    ns: ['common'],
+    defaultNS: 'common',
     debug: false,
   })
 

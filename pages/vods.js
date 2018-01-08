@@ -29,6 +29,9 @@ import {
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
+import { I18nextProvider } from 'react-i18next'
+import startI18n from '../tools/startI18n'
+import { getTranslation } from '../tools/translationHelpers'
 
 const WrapperNavbar = styled.div`background-color: #009999;`
 const WrapperVod = styled.div`
@@ -40,6 +43,7 @@ class Vods extends React.Component {
   constructor(props) {
     super(props)
     this.onFilteredProgramChange = this.onFilteredProgramChange.bind(this)
+    this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
   }
 
   onFilteredProgramChange(event) {
@@ -65,29 +69,43 @@ class Vods extends React.Component {
     }
 
     return (
-      <Main url={this.props.url}>
-        <NewModal />
-        <div className="videocenter">
-          <WrapperVod color={color}>
-            <Container>
-              <Box pt="20px" bg="white">
-                <VideoBox
-                  hilight={hilight}
-                  vods={vods}
-                  numberOfVods={numberOfVods}
-                  programEns={this.props.programs.programname_en}
-                  filteredProgram={filteredProgram}
-                  onFilteredProgramChange={this.onFilteredProgramChange}
-                />
-              </Box>
-            </Container>
-          </WrapperVod>
-        </div>
-      </Main>
+      <I18nextProvider i18n={this.i18n}>
+        <Main
+          url={this.props.url}
+          nav={this.props.translations.translation.common}
+          www="vods"
+        >
+          <NewModal />
+          <div className="videocenter">
+            <WrapperVod color={color}>
+              <Container>
+                <Box pt="20px" bg="white">
+                  <VideoBox
+                    lang={this.props.cookie.lang}
+                    common={this.props.translations.translation.common}
+                    hilight={hilight}
+                    vods={vods}
+                    numberOfVods={numberOfVods}
+                    programEns={
+                      this.props.cookie.lang === 'en' ? (
+                        this.props.programs.programname_en
+                      ) : (
+                        this.props.programs.programname_th
+                      )
+                    }
+                    filteredProgram={filteredProgram}
+                    onFilteredProgramChange={this.onFilteredProgramChange}
+                  />
+                </Box>
+              </Container>
+            </WrapperVod>
+          </div>
+        </Main>
+      </I18nextProvider>
     )
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = async state => {
   //console.log('ddddddd', state)
   const props = {
     hilight: hilightVodSelector(state),
@@ -96,6 +114,12 @@ const mapStateToProps = state => {
     programs: state.program,
     filter: state.vod.filter,
     token: state.auth.token,
+    cookie: state.cookie,
+    translations: await getTranslation(
+      state.cookie.lang,
+      ['common', 'navbar'],
+      'http://localhost:8080/static/locales/'
+    ),
   }
   return props
 }

@@ -21,6 +21,9 @@ import {
   indexModalURL,
   closeModal,
 } from '../redux/modules/modal'
+import { I18nextProvider } from 'react-i18next'
+import startI18n from '../tools/startI18n'
+import { getTranslation } from '../tools/translationHelpers'
 
 const WrapperStadiumTicket = styled.div`
   color: #ffffff;
@@ -52,6 +55,7 @@ class videoPlayer extends React.Component {
     this.state = {
       sec: 0,
     }
+    this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
   }
   componentWillUnmount() {
     clearInterval(this.timerId)
@@ -113,9 +117,10 @@ class videoPlayer extends React.Component {
       )
       renderDescription = <Description vod={vod} />
     }
+    console.log('ddddddddddfsadfasdf', this.props)
     return (
-      <div className="wrapper-index">
-        <Main url={url}>
+      <I18nextProvider i18n={this.i18n}>
+        <Main url={url} nav={this.props.translations.translation.common}>
           <NewModal />
           <div className="wrapper-BackVideoCenter">
             <Container>
@@ -155,25 +160,33 @@ class videoPlayer extends React.Component {
             <Container>
               <Flex>
                 <Box w={12 / 12}>
-                  <StadiumTicket />
+                  <StadiumTicket
+                    common={this.props.translations.translation.common}
+                  />
                 </Box>
               </Flex>
             </Container>
           </WrapperStadiumTicket>
         </Main>
-      </div>
+      </I18nextProvider>
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = async state => {
   const vod = currentVodSelector(state)
   let vods = ''
   if (vod !== undefined) {
     vods = relatedVodsSelector(vod.programName_en)(state)
   }
   const token = state.auth.token
-  return { vod, vods, token }
+  const cookie = state.cookie
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    'http://localhost:8080/static/locales/'
+  )
+  return { vod, vods, token, cookie, translations }
 }
 videoPlayer.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()

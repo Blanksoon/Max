@@ -35,7 +35,14 @@ const WrapperMore = styled.div`
   position: absolute;
 `
 const WrapperText = styled.div`background: #012147;`
-const ThumbnailLive = ({ live }) => {
+const ThumbnailLive = ({ lang, live }) => {
+  // const Next = common.Nexton
+  let Next = ''
+  if (lang === 'en') {
+    Next = 'Next on'
+  } else if (lang === 'th') {
+    Next = 'ถ่ายทอดสด'
+  }
   return (
     <div>
       <div className="wraperlive">
@@ -44,14 +51,24 @@ const ThumbnailLive = ({ live }) => {
         </Box>
         <div className="livehover">
           <Box pl="5%" pt="5%">
-            <Text bold children={live.title_en} fontSize="0.9em" />
-            <Text children={live.desc_en} fontSize="0.8em" />
+            <Text
+              bold
+              children={lang === 'en' ? live.title_en : live.title_th}
+              fontSize="0.9em"
+            />
+            <Text
+              children={lang === 'en' ? live.desc_en : live.desc_en}
+              fontSize="0.8em"
+            />
             <br />
             {/* <Text
               children={`live telecast on ${live.title_en}`}
               fontSize="0.8em"
             /> */}
-            <Text children={live.shortDesc2_en} fontSize="0.8em" />
+            <Text
+              children={lang === 'en' ? live.shortDesc2_en : live.shortDesc2_en}
+              fontSize="0.8em"
+            />
           </Box>
           <Flex pt="2.3rem">
             <Box w={4 / 12} pl="20%">
@@ -99,7 +116,9 @@ const ThumbnailLive = ({ live }) => {
             <Text
               color="#d6ff00"
               bold
-              children={`Next on ${live.liveDateStr_en}`}
+              children={`${Next} ${lang === 'en'
+                ? live.liveDateStr_en
+                : live.liveDateStr_th}`}
               fontSize="1em"
             />
           </center>

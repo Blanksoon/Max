@@ -38,32 +38,32 @@ const Label = styled.div`
 `
 const LabelWithoutUnderLine = styled(Label)`border-bottom: 0px;`
 
-const renderCounter = diff => (
-  <div>
-    <Label>LIVE in</Label>
-    <Panel>
-      <Digit>{pad(diff.day)}</Digit>
-      <Text>DAY</Text>
-    </Panel>
-    <Panel>
-      <Digit>{pad(diff.hrs)}</Digit>
-      <Text>HRS</Text>
-    </Panel>
-    <Panel>
-      <Digit>{pad(diff.min)}</Digit>
-      <Text>MIN</Text>
-    </Panel>
-  </div>
-)
 const renderLiveNow = () => (
   <LabelWithoutUnderLine>LIVE NOW!!!</LabelWithoutUnderLine>
 )
-export default ({ liveDateStr }) => {
+export default ({ liveDateStr, common }) => {
   const curDate = new Date()
   const liveDate = new Date(liveDateStr)
   const diffTime = curDate.getTime() - liveDate.getTime()
   const diff = dateDiff(curDate, liveDate)
 
+  const renderCounter = diff => (
+    <div>
+      <Label>{common.Livein}</Label>
+      <Panel>
+        <Digit>{pad(diff.day)}</Digit>
+        <Text>{common.DAY}</Text>
+      </Panel>
+      <Panel>
+        <Digit>{pad(diff.hrs)}</Digit>
+        <Text>{common.HRS}</Text>
+      </Panel>
+      <Panel>
+        <Digit>{pad(diff.min)}</Digit>
+        <Text>{common.MIN}</Text>
+      </Panel>
+    </div>
+  )
   return (
     <Countdown>
       {diffTime >= 0 ? renderLiveNow() : renderCounter(diff)}

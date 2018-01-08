@@ -39,11 +39,15 @@ class NavBar extends React.Component {
     this.t = props.t
     this.state = {
       navItems: [
-        { label: this.props.nav.home, href: '/', active: false },
-        { label: this.props.nav.live, href: '/lives', active: false },
-        { label: this.props.nav.vod, href: '/vods', active: false },
-        { label: this.props.nav.buyticket, href: '/getticket', active: false },
-        { label: this.props.nav.contact, href: '/contact', active: false },
+        { label: this.props.common.Home, href: '/', active: false },
+        { label: this.props.common.Live, href: '/lives', active: false },
+        { label: this.props.common.vod, href: '/vods', active: false },
+        {
+          label: this.props.common.GetTicket,
+          href: '/getticket',
+          active: false,
+        },
+        { label: this.props.common.ContactUs, href: '/contact', active: false },
       ],
     }
     this.setActiveUrl = this.setActiveUrl.bind(this)
@@ -65,17 +69,18 @@ class NavBar extends React.Component {
   }
 
   render() {
-    // console.log('dddddddddd', this.props.nav)
+    console.log('ddddddddddsfs', this.props.www)
     return (
       <Navbar pathname={this.props.url.pathname} m={0} p={2} top left z={1}>
         <Container>
           <Motto>
-            The Most Exciting <br />Fighting sport in the World
+            {this.props.common.TheMost} <br />
+            {this.props.common.Fighting}
           </Motto>
           {this.state.navItems.map(({ label, href, active }) => (
             <NavItem key={label} label={label} href={href} active={active} />
           ))}
-          <LoginLang url={this.props.url} />
+          <LoginLang url={this.props.url} www={this.props.www} />
           <Link href="/">
             <Logo src="/static/logo.png" />
           </Link>

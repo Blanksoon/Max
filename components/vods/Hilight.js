@@ -36,7 +36,7 @@ const OnAirInfo = styled.div`
 const Left = styled.span`float: left;`
 const Right = styled.span`float: right;`
 
-export default ({ hilight }) => {
+export default ({ lang, common, hilight }) => {
   if (typeof hilight === 'undefined') {
     return null
   }
@@ -47,12 +47,12 @@ export default ({ hilight }) => {
         <Image width="100%" src={hilight.thumbnailUrl} />
         <Gradient>
           <StickToBottom>
-            <Text color={vars.lightBlue} bold children="HILIGHT" />
+            <Text color={vars.lightBlue} bold children={common.HILIGHT} />
             <Text
               pt="1rem"
               color={vars.white}
               bold
-              children={hilight.title_en}
+              children={lang === 'en' ? hilight.title_en : hilight.title_th}
               fontSize="1.3em"
             />
             <OnAirInfo>
@@ -60,7 +60,13 @@ export default ({ hilight }) => {
                 <Text
                   color={vars.yellow}
                   bold
-                  children={hilight.onAirDateStr_en}
+                  children={
+                    lang === 'en' ? (
+                      hilight.onAirDateStr_en
+                    ) : (
+                      hilight.onAirDateStr_en
+                    )
+                  }
                   fontSize="0.9em"
                 />
               </Left>

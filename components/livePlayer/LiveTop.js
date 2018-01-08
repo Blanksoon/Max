@@ -90,8 +90,16 @@ class LiveTop extends Component {
             <Flex>
               <Box w={6 / 12} pl="1rem" bg={color.transDarkblue} p={2}>
                 <TextBig color={color.white}>
-                  {this.props.live.title_en}&nbsp;
-                  {this.props.live.liveDateStr_en}
+                  {this.props.lang === 'en' ? (
+                    this.props.live.title_en
+                  ) : (
+                    this.props.live.title_th
+                  )}&nbsp;
+                  {this.props.lang === 'en' ? (
+                    this.props.live.liveDateStr_en
+                  ) : (
+                    this.props.live.liveDateStr_th
+                  )}
                 </TextBig>
                 <br />
                 <Date color={color.yellow}>
@@ -104,7 +112,9 @@ class LiveTop extends Component {
                   {this.props.live.videoUrl ? null : (
                     <Link href={`/getticket`}>
                       <a>
-                        <Button color={color.red}>Buy Ticket</Button>
+                        <Button color={color.red}>
+                          {this.props.common.BuyTicket}
+                        </Button>
                       </a>
                     </Link>
                   )}
@@ -116,7 +126,7 @@ class LiveTop extends Component {
             <Box pt="1.5rem">
               <center>
                 <Box>
-                  <Text1>LIVE in</Text1>
+                  <Text1>{this.props.common.Livein}</Text1>
                 </Box>
                 <Box>
                   <Text2>
@@ -126,36 +136,38 @@ class LiveTop extends Component {
                     {pad(this.props.countdown.sec)}
                   </Text2>
                 </Box>
-                <Box>
-                  <Text3>
-                    &nbsp;DAY
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HRS
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    MIN
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    SEC
-                  </Text3>
-                </Box>
+                <Flex>
+                  <Box w={3.35 / 12} />
+                  <Box w={1.25 / 12}>
+                    <Text3>{this.props.common.DAY}</Text3>
+                  </Box>
+                  <Box w={1.4 / 12}>
+                    <Text3>{this.props.common.HRS}</Text3>
+                  </Box>
+                  <Box w={1.4 / 12}>
+                    <Text3>{this.props.common.MIN}</Text3>
+                  </Box>
+                  <Box w={1.4 / 12}>
+                    <Text3>{this.props.common.SEC}</Text3>
+                  </Box>
+                </Flex>
                 <br />
                 <br />
                 {this.props.live.videoUrl ? (
                   <Flex pl="30%">
                     <Box pt="0.2rem">
-                      <Text4>
-                        Hooray! This content is already in your subscription
-                        plan.
-                      </Text4>
+                      <Text4>{this.props.common.Hooray}</Text4>
                     </Box>
                   </Flex>
                 ) : (
                   <Flex pl="35%">
                     <Box pt="0.2rem">
-                      <Text4>Hurry up! Buy ticket before live start</Text4>
+                      <Text4>{this.props.common.Hurry}</Text4>
                     </Box>
                     <Box pl="1.5rem">
                       <Link href={`/getticket`}>
                         <a>
-                          <ButtonBlue>BUY</ButtonBlue>
+                          <ButtonBlue>{this.props.common.BuyTicket}</ButtonBlue>
                         </a>
                       </Link>
                     </Box>
@@ -177,8 +189,16 @@ class LiveTop extends Component {
             <Flex>
               <Box w={6 / 12} pl="1rem" bg={color.transDarkblue} p={2}>
                 <TextBig color={color.white}>
-                  {this.props.live.title_en}&nbsp;
-                  {this.props.live.liveDateStr_en}
+                  {this.props.lang === 'en' ? (
+                    this.props.live.title_en
+                  ) : (
+                    this.props.live.title_th
+                  )}&nbsp;
+                  {this.props.lang === 'en' ? (
+                    this.props.live.liveDateStr_en
+                  ) : (
+                    this.props.live.liveDateStr_th
+                  )}
                 </TextBig>
                 <br />
                 <Date color={color.yellow}>
@@ -190,7 +210,9 @@ class LiveTop extends Component {
                 <Box pt="4rem" pl="2rem">
                   <Link href={`/getticket`}>
                     <a>
-                      <Button color={color.red}>Buy Ticket</Button>
+                      <Button color={color.red}>
+                        {this.props.common.BuyTicket}
+                      </Button>
                     </a>
                   </Link>
                 </Box>
@@ -201,18 +223,18 @@ class LiveTop extends Component {
             <Box pt="1.5rem">
               <center>
                 <Box>
-                  <Text1>Now showing</Text1>
+                  <Text1>{this.props.common.Nowshowing}</Text1>
                 </Box>
                 <br />
                 <br />
                 <Flex pl="35%">
                   <Box pt="0.2rem">
-                    <Text4>Hurry up! Buy ticket before live start</Text4>
+                    <Text4>{this.props.common.Hurry}</Text4>
                   </Box>
                   <Box pl="1.5rem">
                     <Link href={`/getticket`}>
                       <a>
-                        <ButtonBlue>BUY</ButtonBlue>
+                        <ButtonBlue>{this.props.common.BuyTicket}</ButtonBlue>
                       </a>
                     </Link>
                   </Box>

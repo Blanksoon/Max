@@ -9,13 +9,13 @@ import 'isomorphic-unfetch'
  * @param {string} baseUrl - Locale location.
  * @return {object} Fetched translation files.
  */
-export async function getTranslation (lang, files, baseUrl) {
+export async function getTranslation(lang, files, baseUrl) {
   let translation = {}
 
   for (let file of files) {
     const response = await fetch(`${baseUrl}${lang}/${file}.json`)
     translation[file] = await response.json()
   }
-
-  return { [lang]: translation }
+  // console.log('dddddddhhh', translation)
+  return { translation }
 }

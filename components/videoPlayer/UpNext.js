@@ -1,18 +1,18 @@
 import ThumbnailVideo from '../thumbnail/ThumbnailVideo'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 
-const renderThumbnail = vod => (
+const renderThumbnail = (lang, vod) => (
   <Box width={1 / 4} key={vod.id} px={2}>
     <ThumbnailVideo
       img={vod.thumbnailUrl}
-      name={vod.title_en}
-      date={vod.onAirDateStr_en}
+      name={lang === 'en' ? vod.title_en : vod.title_th}
+      date={lang === 'en' ? vod.onAirDateStr_en : vod.onAirDateStr_en}
       time={vod.duration}
       id={vod.id}
     />
   </Box>
 )
-const UpNext = ({ name, vods, progname }) => {
+const UpNext = ({ lang, name, vods, progname }) => {
   const relateVods = vods.filter(vod => vod.programName_en == progname)
   //console.log('ddddddddd', progname)
   return (
@@ -26,7 +26,7 @@ const UpNext = ({ name, vods, progname }) => {
             </h2>
           </Box>
         </Flex>
-        <Flex>{relateVods.map(vod => renderThumbnail(vod))}</Flex>
+        <Flex>{relateVods.map(vod => renderThumbnail(lang, vod))}</Flex>
       </Box>
       <style jsx>
         {`
