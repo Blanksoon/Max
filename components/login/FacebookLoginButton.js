@@ -5,6 +5,7 @@ import FacebookLogin from 'react-facebook-login'
 import * as api from '../../api'
 import { fbLogin } from '../../redux/modules/auth'
 import { closeModal } from '../../redux/modules/modal'
+import Router from 'next/router'
 // stagingAppIdFacebook = 450605862001815
 // developAppIdFacebbok = 135776387080938
 // productionAppIdFacebook = 1492448664168205
@@ -22,6 +23,7 @@ class FacebookLoginButton extends React.Component {
     }
     this.props.fbLogin(providerData)
     this.props.closeModal()
+    Router.push(`https://www.maxmuaythai.com/`)
   }
   render() {
     return (

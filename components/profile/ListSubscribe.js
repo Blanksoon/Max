@@ -91,7 +91,7 @@ class ListSubscribe extends Component {
     }
   }
   logout() {
-    Router.push(`https://beta.maxmuaythai.com/`)
+    Router.push(`https://www.maxmuaythai.com/`)
   }
   description(productName) {
     if (productName === 'subscribe vods') {

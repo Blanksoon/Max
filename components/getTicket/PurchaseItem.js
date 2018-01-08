@@ -167,7 +167,7 @@ class PurchaseItem extends React.Component {
       Router.push(`${response.approvalUrl}`)
     } else {
       this.props.closeModal()
-      Router.push(`http://localhost:8080/error`)
+      Router.push(`https://www.maxmuaythai.com/error`)
     }
   }
 
@@ -197,7 +197,7 @@ class PurchaseItem extends React.Component {
       )
       if (response) {
         //this.props.closeModal()
-        Router.push(`${response.url}`)
+        Router.push(`${response.data.url}`)
       }
       //console.log('dddddd333333', response)
     } else {
@@ -229,7 +229,7 @@ class PurchaseItem extends React.Component {
       )
       if (response) {
         this.props.closeModal()
-        Router.push(`${response.url}`)
+        Router.push(`${response.data.url}`)
       }
       //console.log('dddddd333333', response)
       this.setState({ loadingCard: false })
@@ -242,7 +242,7 @@ class PurchaseItem extends React.Component {
       )
       if (response) {
         this.props.closeModal()
-        Router.push(`${response.url}`)
+        Router.push(`${response.data.url}`)
       }
       //console.log('dddddd333333', response)
       this.setState({ loadingCard: false })

@@ -5,6 +5,7 @@ import FacebookLoginButton from '../login/FacebookLoginButton'
 import { ListPurchase } from './ListPurchase'
 import { connect } from 'react-redux'
 import * as api from '../../api'
+import Router from 'next/router'
 
 const WrapperBoxProfile = styled.div`
   margin-left: 1.2rem;
@@ -58,7 +59,7 @@ class PurchaseHistory extends React.Component {
   }
 
   logout() {
-    Router.push(`https://beta.maxmuaythai.com/`)
+    Router.push(`https://www.maxmuaythai.com/`)
   }
 
   async fetchPurchaseHistory() {
