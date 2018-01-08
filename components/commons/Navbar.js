@@ -7,6 +7,7 @@ import NavItem from './NavItem'
 import vars from './vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
 import LoginLang from '../../containers/commons/LoginLang'
+import { translate } from 'react-i18next'
 
 //rgba(1, 15, 30, 0.8)
 const Navbar = styled(Fixed)`
@@ -32,16 +33,17 @@ const Logo = styled(Image)`
   float: right;
   margin-right: 2rem;
 `
-export default class extends Component {
+class NavBar extends React.Component {
   constructor(props) {
     super(props)
+    this.t = props.t
     this.state = {
       navItems: [
-        { label: 'Home', href: '/', active: false },
-        { label: 'Live', href: '/lives', active: false },
-        { label: 'On Demand', href: '/vods', active: false },
-        { label: 'Get Ticket', href: '/getticket', active: false },
-        { label: 'Contact Us', href: '/contact', active: false },
+        { label: this.props.nav.home, href: '/', active: false },
+        { label: this.props.nav.live, href: '/lives', active: false },
+        { label: this.props.nav.vod, href: '/vods', active: false },
+        { label: this.props.nav.buyticket, href: '/getticket', active: false },
+        { label: this.props.nav.contact, href: '/contact', active: false },
       ],
     }
     this.setActiveUrl = this.setActiveUrl.bind(this)
@@ -63,6 +65,7 @@ export default class extends Component {
   }
 
   render() {
+    // console.log('dddddddddd', this.props.nav)
     return (
       <Navbar pathname={this.props.url.pathname} m={0} p={2} top left z={1}>
         <Container>
@@ -81,3 +84,5 @@ export default class extends Component {
     )
   }
 }
+//export default NavBar
+export default translate(['navbar'])(NavBar)
