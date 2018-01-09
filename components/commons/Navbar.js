@@ -53,11 +53,31 @@ class NavBar extends React.Component {
     this.setActiveUrl = this.setActiveUrl.bind(this)
   }
 
+  async componentWillReceiveProps(nextProps) {
+    //console.log('nextProps', nextProps)
+    await this.setState({
+      navItems: [
+        { label: nextProps.common.Home, href: '/', active: false },
+        { label: nextProps.common.Live, href: '/lives', active: false },
+        { label: nextProps.common.vod, href: '/vods', active: false },
+        {
+          label: nextProps.common.GetTicket,
+          href: '/getticket',
+          active: false,
+        },
+        { label: nextProps.common.ContactUs, href: '/contact', active: false },
+      ],
+    })
+    await this.setActiveUrl(nextProps.url.pathname)
+  }
+
   componentWillMount() {
     this.setActiveUrl(this.props.url.pathname)
   }
 
   setActiveUrl(activeUrl) {
+    //console.log('activeUrl', activeUrl)
+    //console.log('state', this.state.navItems[0])
     this.setState({
       navItems: this.state.navItems.map(navItem => {
         if (navItem.href === activeUrl) {
@@ -69,7 +89,9 @@ class NavBar extends React.Component {
   }
 
   render() {
-    console.log('ddddddddddsfs', this.props.www)
+    //console.log('ddddddddddsfs', this.props.www)
+    //console.log('label', this.props.common.Home)
+    //console.log('props', this.props.lang)
     return (
       <Navbar pathname={this.props.url.pathname} m={0} p={2} top left z={1}>
         <Container>

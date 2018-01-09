@@ -48,9 +48,10 @@ export default class extends Component {
     super(props)
     this.setLang = this.setLang.bind(this)
   }
-  setLang(lang) {
-    this.props.setCookie('lang', lang)
-    Router.push(`http://localhost:8080/${this.props.www}`)
+  async setLang(lang) {
+    //console.log('lang', lang)
+    await this.props.setCookie('lang', lang)
+    //Router.push(`http://localhost:8080/${this.props.www}`)
   }
   render() {
     // console.log('dddddddytry', this.props.www)

@@ -88,7 +88,7 @@ const initialState = {
 }
 
 const modalReducer = (state = initialState, action) => {
-  console.log('ifliveProduct', action.type)
+  //console.log('ifliveProduct', action.type)
   switch (action.type) {
     case TOGGLE_MODAL: {
       return {

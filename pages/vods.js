@@ -32,6 +32,7 @@ import {
 import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
+import { langSelector } from '../redux/selectors/lang'
 
 const WrapperNavbar = styled.div`background-color: #009999;`
 const WrapperVod = styled.div`
@@ -42,13 +43,31 @@ import Main from '../layouts/Main'
 class Vods extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      translations: this.props.translations,
+      lang: this.props.lang,
+    }
     this.onFilteredProgramChange = this.onFilteredProgramChange.bind(this)
     this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+    this.switchLang = this.switchLang.bind(this)
+  }
+
+  async switchLang(lang) {
+    this.setState({
+      lang: lang,
+      translations: await getTranslation(
+        lang,
+        ['common', 'navbar'],
+        'http://localhost:8080/static/locales/'
+      ),
+    })
   }
 
   onFilteredProgramChange(event) {
+    console.log('hi')
     const filteredProgram =
       event.target.value === 'All shows' ? '' : event.target.value
+    console.log('filteredProgram', filteredProgram)
     this.props.resetFetchData()
     this.props.setFetchFilter({
       progname: filteredProgram,
@@ -67,13 +86,14 @@ class Vods extends React.Component {
         filteredProgram = filter.progname
       }
     }
-
+    console.log('vods', vods)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
           url={this.props.url}
-          nav={this.props.translations.translation.common}
+          nav={this.state.translations.translation.common}
           www="vods"
+          switchLanguage={this.switchLang}
         >
           <NewModal />
           <div className="videocenter">
@@ -81,13 +101,13 @@ class Vods extends React.Component {
               <Container>
                 <Box pt="20px" bg="white">
                   <VideoBox
-                    lang={this.props.cookie.lang}
-                    common={this.props.translations.translation.common}
+                    lang={this.state.lang}
+                    common={this.state.translations.translation.common}
                     hilight={hilight}
                     vods={vods}
                     numberOfVods={numberOfVods}
                     programEns={
-                      this.props.cookie.lang === 'en' ? (
+                      this.state.lang === 'en' ? (
                         this.props.programs.programname_en
                       ) : (
                         this.props.programs.programname_th
@@ -107,11 +127,12 @@ class Vods extends React.Component {
 }
 const mapStateToProps = async state => {
   //console.log('ddddddd', state)
-  const props = {
+  return {
     hilight: hilightVodSelector(state),
     vods: recentVodsSelector(state),
     numberOfVods: NumberOfVods(state),
     programs: state.program,
+    lang: langSelector(state),
     filter: state.vod.filter,
     token: state.auth.token,
     cookie: state.cookie,
@@ -121,7 +142,6 @@ const mapStateToProps = async state => {
       'http://localhost:8080/static/locales/'
     ),
   }
-  return props
 }
 Vods.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()

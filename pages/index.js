@@ -32,6 +32,7 @@ import { recentVodsSelector } from '../redux/selectors/vod'
 import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
+import { langSelector } from '../redux/selectors/lang'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -74,31 +75,52 @@ let navbar = ''
 class Index extends React.Component {
   constructor(props) {
     super(props)
-
+    this.state = {
+      translations: this.props.translations,
+      lang: this.props.lang,
+    }
     this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+    this.switchLang = this.switchLang.bind(this)
+  }
+
+  async switchLang(lang) {
+    this.setState({
+      lang: lang,
+      translations: await getTranslation(
+        lang,
+        ['common', 'navbar'],
+        'http://localhost:8080/static/locales/'
+      ),
+    })
   }
 
   render() {
-    // console.log('this.props', this.props.url)
+    //console.log('this.props', this.props)
+    //console.log('props', this.props.lang)
     // console.log('ddddddddddprops', this.props)
+    console.log(
+      'this.state',
+      this.state.translations.translation.common.LatestVideo
+    )
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
           url={this.props.url}
-          nav={this.props.translations.translation.common}
-          www="index"
+          nav={this.state.translations.translation.common}
+          www=""
+          switchLanguage={this.switchLang}
         >
           <NewModal />
           <GradientBg>
             <Container>
               <Hero
-                lang={this.props.cookie.lang}
+                lang={this.state.lang}
                 lives={this.props.lives.slice(0, 3)}
-                common={this.props.translations.translation.common}
+                common={this.state.translations.translation.common}
               />
               <LatestVideo
-                lang={this.props.cookie.lang}
-                name={this.props.translations.translation.common.LatestVideo}
+                lang={this.state.lang}
+                name={this.state.translations.translation.common.LatestVideo}
                 vods={this.props.vods.slice(0, 4)}
               />
             </Container>
@@ -108,8 +130,8 @@ class Index extends React.Component {
               <Flex>
                 <Box w={12 / 12} pb="4em" pt="2em">
                   <ComingLive
-                    lang={this.props.cookie.lang}
-                    common={this.props.translations.translation.common}
+                    lang={this.state.lang}
+                    common={this.state.translations.translation.common}
                     lives={this.props.lives}
                   />
                 </Box>
@@ -121,7 +143,7 @@ class Index extends React.Component {
               <Flex>
                 <Box w={12 / 12}>
                   <StadiumTicket
-                    common={this.props.translations.translation.common}
+                    common={this.state.translations.translation.common}
                   />
                 </Box>
               </Flex>
@@ -130,7 +152,7 @@ class Index extends React.Component {
           <WrapperAbout>
             <Container>
               <Box w={12 / 12}>
-                <About common={this.props.translations.translation.common} />
+                <About common={this.state.translations.translation.common} />
               </Box>
             </Container>
           </WrapperAbout>
@@ -141,11 +163,12 @@ class Index extends React.Component {
 }
 
 const mapStateToProps = async state => {
-  // console.log('ddddddsss', state.cookie)
+  //console.log('ddddddsss', state.cookie)
   return {
     cookie: state.cookie,
     lives: dataLivesSelector(state),
     vods: recentVodsSelector(state),
+    lang: langSelector(state),
     translations: await getTranslation(
       state.cookie.lang,
       ['common', 'navbar'],
@@ -153,6 +176,7 @@ const mapStateToProps = async state => {
     ),
   }
 }
+
 Index.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token

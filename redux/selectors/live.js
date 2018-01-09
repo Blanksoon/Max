@@ -7,7 +7,7 @@ export const recentLivesSelector = state => {
 }
 export const currentLiveSelector = state => state.live.data[state.live.current]
 export const dataLivesSelector = state => {
-  console.log('llllll2432348792', state.live.data['59dc6d66af142842d0bc2551'])
+  //console.log('llllll2432348792', state.live.data['59dc6d66af142842d0bc2551'])
   const lives = []
   // for (let i = 0; i < state.live.data.length; i++) {
   //   lives[i] = state.live.data[i]

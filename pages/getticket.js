@@ -21,6 +21,7 @@ import * as api from '../api'
 import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
+import { langSelector } from '../redux/selectors/lang'
 
 const WrapperShowTime = styled.div`
   position: relative;
@@ -30,8 +31,23 @@ const Wrapper = styled.div`background-color: #3c5c83;`
 class selectShowtime extends React.Component {
   constructor(props) {
     super(props)
-
+    this.state = {
+      translations: this.props.translations,
+      lang: this.props.lang,
+    }
     this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+    this.switchLang = this.switchLang.bind(this)
+  }
+
+  async switchLang(lang) {
+    this.setState({
+      lang: lang,
+      translations: await getTranslation(
+        lang,
+        ['common', 'navbar'],
+        'http://localhost:8080/static/locales/'
+      ),
+    })
   }
 
   render() {
@@ -43,16 +59,17 @@ class selectShowtime extends React.Component {
         </Head> */}
         <Main
           url={this.props.url}
-          nav={this.props.translations.translation.common}
+          nav={this.state.translations.translation.common}
           www="getticket"
+          switchLanguage={this.switchLang}
         >
           <NewModal />
           <Wrapper>
             <Container>
               <Box pt="7rem">
                 <ShowTime
-                  common={this.props.translations.translation.common}
-                  lang={this.props.cookie.lang}
+                  common={this.state.translations.translation.common}
+                  lang={this.state.lang}
                 />
               </Box>
             </Container>
@@ -81,6 +98,7 @@ const mapStateToProps = async state => {
     cookie: state.cookie,
     auth: state.auth,
     product: state.product,
+    lang: langSelector(state),
     translations: await getTranslation(
       state.cookie.lang,
       ['common', 'navbar'],

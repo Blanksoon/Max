@@ -22,6 +22,7 @@ import { recentLivesSelector } from '../redux/selectors/live'
 import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
+import { langSelector } from '../redux/selectors/lang'
 
 const Text = styled.div`
   color: #b81111;
@@ -59,6 +60,27 @@ const Wrapper = styled.div`
 const LivePlayer = styled.div`height: 36rem;`
 
 class lives extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      translations: this.props.translations,
+      lang: this.props.lang,
+    }
+    this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+    this.switchLang = this.switchLang.bind(this)
+  }
+
+  async switchLang(lang) {
+    this.setState({
+      lang: lang,
+      translations: await getTranslation(
+        lang,
+        ['common', 'navbar'],
+        'http://localhost:8080/static/locales/'
+      ),
+    })
+  }
+
   renderUI() {
     // console.log('ddddddllllllllllll', this.props)
     const rowLive = []
@@ -76,14 +98,14 @@ class lives extends React.Component {
                   id={this.props.lives[i].id}
                   img={this.props.lives[i].bannerUrl}
                   text1={
-                    this.props.cookie.lang === 'en' ? (
+                    this.state.lang === 'en' ? (
                       this.props.lives[i].title_en
                     ) : (
                       this.props.lives[i].title_th
                     )
                   }
                   text2={
-                    this.props.cookie.lang === 'en' ? (
+                    this.state.lang === 'en' ? (
                       this.props.lives[i].shortDesc1_en
                     ) : (
                       this.props.lives[i].shortDesc1_th
@@ -91,14 +113,14 @@ class lives extends React.Component {
                   }
                   text3={br[i]}
                   text4={
-                    this.props.cookie.lang === 'en' ? (
+                    this.state.lang === 'en' ? (
                       this.props.lives[i].title_en
                     ) : (
                       this.props.lives[i].title_th
                     )
                   }
                   live={this.props.lives[i]}
-                  Watch={this.props.translations.translation.common.Watch}
+                  Watch={this.state.translations.translation.common.Watch}
                 />
               </WrapperThumbnail>
             </Box>
@@ -108,14 +130,14 @@ class lives extends React.Component {
                   id={this.props.lives[i + 1].id}
                   img={this.props.lives[i + 1].bannerUrl}
                   text1={
-                    this.props.cookie.lang === 'en' ? (
+                    this.state.lang === 'en' ? (
                       this.props.lives[i + 1].title_en
                     ) : (
                       this.props.lives[i + 1].title_th
                     )
                   }
                   text2={
-                    this.props.cookie.lang === 'en' ? (
+                    this.state.lang === 'en' ? (
                       this.props.lives[i + 1].shortDesc1_en
                     ) : (
                       this.props.lives[i + 1].shortDesc1_th
@@ -123,14 +145,14 @@ class lives extends React.Component {
                   }
                   text3={br[i + 1]}
                   text4={
-                    this.props.cookie.lang === 'en' ? (
+                    this.state.lang === 'en' ? (
                       this.props.lives[i + 1].title_en
                     ) : (
                       this.props.lives[i + 1].title_th
                     )
                   }
                   live={this.props.lives[i + 1]}
-                  Watch={this.props.translations.translation.common.Watch}
+                  Watch={this.state.translations.translation.common.Watch}
                 />
               </WrapperThumbnail>
             </Box>
@@ -147,14 +169,14 @@ class lives extends React.Component {
                   id={this.props.lives[i].id}
                   img={this.props.lives[i].bannerUrl}
                   text1={
-                    this.props.cookie.lang === 'en' ? (
+                    this.state.lang === 'en' ? (
                       this.props.lives[i].title_en
                     ) : (
                       this.props.lives[i].title_th
                     )
                   }
                   text2={
-                    this.props.cookie.lang === 'en' ? (
+                    this.state.lang === 'en' ? (
                       this.props.lives[i].shortDesc1_en
                     ) : (
                       this.props.lives[i].shortDesc1_en
@@ -162,14 +184,14 @@ class lives extends React.Component {
                   }
                   text3={br[i]}
                   text4={
-                    this.props.cookie.lang === 'en' ? (
+                    this.state.lang === 'en' ? (
                       this.props.lives[i].title_en
                     ) : (
                       this.props.lives[i].title_th
                     )
                   }
                   live={this.props.lives[i]}
-                  Watch={this.props.translations.translation.common.Watch}
+                  Watch={this.state.translations.translation.common.Watch}
                 />
               </WrapperThumbnail>
             </Box>
@@ -179,14 +201,14 @@ class lives extends React.Component {
                   id={this.props.lives[i + 1].id}
                   img={this.props.lives[i + 1].bannerUrl}
                   text1={
-                    this.props.cookie.lang === 'en' ? (
+                    this.state.lang === 'en' ? (
                       this.props.lives[i + 1].title_en
                     ) : (
                       this.props.lives[i + 1].title_th
                     )
                   }
                   text2={
-                    this.props.cookie.lang === 'en' ? (
+                    this.state.lang === 'en' ? (
                       this.props.lives[i + 1].shortDesc1_en
                     ) : (
                       this.props.lives[i + 1].shortDesc1_en
@@ -194,14 +216,14 @@ class lives extends React.Component {
                   }
                   text3={br[i + 1]}
                   text4={
-                    this.props.cookie.lang === 'en' ? (
+                    this.state.lang === 'en' ? (
                       this.props.lives[i + 1].title_en
                     ) : (
                       this.props.lives[i + 1].title_th
                     )
                   }
                   live={this.props.lives[i + 1]}
-                  Watch={this.props.translations.translation.common.Watch}
+                  Watch={this.state.translations.translation.common.Watch}
                 />
               </WrapperThumbnail>
             </Box>
@@ -217,14 +239,14 @@ class lives extends React.Component {
                 id={this.props.lives[n].id}
                 img={this.props.lives[n].bannerUrl}
                 text1={
-                  this.props.cookie.lang === 'en' ? (
+                  this.state.lang === 'en' ? (
                     this.props.lives[n].title_en
                   ) : (
                     this.props.lives[n].title_th
                   )
                 }
                 text2={
-                  this.props.cookie.lang === 'en' ? (
+                  this.state.lang === 'en' ? (
                     this.props.lives[n].shortDesc1_en
                   ) : (
                     this.props.lives[n].shortDesc1_en
@@ -232,14 +254,14 @@ class lives extends React.Component {
                 }
                 text3={br[n]}
                 text4={
-                  this.props.cookie.lang === 'en' ? (
+                  this.state.lang === 'en' ? (
                     this.props.lives[n].title_en
                   ) : (
                     this.props.lives[n].title_th
                   )
                 }
                 live={this.props.lives[n]}
-                Watch={this.props.translations.translation.common.Watch}
+                Watch={this.state.translations.translation.common.Watch}
               />
             </WrapperThumbnail>
           </Box>
@@ -250,25 +272,21 @@ class lives extends React.Component {
     return rowLive
   }
 
-  constructor(props) {
-    super(props)
-
-    this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
-  }
   render() {
     // console.log('dddddddddd', this.props.translations.translation.common)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
           url={this.props.url}
-          nav={this.props.translations.translation.common}
+          nav={this.state.translations.translation.common}
           www="lives"
+          switchLanguage={this.switchLang}
         >
           <NewModal />
           <Wrapper>
             <Container>
               <Box pl="1.5rem" bg="#fff" pt="8rem" pb="2rem">
-                <Text>{this.props.translations.translation.common.LIVE}</Text>
+                <Text>{this.state.translations.translation.common.LIVE}</Text>
               </Box>
               {this.renderUI()}
             </Container>
@@ -280,10 +298,11 @@ class lives extends React.Component {
 }
 
 const mapStateToProps = async state => {
-  console.log('ddddddddddddddsss', state)
+  //console.log('ddddddddddddddsss', state)
   return {
     lives: recentLivesSelector(state),
     cookie: state.cookie,
+    lang: langSelector(state),
     translations: await getTranslation(
       state.cookie.lang,
       ['common', 'navbar'],

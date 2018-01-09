@@ -29,6 +29,7 @@ import {
 import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
+import { langSelector } from '../redux/selectors/lang'
 
 const WrapperStadiumTicket = styled.div`
   color: #ffffff;
@@ -48,9 +49,12 @@ class LiveVdo extends Component {
       countdown: dateDiff(curDate, liveDate),
       liveNow: liveDate.getTime() - curDate.getTime() < 0,
       i: 0,
+      translations: this.props.translations,
+      lang: this.props.lang,
     }
     this.state.renderUI = this.getRenderUI(this.state)
     this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+    this.switchLang = this.switchLang.bind(this)
   }
   getRenderUI(state) {
     if (!state.liveNow) {
@@ -79,14 +83,32 @@ class LiveVdo extends Component {
       })
     }, 1000)
   }
+
+  async switchLang(lang) {
+    this.setState({
+      lang: lang,
+      translations: await getTranslation(
+        lang,
+        ['common', 'navbar'],
+        'http://localhost:8080/static/locales/'
+      ),
+    })
+  }
+
   render() {
     const { url, live, vods } = this.props
     const { countdown } = this.state
-    const common = this.props.translations.translation.common
-    // console.log('ddddddd', this.props)
+    const common = this.state.translations.translation.common
+    const path = `lives/${this.props.live.id}`
+    //console.log('ddddddd', this.props)
     return (
       <I18nextProvider i18n={this.i18n}>
-        <Main url={url} nav={this.props.translations.translation.common}>
+        <Main
+          url={url}
+          nav={this.state.translations.translation.common}
+          www={path}
+          switchLanguage={this.switchLang}
+        >
           <NewModal />
           <div style={{ paddingTop: '2rem' }}>
             <WrapperLivePlayer color={color}>
@@ -117,7 +139,7 @@ class LiveVdo extends Component {
                 <Flex>
                   <Box w={12 / 12} bg="white">
                     <LiveDescription
-                      lang={this.props.cookie.lang}
+                      lang={this.state.lang}
                       common={common}
                       live={live}
                     />
@@ -134,9 +156,8 @@ class LiveVdo extends Component {
               <Container>
                 <Flex>
                   <Box w={12 / 12} bg="white">
-                    {console.log(vods)}
                     <UpNext
-                      lang={this.props.cookie.lang}
+                      lang={this.state.lang}
                       name={common.THISSHOWRELATEDVIDEO}
                       vods={vods}
                       progname={live.programName}
@@ -170,8 +191,9 @@ const mapStateToProps = async state => {
     ['common', 'navbar'],
     'http://localhost:8080/static/locales/'
   )
+  const lang = langSelector(state)
   //console.log('vods', vods)
-  return { live, vods, translations, cookie }
+  return { live, vods, translations, cookie, lang }
 }
 LiveVdo.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()

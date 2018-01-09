@@ -34,6 +34,9 @@ export default ({
   } else {
     all = 'ทั้งหมด'
   }
+  //console.log('filteredProgram', filteredProgram)
+  //console.log('onFilteredProgramChange', onFilteredProgramChange)
+  //console.log('programEns', programEns)
   return (
     <div className="LabelSearch">
       <Flex pb="1rem">

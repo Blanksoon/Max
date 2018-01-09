@@ -76,7 +76,7 @@ export const fetchVodOnDemand = token => async (dispatch, getState) => {
     token,
   }
   const queryStr = querystring.stringify(query)
-  console.log('queryStr', queryStr)
+  //console.log('queryStr', queryStr)
   const url = `${api.SERVER}/vods-ondemand?${queryStr}`
   try {
     const json = await api.get(url)
@@ -113,9 +113,11 @@ export const setFetchFilter = filter => {
     payload: filter,
   }
 }
-export const resetFetchData = () => ({
-  type: RESET_FETCH_DATA,
-})
+export const resetFetchData = () => {
+  return {
+    type: RESET_FETCH_DATA,
+  }
+}
 
 export const fetchFeaturedVodReq = () => ({
   type: FETCH_FEATURED_VOD_REQ,
@@ -129,6 +131,7 @@ export const fetchFeaturedVod = token => async dispatch => {
   const url = `${api.SERVER}/vods-feature?token=${token}`
   try {
     const json = await api.get(url)
+    console.log('json', json)
     dispatch(fetchFeaturedVodSuccess(json.data))
   } catch (error) {
     console.log(error)

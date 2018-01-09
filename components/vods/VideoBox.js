@@ -112,6 +112,7 @@ class VideoBox extends Component {
       //this.props.startindex(4)
       return vod.programName_en === filteredProgram
     })
+    //console.log('filteredProgram', filteredVods)
     if (this.state.vodmax === 0) {
       renderUI = (
         <Button onClick={this.check} className="button-hunger">

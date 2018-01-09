@@ -21,7 +21,7 @@ import { recentLivesSelector } from '../redux/selectors/live'
 import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
-
+import { langSelector } from '../redux/selectors/lang'
 const Wrapper = styled.div`font-family: Helvetica, Arial, sans-serif;`
 const Background = styled.div`background-color: ${props => props.color};`
 const WrapperAbout = styled.div`
@@ -37,16 +37,33 @@ const WrapperAbout = styled.div`
 class Contact extends Component {
   constructor(props) {
     super(props)
-
+    this.state = {
+      translations: this.props.translations,
+      lang: this.props.lang,
+    }
     this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+    this.switchLang = this.switchLang.bind(this)
   }
+
+  async switchLang(lang) {
+    this.setState({
+      lang: lang,
+      translations: await getTranslation(
+        lang,
+        ['common', 'navbar'],
+        'http://localhost:8080/static/locales/'
+      ),
+    })
+  }
+
   render() {
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
           url={this.props.url}
-          nav={this.props.translations.translation.common}
+          nav={this.state.translations.translation.common}
           www="contact"
+          switchLanguage={this.switchLang}
         >
           <NewModal />
           <Wrapper>
@@ -55,7 +72,7 @@ class Contact extends Component {
                 <Box w={12 / 12}>
                   <About
                     paddingTop="80px"
-                    common={this.props.translations.translation.common}
+                    common={this.state.translations.translation.common}
                   />
                 </Box>
               </Container>
@@ -79,6 +96,7 @@ const mapStateToProps = async state => {
   return {
     lives: recentLivesSelector(state),
     cookie: state.cookie,
+    lang: langSelector(state),
     translations: await getTranslation(
       state.cookie.lang,
       ['common', 'navbar'],
