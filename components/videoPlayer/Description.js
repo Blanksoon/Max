@@ -7,7 +7,7 @@ const BackVideo = styled.div`
   padding-top: 6px;
   padding-bottom: 6px;
 `
-const Description = ({ vod }) => (
+const Description = ({ lang, common, vod }) => (
   <div className="Description">
     <Flex pl="1rem">
       <Box width={1 / 12} pt="2%" mr="2%">
@@ -15,7 +15,7 @@ const Description = ({ vod }) => (
       </Box>
       <Box width={9 / 12} pb={1} pt={3}>
         <h2>
-          <b>{vod.title_en}</b>
+          <b>{lang === 'en' ? vod.title_en : vod.title_th}</b>
         </h2>
       </Box>
     </Flex>
@@ -23,7 +23,10 @@ const Description = ({ vod }) => (
       <Box width={5 / 12}>
         <div className="livetelecom">
           <h4>
-            <b>On air - {vod.onAirDateStr_en}</b>
+            <b>
+              {common.ONAIR} -{' '}
+              {lang === 'en' ? vod.onAirDateStr_en : vod.onAirDateStr_th}
+            </b>
           </h4>
         </div>
       </Box>
@@ -49,7 +52,7 @@ const Description = ({ vod }) => (
       <hr size="0.1" />
     </Box>
     <Box width={1} pb={3} pl="1rem" pr="1rem">
-      <P>{vod.desc_en}</P>
+      <P>{lang === 'en' ? vod.desc_en : vod.desc_en}</P>
     </Box>
     <style jsx>
       {`

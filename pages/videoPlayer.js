@@ -55,6 +55,7 @@ class videoPlayer extends React.Component {
     const curDate = new Date()
     this.state = {
       translations: this.props.translations,
+      common: this.props.translations.translation.common,
       lang: this.props.lang,
       sec: 0,
     }
@@ -113,7 +114,7 @@ class videoPlayer extends React.Component {
                 <Box pt="17rem">
                   <Link href={`/getticket`}>
                     {/* <a> */}
-                    <Button>Buy Ticket</Button>
+                    <Button>{this.state.common.BuyTicket}</Button>
                     {/* </a> */}
                   </Link>
                 </Box>
@@ -128,15 +129,26 @@ class videoPlayer extends React.Component {
       }
       renderUpnext = (
         <UpNext
-          name="Up next"
+          name={this.state.common.UPNEXT}
           vods={vods}
-          progname={vod.programName_en}
+          progname={
+            this.state.lang === 'en' ? vod.programName_en : vod.programName_en
+          }
           lang={this.state.lang}
         />
       )
-      renderDescription = <Description vod={vod} />
+      renderDescription = (
+        <Description
+          lang={this.state.lang}
+          common={this.state.common}
+          vod={vod}
+        />
+      )
     }
-    //console.log('ddddddddddfsadfasdf', this.props)
+    // console.log(
+    //   'ddddddddddfsadfasdf',
+    //   this.state.translations.translation.common
+    // )
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
@@ -149,7 +161,10 @@ class videoPlayer extends React.Component {
             <Container>
               <Flex>
                 <Box w={12 / 12} pt="2rem">
-                  <BackVideoCenter name="Back to On Demand" url={url} />
+                  <BackVideoCenter
+                    name={this.state.common.BACKTOONDEMAND}
+                    url={url}
+                  />
                 </Box>
               </Flex>
             </Container>
@@ -183,9 +198,7 @@ class videoPlayer extends React.Component {
             <Container>
               <Flex>
                 <Box w={12 / 12}>
-                  <StadiumTicket
-                    common={this.state.translations.translation.common}
-                  />
+                  <StadiumTicket common={this.state.common} />
                 </Box>
               </Flex>
             </Container>
