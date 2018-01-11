@@ -67,7 +67,7 @@ class ReactJWPlayerContainer extends React.Component {
         image: 'https://link-to-my-other-poster.jpg',
       },
     ]
-    console.log('props', this.props)
+    //console.log('props', this.props)
     //"http://p.jwpcdn.com/player/v/7.1.4/jwplayer.js"
     return (
       <div className="react-jw-player-container">

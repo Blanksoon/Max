@@ -24,6 +24,7 @@ import {
 import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
+import { langSelector, switchLangSelector } from '../redux/selectors/lang'
 
 const WrapperStadiumTicket = styled.div`
   color: #ffffff;
@@ -53,9 +54,12 @@ class videoPlayer extends React.Component {
     super(props)
     const curDate = new Date()
     this.state = {
+      translations: this.props.translations,
+      lang: this.props.lang,
       sec: 0,
     }
     this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+    this.switchLang = this.switchLang.bind(this)
   }
   componentWillUnmount() {
     clearInterval(this.timerId)
@@ -83,6 +87,16 @@ class videoPlayer extends React.Component {
         sec: this.state.sec + 1,
       })
     }, 1000)
+  }
+  async switchLang(lang) {
+    this.setState({
+      lang: lang,
+      translations: await getTranslation(
+        lang,
+        ['common', 'navbar'],
+        'http://localhost:8080/static/locales/'
+      ),
+    })
   }
   render() {
     const { url, vod, vods, token } = this.props
@@ -113,14 +127,23 @@ class videoPlayer extends React.Component {
         renderUI = <Players Url={vod.videoUrl} />
       }
       renderUpnext = (
-        <UpNext name="Up next" vods={vods} progname={vod.programName_en} />
+        <UpNext
+          name="Up next"
+          vods={vods}
+          progname={vod.programName_en}
+          lang={this.state.lang}
+        />
       )
       renderDescription = <Description vod={vod} />
     }
-    console.log('ddddddddddfsadfasdf', this.props)
+    //console.log('ddddddddddfsadfasdf', this.props)
     return (
       <I18nextProvider i18n={this.i18n}>
-        <Main url={url} nav={this.props.translations.translation.common}>
+        <Main
+          url={url}
+          nav={this.state.translations.translation.common}
+          switchLanguage={this.switchLang}
+        >
           <NewModal />
           <div className="wrapper-BackVideoCenter">
             <Container>
@@ -161,7 +184,7 @@ class videoPlayer extends React.Component {
               <Flex>
                 <Box w={12 / 12}>
                   <StadiumTicket
-                    common={this.props.translations.translation.common}
+                    common={this.state.translations.translation.common}
                   />
                 </Box>
               </Flex>
@@ -173,7 +196,7 @@ class videoPlayer extends React.Component {
   }
 }
 
-const mapStateToProps = async state => {
+const mapStateToProps = state => {
   const vod = currentVodSelector(state)
   let vods = ''
   if (vod !== undefined) {
@@ -181,12 +204,8 @@ const mapStateToProps = async state => {
   }
   const token = state.auth.token
   const cookie = state.cookie
-  const translations = await getTranslation(
-    state.cookie.lang,
-    ['common', 'navbar'],
-    'http://localhost:8080/static/locales/'
-  )
-  return { vod, vods, token, cookie, translations }
+  const lang = langSelector(state)
+  return { vod, vods, token, cookie, lang }
 }
 videoPlayer.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
@@ -205,7 +224,13 @@ videoPlayer.getInitialProps = async ({ store, isServer, query, req }) => {
   await fetchVods(token)(store.dispatch, store.getState)
 
   state = store.getState()
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    'http://localhost:8080/static/locales/'
+  )
   const props = mapStateToProps(state)
+  props.translations = translations
   return props
 }
 

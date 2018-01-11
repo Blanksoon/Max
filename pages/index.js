@@ -98,10 +98,10 @@ class Index extends React.Component {
     //console.log('this.props', this.props)
     //console.log('props', this.props.lang)
     // console.log('ddddddddddprops', this.props)
-    console.log(
-      'this.state',
-      this.state.translations.translation.common.LatestVideo
-    )
+    // console.log(
+    //   'this.state',
+    //   this.state.translations.translation.common.LatestVideo
+    // )
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
@@ -162,18 +162,13 @@ class Index extends React.Component {
   }
 }
 
-const mapStateToProps = async state => {
+const mapStateToProps = state => {
   //console.log('ddddddsss', state.cookie)
   return {
     cookie: state.cookie,
     lives: dataLivesSelector(state),
     vods: recentVodsSelector(state),
     lang: langSelector(state),
-    translations: await getTranslation(
-      state.cookie.lang,
-      ['common', 'navbar'],
-      'http://localhost:8080/static/locales/'
-    ),
   }
 }
 
@@ -184,7 +179,13 @@ Index.getInitialProps = async ({ store, isServer, query, req }) => {
   const vodPromise = fetchVods(token)(store.dispatch, store.getState)
   await Promise.all([livePromise, vodPromise])
   state = store.getState()
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    'http://localhost:8080/static/locales/'
+  )
   const props = mapStateToProps(state)
+  props.translations = translations
   return props
 }
 

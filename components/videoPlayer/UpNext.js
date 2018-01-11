@@ -5,8 +5,8 @@ const renderThumbnail = (lang, vod) => (
   <Box width={1 / 4} key={vod.id} px={2}>
     <ThumbnailVideo
       img={vod.thumbnailUrl}
-      name={lang === 'en' ? vod.title_en : vod.title_th}
-      date={lang === 'en' ? vod.onAirDateStr_en : vod.onAirDateStr_en}
+      name={lang === 'en' ? vod.programName_en : vod.programName_th}
+      date={lang === 'en' ? vod.onAirDateStr_en : vod.onAirDateStr_th}
       time={vod.duration}
       id={vod.id}
     />

@@ -32,7 +32,7 @@ import {
 import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
-import { langSelector } from '../redux/selectors/lang'
+import { langSelector, switchLangSelector } from '../redux/selectors/lang'
 
 const WrapperNavbar = styled.div`background-color: #009999;`
 const WrapperVod = styled.div`
@@ -63,11 +63,11 @@ class Vods extends React.Component {
     })
   }
 
-  onFilteredProgramChange(event) {
-    console.log('hi')
+  async onFilteredProgramChange(event) {
+    //console.log('hi')
     const filteredProgram =
       event.target.value === 'All shows' ? '' : event.target.value
-    console.log('filteredProgram', filteredProgram)
+    //console.log('filteredProgram', filteredProgram)
     this.props.resetFetchData()
     this.props.setFetchFilter({
       progname: filteredProgram,
@@ -78,6 +78,10 @@ class Vods extends React.Component {
     this.props.fetchVodOnDemand(this.props.token)
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log('1111111111111111', nextProps)
+  }
+
   render() {
     const { hilight, vods, filter, numberOfVods } = this.props
     let filteredProgram = ''
@@ -86,7 +90,7 @@ class Vods extends React.Component {
         filteredProgram = filter.progname
       }
     }
-    console.log('vods', vods)
+    console.log('vods', typeof this.props)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
@@ -125,7 +129,7 @@ class Vods extends React.Component {
     )
   }
 }
-const mapStateToProps = async state => {
+const mapStateToProps = state => {
   //console.log('ddddddd', state)
   return {
     hilight: hilightVodSelector(state),
@@ -136,11 +140,6 @@ const mapStateToProps = async state => {
     filter: state.vod.filter,
     token: state.auth.token,
     cookie: state.cookie,
-    translations: await getTranslation(
-      state.cookie.lang,
-      ['common', 'navbar'],
-      'http://localhost:8080/static/locales/'
-    ),
   }
 }
 Vods.getInitialProps = async ({ store, isServer, query, req }) => {
@@ -157,7 +156,13 @@ Vods.getInitialProps = async ({ store, isServer, query, req }) => {
   const programsPromise = fetchPrograms()(store.dispatch)
   await Promise.all([vodsPromise, featuredPromise, programsPromise])
   state = store.getState()
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    'http://localhost:8080/static/locales/'
+  )
   const props = mapStateToProps(state)
+  props.translations = translations
   return props
 }
 
