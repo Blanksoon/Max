@@ -93,17 +93,12 @@ class selectShowtime extends React.Component {
   }
 }
 
-const mapStateToProps = async state => {
+const mapStateToProps = state => {
   return {
     cookie: state.cookie,
     auth: state.auth,
     product: state.product,
     lang: langSelector(state),
-    translations: await getTranslation(
-      state.cookie.lang,
-      ['common', 'navbar'],
-      'http://localhost:8080/static/locales/'
-    ),
   }
 }
 
@@ -113,7 +108,13 @@ selectShowtime.getInitialProps = async ({ store, isServer, query, req }) => {
   const productPromise = fetchProducts(token)(store.dispatch)
   await Promise.all([productPromise])
   state = store.getState()
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    'http://localhost:8080/static/locales/'
+  )
   const props = mapStateToProps(state)
+  props.translations = translations
   return props
 }
 

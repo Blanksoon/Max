@@ -92,16 +92,11 @@ class Contact extends Component {
   }
 }
 
-const mapStateToProps = async state => {
+const mapStateToProps = state => {
   return {
     lives: recentLivesSelector(state),
     cookie: state.cookie,
     lang: langSelector(state),
-    translations: await getTranslation(
-      state.cookie.lang,
-      ['common', 'navbar'],
-      'http://localhost:8080/static/locales/'
-    ),
   }
 }
 Contact.getInitialProps = async ({ store, isServer, query, req }) => {
@@ -109,7 +104,13 @@ Contact.getInitialProps = async ({ store, isServer, query, req }) => {
   const token = state.auth.token
   const response = await fetchLives(token)(store.dispatch)
   state = store.getState()
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    'http://localhost:8080/static/locales/'
+  )
   const props = mapStateToProps(state)
+  props.translations = translations
   return props
 }
 export default withRedux(initStore, null, {

@@ -181,16 +181,11 @@ class LiveVdo extends Component {
     )
   }
 }
-const mapStateToProps = async state => {
+const mapStateToProps = state => {
   const live = currentLiveSelector(state)
   //console.log('live', live)
   const vods = relatedVodsSelector(live.programName)(state)
   const cookie = state.cookie
-  const translations = await getTranslation(
-    state.cookie.lang,
-    ['common', 'navbar'],
-    'http://localhost:8080/static/locales/'
-  )
   const lang = langSelector(state)
   //console.log('vods', vods)
   return { live, vods, translations, cookie, lang }
@@ -212,7 +207,13 @@ LiveVdo.getInitialProps = async ({ store, isServer, query, req }) => {
   await fetchVods(token)(store.dispatch, store.getState)
 
   state = store.getState()
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    'http://localhost:8080/static/locales/'
+  )
   const props = mapStateToProps(state)
+  props.translations = translations
   return props
 }
 
