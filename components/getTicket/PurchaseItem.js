@@ -143,8 +143,6 @@ class PurchaseItem extends React.Component {
   }
 
   componentWillMount() {
-    console.log('ddddddd1111')
-
     const script = document.createElement('script')
 
     script.src = '//checkout.stripe.com/v2/checkout.js'
@@ -153,7 +151,7 @@ class PurchaseItem extends React.Component {
 
     document.body.appendChild(script)
 
-    console.log('ddddddd2222', script)
+    //console.log('ddddddd2222', script)
   }
 
   async purchasePayPal() {
@@ -259,10 +257,20 @@ class PurchaseItem extends React.Component {
   render() {
     // console.log('response', this.props.auth.token)
     //console.log('sxxxxx', this.props)
+    const {
+      YOURSELECT,
+      SUBSCRIBEPACKAGE,
+      ONETIMEPACKAGE,
+      PAYMENTMETHOD,
+      SUBVODONDEMAND,
+      SUBLIVEANDVOD,
+    } = this.props.commonInPurchaseItem
     let renderUI = <div />
     let packagee = 'SUBSCRIBE VDO ON DEMAND'
+    let nameOfPackage = SUBVODONDEMAND
     let img = 'static/ondemand.jpg'
     let amo = this.props.product.price * 100
+    //console.log('commonInPurchaseItem', this.props.commonInPurchaseItem)
     // console.log('iffffffffff', this.props)
     if (this.props.id == 'live') {
       // console.log('if11111111111')
@@ -270,8 +278,8 @@ class PurchaseItem extends React.Component {
         <Wrapper>
           <WrapperTop>
             <Box pl="3em" pr="3em" pt="1em" pb="1em">
-              <Text1>YOUR SELECT</Text1>
-              <Text2>1 TIME LIVE STREAMING PACKGAE.</Text2>
+              <Text1>{YOURSELECT}</Text1>
+              <Text2>{ONETIMEPACKAGE}</Text2>
             </Box>
           </WrapperTop>
           <WrapperDown>
@@ -283,10 +291,22 @@ class PurchaseItem extends React.Component {
                 <Image width="100%" src={this.props.product.bannerUrl} />
               </Box>
               <Box w={6 / 12} pl="0.5em">
-                <Text3>{this.props.product.programName}</Text3>
+                <Text3>
+                  {this.props.lang === 'en' ? (
+                    this.props.product.title_en
+                  ) : (
+                    this.props.product.title_th
+                  )}
+                </Text3>
                 <Flex pt="0.5em">
                   <Box w={12 / 12}>
-                    <Date>{this.props.product.liveDateStr_en}</Date>
+                    <Date>
+                      {this.props.lang === 'en' ? (
+                        this.props.product.liveDateStr_en
+                      ) : (
+                        this.props.product.liveDateStr_th
+                      )}
+                    </Date>
                   </Box>
                   {/* <Box w={6 / 12}>
                   <Time>07.20-09.50 pm.</Time>
@@ -311,7 +331,7 @@ class PurchaseItem extends React.Component {
             />
           </Box> */}
             <Box pl="3em" pr="3em" pt="1em">
-              <Text2>SELECT PAYMENT METHOD</Text2>
+              <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
             <Flex pl="3em" pr="3em" pt="1em">
               <Box w={6 / 12} pr="0.5em">
@@ -385,14 +405,15 @@ class PurchaseItem extends React.Component {
       // console.log('if22222222222222222', this.props)
       if (this.props.product.productId === '2002') {
         packagee = 'SUBSCRIBE VDO AND LIVE STREAMING'
+        nameOfPackage = SUBLIVEANDVOD
         img = 'static/subandvod.jpg'
       }
       renderUI = (
         <Wrapper>
           <WrapperTop>
             <Box pl="3em" pr="3em" pt="1em" pb="1em">
-              <Text1>YOUR SELECT</Text1>
-              <Text2>1 TIME LIVE STREAMING PACKGAE.</Text2>
+              <Text1>{YOURSELECT}</Text1>
+              <Text2>{SUBSCRIBEPACKAGE}</Text2>
             </Box>
           </WrapperTop>
           <WrapperDown>
@@ -404,7 +425,7 @@ class PurchaseItem extends React.Component {
                 <Image width="100%" src={img} />
               </Box>
               <Box w={6 / 12} pl="0.5em">
-                <Text3>{packagee}</Text3>
+                <Text3>{nameOfPackage}</Text3>
                 <WrapperPrice>
                   <Text3>${this.props.product.price}</Text3>
                 </WrapperPrice>
@@ -424,7 +445,7 @@ class PurchaseItem extends React.Component {
           />
         </Box> */}
             <Box pl="3em" pr="3em" pt="2.2em">
-              <Text2>SELECT PAYMENT METHOD</Text2>
+              <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
             <Flex pl="3em" pr="3em" pt="2em" pb="3em">
               <Box w={6 / 12} pr="0.5em">

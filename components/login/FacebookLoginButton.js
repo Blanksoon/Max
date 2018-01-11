@@ -35,7 +35,7 @@ class FacebookLoginButton extends React.Component {
           autoLoad={false}
           fields="name,email,id,gender,locale,age_range,birthday,picture,first_name,last_name"
           cssClass="loginBtn loginBtn--facebook"
-          textButton="Login with Facebook"
+          textButton={this.props.textButton}
           callback={this.facebookResponse}
         />
         <style jsx global>

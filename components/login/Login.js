@@ -115,7 +115,6 @@ class Login extends React.Component {
       })
       //console.log('false')
     }
-    console.log('ddddddd')
     Router.push(`https://www.maxmuaythai.com/`)
     this.setState({ loading: false })
   }
@@ -139,6 +138,15 @@ class Login extends React.Component {
   }
   render() {
     //console.log('props', this.props)
+    const {
+      LOGIN,
+      EMAIL,
+      FORGOTPASSWORD,
+      PASSWORD,
+      LOGINBUTTON,
+      REGISTERWITHEMAIL,
+      FACEBOOKBUTTON,
+    } = this.props.commonInLogin
     return (
       <Provider>
         <div>
@@ -147,7 +155,7 @@ class Login extends React.Component {
               <Image width="100%" src="../../static/img_login.png" />
             </Box>
             <Box pl="3rem">
-              <Text1>LOG IN</Text1>
+              <Text1>{LOGIN}</Text1>
             </Box>
             <Flex pt="0.5rem" pl="3rem" pr="3rem">
               <Box w={5 / 12}>
@@ -155,13 +163,13 @@ class Login extends React.Component {
                   <form>
                     <Box w={1}>
                       <Input
-                        placeholder="Email"
+                        placeholder={EMAIL}
                         onChange={this.handleOnChangeId}
                       />
                     </Box>
                     <Box>
                       <Input
-                        placeholder="Password"
+                        placeholder={PASSWORD}
                         type="password"
                         onChange={this.handleOnChangePassword}
                       />
@@ -175,13 +183,13 @@ class Login extends React.Component {
                           onClick={this.loginLocal}
                           disabled={this.state.loading}
                         >
-                          {this.state.loading ? <Spinner /> : 'Log in'}
+                          {this.state.loading ? <Spinner /> : `${LOGINBUTTON}`}
                         </Button>{' '}
                         <a href="#">
                           <WrapperForgot>
                             <ModalRegister
                               modalType={7}
-                              text="Forgot password"
+                              text={FORGOTPASSWORD}
                             />
                           </WrapperForgot>
                         </a>
@@ -192,10 +200,10 @@ class Login extends React.Component {
               </Box>
               <Box w={7 / 12}>
                 <center>
-                  <FacebookLoginButton />
+                  <FacebookLoginButton textButton={FACEBOOKBUTTON} />
                   <Box pt="1rem">
                     <a href="#">
-                      <ModalRegister modalType={4} text="Register with email" />
+                      <ModalRegister modalType={4} text={REGISTERWITHEMAIL} />
                     </a>
                   </Box>
                 </center>

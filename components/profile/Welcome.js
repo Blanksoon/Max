@@ -35,7 +35,9 @@ class Welcome extends React.Component {
   render() {
     return (
       <Box w={12 / 12} pb="1rem">
-        <Text1>WELCOME BACK, {this.state.email}</Text1>
+        <Text1>
+          {this.props.common.WELCOMEBACK}, {this.state.email}
+        </Text1>
       </Box>
     )
   }

@@ -165,7 +165,7 @@ export default class Modal extends Component {
       //login
       renderUI = (
         <WrapperLogin onClick={e => this.handleOnClick(e)}>
-          <Login />
+          <Login commonInLogin={this.props.common} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>
@@ -175,7 +175,10 @@ export default class Modal extends Component {
       //register
       renderUI = (
         <WrapperRegister onClick={e => this.handleOnClick(e)}>
-          <Register closeModal={this.props.closeModal} />
+          <Register
+            closeModal={this.props.closeModal}
+            commonInRegister={this.props.common}
+          />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>
@@ -185,7 +188,7 @@ export default class Modal extends Component {
       //changePassword_step1
       renderUI = (
         <WrapperChangePass onClick={e => this.handleOnClick(e)}>
-          <ChangePassStep1 />
+          <ChangePassStep1 common={this.props.common} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>
@@ -205,7 +208,10 @@ export default class Modal extends Component {
       //Forgot password
       renderUI = (
         <WrapperRegister onClick={e => this.handleOnClick(e)}>
-          <ForgotPassword closeModal={this.props.closeModal} />
+          <ForgotPassword
+            closeModal={this.props.closeModal}
+            commonInForgotPassword={this.props.common}
+          />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>
@@ -213,10 +219,15 @@ export default class Modal extends Component {
       )
     } else if (this.props.modalType === 8) {
       // Purchase
-      console.log('ifffffff', this.props)
+      //console.log('ifffffff', this.props.common)
       renderUI = (
         <WrapperPurchaseItem onClick={e => this.handleOnClick(e)}>
-          <PurchaseItem product={this.props.product} id={this.props.id} />
+          <PurchaseItem
+            product={this.props.product}
+            id={this.props.id}
+            commonInPurchaseItem={this.props.common}
+            lang={this.props.lang}
+          />
           {/* <WrapperCancle onClick={true ? this.props.closeModal : ''}>
             <Text1>Cancle</Text1>
           </WrapperCancle> */}

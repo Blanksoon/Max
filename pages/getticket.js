@@ -63,7 +63,10 @@ class selectShowtime extends React.Component {
           www="getticket"
           switchLanguage={this.switchLang}
         >
-          <NewModal />
+          <NewModal
+            common={this.state.translations.translation.common}
+            lang={this.state.lang}
+          />
           <Wrapper>
             <Container>
               <Box pt="7rem">

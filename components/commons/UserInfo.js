@@ -61,7 +61,7 @@ class UserInfo extends Component {
     })
   }
   render() {
-    const { email, logout } = this.props
+    const { email, logout, profileText, logoutText } = this.props
     const { showMenu } = this.state
     return (
       <Menu>
@@ -71,9 +71,9 @@ class UserInfo extends Component {
         </Username>
         <MenuContent showMenu={showMenu}>
           <Link href={`/profile`}>
-            <MenuItem>Profile</MenuItem>
+            <MenuItem>{profileText}</MenuItem>
           </Link>
-          <MenuItem onClick={logout}>Log Out</MenuItem>
+          <MenuItem onClick={logout}>{logoutText}</MenuItem>
         </MenuContent>
       </Menu>
     )

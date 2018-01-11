@@ -85,6 +85,16 @@ class Detail extends React.Component {
   }
 
   render() {
+    const {
+      FOLLOWMAX,
+      NameAddress,
+      Address1,
+      Address2,
+      TITLECOMMENT,
+      EMILPLACEHOLDER,
+      INBOXEMAILPLACEHOLDER,
+      SENDEMAILBUTTON,
+    } = this.props.common
     return (
       <Flex>
         <Box className="googleMaps" w={8 / 12} bg="gray">
@@ -101,7 +111,7 @@ class Detail extends React.Component {
             color="#ffffff"
             left
             bold
-            children="Follow Max Muay Thai at"
+            children={FOLLOWMAX}
             fontSize="0.9em"
           />
           <Flex pt="1em" pb="1em">
@@ -132,21 +142,11 @@ class Detail extends React.Component {
             color="#f8f2f2"
             left
             bold
-            children="Max Muay Thai Co.,Ltd."
+            children={NameAddress}
             fontSize="0.9em"
           />
-          <Text
-            color="#efe3e3"
-            left
-            children="40/108 Sukhumvit Rd. Moo.9 Nongprue"
-            fontSize="0.50em"
-          />
-          <Text
-            color="#efe3e3"
-            left
-            children="Banglamung Chon Buri 20150 (Thailand)"
-            fontSize="0.5em"
-          />
+          <Text color="#efe3e3" left children={Address1} fontSize="0.50em" />
+          <Text color="#efe3e3" left children={Address2} fontSize="0.5em" />
           <Flex pt="1em" pb="1em">
             <Box w={6 / 12} pr="3.5%">
               <Button p="0%">
@@ -179,14 +179,14 @@ class Detail extends React.Component {
             color="#faf7f7"
             left
             bold
-            children="Let we hear from you,"
+            children={TITLECOMMENT}
             fontSize="0.9em"
           />
           <Box w={12 / 12} mb="1em">
             <Input
               px="0.5em"
               py="1em"
-              placeholder="Your email here"
+              placeholder={EMILPLACEHOLDER}
               onChange={this.handleOnChangeEmail}
             />
           </Box>
@@ -194,7 +194,7 @@ class Detail extends React.Component {
             <Input
               px="3em"
               py="1em"
-              placeholder="Let us know what can we do more fro our beloved fan.+-+"
+              placeholder={INBOXEMAILPLACEHOLDER}
               onChange={this.handleOnChangeMessage}
             />
           </Box>
@@ -202,7 +202,7 @@ class Detail extends React.Component {
             <Box>
               <ButtonEmail type="email" onClick={() => this.sendEmail()}>
                 <center>
-                  {this.state.loading ? <Spinner /> : 'Send email'}
+                  {this.state.loading ? <Spinner /> : `${SENDEMAILBUTTON}`}
                 </center>
               </ButtonEmail>
             </Box>

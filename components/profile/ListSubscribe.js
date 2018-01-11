@@ -194,7 +194,7 @@ class ListSubscribe extends Component {
       </Box>
     ) : (
       <div style={{ marginTop: '1em' }}>
-        You have not subscribed any packages
+        {this.props.common.NOTSUBSCRIBEDANYPACKAGES}
       </div>
     )
   }

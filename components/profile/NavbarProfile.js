@@ -18,9 +18,9 @@ export default class NavbarProfile extends Component {
     super(props)
     this.state = {
       navItems: [
-        { label: 'Profile', active: false },
-        { label: 'Purchase history', active: false },
-        { label: 'Subscribe', active: false },
+        { label: this.props.common.PROFILE, active: false },
+        { label: this.props.common.PURCHASEHISTORY, active: false },
+        { label: this.props.common.SUBSCRIBE, active: false },
       ],
     }
     this.setActiveUrl = this.setActiveUrl.bind(this)
@@ -47,6 +47,8 @@ export default class NavbarProfile extends Component {
     return (
       <Navbar pathname={this.props.url.pathname} m={0} p={2}>
         <NavItem
+          lang={this.props.lang}
+          common={this.props.common}
           pathname={this.props.url.pathname}
           changeComponent={this.props.changeComponent}
         />

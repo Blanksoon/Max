@@ -28,23 +28,25 @@ const Logo = styled(Image)`
   padding-right: 1rem;
 `
 
-export default ({ label, active, changeComponent, pathname }) => {
+export default ({ label, active, lang, common, changeComponent, pathname }) => {
   if (pathname == 'Profile') {
     return (
       <div>
         <Flex>
           <Box w={3 / 12}>
             {/* <Logo src="../../static/ic_profile@3x.png" /> */}
-            <Active onClick={() => changeComponent('Profile')}>Profile</Active>
+            <Active onClick={() => changeComponent('Profile')}>
+              {common.PROFILE}
+            </Active>
           </Box>
           <Box w={3 / 12}>
             <Inactive onClick={() => changeComponent('Purchase history')}>
-              Purchase history
+              {common.PURCHASEHISTORY}
             </Inactive>
           </Box>
           <Box w={3 / 12}>
             <Inactive onClick={() => changeComponent('Subscribe')}>
-              Subscribe
+              {common.SUBSCRIBE}
             </Inactive>
           </Box>
           <Box w={7 / 12} />
@@ -57,17 +59,17 @@ export default ({ label, active, changeComponent, pathname }) => {
         <Flex>
           <Box w={3 / 12}>
             <Inactive onClick={() => changeComponent('Profile')}>
-              Profile
+              {common.PROFILE}
             </Inactive>
           </Box>
           <Box w={3 / 12}>
             <Active onClick={() => changeComponent('Purchase history')}>
-              Purchase history
+              {common.PURCHASEHISTORY}
             </Active>
           </Box>
           <Box w={3 / 12}>
             <Inactive onClick={() => changeComponent('Subscribe')}>
-              Subscribe
+              {common.SUBSCRIBE}
             </Inactive>
           </Box>
           <Box w={7 / 12} />
@@ -80,17 +82,17 @@ export default ({ label, active, changeComponent, pathname }) => {
         <Flex>
           <Box w={3 / 12}>
             <Inactive onClick={() => changeComponent('Profile')}>
-              Profile
+              {common.PROFILE}
             </Inactive>
           </Box>
           <Box w={3 / 12}>
             <Inactive onClick={() => changeComponent('Purchase history')}>
-              Purchase history
+              {common.PURCHASEHISTORY}
             </Inactive>
           </Box>
           <Box w={3 / 12}>
             <Active onClick={() => changeComponent('Subscribe')}>
-              Subscribe
+              {common.SUBSCRIBE}
             </Active>
           </Box>
           <Box w={7 / 12} />

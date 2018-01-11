@@ -103,22 +103,22 @@ class PurchaseHistory extends React.Component {
               <Image src="../../static/ic_purchase@3x.png" width="80%" />
             </Box>
             <Box w={11.7 / 12} pt="2.3rem">
-              <Text1>Purchase history</Text1>
+              <Text1>{this.props.common.PURCHASEHISTORY}</Text1>
             </Box>
           </Flex>
           <hr size="0.1" />
           <Flex className="Title-Purchase" pt="1.4rem" pb="1rem">
             <Box w={2 / 12}>
-              <Text2>Purchase data</Text2>
+              <Text2>{this.props.common.PURCHASEDATA}</Text2>
             </Box>
             <Box w={2 / 12}>
-              <Text2>Purchase ID</Text2>
+              <Text2>{this.props.common.PURCHASEID}</Text2>
             </Box>
             <Box w={4 / 12}>
-              <Text2>Type</Text2>
+              <Text2>{this.props.common.TYPE}</Text2>
             </Box>
             <Box w={4 / 12}>
-              <Text2>Status</Text2>
+              <Text2>{this.props.common.STATUS}</Text2>
             </Box>
           </Flex>
         </Box>
