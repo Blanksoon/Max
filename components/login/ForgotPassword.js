@@ -129,6 +129,15 @@ class Login extends React.Component {
 
   render() {
     //console.log('props', this.props)
+    const {
+      TITLEFORGOTPASSWORD,
+      DESCFORGOTPASS,
+      EMAIL,
+      SUBMIT,
+      REGISTERWITHEMAIL,
+      FACEBOOKBUTTON,
+      ALREADYACCOUNT,
+    } = this.props.commonInForgotPassword
     return (
       <Provider>
         <div>
@@ -137,16 +146,16 @@ class Login extends React.Component {
               <Image width="100%" src="../../static/img_login.png" />
             </Box>
             <Box pl="3rem">
-              <Text1>Forgot pasword</Text1>
+              <Text1>{TITLEFORGOTPASSWORD}</Text1>
             </Box>
             <Flex pt="0.5rem" pl="3rem" pr="3rem">
               <Box w={5 / 12}>
                 <WrapperLogin>
-                  <Text3>Please enter your email for change password</Text3>
+                  <Text3>{DESCFORGOTPASS}</Text3>
                   <form>
                     <Box w={1}>
                       <Input
-                        placeholder="Email"
+                        placeholder={EMAIL}
                         onChange={this.handleOnChangeId}
                       />
                     </Box>
@@ -159,7 +168,7 @@ class Login extends React.Component {
                           onClick={this.forgotPassword}
                           disabled={this.state.loading}
                         >
-                          {this.state.loading ? <Spinner /> : 'Submit'}
+                          {this.state.loading ? <Spinner /> : `${SUBMIT}`}
                         </Button>{' '}
                       </Box>
                     </Flex>
@@ -168,18 +177,15 @@ class Login extends React.Component {
               </Box>
               <Box w={7 / 12}>
                 <center>
-                  <FacebookLoginButton />
+                  <FacebookLoginButton textButton={FACEBOOKBUTTON} />
                   <Box pt="1rem">
                     <a href="#">
-                      <ModalRegister modalType={4} text="Register with email" />
+                      <ModalRegister modalType={4} text={REGISTERWITHEMAIL} />
                     </a>
                   </Box>
                   <Box pt="1rem">
                     <a href="#">
-                      <ModalRegister
-                        modalType={3}
-                        text="Already have an account, log in"
-                      />
+                      <ModalRegister modalType={3} text={ALREADYACCOUNT} />
                     </a>
                   </Box>
                 </center>

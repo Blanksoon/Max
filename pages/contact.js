@@ -80,7 +80,7 @@ class Contact extends Component {
             <Background>
               <Container>
                 <Box>
-                  <Detail />
+                  <Detail common={this.state.translations.translation.common} />
                 </Box>
                 {/* <CounterComponent label="counter" /> */}
               </Container>

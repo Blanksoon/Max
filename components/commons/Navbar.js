@@ -49,6 +49,9 @@ class NavBar extends React.Component {
         },
         { label: this.props.common.ContactUs, href: '/contact', active: false },
       ],
+      RegisterButton: this.props.common.REGISTERBUTTON,
+      logoutText: this.props.common.PROFILETEXT,
+      profileText: this.props.common.LOGOUTTEXT,
     }
     this.setActiveUrl = this.setActiveUrl.bind(this)
   }
@@ -67,6 +70,9 @@ class NavBar extends React.Component {
         },
         { label: nextProps.common.ContactUs, href: '/contact', active: false },
       ],
+      RegisterButton: nextProps.common.REGISTERBUTTON,
+      logoutText: nextProps.common.LOGOUTTEXT,
+      profileText: nextProps.common.PROFILETEXT,
     })
     await this.setActiveUrl(nextProps.url.pathname)
   }
@@ -102,7 +108,13 @@ class NavBar extends React.Component {
           {this.state.navItems.map(({ label, href, active }) => (
             <NavItem key={label} label={label} href={href} active={active} />
           ))}
-          <LoginLang url={this.props.url} www={this.props.www} />
+          <LoginLang
+            url={this.props.url}
+            www={this.props.www}
+            registerText={this.state.RegisterButton}
+            profileText={this.state.profileText}
+            logoutText={this.state.logoutText}
+          />
           <Link href="/">
             <Logo src="/static/logo.png" />
           </Link>

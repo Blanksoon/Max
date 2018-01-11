@@ -188,7 +188,7 @@ const mapStateToProps = state => {
   const cookie = state.cookie
   const lang = langSelector(state)
   //console.log('vods', vods)
-  return { live, vods, translations, cookie, lang }
+  return { live, vods, cookie, lang }
 }
 LiveVdo.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()

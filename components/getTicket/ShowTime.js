@@ -287,7 +287,7 @@ class ShowTime extends React.Component {
               color={color.red}
               w="100%"
               img="static/img_VDO+LIVE.png"
-              text1={this.props.common.SUBSCRIBEVDO}
+              text1={this.props.common.SUBLIVEANDVOD}
               text2={this.props.common.Enjoyall}
               month={this.props.common.MONTH}
             />

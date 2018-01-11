@@ -55,13 +55,24 @@ export default class extends Component {
   }
   render() {
     // console.log('dddddddytry', this.props.www)
-    const { url, lang, email } = this.props
+    const {
+      url,
+      lang,
+      email,
+      registerText,
+      profileText,
+      logoutText,
+    } = this.props
     return (
       <LoginLang>
         {email !== undefined ? (
-          <UserInfo email={email} />
+          <UserInfo
+            email={email}
+            profileText={profileText}
+            logoutText={logoutText}
+          />
         ) : (
-          <ModalText modalType={3} text="Register/Login" />
+          <ModalText modalType={3} text={registerText} />
         )}
         <ClearFix />
         <LanguagePanel>

@@ -154,6 +154,15 @@ export default class Login extends React.Component {
     })
   }
   render() {
+    const {
+      EMAIL,
+      PASSWORD,
+      FACEBOOKBUTTON,
+      ALREADYACCOUNT,
+      RETYPEPASSWORD,
+      REGISTERTEXTBUTTON,
+      TITLEREGISTER,
+    } = this.props.commonInRegister
     return (
       <div>
         <form>
@@ -162,14 +171,14 @@ export default class Login extends React.Component {
               <Image width="100%" src="../../static/img_login.png" />
             </Box>
             <Box pl="3rem">
-              <Text1>Didn't have an account?</Text1>
+              <Text1>{TITLEREGISTER}</Text1>
             </Box>
             <Flex pt="0.5rem" pl="3rem" pr="3rem">
               <Box w={5 / 12}>
                 <WrapperLogin>
                   <Box>
                     <Input
-                      placeholder="Email"
+                      placeholder={EMAIL}
                       onChange={this.handleOnChangeId}
                       required
                     />
@@ -177,7 +186,7 @@ export default class Login extends React.Component {
                   </Box>
                   <Box>
                     <Input
-                      placeholder="Password"
+                      placeholder={PASSWORD}
                       type="password"
                       onChange={this.handleOnChangePassword}
                       required
@@ -185,7 +194,7 @@ export default class Login extends React.Component {
                   </Box>
                   <Box>
                     <Input
-                      placeholder="Re-type Password"
+                      placeholder={RETYPEPASSWORD}
                       type="password"
                       onChange={this.handleOnChangeConfirmPassword}
                       required
@@ -202,20 +211,21 @@ export default class Login extends React.Component {
                       type="submit"
                       onClick={this.submitRegister}
                     >
-                      {this.state.loading ? <Spinner /> : 'Register'}
+                      {this.state.loading ? (
+                        <Spinner />
+                      ) : (
+                        `${REGISTERTEXTBUTTON}`
+                      )}
                     </Button>
                   </Box>
                 </WrapperLogin>
               </Box>
               <Box w={7 / 12}>
                 <center>
-                  <FacebookLoginButton />
+                  <FacebookLoginButton textButton={FACEBOOKBUTTON} />
                   <Box pt="1rem">
                     <a href="#">
-                      <ModalRegister
-                        modalType={3}
-                        text="Already have an account, log in"
-                      />
+                      <ModalRegister modalType={3} text={ALREADYACCOUNT} />
                     </a>
                   </Box>
                 </center>
