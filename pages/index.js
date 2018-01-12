@@ -90,7 +90,7 @@ class Index extends React.Component {
         lang,
         ['common', 'navbar'],
         //'http://localhost:8080/static/locales/'
-        `https://beta.maxmuaythai.com/static/lacaes/`
+        `https://beta.maxmuaythai.com/static/locales/`
       ),
     })
   }
@@ -188,7 +188,7 @@ Index.getInitialProps = async ({ store, isServer, query, req }) => {
     state.cookie.lang,
     ['common', 'navbar'],
     //'http://localhost:8080/static/locales/'
-    `https://beta.maxmuaythai.com/static/lacaes/`
+    `https://beta.maxmuaythai.com/static/locales/`
   )
   const props = mapStateToProps(state)
   props.translations = translations
