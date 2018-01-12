@@ -71,16 +71,20 @@ class UserProfile extends React.Component {
               <Image src="../../static/ic_profile@3x.png" width="80%" />
             </Box>
             <Box w={11.7 / 12} pt="1.8rem">
-              <Text1>Profile</Text1>
+              <Text1>{this.props.common.PROFILE}</Text1>
             </Box>
           </Flex>
           <Flex className="Detail-user" pb="0.5rem">
             <Box w={2 / 12} pt="1rem">
-              <Text2>Email</Text2>
+              <Text2>{this.props.common.EMAIL}</Text2>
             </Box>
             <Box w={3 / 12} pt="1rem">
               <Text2>{this.state.email}</Text2>
-              <ModalButton buttonID={2} modalType={5} text="Change password" />
+              <ModalButton
+                buttonID={2}
+                modalType={5}
+                text={this.props.common.CHANGEPASSWORD}
+              />
             </Box>
             <Box w={7 / 12}>
               {/* <Flex className="Social-login" pb="0.5rem">

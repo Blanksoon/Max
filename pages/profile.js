@@ -47,14 +47,18 @@ import { ListPurchase } from '../components/profile/ListPurchase'
 import Subscribe from '../components/profile/Subscribe'
 import NavbarProfile from '../components/profile/NavbarProfile'
 import ListSubscribe from '../components/profile/ListSubscribe'
+import { langSelector } from '../redux/selectors/lang'
 class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       pathname: 'Profile',
+      translations: this.props.translations,
+      lang: this.props.lang,
     }
     this.changeComponent = this.changeComponent.bind(this)
     this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+    this.switchLang = this.switchLang.bind(this)
   }
 
   changeComponent(state) {
@@ -63,48 +67,80 @@ class Profile extends React.Component {
     })
   }
 
+  async switchLang(lang) {
+    this.setState({
+      lang: lang,
+      translations: await getTranslation(
+        lang,
+        ['common', 'navbar'],
+        'http://localhost:8080/static/locales/'
+      ),
+    })
+  }
+
   render() {
     let renderUI = <div />
     if (this.state.pathname == 'Profile') {
       renderUI = (
         <div>
-          <UserProfile />
-          <InputProfile />
+          <UserProfile
+            lang={this.state.lang}
+            common={this.state.translations.translation.common}
+          />
+          <InputProfile
+            lang={this.state.lang}
+            common={this.state.translations.translation.common}
+          />
         </div>
       )
     } else if (this.state.pathname == 'Purchase history') {
       renderUI = (
         <div>
-          <PurchaseHistory />
+          <PurchaseHistory
+            lang={this.state.lang}
+            common={this.state.translations.translation.common}
+          />
         </div>
       )
     } else {
       renderUI = (
         <div>
-          <Subscribe />
-          <ListSubscribe />
+          <Subscribe
+            lang={this.state.lang}
+            common={this.props.translations.translation.common}
+          />
+          <ListSubscribe
+            lang={this.state.lang}
+            common={this.props.translations.translation.common}
+          />
           <Box w={12 / 12} p="6em" />
         </div>
       )
     }
+    console.log('dddddddddd', this.state)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
           url={this.props.url}
-          nav={this.props.translations.translation.common}
+          nav={this.state.translations.translation.common}
           www="profile"
+          switchLanguage={this.switchLang}
         >
-          <NewModal />
+          <NewModal common={this.state.translations.translation.common} />
           <div className="profile">
             <WrapperProfile color={color}>
               <Container>
                 <Box px="3rem" pt="9rem" bg="white" pb="2rem">
-                  <Welcome />
+                  <Welcome
+                    common={this.state.translations.translation.common}
+                  />
                   <Box w={12 / 12} pb="1rem" pt="2rem">
                     <NavbarProfile
                       url={this.state}
                       changeComponent={this.changeComponent}
                       pathname={this.state.pathname}
+                      lang={this.state.lang}
+                      common={this.state.translations.translation.common}
                     />
                   </Box>
                   <WrapperBoxProfile>
@@ -135,16 +171,12 @@ class Profile extends React.Component {
   }
 }
 
-const mapStateToProps = async state => {
+const mapStateToProps = state => {
   return {
     lives: recentLivesSelector(state),
     vods: recentVodsSelector(state),
     cookie: state.cookie,
-    translations: await getTranslation(
-      state.cookie.lang,
-      ['common', 'navbar'],
-      'http://localhost:8080/static/locales/'
-    ),
+    lang: langSelector(state),
   }
 }
 Profile.getInitialProps = async ({ store, isServer, query, req }) => {
@@ -153,7 +185,13 @@ Profile.getInitialProps = async ({ store, isServer, query, req }) => {
   const response = await fetchLives(token)(store.dispatch)
   // const responseVods = await fetchVods(token)(store.dispatch)
   state = store.getState()
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    'http://localhost:8080/static/locales/'
+  )
   const props = mapStateToProps(state)
+  props.translations = translations
   return props
 }
 

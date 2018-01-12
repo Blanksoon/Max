@@ -99,18 +99,18 @@ class InputProfile extends React.Component {
       birthDay: '', //moment(),
       name: '',
       lastname: '',
-      oldGender: 'Select you gender',
-      country: 'Select you country',
+      oldGender: this.props.common.SELECTGENDER,
+      country: this.props.common.SELECTCOUNTRY,
       status: '',
       loading: false,
       gender: '',
       countryy: [
-        'Select you country',
-        'Thailand',
-        'United States',
-        'England',
-        'China',
-        'Other',
+        this.props.common.SELECTCOUNTRY,
+        this.props.common.THAILAND,
+        this.props.common.UNITEDSTATES,
+        this.props.common.ENGLAND,
+        this.props.common.CHINA,
+        this.props.common.OTHER,
       ],
     }
     this.toggleCalendar = this.toggleCalendar.bind(this)
@@ -246,25 +246,25 @@ class InputProfile extends React.Component {
     if (this.state.oldGender == 'male') {
       genderDiv = (
         <Gender onChange={this.onChangeGender}>
-          <option value="male">male</option>
-          <option value="female">female</option>
+          <option value="male">{this.props.common.MALE}</option>
+          <option value="female">{this.props.common.FEMALE}</option>
         </Gender>
       )
     } else if (this.state.oldGender == 'female') {
       genderDiv = (
         <Gender onChange={this.onChangeGender}>
-          <option value="female">female</option>
-          <option value="male">male</option>
+          <option value="female">{this.props.common.FEMALE}</option>
+          <option value="male">{this.props.common.MALE}</option>
         </Gender>
       )
     } else {
       genderDiv = (
         <Gender onChange={this.onChangeGender}>
           <option value="please select you gender">
-            please select you gender
+            {this.props.common.SELECTGENDER}
           </option>
-          <option value="male">male</option>
-          <option value="female">female</option>
+          <option value="male">{this.props.common.MALE}</option>
+          <option value="female">{this.props.common.FEMALE}</option>
         </Gender>
       )
     }
@@ -275,7 +275,7 @@ class InputProfile extends React.Component {
             <Box w={12 / 12} pt="0.4rem">
               <Flex>
                 <Box w={2 / 12}>
-                  <Text2>Name</Text2>
+                  <Text2>{this.props.common.NAME}</Text2>
                 </Box>
                 <Box w={10 / 12}>
                   <InputEmail
@@ -286,7 +286,7 @@ class InputProfile extends React.Component {
               </Flex>
               <Flex>
                 <Box w={2 / 12}>
-                  <Text2>Lastname</Text2>
+                  <Text2>{this.props.common.LASTNAME}</Text2>
                 </Box>
                 <Box w={10 / 12}>
                   <InputEmail
@@ -297,13 +297,13 @@ class InputProfile extends React.Component {
               </Flex>
               <Flex>
                 <Box w={2 / 12}>
-                  <Text2>Gender</Text2>
+                  <Text2>{this.props.common.GENDER}</Text2>
                 </Box>
                 <Box w={10 / 12}>
                   <Flex>
                     {genderDiv}
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <Text2>Birthday</Text2>
+                    <Text2>{this.props.common.BIRTHDAY}</Text2>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {/* {console.log('aaaaa', this.state.birthDay)} */}
                     <DatePicker
@@ -329,7 +329,7 @@ class InputProfile extends React.Component {
               </Flex>
               <Flex>
                 <Box w={2 / 12}>
-                  <Text2>Country</Text2>
+                  <Text2>{this.props.common.COUNTRY}</Text2>
                 </Box>
                 <Box w={10 / 12}>
                   <Country onChange={this.onChangeCountry}>
@@ -341,7 +341,11 @@ class InputProfile extends React.Component {
                 <center>
                   <ButtonSubmit onClick={this.sumbitProfile}>
                     <center>
-                      {this.state.loading ? <Spinner /> : 'Submit'}
+                      {this.state.loading ? (
+                        <Spinner />
+                      ) : (
+                        this.props.common.SUBMIT
+                      )}
                     </center>
                   </ButtonSubmit>
                   {/* <ButtonSubmit onClick={this.sumbitProfile}>

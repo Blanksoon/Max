@@ -50,7 +50,7 @@ const Subscribe = props => {
             <Image src="../../static/ic_vod.png" width="80%" />
           </Box>
           <Box w={11.7 / 12} pt="1.8rem">
-            <Text1>Subscribe</Text1>
+            <Text1>{props.common.SUBSCRIBE}</Text1>
           </Box>
         </Flex>
         <hr size="0.1" />

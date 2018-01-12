@@ -65,7 +65,7 @@ class VideoBox extends Component {
         `${api.SERVER}/vods-ondemand?token=${this.props.auth.token}&index=${this
           .props.vod.index}`
       )
-      console.log('dddddddddddfgdgd', json)
+      // console.log('dddddddddddfgdgd', json)
       this.props.fetchVodsSuccess(json)
       this.props.pagination()
     }

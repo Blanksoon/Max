@@ -188,7 +188,7 @@ export default class Modal extends Component {
       //changePassword_step1
       renderUI = (
         <WrapperChangePass onClick={e => this.handleOnClick(e)}>
-          <ChangePassStep1 />
+          <ChangePassStep1 common={this.props.common} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>

@@ -45,7 +45,7 @@ const Button = styled.button`
   background-color: ${vars.red};
   border: 1px solid ${vars.red};
   color: white;
-  padding: 10px 40px;
+  padding: 10px 30px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
