@@ -131,7 +131,7 @@ export const fetchFeaturedVod = token => async dispatch => {
   const url = `${api.SERVER}/vods-feature?token=${token}`
   try {
     const json = await api.get(url)
-    console.log('json', json)
+    //console.log('json', json)
     dispatch(fetchFeaturedVodSuccess(json.data))
   } catch (error) {
     console.log(error)

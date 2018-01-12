@@ -91,7 +91,10 @@ class test extends React.Component {
           url={this.props.url}
           nav={this.props.translations.translation.navbar}
         >
-          <NewModal />
+          <NewModal
+            common={this.state.translations.translation.common}
+            lang={this.state.lang}
+          />
           <Wrapperr>
             <Wrapper>
               <Container>

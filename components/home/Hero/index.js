@@ -52,17 +52,18 @@ export default class extends Component {
       visibility: 'visible',
     })
     document.addEventListener('keydown', e => {
-      if (e.keyCode === 27) this.closeModal()
+      if (e.keyCode === 27) {
+        this.closeModal()
+      }
     })
   }
   closeModal(event) {
-    if (event.keyCode === 27) {
-      this.setState({
-        fightcardVisible: false,
-        promovideoVisible: false,
-      })
-    }
+    this.setState({
+      fightcardVisible: false,
+      promovideoVisible: false,
+    })
   }
+
   setActiveLive(i) {
     this.setState({ activeLive: i })
   }

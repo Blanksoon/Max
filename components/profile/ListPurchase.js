@@ -25,16 +25,14 @@ const Button = styled.button`
   font-family: Helvetica, Arial, sans-serif;
   cursor: pointer;
 `
-export const ListPurchase = purchaseList => {
-  let type = 'Live'
-  const purchaseDate = moment(purchaseList.purchase.purchaseDate).format(
-    'D MMM YYYY'
-  )
+export const ListPurchase = props => {
+  let type = props.typeLive
+  const purchaseDate = moment(props.purchase.purchaseDate).format('D MMM YYYY')
   if (
-    purchaseList.purchase.productName === 'subscribe vods' ||
-    purchaseList.purchase.productName === 'subscribe lives and vods'
+    props.purchase.productName === 'subscribe vods' ||
+    props.purchase.productName === 'subscribe lives and vods'
   ) {
-    type = 'Subscribe'
+    type = props.typeSub
   }
   return (
     <Box w={12 / 12}>
@@ -43,16 +41,16 @@ export const ListPurchase = purchaseList => {
           <Text3>{purchaseDate}</Text3>
         </Box>
         <Box w={2 / 12}>
-          <Text3>{purchaseList.purchase.orderId}</Text3>
+          <Text3>{props.purchase.orderId}</Text3>
         </Box>
         <Box w={4 / 12}>
           <Text3>
-            <b>{type}</b>: {purchaseList.purchase.productName}
+            <b>{type}</b>: {props.purchase.productName}
           </Text3>
         </Box>
         <Box w={3 / 12}>
           <Flex className="Status-purchase">
-            <Text3>{purchaseList.purchase.status}</Text3>
+            <Text3>{props.purchase.status}</Text3>
           </Flex>
         </Box>
         <Box w={1 / 12}>{/* <Button>Receipt</Button> */}</Box>

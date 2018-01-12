@@ -24,6 +24,7 @@ import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { recentLivesSelector } from '../redux/selectors/live'
 import { recentVodsSelector } from '../redux/selectors/vod'
+import Router from 'next/router'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -59,12 +60,16 @@ class Profile extends React.Component {
     this.changeComponent = this.changeComponent.bind(this)
     this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
     this.switchLang = this.switchLang.bind(this)
+    this.logout = this.logout.bind(this)
   }
 
   changeComponent(state) {
     this.setState({
       pathname: state,
     })
+  }
+  logout() {
+    Router.push(`https://www.maxmuaythai.com/`)
   }
 
   async switchLang(lang) {
@@ -79,6 +84,10 @@ class Profile extends React.Component {
   }
 
   render() {
+    //console.log('22222222', this.props.url.push)
+    if (this.props.auth.token === undefined) {
+      this.props.url.push('/')
+    }
     let renderUI = <div />
     if (this.state.pathname == 'Profile') {
       renderUI = (
@@ -88,6 +97,7 @@ class Profile extends React.Component {
             common={this.state.translations.translation.common}
           />
           <InputProfile
+            url={this.props.url}
             lang={this.state.lang}
             common={this.state.translations.translation.common}
           />
@@ -117,7 +127,7 @@ class Profile extends React.Component {
         </div>
       )
     }
-    console.log('dddddddddd', this.state)
+    //console.log('dddddddddd', this.state)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
@@ -126,7 +136,10 @@ class Profile extends React.Component {
           www="profile"
           switchLanguage={this.switchLang}
         >
-          <NewModal common={this.state.translations.translation.common} />
+          <NewModal
+            common={this.state.translations.translation.common}
+            lang={this.state.lang}
+          />
           <div className="profile">
             <WrapperProfile color={color}>
               <Container>
@@ -173,8 +186,7 @@ class Profile extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    lives: recentLivesSelector(state),
-    vods: recentVodsSelector(state),
+    auth: state.auth,
     cookie: state.cookie,
     lang: langSelector(state),
   }

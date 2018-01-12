@@ -95,6 +95,7 @@ export const localLogin = providerData => async dispatch => {
   }
 }
 export const logout = () => async dispatch => {
+  console.log('h1')
   dispatch(removeCookie('email'))
   dispatch(removeCookie('token'))
   dispatch(fetchLives())
@@ -149,7 +150,8 @@ const authReducer = (state = initialState, action) => {
         },
       }
     case LOGOUT:
-      return initialState
+      console.log('sss')
+      return { initialState }
     default:
       return state
   }

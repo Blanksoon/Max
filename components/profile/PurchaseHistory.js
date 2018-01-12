@@ -67,7 +67,7 @@ class PurchaseHistory extends React.Component {
     const { status, data } = await api.get(
       `${api.SERVER}/purchase-history?token=${this.props.auth.token}`
     )
-    console.log('daddddta', data)
+    //console.log('daddddta', data)
     this.setState({ puschaseList: data })
   }
 
@@ -77,7 +77,12 @@ class PurchaseHistory extends React.Component {
     } else {
       for (let i = 0; i < purchaseList.length; i++) {
         purchaseHistory.push(
-          <ListPurchase key={i} purchase={purchaseList[i]} />
+          <ListPurchase
+            key={i}
+            purchase={purchaseList[i]}
+            typeSub={this.props.common.TYPESUBPRODUCT}
+            typeLive={this.props.common.TYPELIVEPRODUCT}
+          />
         )
       }
     }

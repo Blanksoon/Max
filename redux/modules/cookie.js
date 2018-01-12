@@ -19,6 +19,7 @@ export const setCookie = (key, value) => dispatch => {
 }
 export const removeCookie = key => dispatch => {
   const cookies = new Cookies()
+  console.log('cookies', cookies)
   cookies.remove(key)
   dispatch({
     type: REMOVE_COOKIE,
@@ -28,7 +29,6 @@ export const removeCookie = key => dispatch => {
 
 // cookies must be an object contain key/value of all cookies
 export const loadAllCookies = cookies => {
-  console.log('hisss', cookies)
   return {
     type: LOAD_ALL_COOKIES,
     payload: cookies,

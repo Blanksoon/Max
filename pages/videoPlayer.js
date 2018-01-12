@@ -156,7 +156,11 @@ class videoPlayer extends React.Component {
           nav={this.state.translations.translation.common}
           switchLanguage={this.switchLang}
         >
-          <NewModal />
+          <NewModal
+            common={this.state.translations.translation.common}
+            lang={this.state.lang}
+            url={this.props.url}
+          />
           <div className="wrapper-BackVideoCenter">
             <Container>
               <Flex>

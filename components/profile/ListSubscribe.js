@@ -135,7 +135,7 @@ class ListSubscribe extends Component {
           <Box w={0.95 / 12} />
           <Box w={3 / 12}>
             <Flex>
-              <Text3>Purchase date</Text3>
+              <Text3>{this.props.common.PURCAHSEDATE}</Text3>
               &nbsp;&nbsp;
               <Text1>
                 {moment(subscription.purchaseDate).format('MMM DD, YYYY')}
@@ -162,17 +162,17 @@ class ListSubscribe extends Component {
           </Box>
           <Box w={4.5 / 12}>
             <Text3>{this.description(subscription.productName)}</Text3>
-            <Text2>1 Month</Text2>
+            <Text2>{this.props.common.ONEMONTH}</Text2>
             <br />
             <br />
             <Flex>
-              <Text3>Order ID:&nbsp;&nbsp;</Text3>
+              <Text3>{this.props.common.ORDERID}:&nbsp;&nbsp;</Text3>
               <Box w={6 / 12} pt="0.4em">
                 <Text2>{subscription.orderId}</Text2>
               </Box>
             </Flex>
             <Flex>
-              <Text3>Status&nbsp;&nbsp;</Text3>
+              <Text3>{this.props.common.STATUSOFSUBSCRIBE}:&nbsp;&nbsp;</Text3>
               <Box w={6 / 12} pt="0.45em">
                 <Text2>
                   Valid thru{' '}
@@ -186,7 +186,11 @@ class ListSubscribe extends Component {
               onClick={() => this.cancel(subscription)}
               disabled={this.state.loading}
             >
-              {this.state.loading ? <Spinner /> : 'Cancel'}
+              {this.state.loading ? (
+                <Spinner />
+              ) : (
+                `${this.props.common.CANCELBUTTON}`
+              )}
             </CancelButton>
           </Box>
         </Flex>

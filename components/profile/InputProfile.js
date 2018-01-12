@@ -142,7 +142,7 @@ class InputProfile extends React.Component {
     }
   }
   logout() {
-    Router.push(`https://www.maxmuaythai.com/`)
+    this.props.url.push('/')
   }
   async dataProfile() {
     const { status, data } = await api.get(
@@ -313,7 +313,7 @@ class InputProfile extends React.Component {
                       //height: 2.2em;
                       style={{ height: '16em' }}
                       fixedHeight
-                      placeholderText="Click to select a date"
+                      placeholderText={this.props.common.SELECTDATE}
                       selected={this.state.birthDay}
                       onChange={this.handleChange}
                       showMonthDropdown

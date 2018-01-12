@@ -109,7 +109,11 @@ class LiveVdo extends Component {
           www={path}
           switchLanguage={this.switchLang}
         >
-          <NewModal />
+          <NewModal
+            common={this.state.translations.translation.common}
+            lang={this.state.lang}
+            url={url}
+          />
           <div style={{ paddingTop: '2rem' }}>
             <WrapperLivePlayer color={color}>
               <Container>

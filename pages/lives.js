@@ -282,7 +282,11 @@ class lives extends React.Component {
           www="lives"
           switchLanguage={this.switchLang}
         >
-          <NewModal />
+          <NewModal
+            common={this.state.translations.translation.common}
+            lang={this.state.lang}
+            url={this.props.url}
+          />
           <Wrapper>
             <Container>
               <Box pl="1.5rem" bg="#fff" pt="8rem" pb="2rem">

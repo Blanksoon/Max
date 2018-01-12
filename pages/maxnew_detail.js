@@ -31,7 +31,10 @@ class maxnew_detail extends React.Component {
         </Head>
         {/* {status.message ?  : null } */}
         <Main url={this.props.url}>
-          <NewModal />
+          <NewModal
+            common={this.state.translations.translation.common}
+            lang={this.state.lang}
+          />
           <Wrapper>
             <Container>
               <Flex pt="10rem" bg="#fff">

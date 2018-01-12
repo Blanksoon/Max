@@ -140,20 +140,20 @@ class ChangePassStep2 extends React.Component {
           <form>
             <Box>
               <Box pt="3rem">
-                <Text1>Please enter new password</Text1>
+                <Text1>{this.props.common.TITLENEWPASSWORD}</Text1>
               </Box>
               <Box>
                 <WrapperLogin>
                   <Box w={4 / 12}>
                     <Input
                       type="password"
-                      placeholder="new password"
+                      placeholder={this.props.common.NEWPASSWORD}
                       onChange={this.handleOnChangePassword}
                       //required
                     />
                     <Input
                       type="password"
-                      placeholder="confirm password"
+                      placeholder={this.props.common.CONFIRMPASSWORD}
                       onChange={this.handleOnChangeConfirmPassword}
                       //required
                     />
@@ -165,7 +165,11 @@ class ChangePassStep2 extends React.Component {
                       onClick={this.submitCurrent}
                       disabled={this.state.loading}
                     >
-                      {this.state.loading ? <Spinner /> : 'confirm'}
+                      {this.state.loading ? (
+                        <Spinner />
+                      ) : (
+                        `${this.props.common.CONFIRM}`
+                      )}
                     </Button>
                   </Box>
                 </WrapperLogin>

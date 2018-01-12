@@ -66,6 +66,7 @@ class selectShowtime extends React.Component {
           <NewModal
             common={this.state.translations.translation.common}
             lang={this.state.lang}
+            url={this.props.url}
           />
           <Wrapper>
             <Container>

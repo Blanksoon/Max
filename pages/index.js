@@ -110,7 +110,11 @@ class Index extends React.Component {
           www=""
           switchLanguage={this.switchLang}
         >
-          <NewModal common={this.state.translations.translation.common} />
+          <NewModal
+            common={this.state.translations.translation.common}
+            lang={this.state.lang}
+            url={this.props.url}
+          />
           <GradientBg>
             <Container>
               <Hero

@@ -14,6 +14,10 @@ import color from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import Spinner from '../components/commons/Spinner'
 import * as api from '../api'
+import { I18nextProvider } from 'react-i18next'
+import startI18n from '../tools/startI18n'
+import { getTranslation } from '../tools/translationHelpers'
+import { langSelector } from '../redux/selectors/lang'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -101,12 +105,16 @@ class Verify extends React.Component {
       newPassword: '',
       comfirePassword: '',
       loading: false,
+      translations: this.props.translations,
+      lang: this.props.lang,
     }
     this.changePassword = this.changePassword.bind(this)
     this.handleOnChangeNewPassword = this.handleOnChangeNewPassword.bind(this)
     this.handleOnChangeConfirmPassword = this.handleOnChangeConfirmPassword.bind(
       this
     )
+    this.i18n = startI18n(this.props.translations, this.props.lang)
+    this.switchLang = this.switchLang.bind(this)
   }
   async changePassword() {
     const token = this.props.url.query.token
@@ -154,44 +162,92 @@ class Verify extends React.Component {
       comfirePassword: event.target.value,
     })
   }
+  async switchLang(lang) {
+    this.setState({
+      lang: lang,
+      translations: await getTranslation(
+        lang,
+        ['common', 'navbar'],
+        'http://localhost:8080/static/locales/'
+      ),
+    })
+  }
   render() {
     return (
-      <Main url={this.props.url}>
-        <NewModal />
-        <Container pt="10rem" pb="5rem">
-          <center>
-            <Text1>Please enter new password</Text1>
-            <Flex>
-              <Box w={4 / 12} />
-              <Box w={4 / 12}>
-                <Input
-                  type="password"
-                  placeholder="new password"
-                  onChange={this.handleOnChangeNewPassword}
-                  required
-                />
-                <Input
-                  type="password"
-                  placeholder="confirm password"
-                  onChange={this.handleOnChangeConfirmPassword}
-                  required
-                />
-                <Text2>{this.state.status} </Text2>
-                <Button
-                  style={{ width: '148px' }}
-                  onClick={this.changePassword}
-                  disabled={this.state.loading}
-                >
-                  {this.state.loading ? <Spinner /> : 'Submit'}
-                </Button>
-              </Box>
-              <Box w={4 / 12} />
-            </Flex>
-          </center>
-        </Container>
-      </Main>
+      <I18nextProvider i18n={this.i18n}>
+        <Main
+          url={this.props.url}
+          nav={this.state.translations.translation.common}
+          www="changePassword"
+          switchLanguage={this.switchLang}
+        >
+          <NewModal
+            common={this.state.translations.translation.common}
+            lang={this.state.lang}
+            V
+          />
+          <Container pt="10rem" pb="5rem">
+            <center>
+              <Text1>
+                {this.state.translations.translation.common.TITLENEWPASSWORD}
+              </Text1>
+              <Flex>
+                <Box w={4 / 12} />
+                <Box w={4 / 12}>
+                  <Input
+                    type="password"
+                    placeholder={
+                      this.state.translations.translation.common.NEWPASSWORD
+                    }
+                    onChange={this.handleOnChangeNewPassword}
+                    required
+                  />
+                  <Input
+                    type="password"
+                    placeholder={
+                      this.state.translations.translation.common.CONFIRMPASSWORD
+                    }
+                    onChange={this.handleOnChangeConfirmPassword}
+                    required
+                  />
+                  <Text2>{this.state.status} </Text2>
+                  <Button
+                    style={{ width: '148px' }}
+                    onClick={this.changePassword}
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loading ? (
+                      <Spinner />
+                    ) : (
+                      `${this.state.translations.translation.common.SUBMIT}`
+                    )}
+                  </Button>
+                </Box>
+                <Box w={4 / 12} />
+              </Flex>
+            </center>
+          </Container>
+        </Main>
+      </I18nextProvider>
     )
   }
+}
+const mapStateToProps = state => {
+  return {
+    lang: langSelector(state),
+  }
+}
+Verify.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  state = store.getState()
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    'http://localhost:8080/static/locales/'
+  )
+  const props = mapStateToProps(state)
+  props.translations = translations
+  return props
 }
 
 export default withRedux(initStore)(Verify)

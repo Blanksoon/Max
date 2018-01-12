@@ -129,7 +129,10 @@ export default class Modal extends Component {
     // Show carousel only after initiate to avoid flicker
     document.addEventListener('keydown', e => {
       //console.log('eventcode', e.keyCode)
-      if (e.keyCode === 27) this.closeModal()
+      if (e.keyCode === undefined) {
+      } else if (e.keyCode === 27) {
+        this.closeModal()
+      }
     })
   }
 
@@ -165,7 +168,7 @@ export default class Modal extends Component {
       //login
       renderUI = (
         <WrapperLogin onClick={e => this.handleOnClick(e)}>
-          <Login commonInLogin={this.props.common} />
+          <Login commonInLogin={this.props.common} url={this.props.url} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>
@@ -198,7 +201,7 @@ export default class Modal extends Component {
       //changePassword_step2
       renderUI = (
         <WrapperChangePass onClick={e => this.handleOnClick(e)}>
-          <ChangePassStep2 />
+          <ChangePassStep2 common={this.props.common} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
             <Image width="100%" src="../../static/close.png" />
           </WrapperClose>

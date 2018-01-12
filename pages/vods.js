@@ -33,6 +33,7 @@ import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langSelector, switchLangSelector } from '../redux/selectors/lang'
+import Router from 'next/router'
 
 const WrapperNavbar = styled.div`background-color: #009999;`
 const WrapperVod = styled.div`
@@ -78,10 +79,6 @@ class Vods extends React.Component {
     this.props.fetchVodOnDemand(this.props.token)
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('1111111111111111', nextProps)
-  }
-
   render() {
     const { hilight, vods, filter, numberOfVods } = this.props
     let filteredProgram = ''
@@ -90,7 +87,7 @@ class Vods extends React.Component {
         filteredProgram = filter.progname
       }
     }
-    console.log('vods', typeof this.props)
+    //console.log('vods', typeof this.props)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
@@ -99,7 +96,11 @@ class Vods extends React.Component {
           www="vods"
           switchLanguage={this.switchLang}
         >
-          <NewModal />
+          <NewModal
+            common={this.state.translations.translation.common}
+            lang={this.state.lang}
+            url={this.props.url}
+          />
           <div className="videocenter">
             <WrapperVod color={color}>
               <Container>
@@ -142,9 +143,10 @@ const mapStateToProps = state => {
     cookie: state.cookie,
   }
 }
-Vods.getInitialProps = async ({ store, isServer, query, req }) => {
+Vods.getInitialProps = async ({ store, isServer, query, req, res }) => {
   let state = store.getState()
   const token = state.auth.token
+  console.log('token', token)
   // Remove any filters
   store.dispatch(
     setFetchFilter({

@@ -118,14 +118,14 @@ class ChangePassStep1 extends React.Component {
           <form>
             <Box>
               <Box pt="3rem">
-                <Text1>Please enter your current</Text1>
+                <Text1>{this.props.common.TITLEOLDPASSWORD}</Text1>
               </Box>
               <Box>
                 <WrapperLogin>
                   <Box w={4 / 12}>
                     <Input
                       type="password"
-                      placeholder="password"
+                      placeholder={this.props.common.OlDPASSWORD}
                       onChange={this.handleOnChangePassword}
                       required
                     />
@@ -137,7 +137,11 @@ class ChangePassStep1 extends React.Component {
                       onClick={this.submitCurrent}
                       disabled={this.state.loading}
                     >
-                      {this.state.loading ? <Spinner /> : 'continue'}
+                      {this.state.loading ? (
+                        <Spinner />
+                      ) : (
+                        `${this.props.common.CONTINUE}`
+                      )}
                     </Button>{' '}
                   </Box>
                 </WrapperLogin>

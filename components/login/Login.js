@@ -117,7 +117,7 @@ class Login extends React.Component {
       })
       //console.log('false')
     }
-    Router.push(`https://www.maxmuaythai.com/`)
+    this.props.url.push('/')
     this.setState({ loading: false })
   }
 

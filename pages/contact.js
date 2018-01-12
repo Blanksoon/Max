@@ -65,7 +65,11 @@ class Contact extends Component {
           www="contact"
           switchLanguage={this.switchLang}
         >
-          <NewModal />
+          <NewModal
+            common={this.state.translations.translation.common}
+            lang={this.state.lang}
+            url={this.props.url}
+          />
           <Wrapper>
             <WrapperAbout>
               <Container>
