@@ -9,7 +9,8 @@ export const switchLangSelector = async lang => {
   const language = await getTranslation(
     lang,
     ['common', 'navbar'],
-    'http://localhost:8080/static/locales/'
+    //'http://localhost:8080/static/locales/'
+    `https://beta.maxmuaythai.com/static/lacaes/`
   )
   return language
 }

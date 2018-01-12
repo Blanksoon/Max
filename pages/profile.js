@@ -78,7 +78,8 @@ class Profile extends React.Component {
       translations: await getTranslation(
         lang,
         ['common', 'navbar'],
-        'http://localhost:8080/static/locales/'
+        //'http://localhost:8080/static/locales/'
+        `https://beta.maxmuaythai.com/static/lacaes/`
       ),
     })
   }
@@ -200,7 +201,8 @@ Profile.getInitialProps = async ({ store, isServer, query, req }) => {
   const translations = await getTranslation(
     state.cookie.lang,
     ['common', 'navbar'],
-    'http://localhost:8080/static/locales/'
+    //'http://localhost:8080/static/locales/'
+    `https://beta.maxmuaythai.com/static/lacaes/`
   )
   const props = mapStateToProps(state)
   props.translations = translations

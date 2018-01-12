@@ -146,7 +146,8 @@ const mapStateToProps = async state => {
     translations: await getTranslation(
       state.cookie.lang,
       ['navbar'],
-      'http://localhost:8080/static/locales/'
+      //'http://localhost:8080/static/locales/'
+      `https://beta.maxmuaythai.com/static/lacaes/`
     ),
   }
 }
