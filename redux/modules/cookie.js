@@ -19,7 +19,6 @@ export const setCookie = (key, value) => dispatch => {
 }
 export const removeCookie = key => dispatch => {
   const cookies = new Cookies()
-  console.log('cookies', cookies)
   cookies.remove(key)
   dispatch({
     type: REMOVE_COOKIE,
