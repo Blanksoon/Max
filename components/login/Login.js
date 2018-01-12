@@ -107,11 +107,13 @@ class Login extends React.Component {
       //console.log('success')
       this.setState({
         status: '',
+        status_th: '',
       })
       //this.props.closeModal()
     } else {
       this.setState({
         status: this.props.auth.error.message,
+        //status: this.props.aut
       })
       //console.log('false')
     }
