@@ -24,6 +24,7 @@ import { recentLivesSelector } from '../redux/selectors/live'
 import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
+import { langUrl } from '../tools/langUrl'
 
 const Text1 = styled.div`
   padding-left: 1rem;
@@ -143,12 +144,7 @@ const mapStateToProps = async state => {
   return {
     lives: recentLivesSelector(state),
     cookie: state.cookie,
-    translations: await getTranslation(
-      state.cookie.lang,
-      ['navbar'],
-      //'http://localhost:8080/static/locales/'
-      `https://beta.maxmuaythai.com/static/locales/`
-    ),
+    translations: await getTranslation(state.cookie.lang, ['navbar'], langUrl),
   }
 }
 test.getInitialProps = async ({ store, isServer, query, req }) => {

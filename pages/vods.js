@@ -40,6 +40,7 @@ const WrapperVod = styled.div`
   background-color: ${props => props.color.lightBlue};
 `
 import Main from '../layouts/Main'
+import { langUrl } from '../tools/langUrl'
 
 class Vods extends React.Component {
   constructor(props) {
@@ -56,12 +57,7 @@ class Vods extends React.Component {
   async switchLang(lang) {
     this.setState({
       lang: lang,
-      translations: await getTranslation(
-        lang,
-        ['common', 'navbar'],
-        //'http://localhost:8080/static/locales/'
-        `https://beta.maxmuaythai.com/static/locales/`
-      ),
+      translations: await getTranslation(lang, ['common', 'navbar'], langUrl),
     })
   }
 
@@ -162,8 +158,7 @@ Vods.getInitialProps = async ({ store, isServer, query, req, res }) => {
   const translations = await getTranslation(
     state.cookie.lang,
     ['common', 'navbar'],
-    //'http://localhost:8080/static/locales/'
-    `https://beta.maxmuaythai.com/static/locales/`
+    langUrl
   )
   const props = mapStateToProps(state)
   props.translations = translations

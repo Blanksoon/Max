@@ -14,6 +14,7 @@ import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langSelector } from '../redux/selectors/lang'
+import { langUrl } from '../tools/langUrl'
 
 class SuccessChangePass extends React.Component {
   constructor(props) {
@@ -28,12 +29,7 @@ class SuccessChangePass extends React.Component {
   async switchLang(lang) {
     this.setState({
       lang: lang,
-      translations: await getTranslation(
-        lang,
-        ['common', 'navbar'],
-        //'http://localhost:8080/static/locales/'
-        `https://beta.maxmuaythai.com/static/locales/`
-      ),
+      translations: await getTranslation(lang, ['common', 'navbar'], langUrl),
     })
   }
   render() {
@@ -101,8 +97,7 @@ SuccessChangePass.getInitialProps = async ({ store, isServer, query, req }) => {
   const translations = await getTranslation(
     state.cookie.lang,
     ['common', 'navbar'],
-    //'http://localhost:8080/static/locales/'
-    `https://beta.maxmuaythai.com/static/locales/`
+    langUrl
   )
   const props = mapStateToProps(state)
   props.translations = translations

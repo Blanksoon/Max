@@ -29,7 +29,10 @@ import { getTranslation } from '../tools/translationHelpers'
 
 class Main extends React.Component {
   async componentWillReceiveProps(nextProps) {
-    this.props.switchLanguage(nextProps.lang)
+    console.log(nextProps.lang)
+    if (this.props.lang != nextProps.lang) {
+      this.props.switchLanguage(nextProps.lang)
+    }
   }
 
   render() {
