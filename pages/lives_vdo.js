@@ -130,6 +130,7 @@ class LiveVdo extends Component {
                   live={live}
                   countdown={countdown}
                   common={common}
+                  lang={this.state.lang}
                 />
               </Container>
             </WrapperLivePlayer>

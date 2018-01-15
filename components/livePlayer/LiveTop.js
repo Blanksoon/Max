@@ -88,6 +88,7 @@ class LiveTop extends Component {
         <Wrapper bannerUrl={this.props.live.bannerUrl}>
           <WrapperText>
             <Flex>
+              {console.log('1111111111', this.props.lang)}
               <Box w={6 / 12} pl="1rem" bg={color.transDarkblue} p={2}>
                 <TextBig color={color.white}>
                   {this.props.lang === 'en' ? (
