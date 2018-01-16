@@ -282,7 +282,7 @@ const vodReducer = (state = initialState, action) => {
     case PAGINATION: {
       return {
         ...state,
-        index: state.index + 4,
+        index: state.index + 16,
         //index: state.index+1,
       }
     }

@@ -58,7 +58,7 @@ class VideoBox extends Component {
 
   async check() {
     if (this.props.vod.index == 0) {
-      this.props.vod.index = 4
+      this.props.vod.index = 16
     }
     if (this.props.vod.index < this.props.numberOfVods) {
       const json = await api.get(
@@ -86,7 +86,7 @@ class VideoBox extends Component {
 
   componentDidMount() {
     {
-      this.props.startindex(4)
+      this.props.startindex(16)
     }
   }
 
