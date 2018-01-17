@@ -165,7 +165,7 @@ class PurchaseItem extends React.Component {
       Router.push(`${response.approvalUrl}`)
     } else {
       this.props.closeModal()
-      Router.push(`https://www.maxmuaythai.com/error`)
+      Router.push(`/error`)
     }
   }
 
@@ -227,7 +227,7 @@ class PurchaseItem extends React.Component {
       )
       if (response) {
         if (response.status.code == 500) {
-          Router.push(`https://www.maxmuaythai.com/error`)
+          Router.push(`/error`)
         }
         this.props.closeModal()
         Router.push(`${response.data.url}`)
@@ -244,7 +244,7 @@ class PurchaseItem extends React.Component {
       //console.log('ddddddd443r43', response)
       if (response) {
         if (response.status.code == 500) {
-          Router.push(`https://www.maxmuaythai.com/error`)
+          Router.push(`/error`)
         }
         this.props.closeModal()
         Router.push(`${response.data.url}`)

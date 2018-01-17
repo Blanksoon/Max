@@ -79,7 +79,6 @@ class lives extends React.Component {
   }
 
   renderUI() {
-    // console.log('ddddddllllllllllll', this.props)
     const rowLive = []
     const rowCount = this.props.lives.length
     let n = 0

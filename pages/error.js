@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import React from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
 import { Flex, Box, Image, Text } from 'rebass'
@@ -25,6 +26,7 @@ import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langUrl } from '../tools/langUrl'
+import { langSelector } from '../redux/selectors/lang'
 
 const Text1 = styled.div`
   padding-left: 1rem;
@@ -79,22 +81,36 @@ const Wrapperr = styled.div`
   height: 100%;
   background-size: cover;
 `
-class test extends React.Component {
+class ErrorPage extends React.Component {
   constructor(props) {
     super(props)
-
+    this.state = {
+      translations: this.props.translations,
+      lang: this.props.lang,
+    }
     this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+    this.switchLang = this.switchLang.bind(this)
+  }
+
+  async switchLang(lang) {
+    this.setState({
+      lang: lang,
+      translations: await getTranslation(lang, ['common', 'navbar'], langUrl),
+    })
   }
   render() {
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
           url={this.props.url}
-          nav={this.props.translations.translation.navbar}
+          nav={this.state.translations.translation.common}
+          www="error"
+          switchLanguage={this.switchLang}
         >
           <NewModal
             common={this.state.translations.translation.common}
             lang={this.state.lang}
+            url={this.props.url}
           />
           <Wrapperr>
             <Wrapper>
@@ -140,19 +156,25 @@ class test extends React.Component {
     )
   }
 }
-const mapStateToProps = async state => {
+const mapStateToProps = state => {
   return {
     lives: recentLivesSelector(state),
     cookie: state.cookie,
-    translations: await getTranslation(state.cookie.lang, ['navbar'], langUrl),
+    lang: langSelector(state),
   }
 }
-test.getInitialProps = async ({ store, isServer, query, req }) => {
+ErrorPage.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
   const response = await fetchLives(token)(store.dispatch)
   state = store.getState()
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    langUrl
+  )
   const props = mapStateToProps(state)
+  props.translations = translations
   return props
 }
 export default withRedux(initStore, null, {
@@ -160,4 +182,4 @@ export default withRedux(initStore, null, {
   updateModalType,
   indexModalURL,
   closeModal,
-})(test)
+})(ErrorPage)
