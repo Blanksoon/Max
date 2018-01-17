@@ -51,14 +51,6 @@ const Text3 = styled.div`
   font-size: 2em;
   font-family: Helvetica, Arial, sans-serif;
 `
-
-const Text4 = styled.div`
-  color: ${color.white};
-  font-weight: 700;
-  font-size: 1em;
-  text-align: right;
-  font-family: Helvetica, Arial, sans-serif;
-`
 const Text5 = styled.div`
   color: ${color.white};
   font-weight: 700;
@@ -71,12 +63,6 @@ const Text6 = styled.div`
   font-size: 0.8em;
   font-family: Helvetica, Arial, sans-serif;
 `
-const Text7 = styled.div`
-  color: ${color.black};
-  font-weight: 700;
-  font-size: 2em;
-  font-family: Helvetica, Arial, sans-serif;
-`
 const Text8 = styled.div`
   color: #8a8a8a;
   font-weight: 700;
@@ -84,20 +70,8 @@ const Text8 = styled.div`
   font-family: Helvetica, Arial, sans-serif;
 `
 const Text9 = styled.div`
-  color: ${color.yellow};
-  font-weight: 700;
-  font-size: 0.8em;
-  font-family: Helvetica, Arial, sans-serif;
-`
-const Text10 = styled.div`
-  color: ${color.white};
-  font-weight: 700;
-  font-size: 0.8em;
-  font-family: Helvetica, Arial, sans-serif;
-`
-const Text11 = styled.div`
   color: #8a8a8a;
-  font-weight: 700;
+  // font-weight: 700;
   font-size: 0.8em;
   font-family: Helvetica, Arial, sans-serif;
 `
@@ -272,7 +246,7 @@ class ShowTime extends React.Component {
     } else {
       type = 8
     }
-    //console.log('0', this.props.product.products.lives[0])
+    // console.log('dddddddddd', this.props.product.products)
     let renderSubscribe = ''
     if (this.props.product.products.subscribe !== undefined) {
       renderSubscribe = (
@@ -310,6 +284,43 @@ class ShowTime extends React.Component {
         </Flex>
       )
     }
+    let renderPackage = ''
+    if (this.props.product.products.package !== undefined) {
+      renderPackage = (
+        <Flex pb="1em">
+          <Box w={6 / 12} pr="0.5em">
+            <ModalSubscribe
+              id="package"
+              modalType={type}
+              live={undefined}
+              subscribe={this.props.product.products.package[1]}
+              subAll={this.props.product.products.package[1].status}
+              color="#993333"
+              w="100%"
+              img="static/img_VDO+LIVE.png"
+              text1={this.props.common.SUBLIVEANDVOD}
+              text2={this.props.common.Enjoyall}
+              month={this.props.common.MONTH}
+            />
+          </Box>
+          <Box w={6 / 12} pl="0.5em">
+            <ModalSubscribe
+              id="package"
+              modalType={type}
+              live={undefined}
+              subscribe={this.props.product.products.package[0]}
+              subAll={this.props.product.products.package[1].status}
+              color="#336699"
+              w="95%"
+              img="static/img_vodondemand@3x.png"
+              text1={this.props.common.SUBSCRIBEVDO}
+              text2={this.props.common.Allvideo}
+              month={this.props.common.MONTH}
+            />
+          </Box>
+        </Flex>
+      )
+    }
     return (
       <Wrapper>
         <Flex pl="1em" pr="1em" pb="3em">
@@ -320,10 +331,23 @@ class ShowTime extends React.Component {
                 <Text2>{this.props.common.Pleaseselect}</Text2>
                 <br />
                 <br />
-                <Text8>{this.props.common.PACKAGE}</Text8>
+                <Flex>
+                  <Text8>{this.props.common.SUBSCRIBEBIG}</Text8>
+                  &nbsp;&nbsp;
+                  <Text9>{this.props.common.AUTOMATIC}</Text9>
+                </Flex>
               </Box>
             </Flex>
             {renderSubscribe}
+            <Flex pb="1em">
+              <Text8>{this.props.common.PACKAGE}</Text8>
+              &nbsp;&nbsp;
+              <Text9>{this.props.common.NOTAUTOMATIC}</Text9>
+            </Flex>
+            {renderPackage}
+            <Box pb="1em">
+              <Text8>{this.props.common.LIVE}</Text8>
+            </Box>
             <Box bg={color.blue} pb="1em">
               <Flex>
                 <Box w={3 / 12} />

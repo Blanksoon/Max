@@ -156,16 +156,31 @@ class PurchaseItem extends React.Component {
 
   async purchasePayPal() {
     this.setState({ loadingPayPal: true })
-    const response = await api.post(
-      `${api.SERVER}/${this.state.link}/${this.props.product._id}?token=${this
-        .props.auth.token}`
-    )
-    //console.log('responseee', response)
-    if (response.approvalUrl) {
-      Router.push(`${response.approvalUrl}`)
+    if (this.props.id == 'package') {
+      //console.log('11111111', this.state.link)
+      const response = await api.post(
+        `${api.SERVER}/ppcheckout/package/${this.props.product._id}?token=${this
+          .props.auth.token}`
+      )
+      //console.log('responseee', response)
+      if (response.approvalUrl) {
+        Router.push(`${response.approvalUrl}`)
+      } else {
+        this.props.closeModal()
+        Router.push(`/error`)
+      }
     } else {
-      this.props.closeModal()
-      Router.push(`/error`)
+      const response = await api.post(
+        `${api.SERVER}/${this.state.link}/${this.props.product._id}?token=${this
+          .props.auth.token}`
+      )
+      //console.log('responseee', response)
+      if (response.approvalUrl) {
+        Router.push(`${response.approvalUrl}`)
+      } else {
+        this.props.closeModal()
+        Router.push(`/error`)
+      }
     }
   }
 
@@ -198,21 +213,21 @@ class PurchaseItem extends React.Component {
         Router.push(`${response.data.url}`)
       }
       //console.log('dddddd333333', response)
-    } else {
+    } else if (this.props.id == 'package') {
       // console.log(
-      //   'dddddd333333',
-      //   `${api.SERVER}/stripe/alipay?token=${this.props.auth
-      //     .token}&subscribeId=${this.props.product._id}`
+      //   'dddddd2222',
+      //   `${api.SERVER}/stripe/package/alipay?token=${this.props.auth
+      //     .token}&packageId=${this.props.product._id}`
       // )
-      // const response = await api.get(
-      //   `${api.SERVER}/stripe/alipay?token=${this.props.auth
-      //     .token}&subscribeId=${this.props.product._id}`
-      // )
-      // console.log('dddddd333333', response)
-      // if (response) {
-      //   //this.props.closeModal()
-      //   Router.push(`${response.url}`)
-      // }
+      const response = await api.get(
+        `${api.SERVER}/stripe/package/alipay?token=${this.props.auth
+          .token}&packageId=${this.props.product._id}`
+      )
+      //console.log('dddddd333333', response)
+      if (response) {
+        //this.props.closeModal()
+        Router.push(`${response.data.url}`)
+      }
     }
     this.setState({ loadingAlipay: false })
   }
@@ -220,7 +235,7 @@ class PurchaseItem extends React.Component {
   onToken = async token => {
     if (this.props.id == 'live') {
       this.setState({ loadingCard: true })
-      console.log('ddddd111111111live', token)
+      //console.log('ddddd111111111live', token)
       const response = await api.get(
         `${api.SERVER}/stripe/creditcard?token=${this.props.auth
           .token}&sourceId=${token.id}&liveId=${this.props.product._id}`
@@ -234,12 +249,29 @@ class PurchaseItem extends React.Component {
       }
       //console.log('dddddd333333', response)
       this.setState({ loadingCard: false })
-    } else {
+    } else if (this.props.id == 'sub') {
       this.setState({ loadingCard: true })
-      console.log('ddddd111111111sub', token)
+      //console.log('ddddd111111111sub', token)
       const response = await api.get(
         `${api.SERVER}/stripe/subscribe/creditcard?token=${this.props.auth
           .token}&sourceId=${token.id}&subscribeId=${this.props.product._id}`
+      )
+      //console.log('ddddddd443r43', response)
+      if (response) {
+        if (response.status.code == 500) {
+          Router.push(`/error`)
+        }
+        this.props.closeModal()
+        Router.push(`${response.data.url}`)
+      }
+      //console.log('dddddd333333', response)
+      this.setState({ loadingCard: false })
+    } else if (this.props.id == 'package') {
+      this.setState({ loadingCard: true })
+      //console.log('ddddd111111111sub', token)
+      const response = await api.get(
+        `${api.SERVER}/stripe/package/creditcard?token=${this.props.auth
+          .token}&packageId=${this.props.product._id}&sourceId=${token.id}`
       )
       //console.log('ddddddd443r43', response)
       if (response) {
@@ -400,7 +432,7 @@ class PurchaseItem extends React.Component {
           </WrapperDown>
         </Wrapper>
       )
-    } else {
+    } else if (this.props.id == 'sub') {
       this.state.link = 'subscribe'
       // console.log('if22222222222222222', this.props)
       if (this.props.product.productId === '2002') {
@@ -431,19 +463,6 @@ class PurchaseItem extends React.Component {
                 </WrapperPrice>
               </Box>
             </Flex>
-            {/* <Box pl="3em" pr="3em" pt="1em">
-          <Text2>
-            Please check your contact email, This' ll be use to send the
-            receipt.
-          </Text2>
-          <Input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="@email"
-            value="autofill@cenedit.com"
-          />
-        </Box> */}
             <Box pl="3em" pr="3em" pt="2.2em">
               <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
@@ -494,7 +513,91 @@ class PurchaseItem extends React.Component {
                 </center>
               </Box>
             </Flex>
-            {/* <Flex pl="3em" pr="3em" pt="1em" pb="3.1em">
+          </WrapperDown>
+        </Wrapper>
+      )
+    } else if (this.props.id == 'package') {
+      this.state.link = 'subscribe'
+      // console.log('if22222222222222222', this.props)
+      if (this.props.product.title_en !== 'package vods') {
+        packagee = 'SUBSCRIBE VDO AND LIVE STREAMING'
+        nameOfPackage = SUBLIVEANDVOD
+        img = 'static/subandvod.jpg'
+      }
+      renderUI = (
+        <Wrapper>
+          <WrapperTop>
+            <Box pl="3em" pr="3em" pt="1em" pb="1em">
+              <Text1>{YOURSELECT}</Text1>
+              <Text2>{SUBSCRIBEPACKAGE}</Text2>
+            </Box>
+          </WrapperTop>
+          <WrapperDown>
+            {/* <Box pl="3em" pr="3em" pt="1em">
+          <Text2>Your order ID : 251485039</Text2>
+        </Box> */}
+            <Flex pr="3em" pl="3em" pt="2em">
+              <Box w={6 / 12} pr="0.5em">
+                <Image width="100%" src={img} />
+              </Box>
+              <Box w={6 / 12} pl="0.5em">
+                <Text3>{nameOfPackage}</Text3>
+                <WrapperPrice>
+                  <Text3>${this.props.product.price}</Text3>
+                </WrapperPrice>
+              </Box>
+            </Flex>
+            <Box pl="3em" pr="3em" pt="2.2em">
+              <Text2>{PAYMENTMETHOD}</Text2>
+            </Box>
+            <Flex pl="3em" pr="3em" pt="2em" pb="1em">
+              <Box w={6 / 12} pr="0.5em">
+                <center>
+                  <Buttonpaypal
+                    onClick={this.purchasePayPal}
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loadingPayPal ? (
+                      <Box pt="0.37em" pb="0.37em">
+                        <Spinner />
+                      </Box>
+                    ) : (
+                      <Image width="100%" src="../../static/PayPal.png" />
+                    )}
+                  </Buttonpaypal>
+                </center>
+              </Box>
+              <Box w={6 / 12} pl="0.5em">
+                <center>
+                  <ButtonCredit
+                    onClick={this.purchaseCard}
+                    disabled={this.state.loading}
+                    //token={this.onToken}
+                  >
+                    {this.state.loadingCard ? (
+                      <Box pt="0.23em" pb="0.23em">
+                        <Spinner />
+                      </Box>
+                    ) : (
+                      <StripeCheckout
+                        token={this.onToken}
+                        name={packagee}
+                        stripeKey="pk_test_qghYMOBiEuWIDjedt7DNPA0w" //dev
+                        // stripeKey="pk_live_trWuol5XDXULmz0mK9eWwihA" //live
+                        email={this.props.auth.email}
+                        amount={amo}
+                        //allowRememberMe="false"
+                      >
+                        <center>
+                          <Img src="../../static/109-credit-cards-accepted-logo.png" />
+                        </center>
+                      </StripeCheckout>
+                    )}
+                  </ButtonCredit>
+                </center>
+              </Box>
+            </Flex>
+            <Flex pl="3em" pr="3em" pt="1em" pb="2em">
               <Box w={12 / 12} pr="0.5em">
                 <center>
                   <ButtonAlipay
@@ -511,7 +614,7 @@ class PurchaseItem extends React.Component {
                   </ButtonAlipay>
                 </center>
               </Box>
-            </Flex> */}
+            </Flex>
           </WrapperDown>
         </Wrapper>
       )
