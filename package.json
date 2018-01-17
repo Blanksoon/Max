@@ -34,6 +34,7 @@
     "react-dom": "^15.6.1",
     "react-facebook": "^4.1.1",
     "react-facebook-login": "^3.6.2",
+    "react-ga": "^2.4.1",
     "react-google-maps": "^8.2.0",
     "react-i18next": "^7.3.0",
     "react-input-calendar": "^0.4.1",

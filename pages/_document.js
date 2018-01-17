@@ -1,12 +1,13 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import ReactGA from 'react-ga'
 
 export default class MyDocument extends Document {
   render() {
     const sheet = new ServerStyleSheet()
     const main = sheet.collectStyles(<Main />)
     const styleTags = sheet.getStyleElement()
-
+    ReactGA.initialize('UA-112325602-1')
     return (
       <html>
         <Head>
