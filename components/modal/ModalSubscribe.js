@@ -164,7 +164,7 @@ class ModalSubscribe extends React.Component {
     this.props.updateIDAction(this.props.id)
   }
   render() {
-    // console.log('ifmodalSubscribe', this.props)
+    // console.log('ddddddddddddเกฟเฟำพ', this.props)
     let zin = -1
     if (
       this.props.subscribe.status === 'unenable' ||
