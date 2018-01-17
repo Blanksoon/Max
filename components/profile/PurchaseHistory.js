@@ -59,7 +59,7 @@ class PurchaseHistory extends React.Component {
   }
 
   logout() {
-    Router.push(`https://www.maxmuaythai.com/`)
+    Router.push(`/`)
   }
 
   async fetchPurchaseHistory() {

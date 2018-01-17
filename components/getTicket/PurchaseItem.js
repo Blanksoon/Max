@@ -157,17 +157,17 @@ class PurchaseItem extends React.Component {
   async purchasePayPal() {
     this.setState({ loadingPayPal: true })
     if (this.props.id == 'package') {
-      // console.log('ddddddddewhtyjyfuk')
+      //console.log('11111111', this.state.link)
       const response = await api.post(
-        `${api.SERVER}/${this.state.link}/package/${this.props.product
-          ._id}?token=${this.props.auth.token}`
+        `${api.SERVER}/ppcheckout/package/${this.props.product._id}?token=${this
+          .props.auth.token}`
       )
       //console.log('responseee', response)
       if (response.approvalUrl) {
         Router.push(`${response.approvalUrl}`)
       } else {
         this.props.closeModal()
-        Router.push(`https://www.maxmuaythai.com/error`)
+        Router.push(`/error`)
       }
     } else {
       const response = await api.post(
@@ -179,7 +179,7 @@ class PurchaseItem extends React.Component {
         Router.push(`${response.approvalUrl}`)
       } else {
         this.props.closeModal()
-        Router.push(`https://www.maxmuaythai.com/error`)
+        Router.push(`/error`)
       }
     }
   }
@@ -214,16 +214,16 @@ class PurchaseItem extends React.Component {
       }
       //console.log('dddddd333333', response)
     } else if (this.props.id == 'package') {
-      console.log(
-        'dddddd2222',
-        `${api.SERVER}/stripe/package/alipay?token=${this.props.auth
-          .token}&packageId=${this.props.product._id}`
-      )
+      // console.log(
+      //   'dddddd2222',
+      //   `${api.SERVER}/stripe/package/alipay?token=${this.props.auth
+      //     .token}&packageId=${this.props.product._id}`
+      // )
       const response = await api.get(
         `${api.SERVER}/stripe/package/alipay?token=${this.props.auth
           .token}&packageId=${this.props.product._id}`
       )
-      console.log('dddddd333333', response)
+      //console.log('dddddd333333', response)
       if (response) {
         //this.props.closeModal()
         Router.push(`${response.data.url}`)
@@ -235,14 +235,14 @@ class PurchaseItem extends React.Component {
   onToken = async token => {
     if (this.props.id == 'live') {
       this.setState({ loadingCard: true })
-      console.log('ddddd111111111live', token)
+      //console.log('ddddd111111111live', token)
       const response = await api.get(
         `${api.SERVER}/stripe/creditcard?token=${this.props.auth
           .token}&sourceId=${token.id}&liveId=${this.props.product._id}`
       )
       if (response) {
         if (response.status.code == 500) {
-          Router.push(`https://www.maxmuaythai.com/error`)
+          Router.push(`/error`)
         }
         this.props.closeModal()
         Router.push(`${response.data.url}`)
@@ -251,7 +251,7 @@ class PurchaseItem extends React.Component {
       this.setState({ loadingCard: false })
     } else if (this.props.id == 'sub') {
       this.setState({ loadingCard: true })
-      console.log('ddddd111111111sub', token)
+      //console.log('ddddd111111111sub', token)
       const response = await api.get(
         `${api.SERVER}/stripe/subscribe/creditcard?token=${this.props.auth
           .token}&sourceId=${token.id}&subscribeId=${this.props.product._id}`
@@ -259,7 +259,7 @@ class PurchaseItem extends React.Component {
       //console.log('ddddddd443r43', response)
       if (response) {
         if (response.status.code == 500) {
-          Router.push(`https://www.maxmuaythai.com/error`)
+          Router.push(`/error`)
         }
         this.props.closeModal()
         Router.push(`${response.data.url}`)
@@ -268,15 +268,15 @@ class PurchaseItem extends React.Component {
       this.setState({ loadingCard: false })
     } else if (this.props.id == 'package') {
       this.setState({ loadingCard: true })
-      // console.log('ddddd111111111sub', token)
+      //console.log('ddddd111111111sub', token)
       const response = await api.get(
         `${api.SERVER}/stripe/package/creditcard?token=${this.props.auth
           .token}&packageId=${this.props.product._id}&sourceId=${token.id}`
       )
-      console.log('ddddddd443r43', response)
+      //console.log('ddddddd443r43', response)
       if (response) {
         if (response.status.code == 500) {
-          Router.push(`https://www.maxmuaythai.com/error`)
+          Router.push(`/error`)
         }
         this.props.closeModal()
         Router.push(`${response.data.url}`)
