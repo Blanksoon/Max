@@ -172,6 +172,7 @@ class ShowTime extends React.Component {
                 live={this.props.product.products.lives[i]}
                 status={this.props.product.products.lives[i].status}
                 subAll={this.props.product.products.subscribe[1].status}
+                packAll={this.props.product.products.package[1].status}
                 lang={this.props.lang}
               />
             </Box>
@@ -183,6 +184,7 @@ class ShowTime extends React.Component {
                 live={this.props.product.products.lives[i + 1]}
                 status={this.props.product.products.lives[i + 1].status}
                 subAll={this.props.product.products.subscribe[1].status}
+                packAll={this.props.product.products.package[1].status}
                 lang={this.props.lang}
               />
             </Box>
@@ -201,6 +203,7 @@ class ShowTime extends React.Component {
                 live={this.props.product.products.lives[i]}
                 status={this.props.product.products.lives[i].status}
                 subAll={this.props.product.products.subscribe[1].status}
+                packAll={this.props.product.products.package[1].status}
                 lang={this.props.lang}
               />
             </Box>
@@ -212,6 +215,7 @@ class ShowTime extends React.Component {
                 live={this.props.product.products.lives[i + 1]}
                 status={this.props.product.products.lives[i + 1].status}
                 subAll={this.props.product.products.subscribe[1].status}
+                packAll={this.props.product.products.package[1].status}
                 lang={this.props.lang}
               />
             </Box>
@@ -229,6 +233,7 @@ class ShowTime extends React.Component {
               live={this.props.product.products.lives[n]}
               status={this.props.product.products.lives[n].status}
               subAll={this.props.product.products.subscribe[1].status}
+              packAll={this.props.product.products.package[1].status}
               lang={this.props.lang}
             />
           </Box>
@@ -258,6 +263,7 @@ class ShowTime extends React.Component {
               live={undefined}
               subscribe={this.props.product.products.subscribe[1]}
               subAll={this.props.product.products.subscribe[1].status}
+              packAll={this.props.product.products.package[1].status}
               color={color.red}
               w="100%"
               img="static/img_VDO+LIVE.png"
@@ -273,6 +279,7 @@ class ShowTime extends React.Component {
               live={undefined}
               subscribe={this.props.product.products.subscribe[0]}
               subAll={this.props.product.products.subscribe[1].status}
+              packAll={this.props.product.products.package[1].status}
               color={color.blue}
               w="95%"
               img="static/img_vodondemand@3x.png"
@@ -294,7 +301,8 @@ class ShowTime extends React.Component {
               modalType={type}
               live={undefined}
               subscribe={this.props.product.products.package[1]}
-              subAll={this.props.product.products.package[1].status}
+              subAll={this.props.product.products.subscribe[1].status}
+              packAll={this.props.product.products.package[1].status}
               color="#993333"
               w="100%"
               img="static/img_VDO+LIVE.png"
@@ -309,7 +317,8 @@ class ShowTime extends React.Component {
               modalType={type}
               live={undefined}
               subscribe={this.props.product.products.package[0]}
-              subAll={this.props.product.products.package[1].status}
+              subAll={this.props.product.products.subscribe[1].status}
+              packAll={this.props.product.products.package[1].status}
               color="#336699"
               w="95%"
               img="static/img_vodondemand@3x.png"

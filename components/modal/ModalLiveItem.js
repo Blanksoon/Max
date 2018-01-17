@@ -110,7 +110,11 @@ class ModalButton extends Component {
   }
   render() {
     let zin = -1
-    if (this.props.status === 'unenable' || this.props.subAll === 'unenable') {
+    if (
+      this.props.status === 'unenable' ||
+      this.props.subAll === 'unenable' ||
+      this.props.packAll === 'unenable'
+    ) {
       zin = 1
     }
     return (

@@ -271,7 +271,7 @@ class PurchaseItem extends React.Component {
       // console.log('ddddd111111111sub', token)
       const response = await api.get(
         `${api.SERVER}/stripe/package/creditcard?token=${this.props.auth
-          .token}&packageId=${token.id}&sourceId=${this.props.product._id}`
+          .token}&packageId=${this.props.product._id}&sourceId=${token.id}`
       )
       console.log('ddddddd443r43', response)
       if (response) {
