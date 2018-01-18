@@ -34,6 +34,12 @@ export const ListPurchase = props => {
   ) {
     type = props.typeSub
   }
+  if (
+    props.purchase.productName === 'package vods' ||
+    props.purchase.productName === 'package lives and vods'
+  ) {
+    type = props.typePackage
+  }
   return (
     <Box w={12 / 12}>
       <Flex className="List-Purchase" pb="1rem">

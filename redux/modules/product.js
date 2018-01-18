@@ -19,10 +19,11 @@ export const fetchProducts = token => async dispatch => {
   dispatch(fetchLivesReq())
   const url = `${api.SERVER}/product?token=${token}`
   try {
-    console.log('fetchProducts')
+    //console.log('fetchProducts')
     const json = await api.get(url)
     //console.log('json', json)
     // You should not return in Vods <-- change to something like data
+    //console.log('json', json.data.package)
     dispatch(fetchProductsSuccess(json.data))
   } catch (error) {
     console.log(error)

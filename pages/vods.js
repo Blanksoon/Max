@@ -72,7 +72,7 @@ class Vods extends React.Component {
     })
     this.props.fetchFeaturedVod(this.props.token)
     //this.props.fetchVods(this.props.token)
-    this.props.startindex(4)
+    this.props.startindex(16)
     this.props.fetchVodOnDemand(this.props.token)
   }
 

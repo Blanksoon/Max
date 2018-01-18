@@ -136,5 +136,6 @@
   "DESC1SUCCESSREGISTER": "สำหรับการสมัครสมาชิก",
   "DESC2SUCCESSREGISTER": "คุณควรจะได้รับอีเมล์เพื่อยืนยันตัวตนในไม่ช้าที่",
   "DESC1SUCCESSCHANGEPASSWORD": "สำหรับการเปลี่ยนรหัสผ่าน",
-  "DESC2SUCCESSCHANGEPASSWORD": "คุณสามารถเข้าสู่ระบบด้วยรหัสผ่านใหม่"
+  "DESC2SUCCESSCHANGEPASSWORD": "คุณสามารถเข้าสู่ระบบด้วยรหัสผ่านใหม่",
+  "TYPEPACKAGE": "แพ็กเกจ"
 }

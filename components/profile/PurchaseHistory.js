@@ -82,6 +82,7 @@ class PurchaseHistory extends React.Component {
             purchase={purchaseList[i]}
             typeSub={this.props.common.TYPESUBPRODUCT}
             typeLive={this.props.common.TYPELIVEPRODUCT}
+            typePackage={this.props.common.TYPEPACKAGE}
           />
         )
       }
