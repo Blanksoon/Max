@@ -158,7 +158,7 @@ class Login extends React.Component {
         <div>
           <Box>
             <Box>
-              <Image width="100%" src="../../static/img_login.png" />
+              <Image width="100%" src="../../static/logo_max_new.jpg" />
             </Box>
             <Box pl="3rem">
               <Text1>{LOGIN}</Text1>

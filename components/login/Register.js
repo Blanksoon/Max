@@ -168,7 +168,7 @@ export default class Login extends React.Component {
         <form>
           <Box>
             <Box>
-              <Image width="100%" src="../../static/img_login.png" />
+              <Image width="100%" src="../../static/logo_max_new.jpg" />
             </Box>
             <Box pl="3rem">
               <Text1>{TITLEREGISTER}</Text1>
