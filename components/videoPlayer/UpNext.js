@@ -1,20 +1,29 @@
 import ThumbnailVideo from '../thumbnail/ThumbnailVideo'
 import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 
-const renderThumbnail = (lang, vod) => (
-  <Box width={1 / 4} key={vod.id} px={2}>
-    <ThumbnailVideo
-      img={vod.thumbnailUrl}
-      name={lang === 'en' ? vod.programName_en : vod.programName_th}
-      date={lang === 'en' ? vod.onAirDateStr_en : vod.onAirDateStr_th}
-      time={vod.duration}
-      id={vod.id}
-    />
-  </Box>
-)
+const renderVideos = (lang, vod) => {
+  // console.log('dddddddwefw', vod)
+  const rowVideos = []
+  const rowCount = 4
+  // Use splice on clone object, DONT MODIFY props
+  for (let i = 0; i < rowCount; i++) {
+    rowVideos.push(
+      <Box width={1 / 4} key={vod[i].id} px={2}>
+        <ThumbnailVideo
+          img={vod[i].thumbnailUrl}
+          name={lang === 'en' ? vod[i].programName_en : vod[i].programName_th}
+          date={lang === 'en' ? vod[i].onAirDateStr_en : vod[i].onAirDateStr_th}
+          time={vod.duration}
+          id={vod[i].id}
+        />
+      </Box>
+    )
+  }
+  return rowVideos
+}
 const UpNext = ({ lang, name, vods, progname }) => {
   const relateVods = vods.filter(vod => vod.programName_en == progname)
-  //console.log('ddddddddd', progname)
+  // console.log('ddddddddd', relateVods)
   return (
     <div>
       <Box pb="5%" ml="1rem" mr="1rem">
@@ -26,7 +35,7 @@ const UpNext = ({ lang, name, vods, progname }) => {
             </h2>
           </Box>
         </Flex>
-        <Flex>{relateVods.map(vod => renderThumbnail(lang, vod))}</Flex>
+        <Flex>{renderVideos(lang, vods)}</Flex>
       </Box>
       <style jsx>
         {`
