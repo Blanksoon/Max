@@ -6,7 +6,7 @@ const renderVideos = (lang, vod) => {
   const rowVideos = []
   const rowCount = 4
   // Use splice on clone object, DONT MODIFY props
-  for (let i = 0; i < rowCount; i++) {
+  for (let i = 0; i < rowCount && vod[i] != undefined; i++) {
     rowVideos.push(
       <Box width={1 / 4} key={vod[i].id} px={2}>
         <ThumbnailVideo
