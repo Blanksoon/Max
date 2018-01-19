@@ -157,7 +157,7 @@ class ModalSubscribe extends React.Component {
     subscribe: PropTypes.object,
   }
   handleOnClickModal = () => {
-    console.log('ifmodalSubscribe', this.props.subscribe)
+    //console.log('ifmodalSubscribe', this.props.subscribe)
     this.props.toggleModalAction()
     this.props.updateModalAction(this.props.modalType)
     this.props.buyProductAction(this.props.subscribe)
@@ -213,15 +213,16 @@ class ModalSubscribe extends React.Component {
             </Flex>
             <Wrapperin zin={zin} onClick="">
               <center>
-                <Box pt="1em">
-                  <Text5>SUBSCRIBE VOD</Text5>
-                  <Text5>AND LIVE STREAMING</Text5>
+                <Box pt="2.5em">
+                  {/* <Text5>SUBSCRIBE VOD</Text5>
+                  <Text5>AND LIVE STREAMING</Text5> */}
+                  <Text5>{this.props.youBought}</Text5>
                 </Box>
                 <Box pt="2em">
                   {/* 1em */}
                   <Link href={`/index`}>
                     <ButtonWatch style={{ cursor: 'pointer' }}>
-                      WATCH NOW
+                      {this.props.watchNow}
                     </ButtonWatch>
                   </Link>
                 </Box>

@@ -27,12 +27,12 @@ export default class NavbarProfile extends Component {
   }
 
   componentWillMount() {
-    console.log('..', this.props.url.pathname)
+    //console.log('..', this.props.url.pathname)
     //this.setActiveUrl(this.props.url.pathname)
   }
 
   setActiveUrl(activeUrl) {
-    console.log(activeUrl)
+    //console.log(activeUrl)
     this.setState({
       navItems: this.state.navItems.map(navItem => {
         if (navItem.label === activeUrl) {

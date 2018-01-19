@@ -143,7 +143,7 @@ class Verify extends React.Component {
     // } catch (error) {
     //   return console.log(error)
     // }
-    console.log('token', token)
+    //console.log('token', token)
   }
   componentDidMount() {
     // console.log('hi')

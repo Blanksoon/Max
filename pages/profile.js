@@ -115,11 +115,11 @@ class Profile extends React.Component {
         <div>
           <Subscribe
             lang={this.state.lang}
-            common={this.props.translations.translation.common}
+            common={this.state.translations.translation.common}
           />
           <ListSubscribe
             lang={this.state.lang}
-            common={this.props.translations.translation.common}
+            common={this.state.translations.translation.common}
           />
           <Box w={12 / 12} p="6em" />
         </div>

@@ -98,7 +98,7 @@ class Login extends React.Component {
   }
 
   async forgotPassword() {
-    console.log('data', this.state.data)
+    //console.log('data', this.state.data)
     const providerData = {
       email: this.state.data.email,
     }
@@ -112,7 +112,7 @@ class Login extends React.Component {
     })
     this.setState({ loading: false })
     if (status.code == 200) {
-      console.log('hissss')
+      //console.log('hissss')
       this.props.closeModal()
       Router.push(`/successForgotPass`)
     }

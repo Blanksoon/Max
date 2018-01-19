@@ -174,6 +174,8 @@ class ShowTime extends React.Component {
                 subAll={this.props.product.products.subscribe[1].status}
                 packAll={this.props.product.products.package[1].status}
                 lang={this.props.lang}
+                youBought={this.props.common.YOUBOUGHT}
+                watch={this.props.common.WATCH}
               />
             </Box>
             <Box w={6 / 12} pl="0.5em" pt="1rem">
@@ -186,6 +188,8 @@ class ShowTime extends React.Component {
                 subAll={this.props.product.products.subscribe[1].status}
                 packAll={this.props.product.products.package[1].status}
                 lang={this.props.lang}
+                youBought={this.props.common.YOUBOUGHT}
+                watch={this.props.common.WATCH}
               />
             </Box>
           </Flex>
@@ -205,6 +209,8 @@ class ShowTime extends React.Component {
                 subAll={this.props.product.products.subscribe[1].status}
                 packAll={this.props.product.products.package[1].status}
                 lang={this.props.lang}
+                youBought={this.props.common.YOUBOUGHT}
+                watch={this.props.common.WATCH}
               />
             </Box>
             <Box w={6 / 12} pl="0.5em" pt="1rem">
@@ -217,6 +223,8 @@ class ShowTime extends React.Component {
                 subAll={this.props.product.products.subscribe[1].status}
                 packAll={this.props.product.products.package[1].status}
                 lang={this.props.lang}
+                youBought={this.props.common.YOUBOUGHT}
+                watch={this.props.common.WATCH}
               />
             </Box>
           </Flex>
@@ -235,6 +243,8 @@ class ShowTime extends React.Component {
               subAll={this.props.product.products.subscribe[1].status}
               packAll={this.props.product.products.package[1].status}
               lang={this.props.lang}
+              youBought={this.props.common.YOUBOUGHT}
+              watch={this.props.common.WATCH}
             />
           </Box>
           <Box w={6 / 12} pl="0.5em" pt="1rem" />
@@ -270,6 +280,8 @@ class ShowTime extends React.Component {
               text1={this.props.common.SUBLIVEANDVOD}
               text2={this.props.common.Enjoyall}
               month={this.props.common.MONTH}
+              watchNow={this.props.common.WATCHNOW}
+              youBought={this.props.common.YOUBOUGHT}
             />
           </Box>
           <Box w={6 / 12} pl="0.5em">
@@ -286,6 +298,8 @@ class ShowTime extends React.Component {
               text1={this.props.common.SUBSCRIBEVDO}
               text2={this.props.common.Allvideo}
               month={this.props.common.MONTH}
+              watchNow={this.props.common.WATCHNOW}
+              youBought={this.props.common.YOUBOUGHT}
             />
           </Box>
         </Flex>
@@ -309,6 +323,8 @@ class ShowTime extends React.Component {
               text1={this.props.common.SUBLIVEANDVOD}
               text2={this.props.common.Enjoyall}
               month={this.props.common.MONTH}
+              watchNow={this.props.common.WATCHNOW}
+              youBought={this.props.common.YOUBOUGHT}
             />
           </Box>
           <Box w={6 / 12} pl="0.5em">
@@ -325,6 +341,8 @@ class ShowTime extends React.Component {
               text1={this.props.common.SUBSCRIBEVDO}
               text2={this.props.common.Allvideo}
               month={this.props.common.MONTH}
+              watchNow={this.props.common.WATCHNOW}
+              youBought={this.props.common.YOUBOUGHT}
             />
           </Box>
         </Flex>

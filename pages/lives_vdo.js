@@ -97,7 +97,6 @@ class LiveVdo extends Component {
     const { countdown } = this.state
     const common = this.state.translations.translation.common
     const path = `lives/${this.props.live.id}`
-    //console.log('ddddddd', this.props)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main

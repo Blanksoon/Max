@@ -137,5 +137,8 @@
   "DESC2SUCCESSREGISTER": "คุณควรจะได้รับอีเมล์เพื่อยืนยันตัวตนในไม่ช้าที่",
   "DESC1SUCCESSCHANGEPASSWORD": "สำหรับการเปลี่ยนรหัสผ่าน",
   "DESC2SUCCESSCHANGEPASSWORD": "คุณสามารถเข้าสู่ระบบด้วยรหัสผ่านใหม่",
-  "TYPEPACKAGE": "แพ็กเกจ"
+  "TYPEPACKAGE": "แพ็กเกจ",
+  "WATCHNOW": "ดูตอนนี้",
+  "WATCH": "ดู",
+  "YOUBOUGHT": "ซื้อแล้ว"
 }

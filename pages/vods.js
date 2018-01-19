@@ -65,7 +65,7 @@ class Vods extends React.Component {
     //console.log('hi')
     const filteredProgram =
       event.target.value === 'All shows' ? '' : event.target.value
-    //console.log('filteredProgram', filteredProgram)
+    console.log('filteredProgram', filteredProgram)
     this.props.resetFetchData()
     this.props.setFetchFilter({
       progname: filteredProgram,
@@ -143,7 +143,7 @@ const mapStateToProps = state => {
 Vods.getInitialProps = async ({ store, isServer, query, req, res }) => {
   let state = store.getState()
   const token = state.auth.token
-  console.log('token', token)
+  //console.log('token', token)
   // Remove any filters
   store.dispatch(
     setFetchFilter({

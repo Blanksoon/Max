@@ -137,5 +137,8 @@
   "DESC2SUCCESSREGISTER": "You should receive a confirmation email shortly at",
   "DESC1SUCCESSCHANGEPASSWORD": "for change password",
   "DESC2SUCCESSCHANGEPASSWORD": "You can login with new password",
-  "TYPEPACKAGE": "Package"
+  "TYPEPACKAGE": "Package",
+  "WATCHNOW": "WATCH NOW",
+  "WATCH": "WATCH",
+  "YOUBOUGHT": "YOU BOUGHT"
 }

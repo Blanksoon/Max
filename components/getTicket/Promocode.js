@@ -76,7 +76,7 @@ class Promocode extends Component {
     //console.log('cookie not found')
     //this.props.push('/login')
     //} else {
-    console.log('not undefiend', typeof this.props.cookie)
+    //console.log('not undefiend', typeof this.props.cookie)
     this.props.subScribe(this.state.promocode)
     //}
     //this.props.subScribe(this.state.promocode)

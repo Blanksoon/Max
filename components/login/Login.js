@@ -117,7 +117,7 @@ class Login extends React.Component {
       })
       //console.log('false')
     }
-    console.log(this.props.url)
+    //console.log(this.props.url)
     if (this.props.url.pathname === '/') {
     } else {
       this.props.url.push('/')

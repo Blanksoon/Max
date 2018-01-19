@@ -182,12 +182,12 @@ class ModalButton extends Component {
               </Box>
               <Box w={10 / 12}>
                 <Box pl="2.5em" pt="2em">
-                  <Text4>YOU BOUGHT</Text4>
+                  <Text4>{this.props.youBought}</Text4>
                 </Box>
                 <Box pl="2em" pt="0.5em">
                   <Link href={`/lives_vdo?id=${this.props.live._id}`}>
                     <ButtonWatch style={{ cursor: 'pointer' }}>
-                      WATCH
+                      {this.props.watch}
                     </ButtonWatch>
                   </Link>
                 </Box>

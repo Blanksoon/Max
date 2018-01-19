@@ -35,7 +35,7 @@ export const closeModal = () => {
   }
 }
 export const newPassword = modalType => {
-  console.log('newPassword')
+  //console.log('newPassword')
   return {
     type: NEW_PASSWORD,
     payload: { modalType },

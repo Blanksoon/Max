@@ -84,14 +84,14 @@ class ChangePassStep2 extends React.Component {
   }
 
   async submitCurrent() {
-    console.log('jjffjfjfj')
+    //console.log('jjffjfjfj')
     const providerData = {
       token: this.props.auth.token,
       password: this.state.password,
     }
     this.setState({ loading: true })
-    console.log('passworddd', this.state.password)
-    console.log('passworddd', this.state.confirmPassword)
+    //console.log('passworddd', this.state.password)
+    //console.log('passworddd', this.state.confirmPassword)
     if (
       this.state.password === this.state.confirmPassword &&
       this.state.password != ''
@@ -133,7 +133,7 @@ class ChangePassStep2 extends React.Component {
     })
   }
   render() {
-    console.log('fjfsagadfgdffjfj')
+    //console.log('fjfsagadfgdffjfj')
     return (
       <div>
         <center>

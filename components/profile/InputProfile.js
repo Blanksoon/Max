@@ -157,9 +157,9 @@ class InputProfile extends React.Component {
       this.setState({ lastname: data.lastname })
     }
     if (data.date_birth != null) {
-      console.log('test', data.date_birth)
+      //console.log('test', data.date_birth)
       const birthDate = moment(new Date(data.date_birth))
-      console.log('birthDate', birthDate)
+      //console.log('birthDate', birthDate)
       this.setState({ birthDay: birthDate })
     }
     if (data.gender != null) {
@@ -219,7 +219,7 @@ class InputProfile extends React.Component {
   }
 
   async sumbitProfile() {
-    console.log('numberone', this.state.birthDay)
+    //console.log('numberone', this.state.birthDay)
     this.setState({ loading: true })
     const { status, data } = await api.post(
       `${api.SERVER}/update-user?token=${this.props.auth.token}`,
@@ -229,7 +229,7 @@ class InputProfile extends React.Component {
       this.setState({ status: 'Successful to update profile' })
     }
     this.setState({ loading: false })
-    console.log('status', status)
+    //console.log('status', status)
   }
 
   render() {

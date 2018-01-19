@@ -70,7 +70,7 @@ class Paypal extends React.Component {
       `https://api.sandbox.paypal.com/v1/oauth2/token`,
       { grant_type: 'client_credentials' }
     )
-    console.log('token', token)
+    //console.log('token', token)
   }
 
   post(url, json) {

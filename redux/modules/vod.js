@@ -39,6 +39,9 @@ export const fetchVods = token => async (dispatch, getState) => {
   if (typeof filter.progname == 'undefined') {
     filter.progname = ''
   }
+  if (filter.progname === 'Muay Thai Battle') {
+    filter.progname = 'Battle Muay Thai'
+  }
   const query = {
     ...filter,
     token,
@@ -97,7 +100,7 @@ export const fetchVodSuccess = (id, vods) => ({
 })
 export const fetchVod = (token, id, progname) => async dispatch => {
   dispatch(fetchVodReq())
-  const url = `${api.SERVER}/vods?progname=${progname}&token=${token}`
+  const url = `${api.SERVER}/vods-ondemand?progname=${progname}&token=${token}`
   try {
     const json = await api.get(url)
     // You should not return in Vods <-- change to something like data
