@@ -26,6 +26,7 @@ export const fetchVodsSuccess = vods => ({
   payload: vods,
 })
 export const fetchVods = token => async (dispatch, getState) => {
+  //console.log('fetchVods')
   dispatch(resetFetchData())
   dispatch(fetchVodsReq())
   const state = getState()
@@ -35,7 +36,7 @@ export const fetchVods = token => async (dispatch, getState) => {
   } else {
     filter = Object.assign({}, state.vod.filter)
   }
-
+  //console.log('state.vod.filter', state.vod.filter)
   if (typeof filter.progname == 'undefined') {
     filter.progname = ''
   }
@@ -100,7 +101,7 @@ export const fetchVodSuccess = (id, vods) => ({
 })
 export const fetchVod = (token, id, progname) => async dispatch => {
   dispatch(fetchVodReq())
-  const url = `${api.SERVER}/vods-ondemand?progname=${progname}&token=${token}`
+  const url = `${api.SERVER}/vods?progname=${progname}&token=${token}`
   try {
     const json = await api.get(url)
     // You should not return in Vods <-- change to something like data
