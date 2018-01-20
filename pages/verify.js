@@ -108,12 +108,11 @@ class Verify extends React.Component {
                   top: '-1rem',
                 }}
               >
-                You have successfully verify your email
-            </h3>
+                {translation.common.VERIFY_SUCCESS}
+              </h3>
               <h4 style={{ color: vars.black, fontWeight: 'normal' }}>
-                Please enjoy the most exciting fightingsport in the world at Max
-              Muay Thai
-            </h4>
+                {translation.common.ENJOY_MAXMUAYTHAI}
+              </h4>
             </center>
           </Container>
         </Main>
