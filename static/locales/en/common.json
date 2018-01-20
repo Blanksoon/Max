@@ -39,8 +39,7 @@
   "ABOUTUS": "ABOUT US",
   "About1": "You've never really been to Thailand without witnessing extreme",
   "About2": "muay thai at Max Muay Thai Stadium Pattaya..",
-  "About3":
-    "We are the industry leader in Muay Thai Broadcasting. The no.1reated",
+  "About3": "We are the industry leader in Muay Thai Broadcasting. The no.1reated",
   "About4": "boxing tv show in Thailand with our 3 round format of Non Stop",
   "About5": "Aggressive Action.",
   "HILIGHT": "HILIGHT",
@@ -60,8 +59,7 @@
   "FOLLOWMAX": "Follow Max Muay Thai at",
   "TITLECOMMENT": "Let we hear from you",
   "EMILPLACEHOLDER": "Your email here",
-  "INBOXEMAILPLACEHOLDER":
-    "Let us know what can we do more for our beloved fan.+-+",
+  "INBOXEMAILPLACEHOLDER": "Let us know what can we do more for our beloved fan.+-+",
   "SENDEMAILBUTTON": "Send email",
   "LOGIN": "LOG IN",
   "EMAIL": "Email",
@@ -140,5 +138,8 @@
   "TYPEPACKAGE": "Package",
   "WATCHNOW": "WATCH NOW",
   "WATCH": "WATCH",
-  "YOUBOUGHT": "YOU BOUGHT"
+  "YOUBOUGHT": "YOU BOUGHT",
+  "Congratulation": "Congratulation",
+  "VERIFY_SUCCESS": "You have successfully verify your email",
+  "ENJOY_MAXMUAYTHAI": "Please enjoy the most exciting fightingsport in the world at Max Muay Thai"
 }

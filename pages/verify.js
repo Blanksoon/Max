@@ -5,6 +5,11 @@ import { Flex, Box } from 'rebass'
 import Cookies from 'universal-cookie'
 import styled from 'styled-components'
 import withRedux from 'next-redux-wrapper'
+import { I18nextProvider } from 'react-i18next'
+import startI18n from '../tools/startI18n'
+import { getTranslation } from '../tools/translationHelpers'
+import { langSelector } from '../redux/selectors/lang'
+import { langUrl } from '../tools/langUrl'
 import Login from '../components/login/Login'
 import NewModal from '../containers/NewModal'
 import Container from '../components/commons/Container'
@@ -55,8 +60,12 @@ class Verify extends React.Component {
     super(props)
     this.state = {
       message: '',
+      translations: this.props.translations,
+      lang: this.props.lang,
     }
     this.verify = this.verify.bind(this)
+    this.i18n = startI18n(this.props.translations, this.props.lang)
+    this.switchLang = this.switchLang.bind(this)
   }
   async verify(token) {
     const url = `${api.SERVER}/activate-user?token=` + token
@@ -66,37 +75,67 @@ class Verify extends React.Component {
       return console.log(error)
     }
   }
+  async switchLang(lang) {
+    this.setState({
+      lang: lang,
+      translations: await getTranslation(lang, ['common', 'navbar'], langUrl),
+    })
+  }
   componentDidMount() {
     console.log('hi')
     this.verify(this.props.url.query.token)
   }
 
   render() {
+    const translation = this.state.translations.translation
+    console.log(translation)
     return (
-      <Main url={this.props.url}>
-        <NewModal />
-        <Container pt="10rem" pb="5rem">
-          <center>
-            <h1 style={{ color: vars.lightBlue }}>Congratulation</h1>
-            <h3
-              style={{
-                color: vars.lightBlue,
-                fontWeight: 'normal',
-                position: 'relative',
-                top: '-1rem',
-              }}
-            >
-              You have successfully verify your email
+      <I18nextProvider i18n={this.i18n}>
+        <Main
+          url={this.props.url}
+          nav={this.state.translations.translation.common}
+          www="verify"
+          switchLanguage={this.switchLang}>
+          <NewModal />
+          <Container pt="10rem" pb="5rem">
+            <center>
+              <h1 style={{ color: vars.lightBlue }}>{translation.common.Congratulation}</h1>
+              <h3
+                style={{
+                  color: vars.lightBlue,
+                  fontWeight: 'normal',
+                  position: 'relative',
+                  top: '-1rem',
+                }}
+              >
+                You have successfully verify your email
             </h3>
-            <h4 style={{ color: vars.black, fontWeight: 'normal' }}>
-              Please enjoy the most exciting fightingsport in the world at Max
+              <h4 style={{ color: vars.black, fontWeight: 'normal' }}>
+                Please enjoy the most exciting fightingsport in the world at Max
               Muay Thai
             </h4>
-          </center>
-        </Container>
-      </Main>
+            </center>
+          </Container>
+        </Main>
+      </I18nextProvider>
     )
   }
 }
-
+const mapStateToProps = state => {
+  return {
+    lang: langSelector(state),
+  }
+}
+Verify.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  state = store.getState()
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    langUrl
+  )
+  const props = mapStateToProps(state)
+  props.translations = translations
+  return props
+}
 export default withRedux(initStore)(Verify)
