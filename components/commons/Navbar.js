@@ -8,9 +8,10 @@ import vars from './vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
 import LoginLang from '../../containers/commons/LoginLang'
 import { translate } from 'react-i18next'
+import { media } from '../../tools/responsive'
 
 //rgba(1, 15, 30, 0.8)
-const Navbar = styled(Fixed)`
+const Navbar = styled(Fixed) `
   background: ${props =>
     props.pathname == '/' ? 'rgba(1, 15, 30, 0.8)' : 'rgba(1, 15, 30, 10)'};
   height: ${vars.navHeight};
@@ -26,12 +27,15 @@ const Motto = styled.span`
   padding: 1.5rem 1rem;
   text-align: right;
   vertical-align: middle;
+  ${media.desktop`display: none;`}
 `
-const Logo = styled(Image)`
+const Logo = styled(Image) `
   cursor: pointer;
-  height: 7rem;
+  height: 5rem;
   float: right;
+  margin-top: 0.5rem;
   margin-right: 2rem;
+  ${media.desktop`display: none;`}
 `
 class NavBar extends React.Component {
   constructor(props) {
