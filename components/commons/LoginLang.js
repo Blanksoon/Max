@@ -9,8 +9,9 @@ import Router from 'next/router'
 
 const LoginLang = styled.span`
   color: ${vars.white};
-  float: left;
+  float: right;
   margin-left: 1rem;
+  margin-right: 1rem;
   height: 100%;
   text-align: center;
 `
@@ -72,8 +73,8 @@ export default class extends Component {
             logoutText={logoutText}
           />
         ) : (
-          <ModalText modalType={3} text={registerText} />
-        )}
+            <ModalText modalType={3} text={registerText} />
+          )}
         <ClearFix />
         <LanguagePanel>
           <Language

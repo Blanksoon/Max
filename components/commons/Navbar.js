@@ -34,7 +34,7 @@ const Logo = styled(Image) `
   height: 5rem;
   float: right;
   margin-top: 0.5rem;
-  margin-right: 2rem;
+  margin-right: 1rem;
   ${media.desktop`display: none;`}
 `
 class NavBar extends React.Component {
@@ -112,6 +112,9 @@ class NavBar extends React.Component {
           {this.state.navItems.map(({ label, href, active }) => (
             <NavItem key={label} label={label} href={href} active={active} />
           ))}
+          <Link href="/">
+            <Logo src="/static/logo.png" />
+          </Link>
           <LoginLang
             url={this.props.url}
             www={this.props.www}
@@ -119,9 +122,6 @@ class NavBar extends React.Component {
             profileText={this.state.profileText}
             logoutText={this.state.logoutText}
           />
-          <Link href="/">
-            <Logo src="/static/logo.png" />
-          </Link>
         </Container>
       </Navbar>
     )
