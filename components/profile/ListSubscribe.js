@@ -107,11 +107,22 @@ class ListSubscribe extends Component {
         `${api.SERVER}/stripe/cancel-subscribe?orderId=${subscription._id}`
       )
       this.setState({ loading: false })
-    } else {
-      console.log('111111111111')
+    } else if (subscription.paypal != undefined) {
       const json = await api.post(
         `${api.SERVER}/ppcheckout/${subscription.orderId}/cancel/subscribe`,
         {}
+      )
+      this.setState({ loading: false })
+    } else if (subscription.paymentIos != undefined) {
+      const json = await api.post(
+        `${api.SERVER}/cancel-sub-ios?token=${this.props.token}`,
+        { orderId: subscription.orderId }
+      )
+      this.setState({ loading: false })
+    } else {
+      const json = await api.post(
+        `${api.SERVER}/cancel-sub-android?token=${this.props.token}`,
+        { orderId: subscription.orderId }
       )
       this.setState({ loading: false })
     }
