@@ -11,7 +11,7 @@ const renderVideos = (lang, vod) => {
       <Box width={1 / 4} key={vod[i].id} px={2}>
         <ThumbnailVideo
           img={vod[i].thumbnailUrl}
-          name={lang === 'en' ? vod[i].programName_en : vod[i].programName_th}
+          name={lang === 'en' ? vod[i].title_en : vod[i].title_th}
           date={lang === 'en' ? vod[i].onAirDateStr_en : vod[i].onAirDateStr_th}
           time={vod.duration}
           id={vod[i].id}

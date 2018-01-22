@@ -102,12 +102,13 @@ class ListSubscribe extends Component {
   async cancel(subscription) {
     //console.log('jjjjjjjjjjjjjjjjj', subscription)
     this.setState({ loading: true })
-    if (subscription.stripe.paymentId != undefined) {
+    if (subscription.stripe != undefined) {
       const json = await api.get(
         `${api.SERVER}/stripe/cancel-subscribe?orderId=${subscription._id}`
       )
       this.setState({ loading: false })
     } else {
+      console.log('111111111111')
       const json = await api.post(
         `${api.SERVER}/ppcheckout/${subscription.orderId}/cancel/subscribe`,
         {}
