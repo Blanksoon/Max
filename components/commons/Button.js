@@ -8,7 +8,7 @@ const StyledButton = styled(Button)`
   cursor: pointer;
   background-color: #b81111;
   border: 1px solid #b81111;
-  padding: 12px 40px;
+  padding: 12px 16%;
   text-align: center;
   text-decoration: none;
   display: inline-block;

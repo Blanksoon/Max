@@ -27,15 +27,14 @@ class ComingLive extends React.Component {
     if (rowCount % 2 == 0) {
       for (let i = 0; i < rowCount; i += 2) {
         rowLive.push(
-          <Flex pb="1em">
-            <Box w={1 / 2}>
+          <Flex pb="1em" wrap>
+            <Box w={1 / 2} pr="0.5em">
               <ThumbnailLive
                 lang={this.props.lang}
                 live={this.props.lives[i]}
               />
             </Box>
-            <Box w={1 / 32} />
-            <Box w={1 / 2}>
+            <Box w={1 / 2} pl="0.5em">
               <ThumbnailLive
                 lang={this.props.lang}
                 live={this.props.lives[i + 1]}
@@ -47,15 +46,14 @@ class ComingLive extends React.Component {
     } else {
       for (let i = 0; i < rowCount - 1; i += 2) {
         rowLive.push(
-          <Flex pb="1em">
-            <Box w={1 / 2}>
+          <Flex pb="1em" wrap>
+            <Box w={1 / 2} pr="0.5em">
               <ThumbnailLive
                 lang={this.props.lang}
                 live={this.props.lives[i]}
               />
             </Box>
-            <Box w={1 / 32} />
-            <Box w={1 / 2}>
+            <Box w={1 / 2} pl="0.5em">
               <ThumbnailLive
                 lang={this.props.lang}
                 live={this.props.lives[i + 1]}
@@ -67,10 +65,9 @@ class ComingLive extends React.Component {
       }
       rowLive.push(
         <Flex>
-          <Box w={1 / 2}>
+          <Box w={1 / 2} pr="0.5em">
             <ThumbnailLive lang={this.props.lang} live={this.props.lives[n]} />
           </Box>
-          <Box w={1 / 32} />
           <Box w={1 / 2} />
         </Flex>
       )
