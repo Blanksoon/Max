@@ -26,14 +26,18 @@ const stadium_ticket = ({ common }) => (
           <h1>{common.Witness}</h1>
           <h4>{common.Call}</h4>
         </Box>
-        <Flex>
-          <Box w={1 / 24}>
+        <Flex wrap>
+          <Box w={[1.5 / 12, 1 / 12, 0.5 / 12]}>
             <Image width="100%" src="../static/phone.png" />
           </Box>
-          <Box pl="1em" pt="0.4em">
+          <Box
+            w={[5.5 / 12, 4 / 12, 3 / 12, 2.3 / 12, 2 / 12]}
+            pl="1em"
+            pt="0.4em"
+          >
             <Button>(+66)038-416-999</Button>
           </Box>
-          <Box pl="1em" pt="0.4em">
+          <Box w={[5 / 12, 4 / 12, 3 / 12, 2 / 12]} pl="1em" pt="0.4em">
             <Button>08-2495-5549</Button>
           </Box>
         </Flex>

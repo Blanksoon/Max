@@ -5,7 +5,12 @@ import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
 import { connect } from 'react-redux'
 
 const renderThumbnail = (lang, vod) => (
-  <Box width={1 / 4} key={vod.id} px={2}>
+  <Box
+    width={[1 / 2, 1 / 2, 1 / 2, 1 / 2, 1 / 4]}
+    key={vod.id}
+    pt={[2, 2, 2, 0]}
+    px={2}
+  >
     <Link as={`/vods/${vod.id}`} href={`/videoPlayer?id=${vod.id}`}>
       <a>
         <ThumbnailBottom
@@ -44,7 +49,7 @@ class LatestVideo extends Component {
             </Box>
           </Flex>
           <hr size="0.1" />
-          <Flex pt="2rem">
+          <Flex pt="2rem" wrap>
             {this.props.vods.map(vod => renderThumbnail(this.props.lang, vod))}
           </Flex>
         </Box>

@@ -52,7 +52,7 @@ const ThumbnailBigLive = props => (
           {props.text5}
         </Text3>
       </Box>
-      <Box w={1 / 12} />
+      <Box w={[0, 0, 0, 0.5 / 12, 1 / 12]} />
       <Box w={3 / 12} pl="0rem" pb="1rem">
         <Link as={`/lives/${props.id}`} href={`/lives_vdo?id=${props.id}`}>
           <a>
