@@ -24,7 +24,7 @@ const ThumbnailBottom = props => (
             color="#c2c405"
             left
             children={props.date}
-            fontSize="0.8em"
+            fontSize={['0.6em', '0.8em', '0.9em', '1.1em', '0.8em']}
           />
         </Box>
         <Box w={4 / 12}>
@@ -34,7 +34,7 @@ const ThumbnailBottom = props => (
             color="#c2c405"
             right
             children={props.time}
-            fontSize="0.8em"
+            fontSize={['0.6em', '0.8em', '0.9em', '1.1em', '0.8em']}
           />
         </Box>
       </Flex>

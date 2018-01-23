@@ -86,7 +86,7 @@ class ComingLive extends React.Component {
               bold
               color="#fff"
               children={this.props.common.UPCOMINGLIVE}
-              fontSize="1.5em"
+              fontSize={['1em', '1.5em']}
             />
           </center>
         </Box>
