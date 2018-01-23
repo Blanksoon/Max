@@ -11,7 +11,7 @@ const About = props => (
   <Wrapper className="abousss" paddingTop={props.paddingTop}>
     <WrapperAbout>
       <Box width={1} pb={5} />
-      <Flex>
+      <Flex warp={true}>
         <Box w={6 / 12} />
         <Box width={6 / 12} pt="0em" pb={5}>
           <Text

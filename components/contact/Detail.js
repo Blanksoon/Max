@@ -42,6 +42,16 @@ const Text1 = styled.div`
   text-align: center;
 `
 
+const Map = styled.div`
+  height: 350;
+  width: 100%;
+  display: flex;
+  flexFlow: row nowrap;
+  justifyContent: center;
+  padding: 0;
+  marginLeft: 0;
+`
+
 class Detail extends React.Component {
   constructor(props) {
     super(props)
@@ -96,7 +106,7 @@ class Detail extends React.Component {
       SENDEMAILBUTTON,
     } = this.props.common
     return (
-      <Flex>
+      <Flex warp={true}>
         <Box className="googleMaps" w={8 / 12} bg="gray">
           <MapWithAMarker
             googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx1PFatOg26tgLRPDqJ204-cmSlpqNeEM&callback=initMap"
