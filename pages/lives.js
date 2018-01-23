@@ -158,8 +158,8 @@ class lives extends React.Component {
     } else {
       for (let i = 0; i < rowCount - 1; i += 2) {
         rowLive.push(
-          <Flex bg="#fff" pb="2rem">
-            <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
+          <Flex bg="#fff" pb="2rem" wrap>
+            <Box w={[1, 6 / 12]} pl="1.5rem" pr="0.75rem">
               <WrapperThumbnail>
                 <ThumbnailBigLive
                   id={this.props.lives[i].id}
@@ -191,7 +191,7 @@ class lives extends React.Component {
                 />
               </WrapperThumbnail>
             </Box>
-            <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
+            <Box w={[1, 6 / 12]} pl="0.75rem" pr="1.5rem">
               <WrapperThumbnail>
                 <ThumbnailBigLive
                   id={this.props.lives[i + 1].id}
@@ -229,7 +229,7 @@ class lives extends React.Component {
       }
       rowLive.push(
         <Flex bg="#fff" pb="2rem">
-          <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
+          <Box w={[1, 6 / 12]} pl="1.5rem" pr="0.75rem">
             <WrapperThumbnail>
               <ThumbnailBigLive
                 id={this.props.lives[n].id}
@@ -261,7 +261,7 @@ class lives extends React.Component {
               />
             </WrapperThumbnail>
           </Box>
-          <Box w={6 / 12} pl="0.75rem" pr="1.5rem" />
+          <Box w={[1, 6 / 12]} pl="0.75rem" pr="1.5rem" />
         </Flex>
       )
     }
