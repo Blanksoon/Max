@@ -119,7 +119,7 @@ const ThumbnailLive = ({ lang, live }) => {
               children={`${Next} ${lang === 'en'
                 ? live.liveDateStr_en
                 : live.liveDateStr_th}`}
-              fontSize="1em"
+              fontSize={['0.5em', '1em']}
             />
           </center>
         </Box>

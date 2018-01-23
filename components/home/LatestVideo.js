@@ -8,7 +8,7 @@ const renderThumbnail = (lang, vod) => (
   <Box
     width={[1 / 2, 1 / 2, 1 / 2, 1 / 2, 1 / 4]}
     key={vod.id}
-    pt={[2, 2, 2, 0]}
+    pt={[2, 2, 2, 2, 0]}
     px={2}
   >
     <Link as={`/vods/${vod.id}`} href={`/videoPlayer?id=${vod.id}`}>

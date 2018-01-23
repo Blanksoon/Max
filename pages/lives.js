@@ -82,7 +82,6 @@ class lives extends React.Component {
     const rowLive = []
     const rowCount = this.props.lives.length
     let n = 0
-    let br = [<br />, '', <br />, <br />, <br />, <br />]
     // Use splice on clone object, DONT MODIFY props
     if (rowCount % 2 == 0) {
       for (let i = 0; i < rowCount; i += 2) {
@@ -107,7 +106,6 @@ class lives extends React.Component {
                       this.props.lives[i].shortDesc1_th
                     )
                   }
-                  text3={br[i]}
                   text4={
                     this.state.lang === 'en' ? (
                       this.props.lives[i].title_en
@@ -139,7 +137,6 @@ class lives extends React.Component {
                       this.props.lives[i + 1].shortDesc1_th
                     )
                   }
-                  text3={br[i + 1]}
                   text4={
                     this.state.lang === 'en' ? (
                       this.props.lives[i + 1].title_en
@@ -178,7 +175,6 @@ class lives extends React.Component {
                       this.props.lives[i].shortDesc1_en
                     )
                   }
-                  text3={br[i]}
                   text4={
                     this.state.lang === 'en' ? (
                       this.props.lives[i].title_en
@@ -210,7 +206,6 @@ class lives extends React.Component {
                       this.props.lives[i + 1].shortDesc1_en
                     )
                   }
-                  text3={br[i + 1]}
                   text4={
                     this.state.lang === 'en' ? (
                       this.props.lives[i + 1].title_en
@@ -248,7 +243,6 @@ class lives extends React.Component {
                     this.props.lives[n].shortDesc1_en
                   )
                 }
-                text3={br[n]}
                 text4={
                   this.state.lang === 'en' ? (
                     this.props.lives[n].title_en

@@ -9,6 +9,14 @@ const Wrapper = styled.div`
   font-family: Helvetica, Arial, sans-serif;
   background-color: #022346;
 `
+const WrapperName = styled.div`
+  height: 20px;
+  overflow: hidden;
+`
+const WrapperTitle = styled.div`
+  height: 56px;
+  overflow: hidden;
+`
 const Text1 = styled.div`
   color: #fcfc00;
   font-weight: 700;
@@ -31,26 +39,30 @@ const ThumbnailBigLive = props => (
     <Box>
       <center>
         <br />
-        <Text1>{props.text1}</Text1>
+        <WrapperName>
+          <Text1>{props.text1}</Text1>
+        </WrapperName>
       </center>
     </Box>
     <br />
     <br />
-    <Box pl="2rem" pr="2rem">
-      <Text2>
-        {props.text2}
-        <br />
-        {props.text3}
-      </Text2>
-    </Box>
+    <WrapperTitle>
+      <Box pl="2rem" pr="2rem">
+        <Text2>
+          {props.text2}
+          <br />
+        </Text2>
+      </Box>
+    </WrapperTitle>
     <br />
     <Flex>
       <Box w={8 / 12} pl="2rem" pb="1.5rem">
-        <Text3>
-          {props.text4} / {props.live.liveDateStr_en}
-          <br />
-          {props.text5}
-        </Text3>
+        <WrapperTitle>
+          <Text3>
+            {props.text4} / {props.live.liveDateStr_en}
+            <br />
+          </Text3>
+        </WrapperTitle>
       </Box>
       <Box w={[0, 0, 0, 0.5 / 12, 1 / 12]} />
       <Box w={[3 / 12, 4 / 12, 3 / 12, 3 / 12, 3 / 12]} pl="0rem" pb="1rem">

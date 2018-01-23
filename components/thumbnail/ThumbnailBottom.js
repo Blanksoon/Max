@@ -13,7 +13,7 @@ const ThumbnailBottom = props => (
           color="#ffffff"
           bold
           children={props.name}
-          fontSize="0.9em"
+          fontSize={['0.7em', '0.9em', '1em', '1.2em', '0.9em']}
         />
       </Box>
       <Flex pt="0.8em" pb="0.5em">
