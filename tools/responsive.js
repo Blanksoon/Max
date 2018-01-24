@@ -19,7 +19,6 @@ export const theme = {
     70.1, //desktop
   ],
 }
-
 // iterate through the sizes and create a media template
 export const media = Object.keys(sizes).reduce((accumulator, label) => {
   // use em in breakpoints to work properly cross-browser and support users

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import ModalImg from '../../containers/ModalImg'
 import { Flex, Box, Image, Text, Button, overlay } from 'rebass'
 import Link from 'next/link'
+import { media } from '../../tools/responsive'
 const Wrapper = styled.div`
   color: red;
   z-index: 2;
@@ -34,6 +35,20 @@ const WrapperMore = styled.div`
   z-index: 2;
   position: absolute;
 `
+const WrapperFront = styled.div`
+  font-size: 0.9em;
+  ${media.ipad`font-size: 0.5em`};
+  ${media.phone`font-size: 0.05em`};
+`
+const WrapperDes = styled.div`
+  height: 70px;
+  ${media.ipadpro`height: 70px`};
+  ${media.ipad`height: 40px`};
+  ${media.phone`height: 40px`};
+  overflow: hidden;
+  ${media.iphone5`height: 43px`};
+  overflow: hidden;
+`
 const WrapperText = styled.div`background: #012147;`
 const ThumbnailLive = ({ lang, live }) => {
   // const Next = common.Nexton
@@ -51,24 +66,21 @@ const ThumbnailLive = ({ lang, live }) => {
         </Box>
         <div className="livehover">
           <Box pl="5%" pt="5%">
-            <Text
-              bold
-              children={lang === 'en' ? live.title_en : live.title_th}
-              fontSize="0.9em"
-            />
-            <Text
-              children={lang === 'en' ? live.desc_en : live.desc_en}
-              fontSize="0.8em"
-            />
-            <br />
-            {/* <Text
-              children={`live telecast on ${live.title_en}`}
-              fontSize="0.8em"
-            /> */}
-            <Text
-              children={lang === 'en' ? live.shortDesc2_en : live.shortDesc2_en}
-              fontSize="0.8em"
-            />
+            <WrapperFront>
+              <Text
+                bold
+                children={lang === 'en' ? live.title_en : live.title_th}
+              />
+              <WrapperDes>
+                <Text children={lang === 'en' ? live.desc_en : live.desc_en} />
+              </WrapperDes>
+              <br />
+              <Text
+                children={
+                  lang === 'en' ? live.shortDesc2_en : live.shortDesc2_en
+                }
+              />
+            </WrapperFront>
           </Box>
           <Flex pt="2.3rem">
             <Box w={4 / 12} pl="20%">
@@ -119,7 +131,7 @@ const ThumbnailLive = ({ lang, live }) => {
               children={`${Next} ${lang === 'en'
                 ? live.liveDateStr_en
                 : live.liveDateStr_th}`}
-              fontSize="1em"
+              fontSize={['0.5em', '1em']}
             />
           </center>
         </Box>

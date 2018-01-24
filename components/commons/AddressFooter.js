@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Container, Image } from 'rebass'
 import vars from './vars'
+import { media } from '../../tools/responsive'
 
 const AddressFooter = styled.div`
   background: ${vars.blue};
@@ -14,11 +15,15 @@ const Logo = styled(Image)`
   margin: auto;
   position: absolute;
   top: 0;
+  ${media.phone`width: 106px;`};
+  ${media.iphone5`display: none;`};
 `
 const AddressPanel = styled.div`
   float: right;
   text-align: right;
   margin-top: 3.125rem;
+  ${media.iphone5`text-align: left;
+  float: left;`};
 `
 const Name = styled.span`
   color: ${vars.white};
@@ -29,12 +34,14 @@ const Name = styled.span`
 const Address = styled.span`
   color: ${vars.lightBlue};
   display: block;
+  ${media.phone`font-size: 13px;`};
 `
 
 const Tel = styled.span`
   color: ${vars.lightBlue};
   display: block;
   margin-top: 1rem;
+  ${media.phone`font-size: 13px;`};
 `
 export default ({ common }) => (
   <AddressFooter>

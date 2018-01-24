@@ -1,16 +1,23 @@
 import styled from 'styled-components'
 import { Container, Image } from 'rebass'
 import vars from './vars'
+import { media } from '../../tools/responsive'
 
 const SocialFooter = styled.div`
   background: ${vars.darkblue};
   height: 4rem;
   line-height: 4rem;
+  ${media.phone`height: 3rem;
+  line-height: 3rem;`};
 `
 const CopyRight = styled.span`
   color: ${vars.yellow};
   display: inline-block;
   float: right;
+  ${media.phone`font-size: 10px;`};
+  ${media.iphone5`
+  display: contents;
+  float: none;`};
 `
 
 const SocialIcon = styled(Image)`
@@ -19,6 +26,12 @@ const SocialIcon = styled(Image)`
   margin: 0;
   padding: 0;
   width: 4rem;
+  ${media.phone`
+  width: 43px;
+  height: 48px;`};
+  ${media.iphone5`
+  width: 30px;
+  height: 48px;`};
 `
 export default () => (
   <SocialFooter>

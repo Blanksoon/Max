@@ -92,7 +92,6 @@ class lives extends React.Component {
     const rowLive = []
     const rowCount = this.props.lives.length
     let n = 0
-    let br = [<br />, '', <br />, <br />, <br />, <br />]
     // Use splice on clone object, DONT MODIFY props
     if (rowCount % 2 == 0) {
       for (let i = 0; i < rowCount; i += 2) {
@@ -117,7 +116,6 @@ class lives extends React.Component {
                       this.props.lives[i].shortDesc1_th
                     )
                   }
-                  text3={br[i]}
                   text4={
                     this.state.lang === 'en' ? (
                       this.props.lives[i].title_en
@@ -149,7 +147,6 @@ class lives extends React.Component {
                       this.props.lives[i + 1].shortDesc1_th
                     )
                   }
-                  text3={br[i + 1]}
                   text4={
                     this.state.lang === 'en' ? (
                       this.props.lives[i + 1].title_en
@@ -169,12 +166,7 @@ class lives extends React.Component {
       for (let i = 0; i < rowCount - 1; i += 2) {
         rowLive.push(
           <Flex bg="#fff" pb="2rem" wrap>
-            <Box
-              w={[1, 6 / 12]}
-              pl={['0.75rem', '1.5rem']}
-              pr="0.75rem"
-              pb={['2rem', '0rem']}
-            >
+            <Box w={[1, 6 / 12]} pt={[2, 0]} pl="1.5rem" pr="0.75rem">
               <WrapperThumbnail>
                 <ThumbnailBigLive
                   id={this.props.lives[i].id}
@@ -193,7 +185,6 @@ class lives extends React.Component {
                       this.props.lives[i].shortDesc1_en
                     )
                   }
-                  text3={br[i]}
                   text4={
                     this.state.lang === 'en' ? (
                       this.props.lives[i].title_en
@@ -206,11 +197,7 @@ class lives extends React.Component {
                 />
               </WrapperThumbnail>
             </Box>
-            <Box
-              w={[1, 6 / 12]}
-              pl={['0.75rem', '0.75rem']}
-              pr={['0.75rem', '1.5rem']}
-            >
+            <Box w={[1, 6 / 12]} pt={[2, 0]} pl="0.75rem" pr="1.5rem">
               <WrapperThumbnail>
                 <ThumbnailBigLive
                   id={this.props.lives[i + 1].id}
@@ -229,7 +216,6 @@ class lives extends React.Component {
                       this.props.lives[i + 1].shortDesc1_en
                     )
                   }
-                  text3={br[i + 1]}
                   text4={
                     this.state.lang === 'en' ? (
                       this.props.lives[i + 1].title_en
@@ -248,7 +234,7 @@ class lives extends React.Component {
       }
       rowLive.push(
         <Flex bg="#fff" pb="2rem" wrap>
-          <Box w={[1, 6 / 12]} pl={['0.75rem', '1.5rem']} pr="0.75rem">
+          <Box w={[1, 6 / 12]} pt={[2, 0]} pl="1.5rem" pr="0.75rem">
             <WrapperThumbnail>
               <ThumbnailBigLive
                 id={this.props.lives[n].id}
@@ -267,7 +253,6 @@ class lives extends React.Component {
                     this.props.lives[n].shortDesc1_en
                   )
                 }
-                text3={br[n]}
                 text4={
                   this.state.lang === 'en' ? (
                     this.props.lives[n].title_en
@@ -280,7 +265,7 @@ class lives extends React.Component {
               />
             </WrapperThumbnail>
           </Box>
-          <Box w={[1, 6 / 12]} pl="0.75rem" pr="1.5rem" />
+          <Box w={[1, 6 / 12]} pt={[2, 0]} pl="0.75rem" pr="1.5rem" />
         </Flex>
       )
     }

@@ -1,14 +1,15 @@
 import React, { Component, PropTypes } from 'react'
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 import Link from 'next/link'
-import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
+import { Media, Subhead, Image, Flex, Box, Text, Provider } from 'rebass'
 import { connect } from 'react-redux'
+import { media, theme } from '../../tools/responsive'
 
 const renderThumbnail = (lang, vod) => (
   <Box
-    width={[1 / 2, 1 / 2, 1 / 2, 1 / 2, 1 / 4]}
+    width={[1, 2 / 4, 2 / 4, 2 / 4, 1 / 4]}
     key={vod.id}
-    pt={[2, 2, 2, 0]}
+    pt={[2, 2, 2, 2, 0]}
     px={2}
   >
     <Link as={`/vods/${vod.id}`} href={`/videoPlayer?id=${vod.id}`}>
@@ -35,7 +36,7 @@ class LatestVideo extends Component {
     // )
 
     return (
-      <div>
+      <Provider theme={theme}>
         <Box pb="5%">
           <Flex>
             <Box width={1}>
@@ -67,7 +68,7 @@ class LatestVideo extends Component {
             }
           `}
         </style>
-      </div>
+      </Provider>
     )
   }
 }
