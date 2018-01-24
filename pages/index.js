@@ -1,7 +1,7 @@
 // This is the Link API
 import Head from 'next/head'
 import Link from 'next/link'
-import { Flex, Box } from 'rebass'
+import { Flex, Box, Provider } from 'rebass'
 import Cookies from 'universal-cookie'
 import styled from 'styled-components'
 import withRedux from 'next-redux-wrapper'
@@ -34,6 +34,7 @@ import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langSelector } from '../redux/selectors/lang'
 import { langUrl } from '../tools/langUrl'
+import { media } from '../tools/responsive'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -58,6 +59,13 @@ const WrapperAbout = styled.div`
     rgba(139, 3, 3, 1) 52%,
     rgba(139, 3, 3, 1) 100%
   ); /* Chrome10-25,Safari5.1-6 */
+  ${media.phone`background: -webkit-linear-gradient(
+    left,
+    rgba(139, 3, 3, 1) 0%,
+    rgba(7, 70, 141, 1) 48%,
+    rgba(139, 3, 3, 1) 52%,
+    rgba(139, 3, 3, 1) 100%
+  ); /* Chrome10-25,Safari5.1-6 */`};
 `
 const GradientBg = styled.div`
   background: -webkit-linear-gradient(
@@ -92,6 +100,15 @@ class Index extends React.Component {
   }
 
   render() {
+    const theme = {
+      breakpoints: [
+        // min-width breakpoints in em
+        23.5,
+        23.5,
+        64,
+        70,
+      ],
+    }
     //console.log('this.props', this.props)
     //console.log('props', this.props.lang)
     // console.log('ddddddddddprops', this.props)
@@ -101,63 +118,65 @@ class Index extends React.Component {
     // )
     return (
       <I18nextProvider i18n={this.i18n}>
-        <Main
-          url={this.props.url}
-          nav={this.state.translations.translation.common}
-          www=""
-          switchLanguage={this.switchLang}
-        >
-          <NewModal
-            common={this.state.translations.translation.common}
-            lang={this.state.lang}
+        <Provider theme={theme}>
+          <Main
             url={this.props.url}
-          />
-          <GradientBg>
-            <Container>
-              <Hero
-                lang={this.state.lang}
-                lives={this.props.lives.slice(0, 3)}
-                common={this.state.translations.translation.common}
-              />
-              <LatestVideo
-                lang={this.state.lang}
-                name={this.state.translations.translation.common.LatestVideo}
-                vods={this.props.vods.slice(0, 4)}
-              />
-            </Container>
-          </GradientBg>
-          <WrapperLive>
-            <Container>
-              <Flex>
-                <Box w={12 / 12} pb="4em" pt="2em">
-                  <ComingLive
-                    lang={this.state.lang}
-                    common={this.state.translations.translation.common}
-                    lives={this.props.lives}
-                  />
-                </Box>
-              </Flex>
-            </Container>
-          </WrapperLive>
-          <WrapperStadiumTicket>
-            <Container>
-              <Flex>
+            nav={this.state.translations.translation.common}
+            www=""
+            switchLanguage={this.switchLang}
+          >
+            <NewModal
+              common={this.state.translations.translation.common}
+              lang={this.state.lang}
+              url={this.props.url}
+            />
+            <GradientBg>
+              <Container>
+                <Hero
+                  lang={this.state.lang}
+                  lives={this.props.lives.slice(0, 3)}
+                  common={this.state.translations.translation.common}
+                />
+                <LatestVideo
+                  lang={this.state.lang}
+                  name={this.state.translations.translation.common.LatestVideo}
+                  vods={this.props.vods.slice(0, 4)}
+                />
+              </Container>
+            </GradientBg>
+            <WrapperLive>
+              <Container>
+                <Flex>
+                  <Box w={12 / 12} pb="4em" pt="2em">
+                    <ComingLive
+                      lang={this.state.lang}
+                      common={this.state.translations.translation.common}
+                      lives={this.props.lives}
+                    />
+                  </Box>
+                </Flex>
+              </Container>
+            </WrapperLive>
+            <WrapperStadiumTicket>
+              <Container>
+                <Flex>
+                  <Box w={12 / 12}>
+                    <StadiumTicket
+                      common={this.state.translations.translation.common}
+                    />
+                  </Box>
+                </Flex>
+              </Container>
+            </WrapperStadiumTicket>
+            <WrapperAbout>
+              <Container>
                 <Box w={12 / 12}>
-                  <StadiumTicket
-                    common={this.state.translations.translation.common}
-                  />
+                  <About common={this.state.translations.translation.common} />
                 </Box>
-              </Flex>
-            </Container>
-          </WrapperStadiumTicket>
-          <WrapperAbout>
-            <Container>
-              <Box w={12 / 12}>
-                <About common={this.state.translations.translation.common} />
-              </Box>
-            </Container>
-          </WrapperAbout>
-        </Main>
+              </Container>
+            </WrapperAbout>
+          </Main>
+        </Provider>
       </I18nextProvider>
     )
   }

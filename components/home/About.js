@@ -1,10 +1,15 @@
 import styled from 'styled-components'
-import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
+import { Subhead, Image, Flex, Box, Text } from 'rebass'
+import { media } from '../../tools/responsive'
 
 const WrapperAbout = styled.div`
   background-image: url('/static/bg-about-home.jpg');
   background-position: left;
   background-position-x: 28%;
+
+  ${media.ipad`background-position-x: -300px;
+  `};
+  ${media.phone`background-position-x: -500px;`};
 `
 const Wrapper = styled.div`padding-top: ${props => props.paddingTop};`
 const About = props => (
@@ -12,8 +17,8 @@ const About = props => (
     <WrapperAbout>
       <Box width={1} pb={5} />
       <Flex>
-        <Box w={6 / 12} />
-        <Box width={6 / 12} pt="0em" pb={5}>
+        <Box w={[2 / 12, 4 / 12, 4 / 12, 6 / 12]} />
+        <Box width={[10 / 12, 6 / 12, 6 / 12, 6 / 12]} pt="0em" pb={5}>
           <Text
             pt="2em"
             bold

@@ -41,10 +41,12 @@ const WrapperFront = styled.div`
   ${media.phone`font-size: 0.05em`};
 `
 const WrapperDes = styled.div`
-  height: 30px;
+  height: 70px;
   ${media.ipadpro`height: 70px`};
   ${media.ipad`height: 40px`};
-  ${media.phone`height: 10px`};
+  ${media.phone`height: 40px`};
+  overflow: hidden;
+  ${media.iphone5`height: 43px`};
   overflow: hidden;
 `
 const WrapperText = styled.div`background: #012147;`
@@ -66,22 +68,17 @@ const ThumbnailLive = ({ lang, live }) => {
           <Box pl="5%" pt="5%">
             <WrapperFront>
               <Text
-                // fontSize={['0.01em', '0.9em']}
                 bold
                 children={lang === 'en' ? live.title_en : live.title_th}
               />
               <WrapperDes>
-                <Text
-                  children={lang === 'en' ? live.desc_en : live.desc_en}
-                  // fontSize={['0.01em', '0.8em']}
-                />
+                <Text children={lang === 'en' ? live.desc_en : live.desc_en} />
               </WrapperDes>
               <br />
               <Text
                 children={
                   lang === 'en' ? live.shortDesc2_en : live.shortDesc2_en
                 }
-                // fontSize={['0.1em', '0.8em']}
               />
             </WrapperFront>
           </Box>
