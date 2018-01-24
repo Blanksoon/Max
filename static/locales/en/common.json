@@ -25,7 +25,7 @@
   "Hurry": "Hurry up! Buy ticket before live start",
   "Hooray": "Hooray! This content is already in your subscription plan.",
   "Nowshowing": "Now showing",
-  "Livetelecaston": "Live telecast on",
+  "Livetelecaston": "Live telecast on ",
   "WatchPromoClip": "Watch Promo Clip",
   "THISSHOWRELATEDVIDEO": "THIS SHOW RELATED VIDEO",
   "TheMost": "The Most Exciting",
@@ -39,7 +39,8 @@
   "ABOUTUS": "ABOUT US",
   "About1": "You've never really been to Thailand without witnessing extreme",
   "About2": "muay thai at Max Muay Thai Stadium Pattaya..",
-  "About3": "We are the industry leader in Muay Thai Broadcasting. The no.1reated",
+  "About3":
+    "We are the industry leader in Muay Thai Broadcasting. The no.1reated",
   "About4": "boxing tv show in Thailand with our 3 round format of Non Stop",
   "About5": "Aggressive Action.",
   "HILIGHT": "HILIGHT",
@@ -59,7 +60,8 @@
   "FOLLOWMAX": "Follow Max Muay Thai at",
   "TITLECOMMENT": "Let we hear from you",
   "EMILPLACEHOLDER": "Your email here",
-  "INBOXEMAILPLACEHOLDER": "Let us know what can we do more for our beloved fan.+-+",
+  "INBOXEMAILPLACEHOLDER":
+    "Let us know what can we do more for our beloved fan.+-+",
   "SENDEMAILBUTTON": "Send email",
   "LOGIN": "LOG IN",
   "EMAIL": "Email",
@@ -141,5 +143,6 @@
   "YOUBOUGHT": "YOU BOUGHT",
   "Congratulation": "Congratulation",
   "VERIFY_SUCCESS": "You have successfully verify your email",
-  "ENJOY_MAXMUAYTHAI": "Please enjoy the most exciting fightingsport in the world at Max Muay Thai"
+  "ENJOY_MAXMUAYTHAI":
+    "Please enjoy the most exciting fightingsport in the world at Max Muay Thai"
 }
