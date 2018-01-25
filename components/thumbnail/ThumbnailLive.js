@@ -45,7 +45,6 @@ const WrapperDes = styled.div`
   ${media.ipadpro`height: 70px`};
   ${media.ipad`height: 40px`};
   ${media.phone`height: 40px`};
-  overflow: hidden;
   ${media.iphone5`height: 43px`};
   overflow: hidden;
 `

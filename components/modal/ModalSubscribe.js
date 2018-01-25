@@ -5,6 +5,7 @@ import color from '../commons/vars'
 import { closeModal } from '../../redux/modules/modal'
 import { connect } from 'react-redux'
 import * as api from '../../api'
+import { media, theme } from '../../tools/responsive'
 
 const Button = styled.button`
   background-color: ${color.white};
@@ -71,16 +72,16 @@ const Wrapperin = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapperprice = styled.div`
-position: absolute;
-bottom: 40px;
-right: 125px;
-background: #fff:
+  position: absolute;
+  bottom: 40px;
+  right: 125px;
+  ${media.ipad`bottom: 12px;right: 97px;`};
 `
 const WrapperMonth = styled.div`
-position: absolute;
-bottom: 10px;
-right: 50px;
-background: #fff:
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
+  ${media.ipad`bottom: 12px;right: 50px;`};
 `
 const Text1 = styled.div`
   padding-left: 1rem;
@@ -101,24 +102,38 @@ const Text3 = styled.div`
   font-weight: 700;
   font-size: 2vw;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.ipad`font-size: 1.8vw`};
+  ${media.phone`font-size: 2vw`};
+  ${media.iphone5`font-size: 2vw`};
 `
 const Text4 = styled.div`
   color: #fff;
   font-weight: 700;
   font-size: 1.5vw;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.phone`font-size: 1.5vw`};
+  ${media.iphone5`font-size: 1.5vw`};
 `
 const Text5 = styled.div`
   color: ${color.white};
   font-weight: 700;
   font-size: 1em;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.ipadpro`font-size: 1em`};
+  ${media.ipad`font-size: 0.7em`};
+  ${media.phone`font-size: 0.5em`};
+  ${media.iphone5`font-size: 0.5em`};
 `
 const Text6 = styled.div`
   color: ${color.white};
   font-weight: 500;
   font-size: 0.8em;
   font-family: Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  ${media.ipadpro`font-size: 0.8em`};
+  ${media.ipad`font-size: 0.5em`};
+  ${media.phone`font-size: 0.3em`};
+  ${media.iphone5`font-size: 0.3em;height: 20px;`};
 `
 const Text9 = styled.div`
   color: ${color.yellow};
@@ -174,7 +189,7 @@ class ModalSubscribe extends React.Component {
       zin = 1
     }
     return (
-      <Provider>
+      <Provider theme={theme}>
         <div>
           <Wrapper color={this.props.color}>
             <Flex
@@ -182,29 +197,25 @@ class ModalSubscribe extends React.Component {
               style={{ cursor: 'pointer' }}
               onClick={this.handleOnClickModal}
             >
-              {/* <Box w={1 / 12} pt="4em" pl="1em">
-                      <Input type="radio" id="f-option" name="selector" />
-                    </Box> */}
               <Box w={5 / 12} pt="0.7em" pl="2em" mt="0.5em">
-                {/* <label htmlFor="f-option"> */}
                 <Image w={this.props.w} src={this.props.img} />
-                {/* </label> */}
               </Box>
               <Box w={7 / 12} pt="1em" pr="1em">
-                {/* <label htmlFor="f-option"> */}
                 <center>
                   <Box>
                     <Text5>{this.props.text1}</Text5>
                   </Box>
-                  <Box w={8 / 12} pt="0.5em">
+                  <Box
+                    w={8 / 12}
+                    pt={['0.3em', '0.5em', '0.5em', '0.5em', '0.5em']}
+                  >
                     <Text6>{this.props.text2}</Text6>
                   </Box>
                 </center>
                 <Wrapperprice>
-                  <Box pt="0.5em">
+                  <Box>
                     <Text3>{this.props.subscribe.price}$</Text3>
                   </Box>
-                  {/* </label> */}
                 </Wrapperprice>
                 <WrapperMonth>
                   <Text4>{this.props.month}</Text4>
@@ -214,8 +225,6 @@ class ModalSubscribe extends React.Component {
             <Wrapperin zin={zin} onClick="">
               <center>
                 <Box pt="2.5em">
-                  {/* <Text5>SUBSCRIBE VOD</Text5>
-                  <Text5>AND LIVE STREAMING</Text5> */}
                   <Text5>{this.props.youBought}</Text5>
                 </Box>
                 <Box pt="2em">

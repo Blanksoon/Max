@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Flex, Box, Image, Text } from 'rebass'
+import { Flex, Box, Image, Text, Provider } from 'rebass'
 import { connect } from 'react-redux'
 import React, { Component, PropTypes } from 'react'
 import Link from 'next/link'
@@ -16,6 +16,7 @@ import {
   startindex,
 } from '../../redux/modules/vod'
 import * as api from '../../api'
+import { media, theme } from '../../tools/responsive'
 
 const WrapperHilight = styled.div`
   width: 55%;
@@ -124,7 +125,7 @@ class VideoBox extends Component {
     }
 
     return (
-      <div>
+      <Provider theme={theme}>
         <Flex mb={3} pt="7rem">
           <Box w={1} pl="1rem">
             <Text
@@ -199,7 +200,7 @@ class VideoBox extends Component {
             }
           `}
         </style>
-      </div>
+      </Provider>
     )
   }
 }
@@ -207,9 +208,9 @@ class VideoBox extends Component {
 const RowVideo = ({ lang, vods }) => {
   return (
     <Flex mb={3}>
-      <Box w={6 / 12} mr="1em">
+      <Box w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]} mr="1em">
         <Flex>
-          <Box w={6 / 12} pr="7.5px">
+          <Box w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]} pr="7.5px">
             {vods[0] !== undefined && (
               <ThumbnailVideo
                 id={vods[0].id}
@@ -227,7 +228,7 @@ const RowVideo = ({ lang, vods }) => {
               />
             )}
           </Box>
-          <Box w={6 / 12} pl="7.5px">
+          <Box w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]} pl="7.5px">
             {vods[1] !== undefined && (
               <ThumbnailVideo
                 id={vods[1].id}
@@ -247,9 +248,9 @@ const RowVideo = ({ lang, vods }) => {
           </Box>
         </Flex>
       </Box>
-      <Box w={6 / 12}>
+      <Box w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}>
         <Flex>
-          <Box w={6 / 12} pr="7.5px">
+          <Box w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]} pr="7.5px">
             {vods[2] !== undefined && (
               <ThumbnailVideo
                 id={vods[2].id}
@@ -267,7 +268,7 @@ const RowVideo = ({ lang, vods }) => {
               />
             )}
           </Box>
-          <Box w={6 / 12} pl="7.5px">
+          <Box w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]} pl="7.5px">
             {vods[3] !== undefined && (
               <ThumbnailVideo
                 id={vods[3].id}

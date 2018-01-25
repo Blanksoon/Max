@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Button } from 'rebass'
 import vars from './vars'
+import { media, theme } from '../../tools/responsive'
 
 const StyledButton = styled(Button)`
   background: ${vars.red};
@@ -15,7 +16,10 @@ const StyledButton = styled(Button)`
   border-radius: 0px;
   font-size: 1rem;
   font-weight: 700;
-
+  ${media.ipadpro`font-size: 1em`};
+  ${media.ipad`font-size: 0.9em`};
+  ${media.phone`font-size: 0.8em`};
+  ${media.iphone5`font-size: 0.8em`};
   &:active {
     background: ${vars.red};
   }

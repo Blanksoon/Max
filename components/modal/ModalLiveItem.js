@@ -6,6 +6,7 @@ import NewModal from './NewModal'
 import { toggleModal } from '../../redux/modules/modal'
 import BorderlessButton from '../commons/BorderlessButton'
 import color from '../commons/vars'
+import { media, theme } from '../../tools/responsive'
 
 const Button = styled.button`
   background-color: ${color.white};
@@ -18,6 +19,8 @@ const Button = styled.button`
   font-weight: 700;
   width: 200%;
   height: 3em;
+  ${media.phone`height: 2.5em;`};
+  ${media.iphone5`height: 2em;`};
 `
 const ButtonWatch = styled.button`
   background-color: ${color.red};
@@ -37,18 +40,33 @@ const Text1 = styled.div`
   font-weight: 700;
   font-size: 1em;
   font-family: Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  ${media.ipadpro`font-size: 1em`};
+  ${media.ipad`font-size: 0.9em;
+  height: 50px;`};
+  ${media.phone`font-size: 0.8em; height: 47px;`};
+  ${media.iphone5`font-size: 0.7em;height: 41px;`};
 `
 const Text2 = styled.div`
   color: #000;
   font-weight: 700;
   font-size: 1rem;
   font-family: Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  ${media.ipadpro`font-size: 1em`};
+  ${media.ipad`font-size: 1em`};
+  ${media.phone`font-size: 0.8em`};
+  ${media.iphone5`font-size: 0.8em;height: 31px;`};
 `
 const Text3 = styled.div`
   color: #000;
   font-weight: 700;
   font-size: 1.5rem;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.ipadpro`font-size: 1.5em`};
+  ${media.ipad`font-size: 1.2em`};
+  ${media.phone`font-size: 0.8em`};
+  ${media.iphone5`font-size: 0.8em`};
 `
 const Text4 = styled.div`
   color: #fff;
@@ -61,14 +79,21 @@ const Textbutton = styled.div`
   font-weight: 700;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 0.9rem;
+  ${media.ipadpro`font-size: 0.9rem`};
+  ${media.ipad`font-size: 0.9rem`};
+  ${media.phone`font-size: 0.7rem`};
+  ${media.iphone5`font-size: 0.7rem`};
 `
 const Wrapper = styled.div`
-//border: 1px solid ${props => props.color};
-background-color: ${color.white};
-text-align: -webkit-auto;
-position: relative;
-height: 170px;
-width: 100%;
+  //border: 1px solid ${props => props.color};
+  background-color: ${color.white};
+  text-align: -webkit-auto;
+  position: relative;
+  height: 170px;
+  width: 100%;
+  ${media.ipad`height: 160px;`};
+  ${media.phone`height: 130px;`};
+  ${media.iphone5`height: 110px;`};
 `
 const WrapperButton = styled.div`
   // position: absolute;
@@ -118,7 +143,7 @@ class ModalButton extends Component {
       zin = 1
     }
     return (
-      <Provider>
+      <Provider theme={theme}>
         <Wrapper>
           <Flex
             pl="0.5em"
@@ -127,16 +152,17 @@ class ModalButton extends Component {
             pb="1em"
             style={{ cursor: 'pointer' }}
             onClick={this.handleOnClickModal}
+            wrap
           >
-            <Box w={0.4 / 12} />
-            <Box w={2 / 12} mr="5px">
+            <Box w={[0.4 / 12, 0.4 / 12, 0 / 12, 0.4 / 12, 0.4 / 12]} />
+            <Box w={[2 / 12, 2 / 12, 2 / 12, 2 / 12, 2 / 12]} mr="5px">
               <br />
               <center>
                 <Image w="100%" src={this.props.live.logoUrl} />
                 <Text3>{this.props.live.price}$</Text3>
               </center>
             </Box>
-            <Box w={4 / 12}>
+            <Box w={[4 / 12, 4 / 12, 4.8 / 12, 4 / 12, 4 / 12]}>
               <Text2>
                 {this.props.lang === 'en' ? (
                   this.props.live.liveDateStr_en
@@ -146,13 +172,13 @@ class ModalButton extends Component {
               </Text2>
               <Image w="100%" src={this.props.live.bannerUrl} />
             </Box>
-            <Box w={5 / 12}>
+            <Box w={[5 / 12, 5 / 12, 5 / 12, 5 / 12, 5 / 12]}>
               <Flex>
-                <Box w={2 / 12} ml="12px">
+                <Box w={[2 / 12, 2 / 12, 2 / 12, 2 / 12, 2 / 12]} ml="12px">
                   <br />
                   <Image w="100%" src="static/ic_liveblack@2x.png" />
                 </Box>
-                <Box w={10 / 12}>
+                <Box w={[10 / 12, 10 / 12, 10 / 12, 10 / 12, 10 / 12]}>
                   <Text1>
                     {this.props.lang === 'en' ? (
                       this.props.live.title_en
@@ -163,7 +189,10 @@ class ModalButton extends Component {
                   {this.props.textrb}
                 </Box>
               </Flex>
-              <Flex pt="2.5em" pl="3.2em">
+              <Flex
+                pt={['0.4em', '1em', '2.2em', '2.5em', '2.5em']}
+                pl={['1em', '1em', '2.2em', '3.2em', '3.2em']}
+              >
                 <WrapperButton>
                   <Button style={{ cursor: 'pointer' }}>
                     <Textbutton>

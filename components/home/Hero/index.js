@@ -7,6 +7,7 @@ import { slick, slickTheme } from './slickStyle'
 import Countdown from './Countdown'
 import ActionBar from './ActionBar'
 import vars from '../../commons/vars'
+import { media, theme } from '../../../tools/responsive'
 
 const Slide = styled(Image)`width: 100%;`
 const Thumb = styled(Image)`
@@ -22,10 +23,18 @@ const LiveInfo = styled.div`
   position: absolute;
   width: 50%;
   z-index: 1;
+  ${media.ipadpro`width: 50%;`};
+  ${media.ipad`width: 58%;`};
+  ${media.phone`width: 50%;`};
+  ${media.iphone5`width: 50%;`};
 `
 const Title = styled.div`
   color: ${vars.white};
   font-size: 1.5rem;
+  ${media.ipadpro`font-size: 1.5rem`};
+  ${media.ipad`font-size: 1.3rem`};
+  ${media.phone`font-size: 1.5rem`};
+  ${media.iphone5`font-size: 1.5rem`};
 `
 const LiveDate = styled.div`
   color: ${vars.yellow};
