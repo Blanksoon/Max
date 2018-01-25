@@ -112,6 +112,22 @@ class InputProfile extends React.Component {
         this.props.common.CHINA,
         this.props.common.OTHER,
       ],
+      countryen: [
+        'Select you country',
+        'Thailand',
+        'United States',
+        'England',
+        'China',
+        'Other',
+      ],
+      countryth: [
+        'เลือกประเทศของคุณ',
+        'ไทย',
+        'สหรัฐ',
+        'อังกฤษ',
+        'จีน',
+        'อื่นๆ',
+      ],
     }
     this.toggleCalendar = this.toggleCalendar.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -136,6 +152,22 @@ class InputProfile extends React.Component {
     this.toggleCalendar()
   }
 
+  componentWillReceiveProps(nextProps) {
+    // console.log('ddddddddd', nextProps)
+    if (this.state.countryy.SELECTCOUNTRY !== nextProps.common.SELECTCOUNTRY) {
+      this.setState({
+        countryy: [
+          nextProps.common.SELECTCOUNTRY,
+          nextProps.common.THAILAND,
+          nextProps.common.UNITEDSTATES,
+          nextProps.common.ENGLAND,
+          nextProps.common.CHINA,
+          nextProps.common.OTHER,
+        ],
+      })
+    }
+  }
+
   componentDidMount() {
     {
       this.dataProfile()
@@ -149,7 +181,7 @@ class InputProfile extends React.Component {
       `${api.SERVER}/profile?token=${this.props.auth.token}`
     )
     this.setState({ profile: data })
-    //console.log('dataaaa', data)
+    // console.log('dataaaa', data)
     if (data.name != null) {
       this.setState({ name: data.name })
     }
@@ -176,8 +208,12 @@ class InputProfile extends React.Component {
     const rowCountry = []
     const rowCount = this.state.countryy.length
     // Use splice on clone object, DONT MODIFY props
+    //console.log('ddddddddddd', this.state.country)
     for (let i = 0; i < rowCount; i++) {
-      if (this.state.country == this.state.countryy[i]) {
+      if (
+        this.state.country == this.state.countryen[i] ||
+        this.state.country == this.state.countryth[i]
+      ) {
         rowCountry.push(
           <option selected value={this.state.countryy[i]}>
             {this.state.countryy[i]}

@@ -8,7 +8,7 @@ import { LiveDescription } from '../components/livePlayer/LiveDescription'
 import LiveTop from '../components/livePlayer/LiveTop'
 import UpNext from '../components/videoPlayer/UpNext'
 import StadiumTicket from '../components/home/StadiumTicket'
-import { Flex, Box, Image, Text } from 'rebass'
+import { Flex, Box, Image, Text, Provider } from 'rebass'
 import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import color from '../components/commons/vars'
@@ -31,6 +31,7 @@ import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langSelector } from '../redux/selectors/lang'
 import { langUrl } from '../tools/langUrl'
+import { media, theme } from '../tools/responsive'
 
 const WrapperStadiumTicket = styled.div`
   color: #ffffff;
@@ -38,6 +39,20 @@ const WrapperStadiumTicket = styled.div`
 `
 const WrapperLivePlayer = styled.div`
   background-color: ${props => props.color.lightBlue};
+`
+
+const Hr = styled.hr`
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+  ${media.phone`
+  margin-top: 0em;
+  margin-bottom: 0em;
+  `};
 `
 const LivePlayer = styled.div`height: 36rem;`
 class LiveVdo extends Component {
@@ -99,85 +114,92 @@ class LiveVdo extends Component {
     const path = `lives/${this.props.live.id}`
     return (
       <I18nextProvider i18n={this.i18n}>
-        <Main
-          url={url}
-          nav={this.state.translations.translation.common}
-          www={path}
-          switchLanguage={this.switchLang}
-        >
-          <NewModal
-            common={this.state.translations.translation.common}
-            lang={this.state.lang}
+        <Provider theme={theme}>
+          <Main
             url={url}
-          />
-          <div style={{ paddingTop: '2rem' }}>
-            <WrapperLivePlayer color={color}>
+            nav={this.state.translations.translation.common}
+            www={path}
+            switchLanguage={this.switchLang}
+          >
+            <NewModal
+              common={this.state.translations.translation.common}
+              lang={this.state.lang}
+              url={url}
+            />
+            <div style={{ paddingTop: '2rem' }}>
+              <WrapperLivePlayer color={color}>
+                <Container>
+                  <Flex>
+                    <Box w={12 / 12}>
+                      <BackVideoCenter name={common.BackToLive} url={url} />
+                    </Box>
+                  </Flex>
+                </Container>
+              </WrapperLivePlayer>
+            </div>
+            <div>
+              <WrapperLivePlayer color={color}>
+                <Container>
+                  <LiveTop
+                    ui={this.state.renderUI}
+                    live={live}
+                    countdown={countdown}
+                    common={common}
+                    lang={this.state.lang}
+                  />
+                </Container>
+              </WrapperLivePlayer>
+            </div>
+            <div>
+              <WrapperLivePlayer color={color}>
+                <Container>
+                  <Flex>
+                    <Box w={12 / 12} bg="white">
+                      <LiveDescription
+                        lang={this.state.lang}
+                        common={common}
+                        live={live}
+                      />
+                      <Box
+                        width={12 / 12}
+                        pt={['1rem', '1rem', '1rem', '1rem', '1rem']}
+                        pl="1rem"
+                        pr="1rem"
+                      >
+                        <Hr size="0.1" />
+                      </Box>
+                    </Box>
+                  </Flex>
+                </Container>
+              </WrapperLivePlayer>
+            </div>
+            <div>
+              <WrapperLivePlayer color={color}>
+                <Container>
+                  <Flex>
+                    <Box w={12 / 12} bg="white">
+                      <UpNext
+                        lang={this.state.lang}
+                        name={common.THISSHOWRELATEDVIDEO}
+                        vods={vods}
+                        progname={live.programName}
+                      />
+                    </Box>
+                  </Flex>
+                </Container>
+              </WrapperLivePlayer>
+            </div>
+            <WrapperStadiumTicket>
               <Container>
                 <Flex>
                   <Box w={12 / 12}>
-                    <BackVideoCenter name={common.BackToLive} url={url} />
+                    <StadiumTicket common={common} />
                   </Box>
                 </Flex>
               </Container>
-            </WrapperLivePlayer>
-          </div>
-          <div>
-            <WrapperLivePlayer color={color}>
-              <Container>
-                <LiveTop
-                  ui={this.state.renderUI}
-                  live={live}
-                  countdown={countdown}
-                  common={common}
-                  lang={this.state.lang}
-                />
-              </Container>
-            </WrapperLivePlayer>
-          </div>
-          <div>
-            <WrapperLivePlayer color={color}>
-              <Container>
-                <Flex>
-                  <Box w={12 / 12} bg="white">
-                    <LiveDescription
-                      lang={this.state.lang}
-                      common={common}
-                      live={live}
-                    />
-                    <Box width={12 / 12} pt="1rem" pl="1rem" pr="1rem">
-                      <hr size="0.1" />
-                    </Box>
-                  </Box>
-                </Flex>
-              </Container>
-            </WrapperLivePlayer>
-          </div>
-          <div>
-            <WrapperLivePlayer color={color}>
-              <Container>
-                <Flex>
-                  <Box w={12 / 12} bg="white">
-                    <UpNext
-                      lang={this.state.lang}
-                      name={common.THISSHOWRELATEDVIDEO}
-                      vods={vods}
-                      progname={live.programName}
-                    />
-                  </Box>
-                </Flex>
-              </Container>
-            </WrapperLivePlayer>
-          </div>
-          <WrapperStadiumTicket>
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>
-                  <StadiumTicket common={common} />
-                </Box>
-              </Flex>
-            </Container>
-          </WrapperStadiumTicket>
-        </Main>
+            </WrapperStadiumTicket>
+          </Main>
+        </Provider>
       </I18nextProvider>
     )
   }

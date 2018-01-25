@@ -17,7 +17,7 @@ const renderThumbnail = (lang, vod) => (
         <ThumbnailBottom
           vod={vod}
           img={vod.thumbnailUrl}
-          name={lang === 'en' ? vod.programName_en : vod.programName_th}
+          name={lang === 'en' ? vod.title_en : vod.title_th}
           date={lang === 'en' ? vod.onAirDateStr_en : vod.onAirDateStr_en}
           time={vod.duration}
           bg="#021e3d"

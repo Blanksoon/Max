@@ -52,12 +52,14 @@ class Example extends React.Component {
     console.log('ddddddd', this.state.ok)
     return (
       <div>
-        lol<br />
-        {this.state.ok.a}
-        <br />
-        {this.state.ok.b}
-        <br />
-        {this.state.ok.c}
+        <Flex wrap>
+          <Box w={1} bg="red">
+            hi
+          </Box>
+          <Box w={1} bg="blue">
+            hi
+          </Box>
+        </Flex>
       </div>
     )
   }

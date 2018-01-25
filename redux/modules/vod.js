@@ -26,7 +26,6 @@ export const fetchVodsSuccess = vods => ({
   payload: vods,
 })
 export const fetchVods = token => async (dispatch, getState) => {
-  //console.log('fetchVods')
   dispatch(resetFetchData())
   dispatch(fetchVodsReq())
   const state = getState()

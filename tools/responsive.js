@@ -8,6 +8,7 @@ const sizes = {
   ipadpro: 1024,
   desktop: 1120,
 }
+
 export const theme = {
   breakpoints: [
     // min-width breakpoints in em

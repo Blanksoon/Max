@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { Flex, Box, Image } from 'rebass'
+import { Flex, Box, Image, Provider } from 'rebass'
 import Main from '../layouts/Main'
 import color from '../components/commons/vars'
 import ThumbnailBigLive from '../components/thumbnail/ThumbnailBigLive'
@@ -59,6 +59,16 @@ const Wrapper = styled.div`
   font-family: Helvetica, Arial, sans-serif;
 `
 const LivePlayer = styled.div`height: 36rem;`
+
+const theme = {
+  breakpoints: [
+    // min-width breakpoints in em
+    41.6875,
+    64,
+    85.375,
+    70,
+  ],
+}
 
 class lives extends React.Component {
   constructor(props) {
@@ -266,26 +276,28 @@ class lives extends React.Component {
     // console.log('dddddddddd', this.props.translations.translation.common)
     return (
       <I18nextProvider i18n={this.i18n}>
-        <Main
-          url={this.props.url}
-          nav={this.state.translations.translation.common}
-          www="lives"
-          switchLanguage={this.switchLang}
-        >
-          <NewModal
-            common={this.state.translations.translation.common}
-            lang={this.state.lang}
+        <Provider theme={theme}>
+          <Main
             url={this.props.url}
-          />
-          <Wrapper>
-            <Container>
-              <Box pl="1.5rem" bg="#fff" pt="8rem" pb="2rem">
-                <Text>{this.state.translations.translation.common.LIVE}</Text>
-              </Box>
-              {this.renderUI()}
-            </Container>
-          </Wrapper>
-        </Main>
+            nav={this.state.translations.translation.common}
+            www="lives"
+            switchLanguage={this.switchLang}
+          >
+            <NewModal
+              common={this.state.translations.translation.common}
+              lang={this.state.lang}
+              url={this.props.url}
+            />
+            <Wrapper>
+              <Container>
+                <Box pl={['0.75rem', '1.5rem']} bg="#fff" pt="8rem" pb="2rem">
+                  <Text>{this.state.translations.translation.common.LIVE}</Text>
+                </Box>
+                {this.renderUI()}
+              </Container>
+            </Wrapper>
+          </Main>
+        </Provider>
       </I18nextProvider>
     )
   }

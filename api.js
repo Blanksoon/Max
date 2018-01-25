@@ -17,7 +17,7 @@ export const get = url => {
 }
 
 export const post = (url, json) => {
-  console.log('ddddddurl', url)
+  //console.log('ddddddurl', url)
   //console.log('ddddddjson', json)
   return fetch(url, {
     method: 'POST',

@@ -1,5 +1,18 @@
 import ThumbnailVideo from '../thumbnail/ThumbnailVideo'
-import { Media, Subhead, Image, Flex, Box, Text } from 'rebass'
+import { Media, Subhead, Image, Flex, Box, Text, Provider } from 'rebass'
+import { media, theme } from '../../tools/responsive'
+import styled from 'styled-components'
+const Title = styled.div`
+  font-family: Helvetica, Arial, sans-serif;
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  ${media.phone`font-size: 1em;`};
+`
 
 const renderVideos = (lang, vod) => {
   // console.log('dddddddwefw', vod)
@@ -11,7 +24,7 @@ const renderVideos = (lang, vod) => {
       <Box width={1 / 4} key={vod[i].id} px={2}>
         <ThumbnailVideo
           img={vod[i].thumbnailUrl}
-          name={lang === 'en' ? vod[i].programName_en : vod[i].programName_th}
+          name={lang === 'en' ? vod[i].title_en : vod[i].title_th}
           date={lang === 'en' ? vod[i].onAirDateStr_en : vod[i].onAirDateStr_th}
           time={vod.duration}
           id={vod[i].id}
@@ -26,29 +39,31 @@ const UpNext = ({ lang, name, vods, progname }) => {
   //console.log('ddddddddd', vods)
   return (
     <div>
-      <Box pb="5%" ml="1rem" mr="1rem">
-        <Flex>
-          <Box width={1} color="red">
-            <h2>
-              {name}
-              {/* <hr /> */}
-            </h2>
-          </Box>
-        </Flex>
-        <Flex>{renderVideos(lang, vods)}</Flex>
-      </Box>
-      <style jsx>
-        {`
-          a:link {
-            COLOR: #660000;
-            TEXT-DECORATION: none;
-          }
-          a:visited {
-            COLOR: #660000;
-            TEXT-DECORATION: none;
-          }
-        `}
-      </style>
+      <Provider theme={theme}>
+        <Box pb={['5%', '5%', '5%', '5%', '5%']} ml="1rem" mr="1rem">
+          <Flex>
+            <Box width={1} color="red">
+              <Title>
+                {name}
+                {/* <hr /> */}
+              </Title>
+            </Box>
+          </Flex>
+          <Flex>{renderVideos(lang, vods)}</Flex>
+        </Box>
+        <style jsx>
+          {`
+            a:link {
+              COLOR: #660000;
+              TEXT-DECORATION: none;
+            }
+            a:visited {
+              COLOR: #660000;
+              TEXT-DECORATION: none;
+            }
+          `}
+        </style>
+      </Provider>
     </div>
   )
 }
