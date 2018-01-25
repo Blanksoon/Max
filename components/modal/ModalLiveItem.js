@@ -32,6 +32,7 @@ const ButtonWatch = styled.button`
   display: inline-block;
   font-weight: 700;
   // font-size: 1vw;
+  ${media.iphone5`font-size: 0.7em`};
 `
 const Text1 = styled.div`
   padding-left: 1rem;
@@ -73,6 +74,8 @@ const Text4 = styled.div`
   font-weight: 700;
   font-size: 1.5rem;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.ipad`font-size: 1.2em`};
+  ${media.phone`font-size: 0.8em`};
 `
 const Textbutton = styled.div`
   color: ${color.red};
@@ -206,14 +209,18 @@ class ModalButton extends Component {
 
           <WrapperHover zin={zin} onClick="">
             <Flex pl="2em" pt="1em">
-              <Box w={2 / 12} pt="2.5em" ml="5em">
+              <Box
+                w={2 / 12}
+                pt={['1.5em', '2em', '2.5em', '2.5em', '2.5em']}
+                ml={['0em', '1em', '1em', '5em', '5em']}
+              >
                 <Image w="100%" src="static/ic_you-bought.png" />
               </Box>
               <Box w={10 / 12}>
-                <Box pl="2.5em" pt="2em">
+                <Box pl="2.5em" pt={['0.5em', '1em', '2em', '2em', '2em']}>
                   <Text4>{this.props.youBought}</Text4>
                 </Box>
-                <Box pl="2em" pt="0.5em">
+                <Box pl={['2.4em', '2.5em', '2.8em', '2em', '2em']} pt="0.5em">
                   <Link href={`/lives_vdo?id=${this.props.live._id}`}>
                     <ButtonWatch style={{ cursor: 'pointer' }}>
                       {this.props.watch}

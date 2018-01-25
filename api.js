@@ -4,7 +4,7 @@ import fetch from 'isomorphic-fetch'
 //http://localhost:3002
 //https://api.maxmuaythai.com
 //https://beta-api.maxmuaythai.com
-export const SERVER = 'https://beta-api.maxmuaythai.com'
+export const SERVER = 'https://api.maxmuaythai.com'
 export const get = url => {
   return fetch(url)
     .then(response => {

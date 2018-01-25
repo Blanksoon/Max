@@ -26,6 +26,7 @@ const ButtonWatch = styled.button`
   text-decoration: none;
   display: inline-block;
   font-weight: 700;
+  ${media.iphone5`font-size: 0.7em`};
 `
 const ImageHlight = styled.img`
   width: ${props => props.w};
@@ -224,10 +225,10 @@ class ModalSubscribe extends React.Component {
             </Flex>
             <Wrapperin zin={zin} onClick="">
               <center>
-                <Box pt="2.5em">
+                <Box pt={['1em', '1em', '1.5em', '2.5em', '2.5em']}>
                   <Text5>{this.props.youBought}</Text5>
                 </Box>
-                <Box pt="2em">
+                <Box pt={['0.7em', '1.5em', '1.5em', '2em', '2em']}>
                   {/* 1em */}
                   <Link href={`/index`}>
                     <ButtonWatch style={{ cursor: 'pointer' }}>
