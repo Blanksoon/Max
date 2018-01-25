@@ -21,7 +21,7 @@ const renderVideos = (lang, vod) => {
   // Use splice on clone object, DONT MODIFY props
   for (let i = 0; i < rowCount && vod[i] != undefined; i++) {
     rowVideos.push(
-      <Box width={1 / 4} key={vod[i].id} px={2}>
+      <Box width={[1 / 4, 2 / 4, 1 / 4, 1 / 4, 1 / 4]} key={vod[i].id} px={2}>
         <ThumbnailVideo
           img={vod[i].thumbnailUrl}
           name={lang === 'en' ? vod[i].title_en : vod[i].title_th}
@@ -49,7 +49,7 @@ const UpNext = ({ lang, name, vods, progname }) => {
               </Title>
             </Box>
           </Flex>
-          <Flex>{renderVideos(lang, vods)}</Flex>
+          <Flex wrap>{renderVideos(lang, vods)}</Flex>
         </Box>
         <style jsx>
           {`
