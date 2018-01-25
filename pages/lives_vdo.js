@@ -53,6 +53,10 @@ const Hr = styled.hr`
   margin-top: 0em;
   margin-bottom: 0em;
   `};
+  ${media.iphone5`
+  margin-top: -0.2em;
+  margin-bottom: 0em;
+  `};
 `
 const LivePlayer = styled.div`height: 36rem;`
 class LiveVdo extends Component {

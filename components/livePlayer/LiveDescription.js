@@ -9,6 +9,7 @@ const H1 = styled.h1`margin: 0px;`
 const P = styled.p`
   margin: 0px;
   ${media.phone`font-size: 0.9em;`};
+  ${media.iphone5`font-size: 0.8em;`};
 `
 const BackVideo = styled.div`
   padding-top: 6px;
@@ -18,6 +19,7 @@ const HeadDesctiption = styled.div`
   font-size: 22px;
   font-weight: bold;
   ${media.phone`font-size: 0.9em;`};
+  ${media.iphone5`font-size: 0.8em;`};
 `
 const ButtonPromoClip = styled.button`
   background-color: white;
@@ -35,6 +37,7 @@ const ButtonPromoClip = styled.button`
 const LiveTelecom = styled.div`
   color: ${props => props.color.red};
   ${media.phone`font-size: 0.9em;`};
+  ${media.iphone5`font-size: 0.8em;`};
 `
 
 const LiveDescription = ({ lang, common, live }) => (
@@ -42,19 +45,20 @@ const LiveDescription = ({ lang, common, live }) => (
     <Provider theme={theme}>
       <Flex pt="1.5rem">
         <Box
-          w={[9 / 12, 9.5 / 12, 9 / 12, 9 / 12, 9 / 12]}
+          w={[9.5 / 12, 9.5 / 12, 9 / 12, 9 / 12, 9 / 12]}
           ml={['1rem', '1rem', '1rem', '1rem', '1rem']}
         >
-          <Flex pt={['1rem', '0rem', '1rem', '1rem', '1rem']}>
+          <Flex pt={['0rem', '0rem', '1rem', '1rem', '1rem']}>
             <Box //logo
-              width={[1 / 12, 2 / 12, 1 / 12, 1 / 12, 1 / 12]}
-              mr={['1rem', '0.5rem', '1rem', '1rem', '1rem']}
+              width={[2 / 12, 2 / 12, 1 / 12, 1 / 12, 1 / 12]}
+              mr={['0.5rem', '0.5rem', '1rem', '1rem', '1rem']}
             >
               <Image width="100%" src={live.logoUrl} />
             </Box>
             <Box
-              width={[11 / 12, 10 / 12, 11 / 12, 11 / 12, 11 / 12]}
-              pb="1rem"
+              width={[10 / 12, 10 / 12, 11 / 12, 11 / 12, 11 / 12]}
+              mr={['0.5em', '0.3em', '0em', '0em', '0em']}
+              pb={['0.5rem', '1rem', '1rem', '1rem', '1rem']}
             >
               <HeadDesctiption>
                 {lang === 'en' ? live.liveDateStr_en : live.liveDateStr_th}
@@ -62,11 +66,11 @@ const LiveDescription = ({ lang, common, live }) => (
             </Box>
           </Flex>
           <Flex
-            pr={['5%', '0%', '5%', '5%', '5%']}
-            pt={['1rem', '0.3rem', '1rem', '1rem', '1rem']}
-            pb="0.6rem"
+            pr={['0%', '0%', '5%', '5%', '5%']}
+            pt={['0.2rem', '0.3rem', '1rem', '1rem', '1rem']}
+            pb={['0.1rem', '0.6rem', '0.6rem', '0.6rem', '0.6rem']}
           >
-            <Box w={[5 / 12, 12 / 12, 5 / 12, 5 / 12, 5 / 12]}>
+            <Box w={[12 / 12, 12 / 12, 5 / 12, 5 / 12, 5 / 12]}>
               <LiveTelecom color={color}>
                 <b>
                   {common.Livetelecaston}
@@ -77,8 +81,8 @@ const LiveDescription = ({ lang, common, live }) => (
               </LiveTelecom>
             </Box>
             <Box
-              w={[7 / 12, 0, 7 / 12, 7 / 12, 7 / 12]}
-              pl={['46%', '10%', '46%', '46%', '46%']}
+              w={[0, 0, 7 / 12, 7 / 12, 7 / 12]}
+              pl={['10%', '10%', '46%', '46%', '46%']}
             >
               <div className="Share">
                 {/* <h4>
@@ -87,10 +91,10 @@ const LiveDescription = ({ lang, common, live }) => (
               </div>
             </Box>
           </Flex>
-          <Box width={1} pb={[3, 1, 3, 3, 3]} pr="5%">
+          <Box width={1} pb={[0.6, 1, 3, 3, 3]} pr="5%">
             <hr size="0.1" />
           </Box>
-          <Box width={1} pb={[3, 3, 3, 3, 3]} pr="5%">
+          <Box width={1} pb={['10px', 3, 3, 3, 3]} pr="5%">
             <P>{lang === 'en' ? live.desc_en : live.desc_en}</P>
           </Box>
           <ModalButton
@@ -102,12 +106,12 @@ const LiveDescription = ({ lang, common, live }) => (
           {/* <ButtonPromoClip color={color}>Watch Promo Clip</ButtonPromoClip> */}
         </Box>
         <Box
-          w={[3 / 12, 2.5 / 12, 3 / 12, 3 / 12, 3 / 12]}
-          mr={['1rem', '0.5rem', '1rem', '1rem', '1rem']}
+          w={[2.5 / 12, 2.5 / 12, 3 / 12, 3 / 12, 3 / 12]}
+          mr={['0.5rem', '0.5rem', '1rem', '1rem', '1rem']}
         >
           <Box
             w={[12 / 12, 12 / 12, 12 / 12, 12 / 12, 12 / 12]}
-            pt={['1rem', '0rem', '1rem', '1rem', '1rem']}
+            pt={['0rem', '0rem', '1rem', '1rem', '1rem']}
           >
             <ModalImg
               modalType={2}

@@ -27,6 +27,7 @@ const TextBig = styled.div`
   ${media.ipadpro`font-size: 1.5em;`};
   ${media.ipad`font-size: 1.5em;`};
   ${media.phone`font-size: 1em;`};
+  ${media.iphone5`font-size: 1em;`};
 `
 const Date = styled.div`
   font-weight: bold;
@@ -58,6 +59,9 @@ const ButtonBlue = styled.button`
     cursor: pointer;
     background: ${color.lightBlue};
   }
+  ${media.iphone5`
+  font-size: 0.4em;
+  padding: 3px 25px;`};
 `
 const WrapperSky = styled.div`
   z-index: 1;
@@ -97,6 +101,7 @@ const Text4 = styled.div`
   padding: 0%;
   ${media.ipad`font-size: 0.9em;`};
   ${media.phone`font-size: 0.9em;`};
+  ${media.iphone5`font-size: 0.8em;`};
 `
 const Image = styled.img`width: 100%;`
 
@@ -115,7 +120,13 @@ const ButtonBuyticket = styled(Button)`
   font-weight: 700;
   ${media.phone`
   font-size: 0.8rem;
-  width: 104px};`} &:active {
+  width: 94px};`} &:active {
+    background: ${vars.red};
+  }
+  ${media.iphone5`
+  font-size: 0.7rem;
+  padding: 10px 16%;
+  width: 102px};`} &:active {
     background: ${vars.red};
   }
 `
@@ -152,8 +163,8 @@ class LiveTop extends Component {
                   {formattedDate(this.props.live.liveFromDate)}
                 </Date>
               </Box>
-              <Box w={[2 / 12, 0, 4 / 12, 4 / 12, 4 / 12]} />
-              <Box w={[2 / 12, 5 / 12, 2 / 12, 2 / 12, 2 / 12]}>
+              <Box w={[0, 0, 4 / 12, 4 / 12, 4 / 12]} />
+              <Box w={[6 / 12, 5 / 12, 2 / 12, 2 / 12, 2 / 12]}>
                 <Box pt="4rem" pl={['2rem', '2rem', '2rem', '2rem', '2rem']}>
                   {this.props.live.videoUrl ? null : (
                     <Link href={`/getticket`}>
@@ -217,7 +228,7 @@ class LiveTop extends Component {
                     </Box>
                     <Box
                       w={[3 / 12, 5 / 12, 5 / 12, 5 / 12, 5 / 12]}
-                      pr={['8%', '3%', '32%', '32%']}
+                      pr={['8%', '3%', '32%', '32%', '32%']}
                     >
                       <Link href={`/getticket`}>
                         <a>

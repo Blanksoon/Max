@@ -10,7 +10,13 @@ const ThumbnailVideo = props => (
           <Image width="100%" pt={0} src={props.img} />
         </Box>
         <Box>
-          <Text left pt="1em" bold children={props.name} fontSize="0.9em" />
+          <Text
+            left
+            pt="1em"
+            bold
+            children={props.name}
+            fontSize={['0.8em', '0.9em', '0.9em', '0.9em', '0.9em']}
+          />
         </Box>
         <Flex pt={props.pt}>
           <Box w={9 / 12}>
@@ -20,7 +26,7 @@ const ThumbnailVideo = props => (
               pb="3px"
               color="#0d74ec"
               children={props.date}
-              fontSize="0.9em"
+              fontSize={['0.8em', '0.9em', '0.9em', '0.9em', '0.9em']}
             />
           </Box>
           <Box w={3 / 12}>
