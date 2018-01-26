@@ -23,6 +23,10 @@ const WrapperHilight = styled.div`
   padding-left: 23%;
   background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.ipadpro`padding-left: 20%;`};
+  ${media.ipad`padding-left: 6.5%;`};
+  ${media.phone`padding-left: 0%;`};
+  ${media.iphone5`padding-left: 0%;`};
 `
 
 const WrapperImg = styled.div`
@@ -127,12 +131,12 @@ class VideoBox extends Component {
     return (
       <Provider theme={theme}>
         <Flex mb={3} pt="7rem">
-          <Box w={1} pl="1rem">
+          <Box pl="1rem">
             <Text
               color="red"
               bold
               children={this.props.common.vod}
-              fontSize="2em"
+              fontSize={['1em', '1.5em', '2em', '2em', '2em']}
             />
           </Box>
         </Flex>
@@ -207,86 +211,79 @@ class VideoBox extends Component {
 
 const RowVideo = ({ lang, vods }) => {
   return (
-    <Flex mb={3}>
-      <Box w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]} mr="1em">
-        <Flex>
-          <Box w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]} pr="7.5px">
-            {vods[0] !== undefined && (
-              <ThumbnailVideo
-                id={vods[0].id}
-                img={vods[0].thumbnailUrl}
-                name={lang === 'en' ? vods[0].title_en : vods[0].title_th}
-                date={
-                  lang === 'en' ? (
-                    vods[0].onAirDateStr_en
-                  ) : (
-                    vods[0].onAirDateStr_en
-                  )
-                }
-                time={vods[0].duration}
-                pt="1em"
-              />
-            )}
-          </Box>
-          <Box w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]} pl="7.5px">
-            {vods[1] !== undefined && (
-              <ThumbnailVideo
-                id={vods[1].id}
-                img={vods[1].thumbnailUrl}
-                name={lang === 'en' ? vods[1].title_en : vods[1].programName_th}
-                date={
-                  lang === 'en' ? (
-                    vods[1].onAirDateStr_en
-                  ) : (
-                    vods[1].onAirDateStr_en
-                  )
-                }
-                time={vods[1].duration}
-                pt="1em"
-              />
-            )}
-          </Box>
-        </Flex>
+    <Flex mb={3} wrap>
+      <Box
+        w={[4 / 4, 2 / 4, 1 / 4, 1 / 4, 1 / 4]}
+        pr={['0em', '0.5em', '0.75em', '0.75em', '0.75em']}
+      >
+        {vods[0] !== undefined && (
+          <ThumbnailVideo
+            id={vods[0].id}
+            img={vods[0].thumbnailUrl}
+            name={lang === 'en' ? vods[0].title_en : vods[0].title_th}
+            date={
+              lang === 'en' ? vods[0].onAirDateStr_en : vods[0].onAirDateStr_en
+            }
+            time={vods[0].duration}
+            pt="1em"
+          />
+        )}
       </Box>
-      <Box w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}>
-        <Flex>
-          <Box w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]} pr="7.5px">
-            {vods[2] !== undefined && (
-              <ThumbnailVideo
-                id={vods[2].id}
-                img={vods[2].thumbnailUrl}
-                name={lang === 'en' ? vods[2].title_en : vods[2].title_th}
-                date={
-                  lang === 'en' ? (
-                    vods[2].onAirDateStr_en
-                  ) : (
-                    vods[2].onAirDateStr_en
-                  )
-                }
-                time={vods[2].duration}
-                pt="1em"
-              />
-            )}
-          </Box>
-          <Box w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]} pl="7.5px">
-            {vods[3] !== undefined && (
-              <ThumbnailVideo
-                id={vods[3].id}
-                img={vods[3].thumbnailUrl}
-                name={lang === 'en' ? vods[3].title_en : vods[3].title_th}
-                date={
-                  lang === 'en' ? (
-                    vods[3].onAirDateStr_en
-                  ) : (
-                    vods[3].onAirDateStr_en
-                  )
-                }
-                time={vods[3].duration}
-                pt="1em"
-              />
-            )}
-          </Box>
-        </Flex>
+      <Box
+        w={[4 / 4, 2 / 4, 1 / 4, 1 / 4, 1 / 4]}
+        pt={['1em', '0em', '0em', '0em', '0em']}
+        pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+        pl={['0em', '0.5em', '0.25em', '0.25em']}
+      >
+        {vods[1] !== undefined && (
+          <ThumbnailVideo
+            id={vods[1].id}
+            img={vods[1].thumbnailUrl}
+            name={lang === 'en' ? vods[1].title_en : vods[1].programName_th}
+            date={
+              lang === 'en' ? vods[1].onAirDateStr_en : vods[1].onAirDateStr_en
+            }
+            time={vods[1].duration}
+            pt="1em"
+          />
+        )}
+      </Box>
+      <Box
+        w={[4 / 4, 2 / 4, 1 / 4, 1 / 4, 1 / 4]}
+        pt={['1em', '1em', '0em', '0em', '0em']}
+        pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+        pr={['0em', '0.5em', '0.25em', '0.25em']}
+      >
+        {vods[2] !== undefined && (
+          <ThumbnailVideo
+            id={vods[2].id}
+            img={vods[2].thumbnailUrl}
+            name={lang === 'en' ? vods[2].title_en : vods[2].title_th}
+            date={
+              lang === 'en' ? vods[2].onAirDateStr_en : vods[2].onAirDateStr_en
+            }
+            time={vods[2].duration}
+            pt="1em"
+          />
+        )}
+      </Box>
+      <Box
+        w={[4 / 4, 2 / 4, 1 / 4, 1 / 4, 1 / 4]}
+        pt={['1em', '1em', '0em', '0em', '0em']}
+        pl={['0em', '0.5em', '0.75em', '0.75em', '0.75em']}
+      >
+        {vods[3] !== undefined && (
+          <ThumbnailVideo
+            id={vods[3].id}
+            img={vods[3].thumbnailUrl}
+            name={lang === 'en' ? vods[3].title_en : vods[3].title_th}
+            date={
+              lang === 'en' ? vods[3].onAirDateStr_en : vods[3].onAirDateStr_en
+            }
+            time={vods[3].duration}
+            pt="1em"
+          />
+        )}
       </Box>
     </Flex>
   )

@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import ModalImg from '../../containers/ModalImg'
 import { Flex, Box, Image, Text, Button, overlay } from 'rebass'
 import Link from 'next/link'
-import { media } from '../../tools/responsive'
+import { media, theme } from '../../tools/responsive'
 const Wrapper = styled.div`
   color: red;
   z-index: 2;

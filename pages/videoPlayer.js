@@ -26,6 +26,7 @@ import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langSelector, switchLangSelector } from '../redux/selectors/lang'
 import { langUrl } from '../tools/langUrl'
+import { media, theme } from '../tools/responsive'
 
 const WrapperStadiumTicket = styled.div`
   color: #ffffff;
