@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { ButtonOutline } from 'rebass'
 import vars from './vars'
+import { media, theme } from '../../tools/responsive'
 
 const StyledButton = styled(ButtonOutline)`
   background: transparent;
@@ -21,5 +22,7 @@ const StyledButton = styled(ButtonOutline)`
     background: transparent;
     box-shadow: none;
   }
+  ${media.phone`font-size: 0.5rem`};
+  ${media.iphone5`font-size: 0.5rem;`};
 `
 export default StyledButton

@@ -18,8 +18,8 @@ const StyledButton = styled(Button)`
   font-weight: 700;
   ${media.ipadpro`font-size: 1em`};
   ${media.ipad`font-size: 0.9em`};
-  ${media.phone`font-size: 0.8em`};
-  ${media.iphone5`font-size: 0.8em`};
+  ${media.phone`font-size: 0.5em;padding: 6px 16%;`};
+  ${media.iphone5`font-size: 0.5em`};
   &:active {
     background: ${vars.red};
   }
