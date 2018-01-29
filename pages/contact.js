@@ -81,9 +81,7 @@ class Contact extends Component {
             </WrapperAbout>
             <Background>
               <Container>
-                <Box w={12 / 12}>
-                  <Detail common={this.state.translations.translation.common} />
-                </Box>
+                <Detail common={this.state.translations.translation.common} />
                 {/* <CounterComponent label="counter" /> */}
               </Container>
             </Background>

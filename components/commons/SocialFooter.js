@@ -14,8 +14,9 @@ const CopyRight = styled.span`
   color: ${vars.yellow};
   display: inline-block;
   float: right;
-  ${media.phone`font-size: 10px;`};
+  ${media.phone`font-size: 9px;`};
   ${media.iphone5`
+  font-size: 9px;
   display: contents;
   float: none;`};
 `
