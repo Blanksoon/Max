@@ -133,8 +133,9 @@ const ButtonBuyticket = styled(Button)`
 
 class LiveTop extends Component {
   render() {
+    console.log(typeof this.props.ui)
     let renderUI = <div />
-    if (this.props.ui === 'COUNTDOWN') {
+    if (this.props.ui === 'NOW_SHOWING') {
       //promoclip
       renderUI = (
         <Wrapper bannerUrl={this.props.live.bannerUrl}>
@@ -165,7 +166,11 @@ class LiveTop extends Component {
               </Box>
               <Box w={[0, 0, 4 / 12, 4 / 12, 4 / 12]} />
               <Box w={[6 / 12, 5 / 12, 2 / 12, 2 / 12, 2 / 12]}>
-                <Box pt="4rem" pl={['2rem', '2rem', '2rem', '2rem', '2rem']}>
+                <Box
+                  className="buy-ticket"
+                  pt="4rem"
+                  pl={['2rem', '2rem', '2rem', '2rem', '2rem']}
+                >
                   {this.props.live.videoUrl ? null : (
                     <Link href={`/getticket`}>
                       <a>
@@ -247,12 +252,17 @@ class LiveTop extends Component {
       )
     } else if (this.props.ui === 'VIDEO_PLAYER') {
       renderUI = <Player Url={this.props.live.videoUrl} />
-    } else if (this.props.ui === 'NOW_SHOWING') {
+    } else if (this.props.ui === 'COUNTDOWN') {
       renderUI = (
         <Wrapper bannerUrl={this.props.live.bannerUrl}>
           <WrapperText>
             <Flex>
-              <Box w={6 / 12} pl="1rem" bg={color.transDarkblue} p={2}>
+              <Box
+                w={[6 / 12, 7 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pl="1rem"
+                bg={color.transDarkblue}
+                p={2}
+              >
                 <TextBig color={color.white}>
                   {this.props.lang === 'en' ? (
                     this.props.live.title_en
@@ -270,14 +280,14 @@ class LiveTop extends Component {
                   {formattedDate(this.props.live.liveFromDate)}
                 </Date>
               </Box>
-              <Box w={4 / 12} />
-              <Box w={2 / 12}>
-                <Box pt="4rem" pl="2rem">
+              <Box w={[0, 0, 3 / 12, 3 / 12, 4 / 12]} />
+              <Box w={[6 / 12, 5 / 12, 3 / 12, 3 / 12, 2 / 12]}>
+                <Box pt="4rem" pl={['2rem', '2rem', '2rem', '6rem', '2rem']}>
                   <Link href={`/getticket`}>
                     <a>
-                      <Button color={color.red}>
+                      <ButtonBuyticket color={color.red}>
                         {this.props.common.BuyTicket}
-                      </Button>
+                      </ButtonBuyticket>
                     </a>
                   </Link>
                 </Box>
@@ -292,11 +302,14 @@ class LiveTop extends Component {
                 </Box>
                 <br />
                 <br />
-                <Flex className="test" pl="35%">
+                <Flex className="test" pl={['7%', '12%', '35%', '35%', '35%']}>
                   <Box pt="0.2rem">
                     <Text4>{this.props.common.Hurry}</Text4>
                   </Box>
-                  <Box pl="1.5rem">
+                  <Box
+                    pl={['0.5rem', '0.5rem', '1.5rem', '1.5rem', '1.5rem']}
+                    pr={['1rem', '1rem', '1rem', '1rem', '1rem']}
+                  >
                     <Link href={`/getticket`}>
                       <a>
                         <ButtonBlue>{this.props.common.BuyTicket}</ButtonBlue>

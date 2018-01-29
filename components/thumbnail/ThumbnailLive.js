@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import ModalImg from '../../containers/ModalImg'
 import { Flex, Box, Image, Text, Button, overlay } from 'rebass'
 import Link from 'next/link'
-import { media } from '../../tools/responsive'
+import { media, theme } from '../../tools/responsive'
 const Wrapper = styled.div`
   color: red;
   z-index: 2;
@@ -45,7 +45,6 @@ const WrapperDes = styled.div`
   ${media.ipadpro`height: 70px`};
   ${media.ipad`height: 40px`};
   ${media.phone`height: 40px`};
-  overflow: hidden;
   ${media.iphone5`height: 43px`};
   overflow: hidden;
 `
@@ -131,7 +130,7 @@ const ThumbnailLive = ({ lang, live }) => {
               children={`${Next} ${lang === 'en'
                 ? live.liveDateStr_en
                 : live.liveDateStr_th}`}
-              fontSize={['0.5em', '1em']}
+              fontSize={['0.5em', '0.5em', '0.7em', '0.9em', '1em']}
             />
           </center>
         </Box>

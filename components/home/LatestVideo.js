@@ -25,6 +25,21 @@ const renderThumbnail = (lang, vod) => (
         />
       </a>
     </Link>
+    <style jsx>
+      {`
+        a:link {
+          text-decoration: none;
+        }
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+        a:hover {
+          color: #ff0000;
+          text-decoration: none;
+        }
+      `}
+    </style>
   </Box>
 )
 
@@ -54,20 +69,6 @@ class LatestVideo extends Component {
             {this.props.vods.map(vod => renderThumbnail(this.props.lang, vod))}
           </Flex>
         </Box>
-        <style jsx>
-          {`
-            a:link {
-            }
-            a {
-              color: #fff;
-              text-decoration: none;
-            }
-            a:hover {
-              color: #ff0000;
-              text-decoration: none;
-            }
-          `}
-        </style>
       </Provider>
     )
   }

@@ -8,10 +8,15 @@ import vars from './vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
 import LoginLang from '../../containers/commons/LoginLang'
 import { translate } from 'react-i18next'
-import { media } from '../../tools/responsive'
+import { media, theme } from '../../tools/responsive'
 
 //rgba(1, 15, 30, 0.8)
-const Navbar = styled(Fixed) `
+const Wrapper = styled.div`
+  display: flex;
+  ${media.phone`display: none`};
+  ${media.iphone5`display: none`};
+`
+const Navbar = styled(Fixed)`
   background: ${props =>
     props.pathname == '/' ? 'rgba(1, 15, 30, 0.8)' : 'rgba(1, 15, 30, 10)'};
   height: ${vars.navHeight};
@@ -27,15 +32,15 @@ const Motto = styled.span`
   padding: 1.5rem 1rem;
   text-align: right;
   vertical-align: middle;
-  ${media.desktop`display: none;`}
+  ${media.desktop`display: none;`};
 `
-const Logo = styled(Image) `
+const Logo = styled(Image)`
   cursor: pointer;
   height: 5rem;
   float: right;
   margin-top: 0.5rem;
   margin-right: 1rem;
-  ${media.desktop`display: none;`}
+  ${media.desktop`display: none;`};
 `
 class NavBar extends React.Component {
   constructor(props) {
@@ -103,27 +108,29 @@ class NavBar extends React.Component {
     //console.log('label', this.props.common.Home)
     //console.log('props', this.props.lang)
     return (
-      <Navbar pathname={this.props.url.pathname} m={0} p={2} top left z={1}>
-        <Container>
-          <Motto>
-            {this.props.common.TheMost} <br />
-            {this.props.common.Fighting}
-          </Motto>
-          {this.state.navItems.map(({ label, href, active }) => (
-            <NavItem key={label} label={label} href={href} active={active} />
-          ))}
-          <Link href="/">
-            <Logo src="/static/logo.png" />
-          </Link>
-          <LoginLang
-            url={this.props.url}
-            www={this.props.www}
-            registerText={this.state.RegisterButton}
-            profileText={this.state.profileText}
-            logoutText={this.state.logoutText}
-          />
-        </Container>
-      </Navbar>
+      <Wrapper>
+        <Navbar pathname={this.props.url.pathname} m={0} p={2} top left z={1}>
+          <Container>
+            <Motto>
+              {this.props.common.TheMost} <br />
+              {this.props.common.Fighting}
+            </Motto>
+            {this.state.navItems.map(({ label, href, active }) => (
+              <NavItem key={label} label={label} href={href} active={active} />
+            ))}
+            <Link href="/">
+              <Logo src="/static/logo.png" />
+            </Link>
+            <LoginLang
+              url={this.props.url}
+              www={this.props.www}
+              registerText={this.state.RegisterButton}
+              profileText={this.state.profileText}
+              logoutText={this.state.logoutText}
+            />
+          </Container>
+        </Navbar>
+      </Wrapper>
     )
   }
 }

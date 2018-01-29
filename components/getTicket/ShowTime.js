@@ -12,6 +12,8 @@ import * as api from '../../api'
 import { fetchProducts } from '../../redux/modules/product'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../../redux/store'
+import { media, theme } from '../../tools/responsive'
+
 const Button = styled.button`
   bottom: 2%;
   background-color: #b81111;
@@ -56,12 +58,14 @@ const Text5 = styled.div`
   font-weight: 700;
   font-size: 1em;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.iphone5`font-size: 0.7em;padding-right: 3px;`};
 `
 const Text6 = styled.div`
   color: ${color.white};
   font-weight: 500;
   font-size: 0.8em;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.iphone5`font-size: 0.7em;padding-top: 5px;padding-right: 5px;`};
 `
 const Text8 = styled.div`
   color: #8a8a8a;
@@ -163,8 +167,12 @@ class ShowTime extends React.Component {
     if (rowCount % 2 == 0) {
       for (let i = 0; i < rowCount; i += 2) {
         rowLive.push(
-          <Flex pl="0.5em" pr="0.5em">
-            <Box w={6 / 12} pr="0.5em" pt="1em">
+          <Flex pl="0.5em" pr="0.5em" wrap>
+            <Box
+              w={[1, 1, 1 / 2, 1 / 2, 1 / 2]}
+              pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+              pt="1em"
+            >
               <ModalLiveItem
                 id="live"
                 modalType={type}
@@ -178,7 +186,11 @@ class ShowTime extends React.Component {
                 watch={this.props.common.WATCH}
               />
             </Box>
-            <Box w={6 / 12} pl="0.5em" pt="1rem">
+            <Box
+              w={[1, 1, 1 / 2, 1 / 2, 1 / 2]}
+              pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+              pt="1rem"
+            >
               <ModalLiveItem
                 id="live"
                 modalType={type}
@@ -198,8 +210,12 @@ class ShowTime extends React.Component {
     } else {
       for (let i = 0; i < rowCount - 1; i += 2) {
         rowLive.push(
-          <Flex pl="0.5em" pr="0.5em">
-            <Box w={6 / 12} pr="0.5em" pt="1em">
+          <Flex pl="0.5em" pr="0.5em" wrap>
+            <Box
+              w={[1, 1, 1 / 2, 1 / 2, 1 / 2]}
+              pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+              pt="1em"
+            >
               <ModalLiveItem
                 id="live"
                 modalType={type}
@@ -213,7 +229,11 @@ class ShowTime extends React.Component {
                 watch={this.props.common.WATCH}
               />
             </Box>
-            <Box w={6 / 12} pl="0.5em" pt="1rem">
+            <Box
+              w={[1, 1, 1 / 2, 1 / 2, 1 / 2]}
+              pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+              pt="1rem"
+            >
               <ModalLiveItem
                 id="live"
                 modalType={type}
@@ -233,7 +253,11 @@ class ShowTime extends React.Component {
       }
       rowLive.push(
         <Flex pl="0.5em" pr="0.5em">
-          <Box w={6 / 12} pr="0.5em" pt="1em">
+          <Box
+            w={[1, 1, 1 / 2, 1 / 2, 1 / 2]}
+            pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+            pt="1em"
+          >
             <ModalLiveItem
               id="live"
               modalType={type}
@@ -247,7 +271,6 @@ class ShowTime extends React.Component {
               watch={this.props.common.WATCH}
             />
           </Box>
-          <Box w={6 / 12} pl="0.5em" pt="1rem" />
         </Flex>
       )
     }
@@ -265,8 +288,12 @@ class ShowTime extends React.Component {
     let renderSubscribe = ''
     if (this.props.product.products.subscribe !== undefined) {
       renderSubscribe = (
-        <Flex pb="1em">
-          <Box w={6 / 12} pr="0.5em">
+        <Flex pb="1em" wrap>
+          <Box
+            w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+            pt={['1em', '1em', '0em', '0em', '0em']}
+            pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+          >
             <ModalSubscribe
               id="sub"
               modalType={type}
@@ -284,7 +311,11 @@ class ShowTime extends React.Component {
               youBought={this.props.common.YOUBOUGHT}
             />
           </Box>
-          <Box w={6 / 12} pl="0.5em">
+          <Box
+            w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+            pt={['1em', '1em', '0em', '0em', '0em']}
+            pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+          >
             <ModalSubscribe
               id="sub"
               modalType={type}
@@ -293,8 +324,8 @@ class ShowTime extends React.Component {
               subAll={this.props.product.products.subscribe[1].status}
               packAll={this.props.product.products.package[1].status}
               color={color.blue}
-              w="95%"
-              img="static/img_vodondemand@3x.png"
+              w="100%"
+              img="static/img_vodondemand.png"
               text1={this.props.common.SUBSCRIBEVDO}
               text2={this.props.common.Allvideo}
               month={this.props.common.MONTH}
@@ -308,8 +339,12 @@ class ShowTime extends React.Component {
     let renderPackage = ''
     if (this.props.product.products.package !== undefined) {
       renderPackage = (
-        <Flex pb="1em">
-          <Box w={6 / 12} pr="0.5em">
+        <Flex pb="1em" wrap>
+          <Box
+            w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+            pt={['1em', '1em', '0em', '0em', '0em']}
+            pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+          >
             <ModalSubscribe
               id="package"
               modalType={type}
@@ -327,7 +362,11 @@ class ShowTime extends React.Component {
               youBought={this.props.common.YOUBOUGHT}
             />
           </Box>
-          <Box w={6 / 12} pl="0.5em">
+          <Box
+            w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+            pt={['1em', '1em', '0em', '0em', '0em']}
+            pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+          >
             <ModalSubscribe
               id="package"
               modalType={type}
@@ -336,8 +375,8 @@ class ShowTime extends React.Component {
               subAll={this.props.product.products.subscribe[1].status}
               packAll={this.props.product.products.package[1].status}
               color="#336699"
-              w="95%"
-              img="static/img_vodondemand@3x.png"
+              w="100%"
+              img="static/img_vodondemand.png"
               text1={this.props.common.SUBSCRIBEVDO}
               text2={this.props.common.Allvideo}
               month={this.props.common.MONTH}
@@ -349,53 +388,58 @@ class ShowTime extends React.Component {
       )
     }
     return (
-      <Wrapper>
-        <Flex pl="1em" pr="1em" pb="3em">
-          <Box w={12 / 12} pl="0rem">
-            <Flex pt="2rem" pb="1rem">
-              <Box w={6 / 12} pt="1rem">
-                <Text1>{this.props.common.GETTICKET}</Text1>
-                <Text2>{this.props.common.Pleaseselect}</Text2>
-                <br />
-                <br />
-                <Flex>
-                  <Text8>{this.props.common.SUBSCRIBEBIG}</Text8>
-                  &nbsp;&nbsp;
-                  <Text9>{this.props.common.AUTOMATIC}</Text9>
-                </Flex>
+      <Provider theme={theme}>
+        <Wrapper>
+          <Flex pl="1em" pr="1em" pb="3em">
+            <Box w={12 / 12} pl="0rem">
+              <Flex pt="2rem" pb="1rem">
+                <Box w={12 / 12} pt="1rem">
+                  <Text1>{this.props.common.GETTICKET}</Text1>
+                  <Text2>{this.props.common.Pleaseselect}</Text2>
+                  <br />
+                  <br />
+                  <Flex>
+                    <Text8>{this.props.common.SUBSCRIBEBIG}</Text8>
+                    &nbsp;&nbsp;
+                    <Text9>{this.props.common.AUTOMATIC}</Text9>
+                  </Flex>
+                </Box>
+              </Flex>
+              {renderSubscribe}
+              <Flex pb="1em">
+                <Text8>{this.props.common.PACKAGE}</Text8>
+                &nbsp;&nbsp;
+                <Text9>{this.props.common.NOTAUTOMATIC}</Text9>
+              </Flex>
+              {renderPackage}
+              <Box pb="1em">
+                <Text8>{this.props.common.LIVE}</Text8>
               </Box>
-            </Flex>
-            {renderSubscribe}
-            <Flex pb="1em">
-              <Text8>{this.props.common.PACKAGE}</Text8>
-              &nbsp;&nbsp;
-              <Text9>{this.props.common.NOTAUTOMATIC}</Text9>
-            </Flex>
-            {renderPackage}
-            <Box pb="1em">
-              <Text8>{this.props.common.LIVE}</Text8>
+              <Box bg={color.blue} pb="1em">
+                <Flex>
+                  <Box w={[0 / 12, 0 / 12, 3 / 12, 3 / 12, 3 / 12]} />
+                  <Box w={[4 / 12, 4 / 12, 2 / 12, 2 / 12, 2 / 12]} pt="1em">
+                    <Image w="100%" src="static/img_livestream@2x.png" />
+                  </Box>
+                  <Box
+                    w={[8 / 12, 8 / 12, 5 / 12, 5 / 12, 5 / 12]}
+                    pt={['1.3em', '1.5em', '3em', '5em', '5em']}
+                  >
+                    <center>
+                      <Text5>{this.props.common.GETTIME}</Text5>
+                      <Text6>{this.props.common.Whattime}</Text6>
+                    </center>
+                  </Box>
+                </Flex>
+                <Flex pl="0.5em" pt="1em">
+                  <Text5>{this.props.common.PLEASESELECT}</Text5>
+                </Flex>
+                {this.renderLive()}
+              </Box>
             </Box>
-            <Box bg={color.blue} pb="1em">
-              <Flex>
-                <Box w={3 / 12} />
-                <Box w={2 / 12} pt="1em">
-                  <Image w="100%" src="static/img_livestream@2x.png" />
-                </Box>
-                <Box w={5 / 12} pt="5em">
-                  <center>
-                    <Text5>{this.props.common.GETTIME}</Text5>
-                    <Text6>{this.props.common.Whattime}</Text6>
-                  </center>
-                </Box>
-              </Flex>
-              <Flex pl="0.5em" pt="1em">
-                <Text5>{this.props.common.PLEASESELECT}</Text5>
-              </Flex>
-              {this.renderLive()}
-            </Box>
-          </Box>
-        </Flex>
-      </Wrapper>
+          </Flex>
+        </Wrapper>
+      </Provider>
     )
   }
 }

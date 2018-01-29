@@ -24,6 +24,7 @@ import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langSelector } from '../redux/selectors/lang'
 import { langUrl } from '../tools/langUrl'
+import { media, theme } from '../tools/responsive'
 
 const Text = styled.div`
   color: #b81111;
@@ -60,16 +61,6 @@ const Wrapper = styled.div`
 `
 const LivePlayer = styled.div`height: 36rem;`
 
-const theme = {
-  breakpoints: [
-    // min-width breakpoints in em
-    41.6875,
-    64,
-    85.375,
-    70,
-  ],
-}
-
 class lives extends React.Component {
   constructor(props) {
     super(props)
@@ -96,8 +87,13 @@ class lives extends React.Component {
     if (rowCount % 2 == 0) {
       for (let i = 0; i < rowCount; i += 2) {
         rowLive.push(
-          <Flex bg="#fff" pb="2rem">
-            <Box w={6 / 12} pl="1.5rem" pr="0.75rem">
+          <Flex bg="#fff" pb="1.5rem">
+            <Box
+              w={[1, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+              pt={['0em', '0em', '0em', '0em', '0em']}
+              pl={['1rem', '1.5rem', '1.5rem', '1.5rem', '1.5rem']}
+              pr={['1rem', '0.75rem', '0.75rem', '0.75rem', '0.75rem']}
+            >
               <WrapperThumbnail>
                 <ThumbnailBigLive
                   id={this.props.lives[i].id}
@@ -128,7 +124,12 @@ class lives extends React.Component {
                 />
               </WrapperThumbnail>
             </Box>
-            <Box w={6 / 12} pl="0.75rem" pr="1.5rem">
+            <Box
+              w={[1, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
+              pt={['1.5em', '0em', '0em', '0em', '0em']}
+              pr={['1rem', '1.5rem', '1.5rem', '1.5rem', '1.5rem']}
+              pl={['1rem', '0.75rem', '0.75rem', '0.75rem', '0.75rem']}
+            >
               <WrapperThumbnail>
                 <ThumbnailBigLive
                   id={this.props.lives[i + 1].id}
@@ -165,8 +166,13 @@ class lives extends React.Component {
     } else {
       for (let i = 0; i < rowCount - 1; i += 2) {
         rowLive.push(
-          <Flex bg="#fff" pb="2rem" wrap>
-            <Box w={[1, 6 / 12]} pt={[2, 0]} pl="1.5rem" pr="0.75rem">
+          <Flex bg="#fff" pb="1.5rem" wrap>
+            <Box
+              w={[1, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+              pt={['0em', '0em', '0em', '0em', '0em']}
+              pl={['1rem', '1.5rem', '1.5rem', '1.5rem', '1.5rem']}
+              pr={['1rem', '0.75rem', '0.75rem', '0.75rem', '0.75rem']}
+            >
               <WrapperThumbnail>
                 <ThumbnailBigLive
                   id={this.props.lives[i].id}
@@ -197,7 +203,12 @@ class lives extends React.Component {
                 />
               </WrapperThumbnail>
             </Box>
-            <Box w={[1, 6 / 12]} pt={[2, 0]} pl="0.75rem" pr="1.5rem">
+            <Box
+              w={[1, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
+              pt={['1.5em', '0em', '0em', '0em', '0em']}
+              pr={['1rem', '1.5rem', '1.5rem', '1.5rem', '1.5rem']}
+              pl={['1rem', '0.75rem', '0.75rem', '0.75rem', '0.75rem']}
+            >
               <WrapperThumbnail>
                 <ThumbnailBigLive
                   id={this.props.lives[i + 1].id}
@@ -234,7 +245,12 @@ class lives extends React.Component {
       }
       rowLive.push(
         <Flex bg="#fff" pb="2rem" wrap>
-          <Box w={[1, 6 / 12]} pt={[2, 0]} pl="1.5rem" pr="0.75rem">
+          <Box
+            w={[1, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
+            pt={['0em', '0em', '0em', '0em', '0em']}
+            pl={['1rem', '1.5rem', '1.5rem', '1.5rem', '1.5rem']}
+            pr={['1rem', '0.75rem', '0.75rem', '0.75rem', '0.75rem']}
+          >
             <WrapperThumbnail>
               <ThumbnailBigLive
                 id={this.props.lives[n].id}
@@ -265,7 +281,12 @@ class lives extends React.Component {
               />
             </WrapperThumbnail>
           </Box>
-          <Box w={[1, 6 / 12]} pt={[2, 0]} pl="0.75rem" pr="1.5rem" />
+          <Box
+            w={[1, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
+            pt={['0em', '0em', '0em', '0em', '0em']}
+            pl={['1rem', '1.5rem', '1.5rem', '1.5rem', '1.5rem']}
+            pr={['1rem', '0.75rem', '0.75rem', '0.75rem', '0.75rem']}
+          />
         </Flex>
       )
     }
