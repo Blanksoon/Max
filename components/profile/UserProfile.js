@@ -6,12 +6,16 @@ import ModalButton from '../../containers/ModalButton'
 import { closeModal } from '../../redux/modules/modal'
 import { connect } from 'react-redux'
 import * as api from '../../api'
+import { media, theme } from '../../tools/responsive'
 
 const Text1 = styled.div`
   color: ${color.black};
   font-weight: 700;
   font-size: 1.3em;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.iphone5`
+  font-size: 1em;
+  padding-left: 0.5em;`};
 `
 
 const Text2 = styled.div`
@@ -66,19 +70,28 @@ class UserProfile extends React.Component {
     return (
       <Box w={12 / 12}>
         <Box w={12 / 12}>
-          <Flex className="Profile-pic" py="1rem">
-            <Box w={1 / 12} py="0.5rem">
-              <Image src="../../static/ic_profile@3x.png" width="80%" />
+          <Flex
+            className="Profile-pic"
+            py={['0', '1rem', '1rem', '1rem', '1rem']}
+          >
+            <Box
+              w={[2 / 12, 1 / 12, 1 / 12, 1 / 12, 1 / 12]}
+              py={['1rem', '0.5rem', '0.5rem', '0.5rem', '0.5rem']}
+            >
+              <Image src="../../static/ic_profile@3x.png" width="90%" />
             </Box>
-            <Box w={11.7 / 12} pt="1.8rem">
+            <Box
+              w={[10 / 12, 11.7 / 12, 11.7 / 12, 11.7 / 12, 11.7 / 12]}
+              pt={['1.3rem', '1.8rem', '1.8rem', '1.8rem', '1.8rem']}
+            >
               <Text1>{this.props.common.PROFILE}</Text1>
             </Box>
           </Flex>
           <Flex className="Detail-user" pb="0.5rem">
-            <Box w={2 / 12} pt="1rem">
+            <Box w={2 / 12} pt={['0', '1rem', '1rem', '1rem', '1rem']}>
               <Text2>{this.props.common.EMAIL}</Text2>
             </Box>
-            <Box w={3 / 12} pt="1rem">
+            <Box w={3 / 12} pt={['0.19rem', '1rem', '1rem', '1rem', '1rem']}>
               <Text2>{this.state.email}</Text2>
               <ModalButton
                 buttonID={2}

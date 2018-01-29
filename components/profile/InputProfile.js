@@ -12,6 +12,7 @@ import Spinner from '../commons/Spinner'
 import vars from '../commons/vars'
 import { datepickerStyled } from './datepickerStyle'
 import Router from 'next/router'
+import { media, theme } from '../../tools/responsive'
 
 const Text1 = styled.div`
   color: ${color.black};
@@ -307,8 +308,15 @@ class InputProfile extends React.Component {
     return (
       <Box w={12 / 12}>
         <Box w={12 / 12}>
-          <Flex className="Input-user" pb="0.5rem" pt="1rem">
-            <Box w={12 / 12} pt="0.4rem">
+          <Flex
+            className="Input-user"
+            pb="0.5rem"
+            pt={['1rem', '1rem', '1rem', '1rem', '1rem']}
+          >
+            <Box
+              w={12 / 12}
+              pt={['0.4rem', '0.4rem', '0.4rem', '0.4rem', '0.4rem']}
+            >
               <Flex>
                 <Box w={2 / 12}>
                   <Text2>{this.props.common.NAME}</Text2>

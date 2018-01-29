@@ -34,14 +34,14 @@ const Name = styled.span`
 const Address = styled.span`
   color: ${vars.lightBlue};
   display: block;
-  ${media.phone`font-size: 13px;`};
+  ${media.phone`font-size: 12px;`};
 `
 
 const Tel = styled.span`
   color: ${vars.lightBlue};
   display: block;
   margin-top: 1rem;
-  ${media.phone`font-size: 13px;`};
+  ${media.phone`font-size: 12px;`};
 `
 export default ({ common }) => (
   <AddressFooter>

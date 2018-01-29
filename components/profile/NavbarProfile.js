@@ -1,9 +1,10 @@
 import { Component } from 'react'
 import Link from 'next/link'
-import { Fixed, Image } from 'rebass'
+import { Fixed, Image, Provider } from 'rebass'
 import styled from 'styled-components'
 import NavItem from './NavItem'
 import vars from '../commons/vars'
+import { media, theme } from '../../tools/responsive'
 
 //rgba(1, 15, 30, 0.8)
 const Navbar = styled.div`height: 1rem;`
@@ -45,13 +46,15 @@ export default class NavbarProfile extends Component {
 
   render() {
     return (
-      <Navbar pathname={this.props.url.pathname} m={0} p={2}>
-        <NavItem
-          lang={this.props.lang}
-          common={this.props.common}
-          pathname={this.props.url.pathname}
-          changeComponent={this.props.changeComponent}
-        />
+      <Navbar pathname={this.props.url.pathname} m={0} p={[2, 2, 2, 2, 2]}>
+        <Provider theme={theme}>
+          <NavItem
+            lang={this.props.lang}
+            common={this.props.common}
+            pathname={this.props.url.pathname}
+            changeComponent={this.props.changeComponent}
+          />
+        </Provider>
       </Navbar>
     )
   }
