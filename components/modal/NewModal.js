@@ -45,9 +45,9 @@ const WrapperVod = styled.div`
   ${media.ipad`width: 600px;
   height: 335px;`};
   ${media.phone`width: 350px;
-  height: 335px;`};
+  height: 197px;`};
   ${media.iphone5`width: 300px;
-  height: 335px;`};
+  height: 168px;`};
 `
 const WrapperImg = styled.div`
   margin-bottom: 2%;
