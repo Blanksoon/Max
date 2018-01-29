@@ -7,6 +7,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { langSelector } from '../redux/selectors/lang'
 import { getTranslation } from '../tools/translationHelpers'
+import { initGA, logPageView } from '../tools/analytics'
 
 class Main extends React.Component {
   async componentWillReceiveProps(nextProps) {
@@ -14,6 +15,14 @@ class Main extends React.Component {
     if (this.props.lang != nextProps.lang) {
       this.props.switchLanguage(nextProps.lang)
     }
+  }
+
+  componentDidMount() {
+    if (!window.GA_INITIALIZED) {
+      initGA()
+      window.GA_INITIALIZED = true
+    }
+    logPageView()
   }
 
   render() {

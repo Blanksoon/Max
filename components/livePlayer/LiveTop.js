@@ -61,7 +61,10 @@ const ButtonBlue = styled.button`
   }
   ${media.iphone5`
   font-size: 0.4em;
-  padding: 3px 25px;`};
+  padding: 3px 25px;
+  width: 80px`};
+  ${media.phone`
+  width: 80px`};
 `
 const WrapperSky = styled.div`
   z-index: 1;
@@ -135,7 +138,7 @@ class LiveTop extends Component {
   render() {
     console.log(typeof this.props.ui)
     let renderUI = <div />
-    if (this.props.ui === 'NOW_SHOWING') {
+    if (this.props.ui === 'COUNTDOWN') {
       //promoclip
       renderUI = (
         <Wrapper bannerUrl={this.props.live.bannerUrl}>
@@ -252,7 +255,7 @@ class LiveTop extends Component {
       )
     } else if (this.props.ui === 'VIDEO_PLAYER') {
       renderUI = <Player Url={this.props.live.videoUrl} />
-    } else if (this.props.ui === 'COUNTDOWN') {
+    } else if (this.props.ui === 'NOW_SHOWING') {
       renderUI = (
         <Wrapper bannerUrl={this.props.live.bannerUrl}>
           <WrapperText>
