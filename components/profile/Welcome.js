@@ -4,12 +4,14 @@ import styled from 'styled-components'
 import { closeModal } from '../../redux/modules/modal'
 import { connect } from 'react-redux'
 import * as api from '../../api'
+import { media, theme } from '../../tools/responsive'
 
 const Text1 = styled.div`
   color: ${color.red};
   font-weight: 700;
   font-size: 1.5em;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.iphone5`font-size: 1em;`};
 `
 class Welcome extends React.Component {
   constructor(props) {

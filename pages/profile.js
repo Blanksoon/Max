@@ -50,6 +50,7 @@ import NavbarProfile from '../components/profile/NavbarProfile'
 import ListSubscribe from '../components/profile/ListSubscribe'
 import { langSelector } from '../redux/selectors/lang'
 import { langUrl } from '../tools/langUrl'
+import { media, theme } from '../tools/responsive'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -128,24 +129,36 @@ class Profile extends React.Component {
     //console.log('dddddddddd', this.state)
     return (
       <I18nextProvider i18n={this.i18n}>
-        <Main
-          url={this.props.url}
-          nav={this.state.translations.translation.common}
-          www="profile"
-          switchLanguage={this.switchLang}
-        >
-          <NewModal
-            common={this.state.translations.translation.common}
-            lang={this.state.lang}
-          />
-          <div className="profile">
+        <Provider theme={theme}>
+          <Main
+            url={this.props.url}
+            nav={this.state.translations.translation.common}
+            www="profile"
+            switchLanguage={this.switchLang}
+          >
+            <NewModal
+              common={this.state.translations.translation.common}
+              lang={this.state.lang}
+            />
             <WrapperProfile color={color}>
               <Container>
-                <Box px="3rem" pt="9rem" bg="white" pb="2rem">
+                <Box
+                  w={[12 / 12, 12 / 12, 12 / 12, 12 / 12, 12 / 12]}
+                  className="warpper-profile"
+                  px={['1rem', '3rem', '3rem', '3rem', '3rem']}
+                  pt={['9rem', '9rem', '9rem', '9rem', '9rem']}
+                  bg="white"
+                  pb={['2rem', '2rem', '2rem', '2rem', '2rem']}
+                >
                   <Welcome
                     common={this.state.translations.translation.common}
                   />
-                  <Box w={12 / 12} pb="1rem" pt="2rem">
+                  <Box
+                    className="bt"
+                    w={12 / 12}
+                    pb={['1rem', '1rem', '1rem', '1rem', '1rem']}
+                    pt={['1rem', '2rem', '2rem', '2rem', '2rem']}
+                  >
                     <NavbarProfile
                       url={this.state}
                       changeComponent={this.changeComponent}
@@ -162,21 +175,21 @@ class Profile extends React.Component {
                 </Box>
               </Container>
             </WrapperProfile>
-          </div>
-          <style jsx global>
-            {`
-              body {
-                padding: 0 !important;
-                margin: 0 !important;
-              }
-               {
-                /* * {
+            <style jsx global>
+              {`
+                body {
+                  padding: 0 !important;
+                  margin: 0 !important;
+                }
+                 {
+                  /* * {
               box-sizing: border-box;
             } */
-              }
-            `}
-          </style>
-        </Main>
+                }
+              `}
+            </style>
+          </Main>
+        </Provider>
       </I18nextProvider>
     )
   }
