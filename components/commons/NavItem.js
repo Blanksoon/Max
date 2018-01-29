@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import vars from './vars'
+import { media, theme } from '../../tools/responsive'
 
 const Inactive = styled.a`
   color: ${vars.lightBlue};
@@ -13,10 +14,12 @@ const Inactive = styled.a`
   &:hover {
     color: ${vars.white};
   }
+  ${media.phone`display: none`}
 `
-const Active = styled(Inactive)`
+const Active = styled(Inactive) `
   color: ${vars.white};
   border-bottom: 2px solid ${vars.white};
+  ${media.phone`display: none`}
 `
 
 export default ({ label, href, active }) => (
