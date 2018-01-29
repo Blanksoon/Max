@@ -10,12 +10,14 @@
     "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "css-loader": "^0.28.7",
     "emailjs": "^1.0.12",
     "es6-promise": "^4.1.1",
     "express": "^4.15.5",
+    "hamburgers": "^0.9.3",
     "hls.js": "^0.8.2",
     "i18next": "^10.2.2",
     "isomorphic-fetch": "^2.2.1",
@@ -61,8 +63,13 @@
     "video-react": "^0.8.8"
   },
   "devDependencies": {
-    "postcss-loader": "^2.0.8",
+    "babel-loader": "^7.1.2",
+    "node-sass": "^4.7.2",
+    "postcss-easy-import": "^3.0.0",
+    "postcss-loader": "^2.0.10",
     "prettier": "^1.6.1",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.6",
     "skeleton-loader": "^1.1.4"
   }
 }

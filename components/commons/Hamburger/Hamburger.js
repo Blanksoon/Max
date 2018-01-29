@@ -1,15 +1,21 @@
 import { Component } from 'react'
-import { styles } from './styles'
+import cx from 'classnames'
+import customStyle from './custom.scss'
 
-export default (props) => (
-  <span>
-    <button className="hamburger hamburger--slider" type="button">
-      <span className="hamburger-box">
-        <span className="hamburger-inner"></span>
-      </span>
-    </button>
-    <style global jsx>
-      {styles}
-    </style>
-  </span>
-)
+export default (props) => {
+  const styles = cx({
+    'hamburger': true,
+    'hamburger--slider': true,
+    'is-active': props.active
+  })
+  return (
+    <span>
+      <style dangerouslySetInnerHTML={{ __html: customStyle }} />
+      <div className={styles} onClick={props.toggleHamburger}>
+        <div className="hamburger-box">
+          <div className="hamburger-inner"></div>
+        </div>
+      </div>
+    </span>
+  )
+}

@@ -37,40 +37,6 @@ const Logo = styled(Image) `
   right: -0.2rem;
   ${media.ipad`display: inline-block`}
 `
-/*const Line = styled.div`
-  width: 35px;
-  height: 3px;
-  background: ${vars.white};
-  margin: 6px 0;
-  cursor: pointer;
-  &:hover {
-    background: ${vars.red};
-  }
-`
-const Hamburger = styled.div`
-  float: left;
-  background: ${vars.red};
-  margin-top: 0.4rem;
-  margin-right: 0.2rem;
-  cursor: pointer;
-`
-class NavToggle extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      collapse: true
-    }
-  }
-  render() {
-    return (
-      <Hamburger>
-        <Line >
-        <Line />
-        <Line />
-      </Hamburger>
-    )
-  }
-}*/
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -88,11 +54,20 @@ class NavBar extends React.Component {
         },
         { label: this.props.common.ContactUs, href: '/contact', active: false },
       ],
+      hamburgerActive: false,
       RegisterButton: this.props.common.REGISTERBUTTON,
       logoutText: this.props.common.PROFILETEXT,
       profileText: this.props.common.LOGOUTTEXT,
     }
     this.setActiveUrl = this.setActiveUrl.bind(this)
+    this.toggleHamburger = this.toggleHamburger.bind(this)
+  }
+
+  toggleHamburger() {
+    console.log('hamburger toggle')
+    this.setState({
+      hamburgerActive: !this.state.hamburgerActive
+    })
   }
 
   async componentWillReceiveProps(nextProps) {
@@ -136,7 +111,10 @@ class NavBar extends React.Component {
       <Wrapper>
         <Navbar pathname={this.props.url.pathname} m={0} p={2} top left z={1}>
           <Container>
-            <Hamburger />
+            <Hamburger
+              active={this.state.hamburgerActive}
+              toggleHamburger={this.toggleHamburger}
+            />
             <Link href="/">
               <Logo src="/static/logo.png" />
             </Link>
