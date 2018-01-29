@@ -26,7 +26,7 @@ const LiveInfo = styled.div`
   ${media.ipadpro`width: 50%;`};
   ${media.ipad`width: 58%;`};
   ${media.phone`width: 90%;left: 0rem;top: 0rem;height:120px`};
-  ${media.phone`width: 100%;left: 0rem;top: 0rem;height:90px`};
+  ${media.iphone5`width: 100%;left: 0rem;top: 0rem;height:90px`};
 `
 const Title = styled.div`
   color: ${vars.white};

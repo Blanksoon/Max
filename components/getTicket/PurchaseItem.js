@@ -14,6 +14,7 @@ import Spinner from '../commons/Spinner'
 import * as api from '../../api'
 import fetch from 'isomorphic-fetch'
 import StripeCheckout from 'react-stripe-checkout'
+import { media, theme } from '../../tools/responsive'
 
 const A = styled.a`TEXT-DECORATION: none;`
 const WrapperLogin = styled.div`
@@ -32,12 +33,15 @@ const Text2 = styled.div`
   font-size: 1em;
   font-family: Helvetica, Arial, sans-serif;
   padding: 0;
+  ${media.iphone5`font-size: 0.8em`};
 `
 const Text3 = styled.div`
   color: ${color.white};
   font-weight: 700;
   font-size: 1.5em;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.phone`font-size: 1.2em`};
+  ${media.iphone5`font-size: 1em`};
 `
 const Date = styled.div`
   color: ${color.yellow};
@@ -61,6 +65,10 @@ const ButtonAlipay = styled.button`
   padding: 13px 100px;
   border: 1px solid ${vars.white};
   display: inline-block;
+  ${media.phone`width: 264px;
+  height: 50px;padding: 4px 57px;`};
+  ${media.iphone5`width: 202px;
+  height: 50px;padding: 8px 40px;`};
 `
 const ButtonCredit = styled.button`
   width: 318px;
@@ -74,6 +82,10 @@ const ButtonCredit = styled.button`
   padding: 0px 0px;
   border: 1px solid ${vars.blue};
   display: inline-block;
+  ${media.phone`width: 264px;
+  height: 50px;`};
+  ${media.iphone5`width: 202px;
+  height: 50px;`};
 `
 const Buttonpaypal = styled.button`
   width: 318px;
@@ -87,6 +99,10 @@ const Buttonpaypal = styled.button`
   //   background-color: ${vars.lightRed};
   //   border: 1px solid ${vars.lightRed};
   // }
+  ${media.phone`width: 264px;
+  height: 50px;padding: 4px 57px;`};
+  ${media.iphone5`width: 202px;
+  height: 50px;padding: 8px 40px;`};
 `
 const Input = styled.input`
   background-color: #fffbbe;
@@ -123,10 +139,29 @@ const Wrapper = styled.div`
 const WrapperPrice = styled.div`
   position: absolute;
   top: 51%;
+  ${media.phone`top: 49%;`};
+  ${media.iphone5`top: 49%;`};
+`
+const WrapperPricePack = styled.div`
+  position: absolute;
+  top: 51%;
+  ${media.phone`top: 49%;`};
+  ${media.iphone5`top: 51%;`};
+`
+const WrapperPriceLive = styled.div`
+  position: absolute;
+  top: 51%;
+  ${media.phone`top: 55%;`};
+  ${media.iphone5`top: 55%;`};
 `
 const Img = styled.img`
   width: 318px;
   height: 60px;
+  ${media.phone`width: 264px;
+  height: 50px;
+  margin-left: -1px;`};
+  ${media.iphone5`width: 202px;
+  height: 50px;`};
 `
 class PurchaseItem extends React.Component {
   constructor(props) {
@@ -318,11 +353,17 @@ class PurchaseItem extends React.Component {
             {/* <Box pl="3em" pr="3em" pt="1em">
             <Text2>Your order ID : 251485039</Text2>
             </Box> */}
-            <Flex pr="3em" pl="3em" pt="2em">
-              <Box w={6 / 12} pr="0.5em">
+            <Flex pr="3em" pl="3em" pt="2em" wrap>
+              <Box
+                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+              >
                 <Image width="100%" src={this.props.product.bannerUrl} />
               </Box>
-              <Box w={6 / 12} pl="0.5em">
+              <Box
+                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+              >
                 <Text3>
                   {this.props.lang === 'en' ? (
                     this.props.product.title_en
@@ -344,29 +385,28 @@ class PurchaseItem extends React.Component {
                   <Time>07.20-09.50 pm.</Time>
                 </Box> */}
                 </Flex>
-                <WrapperPrice>
+                <WrapperPriceLive>
                   <Text3>${this.props.product.price}</Text3>
-                </WrapperPrice>
+                </WrapperPriceLive>
               </Box>
             </Flex>
-            {/* <Box pl="3em" pr="3em" pt="1em">
-            <Text2>
-              Please check your contact email, This' ll be use to send the
-              receipt.
-            </Text2>
-            <Input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="@email"
-              value="autofill@cenedit.com"
-            />
-          </Box> */}
-            <Box pl="3em" pr="3em" pt="1em">
+            <Box
+              pl={['3em', '3em', '3em', '3em', '3em']}
+              pr="3em"
+              pt={['2em', '3em', '1em', '1em', '1em']}
+            >
               <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
-            <Flex pl="3em" pr="3em" pt="1em">
-              <Box w={6 / 12} pr="0.5em">
+            <Flex
+              pl={['3em', '3em', '3em', '3em', '3em']}
+              pr="3em"
+              pt="1em"
+              wrap
+            >
+              <Box
+                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+              >
                 <center>
                   <Buttonpaypal
                     onClick={this.purchasePayPal}
@@ -382,7 +422,11 @@ class PurchaseItem extends React.Component {
                   </Buttonpaypal>
                 </center>
               </Box>
-              <Box w={6 / 12} pl="0.5em">
+              <Box
+                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+                pt={['0.5rem', '0.5rem', '0rem', '0rem', '0rem']}
+              >
                 <center>
                   <ButtonCredit
                     onClick={this.purchaseCard}
@@ -411,7 +455,12 @@ class PurchaseItem extends React.Component {
                 </center>
               </Box>
             </Flex>
-            <Flex pl="3em" pr="3em" pt="1em" pb="3.1em">
+            <Flex
+              pl={['3em', '3em', '3em', '3em', '3em']}
+              pr="3em"
+              pt={['0.5em', '0.5em', '1em', '1em', '1em']}
+              pb={['1.2em', '3.8em', '3.1em', '3.1em', '3.1em']}
+            >
               <Box w={12 / 12} pr="0.5em">
                 <center>
                   <ButtonAlipay
@@ -452,22 +501,32 @@ class PurchaseItem extends React.Component {
             {/* <Box pl="3em" pr="3em" pt="1em">
           <Text2>Your order ID : 251485039</Text2>
         </Box> */}
-            <Flex pr="3em" pl="3em" pt="2em">
-              <Box w={6 / 12} pr="0.5em">
+            <Flex pr="3em" pl="3em" pt="2em" wrap>
+              <Box
+                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+              >
                 <Image width="100%" src={img} />
               </Box>
-              <Box w={6 / 12} pl="0.5em">
+              <Box
+                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+                pt={['1em', '1em', '0em', '0em', '0em']}
+              >
                 <Text3>{nameOfPackage}</Text3>
                 <WrapperPrice>
                   <Text3>${this.props.product.price}</Text3>
                 </WrapperPrice>
               </Box>
             </Flex>
-            <Box pl="3em" pr="3em" pt="2.2em">
+            <Box pl="3em" pr="3em" pt={['5em', '5em', '1em', '1em', '1em']}>
               <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
-            <Flex pl="3em" pr="3em" pt="2em" pb="3em">
-              <Box w={6 / 12} pr="0.5em">
+            <Flex pl="3em" pr="3em" pt="2em" pb="3em" wrap>
+              <Box
+                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+              >
                 <center>
                   <Buttonpaypal
                     onClick={this.purchasePayPal}
@@ -483,7 +542,12 @@ class PurchaseItem extends React.Component {
                   </Buttonpaypal>
                 </center>
               </Box>
-              <Box w={6 / 12} pl="0.5em">
+              <Box
+                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+                pt={['1.5rem', '2rem', '0rem', '0rem', '0rem']}
+                pb={['0em', '3.3em', '0em', '0em', '0em']}
+              >
                 <center>
                   <ButtonCredit
                     onClick={this.purchaseCard}
@@ -536,22 +600,38 @@ class PurchaseItem extends React.Component {
             {/* <Box pl="3em" pr="3em" pt="1em">
           <Text2>Your order ID : 251485039</Text2>
         </Box> */}
-            <Flex pr="3em" pl="3em" pt="2em">
-              <Box w={6 / 12} pr="0.5em">
+            <Flex pr="3em" pl="3em" pt="2em" wrap>
+              <Box
+                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+              >
                 <Image width="100%" src={img} />
               </Box>
-              <Box w={6 / 12} pl="0.5em">
+              <Box
+                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+                pt={['1em', '1em', '0em', '0em', '0em']}
+              >
                 <Text3>{nameOfPackage}</Text3>
-                <WrapperPrice>
+                <WrapperPricePack>
                   <Text3>${this.props.product.price}</Text3>
-                </WrapperPrice>
+                </WrapperPricePack>
               </Box>
             </Flex>
-            <Box pl="3em" pr="3em" pt="2.2em">
+            <Box pl="3em" pr="3em" pt={['5em', '5em', '1em', '1em', '1em']}>
               <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
-            <Flex pl="3em" pr="3em" pt="2em" pb="1em">
-              <Box w={6 / 12} pr="0.5em">
+            <Flex
+              pl="3em"
+              pr="3em"
+              pt={['1em', '2em', '2em', '2em', '2em']}
+              pb={['0em', '1em', '1em', '1em', '1em']}
+              wrap
+            >
+              <Box
+                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+              >
                 <center>
                   <Buttonpaypal
                     onClick={this.purchasePayPal}
@@ -567,7 +647,11 @@ class PurchaseItem extends React.Component {
                   </Buttonpaypal>
                 </center>
               </Box>
-              <Box w={6 / 12} pl="0.5em">
+              <Box
+                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+                pt={['0.5rem', '2rem', '0rem', '0rem', '0rem']}
+              >
                 <center>
                   <ButtonCredit
                     onClick={this.purchaseCard}
@@ -597,7 +681,12 @@ class PurchaseItem extends React.Component {
                 </center>
               </Box>
             </Flex>
-            <Flex pl="3em" pr="3em" pt="1em" pb="2em">
+            <Flex
+              pl="3em"
+              pr="3em"
+              pt={['0.4em', '1em', '1em', '1em', '1em']}
+              pb={['1.2em', '1.1em', '2em', '2em', '2em']}
+            >
               <Box w={12 / 12} pr="0.5em">
                 <center>
                   <ButtonAlipay
@@ -619,7 +708,7 @@ class PurchaseItem extends React.Component {
         </Wrapper>
       )
     }
-    return <div>{renderUI}</div>
+    return <Provider theme={theme}>{renderUI}</Provider>
   }
 }
 

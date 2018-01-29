@@ -10,6 +10,7 @@ import ChangePassStep2 from '../login/ChangePassStep2'
 import Player from '../videoPlayer/Player'
 import PurchaseItem from '../getTicket/PurchaseItem'
 import SuccessPurchase from '../getTicket/SuccessPurchase'
+import { media, theme } from '../../tools/responsive'
 
 const Text1 = styled.div`
   padding-left: 1rem;
@@ -39,6 +40,14 @@ const WrapperVod = styled.div`
   height: 335px;
   background: #fff;
   z-index: 240;
+  ${media.ipadpro`width: 600px;
+  height: 335px;`};
+  ${media.ipad`width: 600px;
+  height: 335px;`};
+  ${media.phone`width: 350px;
+  height: 335px;`};
+  ${media.iphone5`width: 300px;
+  height: 335px;`};
 `
 const WrapperImg = styled.div`
   margin-bottom: 2%;
@@ -47,6 +56,17 @@ const WrapperImg = styled.div`
   height: 500px;
   background: #fff;
   z-index: 240;
+  ${media.ipadpro`width: 840px;
+  height: 500px;
+  margin-bottom: 60%;`};
+  ${media.ipad`width: 650px;
+  height: 620px;
+  margin-bottom: 33%;`};
+  ${media.phone`width: 360px;
+  height: 480px;
+  margin-bottom: 0%;`};
+  ${media.iphone5`width: 300px;
+  height: 400px;`};
 `
 const WrapperLogin = styled.div`
   position: relative;
@@ -54,6 +74,14 @@ const WrapperLogin = styled.div`
   height: 615px;
   background: #fff;
   z-index: 240;
+  ${media.ipadpro`width: 840px;
+  height: 615px;`};
+  ${media.ipad`width: 650px;
+  height: 615px;`};
+  ${media.phone`width: 360px;
+  height: 655px;`};
+  ${media.iphone5`width: 300px;
+  height: 550px;`};
 `
 const WrapperRegister = styled.div`
   position: relative;
@@ -61,6 +89,14 @@ const WrapperRegister = styled.div`
   height: 615px;
   background: #fff;
   z-index: 240;
+  ${media.ipadpro`width: 840px;
+  height: 615px;`};
+  ${media.ipad`width: 650px;
+  height: 615px;`};
+  ${media.phone`width: 360px;
+  height: 655px;`};
+  ${media.iphone5`width: 300px;
+  height: 550px;`};
 `
 const WrapperPurchaseItem = styled.div`
   position: relative;
@@ -68,6 +104,10 @@ const WrapperPurchaseItem = styled.div`
   height: 430px;
   background: #fff;
   z-index: 240;
+  ${media.phone`width: 360px;
+  height: 655px;`};
+  ${media.iphone5`width: 300px;
+  height: 550px;`};
 `
 const WrapperChangePass = styled.div`
   position: relative;
