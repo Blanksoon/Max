@@ -181,7 +181,7 @@ export default class Modal extends Component {
     this.props.closeModal()
   }
   render() {
-    //console.log('ififififififififfifif', this.props)
+    console.log('ddddddddddddfsdf', this.props)
     ;<div onKeyDown={this.closeModal} />
     let renderUI = <div />
     if (this.props.modalType === 1) {
@@ -206,6 +206,7 @@ export default class Modal extends Component {
       )
     } else if (this.props.modalType === 3) {
       //login
+      console.log('ddddddddddddlogin', this.props.url)
       renderUI = (
         <WrapperLogin onClick={e => this.handleOnClick(e)}>
           <Login commonInLogin={this.props.common} url={this.props.url} />

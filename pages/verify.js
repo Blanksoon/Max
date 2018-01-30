@@ -10,7 +10,6 @@ import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langSelector } from '../redux/selectors/lang'
 import { langUrl } from '../tools/langUrl'
-import Login from '../components/login/Login'
 import NewModal from '../containers/NewModal'
 import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
@@ -89,6 +88,7 @@ class Verify extends React.Component {
   render() {
     const translation = this.state.translations.translation
     console.log(translation)
+    // console.log('ddddddddddd',this.props)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
@@ -96,7 +96,9 @@ class Verify extends React.Component {
           nav={this.state.translations.translation.common}
           www="verify"
           switchLanguage={this.switchLang}>
-          <NewModal />
+          <NewModal url={this.props.url}
+            common={this.state.translations.translation.common}
+            lang={this.state.lang}/>
           <Container pt="10rem" pb="5rem">
             <center>
               <h1 style={{ color: vars.lightBlue }}>{translation.common.Congratulation}</h1>
