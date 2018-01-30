@@ -148,7 +148,7 @@ class Login extends React.Component {
     })
   }
   render() {
-    console.log('ddddddddddddddddprops', this.props)
+    // console.log('ddddddddddddddddprops', this.props)
     const {
       LOGIN,
       EMAIL,

@@ -206,7 +206,7 @@ export default class Modal extends Component {
       )
     } else if (this.props.modalType === 3) {
       //login
-      console.log('ddddddddddddlogin', this.props.url)
+      // console.log('ddddddddddddlogin', this.props.url)
       renderUI = (
         <WrapperLogin onClick={e => this.handleOnClick(e)}>
           <Login commonInLogin={this.props.common} url={this.props.url} />
