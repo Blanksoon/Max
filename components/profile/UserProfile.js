@@ -1,4 +1,4 @@
-import { Box, Image, Text, Flex } from 'rebass'
+import { Box, Image, Text, Flex, Provider } from 'rebass'
 import styled from 'styled-components'
 import color from '../commons/vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
@@ -68,48 +68,50 @@ class UserProfile extends React.Component {
   }
   render() {
     return (
-      <Box w={12 / 12}>
+      <Provider theme={theme}>
         <Box w={12 / 12}>
-          <Flex
-            className="Profile-pic"
-            py={['0', '1rem', '1rem', '1rem', '1rem']}
-          >
-            <Box
-              w={[2 / 12, 1 / 12, 1 / 12, 1 / 12, 1 / 12]}
-              py={['1rem', '0.5rem', '0.5rem', '0.5rem', '0.5rem']}
+          <Box w={12 / 12}>
+            <Flex
+              className="Profile-pic"
+              py={['0', '1rem', '1rem', '1rem', '1rem']}
             >
-              <Image src="../../static/ic_profile@3x.png" width="90%" />
-            </Box>
-            <Box
-              w={[10 / 12, 11.7 / 12, 11.7 / 12, 11.7 / 12, 11.7 / 12]}
-              pt={['1.3rem', '1.8rem', '1.8rem', '1.8rem', '1.8rem']}
-            >
-              <Text1>{this.props.common.PROFILE}</Text1>
-            </Box>
-          </Flex>
-          <Flex className="Detail-user" pb="0.5rem">
-            <Box w={2 / 12} pt={['0', '1rem', '1rem', '1rem', '1rem']}>
-              <Text2>{this.props.common.EMAIL}</Text2>
-            </Box>
-            <Box w={3 / 12} pt={['0.19rem', '1rem', '1rem', '1rem', '1rem']}>
-              <Text2>{this.state.email}</Text2>
-              <ModalButton
-                buttonID={2}
-                modalType={5}
-                text={this.props.common.CHANGEPASSWORD}
-              />
-            </Box>
-            <Box w={7 / 12}>
-              {/* <Flex className="Social-login" pb="0.5rem">
-                <FacebookLoginButton />
-                &nbsp;&nbsp;
-                <FacebookLoginButton />
-              </Flex> */}
-            </Box>
-          </Flex>
-          <hr size="0.1" />
+              <Box
+                w={[2 / 12, 2 / 12, 1 / 12, 1 / 12, 1 / 12]}
+                py={['1rem', '0.5rem', '0.5rem', '0.5rem', '0.5rem']}
+              >
+                <Image src="../../static/ic_profile@3x.png" width="90%" />
+              </Box>
+              <Box
+                w={[10 / 12, 10 / 12, 11.7 / 12, 11.7 / 12, 11.7 / 12]}
+                pt={['1.3rem', '1rem', '1.2rem', '1.8rem', '1.8rem']}
+                pl={['0rem', '1rem', '0rem', '0rem', '0rem']}
+              >
+                <Text1>{this.props.common.PROFILE}</Text1>
+              </Box>
+            </Flex>
+            <Flex className="Detail-user" pb="0.5rem">
+              <Box
+                w={[4 / 12, 3 / 12, 4 / 12, 4 / 12, 4 / 12]}
+                pt={['0', '1rem', '1rem', '1rem', '1rem']}
+              >
+                <Text2>{this.props.common.EMAIL}</Text2>
+              </Box>
+              <Box
+                w={[8 / 12, 8 / 12, 5 / 12, 4 / 12, 4 / 12]}
+                pt={['0.19rem', '1rem', '1rem', '1rem', '1rem']}
+              >
+                <Text2>{this.state.email}</Text2>
+                <ModalButton
+                  buttonID={2}
+                  modalType={5}
+                  text={this.props.common.CHANGEPASSWORD}
+                />
+              </Box>
+            </Flex>
+            <hr size="0.1" />
+          </Box>
         </Box>
-      </Box>
+      </Provider>
     )
   }
 }

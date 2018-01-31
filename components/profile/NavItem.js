@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import vars from '../commons/vars'
-import { Flex, Box, Image } from 'rebass'
+import { Flex, Box, Image, Provider } from 'rebass'
 import { media, theme } from '../../tools/responsive'
 
 const Inactive = styled.div`
@@ -35,31 +35,31 @@ const Logo = styled(Image)`
 export default ({ label, active, lang, common, changeComponent, pathname }) => {
   if (pathname == 'Profile') {
     return (
-      <div>
+      <Provider theme={theme}>
         <Flex>
-          <Box w={[4 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
+          <Box w={[2 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
             {/* <Logo src="../../static/ic_profile@3x.png" /> */}
             <Active onClick={() => changeComponent('Profile')}>
               {common.PROFILE}
             </Active>
           </Box>
-          <Box w={[4 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
+          <Box w={[5 / 12, 6 / 12, 4 / 12, 3 / 12, 3 / 12]}>
             <Inactive onClick={() => changeComponent('Purchase history')}>
               {common.PURCHASEHISTORY}
             </Inactive>
           </Box>
-          <Box w={[4 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
+          <Box w={[3 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
             <Inactive onClick={() => changeComponent('Subscribe')}>
               {common.SUBSCRIBE}
             </Inactive>
           </Box>
-          <Box w={[0, 7 / 12, 7 / 12, 7 / 12, 7 / 12]} />
+          <Box w={[0, 0 / 12, 7 / 12, 7 / 12, 7 / 12]} />
         </Flex>
-      </div>
+      </Provider>
     )
   } else if (pathname == 'Purchase history') {
     return (
-      <div>
+      <Provider theme={theme}>
         <Flex>
           <Box w={3 / 12}>
             <Inactive onClick={() => changeComponent('Profile')}>
@@ -78,11 +78,11 @@ export default ({ label, active, lang, common, changeComponent, pathname }) => {
           </Box>
           <Box w={7 / 12} />
         </Flex>
-      </div>
+      </Provider>
     )
   } else {
     return (
-      <div>
+      <Provider theme={theme}>
         <Flex>
           <Box w={3 / 12}>
             <Inactive onClick={() => changeComponent('Profile')}>
@@ -101,7 +101,7 @@ export default ({ label, active, lang, common, changeComponent, pathname }) => {
           </Box>
           <Box w={7 / 12} />
         </Flex>
-      </div>
+      </Provider>
     )
   }
 }
