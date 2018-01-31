@@ -47,6 +47,10 @@ const InputEmail = styled.input`
   font-size: 0.8em;
   font-family: Helvetica, Arial, sans-serif;
   margin-bottom: 1rem;
+  ${media.iphone5`
+  height: 2.6em;
+  margin-bottom: 0.2rem;
+  width: 11em;`};
 `
 const Button = styled.button`
   background-color: white;
@@ -311,7 +315,7 @@ class InputProfile extends React.Component {
           <Flex
             className="Input-user"
             pb="0.5rem"
-            pt={['1rem', '1rem', '1rem', '1rem', '1rem']}
+            pt={['0rem', '1rem', '1rem', '1rem', '1rem']}
           >
             <Box
               w={12 / 12}
@@ -329,10 +333,10 @@ class InputProfile extends React.Component {
                 </Box>
               </Flex>
               <Flex>
-                <Box w={2 / 12}>
+                <Box w={[4 / 12, 2 / 12, 2 / 12, 2 / 12, 2 / 12]}>
                   <Text2>{this.props.common.LASTNAME}</Text2>
                 </Box>
-                <Box w={10 / 12}>
+                <Box w={8 / 12}>
                   <InputEmail
                     value={this.state.lastname}
                     onChange={this.onChangeLastName}
@@ -340,34 +344,45 @@ class InputProfile extends React.Component {
                 </Box>
               </Flex>
               <Flex>
-                <Box w={2 / 12}>
+                <Box w={[3 / 12, 2 / 12, 2 / 12, 2 / 12, 2 / 12]}>
                   <Text2>{this.props.common.GENDER}</Text2>
                 </Box>
-                <Box w={10 / 12}>
-                  <Flex>
-                    {genderDiv}
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <Text2>{this.props.common.BIRTHDAY}</Text2>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {/* {console.log('aaaaa', this.state.birthDay)} */}
-                    <DatePicker
-                      //selected={this.state.startDate}
-                      //onChange={this.handleChange}
-                      //width: 16em;
-                      //height: 2.2em;
-                      style={{ height: '16em' }}
-                      fixedHeight
-                      placeholderText={this.props.common.SELECTDATE}
-                      selected={this.state.birthDay}
-                      onChange={this.handleChange}
-                      showMonthDropdown
-                      showYearDropdown
-                      dropdownMode="select"
-                      dateFormat="DD/MM/YYYY"
-                    />
-                    <style jsx global>
-                      {datepickerStyled}
-                    </style>
+                <Box w={9 / 12}>
+                  <Flex wrap>
+                    <Box w={[12 / 12, 4 / 12, 4 / 12, 4 / 12, 3 / 12]}>
+                      {genderDiv}
+                    </Box>
+                    <Box
+                      w={[12 / 12, 8 / 12, 8 / 12, 8 / 12, 9 / 12]}
+                      pl={['2rem', '2rem', '2rem', '2rem', '1rem']}
+                    >
+                      <Flex>
+                        <Box w={[4 / 12, 4 / 12, 4 / 12, 4 / 12, 1.4 / 12]}>
+                          <Text2>{this.props.common.BIRTHDAY}</Text2>
+                          {/* {console.log('aaaaa', this.state.birthDay)} */}
+                        </Box>
+                        <Box w={[8 / 12, 8 / 12, 8 / 12, 8 / 12, 10.6 / 12]}>
+                          <DatePicker
+                            //selected={this.state.startDate}
+                            //onChange={this.handleChange}
+                            //width: 16em;
+                            //height: 2.2em;
+                            style={{ height: '16em' }}
+                            fixedHeight
+                            placeholderText={this.props.common.SELECTDATE}
+                            selected={this.state.birthDay}
+                            onChange={this.handleChange}
+                            showMonthDropdown
+                            showYearDropdown
+                            dropdownMode="select"
+                            dateFormat="DD/MM/YYYY"
+                          />
+                          <style jsx global>
+                            {datepickerStyled}
+                          </style>
+                        </Box>
+                      </Flex>
+                    </Box>
                   </Flex>
                 </Box>
               </Flex>
