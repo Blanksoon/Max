@@ -46,16 +46,16 @@ export default class NavbarProfile extends Component {
 
   render() {
     return (
-      <Navbar pathname={this.props.url.pathname} m={0} p={[2, 2, 2, 2, 2]}>
-        <Provider theme={theme}>
+      <Provider theme={theme}>
+        <Navbar pathname={this.props.url.pathname} m={0} p={[2, 2, 2, 2, 2]}>
           <NavItem
             lang={this.props.lang}
             common={this.props.common}
             pathname={this.props.url.pathname}
             changeComponent={this.props.changeComponent}
           />
-        </Provider>
-      </Navbar>
+        </Navbar>
+      </Provider>
     )
   }
 }

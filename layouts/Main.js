@@ -1,5 +1,6 @@
 import { Provider } from 'rebass'
 import Navbar from '../components/commons/Navbar'
+import MobileNavbar from '../components/commons/MobileNavbar'
 import AddressFooter from '../components/commons/AddressFooter'
 import SocialFooter from '../components/commons/SocialFooter'
 import React from 'react'
@@ -31,6 +32,7 @@ class Main extends React.Component {
       <Provider>
         {/* {url.pathname === '/' && <Navbar activeUrl={url} />} */}
         <Navbar url={url} www={www} lang={lang} common={nav} />
+        <MobileNavbar url={url} www={www} lang={lang} common={nav} />
         {children}
         <AddressFooter common={nav} />
         <SocialFooter />

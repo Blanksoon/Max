@@ -109,13 +109,6 @@ class Index extends React.Component {
         70,
       ],
     }
-    //console.log('this.props', this.props)
-    //console.log('props', this.props.lang)
-    // console.log('ddddddddddprops', this.props)
-    // console.log(
-    //   'this.state',
-    //   this.state.translations.translation.common.LatestVideo
-    // )
     return (
       <I18nextProvider i18n={this.i18n}>
         <Provider theme={theme}>

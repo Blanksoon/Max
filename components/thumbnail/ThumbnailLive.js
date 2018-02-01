@@ -38,7 +38,7 @@ const WrapperMore = styled.div`
 const WrapperFront = styled.div`
   font-size: 0.9em;
   ${media.ipad`font-size: 0.5em`};
-  ${media.phone`font-size: 0.05em`};
+  ${media.phone`font-size: 0.5em`};
 `
 const WrapperDes = styled.div`
   height: 70px;

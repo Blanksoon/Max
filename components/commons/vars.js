@@ -9,4 +9,7 @@ export default {
   red: '#B81111',
   yellow: '#FCFC00',
   white: '#FFFFFF',
+
+  // Mobile
+  mobileNavHeight: '4rem'
 }

@@ -7,6 +7,7 @@ import { toggleModal } from '../../redux/modules/modal'
 import BorderlessButton from '../commons/BorderlessButton'
 import color from '../commons/vars'
 import ButtonRed from '../commons/ButtonSmall'
+import { media, theme } from '../../tools/responsive'
 
 const ButtonPromoClip = styled.button`
   background-color: ${color.white};
@@ -20,7 +21,10 @@ const ButtonPromoClip = styled.button`
   font-family: Helvetica, Arial, sans-serif;
   color: ${color.red};
   cursor: pointer;
-
+  ${media.phone`padding: 8px 20px;
+  font-size: 12px;`};
+  ${media.iphone5`padding: 8px 10px;
+  font-size: 12px;`};
   &:hover {
     background: ${props => props.color.red};
     color: #ffffff;

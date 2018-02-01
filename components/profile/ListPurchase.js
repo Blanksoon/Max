@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import color from '../commons/vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
 import moment from 'moment'
+import { media, theme } from '../../tools/responsive'
 
 const Text3 = styled.div`
   color: ${color.Black};
@@ -11,6 +12,7 @@ const Text3 = styled.div`
   padding-top: 0.3rem;
   font-family: Helvetica, Arial, sans-serif;
   margin-bottom: 0.2rem;
+  ${media.iphone5`font-size: 0.8em;`};
 `
 
 const Button = styled.button`
@@ -26,6 +28,7 @@ const Button = styled.button`
   cursor: pointer;
 `
 export const ListPurchase = props => {
+  // console.log('dddddddddd', props)
   let type = props.typeLive
   const purchaseDate = moment(props.purchase.purchaseDate).format('D MMM YYYY')
   if (
@@ -43,23 +46,35 @@ export const ListPurchase = props => {
   return (
     <Box w={12 / 12}>
       <Flex className="List-Purchase" pb="1rem">
-        <Box w={2 / 12}>
+        <Box w={[5.5 / 12, 6 / 12, 2.7 / 12, 2 / 12, 2 / 12]}>
           <Text3>{purchaseDate}</Text3>
         </Box>
-        <Box w={2 / 12}>
-          <Text3>{props.purchase.orderId}</Text3>
-        </Box>
-        <Box w={4 / 12}>
-          <Text3>
-            <b>{type}</b>: {props.purchase.productName}
-          </Text3>
-        </Box>
-        <Box w={3 / 12}>
-          <Flex className="Status-purchase">
-            <Text3>{props.purchase.status}</Text3>
+        <Box w={[6.5 / 12, 6 / 12, 9.3 / 12, 10 / 12, 10 / 12]}>
+          <Flex wrap>
+            <Box w={[12 / 12, 12 / 12, 12 / 12, 3 / 12, 3 / 12]}>
+              <Text3>{props.purchase.orderId}</Text3>
+            </Box>
+            <Box w={[12 / 12, 12 / 12, 12 / 12, 4 / 12, 4 / 12]}>
+              <Text3>
+                <b>{type}</b>: {props.purchase.productName}
+              </Text3>
+            </Box>
+            <Box
+              w={[12 / 12, 12 / 12, 12 / 12, 3 / 12, 3 / 12]}
+              pt={['0.5rem', '0.5rem', '0.5rem', '0rem', '0rem']}
+            >
+              <Flex className="Status-purchase">
+                <Text3>{props.purchase.status}</Text3>
+              </Flex>
+            </Box>
+            <Box
+              w={[1 / 12, 1 / 12, 12 / 12, 2 / 12, 2 / 12]}
+              pb={['0.5rem', '0.5rem', '0.5rem', '0rem', '0rem']}
+            >
+              {/* <Button>Receipt</Button> */}
+            </Box>
           </Flex>
         </Box>
-        <Box w={1 / 12}>{/* <Button>Receipt</Button> */}</Box>
       </Flex>
     </Box>
   )
