@@ -9,18 +9,25 @@ import ModalRegister from '../../containers/ModalRegister'
 import * as api from '../../api'
 import Spinner from '../commons/Spinner'
 import vars from '../commons/vars'
+import { media, theme } from '../../tools/responsive'
 
 const A = styled.a`TEXT-DECORATION: none;`
 const Wrapper = styled.div`position: absolute;`
 const WrapperLogin = styled.div`
   padding-right: 30px;
   border-right: 1px solid #a9a9a9;
+  ${media.phone`border-right: none;
+  padding-right: 0px;`};
+  ${media.iphone5`border-right: none;
+  padding-right: 0px;`};
 `
 const Text1 = styled.div`
   color: ${color.red};
   font-weight: 700;
   font-size: 1.5em;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.phone`font-size: 1.4em;`};
+  ${media.iphone5`font-size: 1.1em;`};
 `
 const Text2 = styled.div`
   color: ${color.red};
@@ -61,6 +68,7 @@ const Input = styled.input`
   padding: 6px 15px;
   margin: 8px 0;
   box-sizing: border-box;
+  border: 1px solid #a9a9a9;
 `
 export default class Login extends React.Component {
   constructor(props) {
@@ -173,8 +181,8 @@ export default class Login extends React.Component {
             <Box pl="3rem">
               <Text1>{TITLEREGISTER}</Text1>
             </Box>
-            <Flex pt="0.5rem" pl="3rem" pr="3rem">
-              <Box w={5 / 12}>
+            <Flex pt="0.5rem" pl="3rem" pr="3rem" wrap>
+              <Box w={[12 / 12, 12 / 12, 5 / 12, 5 / 12, 5 / 12]}>
                 <WrapperLogin>
                   <Box>
                     <Input
@@ -201,26 +209,32 @@ export default class Login extends React.Component {
                     />
                     <Text2>{this.state.errMessageConfirmPwd}</Text2>
                   </Box>
-                  <Box pt="0.5rem" pl="8.2rem">
-                    <Button
-                      style={{
-                        cursor: this.state.loading ? 'arrow' : 'pointer',
-                        width: '148px',
-                      }}
-                      disabled={this.state.loading}
-                      type="submit"
-                      onClick={this.submitRegister}
-                    >
-                      {this.state.loading ? (
-                        <Spinner />
-                      ) : (
-                        `${REGISTERTEXTBUTTON}`
-                      )}
-                    </Button>
-                  </Box>
+                  <Flex>
+                    <Box w={6.4 / 12} />
+                    <Box pt="0.5rem">
+                      <Button
+                        style={{
+                          cursor: this.state.loading ? 'arrow' : 'pointer',
+                          width: '148px',
+                        }}
+                        disabled={this.state.loading}
+                        type="submit"
+                        onClick={this.submitRegister}
+                      >
+                        {this.state.loading ? (
+                          <Spinner />
+                        ) : (
+                          `${REGISTERTEXTBUTTON}`
+                        )}
+                      </Button>
+                    </Box>
+                  </Flex>
                 </WrapperLogin>
               </Box>
-              <Box w={7 / 12}>
+              <Box
+                w={[12 / 12, 12 / 12, 7 / 12, 7 / 12, 7 / 12]}
+                pt={['3rem', '3rem', '0rem', '0rem', '0rem']}
+              >
                 <center>
                   <FacebookLoginButton textButton={FACEBOOKBUTTON} />
                   <Box pt="1rem">

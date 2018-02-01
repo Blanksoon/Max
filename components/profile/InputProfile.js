@@ -1,4 +1,4 @@
-import { Box, Image, Text, Flex } from 'rebass'
+import { Box, Image, Text, Flex, Provider } from 'rebass'
 import styled from 'styled-components'
 import color from '../commons/vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
@@ -39,15 +39,6 @@ const Text3 = styled.div`
   text-align: center;
 `
 
-const InputEmail = styled.input`
-  width: 16em;
-  height: 2.2em;
-  color: ${color.black};
-  font-weight: 400;
-  font-size: 0.8em;
-  font-family: Helvetica, Arial, sans-serif;
-  margin-bottom: 1rem;
-`
 const Button = styled.button`
   background-color: white;
   border: 1px solid red;
@@ -62,22 +53,33 @@ const Button = styled.button`
   cursor: pointer;
 `
 
+const InputEmail = styled.input`
+  width: 16.6em;
+  height: 2.2em;
+  color: ${color.black};
+  font-weight: 400;
+  font-size: 0.8em;
+  font-family: Helvetica, Arial, sans-serif;
+  margin-bottom: 1rem;
+  ${media.phone`width: 14.6em;`};
+  ${media.iphone5`width: 10.6em;`};
+`
+
 const Gender = styled.select`
-  width: 16em;
+  width: 16.6em;
   height: 2.2em;
   font-size: 0.8em;
   margin-bottom: 1rem;
-`
-
-const Age = styled.div`
-  width: 16em;
-  height: 2.2em;
+  ${media.phone`width: 14.6em;`};
+  ${media.iphone5`width: 10.6em;`};
 `
 
 const Country = styled.select`
-  width: 16em;
+  width: 16.6em;
   height: 2.2em;
   font-size: 0.8em;
+  ${media.phone`width: 14.6em;`};
+  ${media.iphone5`width: 10.6em;`};
 `
 
 const ButtonSubmit = styled.button`
@@ -306,49 +308,54 @@ class InputProfile extends React.Component {
       )
     }
     return (
-      <Box w={12 / 12}>
+      <Provider theme={theme}>
         <Box w={12 / 12}>
-          <Flex
-            className="Input-user"
-            pb="0.5rem"
-            pt={['1rem', '1rem', '1rem', '1rem', '1rem']}
-          >
-            <Box
-              w={12 / 12}
-              pt={['0.4rem', '0.4rem', '0.4rem', '0.4rem', '0.4rem']}
+          <Box w={12 / 12}>
+            <Flex
+              className="Input-user"
+              pb="0.5rem"
+              pt={['1rem', '1rem', '1rem', '1rem', '1rem']}
             >
-              <Flex>
-                <Box w={2 / 12}>
-                  <Text2>{this.props.common.NAME}</Text2>
-                </Box>
-                <Box w={10 / 12}>
-                  <InputEmail
-                    value={this.state.name}
-                    onChange={this.onChangeName}
-                  />
-                </Box>
-              </Flex>
-              <Flex>
-                <Box w={2 / 12}>
-                  <Text2>{this.props.common.LASTNAME}</Text2>
-                </Box>
-                <Box w={10 / 12}>
-                  <InputEmail
-                    value={this.state.lastname}
-                    onChange={this.onChangeLastName}
-                  />
-                </Box>
-              </Flex>
-              <Flex>
-                <Box w={2 / 12}>
-                  <Text2>{this.props.common.GENDER}</Text2>
-                </Box>
-                <Box w={10 / 12}>
-                  <Flex>
+              <Box
+                w={12 / 12}
+                pt={['0.4rem', '0.4rem', '0.4rem', '0.4rem', '0.4rem']}
+              >
+                <Flex>
+                  <Box w={[4 / 12, 3 / 12, 2 / 12, 2 / 12, 2 / 12]}>
+                    <Text2>{this.props.common.NAME}</Text2>
+                  </Box>
+                  <Box w={[8 / 12, 9 / 12, 10 / 12, 10 / 12, 10 / 12]}>
+                    <InputEmail
+                      value={this.state.name}
+                      onChange={this.onChangeName}
+                    />
+                  </Box>
+                </Flex>
+                <Flex>
+                  <Box w={[4 / 12, 3 / 12, 2 / 12, 2 / 12, 2 / 12]}>
+                    <Text2>{this.props.common.LASTNAME}</Text2>
+                  </Box>
+                  <Box w={[8 / 12, 9 / 12, 10 / 12, 10 / 12, 10 / 12]}>
+                    <InputEmail
+                      value={this.state.lastname}
+                      onChange={this.onChangeLastName}
+                    />
+                  </Box>
+                </Flex>
+                <Flex wrap>
+                  <Box w={[4 / 12, 3 / 12, 2 / 12, 2 / 12, 2 / 12]}>
+                    <Text2>{this.props.common.GENDER}</Text2>
+                  </Box>
+                  <Box w={[8 / 12, 9 / 12, 10 / 12, 3.5 / 12, 4 / 12]}>
                     {genderDiv}
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </Box>
+                  <Box w={[4 / 12, 3 / 12, 2 / 12, 1 / 12, 1 / 12]}>
                     <Text2>{this.props.common.BIRTHDAY}</Text2>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </Box>
+                  <Box
+                    w={[8 / 12, 9 / 12, 4 / 12, 4 / 12, 4 / 12]}
+                    pb={['1em', '1em', '1em', '0em', '0em']}
+                  >
                     {/* {console.log('aaaaa', this.state.birthDay)} */}
                     <DatePicker
                       //selected={this.state.startDate}
@@ -368,45 +375,50 @@ class InputProfile extends React.Component {
                     <style jsx global>
                       {datepickerStyled}
                     </style>
-                  </Flex>
-                </Box>
-              </Flex>
-              <Flex>
-                <Box w={2 / 12}>
-                  <Text2>{this.props.common.COUNTRY}</Text2>
-                </Box>
-                <Box w={10 / 12}>
-                  <Country onChange={this.onChangeCountry}>
-                    {this.renderCountry()}
-                  </Country>
-                </Box>
-              </Flex>
-              <Box w={12 / 12} pt="0.5em" pb="0.5em">
-                <center>
-                  <ButtonSubmit onClick={this.sumbitProfile}>
-                    <center>
-                      {this.state.loading ? (
-                        <Spinner />
-                      ) : (
-                        this.props.common.SUBMIT
-                      )}
-                    </center>
-                  </ButtonSubmit>
-                  {/* <ButtonSubmit onClick={this.sumbitProfile}>
+                  </Box>
+                </Flex>
+                <Flex>
+                  <Box w={[4 / 12, 3 / 12, 2 / 12, 2 / 12, 2 / 12]}>
+                    <Text2>{this.props.common.COUNTRY}</Text2>
+                  </Box>
+                  <Box w={[8 / 12, 9 / 12, 10 / 12, 3.5 / 12, 4 / 12]}>
+                    <Country onChange={this.onChangeCountry}>
+                      {this.renderCountry()}
+                    </Country>
+                  </Box>
+                </Flex>
+                <Box
+                  w={[12 / 12, 11.9 / 12, 9.9 / 12, 12 / 12, 12 / 12]}
+                  pt={['1rem']}
+                  pb="0.5em"
+                  pl={['3.7rem', '0rem', '0rem', '0rem', '0rem']}
+                >
+                  <center>
+                    <ButtonSubmit onClick={this.sumbitProfile}>
+                      <center>
+                        {this.state.loading ? (
+                          <Spinner />
+                        ) : (
+                          this.props.common.SUBMIT
+                        )}
+                      </center>
+                    </ButtonSubmit>
+                    {/* <ButtonSubmit onClick={this.sumbitProfile}>
                   {' '}
                   Submit{' '}
                 </ButtonSubmit> */}
-                </center>
+                  </center>
+                </Box>
+                <Box w={12 / 12} pt="0.3em">
+                  <center>
+                    <Text3>{this.state.status}</Text3>
+                  </center>
+                </Box>
               </Box>
-              <Box w={12 / 12} pt="0.3em">
-                <center>
-                  <Text3>{this.state.status}</Text3>
-                </center>
-              </Box>
-            </Box>
-          </Flex>
+            </Flex>
+          </Box>
         </Box>
-      </Box>
+      </Provider>
     )
   }
 }

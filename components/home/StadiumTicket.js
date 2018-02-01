@@ -54,18 +54,22 @@ const stadium_ticket = ({ common }) => (
           </Box>
           <Flex wrap>
             <Box w={[1 / 12, 1 / 12, 0.5 / 12, 0.5 / 12, 0.5 / 12]}>
-              <Image width="100%" src="../static/phone.png" />
+              <Image
+                pt={['0.5rem', '0.3rem', '0rem', '0rem', '0rem']}
+                width="100%"
+                src="../static/phone.png"
+              />
             </Box>
             <Box
-              w={[6 / 12, 6 / 12, 3 / 12, 2.3 / 12, 2 / 12]}
+              w={[6.5 / 12, 6.5 / 12, 3 / 12, 2.3 / 12, 2 / 12]}
               pl="1em"
               pt="0.4em"
             >
               <Button>(+66)038-416-999</Button>
             </Box>
             <Box
-              w={[5 / 12, 5 / 12, 4 / 12, 3 / 12, 2 / 12]}
-              pl="1em"
+              w={[4.5 / 12, 4.5 / 12, 4 / 12, 3 / 12, 2 / 12]}
+              pl={['0em', '0em', '1em', '1em', '1em']}
               pt="0.4em"
             >
               <Button>08-2495-5549</Button>

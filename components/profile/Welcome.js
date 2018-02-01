@@ -1,4 +1,4 @@
-import { Box, Text } from 'rebass'
+import { Box, Text, Provider } from 'rebass'
 import color from '../commons/vars'
 import styled from 'styled-components'
 import { closeModal } from '../../redux/modules/modal'
@@ -11,7 +11,7 @@ const Text1 = styled.div`
   font-weight: 700;
   font-size: 1.5em;
   font-family: Helvetica, Arial, sans-serif;
-  ${media.iphone5`font-size: 1em;`};
+  ${media.iphone5`font-size: 0.8em;`};
 `
 class Welcome extends React.Component {
   constructor(props) {
@@ -36,11 +36,13 @@ class Welcome extends React.Component {
   }
   render() {
     return (
-      <Box w={12 / 12} pb="1rem">
-        <Text1>
-          {this.props.common.WELCOMEBACK}, {this.state.email}
-        </Text1>
-      </Box>
+      <Provider theme={theme}>
+        <Box w={12 / 12} pb="1rem">
+          <Text1>
+            {this.props.common.WELCOMEBACK}, {this.state.email}
+          </Text1>
+        </Box>
+      </Provider>
     )
   }
 }

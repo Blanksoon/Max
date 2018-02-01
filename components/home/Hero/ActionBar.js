@@ -5,7 +5,7 @@ import { Overlay, Provider } from 'rebass'
 import Button from '../../commons/Button'
 import BorderlessButton from '../../commons/BorderlessButton'
 import ModalButton from '../../../containers/ModalButton'
-import { Flex } from 'rebass'
+import { Flex, Box } from 'rebass'
 import { media, theme } from '../../../tools/responsive'
 
 const ActionBar = styled.div`
@@ -24,31 +24,37 @@ export default ({
     <Provider theme={theme}>
       <ActionBar>
         <Flex>
-          <Link as={`/lives/${live.id}`} href={`/lives_vdo?id=${live.id}`}>
-            <a>
-              <Button>{live.videoUrl ? common.Watch : common.BuyTicket}</Button>
-            </a>
-          </Link>
-          <Flex
-            pl={['0.5rem', '1.5rem', '1.5rem', '1.5rem', '1.5rem']}
-            pt={['0rem', '0.3rem', '0.3rem', '0.3rem', '0.3rem']}
+          <Box w={4 / 12}>
+            <Link as={`/lives/${live.id}`} href={`/lives_vdo?id=${live.id}`}>
+              <a>
+                <Button>
+                  {live.videoUrl ? common.Watch : common.BuyTicket}
+                </Button>
+              </a>
+            </Link>
+          </Box>
+          <Box
+            w={[4.5 / 12, 4.5 / 12, 4 / 12, 4 / 12, 4 / 12]}
+            pl={['0rem', '0rem', '0rem', '1rem', '1rem']}
+            pt={['0rem', '0rem', '0.3rem', '0.3rem', '0.3rem']}
           >
             <ModalButton
               modalType={2}
               modalURL={`${live.fightcardUrl}`}
               text={common.ViewFightcard}
             />
-          </Flex>
-          <Flex
-            pl={['0.5rem', '1.5rem', '1.5rem', '1.5rem', '1.5rem']}
-            pt={['0rem', '0.3rem', '0.3rem', '0.3rem', '0.3rem']}
+          </Box>
+          <Box
+            w={[3.5 / 12, 3.5 / 12, 4 / 12, 4 / 12, 4 / 12]}
+            pl={['0rem', '0rem', '1rem', '1rem', '1rem']}
+            pt={['0rem', '0rem', '0.3rem', '0.3rem', '0.3rem']}
           >
             <ModalButton
               modalType={1}
               modalURL={`${live.promoUrl}`}
               text={common.PromoClip}
             />
-          </Flex>
+          </Box>
         </Flex>
       </ActionBar>
     </Provider>

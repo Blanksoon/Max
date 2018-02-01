@@ -122,7 +122,7 @@ class ChangePassStep1 extends React.Component {
               </Box>
               <Box>
                 <WrapperLogin>
-                  <Box w={4 / 12}>
+                  <Box w={4 / 12} pt={['1em', '0em', '0em', '0em', '0em']}>
                     <Input
                       type="password"
                       placeholder={this.props.common.OlDPASSWORD}

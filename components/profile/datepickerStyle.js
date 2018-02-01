@@ -1,3 +1,4 @@
+import { media, theme } from '../../tools/responsive'
 export const datepickerStyled = `.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
 .react-datepicker__month-read-view--down-arrow {
   margin-left: -8px;
@@ -374,6 +375,16 @@ export const datepickerStyled = `.react-datepicker-popper[data-placement^="botto
 .react-datepicker__input-container input {
   width: 16em;
   height: 2.2em;
+}
+@media screen and (max-width: 375px){
+  .react-datepicker__input-container input{
+    width: 14em;
+  }
+}
+@media screen and (max-width: 320px){
+  .react-datepicker__input-container input{
+    width: 10.2em;
+  }
 }
 
 .react-datepicker__year-read-view,
