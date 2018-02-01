@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch'
 //139.59.127.206
 //159.203.140.5
 //http://localhost:3002
-//https://api.maxmuaythai.com
+//c
 //https://beta-api.maxmuaythai.com
 export const SERVER = 'http://localhost:3002'
 export const get = url => {
