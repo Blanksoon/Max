@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Fixed, Image } from 'rebass'
 import styled from 'styled-components'
 import { translate } from 'react-i18next'
+import Sidebar from 'react-sidebar'
 import Container from './Container'
 import vars from './vars'
 import Hamburger from './Hamburger/Hamburger'
@@ -64,7 +65,6 @@ class NavBar extends React.Component {
   }
 
   toggleHamburger() {
-    console.log('hamburger toggle')
     this.setState({
       hamburgerActive: !this.state.hamburgerActive
     })
@@ -107,7 +107,8 @@ class NavBar extends React.Component {
   }
 
   render() {
-    return (
+    const sidebarContent = <b style={{ color: '#fff' }}>Sidebar content</b>;
+    const mainContent = (
       <Wrapper>
         <Navbar pathname={this.props.url.pathname} m={0} p={2} top left z={1}>
           <Container>
@@ -122,12 +123,20 @@ class NavBar extends React.Component {
               {this.props.common.TheMost} <br />
               {this.props.common.Fighting}
             </Motto>
+
             {/* this.state.navItems.map(({ label, href, active }) => (
-              <NavItem key={label} label={label} href={href} active={active} />
-            )) */}
+          <NavItem key={label} label={label} href={href} active={active} />
+        )) */}
           </Container>
         </Navbar>
       </Wrapper>
+    )
+    return (
+      <Sidebar sidebar={sidebarContent}
+        open={this.state.hamburgerActive}
+        onSetOpen={() => { this.setState({ hamburgerActive: true }) }}>
+        {mainContent}
+      </Sidebar>
     )
   }
 }

@@ -47,6 +47,7 @@
     "react-player": "^0.25.3",
     "react-prism": "^4.3.0",
     "react-redux": "^5.0.6",
+    "react-sidebar": "^2.3.2",
     "react-slick": "^0.15.4",
     "react-stripe-checkout": "^2.6.3",
     "react-stripe-elements": "^1.2.1",
