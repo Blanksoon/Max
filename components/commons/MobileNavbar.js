@@ -1,19 +1,27 @@
 import { Component } from 'react'
 import Link from 'next/link'
-import { Fixed, Image } from 'rebass'
+import { Fixed, Image, Flex, Box } from 'rebass'
 import styled from 'styled-components'
 import { translate } from 'react-i18next'
 import Sidebar from 'react-sidebar'
 import Container from './Container'
 import vars from './vars'
 import Hamburger from './Hamburger/Hamburger'
+import NavItem from './MobileNavItem'
+import LoginLang from '../../containers/commons/LoginLang'
 import { media } from '../../tools/responsive'
 
 const Wrapper = styled.div`
   display: none;
-  ${media.ipad`display: flex`}
+  ${media.ipad`display: flex`};
 `
-const Navbar = styled(Fixed) `
+const WrapperSide = styled.div`
+  z-index: 230;
+  background: #020f1f;
+  padding-top: 4rem;
+  padding-bottom: 50rem;
+`
+const Navbar = styled(Fixed)`
   background: ${props =>
     props.pathname == '/' ? 'rgba(1, 15, 30, 0.8)' : 'rgba(1, 15, 30, 10)'};
   height: ${vars.mobileNavHeight};
@@ -27,16 +35,16 @@ const Motto = styled.span`
   float: right;
   margin-top: 0.3rem;
   margin-right: 0.2rem;
-  ${media.ipad`display: inline-block`}
+  ${media.ipad`display: inline-block`};
 `
-const Logo = styled(Image) `
+const Logo = styled(Image)`
   cursor: pointer;
   display: none;
   height: 3rem;
   float: right;
   position: relative;
   right: -0.2rem;
-  ${media.ipad`display: inline-block`}
+  ${media.ipad`display: inline-block`};
 `
 
 class NavBar extends React.Component {
@@ -66,7 +74,7 @@ class NavBar extends React.Component {
 
   toggleHamburger() {
     this.setState({
-      hamburgerActive: !this.state.hamburgerActive
+      hamburgerActive: !this.state.hamburgerActive,
     })
   }
 
@@ -107,7 +115,25 @@ class NavBar extends React.Component {
   }
 
   render() {
-    const sidebarContent = <b style={{ color: '#fff' }}>Sidebar content</b>;
+    const sidebarContent = (
+      <WrapperSide>
+        <b style={{ color: '#fff' }}>
+          {this.state.navItems.map(({ label, href, active }) => (
+            <NavItem key={label} label={label} href={href} active={active} />
+          ))}
+        </b>
+        <br />
+        <b style={{ color: '#fff' }}>
+          <LoginLang
+            url={this.props.url}
+            www={this.props.www}
+            registerText={this.state.RegisterButton}
+            profileText={this.state.profileText}
+            logoutText={this.state.logoutText}
+          />
+        </b>
+      </WrapperSide>
+    )
     const mainContent = (
       <Wrapper>
         <Navbar pathname={this.props.url.pathname} m={0} p={2} top left z={1}>
@@ -124,17 +150,21 @@ class NavBar extends React.Component {
               {this.props.common.Fighting}
             </Motto>
 
-            {/* this.state.navItems.map(({ label, href, active }) => (
-          <NavItem key={label} label={label} href={href} active={active} />
-        )) */}
+            {/* {this.state.navItems.map(({ label, href, active }) => (
+              <NavItem key={label} label={label} href={href} active={active} />
+            ))} */}
           </Container>
         </Navbar>
       </Wrapper>
     )
     return (
-      <Sidebar sidebar={sidebarContent}
+      <Sidebar
+        sidebar={sidebarContent}
         open={this.state.hamburgerActive}
-        onSetOpen={() => { this.setState({ hamburgerActive: true }) }}>
+        onSetOpen={() => {
+          this.setState({ hamburgerActive: true })
+        }}
+      >
         {mainContent}
       </Sidebar>
     )

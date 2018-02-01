@@ -7,11 +7,14 @@ import { media, theme } from '../../tools/responsive'
 const Inactive = styled.a`
   color: ${vars.lightBlue};
   cursor: pointer;
-  height: 6.5rem;
-  float: left;
-  padding: 4rem 1rem 2.3rem;
   text-decorate: none;
   vertical-align: bottom;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 10rem;
+  padding-bottom: 1rem;
+  font-size: 0.9rem;
+  font-family: Helvetica, Arial, sans-serif;
   &:hover {
     color: ${vars.white};
   }
@@ -19,12 +22,14 @@ const Inactive = styled.a`
 `
 const Active = styled(Inactive)`
   color: ${vars.white};
-  border-bottom: 2px solid ${vars.white};
+  background: #58b2ff;
+  //border-bottom: 2px solid ${vars.white};
   ${media.phone`display: none`};
 `
-
 export default ({ label, href, active }) => (
-  <Link href={href}>
-    {active ? <Active>{label}</Active> : <Inactive>{label}</Inactive>}
-  </Link>
+  <Box pt="1rem" pb="1rem" w={12 / 12} bg="">
+    <Link href={href}>
+      {active ? <Active>{label}</Active> : <Inactive>{label}</Inactive>}
+    </Link>
+  </Box>
 )
