@@ -1,4 +1,4 @@
-import { Box, Image, Text, Flex } from 'rebass'
+import { Box, Image, Text, Flex, Provider } from 'rebass'
 import styled from 'styled-components'
 import color from '../commons/vars'
 import FacebookLoginButton from '../login/FacebookLoginButton'
@@ -6,16 +6,22 @@ import { ListPurchase } from './ListPurchase'
 import { connect } from 'react-redux'
 import * as api from '../../api'
 import Router from 'next/router'
+import { media, theme } from '../../tools/responsive'
 
 const WrapperBoxProfile = styled.div`
   margin-left: 1.2rem;
   margin-right: 1.2rem;
+`
+const WrapperType = styled.div`
+  ${media.ipad`display: none;`};
+  ${media.phone`display: none;`};
 `
 const Text1 = styled.div`
   color: ${color.black};
   font-weight: 700;
   font-size: 1.3em;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.iphone5`font-size: 1em;`};
 `
 
 const Text2 = styled.div`
@@ -25,6 +31,7 @@ const Text2 = styled.div`
 
   font-family: Helvetica, Arial, sans-serif;
   margin-bottom: 1rem;
+  ${media.iphone5`font-size: 0.8em;`};
 `
 const InputEmail = styled.input`
   color: ${color.black};
@@ -102,34 +109,47 @@ class PurchaseHistory extends React.Component {
       }
     }
     return (
-      <Box w={12 / 12}>
+      <Provider theme={theme}>
         <Box w={12 / 12}>
-          <Flex className="Profile-pic" py="1rem">
-            <Box w={1 / 12} py="0.5rem">
-              <Image src="../../static/ic_purchase@3x.png" width="80%" />
-            </Box>
-            <Box w={11.7 / 12} pt="2.3rem">
-              <Text1>{this.props.common.PURCHASEHISTORY}</Text1>
-            </Box>
-          </Flex>
-          <hr size="0.1" />
-          <Flex className="Title-Purchase" pt="1.4rem" pb="1rem">
-            <Box w={2 / 12}>
-              <Text2>{this.props.common.PURCHASEDATA}</Text2>
-            </Box>
-            <Box w={2 / 12}>
-              <Text2>{this.props.common.PURCHASEID}</Text2>
-            </Box>
-            <Box w={4 / 12}>
-              <Text2>{this.props.common.TYPE}</Text2>
-            </Box>
-            <Box w={4 / 12}>
-              <Text2>{this.props.common.STATUS}</Text2>
-            </Box>
-          </Flex>
+          <Box w={12 / 12}>
+            <Flex className="Profile-pic" py="1rem">
+              <Box w={[3 / 12, 3 / 12, 1 / 12, 1 / 12, 1 / 12]} py="0.5rem">
+                <Image src="../../static/ic_purchase@3x.png" width="80%" />
+              </Box>
+              <Box
+                w={[9 / 12, 9 / 12, 11 / 12, 11 / 12, 11 / 12]}
+                pt={['1.6rem', '2rem', '1.3rem', '2rem', '2rem']}
+              >
+                <Text1>{this.props.common.PURCHASEHISTORY}</Text1>
+              </Box>
+            </Flex>
+            <hr size="0.1" />
+            <Flex className="Title-Purchase" pt="1.4rem" pb="1rem">
+              <Box w={[5.5 / 12, 6 / 12, 2.7 / 12, 2 / 12, 2 / 12]}>
+                <Text2>{this.props.common.PURCHASEDATA}</Text2>
+              </Box>
+              <Box w={[6.5 / 12, 6 / 12, 9.3 / 12, 10 / 12, 10 / 12]}>
+                <Flex>
+                  <Box w={[12 / 12, 12 / 12, 4 / 12, 3 / 12, 3 / 12]}>
+                    <Text2>{this.props.common.PURCHASEID}</Text2>
+                  </Box>
+                  <Box w={[0 / 12, 0 / 12, 0 / 12, 4 / 12, 4 / 12]}>
+                    <WrapperType>
+                      <Text2>{this.props.common.TYPE}</Text2>
+                    </WrapperType>
+                  </Box>
+                  <Box w={[0 / 12, 0 / 12, 0 / 12, 3 / 12, 3 / 12]}>
+                    <WrapperType>
+                      <Text2>{this.props.common.STATUS}</Text2>
+                    </WrapperType>
+                  </Box>
+                </Flex>
+              </Box>
+            </Flex>
+          </Box>
+          {this.renderPurchaseList(this.state.puschaseList)}
         </Box>
-        {this.renderPurchaseList(this.state.puschaseList)}
-      </Box>
+      </Provider>
     )
   }
 }

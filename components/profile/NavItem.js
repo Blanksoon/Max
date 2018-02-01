@@ -61,22 +61,22 @@ export default ({ label, active, lang, common, changeComponent, pathname }) => {
     return (
       <Provider theme={theme}>
         <Flex>
-          <Box w={3 / 12}>
+          <Box w={[2 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
             <Inactive onClick={() => changeComponent('Profile')}>
               {common.PROFILE}
             </Inactive>
           </Box>
-          <Box w={3 / 12}>
+          <Box w={[5 / 12, 6 / 12, 4 / 12, 3 / 12, 3 / 12]}>
             <Active onClick={() => changeComponent('Purchase history')}>
               {common.PURCHASEHISTORY}
             </Active>
           </Box>
-          <Box w={3 / 12}>
+          <Box w={[3 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
             <Inactive onClick={() => changeComponent('Subscribe')}>
               {common.SUBSCRIBE}
             </Inactive>
           </Box>
-          <Box w={7 / 12} />
+          <Box w={[0, 0 / 12, 7 / 12, 7 / 12, 7 / 12]} />
         </Flex>
       </Provider>
     )
@@ -84,22 +84,22 @@ export default ({ label, active, lang, common, changeComponent, pathname }) => {
     return (
       <Provider theme={theme}>
         <Flex>
-          <Box w={3 / 12}>
+          <Box w={[2 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
             <Inactive onClick={() => changeComponent('Profile')}>
               {common.PROFILE}
             </Inactive>
           </Box>
-          <Box w={3 / 12}>
+          <Box w={[5 / 12, 6 / 12, 4 / 12, 3 / 12, 3 / 12]}>
             <Inactive onClick={() => changeComponent('Purchase history')}>
               {common.PURCHASEHISTORY}
             </Inactive>
           </Box>
-          <Box w={3 / 12}>
+          <Box w={[3 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
             <Active onClick={() => changeComponent('Subscribe')}>
               {common.SUBSCRIBE}
             </Active>
           </Box>
-          <Box w={7 / 12} />
+          <Box w={[0, 0 / 12, 7 / 12, 7 / 12, 7 / 12]} />
         </Flex>
       </Provider>
     )

@@ -181,7 +181,7 @@ export default class Modal extends Component {
     this.props.closeModal()
   }
   render() {
-    console.log('ddddddddddddfsdf', this.props)
+    // console.log('ddddddddddddfsdf', this.props)
     ;<div onKeyDown={this.closeModal} />
     let renderUI = <div />
     if (this.props.modalType === 1) {

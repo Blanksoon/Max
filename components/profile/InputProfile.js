@@ -388,9 +388,10 @@ class InputProfile extends React.Component {
                   </Box>
                 </Flex>
                 <Box
-                  w={[12 / 12, 12 / 12, 9.9 / 12, 12 / 12, 12 / 12]}
-                  pt="0.5em"
+                  w={[12 / 12, 11.9 / 12, 9.9 / 12, 12 / 12, 12 / 12]}
+                  pt={['1rem']}
                   pb="0.5em"
+                  pl={['3.7rem', '0rem', '0rem', '0rem', '0rem']}
                 >
                   <center>
                     <ButtonSubmit onClick={this.sumbitProfile}>

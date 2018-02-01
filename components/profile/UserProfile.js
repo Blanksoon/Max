@@ -91,7 +91,7 @@ class UserProfile extends React.Component {
             </Flex>
             <Flex className="Detail-user" pb="0.5rem">
               <Box
-                w={[4 / 12, 3 / 12, 4 / 12, 4 / 12, 4 / 12]}
+                w={[4 / 12, 3 / 12, 2 / 12, 2 / 12, 2 / 12]}
                 pt={['0', '1rem', '1rem', '1rem', '1rem']}
               >
                 <Text2>{this.props.common.EMAIL}</Text2>
