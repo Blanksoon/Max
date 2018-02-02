@@ -8,19 +8,34 @@ import Container from './Container'
 import vars from './vars'
 import Hamburger from './Hamburger/Hamburger'
 import NavItem from './MobileNavItem'
-import LoginLang from '../../containers/commons/LoginLang'
+import Login from '../../containers/commons/MobileLogin'
+import Lang from '../../containers/commons/MobileLang'
 import { media } from '../../tools/responsive'
 
 const Wrapper = styled.div`
   display: none;
   ${media.ipad`display: flex`};
   ${media.phone`display: flex`};
+  ${media.iphone5`display: flex`};
 `
 const WrapperSide = styled.div`
   z-index: 230;
   background: #020f1f;
-  padding-top: 4rem;
-  padding-bottom: 50rem;
+  padding-top: 5rem;
+  height: 100%;
+`
+const Text = styled.div`
+  color: ${vars.white};
+  padding-left: 1rem;
+  ${media.phone`font-size: 0.8em`};
+  ${media.iphone5`font-size: 0.8em`};
+`
+const Text1 = styled.div`
+  color: ${vars.white};
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  ${media.phone`font-size: 0.8em`};
+  ${media.iphone5`font-size: 0.8em`};
 `
 const Navbar = styled(Fixed)`
   background: ${props =>
@@ -37,6 +52,7 @@ const Motto = styled.span`
   margin-top: 0.3rem;
   margin-right: 0.2rem;
   ${media.ipad`display: inline-block`};
+  ${media.iphone5`font-size: 0.7em`};
 `
 const Logo = styled(Image)`
   cursor: pointer;
@@ -47,7 +63,31 @@ const Logo = styled(Image)`
   right: -0.2rem;
   ${media.ipad`display: inline-block`};
 `
-
+const sidebarStyles = {
+  sidebar: {
+    backgroundColor: 'dodgerblue',
+    width: '50%',
+    position: 'fixed',
+    overflow: 'none',
+  },
+}
+const Hr = styled.hr`
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+  ${media.phone`
+  margin-top: 0em;
+  margin-bottom: 0em;
+  `};
+  ${media.iphone5`
+  margin-top: -0.2em;
+  margin-bottom: 0em;
+  `};
+`
 class NavBar extends React.Component {
   constructor(props) {
     super(props)
@@ -119,20 +159,35 @@ class NavBar extends React.Component {
     const sidebarContent = (
       <WrapperSide>
         <div style={{ color: '#fff' }}>
-          {this.state.navItems.map(({ label, href, active }) => (
-            <NavItem key={label} label={label} href={href} active={active} />
-          ))}
-        </div>
-        <br />
-        <b style={{ color: '#fff' }}>
-          <LoginLang
+          <Text>Welcome, username</Text>
+          <Login
             url={this.props.url}
             www={this.props.www}
             registerText={this.state.RegisterButton}
             profileText={this.state.profileText}
             logoutText={this.state.logoutText}
           />
-        </b>
+        </div>
+        <Hr size="0.1" />
+        <br />
+        <div style={{ color: '#fff' }}>
+          <Text1>Menu Other</Text1>
+          {this.state.navItems.map(({ label, href, active }) => (
+            <NavItem key={label} label={label} href={href} active={active} />
+          ))}
+        </div>
+        <Hr size="0.1" />
+        <br />
+        <div style={{ color: '#fff' }}>
+          <Text>Language Setting</Text>
+          <Lang
+            url={this.props.url}
+            www={this.props.www}
+            registerText={this.state.RegisterButton}
+            profileText={this.state.profileText}
+            logoutText={this.state.logoutText}
+          />
+        </div>
       </WrapperSide>
     )
     const mainContent = (
@@ -162,6 +217,7 @@ class NavBar extends React.Component {
       <Sidebar
         sidebar={sidebarContent}
         open={this.state.hamburgerActive}
+        styles={sidebarStyles}
         onSetOpen={() => {
           this.setState({ hamburgerActive: true })
         }}

@@ -6,42 +6,28 @@ import ModalText from '../../containers/ModalText'
 import UserInfo from '../../containers/commons/UserInfo'
 import vars from '../commons/vars'
 import Router from 'next/router'
+import { media } from '../../tools/responsive'
 
 const LoginLang = styled.span`
   color: ${vars.white};
-  float: right;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  text-align: center;
+  height: 100%;
+  display: block;
+  ${media.phone`font-size: 0.8em`};
+  ${media.iphone5`font-size: 0.8em`};
 `
-const Login = styled.div`
-  border: 1px solid ${vars.lightBlue};
-  color: ${vars.lightBlue};
-  cursor: pointer;
-  display: inline-block;
-  float: right;
-  padding: 0.5rem 1rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  &:hover {
-    color: ${vars.white};
-    background: ${vars.lightBlue};
-  }
-  &:active {
-    background: #336998;
-  }
-`
-const LanguagePanel = styled.div`float: right;`
+const LanguagePanel = styled.div`padding-top: 1rem;`
 const Language = styled.a`
+  text-align: left;
+  display: block;
   box-sizing: border-box;
   background-color: ${props =>
     props.active ? `${vars.lightBlue}` : 'transparent'};
+  color: ${props => (!props.active ? `${vars.lightBlue}` : `${vars.white}`)};
   cursor: pointer;
   height: 100%;
-  padding: 0.7rem 0.7rem;
+  padding: 1rem 1rem;
   margin-bottom: 0.5rem;
 `
-const ClearFix = styled.div`clear: both;`
 
 export default class extends Component {
   constructor(props) {
@@ -65,27 +51,21 @@ export default class extends Component {
     } = this.props
     return (
       <LoginLang>
-        {email !== undefined ? (
-          <UserInfo
-            email={email}
-            profileText={profileText}
-            logoutText={logoutText}
-          />
-        ) : (
-          <ModalText modalType={3} text={registerText} />
-        )}
-        <ClearFix />
         <LanguagePanel>
-          <Language
-            onClick={() => this.setLang('en')}
-            borderRight
-            active={lang === 'en'}
-          >
-            EN
-          </Language>
-          <Language onClick={() => this.setLang('th')} active={lang === 'th'}>
-            TH
-          </Language>
+          <div>
+            <Language
+              onClick={() => this.setLang('en')}
+              borderRight
+              active={lang === 'en'}
+            >
+              English
+            </Language>
+          </div>
+          <div>
+            <Language onClick={() => this.setLang('th')} active={lang === 'th'}>
+              Thai
+            </Language>
+          </div>
         </LanguagePanel>
       </LoginLang>
     )

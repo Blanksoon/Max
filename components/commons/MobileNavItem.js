@@ -18,7 +18,6 @@ const Inactive = styled.a`
   &:hover {
     color: ${vars.white};
   }
-  ${media.phone`display: none`};
 `
 const Active = styled(Inactive)`
   color: ${vars.white};
