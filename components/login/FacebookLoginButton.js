@@ -31,7 +31,7 @@ class FacebookLoginButton extends React.Component {
         <FacebookLogin
           onClick={this.facebookLogin}
           size="small"
-          appId="450605862001815"
+          appId="1492448664168205"
           autoLoad={false}
           fields="name,email,id,gender,locale,age_range,birthday,picture,first_name,last_name"
           cssClass="loginBtn loginBtn--facebook"

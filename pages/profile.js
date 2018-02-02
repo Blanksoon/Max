@@ -56,7 +56,7 @@ class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      pathname: 'Profile',
+      pathname: 'Subscribe',
       translations: this.props.translations,
       lang: this.props.lang,
     }

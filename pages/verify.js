@@ -81,7 +81,6 @@ class Verify extends React.Component {
     })
   }
   componentDidMount() {
-    console.log('hi')
     this.verify(this.props.url.query.token)
   }
 
@@ -95,13 +94,18 @@ class Verify extends React.Component {
           url={this.props.url}
           nav={this.state.translations.translation.common}
           www="verify"
-          switchLanguage={this.switchLang}>
-          <NewModal url={this.props.url}
+          switchLanguage={this.switchLang}
+        >
+          <NewModal
+            url={this.props.url}
             common={this.state.translations.translation.common}
-            lang={this.state.lang}/>
+            lang={this.state.lang}
+          />
           <Container pt="10rem" pb="5rem">
             <center>
-              <h1 style={{ color: vars.lightBlue }}>{translation.common.Congratulation}</h1>
+              <h1 style={{ color: vars.lightBlue }}>
+                {translation.common.Congratulation}
+              </h1>
               <h3
                 style={{
                   color: vars.lightBlue,

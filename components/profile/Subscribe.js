@@ -1,6 +1,7 @@
 import { Box, Image, Text, Flex } from 'rebass'
 import styled from 'styled-components'
 import color from '../commons/vars'
+import { media, theme } from '../../tools/responsive'
 
 const WrapperBoxProfile = styled.div`
   margin-left: 1.2rem;
@@ -11,6 +12,7 @@ const Text1 = styled.div`
   font-weight: 700;
   font-size: 1.3em;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.iphone5`font-size: 1em`};
 `
 
 const Text2 = styled.div`
@@ -41,19 +43,50 @@ const Button = styled.button`
   cursor: pointer;
 `
 
+const Hr = styled.hr`
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+  ${media.phone`
+  margin-top: -0.2em;
+  margin-bottom: 0.5em;
+  `};
+  ${media.iphone5`
+  margin-top: -0.2em;
+  margin-bottom: 0.5em;
+  `};
+  ${media.ipad`
+  margin-top: 0em;
+  margin-bottom: 0.5em;
+  `};
+`
+
 const Subscribe = props => {
   return (
     <Box w={12 / 12}>
       <Box w={12 / 12}>
-        <Flex className="Profile-pic" py="1rem">
-          <Box w={1 / 12} py="0.5rem">
+        <Flex
+          className="Profile-pic"
+          py={['0.5rem', '1rem', '1rem', '1rem', '1rem']}
+        >
+          <Box
+            w={[2 / 12, 2 / 12, 1 / 12, 1 / 12, 1 / 12]}
+            py={['0.5rem', '0.5rem', '0.5rem', '0.5rem', '0.5rem']}
+          >
             <Image src="../../static/ic_vod.png" width="80%" />
           </Box>
-          <Box w={11.7 / 12} pt="1.8rem">
+          <Box
+            w={[10 / 12, 10 / 12, 11.7 / 12, 11.7 / 12, 11.7 / 12]}
+            pt={['0.8rem', '0.8rem', '1rem', '1.8rem', '1.8rem']}
+          >
             <Text1>{props.common.SUBSCRIBE}</Text1>
           </Box>
         </Flex>
-        <hr size="0.1" />
+        <Hr size="0.1" />
       </Box>
     </Box>
   )

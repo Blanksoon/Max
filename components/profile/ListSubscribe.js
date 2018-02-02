@@ -7,14 +7,17 @@ import color from '../commons/vars'
 import * as api from '../../api'
 import Spinner from '../commons/Spinner'
 import Router from 'next/router'
+import { media, theme } from '../../tools/responsive'
 
 const Text3 = styled.div`
   color: ${color.red};
   font-weight: 700;
   font-size: 1em;
-  padding-top: 0.3rem;
+  padding-top: 0.32rem;
   font-family: Helvetica, Arial, sans-serif;
   margin-bottom: 0.2rem;
+  ${media.iphone5`font-size: 0.8em`};
+  ${media.phone`font-size: 0.8em`};
 `
 const Text1 = styled.div`
   color: ${color.black};
@@ -23,6 +26,8 @@ const Text1 = styled.div`
   padding-top: 0.3rem;
   font-family: Helvetica, Arial, sans-serif;
   margin-bottom: 0.2rem;
+  ${media.iphone5`font-size: 0.8em`};
+  ${media.phone`font-size: 0.8em`};
 `
 
 const Text2 = styled.div`
@@ -143,9 +148,12 @@ class ListSubscribe extends Component {
     //console.log('subbbbbbbbb', this.state.subscription)
     return this.state.subscription !== undefined ? (
       <Box w={12 / 12}>
-        <Flex className="List-Purchase" pb="1rem">
-          <Box w={0.95 / 12} />
-          <Box w={3 / 12}>
+        <Flex
+          className="purchase-date"
+          pb={['0.8rem', '1rem', '1rem', '1rem', '1rem']}
+        >
+          <Box w={[0 / 12, 0 / 12, 0.95 / 12, 0.95 / 12, 0.95 / 12]} />
+          <Box w={[10 / 12, 10 / 12, 10 / 12, 3 / 12, 3 / 12]}>
             <Flex>
               <Text3>{this.props.common.PURCAHSEDATE}</Text3>
               &nbsp;&nbsp;
@@ -154,38 +162,72 @@ class ListSubscribe extends Component {
               </Text1>
             </Flex>
           </Box>
-          <Box w={7 / 12} />
+          <Box w={[2 / 12, 2 / 12, 1.05 / 12, 7 / 12, 7 / 12]} />
         </Flex>
-        <Flex className="List-Purchase" pb="0.2rem">
-          <Box w={1.5 / 12} />
-          <Box w={4 / 12} bg={color.blue} mr="1em">
+        <Flex
+          className="List-Purchase"
+          pb="0.2rem"
+          wrap
+          w={[12 / 12, 12 / 12, 12 / 12, 12 / 12, 12 / 12]}
+        >
+          <Box
+            className="Left-Div"
+            w={[2 / 12, 2 / 12, 1.2 / 12, 1.2 / 12, 1.2 / 12]}
+          />
+          <Box
+            w={[12 / 12, 12 / 12, 4 / 12, 3.5 / 12, 4 / 12]}
+            bg={color.blue}
+            mr={['0em', '0em', '1em', '1em', '1em']}
+          >
             <Flex>
-              <Box w={5 / 12}>
-                <Box pt="0.7rem" />
+              <Box w={[5 / 12, 5 / 12, 5 / 12, 5 / 12, 5 / 12]}>
+                <Box pt={['0.7rem', '0.7rem', '2rem', '0.7rem', '0.7rem']} />
                 <Image w="100%" src="static/img_vodondemand@3x.png" />
               </Box>
-              <Box w={7 / 12} color="white">
-                <Box w={12 / 12} pt={3} />
+              <Box w={[7 / 12, 7 / 12, 7 / 12, 7 / 12, 7 / 12]} color="white">
+                <Box
+                  w={[12 / 12, 12 / 12, 12 / 12, 12 / 12, 12 / 12]}
+                  pt={[3, 3, '3rem', 3, 3]}
+                />
                 <center>
                   <Text4>Subscription Package</Text4>
                 </center>
               </Box>
             </Flex>
           </Box>
-          <Box w={4.5 / 12}>
+          <Box
+            w={[12 / 12, 12 / 12, 6 / 12, 4.5 / 12, 4.5 / 12]}
+            pt={['0.5em', '0em', '0em', '0em', '0em']}
+            pb={['0.5em', '0em', '0em', '0em', '0em']}
+          >
             <Text3>{this.description(subscription.productName)}</Text3>
-            <Text2>{this.props.common.ONEMONTH}</Text2>
-            <br />
-            <br />
+            <Box
+              w={[12 / 12, 12 / 12, 12 / 12, 12 / 12, 12 / 12]}
+              pb={['1em', '1em', '1em', '1em', '2em']}
+            >
+              <Text2>{this.props.common.ONEMONTH}</Text2>
+            </Box>
             <Flex>
-              <Text3>{this.props.common.ORDERID}:&nbsp;&nbsp;</Text3>
-              <Box w={6 / 12} pt="0.4em">
+              <Box w={[3.5 / 12, 4 / 12, 3.5 / 12, 3.5 / 12, 2.5 / 12]}>
+                <Text3>{this.props.common.ORDERID}:&nbsp;&nbsp;</Text3>
+              </Box>
+              <Box
+                w={[8.5 / 12, 8 / 12, 8.5 / 12, 8.5 / 12, 9.5 / 12]}
+                pt={['0.4em', '0.4em', '0.4em', '0.4em', '0.4em']}
+              >
                 <Text2>{subscription.orderId}</Text2>
               </Box>
             </Flex>
             <Flex>
-              <Text3>{this.props.common.STATUSOFSUBSCRIBE}:&nbsp;&nbsp;</Text3>
-              <Box w={6 / 12} pt="0.45em">
+              <Box w={[2.8 / 12, 3.5 / 12, 3 / 12, 3 / 12, 2 / 12]}>
+                <Text3>
+                  {this.props.common.STATUSOFSUBSCRIBE}:&nbsp;&nbsp;
+                </Text3>
+              </Box>
+              <Box
+                w={[9.2 / 12, 8.5 / 12, 9 / 12, 9 / 12, 10 / 12]}
+                pt="0.45em"
+              >
                 <Text2>
                   Valid thru{' '}
                   {moment(subscription.expiredDate).format('MMM DD,YYYY')}
@@ -193,7 +235,11 @@ class ListSubscribe extends Component {
               </Box>
             </Flex>
           </Box>
-          <Box w={2 / 12} pt="6em">
+          <Box
+            w={[12 / 12, 12 / 12, 12 / 12, 2 / 12, 2 / 12]}
+            pt={['0.5em', '1em', '1.5em', '6em', '6em']}
+            pl={['0em', '0em', '12em', '0em', '0em']}
+          >
             <CancelButton
               onClick={() => this.cancel(subscription)}
               disabled={this.state.loading}
