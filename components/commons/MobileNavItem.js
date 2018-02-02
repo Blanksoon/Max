@@ -7,11 +7,11 @@ import { media, theme } from '../../tools/responsive'
 const Inactive = styled.a`
   color: ${vars.lightBlue};
   cursor: pointer;
+  display: block;
   text-decorate: none;
   vertical-align: bottom;
   padding-top: 1rem;
   padding-left: 1rem;
-  padding-right: 10rem;
   padding-bottom: 1rem;
   font-size: 0.9rem;
   font-family: Helvetica, Arial, sans-serif;
@@ -27,9 +27,11 @@ const Active = styled(Inactive)`
   ${media.phone`display: none`};
 `
 export default ({ label, href, active }) => (
-  <Box pt="1rem" pb="1rem" w={12 / 12} bg="">
+  //<Box pt="1rem" pb="1rem" w={12 / 12} bg="">
+  <div>
     <Link href={href}>
       {active ? <Active>{label}</Active> : <Inactive>{label}</Inactive>}
     </Link>
-  </Box>
+  </div>
+  //</Box>
 )

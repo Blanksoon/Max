@@ -14,6 +14,7 @@ import { media } from '../../tools/responsive'
 const Wrapper = styled.div`
   display: none;
   ${media.ipad`display: flex`};
+  ${media.phone`display: flex`};
 `
 const WrapperSide = styled.div`
   z-index: 230;
@@ -117,11 +118,11 @@ class NavBar extends React.Component {
   render() {
     const sidebarContent = (
       <WrapperSide>
-        <b style={{ color: '#fff' }}>
+        <div style={{ color: '#fff' }}>
           {this.state.navItems.map(({ label, href, active }) => (
             <NavItem key={label} label={label} href={href} active={active} />
           ))}
-        </b>
+        </div>
         <br />
         <b style={{ color: '#fff' }}>
           <LoginLang
