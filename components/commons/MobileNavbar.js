@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 const WrapperSide = styled.div`
   z-index: 230;
   background: #020f1f;
-  padding-top: 5rem;
+  padding-top: 3.5rem;
   height: 100%;
 `
 const Text = styled.div`
@@ -66,9 +66,40 @@ const Logo = styled(Image)`
 const sidebarStyles = {
   sidebar: {
     backgroundColor: 'dodgerblue',
-    width: '50%',
+    width: '60%',
     position: 'fixed',
     overflow: 'none',
+  },
+  root: {
+    height: '0px',
+  },
+  content: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    overflowY: 'scroll',
+    WebkitOverflowScrolling: 'touch',
+    transition: 'left .3s ease-out, right .3s ease-out',
+  },
+  overlay: {
+    zIndex: 1,
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 0,
+    visibility: 'hidden',
+    transition: 'opacity .3s ease-out, visibility .3s ease-out',
+    backgroundColor: 'rgba(0,0,0,.3)',
+  },
+  dragHandle: {
+    zIndex: 1,
+    position: 'fixed',
+    top: 0,
+    bottom: 0,
   },
 }
 const Hr = styled.hr`
@@ -159,7 +190,7 @@ class NavBar extends React.Component {
     const sidebarContent = (
       <WrapperSide>
         <div style={{ color: '#fff' }}>
-          <Text>Welcome, username</Text>
+          {/* <Text>Welcome</Text> */}
           <Login
             url={this.props.url}
             www={this.props.www}

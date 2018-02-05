@@ -15,10 +15,11 @@ const Wrapper = styled.div`
   display: flex;
   ${media.ipad`display: none`};
 `
+// height: ${vars.navHeight};
 const Navbar = styled(Fixed)`
   background: ${props =>
     props.pathname == '/' ? 'rgba(1, 15, 30, 0.8)' : 'rgba(1, 15, 30, 10)'};
-  height: ${vars.navHeight};
+  height: 7rem;
   width: 100%;
   z-index: 2;
 `

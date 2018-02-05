@@ -4,6 +4,7 @@ import { Image } from 'rebass'
 import NewModal from './NewModal'
 import styled from 'styled-components'
 import vars from '../commons/vars'
+import { media, theme } from '../../tools/responsive'
 
 const Login = styled.div`
   border: 1px solid ${vars.lightBlue};
@@ -14,6 +15,9 @@ const Login = styled.div`
   padding: 0.5rem 1rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
+  ${media.ipad`float: none;`};
+  ${media.phone`float: none;`};
+  ${media.iphone5`float: none;`};
   &:hover {
     color: ${vars.white};
     background: ${vars.lightBlue};

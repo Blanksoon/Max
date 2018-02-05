@@ -15,13 +15,14 @@ const Logo = styled(Image)`
   margin: auto;
   position: absolute;
   top: 0;
-  ${media.phone`width: 106px;`};
+  ${media.phone`width: 88px;`};
   ${media.iphone5`display: none;`};
 `
 const AddressPanel = styled.div`
   float: right;
   text-align: right;
   margin-top: 3.125rem;
+  ${media.phone`font-size: 0.8em;`};
   ${media.iphone5`text-align: left;
   float: left;`};
 `

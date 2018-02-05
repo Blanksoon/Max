@@ -10,8 +10,7 @@ import Router from 'next/router'
 const LoginLang = styled.span`
   color: ${vars.white};
   float: right;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-right: 4rem;
   text-align: center;
 `
 const Login = styled.div`
