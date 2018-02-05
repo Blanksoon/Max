@@ -250,7 +250,7 @@ class NavBar extends React.Component {
         open={this.state.hamburgerActive}
         styles={sidebarStyles}
         onSetOpen={() => {
-          this.setState({ hamburgerActive: true })
+          this.setState({ hamburgerActive: false })
         }}
       >
         {mainContent}
