@@ -1,4 +1,5 @@
 import { Provider } from 'rebass'
+import styled from 'styled-components'
 import Navbar from '../components/commons/Navbar'
 import MobileNavbar from '../components/commons/MobileNavbar'
 import AddressFooter from '../components/commons/AddressFooter'
@@ -8,6 +9,13 @@ import { connect } from 'react-redux'
 import { langSelector } from '../redux/selectors/lang'
 import { getTranslation } from '../tools/translationHelpers'
 import { initGA, logPageView } from '../tools/analytics'
+import { media } from '../tools/responsive'
+
+const WrapperMobile = styled.div`
+  display: none;
+  ${media.ipad`display: unset;`};
+  ${media.phone`display: unset;`};
+`
 
 class Main extends React.Component {
   async componentWillReceiveProps(nextProps) {
@@ -32,7 +40,9 @@ class Main extends React.Component {
       <Provider>
         {/* {url.pathname === '/' && <Navbar activeUrl={url} />} */}
         <Navbar url={url} www={www} lang={lang} common={nav} />
-        <MobileNavbar url={url} www={www} lang={lang} common={nav} />
+        <WrapperMobile>
+          <MobileNavbar url={url} www={www} lang={lang} common={nav} />
+        </WrapperMobile>
         {children}
         <AddressFooter common={nav} />
         <SocialFooter />

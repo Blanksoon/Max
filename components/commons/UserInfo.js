@@ -2,11 +2,10 @@ import { Component } from 'react'
 import styled from 'styled-components'
 import vars from './vars'
 import Link from 'next/link'
+import { media, theme } from '../../tools/responsive'
 const Username = styled.div`
   color: ${vars.white};
   cursor: pointer;
-  padding: 0.5rem 0.5rem;
-  margin-top: 0.5rem;
   margin-bottom: 1rem;
 `
 const MenuTrigger = styled.span`
@@ -35,6 +34,8 @@ const MenuContent = styled.div`
   top: 3rem;
   right: 0;
   z-index: 1;
+  ${media.phone`min-width: 158px;`};
+  ${media.iphone5`min-width: 158px;`};
 `
 const MenuItem = styled.div`
   cursor: pointer;
@@ -46,6 +47,10 @@ const MenuItem = styled.div`
   &:active {
     background: #9e9d9d;
   }
+`
+const Email = styled.div`
+  // width: 50%;
+  // text-overflow: none;
 `
 class UserInfo extends Component {
   constructor(props) {
