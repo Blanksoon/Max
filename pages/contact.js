@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React, { Component } from 'react'
 import Link from 'next/link'
-import { Flex, Box } from 'rebass'
+import { Flex, Box, Provider } from 'rebass'
 import Container from '../components/commons/Container'
 import styled from 'styled-components'
 import About from '../components/home/About'
@@ -23,6 +23,7 @@ import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langSelector } from '../redux/selectors/lang'
 import { langUrl } from '../tools/langUrl'
+import { media, theme } from '../tools/responsive'
 
 const Wrapper = styled.div`font-family: Helvetica, Arial, sans-serif;`
 const Background = styled.div`background-color: ${props => props.color};`
@@ -57,36 +58,42 @@ class Contact extends Component {
   render() {
     return (
       <I18nextProvider i18n={this.i18n}>
-        <Main
-          url={this.props.url}
-          nav={this.state.translations.translation.common}
-          www="contact"
-          switchLanguage={this.switchLang}
-        >
-          <NewModal
-            common={this.state.translations.translation.common}
-            lang={this.state.lang}
+        <Provider theme={theme}>
+          <Main
             url={this.props.url}
-          />
-          <Wrapper>
-            <WrapperAbout>
-              <Container>
-                <Box w={12 / 12}>
-                  <About
-                    paddingTop="80px"
-                    common={this.state.translations.translation.common}
-                  />
-                </Box>
-              </Container>
-            </WrapperAbout>
-            <Background>
-              <Container>
-                <Detail common={this.state.translations.translation.common} />
-                {/* <CounterComponent label="counter" /> */}
-              </Container>
-            </Background>
-          </Wrapper>
-        </Main>
+            nav={this.state.translations.translation.common}
+            www="contact"
+            switchLanguage={this.switchLang}
+          >
+            <NewModal
+              common={this.state.translations.translation.common}
+              lang={this.state.lang}
+              url={this.props.url}
+            />
+            <Wrapper>
+              <WrapperAbout>
+                <Container>
+                  <Box
+                    className="about"
+                    w={12 / 12}
+                    pt={['64px', '64px', '20px', '80px', '80px']}
+                  >
+                    <About
+                      paddingTop="80px"
+                      common={this.state.translations.translation.common}
+                    />
+                  </Box>
+                </Container>
+              </WrapperAbout>
+              <Background>
+                <Container>
+                  <Detail common={this.state.translations.translation.common} />
+                  {/* <CounterComponent label="counter" /> */}
+                </Container>
+              </Background>
+            </Wrapper>
+          </Main>
+        </Provider>
       </I18nextProvider>
     )
   }

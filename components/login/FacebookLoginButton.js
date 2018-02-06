@@ -6,12 +6,19 @@ import * as api from '../../api'
 import { fbLogin } from '../../redux/modules/auth'
 import { closeModal } from '../../redux/modules/modal'
 import Router from 'next/router'
+import Spinner from '../commons/Spinner'
+
 // stagingAppIdFacebook = 450605862001815
 // developAppIdFacebbok = 135776387080938
 // productionAppIdFacebook = 1492448664168205
 const cookies = new Cookies()
+
 class FacebookLoginButton extends React.Component {
   constructor(props) {
+    super(props)
+    this.state = {
+      loading: false,
+    }
     super(props)
     this.facebookResponse = this.facebookResponse.bind(this)
   }
@@ -21,23 +28,33 @@ class FacebookLoginButton extends React.Component {
       provider_name: 'facebook',
       provider_data: response,
     }
-    this.props.fbLogin(providerData)
+    this.setState({
+      loading: true,
+    })
+    await this.props.fbLogin(providerData)
+    this.setState({
+      loading: false,
+    })
     this.props.closeModal()
     Router.push(`/`)
   }
   render() {
     return (
       <div>
-        <FacebookLogin
-          onClick={this.facebookLogin}
-          size="small"
-          appId="135776387080938"
-          autoLoad={false}
-          fields="name,email,id,gender,locale,age_range,birthday,picture,first_name,last_name"
-          cssClass="loginBtn loginBtn--facebook"
-          textButton={this.props.textButton}
-          callback={this.facebookResponse}
-        />
+        {this.state.loading ? (
+          <Spinner />
+        ) : (
+          <FacebookLogin
+            onClick={this.facebookLogin}
+            size="small"
+            appId="1492448664168205"
+            autoLoad={false}
+            fields="name,email,id,gender,locale,age_range,birthday,picture,first_name,last_name"
+            cssClass="loginBtn loginBtn--facebook"
+            textButton={this.props.textButton}
+            callback={this.facebookResponse}
+          />
+        )}
         <style jsx global>
           {`
             /* Shared */

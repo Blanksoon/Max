@@ -116,6 +116,7 @@ export default class extends Component {
         <Thumb src={lives[i].bannerUrl} />
       ),
       dots: true,
+      dotsClass: 'slick-dots',
       draggable: false,
       infinite: true,
       speed: 500,
