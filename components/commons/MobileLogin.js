@@ -12,7 +12,7 @@ const LoginLang = styled.span`
   color: ${vars.white};
   height: 100%;
   display: block;
-  padding-top: 1rem;
+  // padding-top: 1rem;
   padding-left: 1rem;
   ${media.phone`font-size: 0.8em`};
   ${media.iphone5`font-size: 0.8em`};

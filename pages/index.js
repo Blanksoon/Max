@@ -77,6 +77,8 @@ const GradientBg = styled.div`
     #08488f 92%,
     #08488f 100%
   ); /* Chrome10-25,Safari5.1-6 */
+  ${media.phone`padding-top: 4rem;`};
+  ${media.iphone5`padding-top: 4rem;`};
 `
 const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
 let lang = 'th'

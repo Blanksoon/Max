@@ -6,7 +6,10 @@ import { media, theme } from '../../tools/responsive'
 const Username = styled.div`
   color: ${vars.white};
   cursor: pointer;
+  margin-top: 1rem;
   margin-bottom: 1rem;
+  width: 13rem;
+  display: -webkit-inline-box;
 `
 const MenuTrigger = styled.span`
   border: solid ${props => (props.showMenu ? vars.red : vars.lightBlue)};
@@ -31,7 +34,7 @@ const MenuContent = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.15);
   min-width: 200px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-  top: 3rem;
+  top: 2.3rem;
   right: 0;
   z-index: 1;
   ${media.phone`min-width: 158px;`};
@@ -49,8 +52,10 @@ const MenuItem = styled.div`
   }
 `
 const Email = styled.div`
-  // width: 50%;
-  // text-overflow: none;
+  width: 87%;
+  overflow: hidden;
+  ${media.phone`width: 71%;`};
+  ${media.iphone5`width: 70%;`};
 `
 class UserInfo extends Component {
   constructor(props) {
@@ -71,7 +76,7 @@ class UserInfo extends Component {
     return (
       <Menu>
         <Username onClick={this.toggleMenu}>
-          {email}
+          <Email>{email}</Email>
           <MenuTrigger showMenu={showMenu} />
         </Username>
         <MenuContent showMenu={showMenu}>
