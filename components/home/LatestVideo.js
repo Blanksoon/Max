@@ -51,25 +51,25 @@ class LatestVideo extends Component {
     // )
 
     return (
-      <Provider theme={theme}>
-        <Box pb="5%">
-          <Flex>
-            <Box width={1}>
-              <Text
-                pt="2%"
-                bold
-                color="#fff"
-                children={this.props.name}
-                fontSize="1.5em"
-              />
-            </Box>
-          </Flex>
-          <hr size="0.1" />
-          <Flex pt="2rem" wrap>
-            {this.props.vods.map(vod => renderThumbnail(this.props.lang, vod))}
-          </Flex>
-        </Box>
-      </Provider>
+      // <Provider theme={theme}>
+      <Box pb="5%">
+        <Flex>
+          <Box width={1}>
+            <Text
+              pt="2%"
+              bold
+              color="#fff"
+              children={this.props.name}
+              fontSize="1.5em"
+            />
+          </Box>
+        </Flex>
+        <hr size="0.1" />
+        <Flex pt="2rem" wrap>
+          {this.props.vods.map(vod => renderThumbnail(this.props.lang, vod))}
+        </Flex>
+      </Box>
+      // </Provider>
     )
   }
 }

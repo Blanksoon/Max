@@ -78,23 +78,23 @@ class ComingLive extends React.Component {
 
   render() {
     return (
-      <Provider theme={theme}>
-        <div className="ComingLive">
-          <Box w={1} pb="1em">
-            <center>
-              <Text
-                pt="2%"
-                pb="2%"
-                bold
-                color="#fff"
-                children={this.props.common.UPCOMINGLIVE}
-                fontSize={['1em', '1.5em']}
-              />
-            </center>
-          </Box>
-          {this.renderUI()}
-        </div>
-      </Provider>
+      // <Provider theme={theme}>
+      <div className="ComingLive">
+        <Box w={1} pb="1em">
+          <center>
+            <Text
+              pt="2%"
+              pb="2%"
+              bold
+              color="#fff"
+              children={this.props.common.UPCOMINGLIVE}
+              fontSize={['1em', '1.5em']}
+            />
+          </center>
+        </Box>
+        {this.renderUI()}
+      </div>
+      // </Provider>
     )
   }
 }
