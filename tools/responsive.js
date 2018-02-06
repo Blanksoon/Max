@@ -3,7 +3,7 @@ import { css } from 'styled-components'
 
 const sizes = {
   iphone5: 325,
-  phone: 376,
+  phone: 420,
   ipad: 768,
   ipadxl: 850,
   ipadpro: 1024,
@@ -14,7 +14,7 @@ export const theme = {
   breakpoints: [
     // min-width breakpoints in em
     18.75, //iphone5
-    23.44, //phone
+    21.85, //phone
     48.1, //ipad
     64.1, //ipadpro
     70.1, //desktop
