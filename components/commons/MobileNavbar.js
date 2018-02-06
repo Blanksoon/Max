@@ -197,10 +197,10 @@ class NavBar extends React.Component {
       <Wrapper>
         <Navbar pathname={this.props.url.pathname} m={0} p={2} top left>
           <Container>
-            {/* <Hamburger
+            <Hamburger
               active={this.state.hamburgerActive}
               toggleHamburger={this.toggleHamburger}
-            /> */}
+            />
             <Link href="/">
               <Logo src="/static/logo.png" />
             </Link>
@@ -217,16 +217,19 @@ class NavBar extends React.Component {
       </Wrapper>
     )
     return (
-      <Sidebar
-        sidebar={sidebarContent}
-        open={this.state.hamburgerActive}
-        styles={sidebarStyles}
-        onSetOpen={() => {
-          this.setState({ hamburgerActive: false })
-        }}
-      >
-        {mainContent}
-      </Sidebar>
+      // <Sidebar
+      //   sidebar={sidebarContent}
+      //   open={this.state.hamburgerActive}
+      //   styles={sidebarStyles}
+      //   onSetOpen={() => {
+      //     this.setState({ hamburgerActive: false })
+      //   }}
+      // >
+      //   {mainContent}
+      // </Sidebar>
+      <div>
+        <h1>FASDFSADF</h1>
+      </div>
     )
   }
 }
