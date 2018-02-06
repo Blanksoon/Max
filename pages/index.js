@@ -73,7 +73,7 @@ const WrapperHero = styled.div`
   .slick-dots li {
     position: relative;
     display: inline-block;
-    width: 14%;
+    width: 13%;
     margin: 0 5px;
     padding: 0;
     cursor: pointer;
