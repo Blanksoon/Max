@@ -5,8 +5,8 @@ const sizes = {
   iphone5: 325,
   phone: 736,
   ipad: 1024,
-  // ipadxl: 850,
-  // ipadpro: 1024,
+  ipadxl: 850,
+  ipadpro: 1024,
   desktop: 1120,
 }
 
@@ -16,7 +16,7 @@ export const theme = {
     18.75, //iphone5
     23.43, //phone
     48.1, //ipad
-    // 64.1, //ipadpro
+    64.1, //ipadpro
     64.1, //desktop
   ],
 }
