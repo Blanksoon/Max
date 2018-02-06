@@ -42,8 +42,8 @@ const Logo = styled(Image)`
   float: right;
   margin-top: 0.5rem;
   margin-right: 1rem;
+  ${media.ipadxl`display: none;`};
 `
-//${media.ipadxl`display: none;`};
 
 class NavBar extends React.Component {
   constructor(props) {
