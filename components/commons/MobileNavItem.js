@@ -23,7 +23,6 @@ const Active = styled(Inactive)`
   color: ${vars.white};
   background: #58b2ff;
   //border-bottom: 2px solid ${vars.white};
-  ${media.phone`display: none`};
 `
 export default ({ label, href, active }) => (
   //<Box pt="1rem" pb="1rem" w={12 / 12} bg="">
