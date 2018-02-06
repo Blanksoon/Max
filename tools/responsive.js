@@ -5,6 +5,7 @@ const sizes = {
   iphone5: 320,
   phone: 376,
   ipad: 768,
+  ipadxl: 850,
   ipadpro: 1024,
   desktop: 1120,
 }
