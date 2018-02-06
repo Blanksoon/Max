@@ -10,8 +10,13 @@ const Countdown = styled.div`
   top: 8rem;
   right: 20px;
   z-index: 1;
-  ${media.phone`left: 0px;width: 155px;`};
-  ${media.iphone5`left: 0px;width: 103px;top: 6rem;`};
+  ${media.phone`
+  right: 0px;
+  top: 0px;
+  width: 155px;`};
+  ${media.iphone5`right: 0px;
+  width: 103px;
+  top: 0px;`};
 `
 const Panel = styled.span`
   display: inline-block;

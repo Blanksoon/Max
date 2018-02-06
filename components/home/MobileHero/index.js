@@ -27,8 +27,17 @@ const LiveInfo = styled.div`
   z-index: 1;
   ${media.ipadpro`width: 50%;`};
   ${media.ipad`width: 58%;`};
-  ${media.phone`width: 90%;left: 0rem;top: 0rem;height:120px`};
-  ${media.iphone5`width: 100%;left: 0rem;top: 0rem;height:90px`};
+  ${media.phone`
+  padding: 0rem;
+  width: 76%;
+  left: 10px;
+  height: 100px;
+  bottom: 0px;`};
+  ${media.iphone5`
+  width: 73%;
+  left: 10px;
+  bottom: 0rem;
+  height: 78px;`};
 `
 const Title = styled.div`
   color: ${vars.white};

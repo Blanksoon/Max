@@ -23,7 +23,7 @@ const StyledButton = styled(ButtonOutline)`
     box-shadow: none;
   }
   ${media.ipad`font-size: 0.9rem`};
-  ${media.phone`font-size: 0.5rem;padding: 5px 16%;`};
-  ${media.iphone5`font-size: 0.5rem;padding: 4px 12%;`};
+  ${media.phone`font-size: 0.5rem;padding: 5px 6%;`};
+  ${media.iphone5`font-size: 0.5rem;padding: 4px 6%;`};
 `
 export default StyledButton
