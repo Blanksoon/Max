@@ -3,7 +3,7 @@ import Head from 'next/head'
 import styled from 'styled-components'
 import { Image } from 'rebass'
 import Slider from 'react-slick'
-import { slick, slickTheme } from './slickStyle'
+import { slick, slickTheme } from './mobileslick'
 import Countdown from './Countdown'
 import ActionBar from './ActionBar'
 import Carousel from 'nuka-carousel'
@@ -108,15 +108,14 @@ export default class extends Component {
       autoplay: true,
       autoplaySpeed: 9000,
       arrows: false,
-      customPaging: i => (
-        //   <div>
-        //     <Text>o</Text>
-        //   </div>
-        // ),
-        <Thumb src={lives[i].bannerUrl} />
-      ),
+      // customPaging: i => (
+      //   //   <div>
+      //   //     <Text>o</Text>
+      //   //   </div>
+      //   // ),
+      //   <Thumb src={lives[i].bannerUrl} />
+      // ),
       dots: true,
-      dotsClass: 'slick-dots',
       draggable: false,
       infinite: true,
       speed: 500,

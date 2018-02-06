@@ -15,6 +15,7 @@ const Inactive = styled.div`
   text-align: center;
   font-weight: 700;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.phone`font-size: 0.9rem;`};
   ${media.iphone5`font-size: 0.7rem`};
 `
 const Active = styled.div`
@@ -24,6 +25,8 @@ const Active = styled.div`
   border-bottom: 4px solid ${vars.lightBlue};
   font-weight: 700;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.phone`font-size: 0.9rem;
+  padding-bottom: 13px;`};
   ${media.iphone5`font-size: 0.7rem;
   padding-bottom: 13px;`};
 `
@@ -37,13 +40,13 @@ export default ({ label, active, lang, common, changeComponent, pathname }) => {
     return (
       <Provider theme={theme}>
         <Flex>
-          <Box w={[2 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
+          <Box w={[4 / 12, 4 / 12, 3 / 12, 3 / 12, 3 / 12]}>
             {/* <Logo src="../../static/ic_profile@3x.png" /> */}
             <Active onClick={() => changeComponent('Profile')}>
               {common.PROFILE}
             </Active>
           </Box>
-          <Box w={[5 / 12, 6 / 12, 4 / 12, 3 / 12, 3 / 12]}>
+          <Box w={[5 / 12, 5 / 12, 4 / 12, 3 / 12, 3 / 12]}>
             <Inactive onClick={() => changeComponent('Purchase history')}>
               {common.PURCHASEHISTORY}
             </Inactive>
@@ -61,12 +64,12 @@ export default ({ label, active, lang, common, changeComponent, pathname }) => {
     return (
       <Provider theme={theme}>
         <Flex>
-          <Box w={[2 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
+          <Box w={[4 / 12, 4 / 12, 3 / 12, 3 / 12, 3 / 12]}>
             <Inactive onClick={() => changeComponent('Profile')}>
               {common.PROFILE}
             </Inactive>
           </Box>
-          <Box w={[5 / 12, 6 / 12, 4 / 12, 3 / 12, 3 / 12]}>
+          <Box w={[5 / 12, 5 / 12, 4 / 12, 3 / 12, 3 / 12]}>
             <Active onClick={() => changeComponent('Purchase history')}>
               {common.PURCHASEHISTORY}
             </Active>
@@ -84,12 +87,12 @@ export default ({ label, active, lang, common, changeComponent, pathname }) => {
     return (
       <Provider theme={theme}>
         <Flex>
-          <Box w={[2 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
+          <Box w={[4 / 12, 4 / 12, 3 / 12, 3 / 12, 3 / 12]}>
             <Inactive onClick={() => changeComponent('Profile')}>
               {common.PROFILE}
             </Inactive>
           </Box>
-          <Box w={[5 / 12, 6 / 12, 4 / 12, 3 / 12, 3 / 12]}>
+          <Box w={[5 / 12, 5 / 12, 4 / 12, 3 / 12, 3 / 12]}>
             <Inactive onClick={() => changeComponent('Purchase history')}>
               {common.PURCHASEHISTORY}
             </Inactive>

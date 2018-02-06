@@ -10,6 +10,7 @@ import LatestVideo from '../components/home/LatestVideo'
 import StadiumTicket from '../components/home/StadiumTicket'
 import About from '../components/home/About'
 import Hero from '../components/home/Hero'
+import MobileHero from '../components/home/MobileHero'
 import OurShow from '../components/ourShow/OurShow'
 import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
 import ListVideo from '../components/maxNews/ListVideo'
@@ -66,6 +67,18 @@ const WrapperAbout = styled.div`
     rgba(139, 3, 3, 1) 52%,
     rgba(139, 3, 3, 1) 100%
   ); /* Chrome10-25,Safari5.1-6 */`};
+`
+const WrapperHero = styled.div`
+  display: unset;
+  ${media.ipad`display: none;`};
+  ${media.phone`display: none;`};
+  ${media.iphone5`display: none;`};
+`
+const WrapperMobileHero = styled.div`
+  display: none;
+  ${media.ipad`display: unset;`};
+  ${media.phone`display: unset;`};
+  ${media.iphone5`display: unset;`};
 `
 const GradientBg = styled.div`
   background: -webkit-linear-gradient(
@@ -127,11 +140,20 @@ class Index extends React.Component {
             />
             <GradientBg>
               <Container>
-                <Hero
-                  lang={this.state.lang}
-                  lives={this.props.lives.slice(0, 3)}
-                  common={this.state.translations.translation.common}
-                />
+                <WrapperHero>
+                  <Hero
+                    lang={this.state.lang}
+                    lives={this.props.lives.slice(0, 3)}
+                    common={this.state.translations.translation.common}
+                  />
+                </WrapperHero>
+                <WrapperMobileHero>
+                  <MobileHero
+                    lang={this.state.lang}
+                    lives={this.props.lives.slice(0, 3)}
+                    common={this.state.translations.translation.common}
+                  />
+                </WrapperMobileHero>
                 <LatestVideo
                   lang={this.state.lang}
                   name={this.state.translations.translation.common.LatestVideo}
