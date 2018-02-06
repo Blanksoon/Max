@@ -28,6 +28,22 @@ const WrapperForgot = styled.div`
   text-align: right;
   padding-top: 5px;
 `
+const WrapRegisUp = styled.div`
+  display: none;
+  ${media.phone`text-align: right;
+  padding-top: 5px;
+  display: unset`};
+  ${media.iphone5`text-align: right;
+  padding-top: 5px;
+  display: unset`};
+`
+const WrapRegisDr = styled.div`
+  display: unset;
+  ${media.phone`
+  display: none`};
+  ${media.iphone5`
+  display: none`};
+`
 const Text1 = styled.div`
   color: ${color.red};
   font-weight: 700;
@@ -204,6 +220,14 @@ class Login extends React.Component {
                             />
                           </WrapperForgot>
                         </a>
+                        <WrapRegisUp>
+                          <a href="#">
+                            <ModalRegister
+                              modalType={4}
+                              text={REGISTERWITHEMAIL}
+                            />
+                          </a>
+                        </WrapRegisUp>
                       </Box>
                     </Flex>
                   </form>
@@ -216,9 +240,11 @@ class Login extends React.Component {
                 <center>
                   <FacebookLoginButton textButton={FACEBOOKBUTTON} />
                   <Box pt="1rem">
-                    <a href="#">
-                      <ModalRegister modalType={4} text={REGISTERWITHEMAIL} />
-                    </a>
+                    <WrapRegisDr>
+                      <a href="#">
+                        <ModalRegister modalType={4} text={REGISTERWITHEMAIL} />
+                      </a>
+                    </WrapRegisDr>
                   </Box>
                 </center>
               </Box>

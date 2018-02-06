@@ -70,6 +70,14 @@ const WrapperAbout = styled.div`
 `
 const WrapperHero = styled.div`
   display: unset;
+  .slick-dots li {
+    position: relative;
+    display: inline-block;
+    width: 14%;
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+  }
   ${media.ipad`display: none;`};
   ${media.phone`display: none;`};
   ${media.iphone5`display: none;`};

@@ -79,9 +79,9 @@ const WrapperLogin = styled.div`
   ${media.ipad`width: 650px;
   height: 615px;`};
   ${media.phone`width: 360px;
-  height: 645px;`};
+  height: 495px;`};
   ${media.iphone5`width: 300px;
-  height: 550px;`};
+  height: 442px;`};
 `
 const WrapperRegister = styled.div`
   position: relative;
