@@ -11,5 +11,5 @@ export default {
   white: '#FFFFFF',
 
   // Mobile
-  mobileNavHeight: '4rem'
+  mobileNavHeight: '4rem',
 }
