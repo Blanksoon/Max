@@ -3,8 +3,8 @@ import { css } from 'styled-components'
 
 const sizes = {
   iphone5: 325,
-  phone: 736,
-  ipad: 1024,
+  phone: 376,
+  ipad: 768,
   ipadxl: 850,
   ipadpro: 1024,
   desktop: 1120,
@@ -13,11 +13,11 @@ const sizes = {
 export const theme = {
   breakpoints: [
     // min-width breakpoints in em
-    18.75, //iphone5
-    23.43, //phone
+    20.1, //iphone5
+    23.44, //phone
     48.1, //ipad
     64.1, //ipadpro
-    64.1, //desktop
+    70.1, //desktop
   ],
 }
 // iterate through the sizes and create a media template
