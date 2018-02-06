@@ -197,10 +197,10 @@ class NavBar extends React.Component {
       <Wrapper>
         <Navbar pathname={this.props.url.pathname} m={0} p={2} top left>
           <Container>
-            <Hamburger
+            {/* <Hamburger
               active={this.state.hamburgerActive}
               toggleHamburger={this.toggleHamburger}
-            />
+            /> */}
             <Link href="/">
               <Logo src="/static/logo.png" />
             </Link>

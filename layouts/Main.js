@@ -13,9 +13,9 @@ import { media } from '../tools/responsive'
 
 const WrapperMobile = styled.div`
   display: none;
-  ${media.ipad`display: block;`};
-  ${media.phone`display: block;`};
-  ${media.iphone5`display: block;`};
+  ${media.ipad`display: unset;`};
+  ${media.phone`display: unset;`};
+  ${media.iphone5`display: unset;`};
 `
 
 class Main extends React.Component {
