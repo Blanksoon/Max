@@ -79,7 +79,7 @@ const WrapperLogin = styled.div`
   ${media.ipad`width: 650px;
   height: 615px;`};
   ${media.phone`width: 360px;
-  height: 655px;`};
+  height: 645px;`};
   ${media.iphone5`width: 300px;
   height: 550px;`};
 `

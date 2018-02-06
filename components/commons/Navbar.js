@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   ${media.ipad`display: none`};
 `
 // height: ${vars.navHeight};
-const Navbar = styled(Fixed)`
+const Navbar = styled(Fixed) `
   background: ${props =>
     props.pathname == '/' ? 'rgba(1, 15, 30, 0.8)' : 'rgba(1, 15, 30, 10)'};
   height: 7rem;
@@ -34,13 +34,13 @@ const Motto = styled.span`
   vertical-align: middle;
   ${media.desktop`display: none;`};
 `
-const Logo = styled(Image)`
+const Logo = styled(Image) `
   cursor: pointer;
   height: 5rem;
   float: right;
   margin-top: 0.5rem;
   margin-right: 1rem;
-  ${media.ipad`display: none;`};
+  ${media.ipadxl`display: none;`};
 `
 
 class NavBar extends React.Component {
