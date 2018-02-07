@@ -217,18 +217,16 @@ class NavBar extends React.Component {
       </Wrapper>
     )
     return (
-      <div>
-        <Sidebar
-          sidebar={sidebarContent}
-          open={this.state.hamburgerActive}
-          styles={sidebarStyles}
-          onSetOpen={() => {
-            this.setState({ hamburgerActive: false })
-          }}
-        >
-          {mainContent}
-        </Sidebar>
-      </div>
+      <Sidebar
+        sidebar={sidebarContent}
+        open={this.state.hamburgerActive}
+        styles={sidebarStyles}
+        onSetOpen={() => {
+          this.setState({ hamburgerActive: false })
+        }}
+      >
+        {mainContent}
+      </Sidebar>
       // <div>
       //   <h1>FASDFSADF</h1>
       // </div>

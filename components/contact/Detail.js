@@ -120,7 +120,7 @@ class Detail extends React.Component {
       SENDEMAILBUTTON,
     } = this.props.common
     return (
-      <Provider theme={theme}>
+      <div>
         <Flex wrap>
           <Box
             className="googleMaps"
@@ -190,7 +190,7 @@ class Detail extends React.Component {
                 w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pr={['0%', '0%', '3.5%', '3.5%', '3.5%']}
               >
-                <Button p="0%">
+                <Button p="0%" className="bt2222">
                   <center>
                     <Image
                       width={['2em', '2em', '2em', '2em', '2em']}
@@ -297,7 +297,7 @@ class Detail extends React.Component {
             }
           `}
         </style>
-      </Provider>
+      </div>
     )
   }
 }
