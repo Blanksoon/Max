@@ -40,9 +40,9 @@ class Main extends React.Component {
       <Provider>
         {/* {url.pathname === '/' && <Navbar activeUrl={url} />} */}
         <Navbar url={url} www={www} lang={lang} common={nav} />
-        <WrapperMobile>
+        {/* <WrapperMobile>
           <MobileNavbar url={url} www={www} lang={lang} common={nav} />
-        </WrapperMobile>
+        </WrapperMobile> */}
         {children}
         <AddressFooter common={nav} />
         <SocialFooter />
