@@ -225,7 +225,7 @@ class LiveTop extends Component {
                     </Box>
                   </Flex>
                 ) : (
-                  <Flex wrap w={[12 / 12, 12 / 12, 12 / 12, 12 / 12, 12 / 12]}>
+                  <Flex wrap w={12 / 12}>
                     <Box
                       pt={'0.2rem'}
                       pl={['14%', '17%', '31%', '31%', '31%', '31%']}

@@ -11,7 +11,12 @@ import LoginLang from '../../containers/commons/LoginLang'
 import { media, theme } from '../../tools/responsive'
 
 //rgba(1, 15, 30, 0.8)
-const Wrapper = styled.div`display: flex;`
+const Wrapper = styled.div`
+  display: flex;
+  ${media.ipad`display: none`};
+  ${media.phone`display: none`};
+  ${media.iphone5`display: none`};
+`
 // height: ${vars.navHeight};
 const Navbar = styled(Fixed)`
   background: ${props =>

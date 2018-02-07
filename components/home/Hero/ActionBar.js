@@ -46,7 +46,7 @@ export default ({
           </Box>
           <Box
             w={[3.5 / 12, 3.5 / 12, 4 / 12, 4 / 12, 4 / 12]}
-            pl={['0rem', '0rem', '1rem', '1rem', '1rem']}
+            pl={['0rem', '0rem', '0rem', '1rem', '1rem']}
             pt={['0rem', '0rem', '0.3rem', '0.3rem', '0.3rem']}
           >
             <ModalButton

@@ -78,12 +78,14 @@ const WrapperHero = styled.div`
     padding: 0;
     cursor: pointer;
   }
+  z-index: 0;
   ${media.ipad`display: none;`};
   ${media.phone`display: none;`};
   ${media.iphone5`display: none;`};
 `
 const WrapperMobileHero = styled.div`
   display: none;
+  z-index: 0;
   ${media.ipad`display: unset;`};
   ${media.phone`display: unset;`};
   ${media.iphone5`display: unset;`};
