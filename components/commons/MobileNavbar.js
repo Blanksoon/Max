@@ -277,6 +277,9 @@ class NavBar extends React.Component {
           }}
         />
       </div>
+      // <div>
+      //   <h1>FASDFSADF</h1>
+      // </div>
     )
   }
 }
