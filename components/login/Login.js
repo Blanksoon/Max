@@ -235,7 +235,7 @@ class Login extends React.Component {
               </Box>
               <Box
                 w={[12 / 12, 12 / 12, 7 / 12, 7 / 12, 7 / 12]}
-                pt={['3rem', '3rem', '0rem', '0rem', '0rem']}
+                pt={['2rem', '2rem', '0rem', '0rem', '0rem']}
               >
                 <center>
                   <FacebookLoginButton textButton={FACEBOOKBUTTON} />

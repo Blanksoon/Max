@@ -134,7 +134,11 @@ export default class extends Component {
     // console.log('ddddddddddddddffff', this.lang)
     return (
       <div
-        style={{ visibility: this.state.visibility, position: 'relative' }}
+        style={{
+          visibility: this.state.visibility,
+          position: 'relative',
+          zIndex: '0',
+        }}
         onKeyDown={this.closeModal}
       >
         <LiveInfo>

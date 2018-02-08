@@ -28,11 +28,13 @@ const SocialIcon = styled(Image)`
   padding: 0;
   width: 4rem;
   ${media.phone`
+  margin-top: 3px;
   width: 43px;
-  height: 48px;`};
+  height: 43px;`};
   ${media.iphone5`
+  margin-top: 9px;
   width: 30px;
-  height: 48px;`};
+  height: 30px;`};
 `
 export default () => (
   <SocialFooter>

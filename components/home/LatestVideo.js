@@ -1,10 +1,15 @@
 import React, { Component, PropTypes } from 'react'
 import ThumbnailBottom from '../thumbnail/ThumbnailBottom'
 import Link from 'next/link'
+import styled from 'styled-components'
 import { Media, Subhead, Image, Flex, Box, Text, Provider } from 'rebass'
 import { connect } from 'react-redux'
 import { media, theme } from '../../tools/responsive'
 
+const Wrapper = styled.div`
+  position: relative;
+  // z-index: 3;
+`
 const renderThumbnail = (lang, vod) => (
   <Box
     width={[1, 2 / 4, 2 / 4, 2 / 4, 1 / 4]}
@@ -52,23 +57,26 @@ class LatestVideo extends Component {
 
     return (
       // <Provider theme={theme}>
-      <Box pb="5%">
-        <Flex>
-          <Box width={1}>
-            <Text
-              pt="2%"
-              bold
-              color="#fff"
-              children={this.props.name}
-              fontSize="1.5em"
-            />
-          </Box>
-        </Flex>
-        <hr size="0.1" />
-        <Flex pt="2rem" wrap>
-          {this.props.vods.map(vod => renderThumbnail(this.props.lang, vod))}
-        </Flex>
-      </Box>
+      <Wrapper>
+        <Box pb="5%">
+          <Flex>
+            <Box width={1}>
+              <Text
+                pt="2%"
+                bold
+                color="#fff"
+                children={this.props.name}
+                fontSize="1.5em"
+              />
+            </Box>
+          </Flex>
+          <hr size="0.1" />
+          <Flex pt="2rem" wrap>
+            {this.props.vods.map(vod => renderThumbnail(this.props.lang, vod))}
+          </Flex>
+        </Box>
+      </Wrapper>
+
       // </Provider>
     )
   }

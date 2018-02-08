@@ -45,7 +45,7 @@ const Text1 = styled.div`
   ${media.ipadpro`font-size: 1em`};
   ${media.ipad`font-size: 0.9em;
   height: 50px;`};
-  ${media.phone`font-size: 0.8em; height: 47px;`};
+  ${media.phone`font-size: 0.5em; height: 54px;`};
   ${media.iphone5`font-size: 0.7em;height: 41px;`};
 `
 const Text2 = styled.div`

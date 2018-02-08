@@ -73,17 +73,19 @@ const WrapperHero = styled.div`
   .slick-dots li {
     position: relative;
     display: inline-block;
-    width: 14%;
+    width: 13%;
     margin: 0 5px;
     padding: 0;
     cursor: pointer;
   }
+  z-index: 0;
   ${media.ipad`display: none;`};
   ${media.phone`display: none;`};
   ${media.iphone5`display: none;`};
 `
 const WrapperMobileHero = styled.div`
   display: none;
+  z-index: 0;
   ${media.ipad`display: unset;`};
   ${media.phone`display: unset;`};
   ${media.iphone5`display: unset;`};

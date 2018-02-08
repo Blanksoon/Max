@@ -21,8 +21,8 @@ const Wrapper = styled.div`
 const WrapperSide = styled.div`
   z-index: 230;
   background: #020f1f;
-  padding-top: 3.5rem;
-  height: 100%;
+  padding-top: 1rem;
+  height: 120%;
 `
 const Text = styled.div`
   color: ${vars.white};
@@ -64,14 +64,62 @@ const Logo = styled(Image)`
   ${media.ipad`display: inline-block`};
 `
 const sidebarStyles = {
+  // sidebar: {
+  //   backgroundColor: 'dodgerblue',
+  //   width: '60%',
+  //   position: 'fixed',
+  //   overflow: 'none',
+  // },
+  root: {
+    //zIndex: 50,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    overflow: 'hidden',
+    // height: '4rem',
+    position: 'inherit',
+  },
   sidebar: {
-    backgroundColor: 'dodgerblue',
+    height: '100%',
+    //zIndex: 230,
     width: '60%',
     position: 'fixed',
-    overflow: 'none',
+    top: 0,
+    bottom: 0,
+    transition: 'transform .3s ease-out',
+    WebkitTransition: '-webkit-transform .3s ease-out',
+    willChange: 'transform',
+    overflowY: 'auto',
   },
-  root: {
-    height: '0px',
+  content: {
+    position: 'absolute',
+    //zIndex: 230,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    overflowY: 'scroll',
+    WebkitOverflowScrolling: 'touch',
+    transition: 'left .3s ease-out, right .3s ease-out',
+  },
+  overlay: {
+    //zIndex: 230,
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 0,
+    visibility: 'hidden',
+    transition: 'opacity .3s ease-out, visibility .3s ease-out',
+    backgroundColor: 'rgba(0,0,0,.3)',
+  },
+  dragHandle: {
+    zIndex: 1,
+    position: 'fixed',
+    top: 0,
+    bottom: 0,
   },
 }
 const Hr = styled.hr`
@@ -217,16 +265,17 @@ class NavBar extends React.Component {
       </Wrapper>
     )
     return (
-      <Sidebar
-        sidebar={sidebarContent}
-        open={this.state.hamburgerActive}
-        styles={sidebarStyles}
-        onSetOpen={() => {
-          this.setState({ hamburgerActive: false })
-        }}
-      >
+      <div>
         {mainContent}
-      </Sidebar>
+        <Sidebar
+          sidebar={sidebarContent}
+          open={this.state.hamburgerActive}
+          styles={sidebarStyles}
+          onSetOpen={() => {
+            this.setState({ hamburgerActive: false })
+          }}
+        />
+      </div>
       // <div>
       //   <h1>FASDFSADF</h1>
       // </div>

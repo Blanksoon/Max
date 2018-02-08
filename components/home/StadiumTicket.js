@@ -53,7 +53,7 @@ const stadium_ticket = ({ common }) => (
           <br />
         </Box>
         <Flex wrap>
-          <Box w={[1 / 12, 1 / 12, 0.5 / 12, 0.5 / 12, 0.5 / 12]}>
+          <Box w={[1 / 12, 1 / 12, 0.7 / 12, 0.5 / 12, 0.5 / 12]}>
             <Image
               pt={['0.5rem', '0.3rem', '0rem', '0rem', '0rem']}
               width="100%"
