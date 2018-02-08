@@ -121,15 +121,22 @@ const ButtonBuyticket = styled(Button)`
   border-radius: 0px;
   font-size: 1rem;
   font-weight: 700;
+  ${media.ipad`
+  font-size: 1rem;
+  width: 100%};`} &:active {
+    background: ${vars.red};
+  }
   ${media.phone`
-  font-size: 0.8rem;
-  width: 94px};`} &:active {
+  font-size: 0.9rem;
+  width: 100%};
+  height: 40px;
+  padding: 10px 16%;`} &:active {
     background: ${vars.red};
   }
   ${media.iphone5`
-  font-size: 0.7rem;
-  padding: 10px 16%;
-  width: 102px};`} &:active {
+  font-size: 0.8rem;
+  padding: 10px 14%;
+  width: 100%};`} &:active {
     background: ${vars.red};
   }
 `
@@ -143,9 +150,9 @@ class LiveTop extends Component {
       renderUI = (
         <Wrapper bannerUrl={this.props.live.bannerUrl}>
           <WrapperText>
-            <Flex>
+            <Flex wrap>
               <Box
-                w={[6 / 12, 7 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
                 pl="1rem"
                 bg={color.transDarkblue}
                 p={2}
@@ -167,23 +174,22 @@ class LiveTop extends Component {
                   {formattedDate(this.props.live.liveFromDate)}
                 </Date>
               </Box>
-              <Box w={[0, 0, 4 / 12, 4 / 12, 4 / 12]} />
-              <Box w={[6 / 12, 5 / 12, 2 / 12, 2 / 12, 2 / 12]}>
-                <Box
-                  className="buy-ticket"
-                  pt="4rem"
-                  pl={['2rem', '2rem', '2rem', '2rem', '2rem']}
-                >
-                  {this.props.live.videoUrl ? null : (
-                    <Link href={`/getticket`}>
-                      <a>
-                        <ButtonBuyticket>
-                          {this.props.common.BuyTicket}
-                        </ButtonBuyticket>
-                      </a>
-                    </Link>
-                  )}
-                </Box>
+              <Box w={[4 / 12, 4 / 12, 4 / 12, 4 / 12, 4 / 12]} />
+              <Box
+                w={[4 / 12, 5 / 12, 4 / 12, 2 / 12, 2 / 12]}
+                className="buy-ticket"
+                pt={['1rem', '1rem', '1rem', '4rem', '4rem']}
+                pl={['0rem', '0rem', '0rem', '2rem', '2rem']}
+              >
+                {this.props.live.videoUrl ? null : (
+                  <Link href={`/getticket`}>
+                    <a>
+                      <ButtonBuyticket>
+                        {this.props.common.BuyTicket}
+                      </ButtonBuyticket>
+                    </a>
+                  </Link>
+                )}
               </Box>
             </Flex>
           </WrapperText>
@@ -265,6 +271,7 @@ class LiveTop extends Component {
                 pl="1rem"
                 bg={color.transDarkblue}
                 p={2}
+                wrap
               >
                 <TextBig color={color.white}>
                   {this.props.lang === 'en' ? (
@@ -283,9 +290,12 @@ class LiveTop extends Component {
                   {formattedDate(this.props.live.liveFromDate)}
                 </Date>
               </Box>
-              <Box w={[0, 0, 3 / 12, 3 / 12, 4 / 12]} />
+              {/* <Box w={[0, 0, 3 / 12, 3 / 12, 4 / 12]} /> */}
               <Box w={[6 / 12, 5 / 12, 3 / 12, 3 / 12, 2 / 12]}>
-                <Box pt="4rem" pl={['2rem', '2rem', '2rem', '6rem', '2rem']}>
+                <Box
+                  pt={['4rem', '4rem', '0rem', '4rem', '4rem']}
+                  pl={['2rem', '2rem', '0rem', '6rem', '2rem']}
+                >
                   <Link href={`/getticket`}>
                     <a>
                       <ButtonBuyticket color={color.red}>
@@ -328,11 +338,7 @@ class LiveTop extends Component {
       )
     }
 
-    return (
-      <div>
-        <Provider theme={theme}>{renderUI}</Provider>
-      </div>
-    )
+    return <div>{renderUI}</div>
   }
 }
 export default LiveTop

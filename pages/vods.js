@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import withRedux from 'next-redux-wrapper'
 import VideoBox from '../components/vods/VideoBox'
-import { Flex, Box } from 'rebass'
+import { Flex, Box, Provider } from 'rebass'
 import Container from '../components/commons/Container'
 import color from '../components/commons/vars'
 import { initStore } from '../redux/store'
@@ -34,6 +34,7 @@ import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langSelector, switchLangSelector } from '../redux/selectors/lang'
 import Router from 'next/router'
+import { media, theme } from '../tools/responsive'
 
 const WrapperNavbar = styled.div`background-color: #009999;`
 const WrapperVod = styled.div`
@@ -87,42 +88,44 @@ class Vods extends React.Component {
     //console.log('vods', typeof this.props)
     return (
       <I18nextProvider i18n={this.i18n}>
-        <Main
-          url={this.props.url}
-          nav={this.state.translations.translation.common}
-          www="vods"
-          switchLanguage={this.switchLang}
-        >
-          <NewModal
-            common={this.state.translations.translation.common}
-            lang={this.state.lang}
+        <Provider theme={theme}>
+          <Main
             url={this.props.url}
-          />
-          <div className="videocenter">
-            <WrapperVod color={color}>
-              <Container>
-                <Box pt="20px" bg="white">
-                  <VideoBox
-                    lang={this.state.lang}
-                    common={this.state.translations.translation.common}
-                    hilight={hilight}
-                    vods={vods}
-                    numberOfVods={numberOfVods}
-                    programEns={
-                      this.state.lang === 'en' ? (
-                        this.props.programs.programname_en
-                      ) : (
-                        this.props.programs.programname_th
-                      )
-                    }
-                    filteredProgram={filteredProgram}
-                    onFilteredProgramChange={this.onFilteredProgramChange}
-                  />
-                </Box>
-              </Container>
-            </WrapperVod>
-          </div>
-        </Main>
+            nav={this.state.translations.translation.common}
+            www="vods"
+            switchLanguage={this.switchLang}
+          >
+            <NewModal
+              common={this.state.translations.translation.common}
+              lang={this.state.lang}
+              url={this.props.url}
+            />
+            <div className="videocenter">
+              <WrapperVod color={color}>
+                <Container>
+                  <Box pt="20px" bg="white">
+                    <VideoBox
+                      lang={this.state.lang}
+                      common={this.state.translations.translation.common}
+                      hilight={hilight}
+                      vods={vods}
+                      numberOfVods={numberOfVods}
+                      programEns={
+                        this.state.lang === 'en' ? (
+                          this.props.programs.programname_en
+                        ) : (
+                          this.props.programs.programname_th
+                        )
+                      }
+                      filteredProgram={filteredProgram}
+                      onFilteredProgramChange={this.onFilteredProgramChange}
+                    />
+                  </Box>
+                </Container>
+              </WrapperVod>
+            </div>
+          </Main>
+        </Provider>
       </I18nextProvider>
     )
   }

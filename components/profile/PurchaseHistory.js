@@ -109,7 +109,7 @@ class PurchaseHistory extends React.Component {
       }
     }
     return (
-      <Provider theme={theme}>
+      <div>
         <Box w={12 / 12}>
           <Box w={12 / 12}>
             <Flex className="Profile-pic" py="1rem">
@@ -149,7 +149,7 @@ class PurchaseHistory extends React.Component {
           </Box>
           {this.renderPurchaseList(this.state.puschaseList)}
         </Box>
-      </Provider>
+      </div>
     )
   }
 }

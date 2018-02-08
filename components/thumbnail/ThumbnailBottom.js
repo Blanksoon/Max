@@ -6,7 +6,7 @@ import { media, theme } from '../../tools/responsive'
 const WrapperName = styled.div`
   height: 15px;
   ${media.ipadpro`height: 30px`};
-  ${media.ipad`height: 15px`};
+  ${media.ipad`height: 23px`};
   ${media.phone`height: 15px`};
   ${media.iphone5`height: 15px`};
   overflow: hidden;

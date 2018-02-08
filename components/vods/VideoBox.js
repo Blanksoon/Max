@@ -129,8 +129,8 @@ class VideoBox extends Component {
     }
 
     return (
-      <Provider theme={theme}>
-        <Flex mb={3} pt="7rem">
+      <div>
+        <Flex mb={3} pt={['4rem', '5rem', '4rem', '7rem', '7rem']}>
           <Box pl="1rem">
             <Text
               color="red"
@@ -204,7 +204,7 @@ class VideoBox extends Component {
             }
           `}
         </style>
-      </Provider>
+      </div>
     )
   }
 }
@@ -225,7 +225,7 @@ const RowVideo = ({ lang, vods }) => {
               lang === 'en' ? vods[0].onAirDateStr_en : vods[0].onAirDateStr_en
             }
             time={vods[0].duration}
-            pt="1em"
+            // pt="1em"
           />
         )}
       </Box>
@@ -244,7 +244,7 @@ const RowVideo = ({ lang, vods }) => {
               lang === 'en' ? vods[1].onAirDateStr_en : vods[1].onAirDateStr_en
             }
             time={vods[1].duration}
-            pt="1em"
+            // pt="1em"
           />
         )}
       </Box>
@@ -263,7 +263,7 @@ const RowVideo = ({ lang, vods }) => {
               lang === 'en' ? vods[2].onAirDateStr_en : vods[2].onAirDateStr_en
             }
             time={vods[2].duration}
-            pt="1em"
+            // pt="1em"
           />
         )}
       </Box>
@@ -281,7 +281,7 @@ const RowVideo = ({ lang, vods }) => {
               lang === 'en' ? vods[3].onAirDateStr_en : vods[3].onAirDateStr_en
             }
             time={vods[3].duration}
-            pt="1em"
+            // pt="1em"
           />
         )}
       </Box>

@@ -308,7 +308,7 @@ class InputProfile extends React.Component {
       )
     }
     return (
-      <Provider theme={theme}>
+      <div>
         <Box w={12 / 12}>
           <Box w={12 / 12}>
             <Flex
@@ -418,7 +418,7 @@ class InputProfile extends React.Component {
             </Flex>
           </Box>
         </Box>
-      </Provider>
+      </div>
     )
   }
 }

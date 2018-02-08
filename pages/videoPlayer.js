@@ -6,7 +6,7 @@ import Players from '../components/videoPlayer/Player'
 import { Description } from '../components/videoPlayer/Description'
 import UpNext from '../components/videoPlayer/UpNext'
 import StadiumTicket from '../components/home/StadiumTicket'
-import { Container, Flex, Box } from 'rebass'
+import { Container, Flex, Box, Provider } from 'rebass'
 import Main from '../layouts/Main'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
@@ -50,6 +50,13 @@ const WrapperButtonPlayer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+`
+const WrapButton = styled.div`
+  padding: 17rem;
+  ${media.ipadpro`padding: 17rem;`};
+  ${media.ipad`padding: 11.5rem;`};
+  ${media.phone`padding: 5.2rem;`};
+  ${media.iphone5`padding: 3.5rem;`};
 `
 class videoPlayer extends React.Component {
   constructor(props) {
@@ -109,12 +116,14 @@ class videoPlayer extends React.Component {
             <Players Url={vod.promoUrl} />
             <WrapperButtonPlayer>
               <center>
-                <Box pt="17rem">
-                  <Link href={`/getticket`}>
-                    {/* <a> */}
-                    <Button>{this.state.common.BuyTicket}</Button>
-                    {/* </a> */}
-                  </Link>
+                <Box>
+                  <WrapButton>
+                    <Link href={`/getticket`}>
+                      {/* <a> */}
+                      <Button>{this.state.common.BuyTicket}</Button>
+                      {/* </a> */}
+                    </Link>
+                  </WrapButton>
                 </Box>
               </center>
             </WrapperButtonPlayer>
@@ -149,63 +158,65 @@ class videoPlayer extends React.Component {
     // )
     return (
       <I18nextProvider i18n={this.i18n}>
-        <Main
-          url={url}
-          nav={this.state.translations.translation.common}
-          switchLanguage={this.switchLang}
-        >
-          <NewModal
-            common={this.state.translations.translation.common}
-            lang={this.state.lang}
-            url={this.props.url}
-          />
-          <div className="wrapper-BackVideoCenter">
-            <Container>
-              <Flex>
-                <Box w={12 / 12} pt="2rem">
-                  <BackVideoCenter
-                    name={this.state.common.BACKTOONDEMAND}
-                    url={url}
-                  />
-                </Box>
-              </Flex>
-            </Container>
-          </div>
-          <div>
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>{renderUI}</Box>
-              </Flex>
-            </Container>
-          </div>
-          <div className="wrapper-BackVideoCenter">
-            <Container>
-              <Flex>
-                <Box w={12 / 12} bg="white">
-                  {renderDescription}
-                </Box>
-              </Flex>
-            </Container>
-          </div>
-          <div className="wrapper-BackVideoCenter">
-            <Container>
-              <Flex>
-                <Box w={12 / 12} bg="white">
-                  {renderUpnext}
-                </Box>
-              </Flex>
-            </Container>
-          </div>
-          <WrapperStadiumTicket>
-            <Container>
-              <Flex>
-                <Box w={12 / 12}>
-                  <StadiumTicket common={this.state.common} />
-                </Box>
-              </Flex>
-            </Container>
-          </WrapperStadiumTicket>
-        </Main>
+        <Provider theme={theme}>
+          <Main
+            url={url}
+            nav={this.state.translations.translation.common}
+            switchLanguage={this.switchLang}
+          >
+            <NewModal
+              common={this.state.translations.translation.common}
+              lang={this.state.lang}
+              url={this.props.url}
+            />
+            <div className="wrapper-BackVideoCenter">
+              <Container>
+                <Flex>
+                  <Box w={12 / 12} pt="2rem">
+                    <BackVideoCenter
+                      name={this.state.common.BACKTOONDEMAND}
+                      url={url}
+                    />
+                  </Box>
+                </Flex>
+              </Container>
+            </div>
+            <div>
+              <Container>
+                <Flex>
+                  <Box w={12 / 12}>{renderUI}</Box>
+                </Flex>
+              </Container>
+            </div>
+            <div className="wrapper-BackVideoCenter">
+              <Container>
+                <Flex>
+                  <Box w={12 / 12} bg="white">
+                    {renderDescription}
+                  </Box>
+                </Flex>
+              </Container>
+            </div>
+            <div className="wrapper-BackVideoCenter">
+              <Container>
+                <Flex>
+                  <Box w={12 / 12} bg="white">
+                    {renderUpnext}
+                  </Box>
+                </Flex>
+              </Container>
+            </div>
+            <WrapperStadiumTicket>
+              <Container>
+                <Flex>
+                  <Box w={12 / 12}>
+                    <StadiumTicket common={this.state.common} />
+                  </Box>
+                </Flex>
+              </Container>
+            </WrapperStadiumTicket>
+          </Main>
+        </Provider>
       </I18nextProvider>
     )
   }

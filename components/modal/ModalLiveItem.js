@@ -32,6 +32,7 @@ const ButtonWatch = styled.button`
   display: inline-block;
   font-weight: 700;
   // font-size: 1vw;
+  ${media.phone`padding: 8px 25%;`};
   ${media.iphone5`font-size: 0.7em`};
 `
 const Text1 = styled.div`
@@ -45,8 +46,8 @@ const Text1 = styled.div`
   ${media.ipadpro`font-size: 1em`};
   ${media.ipad`font-size: 0.9em;
   height: 50px;`};
-  ${media.phone`font-size: 0.8em; height: 47px;`};
-  ${media.iphone5`font-size: 0.7em;height: 41px;`};
+  ${media.phone`font-size: 0.8em; height: 38px;padding-top: 0.3rem;`};
+  ${media.iphone5`font-size: 0.6em;height: 32px;`};
 `
 const Text2 = styled.div`
   color: #000;
@@ -76,6 +77,7 @@ const Text4 = styled.div`
   font-family: Helvetica, Arial, sans-serif;
   ${media.ipad`font-size: 1.2em`};
   ${media.phone`font-size: 0.8em`};
+  ${media.iphone5`font-size: 0.8em`};
 `
 const Textbutton = styled.div`
   color: ${color.red};
@@ -105,6 +107,7 @@ const WrapperButton = styled.div`
   width: 50%;
 `
 const WrapperHover = styled.div`
+  border: 1px solid #484444;
   top: 0;
   background-color: ${color.black};
   z-index: ${props => props.zin};
@@ -146,7 +149,7 @@ class ModalButton extends Component {
       zin = 1
     }
     return (
-      <Provider theme={theme}>
+      <div>
         <Wrapper>
           <Flex
             pl="0.5em"
@@ -176,12 +179,18 @@ class ModalButton extends Component {
               <Image w="100%" src={this.props.live.bannerUrl} />
             </Box>
             <Box w={[5 / 12, 5 / 12, 5 / 12, 5 / 12, 5 / 12]}>
-              <Flex>
-                <Box w={[2 / 12, 2 / 12, 2 / 12, 2 / 12, 2 / 12]} ml="12px">
-                  <br />
-                  <Image w="100%" src="static/ic_liveblack@2x.png" />
+              <Flex wrap>
+                <Box
+                  w={[12 / 12, 2 / 12, 2 / 12, 2 / 12, 2 / 12]}
+                  pt={['0rem', '0.9rem', '1rem', '0.9rem', '1rem']}
+                  ml="12px"
+                >
+                  <Image
+                    w={['20%', '100%', '100%', '100%', '100%']}
+                    src="static/ic_liveblack@2x.png"
+                  />
                 </Box>
-                <Box w={[10 / 12, 10 / 12, 10 / 12, 10 / 12, 10 / 12]}>
+                <Box w={[12 / 12, 8 / 12, 8 / 12, 8 / 12, 8 / 12]}>
                   <Text1>
                     {this.props.lang === 'en' ? (
                       this.props.live.title_en
@@ -194,7 +203,7 @@ class ModalButton extends Component {
               </Flex>
               <Flex
                 pt={['0.4em', '1em', '2.2em', '2.5em', '2.5em']}
-                pl={['1em', '1em', '2.2em', '3.2em', '3.2em']}
+                pl={['0.5em', '1em', '2.2em', '3.2em', '3.2em']}
               >
                 <WrapperButton>
                   <Button style={{ cursor: 'pointer' }}>
@@ -212,15 +221,18 @@ class ModalButton extends Component {
               <Box
                 w={2 / 12}
                 pt={['1.5em', '2em', '2.5em', '2.5em', '2.5em']}
-                ml={['0em', '1em', '1em', '5em', '5em']}
+                ml={['1em', '1em', '1em', '5em', '5em']}
               >
                 <Image w="100%" src="static/ic_you-bought.png" />
               </Box>
               <Box w={10 / 12}>
-                <Box pl="2.5em" pt={['0.5em', '1em', '2em', '2em', '2em']}>
+                <Box
+                  pl={['1.8em', '3em', '2.5em', '2.5em', '2.5em']}
+                  pt={['0.5em', '1em', '2em', '2em', '2em']}
+                >
                   <Text4>{this.props.youBought}</Text4>
                 </Box>
-                <Box pl={['2.4em', '2.5em', '2.8em', '2em', '2em']} pt="0.5em">
+                <Box pl={['1em', '1.5em', '2.8em', '2em', '2em']} pt="0.5em">
                   <Link href={`/lives_vdo?id=${this.props.live._id}`}>
                     <ButtonWatch style={{ cursor: 'pointer' }}>
                       {this.props.watch}
@@ -231,7 +243,7 @@ class ModalButton extends Component {
             </Flex>
           </WrapperHover>
         </Wrapper>
-      </Provider>
+      </div>
     )
   }
 }

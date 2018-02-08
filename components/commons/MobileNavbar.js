@@ -93,7 +93,7 @@ const sidebarStyles = {
     overflowY: 'auto',
   },
   content: {
-    position: 'absolute',
+    position: 'unset',
     //zIndex: 230,
     top: 0,
     left: 0,
@@ -222,7 +222,7 @@ class NavBar extends React.Component {
         <Hr size="0.1" />
         <br />
         <div style={{ color: '#fff' }}>
-          <Text1>Menu Other</Text1>
+          {/* <Text1>Menu Other</Text1> */}
           {this.state.navItems.map(({ label, href, active }) => (
             <NavItem key={label} label={label} href={href} active={active} />
           ))}
@@ -230,7 +230,7 @@ class NavBar extends React.Component {
         <Hr size="0.1" />
         <br />
         <div style={{ color: '#fff' }}>
-          <Text>Language Setting</Text>
+          {/* <Text>Language Setting</Text> */}
           <Lang
             url={this.props.url}
             www={this.props.www}

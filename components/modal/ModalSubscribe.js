@@ -26,6 +26,7 @@ const ButtonWatch = styled.button`
   text-decoration: none;
   display: inline-block;
   font-weight: 700;
+  ${media.phone`font-size: 0.7em`};
   ${media.iphone5`font-size: 0.7em`};
 `
 const ImageHlight = styled.img`
@@ -76,7 +77,8 @@ const Wrapperprice = styled.div`
   position: absolute;
   bottom: 40px;
   right: 125px;
-  ${media.ipad`bottom: 12px;right: 97px;`};
+  ${media.ipad`bottom: 11px;right: 105px;`};
+  ${media.phone`bottom: 12px;right: 97px;`};
 `
 const WrapperMonth = styled.div`
   position: absolute;
@@ -121,9 +123,9 @@ const Text5 = styled.div`
   font-size: 1em;
   font-family: Helvetica, Arial, sans-serif;
   ${media.ipadpro`font-size: 1em`};
-  ${media.ipad`font-size: 0.7em`};
-  ${media.phone`font-size: 0.5em`};
-  ${media.iphone5`font-size: 0.5em`};
+  ${media.ipad`font-size: 0.9em`};
+  ${media.phone`font-size: 0.8em`};
+  ${media.iphone5`font-size: 0.7em`};
 `
 const Text6 = styled.div`
   color: ${color.white};
@@ -132,9 +134,9 @@ const Text6 = styled.div`
   font-family: Helvetica, Arial, sans-serif;
   overflow: hidden;
   ${media.ipadpro`font-size: 0.8em`};
-  ${media.ipad`font-size: 0.5em`};
+  ${media.ipad`font-size: 0.5em;`};
   ${media.phone`font-size: 0.3em`};
-  ${media.iphone5`font-size: 0.3em;height: 20px;`};
+  ${media.iphone5`font-size: 0.3em;height: 23px;`};
 `
 const Text9 = styled.div`
   color: ${color.yellow};
@@ -208,7 +210,7 @@ class ModalSubscribe extends React.Component {
                   </Box>
                   <Box
                     w={8 / 12}
-                    pt={['0.3em', '0.5em', '0.5em', '0.5em', '0.5em']}
+                    pt={['0.3em', '0.2em', '0.5em', '0.5em', '0.5em']}
                   >
                     <Text6>{this.props.text2}</Text6>
                   </Box>
@@ -225,10 +227,10 @@ class ModalSubscribe extends React.Component {
             </Flex>
             <Wrapperin zin={zin} onClick="">
               <center>
-                <Box pt={['1em', '1em', '1.5em', '2.5em', '2.5em']}>
+                <Box pt={['1em', '1em', '1.5em', '1.5em', '2em']}>
                   <Text5>{this.props.youBought}</Text5>
                 </Box>
-                <Box pt={['0.7em', '1.5em', '1.5em', '2em', '2em']}>
+                <Box pt={['0.5em', '0.8em', '1.5em', '1em', '2em']}>
                   {/* 1em */}
                   <Link href={`/index`}>
                     <ButtonWatch style={{ cursor: 'pointer' }}>

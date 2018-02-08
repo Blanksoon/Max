@@ -60,8 +60,8 @@ const WrapperImg = styled.div`
   height: 500px;
   margin-bottom: 60%;`};
   ${media.ipad`width: 650px;
-  height: 620px;
-  margin-bottom: 33%;`};
+  height: 850px;
+  margin-bottom: 0%;`};
   ${media.phone`width: 360px;
   height: 480px;
   margin-bottom: 0%;`};

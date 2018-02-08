@@ -37,14 +37,15 @@ const WrapperMore = styled.div`
 `
 const WrapperFront = styled.div`
   font-size: 0.9em;
-  ${media.ipad`font-size: 0.5em`};
-  ${media.phone`font-size: 0.5em`};
+  ${media.ipad`font-size: 0.9em`};
+  ${media.phone`font-size: 0.8em`};
+  ${media.iphone5`font-size: 0.7em`};
 `
 const WrapperDes = styled.div`
   height: 70px;
   ${media.ipadpro`height: 70px`};
-  ${media.ipad`height: 40px`};
-  ${media.phone`height: 40px`};
+  ${media.ipad`height: 33px`};
+  ${media.phone`height: 32px`};
   ${media.iphone5`height: 43px`};
   overflow: hidden;
 `
@@ -130,7 +131,7 @@ const ThumbnailLive = ({ lang, live }) => {
               children={`${Next} ${lang === 'en'
                 ? live.liveDateStr_en
                 : live.liveDateStr_th}`}
-              fontSize={['0.5em', '0.5em', '0.7em', '0.9em', '1em']}
+              fontSize={['0.5em', '0.5em', '0.8em', '0.9em', '1em']}
             />
           </center>
         </Box>

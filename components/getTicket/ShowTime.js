@@ -388,7 +388,7 @@ class ShowTime extends React.Component {
       )
     }
     return (
-      <Provider theme={theme}>
+      <div>
         <Wrapper>
           <Flex pl="1em" pr="1em" pb="3em">
             <Box w={12 / 12} pl="0rem">
@@ -439,7 +439,7 @@ class ShowTime extends React.Component {
             </Box>
           </Flex>
         </Wrapper>
-      </Provider>
+      </div>
     )
   }
 }

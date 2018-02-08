@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { Flex, Box, Image, Text } from 'rebass'
+import { Flex, Box, Image, Text, Provider } from 'rebass'
 import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import color from '../components/commons/vars'
@@ -23,6 +23,7 @@ import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langSelector } from '../redux/selectors/lang'
 import { langUrl } from '../tools/langUrl'
+import { media, theme } from '../tools/responsive'
 
 const WrapperShowTime = styled.div`
   position: relative;
@@ -51,44 +52,46 @@ class selectShowtime extends React.Component {
     //console.log('render', this.props.url)
     return (
       <I18nextProvider i18n={this.i18n}>
-        {/* <Head>
+        <Provider theme={theme}>
+          {/* <Head>
           <link href="/static/css/video-react.css" rel="stylesheet" />
         </Head> */}
-        <Main
-          url={this.props.url}
-          nav={this.state.translations.translation.common}
-          www="getticket"
-          switchLanguage={this.switchLang}
-        >
-          <NewModal
-            common={this.state.translations.translation.common}
-            lang={this.state.lang}
+          <Main
             url={this.props.url}
-          />
-          <Wrapper>
-            <Container>
-              <Box pt="7rem">
-                <ShowTime
-                  common={this.state.translations.translation.common}
-                  lang={this.state.lang}
-                />
-              </Box>
-            </Container>
-          </Wrapper>
-          <style jsx global>
-            {`
-              body {
-                padding: 0 !important;
-                margin: 0 !important;
-              }
-               {
-                /* * {
+            nav={this.state.translations.translation.common}
+            www="getticket"
+            switchLanguage={this.switchLang}
+          >
+            <NewModal
+              common={this.state.translations.translation.common}
+              lang={this.state.lang}
+              url={this.props.url}
+            />
+            <Wrapper>
+              <Container>
+                <Box pt="7rem">
+                  <ShowTime
+                    common={this.state.translations.translation.common}
+                    lang={this.state.lang}
+                  />
+                </Box>
+              </Container>
+            </Wrapper>
+            <style jsx global>
+              {`
+                body {
+                  padding: 0 !important;
+                  margin: 0 !important;
+                }
+                 {
+                  /* * {
                 box-sizing: border-box;
               } */
-              }
-            `}
-          </style>
-        </Main>
+                }
+              `}
+            </style>
+          </Main>
+        </Provider>
       </I18nextProvider>
     )
   }

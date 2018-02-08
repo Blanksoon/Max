@@ -38,73 +38,73 @@ const Logo = styled(Image)`
 export default ({ label, active, lang, common, changeComponent, pathname }) => {
   if (pathname == 'Profile') {
     return (
-      <Provider theme={theme}>
-        <Flex>
-          <Box w={[4 / 12, 4 / 12, 3 / 12, 3 / 12, 3 / 12]}>
-            {/* <Logo src="../../static/ic_profile@3x.png" /> */}
-            <Active onClick={() => changeComponent('Profile')}>
-              {common.PROFILE}
-            </Active>
-          </Box>
-          <Box w={[5 / 12, 5 / 12, 4 / 12, 3 / 12, 3 / 12]}>
-            <Inactive onClick={() => changeComponent('Purchase history')}>
-              {common.PURCHASEHISTORY}
-            </Inactive>
-          </Box>
-          <Box w={[3 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
-            <Inactive onClick={() => changeComponent('Subscribe')}>
-              {common.SUBSCRIBE}
-            </Inactive>
-          </Box>
-          <Box w={[0, 0 / 12, 7 / 12, 7 / 12, 7 / 12]} />
-        </Flex>
-      </Provider>
+      // <Provider theme={theme}>
+      <Flex>
+        <Box w={[4 / 12, 4 / 12, 3 / 12, 3 / 12, 3 / 12]}>
+          {/* <Logo src="../../static/ic_profile@3x.png" /> */}
+          <Active onClick={() => changeComponent('Profile')}>
+            {common.PROFILE}
+          </Active>
+        </Box>
+        <Box w={[5 / 12, 5 / 12, 4 / 12, 3 / 12, 3 / 12]}>
+          <Inactive onClick={() => changeComponent('Purchase history')}>
+            {common.PURCHASEHISTORY}
+          </Inactive>
+        </Box>
+        <Box w={[3 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
+          <Inactive onClick={() => changeComponent('Subscribe')}>
+            {common.SUBSCRIBE}
+          </Inactive>
+        </Box>
+        <Box w={[0, 0 / 12, 7 / 12, 7 / 12, 7 / 12]} />
+      </Flex>
+      // </Provider>
     )
   } else if (pathname == 'Purchase history') {
     return (
-      <Provider theme={theme}>
-        <Flex>
-          <Box w={[4 / 12, 4 / 12, 3 / 12, 3 / 12, 3 / 12]}>
-            <Inactive onClick={() => changeComponent('Profile')}>
-              {common.PROFILE}
-            </Inactive>
-          </Box>
-          <Box w={[5 / 12, 5 / 12, 4 / 12, 3 / 12, 3 / 12]}>
-            <Active onClick={() => changeComponent('Purchase history')}>
-              {common.PURCHASEHISTORY}
-            </Active>
-          </Box>
-          <Box w={[3 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
-            <Inactive onClick={() => changeComponent('Subscribe')}>
-              {common.SUBSCRIBE}
-            </Inactive>
-          </Box>
-          <Box w={[0, 0 / 12, 7 / 12, 7 / 12, 7 / 12]} />
-        </Flex>
-      </Provider>
+      // <Provider theme={theme}>
+      <Flex>
+        <Box w={[4 / 12, 4 / 12, 3 / 12, 3 / 12, 3 / 12]}>
+          <Inactive onClick={() => changeComponent('Profile')}>
+            {common.PROFILE}
+          </Inactive>
+        </Box>
+        <Box w={[5 / 12, 5 / 12, 4 / 12, 3 / 12, 3 / 12]}>
+          <Active onClick={() => changeComponent('Purchase history')}>
+            {common.PURCHASEHISTORY}
+          </Active>
+        </Box>
+        <Box w={[3 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
+          <Inactive onClick={() => changeComponent('Subscribe')}>
+            {common.SUBSCRIBE}
+          </Inactive>
+        </Box>
+        <Box w={[0, 0 / 12, 7 / 12, 7 / 12, 7 / 12]} />
+      </Flex>
+      // </Provider>
     )
   } else {
     return (
-      <Provider theme={theme}>
-        <Flex>
-          <Box w={[4 / 12, 4 / 12, 3 / 12, 3 / 12, 3 / 12]}>
-            <Inactive onClick={() => changeComponent('Profile')}>
-              {common.PROFILE}
-            </Inactive>
-          </Box>
-          <Box w={[5 / 12, 5 / 12, 4 / 12, 3 / 12, 3 / 12]}>
-            <Inactive onClick={() => changeComponent('Purchase history')}>
-              {common.PURCHASEHISTORY}
-            </Inactive>
-          </Box>
-          <Box w={[3 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
-            <Active onClick={() => changeComponent('Subscribe')}>
-              {common.SUBSCRIBE}
-            </Active>
-          </Box>
-          <Box w={[0, 0 / 12, 7 / 12, 7 / 12, 7 / 12]} />
-        </Flex>
-      </Provider>
+      // <Provider theme={theme}>
+      <Flex>
+        <Box w={[4 / 12, 4 / 12, 3 / 12, 3 / 12, 3 / 12]}>
+          <Inactive onClick={() => changeComponent('Profile')}>
+            {common.PROFILE}
+          </Inactive>
+        </Box>
+        <Box w={[5 / 12, 5 / 12, 4 / 12, 3 / 12, 3 / 12]}>
+          <Inactive onClick={() => changeComponent('Purchase history')}>
+            {common.PURCHASEHISTORY}
+          </Inactive>
+        </Box>
+        <Box w={[3 / 12, 3 / 12, 3 / 12, 3 / 12, 3 / 12]}>
+          <Active onClick={() => changeComponent('Subscribe')}>
+            {common.SUBSCRIBE}
+          </Active>
+        </Box>
+        <Box w={[0, 0 / 12, 7 / 12, 7 / 12, 7 / 12]} />
+      </Flex>
+      // </Provider>
     )
   }
 }
