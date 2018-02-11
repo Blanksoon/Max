@@ -22,9 +22,9 @@ const Button = styled.button`
   padding: 1em 1em;
   text-align: center;
   border: 0;
-  ${media.iphone5`padding: 0.8em 0.8em;`};
-  ${media.phone`padding: 1.55em 1.55em;`};
   ${media.ipad`padding: 0.5em 0.5em;`};
+  ${media.phone`padding: 0.5em 2.5em;`};
+  ${media.iphone5`padding: 0.8em 0.8em;`};
 `
 
 const ButtonEmail = styled.button`
@@ -120,7 +120,7 @@ class Detail extends React.Component {
       SENDEMAILBUTTON,
     } = this.props.common
     return (
-      <Provider theme={theme}>
+      <div>
         <Flex wrap>
           <Box
             className="googleMaps"
@@ -183,14 +183,14 @@ class Detail extends React.Component {
               children={NameAddress}
               fontSize="0.9em"
             />
-            <Text color="#efe3e3" left children={Address1} fontSize="0.50em" />
-            <Text color="#efe3e3" left children={Address2} fontSize="0.5em" />
+            <Text color="#efe3e3" left children={Address1} fontSize="0.7em" />
+            <Text color="#efe3e3" left children={Address2} fontSize="0.7em" />
             <Flex pt="1em" pb={['0.1em', '0.4em', '1em', '1em', '1em']}>
               <Box
                 w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pr={['0%', '0%', '3.5%', '3.5%', '3.5%']}
               >
-                <Button p="0%">
+                <Button p="0%" className="bt2222">
                   <center>
                     <Image
                       width={['2em', '2em', '2em', '2em', '2em']}
@@ -297,7 +297,7 @@ class Detail extends React.Component {
             }
           `}
         </style>
-      </Provider>
+      </div>
     )
   }
 }

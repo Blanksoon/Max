@@ -14,12 +14,15 @@ import { connect } from 'react-redux'
 import * as api from '../../api'
 import Spinner from '../commons/Spinner'
 import vars from '../commons/vars'
+import { media, theme } from '../../tools/responsive'
 
 const A = styled.a`TEXT-DECORATION: none;`
 const Wrapper = styled.div`position: absolute;`
 const WrapperLogin = styled.div`
   padding-right: 30px;
   border-right: 1px solid #a9a9a9;
+  ${media.phone`padding-right: 0px;`};
+  ${media.iphone5`padding-right: 0px;`};
 `
 const Text1 = styled.div`
   color: ${color.red};
@@ -60,6 +63,8 @@ const Button = styled.button`
     background-color: ${vars.lightRed};
     border: 1px solid ${vars.lightRed};
   }
+  ${media.phone`padding: 5px 2px;`};
+  ${media.iphone5`padding: 5px 2px;`};
 `
 const Input = styled.input`
   width: 100%;
@@ -122,7 +127,10 @@ class ChangePassStep1 extends React.Component {
               </Box>
               <Box>
                 <WrapperLogin>
-                  <Box w={4 / 12} pt={['1em', '0em', '0em', '0em', '0em']}>
+                  <Box
+                    w={[6 / 12, 4 / 12, 4 / 12, 4 / 12, 4 / 12]}
+                    pt={['1em', '0em', '0em', '0em', '0em']}
+                  >
                     <Input
                       type="password"
                       placeholder={this.props.common.OlDPASSWORD}
@@ -131,9 +139,9 @@ class ChangePassStep1 extends React.Component {
                     />
                     <Text2>{this.state.status} </Text2>
                   </Box>
-                  <Box pt="0.5rem">
+                  <Box w={[6 / 12, 4 / 12, 4 / 12, 4 / 12, 4 / 12]} pt="0.5rem">
                     <Button
-                      style={{ width: '148px' }}
+                      style={{ width: '100%' }}
                       onClick={this.submitCurrent}
                       disabled={this.state.loading}
                     >

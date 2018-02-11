@@ -266,7 +266,6 @@ class NavBar extends React.Component {
     )
     return (
       <div>
-        {/* <h1>FASFEWFW</h1> */}
         {mainContent}
         <Sidebar
           sidebar={sidebarContent}

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { Image } from 'rebass'
+import { Image, Provider } from 'rebass'
 import Login from '../login/Login'
 import Register from '../login/Register'
 import ForgotPassword from '../login/ForgotPassword'
@@ -105,9 +105,9 @@ const WrapperPurchaseItem = styled.div`
   background: #fff;
   z-index: 240;
   ${media.phone`width: 360px;
-  height: 655px;`};
+  height: 563px;`};
   ${media.iphone5`width: 300px;
-  height: 550px;`};
+  height: 514px;`};
 `
 const WrapperChangePass = styled.div`
   position: relative;
@@ -295,13 +295,15 @@ export default class Modal extends Component {
       renderUI = renderUI
     }
     return (
-      <Wrapper
-        onClick={e => this.handleOnClick(e)}
-        visibility={this.props.active}
-        display={this.props.active}
-      >
-        {renderUI}
-      </Wrapper>
+      <Provider theme={theme}>
+        <Wrapper
+          onClick={e => this.handleOnClick(e)}
+          visibility={this.props.active}
+          display={this.props.active}
+        >
+          {renderUI}
+        </Wrapper>
+      </Provider>
     )
   }
 }

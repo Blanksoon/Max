@@ -139,19 +139,19 @@ const Wrapper = styled.div`
 const WrapperPrice = styled.div`
   position: absolute;
   top: 51%;
-  ${media.phone`top: 49%;`};
-  ${media.iphone5`top: 49%;`};
+  ${media.phone`top: 53%;`};
+  ${media.iphone5`top: 50%;`};
 `
 const WrapperPricePack = styled.div`
   position: absolute;
   top: 51%;
-  ${media.phone`top: 49%;`};
+  ${media.phone`top: 53%;`};
   ${media.iphone5`top: 51%;`};
 `
 const WrapperPriceLive = styled.div`
   position: absolute;
   top: 51%;
-  ${media.phone`top: 55%;`};
+  ${media.phone`top: 57.5%;`};
   ${media.iphone5`top: 55%;`};
 `
 const Img = styled.img`
@@ -353,7 +353,12 @@ class PurchaseItem extends React.Component {
             {/* <Box pl="3em" pr="3em" pt="1em">
             <Text2>Your order ID : 251485039</Text2>
             </Box> */}
-            <Flex pr="3em" pl="3em" pt="2em" wrap>
+            <Flex
+              pr="3em"
+              pl="3em"
+              pt={['2em', '0.5em', '2em', '2em', '2em']}
+              wrap
+            >
               <Box
                 w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
@@ -393,14 +398,14 @@ class PurchaseItem extends React.Component {
             <Box
               pl={['3em', '3em', '3em', '3em', '3em']}
               pr="3em"
-              pt={['2em', '3em', '1em', '1em', '1em']}
+              pt={['2em', '2em', '1em', '1em', '1em']}
             >
               <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
             <Flex
               pl={['3em', '3em', '3em', '3em', '3em']}
               pr="3em"
-              pt="1em"
+              pt={['1em', '0.5em', '1em', '1em', '1em']}
               wrap
             >
               <Box
@@ -458,8 +463,8 @@ class PurchaseItem extends React.Component {
             <Flex
               pl={['3em', '3em', '3em', '3em', '3em']}
               pr="3em"
-              pt={['0.5em', '0.5em', '1em', '1em', '1em']}
-              pb={['1.2em', '3.8em', '3.1em', '3.1em', '3.1em']}
+              pt={['0.5em', '0.2em', '1em', '1em', '1em']}
+              pb={['1.2em', '1em', '3.1em', '3.1em', '3.1em']}
             >
               <Box w={12 / 12} pr="0.5em">
                 <center>
@@ -501,7 +506,12 @@ class PurchaseItem extends React.Component {
             {/* <Box pl="3em" pr="3em" pt="1em">
           <Text2>Your order ID : 251485039</Text2>
         </Box> */}
-            <Flex pr="3em" pl="3em" pt="2em" wrap>
+            <Flex
+              pr="3em"
+              pl="3em"
+              pt={['2em', '2em', '2em', '2em', '2em']}
+              wrap
+            >
               <Box
                 w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
@@ -519,7 +529,7 @@ class PurchaseItem extends React.Component {
                 </WrapperPrice>
               </Box>
             </Flex>
-            <Box pl="3em" pr="3em" pt={['5em', '5em', '1em', '1em', '1em']}>
+            <Box pl="3em" pr="3em" pt={['5em', '2em', '1em', '1em', '1em']}>
               <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
             <Flex pl="3em" pr="3em" pt="2em" pb="3em" wrap>
@@ -546,7 +556,6 @@ class PurchaseItem extends React.Component {
                 w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
                 pt={['1.5rem', '2rem', '0rem', '0rem', '0rem']}
-                pb={['0em', '3.3em', '0em', '0em', '0em']}
               >
                 <center>
                   <ButtonCredit
@@ -618,14 +627,14 @@ class PurchaseItem extends React.Component {
                 </WrapperPricePack>
               </Box>
             </Flex>
-            <Box pl="3em" pr="3em" pt={['5em', '5em', '1em', '1em', '1em']}>
+            <Box pl="3em" pr="3em" pt={['2em', '2em', '1em', '1em', '1em']}>
               <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
             <Flex
               pl="3em"
               pr="3em"
-              pt={['1em', '2em', '2em', '2em', '2em']}
-              pb={['0em', '1em', '1em', '1em', '1em']}
+              pt={['1em', '1em', '2em', '2em', '2em']}
+              pb={['0em', '0.5em', '1em', '1em', '1em']}
               wrap
             >
               <Box
@@ -650,7 +659,7 @@ class PurchaseItem extends React.Component {
               <Box
                 w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
-                pt={['0.5rem', '2rem', '0rem', '0rem', '0rem']}
+                pt={['0.5rem', '1rem', '0rem', '0rem', '0rem']}
               >
                 <center>
                   <ButtonCredit
@@ -684,7 +693,7 @@ class PurchaseItem extends React.Component {
             <Flex
               pl="3em"
               pr="3em"
-              pt={['0.4em', '1em', '1em', '1em', '1em']}
+              pt={['0.4em', '0.3em', '1em', '1em', '1em']}
               pb={['1.2em', '1.1em', '2em', '2em', '2em']}
             >
               <Box w={12 / 12} pr="0.5em">
