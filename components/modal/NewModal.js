@@ -290,6 +290,16 @@ export default class Modal extends Component {
           </WrapperClose>
         </WrapperSuccessPurchase>
       )
+    }else if (this.props.modalType === 10) {
+      //SuccessPurchase
+      // renderUI = (
+      //   <WrapperPurchaseItem onClick={e => this.handleOnClick(e)}>
+      //     <SuccessPurchase closeModal={this.props.closeModal} />
+      //     <WrapperClose onClick={true ? this.props.closeModal : ''}>
+      //       <Image width="100%" src="../../static/close.png" />
+      //     </WrapperClose>
+      //   </WrapperPurchaseItem>
+      // )
     } else {
       //null
       renderUI = renderUI
