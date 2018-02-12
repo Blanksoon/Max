@@ -125,7 +125,7 @@ class Detail extends React.Component {
           <Box
             className="googleMaps"
             w={[12 / 12, 12 / 12, 8 / 12, 8 / 12, 8 / 12]}
-            bg="gray"
+            bg="red"
           >
             <MapWithAMarker
               googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx1PFatOg26tgLRPDqJ204-cmSlpqNeEM&callback=initMap"
@@ -282,7 +282,9 @@ class Detail extends React.Component {
             }
             @media screen and (min-width: 766px) {
               .map {
-                height: 100%;
+                // height: 100%;
+                //height: 368px;
+                height: 566px;
               }
             }
             @media screen and (min-width: 1022px) {
