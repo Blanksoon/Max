@@ -271,23 +271,26 @@ class PurchaseItem extends React.Component {
     if (this.props.id == 'live') {
       // console.log('dddddd333333', this.props.product._id)
       const response = await api.get(
-        `${api.SERVER}/wechat/package/payperview?token=${this.props.auth
-          .token}&packageId=${this.props.product._id}`
+        `${api.SERVER}/wechat/live/payperview?token=${this.props.auth
+          .token}&liveId=${this.props.product._id}`
       )
       // console.log('dddddd333333', response)
       if (response) {
         //this.props.closeModal()
-        Router.push(`${response.data.url}`)
+        const qr = encodeURIComponent(response.data.qrcode)
+        this.props.closeModal()
+        Router.push(`/QRcode?QR=${qr}`)
       }
     } else if (this.props.id == 'package') {
       const response = await api.get(
         `${api.SERVER}/wechat/package/payperview?token=${this.props.auth
           .token}&packageId=${this.props.product._id}`
       )
-      console.log('dddddd333333', response.data.qrcode)
       if (response) {
+        const qr = encodeURIComponent(response.data.qrcode)
         this.props.closeModal()
-        Router.push(`/QRcode?QR=${response.data.qrcode}`)
+        Router.push(`/QRcode?QR=${qr}`)
+        //Router.push(response.data.url)
       }
     }
     this.setState({ loadingWechat: false })
@@ -492,7 +495,7 @@ class PurchaseItem extends React.Component {
               pt={['0.5em', '0.2em', '1em', '1em', '1em']}
               pb={['1.2em', '1em', '3.1em', '3.1em', '3.1em']}
             >
-              <Box w={12 / 12} pr="0.5em">
+              <Box w={6 / 12} pr="0.5em">
                 <center>
                   <ButtonAlipay
                     onClick={this.purchaseAlipay}
@@ -508,22 +511,22 @@ class PurchaseItem extends React.Component {
                   </ButtonAlipay>
                 </center>
               </Box>
-              {/* <Box w={6 / 12} pl="0.5em">
-                <center>
-                  <ButtonAlipay
-                    onClick={this.purchaseAlipay}
-                    disabled={this.state.loading}
-                  >
-                    {this.state.loadingAlipay ? (
-                      <Box pt="0.38em" pb="0.38em">
-                        <Spinner />
-                      </Box>
-                    ) : (
-                      <Image width="100%" src="../../static/btn_wechat.png" />
-                    )}
-                  </ButtonAlipay>
-                </center>
-              </Box> */}
+              <Box w={6 / 12} pl="0.5em">
+              <center>
+                <ButtonAlipay
+                  onClick={this.purchaseWechat}
+                  disabled={this.state.loading}
+                >
+                  {this.state.loadingWechat ? (
+                    <Box pt="0.38em" pb="0.38em">
+                      <Spinner />
+                    </Box>
+                  ) : (
+                    <Image width="100%" src="../../static/btn_wechat.png" />
+                  )}
+                </ButtonAlipay>
+              </center>
+            </Box>
             </Flex>
           </WrapperDown>
         </Wrapper>

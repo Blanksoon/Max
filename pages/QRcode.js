@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { Flex, Box, Image, Text, Provider } from 'rebass'
+import { Flex, Box, Image, Provider } from 'rebass'
 import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import color from '../components/commons/vars'
@@ -34,7 +34,7 @@ const Text1 = styled.div`
   padding-top: 1rem;
   color: #8a8a8a;
   font-weight: 700;
-  font-size: 75px;
+  font-size: 2rem;
   font-family: Helvetica, Arial, sans-serif;
   ${media.phone`font-size: 3rem`};
   ${media.iphone5`font-size: 3rem`};
@@ -102,7 +102,7 @@ class QRcode extends React.Component {
     })
   }
   render() {
-    // console.log('ddddddd',this.props.url.query.QR)
+    console.log('ddddddd', this.props.url.query.QR)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Provider theme={theme}>
@@ -123,15 +123,15 @@ class QRcode extends React.Component {
                   <Box pt="7rem">
                     <Wrapperr>
                       <Flex>
-                        <Box
-                          pt="7em"
-                          pb="9em"
-                          w={1}
-                        >
-                        <center>
-                            Open the phone wechat and scan qrcode to continue payment
-                            <Image pt='1rem' width="10%" src={this.props.url.query.QR} />
-                        </center>                            
+                        <Box pt="7em" pb="9em" w={1}>
+                          <center>
+                            <Text1>Open the phone wechat and scan qrcode to continue payment</Text1>
+                            <Image
+                              pt="1rem"
+                              width="20%"
+                              src={this.props.url.query.QR}
+                            />
+                          </center>
                         </Box>
                       </Flex>
                     </Wrapperr>
