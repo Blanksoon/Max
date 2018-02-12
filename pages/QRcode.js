@@ -126,6 +126,8 @@ class QRcode extends React.Component {
                         <Box pt="7em" pb="9em" w={1}>
                           <center>
                             <Text1>Open the phone wechat and scan qrcode to continue payment</Text1>
+                            <Text1>{this.props.url.query.des}</Text1>
+                            <Text1>{this.props.url.query.name} {this.props.url.query.price}</Text1>
                             <Image
                               pt="1rem"
                               width="20%"

@@ -267,7 +267,7 @@ class PurchaseItem extends React.Component {
 
   async purchaseWechat() {
     this.setState({ loadingWechat: true })
-    // console.log('dddddddFEWF')
+    console.log('dddddd333333', this.props.product)    
     if (this.props.id == 'live') {
       // console.log('dddddd333333', this.props.product._id)
       const response = await api.get(
@@ -279,7 +279,7 @@ class PurchaseItem extends React.Component {
         //this.props.closeModal()
         const qr = encodeURIComponent(response.data.qrcode)
         this.props.closeModal()
-        Router.push(`/QRcode?QR=${qr}`)
+        Router.push(`/QRcode?QR=${qr}&name=${this.props.product.programName}&price=${this.props.product.price}$`)
       }
     } else if (this.props.id == 'package') {
       const response = await api.get(
@@ -289,7 +289,7 @@ class PurchaseItem extends React.Component {
       if (response) {
         const qr = encodeURIComponent(response.data.qrcode)
         this.props.closeModal()
-        Router.push(`/QRcode?QR=${qr}`)
+        Router.push(`/QRcode?QR=${qr}&des=${this.props.product.description}`)
         //Router.push(response.data.url)
       }
     }
