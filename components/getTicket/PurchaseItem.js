@@ -150,7 +150,7 @@ const WrapperPricePack = styled.div`
 `
 const WrapperPriceLive = styled.div`
   position: absolute;
-  top: 51%;
+  top: 50%;
   ${media.phone`top: 57.5%;`};
   ${media.iphone5`top: 55%;`};
 `
@@ -586,6 +586,29 @@ class PurchaseItem extends React.Component {
                 </center>
               </Box>
             </Flex>
+            {/* <Flex
+              pl="3em"
+              pr="3em"
+              pt={['0.4em', '0.3em', '1em', '1em', '1em']}
+              pb={['1.2em', '1.1em', '2em', '2em', '2em']}
+            >
+              <Box w={12 / 12} pr="0.5em">
+                <center>
+                  <ButtonAlipay
+                    onClick={this.purchaseAlipay}
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loadingAlipay ? (
+                      <Box pt="0.38em" pb="0.38em">
+                        <Spinner />
+                      </Box>
+                    ) : (
+                      <Image width="100%" src="../../static/btn_alipay.png" />
+                    )}
+                  </ButtonAlipay>
+                </center>
+              </Box>
+            </Flex> */}
           </WrapperDown>
         </Wrapper>
       )
