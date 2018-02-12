@@ -102,7 +102,7 @@ class QRcode extends React.Component {
     })
   }
   render() {
-    console.log('ddddddd',this.props.url.query.QR)
+    console.log('ddddddd', this.props.url.query.QR)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Provider theme={theme}>
@@ -123,15 +123,16 @@ class QRcode extends React.Component {
                   <Box pt="7rem">
                     <Wrapperr>
                       <Flex>
-                        <Box
-                          pt="7em"
-                          pb="9em"
-                          w={1}
-                        >
-                        <center>
-                            Open the phone wechat and scan qrcode to continue payment
-                            <Image pt='1rem' width="10%" src={this.props.url.query.QR} />
-                        </center>                            
+                        <Box pt="7em" pb="9em" w={1}>
+                          <center>
+                            Open the phone wechat and scan qrcode to continue
+                            payment
+                            <Image
+                              pt="1rem"
+                              width="10%"
+                              src={this.props.url.query.QR}
+                            />
+                          </center>
                         </Box>
                       </Flex>
                     </Wrapperr>

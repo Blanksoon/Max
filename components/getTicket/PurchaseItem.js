@@ -284,10 +284,11 @@ class PurchaseItem extends React.Component {
         `${api.SERVER}/wechat/package/payperview?token=${this.props.auth
           .token}&packageId=${this.props.product._id}`
       )
-      console.log('dddddd333333', response.data)
       if (response) {
+        const qr = encodeURIComponent(response.data.qrcode)
         this.props.closeModal()
-        Router.push(`/QRcode?QR=${response.data.qrcode}`)
+        Router.push(`/QRcode?QR=${qr}`)
+        //Router.push(response.data.url)
       }
     }
     this.setState({ loadingWechat: false })
