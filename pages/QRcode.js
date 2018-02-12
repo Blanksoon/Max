@@ -102,7 +102,7 @@ class QRcode extends React.Component {
     })
   }
   render() {
-    console.log('ddddddd',this.props.url.query.QR)
+    // console.log('ddddddd',this.props.url.query.QR)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Provider theme={theme}>
