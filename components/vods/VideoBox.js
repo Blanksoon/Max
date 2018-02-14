@@ -147,7 +147,11 @@ class VideoBox extends Component {
             hilight={hilight}
           />
         </WrapperHilight>
-        <Box pt="3rem" pl="1rem" pr="1rem">
+        <Box
+          pt={['4.5rem', '4.5rem', '3rem', '3rem', '3rem']}
+          pl="1rem"
+          pr="1rem"
+        >
           <ProgramFilter
             lang={this.props.lang}
             programEns={this.props.programEns}
