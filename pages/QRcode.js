@@ -36,8 +36,9 @@ const Text1 = styled.div`
   font-weight: 700;
   font-size: 2rem;
   font-family: Helvetica, Arial, sans-serif;
-  ${media.phone`font-size: 3rem`};
-  ${media.iphone5`font-size: 3rem`};
+  ${media.ipad`font-size: 1.5rem`};
+  ${media.phone`font-size: 1rem`};
+  ${media.iphone5`font-size: 1rem`};
 `
 
 const Text2 = styled.div`
@@ -145,7 +146,7 @@ class QRcode extends React.Component {
                         <Box pt="7em" pb="9em" w={1}>
                           <center>
                             <Image
-                              width="30%"
+                              width={["40%","30%","30%","30%","30%"]}
                               src="/static/img_wechatpay.png" //btn_wechat
                             />
                             <Text1>

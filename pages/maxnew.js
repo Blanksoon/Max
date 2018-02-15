@@ -19,17 +19,44 @@ import {
   closeModal,
 } from '../redux/modules/modal'
 import * as api from '../api'
+import { I18nextProvider } from 'react-i18next'
+import startI18n from '../tools/startI18n'
+import { getTranslation } from '../tools/translationHelpers'
+import { langSelector } from '../redux/selectors/lang'
+import { langUrl } from '../tools/langUrl'
+import { media } from '../tools/responsive'
 
 const Wrapper = styled.div`background-color: #3c5c83;`
 class maxnew extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      translations: this.props.translations,
+      lang: this.props.lang,
+    }
+    this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+    this.switchLang = this.switchLang.bind(this)
+  }
+
+  async switchLang(lang) {
+    this.setState({
+      lang: lang,
+      translations: await getTranslation(lang, ['common', 'navbar'], langUrl),
+    })
+  }
   render() {
     return (
-      <div>
+      <I18nextProvider i18n={this.i18n}>
         <Head>
           <link href="/static/css/video-react.css" rel="stylesheet" />
         </Head>
         {/* {status.message ?  : null } */}
-        <Main url={this.props.url}>
+        <Main 
+          url={this.props.url}
+          nav={this.state.translations.translation.common}
+          www=""
+          switchLanguage={this.switchLang}
+        >
           <NewModal
             common={this.state.translations.translation.common}
             lang={this.state.lang}
@@ -56,11 +83,31 @@ class maxnew extends React.Component {
             }
           `}
         </style>
-      </div>
+        </I18nextProvider>
     )
   }
 }
 
+const mapStateToProps = state => {
+  //console.log('ddddddsss', state.cookie)
+  return {
+    cookie: state.cookie,
+    lang: langSelector(state),
+  }
+}
+maxnew.getInitialProps = async ({ store, isServer, query, req }) => {
+  let state = store.getState()
+  const token = state.auth.token
+  state = store.getState()
+  const translations = await getTranslation(
+    state.cookie.lang,
+    ['common', 'navbar'],
+    langUrl
+  )
+  const props = mapStateToProps(state)
+  props.translations = translations
+  return props
+}
 export default withRedux(initStore, null, {
   toogleModal,
   updateModalType,

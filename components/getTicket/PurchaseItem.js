@@ -85,8 +85,8 @@ const ButtonCreditSub = styled.button`
   display: inline-block;
   ${media.phone`width: 262px;
   height: 50px;`};
-  ${media.iphone5`width: 202px;
-  height: 50px;`};
+  ${media.iphone5`width: 172px;
+  height: 35px;`};
 `
 const ButtonCredit = styled.button`
   width: 318px;
@@ -119,8 +119,8 @@ const ButtonpaypalSub = styled.button`
   // }
   ${media.phone`width: 262px;
   height: 50px;padding: 8px 70px;`};
-  ${media.iphone5`width: 202px;
-  height: 50px;padding: 8px 50px;`};
+  ${media.iphone5`width: 172px;
+  height: 35px;padding: 8px 50px;`};
 `
 const Buttonpaypal = styled.button`
   width: 318px;
@@ -175,7 +175,7 @@ const WrapperPrice = styled.div`
   position: absolute;
   top: 51%;
   ${media.phone`top: 53%;`};
-  ${media.iphone5`top: 50%;`};
+  ${media.iphone5`top: 53.5%;`};
 `
 const WrapperPricePack = styled.div`
   position: absolute;
@@ -195,8 +195,8 @@ const ImgSub = styled.img`
   ${media.phone`width: 262px;
   height: 50px;
   margin-left: -1px;`};
-  ${media.iphone5`width: 202px;
-  height: 50px;`};
+  ${media.iphone5`width: 172px;
+  height: 35px;`};
 `
 const Img = styled.img`
   width: 318px;
@@ -431,7 +431,7 @@ class PurchaseItem extends React.Component {
             <Flex
               pr="3em"
               pl="3em"
-              pt={['2em', '0.5em', '2em', '2em', '2em']}
+              pt={['0.5em', '0.5em', '2em', '2em', '2em']}
               wrap
             >
               <Box
@@ -473,21 +473,21 @@ class PurchaseItem extends React.Component {
             <Box
               pl={['3em', '3em', '3em', '3em', '3em']}
               pr="3em"
-              pt={['2em', '2em', '1em', '1em', '1em']}
+              pt={['1em', '2em', '1em', '1em', '1em']}
             >
               <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
             <Flex
               pl={['3em', '0em', '3em', '3em', '3em']}
               pr={['3em', '0em', '3em', '3em', '3em']}
-              pt={['1em', '1em', '2em', '2em', '2em']}
+              pt={['0.5em', '1em', '2em', '2em', '2em']}
               pb={['0em', '0.5em', '1em', '1em', '1em']}
               wrap
             >
               <Box
                 w={[12 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
-                pl={['0.5em', '0.5em', '0em', '0em', '0em']}
+                pl={['0em', '0.5em', '0em', '0em', '0em']}
               >
                 <center>
                   <Buttonpaypal
@@ -507,7 +507,7 @@ class PurchaseItem extends React.Component {
               <Box
                 w={[12 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
-                pr={['0.5em', '0.5em', '0em', '0em', '0em']}
+                pr={['0em', '0.5em', '0em', '0em', '0em']}
                 pt={['0.5rem', '0rem', '0rem', '0rem', '0rem']}
               >
                 <center>
@@ -541,12 +541,12 @@ class PurchaseItem extends React.Component {
             <Flex
               pl={['3em', '0em', '3em', '3em', '3em']}
               pr={['3em', '0em', '3em', '3em', '3em']}
-              pt={['1em', '1em', '2em', '2em', '2em']}
-              pb={['0em', '0.5em', '1em', '1em', '1em']}
+              pt={['0.5em', '1em', '2em', '2em', '2em']}
+              pb={['1em', '0.5em', '1em', '1em', '1em']}
               wrap
             >
               <Box
-                w={6 / 12}
+                w={[12 / 12,6 / 12,6 / 12,6 / 12,6 / 12]}
                 pr={['0.5em', '0em', '0.5em', '0.5em', '0.5em']}
                 pl={['0.5em', '0.5em', '0em', '0em', '0em']}
               >
@@ -566,9 +566,10 @@ class PurchaseItem extends React.Component {
                 </center>
               </Box>
               <Box
-                w={6 / 12}
+                w={[12 / 12,6 / 12,6 / 12,6 / 12,6 / 12]}
                 pl={['0.5em', '0em', '0.5em', '0.5em', '0.5em']}
                 pr={['0.5em', '0.5em', '0em', '0em', '0em']}
+                pt={['0.5rem', '0rem', '0rem', '0rem', '0rem']}
               >
                 <center>
                   <ButtonAlipay
@@ -632,7 +633,7 @@ class PurchaseItem extends React.Component {
                 </WrapperPrice>
               </Box>
             </Flex>
-            <Box pl="3em" pr="3em" pt={['5em', '2em', '1em', '1em', '1em']}>
+            <Box pl="3em" pr="3em" pt={['3.5em', '2em', '1em', '1em', '1em']}>
               <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
             <Flex pl="3em" pr="3em" pt="2em" pb="3em" wrap>
