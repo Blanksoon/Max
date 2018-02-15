@@ -130,10 +130,10 @@ class LiveVdo extends Component {
               lang={this.state.lang}
               url={url}
             />
-            <div style={{ paddingTop: '2rem' }}>
+            <div>
               <WrapperLivePlayer color={color}>
                 <Container>
-                  <Flex>
+                  <Flex pt={['0em', '0em', '0em', '2em', '2em']}>
                     <Box w={12 / 12}>
                       <BackVideoCenter name={common.BackToLive} url={url} />
                     </Box>

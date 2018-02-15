@@ -44,13 +44,13 @@ const Title = styled.div`
   font-size: 1.5rem;
   ${media.ipadpro`font-size: 1.5rem`};
   ${media.ipad`font-size: 1.3rem`};
-  ${media.phone`font-size: 0.5rem`};
+  ${media.phone`font-size: 0.8rem`};
   ${media.iphone5`font-size: 0.5rem`};
 `
 const LiveDate = styled.div`
   color: ${vars.yellow};
   margin-top: 1rem;
-  ${media.phone`font-size: 0.5rem`};
+  ${media.phone`font-size: 0.8rem;margin-top: 0.3rem;`};
   ${media.iphone5`font-size: 0.5rem;margin-top: 0.2rem;`};
 `
 const WrapperSlider = styled.div`${media.phone`margin-bottom: 1rem;`};`

@@ -13,7 +13,7 @@ const sizes = {
 export const theme = {
   breakpoints: [
     // min-width breakpoints in em
-    20, // 20.1, //iphone5
+    20.1, // 20.1, //iphone5
     23.5, // 23.44, //phone
     48, // 48.1, //ipad
     // 48,

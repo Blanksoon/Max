@@ -105,7 +105,7 @@ const WrapperPurchaseItem = styled.div`
   background: #fff;
   z-index: 240;
   ${media.phone`width: 360px;
-  height: 563px;`};
+  height: 489px;`};
   ${media.iphone5`width: 300px;
   height: 514px;`};
 `
@@ -290,7 +290,7 @@ export default class Modal extends Component {
           </WrapperClose>
         </WrapperSuccessPurchase>
       )
-    }else if (this.props.modalType === 10) {
+    } else if (this.props.modalType === 10) {
       //SuccessPurchase
       // renderUI = (
       //   <WrapperPurchaseItem onClick={e => this.handleOnClick(e)}>

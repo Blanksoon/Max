@@ -10,7 +10,7 @@ import { media, theme } from '../../../tools/responsive'
 
 const ActionBar = styled.div`
   margin-top: 1rem;
-  ${media.iphone5`margin-top: 0.3rem;`};
+  ${media.phone`margin-top: 0.7rem;`} ${media.iphone5`margin-top: 0.3rem;`};
 `
 export default ({
   live,

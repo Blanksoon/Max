@@ -35,7 +35,7 @@ const Title = styled.div`
   font-size: 1.5rem;
   ${media.ipadpro`font-size: 1.5rem`};
   ${media.ipad`font-size: 1.3rem`};
-  ${media.phone`font-size: 0.5rem`};
+  ${media.phone`font-size: 0.8rem`};
   ${media.iphone5`font-size: 0.5rem`};
 `
 const LiveDate = styled.div`

@@ -66,10 +66,27 @@ const ButtonAlipay = styled.button`
   padding: 13px 100px;
   border: 1px solid ${vars.white};
   display: inline-block;
-  ${media.phone`width: 264px;
-  height: 50px;padding: 4px 57px;`};
+  ${media.phone`width: 150px;
+  height: 50px;padding: 4px 12px;`};
+  ${media.iphone5`width: 172px;
+  height: 35px;padding: 8px 48px;`};
+`
+const ButtonCreditSub = styled.button`
+  width: 318px;
+  height: 60px;
+  background-color: ${vars.white};
+  color: ${vars.white};
+  font-weight: 700;
+  font-size: 1.8em;
+  font-family: Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  padding: 0px 0px;
+  border: 1px solid ${vars.blue};
+  display: inline-block;
+  ${media.phone`width: 262px;
+  height: 50px;`};
   ${media.iphone5`width: 202px;
-  height: 50px;padding: 8px 40px;`};
+  height: 50px;`};
 `
 const ButtonCredit = styled.button`
   width: 318px;
@@ -83,10 +100,27 @@ const ButtonCredit = styled.button`
   padding: 0px 0px;
   border: 1px solid ${vars.blue};
   display: inline-block;
-  ${media.phone`width: 264px;
+  ${media.phone`width: 150px;
   height: 50px;`};
+  ${media.iphone5`width: 172px;
+  height: 35px;`};
+`
+const ButtonpaypalSub = styled.button`
+  width: 318px;
+  height: 60px;
+  background-color: ${vars.white};
+  cursor: pointer;
+  padding: 13px 101px;
+  border: 1px solid ${vars.white};
+  display: inline-block;
+  // &:disabled {
+  //   background-color: ${vars.lightRed};
+  //   border: 1px solid ${vars.lightRed};
+  // }
+  ${media.phone`width: 262px;
+  height: 50px;padding: 8px 70px;`};
   ${media.iphone5`width: 202px;
-  height: 50px;`};
+  height: 50px;padding: 8px 50px;`};
 `
 const Buttonpaypal = styled.button`
   width: 318px;
@@ -100,10 +134,10 @@ const Buttonpaypal = styled.button`
   //   background-color: ${vars.lightRed};
   //   border: 1px solid ${vars.lightRed};
   // }
-  ${media.phone`width: 264px;
-  height: 50px;padding: 4px 57px;`};
-  ${media.iphone5`width: 202px;
-  height: 50px;padding: 8px 40px;`};
+  ${media.phone`width: 150px;
+  height: 50px;padding: 4px 24px;`};
+  ${media.iphone5`width: 172px;
+  height: 35px;padding: 8px 50px;`};
 `
 const Input = styled.input`
   background-color: #fffbbe;
@@ -146,23 +180,32 @@ const WrapperPrice = styled.div`
 const WrapperPricePack = styled.div`
   position: absolute;
   top: 51%;
-  ${media.phone`top: 53%;`};
+  ${media.phone`top: 59.5%;`};
   ${media.iphone5`top: 51%;`};
 `
 const WrapperPriceLive = styled.div`
   position: absolute;
   top: 50%;
-  ${media.phone`top: 57.5%;`};
+  ${media.phone`top: 62%;`};
   ${media.iphone5`top: 55%;`};
 `
-const Img = styled.img`
+const ImgSub = styled.img`
   width: 318px;
   height: 60px;
-  ${media.phone`width: 264px;
+  ${media.phone`width: 262px;
   height: 50px;
   margin-left: -1px;`};
   ${media.iphone5`width: 202px;
   height: 50px;`};
+`
+const Img = styled.img`
+  width: 318px;
+  height: 60px;
+  ${media.phone`width: 150px;
+  height: 50px;
+  margin-left: -1px;`};
+  ${media.iphone5`width: 172px;
+  height: 35px;`};
 `
 class PurchaseItem extends React.Component {
   constructor(props) {
@@ -267,7 +310,7 @@ class PurchaseItem extends React.Component {
 
   async purchaseWechat() {
     this.setState({ loadingWechat: true })
-    console.log('dddddd333333', this.props.product)    
+    console.log('dddddd333333', this.props.product)
     if (this.props.id == 'live') {
       // console.log('dddddd333333', this.props.product._id)
       const response = await api.get(
@@ -279,7 +322,10 @@ class PurchaseItem extends React.Component {
         //this.props.closeModal()
         const qr = encodeURIComponent(response.data.qrcode)
         this.props.closeModal()
-        Router.push(`/QRcode?QR=${qr}&name=${this.props.product.programName}&price=${this.props.product.price}$`)
+        Router.push(
+          `/QRcode?QR=${qr}&name=${this.props.product.programName}&price=${this
+            .props.product.price}$`
+        )
       }
     } else if (this.props.id == 'package') {
       const response = await api.get(
@@ -432,14 +478,16 @@ class PurchaseItem extends React.Component {
               <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
             <Flex
-              pl={['3em', '3em', '3em', '3em', '3em']}
-              pr="3em"
-              pt={['1em', '0.5em', '1em', '1em', '1em']}
+              pl={['3em', '0em', '3em', '3em', '3em']}
+              pr={['3em', '0em', '3em', '3em', '3em']}
+              pt={['1em', '1em', '2em', '2em', '2em']}
+              pb={['0em', '0.5em', '1em', '1em', '1em']}
               wrap
             >
               <Box
-                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                w={[12 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+                pl={['0.5em', '0.5em', '0em', '0em', '0em']}
               >
                 <center>
                   <Buttonpaypal
@@ -457,9 +505,10 @@ class PurchaseItem extends React.Component {
                 </center>
               </Box>
               <Box
-                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                w={[12 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
-                pt={['0.5rem', '0.5rem', '0rem', '0rem', '0rem']}
+                pr={['0.5em', '0.5em', '0em', '0em', '0em']}
+                pt={['0.5rem', '0rem', '0rem', '0rem', '0rem']}
               >
                 <center>
                   <ButtonCredit
@@ -490,12 +539,17 @@ class PurchaseItem extends React.Component {
               </Box>
             </Flex>
             <Flex
-              pl={['3em', '3em', '3em', '3em', '3em']}
-              pr="3em"
-              pt={['0.5em', '0.2em', '1em', '1em', '1em']}
-              pb={['1.2em', '1em', '3.1em', '3.1em', '3.1em']}
+              pl={['3em', '0em', '3em', '3em', '3em']}
+              pr={['3em', '0em', '3em', '3em', '3em']}
+              pt={['1em', '1em', '2em', '2em', '2em']}
+              pb={['0em', '0.5em', '1em', '1em', '1em']}
+              wrap
             >
-              <Box w={6 / 12} pr="0.5em">
+              <Box
+                w={6 / 12}
+                pr={['0.5em', '0em', '0.5em', '0.5em', '0.5em']}
+                pl={['0.5em', '0.5em', '0em', '0em', '0em']}
+              >
                 <center>
                   <ButtonAlipay
                     onClick={this.purchaseAlipay}
@@ -511,22 +565,26 @@ class PurchaseItem extends React.Component {
                   </ButtonAlipay>
                 </center>
               </Box>
-              <Box w={6 / 12} pl="0.5em">
-              <center>
-                <ButtonAlipay
-                  onClick={this.purchaseWechat}
-                  disabled={this.state.loading}
-                >
-                  {this.state.loadingWechat ? (
-                    <Box pt="0.38em" pb="0.38em">
-                      <Spinner />
-                    </Box>
-                  ) : (
-                    <Image width="100%" src="../../static/btn_wechat.png" />
-                  )}
-                </ButtonAlipay>
-              </center>
-            </Box>
+              <Box
+                w={6 / 12}
+                pl={['0.5em', '0em', '0.5em', '0.5em', '0.5em']}
+                pr={['0.5em', '0.5em', '0em', '0em', '0em']}
+              >
+                <center>
+                  <ButtonAlipay
+                    onClick={this.purchaseWechat}
+                    disabled={this.state.loading}
+                  >
+                    {this.state.loadingWechat ? (
+                      <Box pt="0.38em" pb="0.38em">
+                        <Spinner />
+                      </Box>
+                    ) : (
+                      <Image width="100%" src="../../static/btn_wechat.png" />
+                    )}
+                  </ButtonAlipay>
+                </center>
+              </Box>
             </Flex>
           </WrapperDown>
         </Wrapper>
@@ -583,7 +641,7 @@ class PurchaseItem extends React.Component {
                 pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
               >
                 <center>
-                  <Buttonpaypal
+                  <ButtonpaypalSub
                     onClick={this.purchasePayPal}
                     disabled={this.state.loading}
                   >
@@ -594,7 +652,7 @@ class PurchaseItem extends React.Component {
                     ) : (
                       <Image width="100%" src="../../static/PayPal.png" />
                     )}
-                  </Buttonpaypal>
+                  </ButtonpaypalSub>
                 </center>
               </Box>
               <Box
@@ -603,7 +661,7 @@ class PurchaseItem extends React.Component {
                 pt={['1.5rem', '2rem', '0rem', '0rem', '0rem']}
               >
                 <center>
-                  <ButtonCredit
+                  <ButtonCreditSub
                     onClick={this.purchaseCard}
                     disabled={this.state.loading}
                     //token={this.onToken}
@@ -623,11 +681,11 @@ class PurchaseItem extends React.Component {
                         //allowRememberMe="false"
                       >
                         <center>
-                          <Img src="../../static/109-credit-cards-accepted-logo.png" />
+                          <ImgSub src="../../static/109-credit-cards-accepted-logo.png" />
                         </center>
                       </StripeCheckout>
                     )}
-                  </ButtonCredit>
+                  </ButtonCreditSub>
                 </center>
               </Box>
             </Flex>
@@ -699,15 +757,16 @@ class PurchaseItem extends React.Component {
               <Text2>{PAYMENTMETHOD}</Text2>
             </Box>
             <Flex
-              pl="3em"
-              pr="3em"
+              pl={['3em', '0em', '3em', '3em', '3em']}
+              pr={['3em', '0em', '3em', '3em', '3em']}
               pt={['1em', '1em', '2em', '2em', '2em']}
               pb={['0em', '0.5em', '1em', '1em', '1em']}
               wrap
             >
               <Box
-                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                w={[12 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+                pl={['0em', '0.5em', '0em', '0em', '0em']}
               >
                 <center>
                   <Buttonpaypal
@@ -725,9 +784,10 @@ class PurchaseItem extends React.Component {
                 </center>
               </Box>
               <Box
-                w={[12 / 12, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                w={[12 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
-                pt={['0.5rem', '1rem', '0rem', '0rem', '0rem']}
+                pr={['0em', '0.5em', '0em', '0em', '0em']}
+                pt={['0.5rem', '0rem', '0rem', '0rem', '0rem']}
               >
                 <center>
                   <ButtonCredit
@@ -759,12 +819,17 @@ class PurchaseItem extends React.Component {
               </Box>
             </Flex>
             <Flex
-              pl="3em"
-              pr="3em"
+              pl={['3em', '0em', '3em', '3em', '3em']}
+              pr={['3em', '0em', '3em', '3em', '3em']}
               pt={['0.4em', '0.3em', '1em', '1em', '1em']}
               pb={['1.2em', '1.1em', '2em', '2em', '2em']}
+              wrap
             >
-              <Box w={6 / 12} pr="0.5em">
+              <Box
+                w={[12 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+                pl={['0em', '0.5em', '0em', '0em', '0em']}
+              >
                 <center>
                   <ButtonAlipay
                     onClick={this.purchaseAlipay}
@@ -780,7 +845,12 @@ class PurchaseItem extends React.Component {
                   </ButtonAlipay>
                 </center>
               </Box>
-              <Box w={6 / 12} pl="0.5em">
+              <Box
+                w={[12 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
+                pl={['0em', '0em', '0.5em', '0.5em', '0.5em']}
+                pr={['0em', '0.5em', '0em', '0em', '0em']}
+                pt={['0.5rem', '0rem', '0rem', '0rem', '0rem']}
+              >
                 <center>
                   <ButtonAlipay
                     onClick={this.purchaseWechat}
@@ -801,7 +871,7 @@ class PurchaseItem extends React.Component {
         </Wrapper>
       )
     }
-    return <Provider theme={theme}>{renderUI}</Provider>
+    return <div>{renderUI}</div>
   }
 }
 

@@ -49,6 +49,13 @@ const WrapperDes = styled.div`
   ${media.iphone5`height: 43px`};
   overflow: hidden;
 `
+const Text1 = styled.div`
+  font-size: 1em;
+  ${media.ipadpro`font-size: 0.9em`};
+  ${media.ipad`font-size: 0.8em`};
+  ${media.phone`font-size: 0.8em`};
+  ${media.iphone5`font-size: 0.5em`};
+`
 const WrapperText = styled.div`background: #012147;`
 const ThumbnailLive = ({ lang, live }) => {
   // const Next = common.Nexton
@@ -125,14 +132,16 @@ const ThumbnailLive = ({ lang, live }) => {
       <WrapperText>
         <Box pt="2%" pb="2%">
           <center>
-            <Text
-              color="#d6ff00"
-              bold
-              children={`${Next} ${lang === 'en'
-                ? live.liveDateStr_en
-                : live.liveDateStr_th}`}
-              fontSize={['0.5em', '0.5em', '0.8em', '0.9em', '1em']}
-            />
+            <Text1>
+              <Text
+                color="#d6ff00"
+                bold
+                children={`${Next} ${lang === 'en'
+                  ? live.liveDateStr_en
+                  : live.liveDateStr_th}`}
+                // fontSize={['0.5em', '0.8em', '0.8em', '0.9em', '1em']}
+              />
+            </Text1>
           </center>
         </Box>
       </WrapperText>

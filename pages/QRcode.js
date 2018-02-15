@@ -84,6 +84,24 @@ const Wrapperr = styled.div`
   height: 100%;
   background-size: cover;
 `
+const ButtonLive = styled.button`
+  background-color: ${color.white};
+  border: 1px solid ${color.red};
+  padding: 8px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 1rem;
+  font-family: Helvetica, Arial, sans-serif;
+  color: ${color.red};
+  // cursor: pointer;
+  ${media.phone`padding: 8px 20px;
+  font-size: 12px;`};
+  ${media.iphone5`padding: 8px 10px;
+  font-size: 12px;`};
+`
 class QRcode extends React.Component {
   constructor(props) {
     super(props)
@@ -103,6 +121,7 @@ class QRcode extends React.Component {
   }
   render() {
     console.log('ddddddd', this.props.url.query.QR)
+    let des = {}
     return (
       <I18nextProvider i18n={this.i18n}>
         <Provider theme={theme}>
@@ -125,9 +144,19 @@ class QRcode extends React.Component {
                       <Flex>
                         <Box pt="7em" pb="9em" w={1}>
                           <center>
-                            <Text1>Open the phone wechat and scan qrcode to continue payment</Text1>
-                            <Text1>{this.props.url.query.des}</Text1>
-                            <Text1>{this.props.url.query.name} {this.props.url.query.price}</Text1>
+                            <Image
+                              width="30%"
+                              src="/static/img_wechatpay.png" //btn_wechat
+                            />
+                            <Text1>
+                              Open the phone wechat and scan qrcode to continue
+                              payment
+                            </Text1>
+                            <ButtonLive>
+                              {this.props.url.query.des}
+                              {this.props.url.query.name}{' '}
+                              {this.props.url.query.price}
+                            </ButtonLive>
                             <Image
                               pt="1rem"
                               width="20%"

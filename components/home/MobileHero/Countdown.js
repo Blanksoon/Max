@@ -30,7 +30,7 @@ const Digit = styled.div`
   font-family: 'Lucida Console', Monaco, monospace;
   font-size: 1.5rem;
   text-align: center;
-  ${media.phone`font-size: 0.5rem`};
+  ${media.phone`font-size: 1rem`};
   ${media.iphone5`font-size: 0.5rem`};
 `
 const Text = styled.div`
@@ -44,7 +44,7 @@ const Text = styled.div`
 const Label = styled.div`
   border-bottom: 1px solid ${vars.white};
   color: ${vars.yellow};
-  font-family: 'Lucida Console', Monaco, monospace;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 1.5rem;
   margin: 0 0.5rem;
   padding: 0.3rem 0.5rem;
