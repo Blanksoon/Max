@@ -311,7 +311,12 @@ class lives extends React.Component {
             />
             <Wrapper>
               <Container>
-                <Box pl={['0.75rem', '1.5rem']} bg="#fff" pt="8rem" pb="2rem">
+                <Box
+                  pl={['0.75rem', '1.5rem']}
+                  bg="#fff"
+                  pt={['5rem', '5rem', '8rem', '8rem', '8rem']}
+                  pb={['1rem', '1rem', '2rem', '2rem', '2rem']}
+                >
                   <Text>{this.state.translations.translation.common.LIVE}</Text>
                 </Box>
                 {this.renderUI()}

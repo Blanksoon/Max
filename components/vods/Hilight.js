@@ -10,8 +10,14 @@ const Hilight = styled.a`
   position: relative;
   width: 640px;
   cursor: pointer;
-  ${media.phone`width: 343px;`};
-  ${media.iphone5`width: 288px;`};
+  ${media.phone`
+  width: 343px;
+  margin: 1.5rem auto;
+  `};
+  ${media.iphone5`
+  width: 288px;
+  margin: 1.5rem auto;
+  `};
 `
 const Gradient = styled.div`
   bottom: -5rem;
