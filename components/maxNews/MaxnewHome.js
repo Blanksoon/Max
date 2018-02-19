@@ -183,13 +183,15 @@ class MaxnewHome extends React.Component {
             </Box>
             <Box width={[12 / 12, 12 / 12, 12 / 12, 5 / 12, 5 / 12]} pl="2%">
               <Flex pt={['1rem', '1rem', '0rem', '0rem', '0rem']}>
-                <ThumbnailRight
-                  w="100%"
-                  img="static/maxPromo.jpg"
-                  text1="Headline Headline consect adipicing elit sedid"
-                  text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                  date="Aug 11, 2017"
-                />
+                <Link href={`/maxnews`} >
+                    <ThumbnailRight
+                      w="100%"
+                      img="static/maxPromo.jpg"
+                      text1="Headline Headline consect adipicing elit sedid"
+                      text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date="Aug 11, 2017"
+                    />
+                </Link>
               </Flex>
               <Flex pt={['1rem', '1rem', '3.5rem', '3.5rem', '3.5rem']}>
                 <ThumbnailRight
