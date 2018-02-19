@@ -9,7 +9,6 @@ const initialState = {
   live: {},
   modal: {},
   vod: {},
-  maxs: {},
 }
 
 const getAllCookies = ({ req, isServer }) => {

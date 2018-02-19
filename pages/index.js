@@ -199,11 +199,11 @@ url={this.props.url}nav={this.state.translations.translation.common}
               <Container>
                 <Flex>
                   <Box w={12 / 12} pb="4em" pt="2em">
-                    <MaxnewHome
+                    {/* <MaxnewHome
                       lang={this.state.lang}
                       common={this.state.translations.translation.common}
                       lives={this.props.lives}
-                    />
+                    /> */}
                   </Box>
                 </Flex>
               </Container>
@@ -234,7 +234,7 @@ url={this.props.url}nav={this.state.translations.translation.common}
 }
 
 const mapStateToProps = state => {
-  console.log('ddddddsss', state)
+  //console.log('ddddddsss', state)
   return {
     cookie: state.cookie,
     lives: dataLivesSelector(state),

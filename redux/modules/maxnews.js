@@ -16,24 +16,35 @@ export const fetchNewsSuccess = news => ({
 export const fetchNews = token => async dispatch => {
   console.log('dddddd1')
   dispatch(fetchNewsReq())
-  fetchMock.restore()
-  const url = `${api.SERVER}/news?token=${token}`
+  //const url = `${api.SERVER}/news?token=${token}`
   try {
-    const json = await api.get(url)
-    const json2 = fetchMock.post(`${api.SERVER}/news`, {
-      data: [
-        {
-          _id: `1`,
-          heading: `Max Muay Thai`,
-          create_date: `Jan 11,2018`,
-          imageUrl: `/static/FT6A6495.jpg`,
-          article: `Lorem`,
-        },
-      ],
+    fetchMock.restore()
+    //const json = await api.get(url)
+    let json2 = await fetchMock.post(`${api.SERVER}/news`, {
+      body: {
+        code: 200,
+        data: [
+          {
+            id: `1`,
+            heading: `Max Muay Thai`,
+            create_date: `Jan 11,2018`,
+            imageUrl: `/static/FT6A6495.jpg`,
+            article: `Lorem`,
+          },
+          {
+            id: `2`,
+            heading: `Max Muay Thai`,
+            create_date: `Jan 11,2018`,
+            imageUrl: `/static/FT6A6495.jpg`,
+            article: `Lorem`,
+          },
+        ],
+      },
     })
-    console.log('ddddddddd2', json2)
+    console.log('ddddddddd2', json2.routes[0].response.body.data)
+    fetchMock.restore()
     // You should not return in Vods <-- change to something like data
-    dispatch(fetchNewsSuccess(json.data))
+    //dispatch(fetchNewsSuccess(json.data))
   } catch (error) {
     console.log(error)
   }
