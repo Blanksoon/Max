@@ -62,11 +62,11 @@ class maxnew_detail extends React.Component {
           />
           <Wrapper>
             <Container>
-              <Flex pt="10rem" bg="#fff">
-                <Box w={8 / 12}>
+              <Flex pt={["5rem","5rem","5rem","10rem","10rem"]} bg="#fff" wrap>
+                <Box w={12 / 12}>
                   <DetailLeft />
                 </Box>
-                <Box w={4 / 12}>
+                <Box w={12 / 12} pt='1rem'>
                   <DetailRight />
                 </Box>
               </Flex>

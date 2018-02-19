@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import color from '../commons/vars'
 import { Media, Subhead, Image, Flex, Box, Text, Button } from 'rebass'
 import FacebookProvider, { Comments } from 'react-facebook'
+import ThumbnailMaxnew from '../thumbnail/ThumbnailMaxnew'
+import { media } from '../../tools/responsive'
 
 const Button1 = styled.button`
   bottom: 2%;
@@ -22,6 +24,7 @@ const Text1 = styled.div`
   font-weight: 700;
   font-size: 1.5em;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.iphone5`font-size: 1em;`};
 `
 const Text2 = styled.div`
   color: ${color.black};
@@ -30,10 +33,10 @@ const Text2 = styled.div`
   font-family: Helvetica, Arial, sans-serif;
 `
 const Text3 = styled.div`
-  color: ${color.blue};
-  font-weight: 700;
-  font-size: 1em;
-  font-family: Helvetica, Arial, sans-serif;
+color: ${color.red};
+font-weight: 700;
+font-size: 1em;
+font-family: Helvetica, Arial, sans-serif;
 `
 const Text4 = styled.div`
   color: ${color.black};
@@ -85,56 +88,91 @@ const WrapperLogo = styled.div`
 const Wrapper = styled.div`background-color: #fff;`
 const DetailLeft = () => (
   <Wrapper>
-    <Box pl="1rem" pr="1rem">
-      <Box>
-        <Text1>
-          Headline consectetur adipicing elit, sed do eiusmod tempor consectetur
-          adipicing elit
-        </Text1>
+    <Flex pl="1rem" pr="1rem" wrap>
+      <Box w={[12/12, 12/12, 12/12, 8/12, 8/12]}>
+        <Box>
+          <Text1>
+            Headline consectetur adipicing elit, sed do eiusmod tempor consectetur
+            adipicing elit
+          </Text1>
+        </Box>
+        <Box>
+          <br />
+          <Date>Aug 11, 2017</Date>
+          <br />
+        </Box>
+        <Box>
+          <WrapperHilight>
+            <Box>
+              <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
+              {/* <WrapperLogo>
+                <Image width="10%" pt={0} src="static/img_logo_white@2x.png" />
+              </WrapperLogo> */}
+            </Box>
+            <Box>
+              <WrapperHilightText>
+                <Image width="10%" pl="90%" src="static/img_logo_white@2x.png" />
+              </WrapperHilightText>
+            </Box>
+          </WrapperHilight>
+        </Box>
+        <Box pt="2rem">
+          <Text2>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </Text2>
+          <br />
+          <Text2>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+            id est laborum."
+          </Text2>
+          <br />
+        </Box>
       </Box>
-      <Box>
-        <br />
-        <Date>Aug 11, 2017</Date>
-        <br />
-      </Box>
-      <Box>
-        <WrapperHilight>
-          <Box>
-            <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
-            <WrapperLogo>
-              <Image width="10%" pt={0} src="static/img_logo_white@2x.png" />
-            </WrapperLogo>
+      <Box w={[12/12, 12/12, 12/12, 4/12, 4/12]} 
+      pl={["0rem", "0rem", "0rem", "6rem", "6rem"]} 
+      pr={["0rem", "0rem", "0rem", "1rem", "1rem"]}>
+        <Box>
+          <Text3>You may also like</Text3>
+        </Box>
+        <Flex wrap>
+          <Box w={[1/3, 1/3, 1/3, 1, 1]} pt={["1rem", "1rem", "1rem", "2rem", "2rem"]}>
+            <ThumbnailMaxnew
+              img="static/FT6A6495.jpg"
+              name="Headline Headline consect adipicing elit sedid"
+              text="incldidunt ut labore et dolore magna atiqua. Ut emim ad minim veniam, quis nostrud exercitation ullamco..."
+              date="Aug 11, 2"
+            />
           </Box>
-          <Box>
-            <WrapperHilightText>
-              <Image width="10%" pl="90%" src="static/img_logo_white@2x.png" />
-            </WrapperHilightText>
+          <Box w={[1/3, 1/3, 1/3, 1, 1]} pt={["1rem", "1rem", "1rem", "2rem", "2rem"]}>
+            <ThumbnailMaxnew
+              img="static/FT6A6495.jpg"
+              name="Headline Headline consect adipicing elit sedid"
+              text="incldidunt ut labore et dolore magna atiqua. Ut emim ad minim veniam, quis nostrud exercitation ullamco..."
+              date="Aug 11, 2"
+            />
           </Box>
-        </WrapperHilight>
-      </Box>
-      <Box pt="2rem">
-        <Text2>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
-        </Text2>
-        <br />
-        <Text2>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.sint occaecat
-          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-          id est laborum."
-        </Text2>
-        <br />
+          <Box w={[1/3, 1/3, 1/3, 1, 1]} pt={["1rem", "1rem", "1rem", "2rem", "2rem"]}>
+            <ThumbnailMaxnew
+              img="static/FT6A6495.jpg"
+              name="Headline Headline adipicing elit sedid"
+              text="incldidunt ut labore et dolore magna atiqua. Ut emim ad minim veniam, quis nostrud exercitation ullamco..."
+              date="Aug 11, 2"
+            />
+          </Box>
+        </Flex>
       </Box>
       {/* <Flex>
         <Box w={1.5 / 12} pt="0.5rem">
@@ -152,7 +190,7 @@ const DetailLeft = () => (
           <Comments href="http://localhost:8080/maxnew_detail" />
         </FacebookProvider>
       </Box> */}
-    </Box>
+    </Flex>
   </Wrapper>
 )
 export default DetailLeft

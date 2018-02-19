@@ -2,43 +2,33 @@ import ThumbnailMaxnew from '../thumbnail/ThumbnailMaxnew'
 import styled from 'styled-components'
 import vars from '../commons/vars'
 import { Media, Subhead, Image, Flex, Box, Text, Button } from 'rebass'
+import FacebookProvider, { Comments } from 'react-facebook'
 
 const Wrapper = styled.div`background-color: #fff;`
-const Text1 = styled.div`
-  color: ${vars.red};
+const Text3 = styled.div`
+  color: ${vars.blue};
   font-weight: 700;
   font-size: 1em;
   font-family: Helvetica, Arial, sans-serif;
 `
 const DetailRight = () => (
   <Wrapper>
-    <Box pl="6rem" pr="2rem">
+    <Box pl="1rem" pr="1rem">
+      <Flex>
+        <Box w={[4 / 12, 3 / 12, 1.5 / 12, 1.5 / 12, 1.5 / 12]} pt="0.5rem">
+          <Text3>Share on</Text3>
+        </Box>
+        <Box w={[1 / 12, 0.6 / 12, 0.6 / 12, 0.6 / 12, 0.6 / 12]}>
+          <Image width="100%" pt={0} src="static/ic_facebook.png" />
+        </Box>
+        <Box ml="0.5rem" w={[1 / 12, 0.6 / 12, 0.6 / 12, 0.6 / 12, 0.6 / 12]}>
+          <Image width="100%" pt={0} src="static/ic_share_twitter.png" />
+        </Box>
+      </Flex>
       <Box>
-        <Text1>You may also like</Text1>
-      </Box>
-      <Box pt="2rem">
-        <ThumbnailMaxnew
-          img="static/FT6A6495.jpg"
-          name="Headline Headline consect adipicing elit sedid"
-          text="incldidunt ut labore et dolore magna atiqua. Ut emim ad minim veniam, quis nostrud exercitation ullamco..."
-          date="Aug 11, 2"
-        />
-      </Box>
-      <Box pt="2rem">
-        <ThumbnailMaxnew
-          img="static/FT6A6495.jpg"
-          name="Headline Headline consect adipicing elit sedid"
-          text="incldidunt ut labore et dolore magna atiqua. Ut emim ad minim veniam, quis nostrud exercitation ullamco..."
-          date="Aug 11, 2"
-        />
-      </Box>
-      <Box pt="2rem">
-        <ThumbnailMaxnew
-          img="static/FT6A6495.jpg"
-          name="Headline Headline adipicing elit sedid"
-          text="incldidunt ut labore et dolore magna atiqua. Ut emim ad minim veniam, quis nostrud exercitation ullamco..."
-          date="Aug 11, 2"
-        />
+        <FacebookProvider appId="135776387080938">
+          <Comments href="http://localhost:8080/maxnew_detail" />
+        </FacebookProvider>
       </Box>
     </Box>
   </Wrapper>
