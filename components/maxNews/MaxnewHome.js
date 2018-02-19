@@ -250,6 +250,7 @@ MaxnewHome.getInitialProps = async ({ store, isServer, query, req }) => {
   props.translations = translations
   return props
 }
+
 export default withRedux(initStore, null, {
   toogleModal,
   updateModalType,

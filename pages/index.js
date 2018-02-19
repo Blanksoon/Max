@@ -200,11 +200,11 @@ class Index extends React.Component {
               <Container>
                 <Flex>
                   <Box w={12 / 12} pb="4em" pt="2em">
-                    <MaxnewHome
+                    {/* <MaxnewHome
                       lang={this.state.lang}
                       common={this.state.translations.translation.common}
                       lives={this.props.lives}
-                    />
+                    /> */}
                   </Box>
                 </Flex>
               </Container>
@@ -235,7 +235,7 @@ class Index extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log('ddddddsss', state)
+  //console.log('ddddddsss', state)
   return {
     cookie: state.cookie,
     lives: dataLivesSelector(state),
