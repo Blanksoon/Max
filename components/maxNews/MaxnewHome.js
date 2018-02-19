@@ -37,6 +37,7 @@ const Button1 = styled.button`
   font-size: 1em;
   margin-left: 53%;
   cursor: pointer;
+  margin-top: 7px;
   ${media.ipadpro`margin-left: 40%;`};
   ${media.phone`font-size: 0.8em`};
   ${media.iphone5`font-size: 0.7em;padding: 8px 8%;`};
@@ -186,11 +187,9 @@ class MaxnewHome extends React.Component {
                           </Date>
                         </Box>
                         <Box w={7 / 12}>
-                          <Link href={`/maxnews`}>
-                            <a>
+                            <a href={`/maxnews_detail`}>
                               <Button1>Read more</Button1>
                             </a>
-                          </Link>
                         </Box>
                       </Flex>
                     </Box>
@@ -200,7 +199,7 @@ class MaxnewHome extends React.Component {
             </Box>
             <Box width={[12 / 12, 12 / 12, 12 / 12, 5 / 12, 5 / 12]} pl="2%">
               <Flex pt={['1rem', '1rem', '0rem', '0rem', '0rem']}>
-                <Link href={`/maxnews`} >
+                  <a href={`/maxnews_detail`}>
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
@@ -208,32 +207,35 @@ class MaxnewHome extends React.Component {
                       text2={this.props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={this.props.news[0].createDate_en}//"Aug 11, 2017"
                     />
-                </Link>
+                  </a>
               </Flex>
               <Flex pt={['1rem', '1rem', '3.5rem', '3.5rem', '3.5rem']}>
-                <ThumbnailRight
-                  w="100%"
-                  img="static/maxPromo.jpg"
-                  text1={this.props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
-                  text2={this.props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                  date={this.props.news[0].createDate_en}//"Aug 11, 2017"
-                />
+                  <a href={`/maxnews_detail`}>
+                    <ThumbnailRight
+                      w="100%"
+                      img="static/maxPromo.jpg"
+                      text1={this.props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
+                      text2={this.props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={this.props.news[0].createDate_en}//"Aug 11, 2017"
+                    />
+                  </a>
               </Flex>
               <Flex pt={['1rem', '1rem', '3.5rem', '3.5rem', '3.5rem']}>
-                <ThumbnailRight
-                  w="100%"
-                  img="static/maxPromo.jpg"
-                  text1={this.props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
-                  text2={this.props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                  date={this.props.news[0].createDate_en}//"Aug 11, 2017"
-                />
+                  <a href={`/maxnews_detail`}>
+                    <ThumbnailRight
+                      w="100%"
+                      img="static/maxPromo.jpg"
+                      text1={this.props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
+                      text2={this.props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={this.props.news[0].createDate_en}//"Aug 11, 2017"
+                    />
+                  </a>
               </Flex>
             </Box>
           </Flex>
           <Box pt="4rem">
             <center>
-              <Link href={`/maxnews`}>
-                <a>
+                <a href={`/maxnews`}>
                   <Button className="button-hunger">
                     {this.props.lang === 'en' ? (
                       'Hunger for more'
@@ -242,9 +244,23 @@ class MaxnewHome extends React.Component {
                     )}
                   </Button>
                 </a>
-              </Link>
             </center>
           </Box>
+          <style jsx>
+            {`
+              a:link {
+                text-decoration: none;
+              }
+              a {
+                color: #fff;
+                text-decoration: none;
+              }
+              a:hover {
+                color: #ff0000;
+                text-decoration: none;
+              }
+            `}
+          </style>
         </div>
       </I18nextProvider>
     )

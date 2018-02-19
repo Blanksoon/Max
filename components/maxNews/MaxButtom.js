@@ -1,7 +1,7 @@
 import ThumbnailRight from '../thumbnail/ThumbnailRight'
 import styled from 'styled-components'
 import color from '../commons/vars'
-import { Media, Subhead, Image, Flex, Box, Text, Button } from 'rebass'
+import { Media, Subhead, Image, Flex, Box, Text, Button ,Link} from 'rebass'
 
 const Button1 = styled.button`
   bottom: 2%;
@@ -101,28 +101,47 @@ const Thumbnailright = props => (
       w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
       pr={['0em', '0em', '0em', '0.5em', '0.5em']}
     >
-      <ThumbnailRight
-        w="100%"
-        img="static/maxPromo.jpg"
-        text1={props.news1.heading_en}//"Headline Headline consect adipicing elit sedid"
-        text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-        date="Aug 11, 2017"
-        pt="0.9em"
-      />
+        <a href={`/maxnews_detail`}>
+          <ThumbnailRight
+            w="100%"
+            img="static/maxPromo.jpg"
+            text1={props.news1.heading_en}//"Headline Headline consect adipicing elit sedid"
+            text2={props.news1.article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+            date={props.news1.createDate_en}//"Aug 11, 2017"
+            pt="0.9em"
+          />
+        </a>
     </Box>
     <Box
       w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
       pt={['1em', '1em', '2em', '0em', '0em']}
       pl={['0em', '0em', '0em', '0.5em', '0.5em']}
     >
-      <ThumbnailRight
-        w="100%"
-        img="static/maxPromo.jpg"
-        text1={props.news2.heading_en}//"Headline Headline consect adipicing elit sedid"
-        text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-        date="Aug 11, 2017"
-        pt="0.9em"
-      />
+        <a href={`/maxnews_detail`}>
+          <ThumbnailRight
+            w="100%"
+            img="static/maxPromo.jpg"
+            text1={props.news2.heading_en}//"Headline Headline consect adipicing elit sedid"
+            text2={props.news2.article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+            date={props.news2.createDate_en}//"Aug 11, 2017"
+            pt="0.9em"
+          />
+        </a>
     </Box>
+    <style jsx>
+      {`
+        a:link {
+          text-decoration: none;
+        }
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+        a:hover {
+          color: #ff0000;
+          text-decoration: none;
+        }
+      `}
+    </style>
   </Flex>
 )
