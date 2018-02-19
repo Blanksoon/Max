@@ -1,65 +1,62 @@
 // This is the Link API
-import Head from "next/head";
-import Link from "next/link";
-import { Flex, Box, Provider } from "rebass";
-import Cookies from "universal-cookie";
-import styled from "styled-components";
-import withRedux from "next-redux-wrapper";
-import ComingLive from "../components/home/ComingLive";
-import LatestVideo from "../components/home/LatestVideo";
-import StadiumTicket from "../components/home/StadiumTicket";
-import About from "../components/home/About";
-import Hero from "../components/home/Hero";
-import MobileHero from "../components/home/MobileHero";
-import OurShow from "../components/ourShow/OurShow";
-import MaxNewsSeach from "../components/maxNews/MaxNewsSeach";
-import ListVideo from "../components/maxNews/ListVideo";
-import Login from "../components/login/Login";
-import NewModal from "../containers/NewModal";
-import MaxnewHome from "../components/maxNews/MaxnewHome";
-import Container from "../components/commons/Container";
-import Main from "../layouts/Main";
-import vars from "../components/commons/vars";
-import { initStore } from "../redux/store";
-import { fetchVods } from "../redux/modules/vod";
-import { fetchLives } from "../redux/modules/live";
-import { fetchNews } from "../redux/modules/maxnews";
+import Head from 'next/head'
+import Link from 'next/link'
+import { Flex, Box, Provider } from 'rebass'
+import Cookies from 'universal-cookie'
+import styled from 'styled-components'
+import withRedux from 'next-redux-wrapper'
+import ComingLive from '../components/home/ComingLive'
+import LatestVideo from '../components/home/LatestVideo'
+import StadiumTicket from '../components/home/StadiumTicket'
+import About from '../components/home/About'
+import Hero from '../components/home/Hero'
+import MobileHero from '../components/home/MobileHero'
+import OurShow from '../components/ourShow/OurShow'
+import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
+import ListVideo from '../components/maxNews/ListVideo'
+import Login from '../components/login/Login'
+import NewModal from '../containers/NewModal'
+import MaxnewHome from '../components/maxNews/MaxnewHome'
+import Container from '../components/commons/Container'
+import Main from '../layouts/Main'
+import vars from '../components/commons/vars'
+import { initStore } from '../redux/store'
+import { fetchVods } from '../redux/modules/vod'
+import { fetchLives } from '../redux/modules/live'
+import { fetchNews } from '../redux/modules/maxnews'
 import {
   toogleModal,
   updateModalType,
   indexModalURL,
-  closeModal
-} from "../redux/modules/modal";
-import {
-  recentLivesSelector,
-  dataLivesSelector
-} from "../redux/selectors/live";
+  closeModal,
+} from '../redux/modules/modal'
+import { recentLivesSelector, dataLivesSelector } from '../redux/selectors/live'
 import {
   recentNewsSelector,
-  dataNewsSelector
-} from "../redux/selectors/maxnews";
-import { recentVodsSelector } from "../redux/selectors/vod";
-import { I18nextProvider } from "react-i18next";
-import startI18n from "../tools/startI18n";
-import { getTranslation } from "../tools/translationHelpers";
-import { langSelector } from "../redux/selectors/lang";
-import { langUrl } from "../tools/langUrl";
-import { media } from "../tools/responsive";
+  dataNewsSelector,
+} from '../redux/selectors/maxnews'
+import { recentVodsSelector } from '../redux/selectors/vod'
+import { I18nextProvider } from 'react-i18next'
+import startI18n from '../tools/startI18n'
+import { getTranslation } from '../tools/translationHelpers'
+import { langSelector } from '../redux/selectors/lang'
+import { langUrl } from '../tools/langUrl'
+import { media } from '../tools/responsive'
 
 const WrapperTop = styled.div`
   color: #fff;
   background-color: #011020;
-`;
+`
 const WrapperLive = styled.div`
   color: #fff;
-  background-image: url("/static/bg-upcoming-home.jpg");
+  background-image: url('/static/bg-upcoming-home.jpg');
   background-size: cover;
   background-position-y: 0px;
-`;
+`
 const WrapperStadiumTicket = styled.div`
   color: #ffffff;
   background-color: #b71111;
-`;
+`
 const WrapperAbout = styled.div`
   color: #ffffff;
   background: -webkit-linear-gradient(
@@ -76,7 +73,7 @@ const WrapperAbout = styled.div`
     rgba(139, 3, 3, 1) 52%,
     rgba(139, 3, 3, 1) 100%
   ); /* Chrome10-25,Safari5.1-6 */`};
-`;
+`
 const WrapperHero = styled.div`
   display: unset;
   .slick-dots li {
@@ -91,20 +88,20 @@ const WrapperHero = styled.div`
   ${media.ipad`display: none;`};
   ${media.phone`display: none;`};
   ${media.iphone5`display: none;`};
-`;
+`
 const WrapperMobileHero = styled.div`
   display: none;
   z-index: 0;
   ${media.ipad`display: unset;`};
   ${media.phone`display: unset;`};
   ${media.iphone5`display: unset;`};
-`;
+`
 const WrapperMaxnew = styled.div`
   // color: #fff;
-  background-image: url("/static/galaxy.jpg");
+  background-image: url('/static/galaxy.jpg');
   background-size: cover;
   background-position-y: 0px;
-`;
+`
 const GradientBg = styled.div`
   background: -webkit-linear-gradient(
     top,
@@ -117,26 +114,26 @@ const GradientBg = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
   ${media.phone`padding-top: 4rem;`};
   ${media.iphone5`padding-top: 4rem;`};
-`;
-const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`;
-let lang = "th";
-let navbar = "";
+`
+const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
+let lang = 'th'
+let navbar = ''
 class Index extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       translations: this.props.translations,
-      lang: this.props.lang
-    };
-    this.i18n = startI18n(this.props.translations, this.props.cookie.lang);
-    this.switchLang = this.switchLang.bind(this);
+      lang: this.props.lang,
+    }
+    this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
+    this.switchLang = this.switchLang.bind(this)
   }
 
   async switchLang(lang) {
     this.setState({
       lang: lang,
-      translations: await getTranslation(lang, ["common", "navbar"], langUrl)
-    });
+      translations: await getTranslation(lang, ['common', 'navbar'], langUrl),
+    })
   }
 
   render() {
@@ -146,9 +143,9 @@ class Index extends React.Component {
         23.5,
         23.5,
         64,
-        70
-      ]
-    };
+        70,
+      ],
+    }
     return (
       <I18nextProvider i18n={this.i18n}>
         <Provider theme={theme}>
@@ -233,38 +230,38 @@ class Index extends React.Component {
           </Main>
         </Provider>
       </I18nextProvider>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
-  console.log("ddddddsss", state);
+  //console.log("ddddddsss", state);
   return {
     cookie: state.cookie,
     lives: dataLivesSelector(state),
     vods: recentVodsSelector(state),
     lang: langSelector(state),
-    news: recentNewsSelector(state)
-  };
-};
+    news: recentNewsSelector(state),
+  }
+}
 
 Index.getInitialProps = async ({ store, isServer, query, req }) => {
-  let state = store.getState();
-  const token = state.auth.token;
-  const livePromise = fetchLives(token)(store.dispatch);
-  const vodPromise = fetchVods(token)(store.dispatch, store.getState);
-  const newsPromise = fetchNews(token)(store.dispatch);
-  await Promise.all([livePromise, vodPromise, newsPromise]);
-  state = store.getState();
+  let state = store.getState()
+  const token = state.auth.token
+  const livePromise = fetchLives(token)(store.dispatch)
+  const vodPromise = fetchVods(token)(store.dispatch, store.getState)
+  const newsPromise = fetchNews(token)(store.dispatch)
+  await Promise.all([livePromise, vodPromise, newsPromise])
+  state = store.getState()
   const translations = await getTranslation(
     state.cookie.lang,
-    ["common", "navbar"],
+    ['common', 'navbar'],
     langUrl
-  );
-  const props = mapStateToProps(state);
-  props.translations = translations;
-  return props;
-};
+  )
+  const props = mapStateToProps(state)
+  props.translations = translations
+  return props
+}
 
 export default withRedux(initStore, mapStateToProps, {
   fetchVods,
@@ -274,5 +271,5 @@ export default withRedux(initStore, mapStateToProps, {
   toogleModal,
   updateModalType,
   indexModalURL,
-  closeModal
-})(Index);
+  closeModal,
+})(Index)

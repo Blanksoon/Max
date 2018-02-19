@@ -9,10 +9,13 @@ const FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS'
 export const fetchNewsReq = () => ({
   type: FETCH_NEWS_REQ,
 })
-export const fetchNewsSuccess = news => ({
-  type: FETCH_NEWS_SUCCESS,
-  payload: news,
-})
+export const fetchNewsSuccess = news => {
+  console.log('66666666666', news)
+  return {
+    type: FETCH_NEWS_SUCCESS,
+    payload: news,
+  }
+}
 export const fetchNews = token => async dispatch => {
   console.log('dddddd1')
   dispatch(fetchNewsReq())
@@ -21,6 +24,7 @@ export const fetchNews = token => async dispatch => {
   try {
     fetchMock.restore()
     // const json = await api.get(url)
+    let json = ''
     let json2 = await fetchMock.post(`${api.SERVER}/news`, {
       body: {
         code: 200,
@@ -44,11 +48,12 @@ export const fetchNews = token => async dispatch => {
     })
     // console.log('dddddddddd22',json.data)
     // console.log('ddddddddd3')
+    json = json2.routes[0].response.body.data
     console.log('dddddddddd2', json2.routes[0].response.body)
     fetchMock.restore()
     // You should not return in Vods <-- change to something like data
-    dispatch(fetchNewsSuccess(json2.routes[0].response.body))
-    // dispatch(fetchNewsSuccess(json.data))    
+    dispatch(fetchNewsSuccess(json))
+    // dispatch(fetchNewsSuccess(json.data))
   } catch (error) {
     console.log(error)
   }
