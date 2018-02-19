@@ -20,12 +20,19 @@ export const fetchNews = token => async dispatch => {
   try {
     fetchMock.restore()
     //const json = await api.get(url)
-    const json2 = fetchMock.post(`${api.SERVER}/news`, {
+    let json2 = await fetchMock.post(`${api.SERVER}/news`, {
       body: {
         code: 200,
         data: [
           {
-            _id: `1`,
+            id: `1`,
+            heading: `Max Muay Thai`,
+            create_date: `Jan 11,2018`,
+            imageUrl: `/static/FT6A6495.jpg`,
+            article: `Lorem`,
+          },
+          {
+            id: `2`,
             heading: `Max Muay Thai`,
             create_date: `Jan 11,2018`,
             imageUrl: `/static/FT6A6495.jpg`,
@@ -34,8 +41,8 @@ export const fetchNews = token => async dispatch => {
         ],
       },
     })
+    console.log('ddddddddd2', json2.routes[0].response.body.data)
     fetchMock.restore()
-    console.log('ddddddddd2', json2)
     // You should not return in Vods <-- change to something like data
     //dispatch(fetchNewsSuccess(json.data))
   } catch (error) {
