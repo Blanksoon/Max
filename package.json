@@ -17,6 +17,7 @@
     "emailjs": "^1.0.12",
     "es6-promise": "^4.1.1",
     "express": "^4.15.5",
+    "fetch-mock": "^6.0.0",
     "hamburgers": "^0.9.3",
     "hls.js": "^0.8.2",
     "i18next": "^10.2.2",

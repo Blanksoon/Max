@@ -47,11 +47,7 @@ class maxnew extends React.Component {
   render() {
     return (
       <I18nextProvider i18n={this.i18n}>
-        <Head>
-          <link href="/static/css/video-react.css" rel="stylesheet" />
-        </Head>
-        {/* {status.message ?  : null } */}
-        <Main 
+        <Main
           url={this.props.url}
           nav={this.state.translations.translation.common}
           www=""
@@ -60,6 +56,7 @@ class maxnew extends React.Component {
           <NewModal
             common={this.state.translations.translation.common}
             lang={this.state.lang}
+            url={this.props.url}
           />
           <Wrapper>
             <Container>
@@ -69,21 +66,21 @@ class maxnew extends React.Component {
               </Box>
             </Container>
           </Wrapper>
-        </Main>
-        <style jsx global>
-          {`
-            body {
-              padding: 0 !important;
-              margin: 0 !important;
-            }
-             {
-              /* * {
+          <style jsx global>
+            {`
+              body {
+                padding: 0 !important;
+                margin: 0 !important;
+              }
+               {
+                /* * {
               box-sizing: border-box;
             } */
-            }
-          `}
-        </style>
-        </I18nextProvider>
+              }
+            `}
+          </style>
+        </Main>
+      </I18nextProvider>
     )
   }
 }

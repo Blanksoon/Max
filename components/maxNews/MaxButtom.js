@@ -73,7 +73,7 @@ const MaxButtom = () => (
     <Box pl="1rem" pr="1rem" width={1}>
       <Flex>
         <Box>
-          <Flex />
+          <Flex pt="2rem" />
           <Thumbnailright />
           <Thumbnailright />
           <Thumbnailright />
@@ -95,23 +95,25 @@ const MaxButtom = () => (
 export default MaxButtom
 
 const Thumbnailright = props => (
-  <Flex pt="3rem">
-    <Box w={6 / 12}>
+  <Flex pt="1rem">
+    <Box w={6 / 12} pr="0.5em">
       <ThumbnailRight
         w="100%"
         img="static/maxPromo.jpg"
         text1="Headline Headline consect adipicing elit sedid"
         text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
         date="Aug 11, 2017"
+        pt="0.9em"
       />
     </Box>
-    <Box w={6 / 12}>
+    <Box w={6 / 12} pl="0.5em">
       <ThumbnailRight
         w="100%"
         img="static/maxPromo.jpg"
         text1="Headline Headline consect adipicing elit sedid"
         text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
         date="Aug 11, 2017"
+        pt="0.9em"
       />
     </Box>
   </Flex>

@@ -133,6 +133,7 @@ const MaxTop = () => (
                   text1="Headline Headline consect adipicing elit sedid"
                   text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                   date="Aug 11, 2017"
+                  pt="1.3rem"
                 />
               </Flex>
               <Flex pt="3.5rem">
@@ -142,6 +143,7 @@ const MaxTop = () => (
                   text1="Headline Headline consect adipicing elit sedid"
                   text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                   date="Aug 11, 2017"
+                  pt="1.3rem"
                 />
               </Flex>
               <Flex pt="3.5rem">
@@ -151,6 +153,7 @@ const MaxTop = () => (
                   text1="Headline Headline consect adipicing elit sedid"
                   text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                   date="Aug 11, 2017"
+                  pt="1.3rem"
                 />
               </Flex>
             </Box>

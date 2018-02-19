@@ -16,12 +16,14 @@ import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
 import ListVideo from '../components/maxNews/ListVideo'
 import Login from '../components/login/Login'
 import NewModal from '../containers/NewModal'
+import MaxnewHome from '../components/maxNews/MaxnewHome'
 import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
 import { fetchLives } from '../redux/modules/live'
+import { fetchNews } from '../redux/modules/maxnews'
 import {
   toogleModal,
   updateModalType,
@@ -29,6 +31,10 @@ import {
   closeModal,
 } from '../redux/modules/modal'
 import { recentLivesSelector, dataLivesSelector } from '../redux/selectors/live'
+import {
+  recentNewsSelector,
+  dataNewsSelector,
+} from '../redux/selectors/maxnews'
 import { recentVodsSelector } from '../redux/selectors/vod'
 import { I18nextProvider } from 'react-i18next'
 import startI18n from '../tools/startI18n'
@@ -89,6 +95,12 @@ const WrapperMobileHero = styled.div`
   ${media.ipad`display: unset;`};
   ${media.phone`display: unset;`};
   ${media.iphone5`display: unset;`};
+`
+const WrapperMaxnew = styled.div`
+  // color: #fff;
+  background-image: url('/static/galaxy.jpg');
+  background-size: cover;
+  background-position-y: 0px;
 `
 const GradientBg = styled.div`
   background: -webkit-linear-gradient(
@@ -184,6 +196,19 @@ class Index extends React.Component {
                 </Flex>
               </Container>
             </WrapperLive>
+            <WrapperMaxnew>
+              <Container>
+                <Flex>
+                  <Box w={12 / 12} pb="4em" pt="2em">
+                    <MaxnewHome
+                      lang={this.state.lang}
+                      common={this.state.translations.translation.common}
+                      lives={this.props.lives}
+                    />
+                  </Box>
+                </Flex>
+              </Container>
+            </WrapperMaxnew>
             <WrapperStadiumTicket>
               <Container>
                 <Flex>
@@ -210,7 +235,7 @@ class Index extends React.Component {
 }
 
 const mapStateToProps = state => {
-  //console.log('ddddddsss', state.cookie)
+  console.log('ddddddsss', state)
   return {
     cookie: state.cookie,
     lives: dataLivesSelector(state),
@@ -224,7 +249,8 @@ Index.getInitialProps = async ({ store, isServer, query, req }) => {
   const token = state.auth.token
   const livePromise = fetchLives(token)(store.dispatch)
   const vodPromise = fetchVods(token)(store.dispatch, store.getState)
-  await Promise.all([livePromise, vodPromise])
+  const newsPromise = fetchNews(token)(store.dispatch)
+  await Promise.all([livePromise, vodPromise, newsPromise])
   state = store.getState()
   const translations = await getTranslation(
     state.cookie.lang,
@@ -238,10 +264,11 @@ Index.getInitialProps = async ({ store, isServer, query, req }) => {
 
 export default withRedux(initStore, mapStateToProps, {
   fetchVods,
+  fetchLives,
+  fetchNews,
   dataLivesSelector,
   toogleModal,
   updateModalType,
   indexModalURL,
   closeModal,
-  fetchLives,
 })(Index)
