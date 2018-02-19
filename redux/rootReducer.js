@@ -8,6 +8,7 @@ import loginReducer from './modules/login'
 import livesReducer from './modules/live'
 import programReducer from './modules/program'
 import productsReducer from './modules/product'
+import newsReducer from './modules/maxnews'
 const rootReducer = combineReducers({
   auth: authReducer,
   cookie: cookieReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   login: loginReducer,
   program: programReducer,
   product: productsReducer,
+  news: newsReducer,
 })
 
 export default rootReducer

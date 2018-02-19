@@ -20,6 +20,18 @@ export const fetchNews = token => async dispatch => {
   const url = `${api.SERVER}/news?token=${token}`
   try {
     const json = await api.get(url)
+    const json2 = fetchMock.post(`${api.SERVER}/news`, {
+      data: [
+        {
+          _id: `1`,
+          heading: `Max Muay Thai`,
+          create_date: `Jan 11,2018`,
+          imageUrl: `/static/FT6A6495.jpg`,
+          article: `Lorem`,
+        },
+      ],
+    })
+    console.log('ddddddddd2', json2)
     // You should not return in Vods <-- change to something like data
     dispatch(fetchNewsSuccess(json.data))
   } catch (error) {
