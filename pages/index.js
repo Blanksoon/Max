@@ -204,6 +204,7 @@ class Index extends React.Component {
                       lang={this.state.lang}
                       common={this.state.translations.translation.common}
                       lives={this.props.lives}
+                      news={this.props.news}
                     />
                   </Box>
                 </Flex>

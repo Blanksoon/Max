@@ -11,6 +11,11 @@ import Purchase from '../components/getTicket/Purchase'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
+import { fetchNews } from '../redux/modules/maxnews'
+import {
+  recentNewsSelector,
+  dataNewsSelector,
+} from '../redux/selectors/maxnews'
 import NewModal from '../containers/NewModal'
 import {
   toogleModal,
@@ -45,6 +50,7 @@ class maxnew extends React.Component {
     })
   }
   render() {
+    // console.log('dddddddd', this.props.news[0])
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
@@ -61,8 +67,8 @@ class maxnew extends React.Component {
           <Wrapper>
             <Container>
               <Box pt="7rem">
-                <MaxTop />
-                <MaxButtom />
+                <MaxTop news={this.props.news}/>
+                <MaxButtom news={this.props.news}/>
               </Box>
             </Container>
           </Wrapper>
@@ -90,11 +96,13 @@ const mapStateToProps = state => {
   return {
     cookie: state.cookie,
     lang: langSelector(state),
+    news: recentNewsSelector(state),
   }
 }
 maxnew.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
+  const newsPromise = await fetchNews(token)(store.dispatch)
   state = store.getState()
   const translations = await getTranslation(
     state.cookie.lang,

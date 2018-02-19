@@ -68,18 +68,18 @@ const WrapperHilightText = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapper = styled.div`background-color: #fff;`
-const MaxButtom = () => (
+const MaxButtom = (props) => (
   <Wrapper>
     <Box pl="1rem" pr="1rem" width={1}>
       <Flex>
         <Box>
           <Flex pt={['0rem', '0rem', '0rem', '2rem', '2rem']} />
-          <Thumbnailright />
-          <Thumbnailright />
-          <Thumbnailright />
-          <Thumbnailright />
-          <Thumbnailright />
-          <Thumbnailright />
+          <Thumbnailright news1={props.news[4]} news2={props.news[5]}/>
+          <Thumbnailright news1={props.news[6]} news2={props.news[7]}/>
+          <Thumbnailright news1={props.news[8]} news2={props.news[9]}/>
+          {/* <Thumbnailright /> */}
+          {/* <Thumbnailright /> */}
+          {/* <Thumbnailright /> */}
           <Flex>
             <Box w={1} pt="40px" pb="60px">
               <center>
@@ -95,6 +95,7 @@ const MaxButtom = () => (
 export default MaxButtom
 
 const Thumbnailright = props => (
+  // console.log('ddddddddFWEF',props.news1),
   <Flex pt={['1rem', '1rem', '2rem', '1rem', '1rem']} wrap>
     <Box
       w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
@@ -103,7 +104,7 @@ const Thumbnailright = props => (
       <ThumbnailRight
         w="100%"
         img="static/maxPromo.jpg"
-        text1="Headline Headline consect adipicing elit sedid"
+        text1={props.news1.heading_en}//"Headline Headline consect adipicing elit sedid"
         text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
         date="Aug 11, 2017"
         pt="0.9em"
@@ -117,7 +118,7 @@ const Thumbnailright = props => (
       <ThumbnailRight
         w="100%"
         img="static/maxPromo.jpg"
-        text1="Headline Headline consect adipicing elit sedid"
+        text1={props.news2.heading_en}//"Headline Headline consect adipicing elit sedid"
         text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
         date="Aug 11, 2017"
         pt="0.9em"

@@ -107,7 +107,7 @@ const WrapperHilightText = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapper = styled.div`background-color: #fff;`
-const MaxTop = () => (
+const MaxTop = (props) => (
   <Wrapper>
     <Box pl="1rem" pr="1rem" width={1}>
       <Flex>
@@ -150,20 +150,25 @@ const MaxTop = () => (
                     <Box pl="1rem" pr="1rem">
                       <Box w={[12 / 12, 12 / 12, 8 / 12, 8 / 12, 8 / 12]}>
                         <Text1>
-                          Headline consectetur adipicing elit, sed do eiusmod
-                          tempor
+                          {props.news[0].heading_en}
+                          {/* Headline consectetur adipicing elit, sed do eiusmod
+                          tempor */}
                         </Text1>
                       </Box>
                       <Box>
                         <Text2>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          {props.news[0].article_en}
+                          {/* Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Donec ut lectus turpis. Mauris cursus mollis
-                          nisi.
+                          nisi. */}
                         </Text2>
                       </Box>
                       <Flex>
                         <Box w={5 / 12}>
-                          <Date>Aug 11, 2017</Date>
+                          <Date>
+                            {props.news[0].createDate_en}
+                            {/* Aug 11, 2017 */}
+                          </Date>
                         </Box>
                         <Box w={7 / 12}>
                           <Link href={`/maxnews_detail`}>
@@ -186,27 +191,27 @@ const MaxTop = () => (
                 <ThumbnailRight
                   w="100%"
                   img="static/maxPromo.jpg"
-                  text1="Headline Headline consect adipicing elit sedid"
-                  text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                  date="Aug 11, 2017"
+                  text1={props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
+                  text2={props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                  date={props.news[0].createDate_en}//"Aug 11, 2017"
                 />
               </Flex>
               <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '3.5rem']}>
                 <ThumbnailRight
                   w="100%"
                   img="static/maxPromo.jpg"
-                  text1="Headline Headline consect adipicing elit sedid"
-                  text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                  date="Aug 11, 2017"
+                  text1={props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
+                  text2={props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                  date={props.news[0].createDate_en}//"Aug 11, 2017"
                 />
               </Flex>
               <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '3.5rem']}>
                 <ThumbnailRight
                   w="100%"
                   img="static/maxPromo.jpg"
-                  text1="Headline Headline consect adipicing elit sedid"
-                  text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                  date="Aug 11, 2017"
+                  text1={props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
+                  text2={props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                  date={props.news[0].createDate_en}//"Aug 11, 2017"
                 />
               </Flex>
             </Box>

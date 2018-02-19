@@ -41,6 +41,16 @@ const Button1 = styled.button`
   ${media.phone`font-size: 0.8em`};
   ${media.iphone5`font-size: 0.7em;padding: 8px 8%;`};
 `
+const Text0 = styled.div`
+color: ${vars.white};
+font-size: 1.5em;
+font-weight: 700;
+padding-left: 1rem;
+padding-bottom: 1rem;
+font-family: Helvetica, Arial, sans-serif;
+${media.phone`font-size: 0.8em`};
+${media.iphone5`font-size: 0.7em;padding-bottom: 0rem;`};
+`
 const Text1 = styled.div`
   color: ${vars.white};
   font-size: 1.5em;
@@ -48,6 +58,8 @@ const Text1 = styled.div`
   padding-left: 1rem;
   padding-bottom: 1rem;
   font-family: Helvetica, Arial, sans-serif;
+  // height: 40px;
+  // overflow: hidden;
   ${media.phone`font-size: 0.8em`};
   ${media.iphone5`font-size: 0.7em;padding-bottom: 0rem;`};
 `
@@ -118,19 +130,19 @@ class MaxnewHome extends React.Component {
     })
   }
   render() {
-    // console.log('dddddddd', this.props)
+    // console.log('dddddddd', this.props.news[0])
     return (
       <I18nextProvider i18n={this.i18n}>
         <div>
           <Box pt="1rem">
             <center>
-              <Text1>
+              <Text0>
                 {this.props.common.Maxnew ? (
                   this.props.common.Maxnew
                 ) : (
                   'MAX NEWS'
                 )}
-              </Text1>
+              </Text0>
             </center>
           </Box>
           <Flex wrap>
@@ -153,20 +165,25 @@ class MaxnewHome extends React.Component {
                     >
                       <Box w={8 / 12}>
                         <Text1>
-                          Headline consectetur adipicing elit, sed do eiusmod
-                          tempor
+                          {this.props.news[0].heading_en}
+                          {/* Headline consectetur adipicing elit, sed do eiusmod
+                          tempor */}
                         </Text1>
                       </Box>
                       <Box pt="1rem">
                         <Text2>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          {this.props.news[0].article_en}
+                          {/* Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Donec ut lectus turpis. Mauris cursus mollis
-                          nisi.
+                          nisi. */}
                         </Text2>
                       </Box>
                       <Flex>
                         <Box w={5 / 12} pt="1rem">
-                          <Date>Aug 11, 2017</Date>
+                          <Date>
+                            {this.props.news[0].createDate_en}
+                            {/* Aug 11, 2017 */}
+                          </Date>
                         </Box>
                         <Box w={7 / 12}>
                           <Link href={`/maxnews`}>
@@ -187,9 +204,9 @@ class MaxnewHome extends React.Component {
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
-                      text1="Headline Headline consect adipicing elit sedid"
-                      text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                      date="Aug 11, 2017"
+                      text1={this.props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
+                      text2={this.props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={this.props.news[0].createDate_en}//"Aug 11, 2017"
                     />
                 </Link>
               </Flex>
@@ -197,18 +214,18 @@ class MaxnewHome extends React.Component {
                 <ThumbnailRight
                   w="100%"
                   img="static/maxPromo.jpg"
-                  text1="Headline Headline consect adipicing elit sedid"
-                  text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                  date="Aug 11, 2017"
+                  text1={this.props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
+                  text2={this.props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                  date={this.props.news[0].createDate_en}//"Aug 11, 2017"
                 />
               </Flex>
               <Flex pt={['1rem', '1rem', '3.5rem', '3.5rem', '3.5rem']}>
                 <ThumbnailRight
                   w="100%"
                   img="static/maxPromo.jpg"
-                  text1="Headline Headline consect adipicing elit sedid"
-                  text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                  date="Aug 11, 2017"
+                  text1={this.props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
+                  text2={this.props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                  date={this.props.news[0].createDate_en}//"Aug 11, 2017"
                 />
               </Flex>
             </Box>
