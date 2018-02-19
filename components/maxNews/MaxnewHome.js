@@ -36,6 +36,7 @@ const Button1 = styled.button`
   font-weight: 700;
   font-size: 1em;
   margin-left: 53%;
+  cursor: pointer;
   ${media.ipadpro`margin-left: 40%;`};
   ${media.phone`font-size: 0.8em`};
   ${media.iphone5`font-size: 0.7em;padding: 8px 8%;`};
@@ -75,6 +76,7 @@ const Button = styled.button`
   display: inline-block;
   font-weight: 700;
   font-family: Helvetica, Arial, sans-serif;
+  cursor: pointer;
 `
 const WrapperHilight = styled.div`
   width: 100%;
