@@ -1,7 +1,8 @@
 import ThumbnailRight from '../thumbnail/ThumbnailRight'
 import styled from 'styled-components'
 import color from '../commons/vars'
-import { Media, Subhead, Image, Flex, Box, Text, Button } from 'rebass'
+import { Media, Subhead, Image, Flex, Box, Text, Button , Link} from 'rebass'
+import { media } from '../../tools/responsive'
 
 const Button1 = styled.button`
   bottom: 2%;
@@ -15,24 +16,65 @@ const Button1 = styled.button`
   font-weight: 700;
   font-size: 1em;
   margin-left: 53%;
+  ${media.ipadpro`
+  width: 45%;
+  padding: 5px 10%;
+  margin-left: 44%;
+  font-size: 0.8em;
+  margin-top: 10px;
+  `}
+  ${media.ipad`
+  width: 40%;
+  padding: 5px 10%;
+  margin-left: 52%;
+  font-size: 0.9em;
+  margin-top: 10px;
+  `}
+  ${media.phone`
+  width: 63%;
+  padding: 5px 10%;
+  margin-left: 37%;
+  font-size: 0.8em;
+  margin-top: 10px;
+  `}
+  ${media.iphone5`
+  width: 75%;
+  padding: 5px 10%;
+  margin-left: 24%;
+  font-size: 0.7em;
+  margin-top: 0px;
+  `}
 `
 const Text1 = styled.div`
   color: #fff;
   font-weight: 700;
   font-size: 1.5em;
+  padding-top: 20rem;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.ipadpro`padding-top: 18rem;`};  
+  ${media.ipad`padding-top: 20rem;`};
+  ${media.phone`padding-top: 4rem;font-size: 1em;`};
+  ${media.iphone5`font-size: 0.7em;padding: 8px 8%;padding-top: 3rem;`};
 `
 const Text2 = styled.div`
   color: #fff;
   font-weight: 700;
   font-size: 0.9em;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.ipadpro`padding-top: 1rem;`};
+  ${media.ipad`padding-top: 1rem;`};
+  ${media.phone`font-size: 0.8em;padding-top: 1rem;`};
+  ${media.iphone5`font-size: 0.7em;padding: 8px 8%;padding-top: 0rem;`};
 `
 const Date = styled.div`
   color: ${color.yellow};
   font-weight: 700;
   font-size: 1em;
   font-family: Helvetica, Arial, sans-serif;
+  ${media.ipadpro`padding-top: 1rem;`};
+  ${media.ipad`padding-top: 1rem;`};
+  ${media.phone`padding-top: 1rem;`};
+  ${media.iphone5`font-size: 0.7em;padding-top: 0.4rem;padding-left: 1.7em;`};
 `
 const Select = styled.select`
   width: 9em;
@@ -41,9 +83,10 @@ const Select = styled.select`
 `
 
 const AllShow = styled.select`
-  width: 18em;
+  width: 17.8em;
   height: 2.4em;
   font-size: 1em;
+  ${media.ipadpro`font-size: 0.8em`};
 `
 const WrapperHilight = styled.div`
   width: 100%;
@@ -72,11 +115,14 @@ const MaxTop = () => (
     <Box pl="1rem" pr="1rem" width={1}>
       <Flex>
         <Box width={1}>
-          <Flex>
-            <Box pt="2em" pb="1em" width={1}>
+          <Flex wrap>
+            <Box pt="2em" pb={["0em","0em","1em","1em","1em"]} width={[12/12, 12/12, 7/12, 8/12, 9/12]}>
               <Text color="red" bold children="MAX NEWS" fontSize="1.5em" />
             </Box>
-            <Box pt="1.5rem">
+            <Box pt={["0.5rem","1.5rem","1.9rem","2rem","1.5rem"]} 
+            pl={['0px', '0px', '65px', '90px', '0px']}
+            pb={['1em','1em','0em','0em','0em']}
+            w={[12/12, 12/12, 5/12, 4/12, 3/12]}>
               <AllShow>
                 <option value="Filter the show">Search</option>
                 <option value="saab">Saab</option>
@@ -85,8 +131,8 @@ const MaxTop = () => (
               </AllShow>
             </Box>
           </Flex>
-          <Flex>
-            <Box w={7 / 12}>
+          <Flex wrap>
+            <Box w={[12 / 12, 12 / 12, 12 / 12, 7 / 12, 7 / 12]}>
               <WrapperHilight>
                 <Box w={12 / 12} className="imagesss">
                   <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
@@ -98,14 +144,17 @@ const MaxTop = () => (
                       pl="90%"
                       src="static/img_logo_white@2x.png"
                     />
-                    <Box pt="18rem" pl="1rem" pr="1rem">
-                      <Box w={8 / 12}>
+                    <Box
+                      pl="1rem"
+                      pr="1rem"
+                    >
+                      <Box w={[12 / 12,12 / 12,8 / 12,8 / 12,8 / 12]}>
                         <Text1>
                           Headline consectetur adipicing elit, sed do eiusmod
                           tempor
                         </Text1>
                       </Box>
-                      <Box pt="1rem">
+                      <Box>
                         <Text2>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Donec ut lectus turpis. Mauris cursus mollis
@@ -113,11 +162,15 @@ const MaxTop = () => (
                         </Text2>
                       </Box>
                       <Flex>
-                        <Box w={5 / 12} pt="1rem">
+                        <Box w={5 / 12}>
                           <Date>Aug 11, 2017</Date>
                         </Box>
                         <Box w={7 / 12}>
-                          <Button1>Read more</Button1>
+                          <Link href={`/maxnew_detail`}>
+                            <a>
+                              <Button1>Read more</Button1>
+                            </a>
+                          </Link>
                         </Box>
                       </Flex>
                     </Box>
@@ -125,35 +178,32 @@ const MaxTop = () => (
                 </Box>
               </WrapperHilight>
             </Box>
-            <Box width={5 / 12} ml="2%">
-              <Flex>
+            <Box width={[12 / 12, 12 / 12, 12 / 12, 5 / 12, 5 / 12]} pl={["0%","0%","0%","2%","2%"]}>
+              <Flex pt={['1rem', '1rem', '2rem', '0rem', '0rem']}>
                 <ThumbnailRight
                   w="100%"
                   img="static/maxPromo.jpg"
                   text1="Headline Headline consect adipicing elit sedid"
                   text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                   date="Aug 11, 2017"
-                  pt="1.3rem"
                 />
               </Flex>
-              <Flex pt="3.5rem">
+              <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '3.5rem']}>
                 <ThumbnailRight
                   w="100%"
                   img="static/maxPromo.jpg"
                   text1="Headline Headline consect adipicing elit sedid"
                   text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                   date="Aug 11, 2017"
-                  pt="1.3rem"
                 />
               </Flex>
-              <Flex pt="3.5rem">
+              <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '3.5rem']}>
                 <ThumbnailRight
                   w="100%"
                   img="static/maxPromo.jpg"
                   text1="Headline Headline consect adipicing elit sedid"
                   text2="In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                   date="Aug 11, 2017"
-                  pt="1.3rem"
                 />
               </Flex>
             </Box>
