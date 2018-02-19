@@ -73,7 +73,7 @@ const MaxButtom = () => (
     <Box pl="1rem" pr="1rem" width={1}>
       <Flex>
         <Box>
-          <Flex pt="2rem" />
+          <Flex pt={["0rem","0rem","0rem","2rem","2rem"]} />
           <Thumbnailright />
           <Thumbnailright />
           <Thumbnailright />
@@ -95,8 +95,8 @@ const MaxButtom = () => (
 export default MaxButtom
 
 const Thumbnailright = props => (
-  <Flex pt="1rem">
-    <Box w={6 / 12} pr="0.5em">
+  <Flex pt={["1rem","1rem","2rem","1rem","1rem"]} wrap>
+    <Box w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]} pr={["0em","0em","0em","0.5em","0.5em"]}>
       <ThumbnailRight
         w="100%"
         img="static/maxPromo.jpg"
@@ -106,7 +106,7 @@ const Thumbnailright = props => (
         pt="0.9em"
       />
     </Box>
-    <Box w={6 / 12} pl="0.5em">
+    <Box w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]} pt={['1em','1em','2em','0em','0em']} pl={["0em","0em","0em","0.5em","0.5em"]}>
       <ThumbnailRight
         w="100%"
         img="static/maxPromo.jpg"

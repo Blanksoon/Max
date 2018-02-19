@@ -167,7 +167,7 @@ class MaxnewHome extends React.Component {
                           <Date>Aug 11, 2017</Date>
                         </Box>
                         <Box w={7 / 12}>
-                          <Link href={`/maxnew_detail`}>
+                          <Link href={`/maxnew`}>
                             <a>
                               <Button1>Read more</Button1>
                             </a>
