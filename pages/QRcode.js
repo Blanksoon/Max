@@ -146,7 +146,7 @@ class QRcode extends React.Component {
                         <Box pt="7em" pb="9em" w={1}>
                           <center>
                             <Image
-                              width={["40%","30%","30%","30%","30%"]}
+                              width={['40%', '30%', '30%', '30%', '30%']}
                               src="/static/img_wechatpay.png" //btn_wechat
                             />
                             <Text1>

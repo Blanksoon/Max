@@ -1,7 +1,7 @@
 import ThumbnailRight from '../thumbnail/ThumbnailRight'
 import styled from 'styled-components'
 import color from '../commons/vars'
-import { Media, Subhead, Image, Flex, Box, Text, Button , Link} from 'rebass'
+import { Media, Subhead, Image, Flex, Box, Text, Button, Link } from 'rebass'
 import { media } from '../../tools/responsive'
 
 const Button1 = styled.button`
@@ -22,28 +22,25 @@ const Button1 = styled.button`
   margin-left: 44%;
   font-size: 0.8em;
   margin-top: 10px;
-  `}
-  ${media.ipad`
+  `} ${media.ipad`
   width: 40%;
   padding: 5px 10%;
   margin-left: 52%;
   font-size: 0.9em;
   margin-top: 10px;
-  `}
-  ${media.phone`
+  `} ${media.phone`
   width: 63%;
   padding: 5px 10%;
   margin-left: 37%;
   font-size: 0.8em;
   margin-top: 10px;
-  `}
-  ${media.iphone5`
+  `} ${media.iphone5`
   width: 75%;
   padding: 5px 10%;
   margin-left: 24%;
   font-size: 0.7em;
   margin-top: 0px;
-  `}
+  `};
 `
 const Text1 = styled.div`
   color: #fff;
@@ -51,7 +48,7 @@ const Text1 = styled.div`
   font-size: 1.5em;
   padding-top: 20rem;
   font-family: Helvetica, Arial, sans-serif;
-  ${media.ipadpro`padding-top: 18rem;`};  
+  ${media.ipadpro`padding-top: 18rem;`};
   ${media.ipad`padding-top: 20rem;`};
   ${media.phone`padding-top: 4rem;font-size: 1em;`};
   ${media.iphone5`font-size: 0.7em;padding: 8px 8%;padding-top: 3rem;`};
@@ -116,13 +113,19 @@ const MaxTop = () => (
       <Flex>
         <Box width={1}>
           <Flex wrap>
-            <Box pt="2em" pb={["0em","0em","1em","1em","1em"]} width={[12/12, 12/12, 7/12, 8/12, 9/12]}>
+            <Box
+              pt="2em"
+              pb={['0em', '0em', '1em', '1em', '1em']}
+              width={[12 / 12, 12 / 12, 7 / 12, 8 / 12, 9 / 12]}
+            >
               <Text color="red" bold children="MAX NEWS" fontSize="1.5em" />
             </Box>
-            <Box pt={["0.5rem","1.5rem","1.9rem","2rem","1.5rem"]} 
-            pl={['0px', '0px', '65px', '90px', '0px']}
-            pb={['1em','1em','0em','0em','0em']}
-            w={[12/12, 12/12, 5/12, 4/12, 3/12]}>
+            <Box
+              pt={['0.5rem', '1.5rem', '1.9rem', '2rem', '1.5rem']}
+              pl={['0px', '0px', '65px', '90px', '0px']}
+              pb={['1em', '1em', '0em', '0em', '0em']}
+              w={[12 / 12, 12 / 12, 5 / 12, 4 / 12, 3 / 12]}
+            >
               <AllShow>
                 <option value="Filter the show">Search</option>
                 <option value="saab">Saab</option>
@@ -144,11 +147,8 @@ const MaxTop = () => (
                       pl="90%"
                       src="static/img_logo_white@2x.png"
                     />
-                    <Box
-                      pl="1rem"
-                      pr="1rem"
-                    >
-                      <Box w={[12 / 12,12 / 12,8 / 12,8 / 12,8 / 12]}>
+                    <Box pl="1rem" pr="1rem">
+                      <Box w={[12 / 12, 12 / 12, 8 / 12, 8 / 12, 8 / 12]}>
                         <Text1>
                           Headline consectetur adipicing elit, sed do eiusmod
                           tempor
@@ -166,7 +166,7 @@ const MaxTop = () => (
                           <Date>Aug 11, 2017</Date>
                         </Box>
                         <Box w={7 / 12}>
-                          <Link href={`/maxnew_detail`}>
+                          <Link href={`/maxnews_detail`}>
                             <a>
                               <Button1>Read more</Button1>
                             </a>
@@ -178,7 +178,10 @@ const MaxTop = () => (
                 </Box>
               </WrapperHilight>
             </Box>
-            <Box width={[12 / 12, 12 / 12, 12 / 12, 5 / 12, 5 / 12]} pl={["0%","0%","0%","2%","2%"]}>
+            <Box
+              width={[12 / 12, 12 / 12, 12 / 12, 5 / 12, 5 / 12]}
+              pl={['0%', '0%', '0%', '2%', '2%']}
+            >
               <Flex pt={['1rem', '1rem', '2rem', '0rem', '0rem']}>
                 <ThumbnailRight
                   w="100%"

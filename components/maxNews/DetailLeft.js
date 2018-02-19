@@ -136,7 +136,7 @@ const DetailLeft = () => (
         </Text2>
         <br />
       </Box>
-      <Flex>
+      {/* <Flex>
         <Box w={1.5 / 12} pt="0.5rem">
           <Text3>Share on</Text3>
         </Box>
@@ -151,7 +151,7 @@ const DetailLeft = () => (
         <FacebookProvider appId="135776387080938">
           <Comments href="http://localhost:8080/maxnew_detail" />
         </FacebookProvider>
-      </Box>
+      </Box> */}
     </Box>
   </Wrapper>
 )

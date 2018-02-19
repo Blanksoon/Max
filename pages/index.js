@@ -150,8 +150,7 @@ class Index extends React.Component {
       <I18nextProvider i18n={this.i18n}>
         <Provider theme={theme}>
           <Main
-            url={this.props.url}
-            nav={this.state.translations.translation.common}
+url={this.props.url}nav={this.state.translations.translation.common}
             www=""
             switchLanguage={this.switchLang}
           >

@@ -70,8 +70,8 @@ export default class extends Component {
             logoutText={logoutText}
           />
         ) : (
-            <ModalText modalType={3} text={registerText} />
-          )}
+          <ModalText modalType={3} text={registerText} />
+        )}
         <ClearFix />
         <LanguagePanel>
           <Language

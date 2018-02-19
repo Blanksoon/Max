@@ -167,7 +167,7 @@ class MaxnewHome extends React.Component {
                           <Date>Aug 11, 2017</Date>
                         </Box>
                         <Box w={7 / 12}>
-                          <Link href={`/maxnew`}>
+                          <Link href={`/maxnews`}>
                             <a>
                               <Button1>Read more</Button1>
                             </a>
@@ -211,7 +211,7 @@ class MaxnewHome extends React.Component {
           </Flex>
           <Box pt="4rem">
             <center>
-              <Link href={`/maxnew`}>
+              <Link href={`/maxnews`}>
                 <a>
                   <Button className="button-hunger">
                     {this.props.lang === 'en' ? (

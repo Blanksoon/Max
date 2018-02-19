@@ -48,14 +48,11 @@ class ModalWechat extends Component {
   }
   render() {
     return (
-        <Wrapper>
-          <Flex
-            style={{ cursor: 'pointer' }}
-            onClick={this.handleOnClickModal}
-          >
-            <Image width="100%" src="../../static/btn_wechat.png" />
-          </Flex>
-        </Wrapper>
+      <Wrapper>
+        <Flex style={{ cursor: 'pointer' }} onClick={this.handleOnClickModal}>
+          <Image width="100%" src="../../static/btn_wechat.png" />
+        </Flex>
+      </Wrapper>
     )
   }
 }
