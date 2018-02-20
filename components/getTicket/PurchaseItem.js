@@ -546,7 +546,7 @@ class PurchaseItem extends React.Component {
               wrap
             >
               <Box
-              w={[12 / 12, 12 / 12, 12 / 12, 12 / 12, 12 / 12]}//w={[12 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
+              w={[12 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pr={['0.5em', '0em', '0.5em', '0.5em', '0.5em']}
                 pl={['0.5em', '0.5em', '0em', '0em', '0em']}
               >
@@ -572,7 +572,7 @@ class PurchaseItem extends React.Component {
                 pt={['0.5rem', '0rem', '0rem', '0rem', '0rem']}
               >
                 <center>
-                  {/* <ButtonAlipay
+                  <ButtonAlipay
                     onClick={this.purchaseWechat}
                     disabled={this.state.loading}
                   >
@@ -583,7 +583,7 @@ class PurchaseItem extends React.Component {
                     ) : (
                       <Image width="100%" src="../../static/btn_wechat.png" />
                     )}
-                  </ButtonAlipay> */}
+                  </ButtonAlipay>
                 </center>
               </Box>
             </Flex>
@@ -827,7 +827,7 @@ class PurchaseItem extends React.Component {
               wrap
             >
               <Box
-              w={[12 / 12, 12 / 12, 12 / 12, 12 / 12, 12 / 12]}//w={[12 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
+              w={[12 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pr={['0em', '0em', '0.5em', '0.5em', '0.5em']}
                 pl={['0em', '0.5em', '0em', '0em', '0em']}
               >
@@ -853,7 +853,7 @@ class PurchaseItem extends React.Component {
                 pt={['0.5rem', '0rem', '0rem', '0rem', '0rem']}
               >
                 <center>
-                  {/* <ButtonAlipay
+                  <ButtonAlipay
                     onClick={this.purchaseWechat}
                     disabled={this.state.loading}
                   >
@@ -864,7 +864,7 @@ class PurchaseItem extends React.Component {
                     ) : (
                       <Image width="100%" src="../../static/btn_wechat.png" />
                     )}
-                  </ButtonAlipay> */}
+                  </ButtonAlipay>
                 </center>
               </Box>
             </Flex>
