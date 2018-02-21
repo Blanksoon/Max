@@ -16,6 +16,7 @@ import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
 import ListVideo from '../components/maxNews/ListVideo'
 import Login from '../components/login/Login'
 import NewModal from '../containers/NewModal'
+import ModalNews from '../containers/ModalNews'
 import MaxnewHome from '../components/maxNews/MaxnewHome'
 import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
@@ -137,6 +138,8 @@ class Index extends React.Component {
   }
 
   render() {
+    let ImgNews = '/static/PROMO_ENG_A3.jpg'
+    if (this.props.lang == 'th') ImgNews = '/static/PROMO_THAI_A3.jpg'
     const theme = {
       breakpoints: [
         // min-width breakpoints in em
@@ -161,6 +164,7 @@ class Index extends React.Component {
               url={this.props.url}
             />
             <GradientBg>
+              <ModalNews modalType={10} modalURL={ImgNews} w="100%" />
               <Container>
                 <WrapperHero>
                   <Hero
@@ -196,7 +200,7 @@ class Index extends React.Component {
                 </Flex>
               </Container>
             </WrapperLive>
-            <WrapperMaxnew>
+            {/* <WrapperMaxnew>
               <Container>
                 <Flex>
                   <Box w={12 / 12} pb="4em" pt="2em">
@@ -209,7 +213,7 @@ class Index extends React.Component {
                   </Box>
                 </Flex>
               </Container>
-            </WrapperMaxnew>
+            </WrapperMaxnew> */}
             <WrapperStadiumTicket>
               <Container>
                 <Flex>

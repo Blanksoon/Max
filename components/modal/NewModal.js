@@ -105,7 +105,7 @@ const WrapperPurchaseItem = styled.div`
   background: #fff;
   z-index: 240;
   ${media.phone`width: 360px;
-  height: 489px;`};
+  height: 539px;`};
   ${media.iphone5`width: 300px;
   height: 514px;`};
 `
@@ -122,6 +122,25 @@ const WrapperSuccessPurchase = styled.div`
   height: 300px;
   background: #fff;
   z-index: 240;
+`
+const WrapperNew = styled.div`
+  margin-bottom: 2%;
+  position: relative;
+  width: 900px;
+  height: 600px;
+  background: #fff;
+  z-index: 240;
+  ${media.ipadpro`width: 840px;
+  height: 0px;
+  margin-bottom: 60%;`};
+  ${media.ipad`width: 650px;
+  height: 400px;
+  margin-bottom: 0%;`};
+  ${media.phone`width: 360px;
+  height: 240px;
+  margin-bottom: 0%;`};
+  ${media.iphone5`width: 300px;
+  height: 212px;`};
 `
 const WrapperClose = styled.div`
   position: absolute;
@@ -291,15 +310,15 @@ export default class Modal extends Component {
         </WrapperSuccessPurchase>
       )
     } else if (this.props.modalType === 10) {
-      //SuccessPurchase
-      // renderUI = (
-      //   <WrapperPurchaseItem onClick={e => this.handleOnClick(e)}>
-      //     <SuccessPurchase closeModal={this.props.closeModal} />
-      //     <WrapperClose onClick={true ? this.props.closeModal : ''}>
-      //       <Image width="100%" src="../../static/close.png" />
-      //     </WrapperClose>
-      //   </WrapperPurchaseItem>
-      // )
+      //News
+      renderUI = (
+        <WrapperNew onClick={e => this.handleOnClick(e)}>
+          <Image width="100%" src={this.props.modalURL} />
+          <WrapperClose onClick={true ? this.props.closeModal : ''}>
+            <Image width="100%" src="../../static/close.png" />
+          </WrapperClose>
+        </WrapperNew>
+      )
     } else {
       //null
       renderUI = renderUI

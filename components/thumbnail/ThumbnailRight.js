@@ -4,6 +4,8 @@ import { Flex, Provider, Box, Image, Text } from 'rebass'
 import { media } from '../../tools/responsive'
 
 const Text1 = styled.div`
+  // height: 54px;
+  // overflow: hidden;
   ${media.phone`
     height: 28px;
     overflow: hidden;`};
@@ -23,11 +25,7 @@ const ThumbnailRight = props => (
   <Provider>
     <div className="thumbnailright">
       <Flex bg="#000000e6">
-        <Box
-          w={5 / 12}
-          pt={['0.5em', '0.5em', '0em', '1em', '0.5em']}
-          pl="0.5em"
-        >
+        <Box w={5 / 12} pt={['0.5em', '0.5em', '0em', '1em', '0em']} pl="0.5em">
           <Image width={props.w} src={props.img} />
         </Box>
         <Box w={7 / 12} pl="20px" pt="5px" pb="5px">
