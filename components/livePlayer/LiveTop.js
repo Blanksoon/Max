@@ -15,9 +15,9 @@ const Wrapper = styled.div`
   height: 675px;
   background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
-  background: ${props => `url('${props.bannerUrl}')`} no-repeat center center;
+  background-image: ${props => `url('${props.bannerUrl}')`};
   position: relative;
-  ${media.phone`height: 600px;`};
+  background-repeat: no-repeat ${media.phone`height: 600px;`};
 `
 const TextBig = styled.div`
   font-weight: bold;
