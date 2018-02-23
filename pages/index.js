@@ -22,7 +22,7 @@ import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
 import { initStore } from '../redux/store'
-import { fetchVods } from '../redux/modules/vod'
+import { fetchVods, resetFetchData } from '../redux/modules/vod'
 import { fetchLives } from '../redux/modules/live'
 import { fetchNews } from '../redux/modules/maxnews'
 import {
@@ -42,7 +42,7 @@ import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langSelector } from '../redux/selectors/lang'
 import { langUrl } from '../tools/langUrl'
-import { media } from '../tools/responsive'
+import { theme, media } from '../tools/responsive'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -136,19 +136,13 @@ class Index extends React.Component {
       translations: await getTranslation(lang, ['common', 'navbar'], langUrl),
     })
   }
-
+  componentDidMount() {
+    this.props.fetchVods(this.props.cookie.token)
+  }
   render() {
+    //this.fetchNew()
     let ImgNews = '/static/PROMO_ENG_A3.jpg'
     if (this.props.lang == 'th') ImgNews = '/static/PROMO_THAI_A3.jpg'
-    const theme = {
-      breakpoints: [
-        // min-width breakpoints in em
-        23.5,
-        23.5,
-        64,
-        70,
-      ],
-    }
     return (
       <I18nextProvider i18n={this.i18n}>
         <Provider theme={theme}>
@@ -164,7 +158,7 @@ class Index extends React.Component {
               url={this.props.url}
             />
             <GradientBg>
-              <ModalNews modalType={10} modalURL={ImgNews} w="100%" />
+              {/* <ModalNews modalType={10} modalURL={ImgNews} w="100%" /> */}
               <Container>
                 <WrapperHero>
                   <Hero
@@ -200,7 +194,7 @@ class Index extends React.Component {
                 </Flex>
               </Container>
             </WrapperLive>
-            {/* <WrapperMaxnew>
+            <WrapperMaxnew>
               <Container>
                 <Flex>
                   <Box w={12 / 12} pb="4em" pt="2em">
@@ -213,7 +207,7 @@ class Index extends React.Component {
                   </Box>
                 </Flex>
               </Container>
-            </WrapperMaxnew> */}
+            </WrapperMaxnew>
             <WrapperStadiumTicket>
               <Container>
                 <Flex>
@@ -251,6 +245,7 @@ const mapStateToProps = state => {
 }
 
 Index.getInitialProps = async ({ store, isServer, query, req }) => {
+  // console.log('dddddddddddddWEEFQQEWRGEQR')
   let state = store.getState()
   const token = state.auth.token
   const livePromise = fetchLives(token)(store.dispatch)
@@ -270,6 +265,7 @@ Index.getInitialProps = async ({ store, isServer, query, req }) => {
 
 export default withRedux(initStore, mapStateToProps, {
   fetchVods,
+  resetFetchData,
   fetchLives,
   fetchNews,
   dataLivesSelector,

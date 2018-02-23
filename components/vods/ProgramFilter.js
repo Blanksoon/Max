@@ -40,6 +40,7 @@ export default ({
   //console.log('filteredProgram', filteredProgram)
   //console.log('onFilteredProgramChange', onFilteredProgramChange)
   //console.log('programEns', programEns)
+  // console.log('ddddddddddddprogram', programEns)
   return (
     <Provider>
       <div className="LabelSearch">
@@ -54,6 +55,10 @@ export default ({
               <option value="Battle Muay Thai">{programEns[1]}</option>
               <option value="Muay Thai Fighter">{programEns[2]}</option>
               <option value="The Champion Muay Thai">{programEns[3]}</option>
+              <option value="Global Fight Wednesday">{programEns[4]}</option>
+              <option value="Global Fight Thursday">{programEns[5]}</option>
+              <option value="MUAY THAI FIGHTER Monday">{programEns[6]}</option>
+              <option value="MUAY THAI FIGHTER Tuesday">{programEns[7]}</option>
             </ProgramList>
           </Box>
           <Box w={2 / 12} />

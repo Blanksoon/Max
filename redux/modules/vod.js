@@ -280,6 +280,7 @@ const vodReducer = (state = initialState, action) => {
         recents: [],
         related: [],
         data: {},
+        filter: {},
       }
     }
     case PAGINATION: {

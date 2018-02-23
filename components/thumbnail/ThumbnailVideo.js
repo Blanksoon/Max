@@ -6,7 +6,7 @@ import { media, theme } from '../../tools/responsive'
 
 const WrapperName = styled.div`
   ${media.ipad`height: 56px;overflow: hidden;`};
-  ${media.phone`height: 25px;overflow: hidden;`};
+  ${media.phone`height: 31px;overflow: hidden;`};
   ${media.iphone5`height: 30px;overflow: hidden;`};
 `
 const ThumbnailVideo = props => (

@@ -1,34 +1,65 @@
 import React from 'react'
 import styled from 'styled-components'
+import color from '../commons/vars'
 import { Flex, Provider, Box, Image, Text } from 'rebass'
 import { media } from '../../tools/responsive'
 
 const Text1 = styled.div`
-  // height: 54px;
-  // overflow: hidden;
+  height: 18px;
+  overflow: hidden;
+  ${media.ipadpro`
+    height: 20px;
+    overflow: hidden;`};
+  ${media.ipad`
+    height: 35px;
+    overflow: hidden;`};
   ${media.phone`
-    height: 28px;
+    height: 13px;
     overflow: hidden;`};
   ${media.iphone5`
-    height: 26px;
+    height: 13px;
     overflow: hidden;`};
 `
 const Text2 = styled.div`
+  height: 52px;
+  overflow: hidden;
+  ${media.ipadpro`
+    height: 55px;
+    overflow: hidden;`};
+  ${media.ipad`
+    height: 70px;
+    overflow: hidden;`};
   ${media.phone`
-    height: 39px;
+    height: 41px;
     overflow: hidden;`};
   ${media.iphone5`
     height: 29px;
+    overflow: hidden;`};
+`
+const Text3 = styled.div`
+  color: ${color.yellow}
+  height: 24px;
+  overflow: hidden;
+  ${media.phone`
+    height: 16px;
+    overflow: hidden;`};
+  ${media.iphone5`
+    height: 17px;
     overflow: hidden;`};
 `
 const ThumbnailRight = props => (
   <Provider>
     <div className="thumbnailright">
       <Flex bg="#000000e6">
-        <Box w={5 / 12} pt={['0.5em', '0.5em', '0em', '1em', '0em']} pl="0.5em">
+        <Box w={5 / 12} pt={['0.2em', '0em', '0em', '0.7em', '0em']} pl="0.5em">
           <Image width={props.w} src={props.img} />
         </Box>
-        <Box w={7 / 12} pl="20px" pt="5px" pb="5px">
+        <Box
+          w={7 / 12}
+          pl="20px"
+          pt={['5px', '5px', '1em', '5px', '5px']}
+          pb="5px"
+        >
           <Box w={12 / 12}>
             <Text1>
               <Text
@@ -47,12 +78,14 @@ const ThumbnailRight = props => (
               fontSize={['0.7em', '0.7em', '0.8em', '0.8em', '0.8em']}
             />
           </Text2>
-          <Text
-            color="blue"
-            pt={['0.2rem', '0rem', '0.5rem', '0.5rem', '0.5rem']}
-            children={props.date}
-            fontSize={['0.7em', '0.7em', '0.9em', '0.9em', '0.9em']}
-          />
+          <Text3>
+            <Text
+              color={color.yellow}
+              pt={['0.2rem', '0rem', '0.5rem', '0.5rem', '0.5rem']}
+              children={props.date}
+              fontSize={['0.7em', '0.7em', '0.9em', '0.9em', '0.9em']}
+            />
+          </Text3>
         </Box>
       </Flex>
       <style jsx>

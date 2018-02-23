@@ -10,7 +10,7 @@ const BackVideo = styled.div`
 `
 const BackVideoCenter = ({ name, url }) => (
   <div className="VideoCenter">
-    <Box width={1} pt="80px" />
+    <Box width={1} pt={['60px', '60px', '64px', '80px', '80px']} />
     <Box width={1} bg="#084a94" pl="1.5rem">
       <div
         onClick={() => {

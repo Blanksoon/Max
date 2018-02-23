@@ -172,7 +172,10 @@ class videoPlayer extends React.Component {
             <div className="wrapper-BackVideoCenter">
               <Container>
                 <Flex>
-                  <Box w={12 / 12} pt="2rem">
+                  <Box
+                    w={12 / 12}
+                    pt={['0rem', '0rem', '0rem', '2rem', '2rem']}
+                  >
                     <BackVideoCenter
                       name={this.state.common.BACKTOONDEMAND}
                       url={url}
