@@ -10,6 +10,10 @@ const Hilight = styled.a`
   position: relative;
   width: 640px;
   cursor: pointer;
+  ${media.iphone7p`
+  width: 382px;
+  margin: 1.5rem auto;
+  `};
   ${media.phone`
   width: 343px;
   margin: 1.5rem auto;

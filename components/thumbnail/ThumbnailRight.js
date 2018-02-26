@@ -13,6 +13,9 @@ const Text1 = styled.div`
   ${media.ipad`
     height: 35px;
     overflow: hidden;`};
+  ${media.iphone7p`
+    height: 17px;
+    overflow: hidden;`};
   ${media.phone`
     height: 13px;
     overflow: hidden;`};
@@ -28,6 +31,9 @@ const Text2 = styled.div`
     overflow: hidden;`};
   ${media.ipad`
     height: 70px;
+    overflow: hidden;`};
+  ${media.iphone7p`
+    height: 50px;
     overflow: hidden;`};
   ${media.phone`
     height: 41px;
@@ -48,7 +54,7 @@ const Text3 = styled.div`
     overflow: hidden;`};
 `
 const ThumbnailRight = props => (
-  <Provider>
+  <div>
     <div className="thumbnailright">
       <Flex bg="#000000e6">
         <Box w={5 / 12} pt={['0.2em', '0em', '0em', '0.7em', '0em']} pl="0.5em">
@@ -96,7 +102,7 @@ const ThumbnailRight = props => (
         `}
       </style>
     </div>
-  </Provider>
+  </div>
 )
 
 export default ThumbnailRight

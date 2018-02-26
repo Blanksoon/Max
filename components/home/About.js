@@ -9,6 +9,7 @@ const WrapperAbout = styled.div`
 
   ${media.ipad`background-position-x: -300px;
   `};
+  ${media.iphone7p`background-position-x: -500px;`};
   ${media.phone`background-position-x: -500px;`};
 `
 const Wrapper = styled.div`padding-top: 0;`

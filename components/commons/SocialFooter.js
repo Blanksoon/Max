@@ -14,6 +14,7 @@ const CopyRight = styled.span`
   color: ${vars.yellow};
   display: inline-block;
   float: right;
+  ${media.iphone7p`font-size: 9px;`};
   ${media.phone`font-size: 9px;`};
   ${media.iphone5`
   font-size: 9px;
@@ -27,6 +28,10 @@ const SocialIcon = styled(Image)`
   margin: 0;
   padding: 0;
   width: 4rem;
+  ${media.iphone7p`
+  margin-top: 7px;
+  width: 50px;
+  height: 50px;`};
   ${media.phone`
   margin-top: 3px;
   width: 43px;

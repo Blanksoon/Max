@@ -76,8 +76,7 @@ class LatestVideo extends Component {
           </Flex>
         </Box>
       </Wrapper>
-
-      // </Provider>
+      //</Provider>
     )
   }
 }

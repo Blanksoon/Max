@@ -28,6 +28,12 @@ const Button1 = styled.button`
   margin-left: 52%;
   font-size: 0.9em;
   margin-top: 10px;
+  `} ${media.iphone7p`
+  width: 63%;
+  padding: 8px 8%;
+  margin-left: 37%;
+  font-size: 0.8em;
+  margin-top: 10px;
   `} ${media.phone`
   width: 63%;
   padding: 5px 10%;

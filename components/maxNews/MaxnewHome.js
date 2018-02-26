@@ -39,6 +39,7 @@ const Button1 = styled.button`
   cursor: pointer;
   margin-top: 7px;
   ${media.ipadpro`margin-left: 40%;`};
+  ${media.iphone7p`font-size: 0.8em;padding: 8px 8%;`};
   ${media.phone`font-size: 0.8em`};
   ${media.iphone5`font-size: 0.7em;padding: 8px 8%;`};
 `
@@ -213,8 +214,9 @@ class MaxnewHome extends React.Component {
               </WrapperHilight>
             </Box>
             <Box
-              width={[12 / 12, 12 / 12, 12 / 12, 12 / 12, 5 / 12, 5 / 12]}
-              pl={['1%', '2%', '3%', '4%', '5%', '6%']}
+              width={[12 / 12, 12 / 12, 12 / 12, 5 / 12, 5 / 12]}
+              // minWidth={[20.1, 23.5, 26, 48, 64, 80]}
+              pl={['0%', '0%', '0%', '1%', '1%']}
             >
               <Flex pt={['1rem', '1rem', '0rem', '0rem', '0rem']}>
                 <a href={`/maxnews_detail`}>
@@ -245,7 +247,7 @@ class MaxnewHome extends React.Component {
                   />
                 </a>
               </Flex>
-              <Flex pt={['1rem', '1rem', '3.5rem', '7rem', '5rem']}>
+              <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '5rem']}>
                 <a href={`/maxnews_detail`}>
                   <ThumbnailRight
                     w="100%"

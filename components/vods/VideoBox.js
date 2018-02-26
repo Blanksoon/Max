@@ -25,6 +25,7 @@ const WrapperHilight = styled.div`
   font-family: Helvetica, Arial, sans-serif;
   ${media.ipadpro`padding-left: 20%;`};
   ${media.ipad`padding-left: 6.5%;`};
+  ${media.iphone7p`padding-left: 0%;`};
   ${media.phone`padding-left: 0%;`};
   ${media.iphone5`padding-left: 0%;`};
 `

@@ -113,6 +113,7 @@ const GradientBg = styled.div`
     #08488f 92%,
     #08488f 100%
   ); /* Chrome10-25,Safari5.1-6 */
+  ${media.iphone7p`padding-top: 4rem;`};
   ${media.phone`padding-top: 4rem;`};
   ${media.iphone5`padding-top: 4rem;`};
 `
