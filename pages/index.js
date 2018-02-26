@@ -146,6 +146,7 @@ class Index extends React.Component {
         70,
       ],
     }
+    console.log("ddddddsss", this.props);    
     return (
       <I18nextProvider i18n={this.i18n}>
         <Provider theme={theme}>

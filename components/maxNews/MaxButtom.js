@@ -105,9 +105,9 @@ const Thumbnailright = props => (
           <ThumbnailRight
             w="100%"
             img="static/maxPromo.jpg"
-            text1={props.news1.heading_en}//"Headline Headline consect adipicing elit sedid"
-            text2={props.news1.article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-            date={props.news1.createDate_en}//"Aug 11, 2017"
+            text1={props.lang==='en'?props.news1.heading_en:props.news1.heading_th}//"Headline Headline consect adipicing elit sedid"
+            text2={props.lang==='en'?props.news1.article_en:props.news1.article_th}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+            date={props.lang==='en'?props.news1.createDate_en:props.news1.createDate_th}//"Aug 11, 2017"
             pt="0.9em"
           />
         </a>

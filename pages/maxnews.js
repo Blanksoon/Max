@@ -67,8 +67,8 @@ class maxnew extends React.Component {
           <Wrapper>
             <Container>
               <Box pt="7rem">
-                <MaxTop news={this.props.news}/>
-                <MaxButtom news={this.props.news}/>
+                <MaxTop lang={this.state.lang} news={this.props.news}/>
+                <MaxButtom lang={this.state.lang} news={this.props.news}/>
               </Box>
             </Container>
           </Wrapper>

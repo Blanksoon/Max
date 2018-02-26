@@ -166,24 +166,21 @@ class MaxnewHome extends React.Component {
                     >
                       <Box w={8 / 12}>
                         <Text1>
-                          {this.props.news[0].heading_en}
-                          {/* Headline consectetur adipicing elit, sed do eiusmod
-                          tempor */}
+                          {this.props.lang==='en'?this.props.news[0].heading_en:this.props.news[0].heading_th}
+                          {/* {this.props.news[0].heading_en} */}
                         </Text1>
                       </Box>
                       <Box pt="1rem">
                         <Text2>
-                          {this.props.news[0].article_en}
-                          {/* Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Donec ut lectus turpis. Mauris cursus mollis
-                          nisi. */}
+                          {this.props.lang==='en'?this.props.news[0].article_en:this.props.news[0].article_th}
+                          {/* {this.props.news[0].article_en} */}
                         </Text2>
                       </Box>
                       <Flex>
                         <Box w={5 / 12} pt="1rem">
                           <Date>
-                            {this.props.news[0].createDate_en}
-                            {/* Aug 11, 2017 */}
+                            {this.props.lang==='en'?this.props.news[0].createDate_en:this.props.news[0].createDate_th}
+                            {/* {this.props.news[0].createDate_en} */}
                           </Date>
                         </Box>
                         <Box w={7 / 12}>
@@ -203,9 +200,9 @@ class MaxnewHome extends React.Component {
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
-                      text1={this.props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
-                      text2={this.props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                      date={this.props.news[0].createDate_en}//"Aug 11, 2017"
+                      text1={this.props.lang==='en'?this.props.news[1].heading_en:this.props.news[1].heading_th}//"Headline Headline consect adipicing elit sedid"
+                      text2={this.props.lang==='en'?this.props.news[1].article_en:this.props.news[1].article_th}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={this.props.lang==='en'?this.props.news[1].createDate_en:this.props.news[1].createDate_th}//"Aug 11, 2017"
                     />
                   </a>
               </Flex>
@@ -214,9 +211,9 @@ class MaxnewHome extends React.Component {
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
-                      text1={this.props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
-                      text2={this.props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                      date={this.props.news[0].createDate_en}//"Aug 11, 2017"
+                      text1={this.props.lang==='en'?this.props.news[2].heading_en:this.props.news[2].heading_th}//"Headline Headline consect adipicing elit sedid"
+                      text2={this.props.lang==='en'?this.props.news[2].article_en:this.props.news[2].article_th}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={this.props.lang==='en'?this.props.news[2].createDate_en:this.props.news[2].createDate_th}//"Aug 11, 2017"
                     />
                   </a>
               </Flex>
@@ -225,9 +222,9 @@ class MaxnewHome extends React.Component {
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
-                      text1={this.props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
-                      text2={this.props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                      date={this.props.news[0].createDate_en}//"Aug 11, 2017"
+                      text1={this.props.lang==='en'?this.props.news[3].heading_en:this.props.news[3].heading_th}//"Headline Headline consect adipicing elit sedid"
+                      text2={this.props.lang==='en'?this.props.news[3].article_en:this.props.news[3].article_th}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={this.props.lang==='en'?this.props.news[3].createDate_en:this.props.news[3].createDate_th}//"Aug 11, 2017"
                     />
                   </a>
               </Flex>

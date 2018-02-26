@@ -150,24 +150,21 @@ const MaxTop = (props) => (
                     <Box pl="1rem" pr="1rem">
                       <Box w={[12 / 12, 12 / 12, 8 / 12, 8 / 12, 8 / 12]}>
                         <Text1>
-                          {props.news[0].heading_en}
-                          {/* Headline consectetur adipicing elit, sed do eiusmod
-                          tempor */}
+                          {props.lang==='en'?props.news[0].heading_en:props.news[0].heading_th}
+                          {/* {props.news[0].heading_en} */}
                         </Text1>
                       </Box>
                       <Box>
                         <Text2>
-                          {props.news[0].article_en}
-                          {/* Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Donec ut lectus turpis. Mauris cursus mollis
-                          nisi. */}
+                          {props.lang==='en'?props.news[0].article_en:props.news[0].article_th}
+                          {/* {props.news[0].article_en} */}
                         </Text2>
                       </Box>
                       <Flex>
                         <Box w={5 / 12}>
                           <Date>
-                            {props.news[0].createDate_en}
-                            {/* Aug 11, 2017 */}
+                            {props.lang==='en'?props.news[0].createDate_en:props.news[0].createDate_th}
+                            {/* {props.news[0].createDate_en} */}
                           </Date>
                         </Box>
                         <Box w={7 / 12}>
@@ -190,9 +187,9 @@ const MaxTop = (props) => (
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
-                      text1={props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
-                      text2={props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                      date={props.news[0].createDate_en}//"Aug 11, 2017"
+                      text1={props.lang==='en'?props.news[1].heading_en:props.news[1].heading_th}//"Headline Headline consect adipicing elit sedid"
+                      text2={props.lang==='en'?props.news[1].article_en:props.news[1].article_th}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={props.lang==='en'?props.news[1].createDate_en:props.news[1].createDate_th}//"Aug 11, 2017"
                     />
                   </a>
               </Flex>
@@ -201,9 +198,9 @@ const MaxTop = (props) => (
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
-                      text1={props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
-                      text2={props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                      date={props.news[0].createDate_en}//"Aug 11, 2017"
+                      text1={props.lang==='en'?props.news[2].heading_en:props.news[2].heading_th}//"Headline Headline consect adipicing elit sedid"
+                      text2={props.lang==='en'?props.news[2].article_en:props.news[2].article_th}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={props.lang==='en'?props.news[2].createDate_en:props.news[2].createDate_th}//"Aug 11, 2017"
                     />
                   </a>
               </Flex>
@@ -212,9 +209,9 @@ const MaxTop = (props) => (
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
-                      text1={props.news[0].heading_en}//"Headline Headline consect adipicing elit sedid"
-                      text2={props.news[0].article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                      date={props.news[0].createDate_en}//"Aug 11, 2017"
+                      text1={props.lang==='en'?props.news[3].heading_en:props.news[3].heading_th}//"Headline Headline consect adipicing elit sedid"
+                      text2={props.lang==='en'?props.news[3].article_en:props.news[3].article_th}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={props.lang==='en'?props.news[3].createDate_en:props.news[3].createDate_th}//"Aug 11, 2017"
                     />
                   </a>
               </Flex>
