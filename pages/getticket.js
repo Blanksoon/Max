@@ -69,7 +69,7 @@ class selectShowtime extends React.Component {
             />
             <Wrapper>
               <Container>
-                <Box pt={['5.5rem', '5.5rem', '7rem', '7rem', '7rem']}>
+                <Box pt={['3rem', '3rem', '4rem', '7rem', '7rem']}>
                   <ShowTime
                     common={this.state.translations.translation.common}
                     lang={this.state.lang}

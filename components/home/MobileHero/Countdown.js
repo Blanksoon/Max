@@ -10,6 +10,10 @@ const Countdown = styled.div`
   top: 8rem;
   right: 20px;
   z-index: 1;
+  ${media.iphone7p`
+  right: 0px;
+  top: 0px;
+  width: 166px;`};
   ${media.phone`
   right: 0px;
   top: 0px;
@@ -30,6 +34,7 @@ const Digit = styled.div`
   font-family: 'Lucida Console', Monaco, monospace;
   font-size: 1.5rem;
   text-align: center;
+  ${media.iphone7p`font-size: 1.2rem`};
   ${media.phone`font-size: 1rem`};
   ${media.iphone5`font-size: 0.5rem`};
 `
@@ -38,6 +43,7 @@ const Text = styled.div`
   font-family: 'Lucida Console', Monaco, monospace;
   font-size: 1rem;
   text-align: center;
+  ${media.iphone7p`font-size: 0.8rem`};
   ${media.phone`font-size: 0.5rem`};
   ${media.iphone5`font-size: 0.5rem`};
 `
@@ -48,6 +54,7 @@ const Label = styled.div`
   font-size: 1.5rem;
   margin: 0 0.5rem;
   padding: 0.3rem 0.5rem;
+  ${media.iphone7p`font-size: 1.2rem`};
   ${media.phone`font-size: 0.8rem`};
   ${media.iphone5`font-size: 0.5rem`};
 `

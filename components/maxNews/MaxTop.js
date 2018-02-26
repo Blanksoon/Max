@@ -28,6 +28,12 @@ const Button1 = styled.button`
   margin-left: 52%;
   font-size: 0.9em;
   margin-top: 10px;
+  `} ${media.iphone7p`
+  width: 63%;
+  padding: 8px 8%;
+  margin-left: 37%;
+  font-size: 0.8em;
+  margin-top: 10px;
   `} ${media.phone`
   width: 63%;
   padding: 5px 10%;
@@ -46,22 +52,26 @@ const Text1 = styled.div`
   color: #fff;
   font-weight: 700;
   font-size: 1.5em;
-  padding-top: 20rem;
+  // padding-top: 15rem;
   font-family: Helvetica, Arial, sans-serif;
-  ${media.ipadpro`padding-top: 18rem;`};
-  ${media.ipad`padding-top: 20rem;`};
-  ${media.phone`padding-top: 4rem;font-size: 1em;`};
-  ${media.iphone5`font-size: 0.7em;padding: 8px 8%;padding-top: 3rem;`};
+  height: 40px;
+  // overflow: hidden;
+  ${media.ipadpro``};
+  ${media.ipad``};
+  ${media.phone`font-size: 1em;height: 30px;`};
+  ${media.iphone5`font-size: 0.7em;padding: 8px 8%;`};
 `
 const Text2 = styled.div`
   color: #fff;
   font-weight: 700;
   font-size: 0.9em;
   font-family: Helvetica, Arial, sans-serif;
+  height: 50px;
+  overflow: hidden;
   ${media.ipadpro`padding-top: 1rem;`};
   ${media.ipad`padding-top: 1rem;`};
-  ${media.phone`font-size: 0.8em;padding-top: 1rem;`};
-  ${media.iphone5`font-size: 0.7em;padding: 8px 8%;padding-top: 0rem;`};
+  ${media.phone`height: 47px;font-size: 0.8em;padding-top: 0rem;`};
+  ${media.iphone5`height: 37px;font-size: 0.7em;padding: 8px 8%;padding-top: 0rem;`};
 `
 const Date = styled.div`
   color: ${color.yellow};
@@ -70,7 +80,7 @@ const Date = styled.div`
   font-family: Helvetica, Arial, sans-serif;
   ${media.ipadpro`padding-top: 1rem;`};
   ${media.ipad`padding-top: 1rem;`};
-  ${media.phone`padding-top: 1rem;`};
+  ${media.phone`font-size: 0.8em;padding-top: 1rem;`};
   ${media.iphone5`font-size: 0.7em;padding-top: 0.4rem;padding-left: 1.7em;`};
 `
 const Select = styled.select`
@@ -107,7 +117,7 @@ const WrapperHilightText = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapper = styled.div`background-color: #fff;`
-const MaxTop = (props) => (
+const MaxTop = props => (
   <Wrapper>
     <Box pl="1rem" pr="1rem" width={1}>
       <Flex>
@@ -147,7 +157,11 @@ const MaxTop = (props) => (
                       pl="90%"
                       src="static/img_logo_white@2x.png"
                     />
-                    <Box pl="1rem" pr="1rem">
+                    <Box
+                      pl="1rem"
+                      pr="1rem"
+                      pt={['4rem', '0rem', '18rem', '13rem', '18rem']}
+                    >
                       <Box w={[12 / 12, 12 / 12, 8 / 12, 8 / 12, 8 / 12]}>
                         <Text1>
                           {props.lang==='en'?props.news[0].heading_en:props.news[0].heading_th}
@@ -160,7 +174,7 @@ const MaxTop = (props) => (
                           {/* {props.news[0].article_en} */}
                         </Text2>
                       </Box>
-                      <Flex>
+                      <Flex pt={['0.5em', '0em', '1em', '1em', '1em']}>
                         <Box w={5 / 12}>
                           <Date>
                             {props.lang==='en'?props.news[0].createDate_en:props.news[0].createDate_th}
@@ -168,9 +182,9 @@ const MaxTop = (props) => (
                           </Date>
                         </Box>
                         <Box w={7 / 12}>
-                            <a href={`/maxnews_detail`}>
-                              <Button1>Read more</Button1>
-                            </a>
+                          <a href={`/maxnews_detail`}>
+                            <Button1>Read more</Button1>
+                          </a>
                         </Box>
                       </Flex>
                     </Box>

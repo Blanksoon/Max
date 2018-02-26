@@ -16,12 +16,13 @@ import MaxNewsSeach from '../components/maxNews/MaxNewsSeach'
 import ListVideo from '../components/maxNews/ListVideo'
 import Login from '../components/login/Login'
 import NewModal from '../containers/NewModal'
+import ModalNews from '../containers/ModalNews'
 import MaxnewHome from '../components/maxNews/MaxnewHome'
 import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
 import { initStore } from '../redux/store'
-import { fetchVods } from '../redux/modules/vod'
+import { fetchVods, resetFetchData } from '../redux/modules/vod'
 import { fetchLives } from '../redux/modules/live'
 import { fetchNews } from '../redux/modules/maxnews'
 import {
@@ -41,7 +42,7 @@ import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { langSelector } from '../redux/selectors/lang'
 import { langUrl } from '../tools/langUrl'
-import { media } from '../tools/responsive'
+import { theme, media } from '../tools/responsive'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -112,6 +113,7 @@ const GradientBg = styled.div`
     #08488f 92%,
     #08488f 100%
   ); /* Chrome10-25,Safari5.1-6 */
+  ${media.iphone7p`padding-top: 4rem;`};
   ${media.phone`padding-top: 4rem;`};
   ${media.iphone5`padding-top: 4rem;`};
 `
@@ -135,18 +137,13 @@ class Index extends React.Component {
       translations: await getTranslation(lang, ['common', 'navbar'], langUrl),
     })
   }
-
+  componentDidMount() {
+    this.props.fetchVods(this.props.cookie.token)
+  }
   render() {
-    const theme = {
-      breakpoints: [
-        // min-width breakpoints in em
-        23.5,
-        23.5,
-        64,
-        70,
-      ],
-    }
-    console.log("ddddddsss", this.props);    
+    //this.fetchNew()
+    let ImgNews = '/static/PROMO_ENG_A3.jpg'
+    if (this.props.lang == 'th') ImgNews = '/static/PROMO_THAI_A3.jpg'
     return (
       <I18nextProvider i18n={this.i18n}>
         <Provider theme={theme}>
@@ -162,6 +159,7 @@ class Index extends React.Component {
               url={this.props.url}
             />
             <GradientBg>
+              {/* <ModalNews modalType={10} modalURL={ImgNews} w="100%" /> */}
               <Container>
                 <WrapperHero>
                   <Hero
@@ -248,6 +246,7 @@ const mapStateToProps = state => {
 }
 
 Index.getInitialProps = async ({ store, isServer, query, req }) => {
+  // console.log('dddddddddddddWEEFQQEWRGEQR')
   let state = store.getState()
   const token = state.auth.token
   const livePromise = fetchLives(token)(store.dispatch)
@@ -267,6 +266,7 @@ Index.getInitialProps = async ({ store, isServer, query, req }) => {
 
 export default withRedux(initStore, mapStateToProps, {
   fetchVods,
+  resetFetchData,
   fetchLives,
   fetchNews,
   dataLivesSelector,

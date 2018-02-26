@@ -15,6 +15,7 @@ const Logo = styled(Image)`
   margin: auto;
   position: absolute;
   top: 0;
+  ${media.iphone7p`width: 120px;`};
   ${media.phone`width: 88px;`};
   ${media.iphone5`display: none;`};
 `
@@ -22,6 +23,7 @@ const AddressPanel = styled.div`
   float: right;
   text-align: right;
   margin-top: 3.125rem;
+  ${media.iphone7p`font-size: 0.8em;`};
   ${media.phone`font-size: 0.8em;`};
   ${media.iphone5`text-align: left;
   float: left;`};
@@ -35,6 +37,7 @@ const Name = styled.span`
 const Address = styled.span`
   color: ${vars.lightBlue};
   display: block;
+  ${media.iphone7p`font-size: 12px;`};
   ${media.phone`font-size: 12px;`};
 `
 
@@ -42,6 +45,7 @@ const Tel = styled.span`
   color: ${vars.lightBlue};
   display: block;
   margin-top: 1rem;
+  ${media.iphone7p`font-size: 12px;`};
   ${media.phone`font-size: 12px;`};
 `
 export default ({ common }) => (

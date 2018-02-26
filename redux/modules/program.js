@@ -14,7 +14,7 @@ export const fetchPrograms = () => async dispatch => {
   try {
     const json = await api.get(url)
     // You should not return in Vods <-- change to something like data
-    //console.log(json.data)
+    console.log('ddddddddddJson', json.data)
     dispatch(fetchProgramName(json.data))
   } catch (error) {
     console.log(error)
@@ -29,19 +29,28 @@ const initialState = {
 const programReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PROGRAM_NAME: {
+      console.log('ddddddddReduc', action.payload[0].title_en)
       return {
         ...state,
         programname_en: [
-          'Max Muay Thai',
-          'Muay Thai Battle',
-          'Muaythai Fighter',
-          'The Champion Muay Thai',
+          action.payload[0].title_en,
+          action.payload[1].title_en,
+          action.payload[2].title_en,
+          action.payload[3].title_en,
+          action.payload[4].title_en,
+          action.payload[5].title_en,
+          action.payload[6].title_en,
+          action.payload[7].title_en,
         ],
         programname_th: [
-          'แม็กซ์มวยไทย',
-          'มวยไทย แบทเทิล',
-          'มวยไทย ไฟต์เตอ',
-          'เดอะแชมป์เปี้ยน มวยไทย ตัดเชือก',
+          action.payload[0].title_th,
+          action.payload[1].title_th,
+          action.payload[2].title_th,
+          action.payload[3].title_th,
+          action.payload[4].title_th,
+          action.payload[5].title_th,
+          action.payload[6].title_th,
+          action.payload[7].title_th,
         ],
       }
     }

@@ -27,6 +27,12 @@ const LiveInfo = styled.div`
   z-index: 1;
   ${media.ipadpro`width: 50%;`};
   ${media.ipad`width: 58%;`};
+  ${media.iphone7p`
+  padding: 0rem;
+  width: 77%;
+  left: 10px;
+  height: 121px;
+  bottom: 0px;`};
   ${media.phone`
   padding: 0rem;
   width: 76%;
@@ -44,6 +50,7 @@ const Title = styled.div`
   font-size: 1.5rem;
   ${media.ipadpro`font-size: 1.5rem`};
   ${media.ipad`font-size: 1.3rem`};
+  ${media.iphone7p`font-size: 0.9rem`};
   ${media.phone`font-size: 0.8rem`};
   ${media.iphone5`font-size: 0.5rem`};
 `

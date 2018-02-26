@@ -81,7 +81,7 @@ class NavBar extends React.Component {
           active: false,
         },
         { label: nextProps.common.ContactUs, href: '/contact', active: false },
-        { label: nextProps.common.MaxNews, href: '/maxnews', active: false },
+        // { label: nextProps.common.MaxNews, href: '/maxnews', active: false },
       ],
       RegisterButton: nextProps.common.REGISTERBUTTON,
       logoutText: nextProps.common.LOGOUTTEXT,

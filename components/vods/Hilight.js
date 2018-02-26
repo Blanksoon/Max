@@ -10,6 +10,10 @@ const Hilight = styled.a`
   position: relative;
   width: 640px;
   cursor: pointer;
+  ${media.iphone7p`
+  width: 382px;
+  margin: 1.5rem auto;
+  `};
   ${media.phone`
   width: 343px;
   margin: 1.5rem auto;
@@ -43,6 +47,7 @@ const StickToBottom = styled.div`
 const OnAirInfo = styled.div`
   margin-top: 1rem;
   width: 100%;
+  ${media.iphone7p`width: 350px;`};
   ${media.phone`width: 315px;`};
   ${media.iphone5`width: 258px;`};
 `

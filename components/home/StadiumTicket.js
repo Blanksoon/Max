@@ -15,6 +15,7 @@ const Button = styled.button`
   font-family: Helvetica, Arial, sans-serif;
   ${media.ipadpro`font-size: 15px;`};
   ${media.ipad`font-size: 14px;`};
+  ${media.iphone7p`font-size: 11px;`};
   ${media.phone`font-size: 11px;`};
   ${media.iphone5`font-size: 10px;
   padding: 8px 19px;`};
@@ -24,6 +25,7 @@ const Witness = styled.div`
   font-size: 32px;
   ${media.ipadpro`font-size: 23px;`};
   ${media.ipad`font-size: 21px;`};
+  ${media.iphone7p`font-size: 18px;`};
   ${media.phone`font-size: 15px;`};
   ${media.iphone5`font-size: 13px;`};
 `
