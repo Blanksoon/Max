@@ -15,6 +15,7 @@ const Button1 = styled.button`
   display: inline-block;
   font-weight: 700;
   font-size: 1em;
+  cursor: pointer;
   margin-left: 53%;
   ${media.ipadpro`
   width: 45%;
@@ -145,90 +146,172 @@ const MaxTop = props => (
             </Box> */}
           </Flex>
           <Flex wrap>
-            <Box w={[12 / 12, 12 / 12, 12 / 12, 7 / 12, 7 / 12]}>
-              <WrapperHilight>
-                <Box w={12 / 12} className="imagesss">
-                  <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
-                </Box>
-                <Box w={12 / 12} pl="20px">
-                  <WrapperHilightText>
-                    <Image
-                      width="10%"
-                      pl="90%"
-                      src="static/img_logo_white@2x.png"
-                    />
-                    <Box
-                      pl="1rem"
-                      pr="1rem"
-                      pt={['4rem', '0rem', '18rem', '13rem', '18rem']}
-                    >
-                      <Box w={[12 / 12, 12 / 12, 8 / 12, 8 / 12, 8 / 12]}>
-                        <Text1>
-                          {props.lang==='en'?props.news[0].heading_en:props.news[0].heading_th}
-                          {/* {props.news[0].heading_en} */}
-                        </Text1>
-                      </Box>
-                      <Box>
-                        <Text2>
-                          {props.lang==='en'?props.news[0].article_en:props.news[0].article_th}
-                          {/* {props.news[0].article_en} */}
-                        </Text2>
-                      </Box>
-                      <Flex pt={['0.5em', '0em', '1em', '1em', '1em']}>
-                        <Box w={5 / 12}>
-                          <Date>
-                            {props.lang==='en'?props.news[0].createDate_en:props.news[0].createDate_th}
-                            {/* {props.news[0].createDate_en} */}
-                          </Date>
+            {props.news[0] != undefined ? (
+              <Box w={[12 / 12, 12 / 12, 12 / 12, 7 / 12, 7 / 12]}>
+                <WrapperHilight>
+                  <Box w={12 / 12} className="imagesss">
+                    <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
+                  </Box>
+                  <Box w={12 / 12} pl="20px">
+                    <WrapperHilightText>
+                      <Image
+                        width="10%"
+                        pl="1rem"
+                        src="static/img_logo_white@2x.png"
+                      />
+                      <Box
+                        pl="1rem"
+                        pr="1rem"
+                        pt={['4rem', '0rem', '18rem', '13rem', '18rem']}
+                      >
+                        <Box w={[12 / 12, 12 / 12, 8 / 12, 8 / 12, 8 / 12]}>
+                          <Text1>
+                            {props.lang === 'en' ? (
+                              props.news[0].heading_en
+                            ) : (
+                              props.news[0].heading_th
+                            )}
+                            {/* {props.news[0].heading_en} */}
+                          </Text1>
                         </Box>
-                        <Box w={7 / 12}>
-                          <a href={`/maxnews_detail`}>
-                            <Button1>Read more</Button1>
-                          </a>
+                        <Box>
+                          <Text2>
+                            {props.lang === 'en' ? (
+                              props.news[0].article_en
+                            ) : (
+                              props.news[0].article_th
+                            )}
+                            {/* {props.news[0].article_en} */}
+                          </Text2>
                         </Box>
-                      </Flex>
-                    </Box>
-                  </WrapperHilightText>
-                </Box>
-              </WrapperHilight>
-            </Box>
+                        <Flex pt={['0.5em', '0em', '1em', '1em', '1em']}>
+                          <Box w={5 / 12}>
+                            <Date>
+                              {props.lang === 'en' ? (
+                                props.news[0].createDate_en
+                              ) : (
+                                props.news[0].createDate_th
+                              )}
+                              {/* {props.news[0].createDate_en} */}
+                            </Date>
+                          </Box>
+                          <Box w={7 / 12}>
+                            <a href={`/maxnews_detail?id=${props.news[0].__v}`}>
+                              <Button1>Read more</Button1>
+                            </a>
+                          </Box>
+                        </Flex>
+                      </Box>
+                    </WrapperHilightText>
+                  </Box>
+                </WrapperHilight>
+              </Box>
+            ) : (
+              ''
+            )}
             <Box
               width={[12 / 12, 12 / 12, 12 / 12, 5 / 12, 5 / 12]}
               pl={['0%', '0%', '0%', '2%', '2%']}
             >
-              <Flex pt={['1rem', '1rem', '2rem', '0rem', '0rem']}>
-                  <a href={`/maxnews_detail`}>
+              {props.news[1] != undefined ? (
+                <Flex pt={['1rem', '1rem', '2rem', '0rem', '0rem']}>
+                  <a href={`/maxnews_detail?id=${props.news[1].id}`}>
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
-                      text1={props.lang==='en'?props.news[1].heading_en:props.news[1].heading_th}//"Headline Headline consect adipicing elit sedid"
-                      text2={props.lang==='en'?props.news[1].article_en:props.news[1].article_th}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                      date={props.lang==='en'?props.news[1].createDate_en:props.news[1].createDate_th}//"Aug 11, 2017"
+                      text1={
+                        props.lang === 'en' ? (
+                          props.news[1].heading_en
+                        ) : (
+                          props.news[1].heading_th
+                        )
+                      } //"Headline Headline consect adipicing elit sedid"
+                      text2={
+                        props.lang === 'en' ? (
+                          props.news[1].article_en
+                        ) : (
+                          props.news[1].article_th
+                        )
+                      } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={
+                        props.lang === 'en' ? (
+                          props.news[1].createDate_en
+                        ) : (
+                          props.news[1].createDate_th
+                        )
+                      } //"Aug 11, 2017"
                     />
                   </a>
-              </Flex>
-              <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '3.5rem']}>
-                  <a href={`/maxnews_detail`}>
+                </Flex>
+              ) : (
+                ''
+              )}
+              {props.news[2] != undefined ? (
+                <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '4rem']}>
+                  <a href={`/maxnews_detail?id=${props.news[2].id}`}>
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
-                      text1={props.lang==='en'?props.news[2].heading_en:props.news[2].heading_th}//"Headline Headline consect adipicing elit sedid"
-                      text2={props.lang==='en'?props.news[2].article_en:props.news[2].article_th}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                      date={props.lang==='en'?props.news[2].createDate_en:props.news[2].createDate_th}//"Aug 11, 2017"
+                      text1={
+                        props.lang === 'en' ? (
+                          props.news[2].heading_en
+                        ) : (
+                          props.news[2].heading_th
+                        )
+                      } //"Headline Headline consect adipicing elit sedid"
+                      text2={
+                        props.lang === 'en' ? (
+                          props.news[2].article_en
+                        ) : (
+                          props.news[2].article_th
+                        )
+                      } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={
+                        props.lang === 'en' ? (
+                          props.news[2].createDate_en
+                        ) : (
+                          props.news[2].createDate_th
+                        )
+                      } //"Aug 11, 2017"
                     />
                   </a>
-              </Flex>
-              <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '3.5rem']}>
-                  <a href={`/maxnews_detail`}>
+                </Flex>
+              ) : (
+                ''
+              )}
+              {props.news[2] != undefined ? (
+                <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '4rem']}>
+                  <a href={`/maxnews_detail?id=${props.news[3].id}`}>
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
-                      text1={props.lang==='en'?props.news[3].heading_en:props.news[3].heading_th}//"Headline Headline consect adipicing elit sedid"
-                      text2={props.lang==='en'?props.news[3].article_en:props.news[3].article_th}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                      date={props.lang==='en'?props.news[3].createDate_en:props.news[3].createDate_th}//"Aug 11, 2017"
+                      text1={
+                        props.lang === 'en' ? (
+                          props.news[3].heading_en
+                        ) : (
+                          props.news[3].heading_th
+                        )
+                      } //"Headline Headline consect adipicing elit sedid"
+                      text2={
+                        props.lang === 'en' ? (
+                          props.news[3].article_en
+                        ) : (
+                          props.news[3].article_th
+                        )
+                      } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={
+                        props.lang === 'en' ? (
+                          props.news[3].createDate_en
+                        ) : (
+                          props.news[3].createDate_th
+                        )
+                      } //"Aug 11, 2017"
                     />
                   </a>
-              </Flex>
+                </Flex>
+              ) : (
+                ''
+              )}
             </Box>
           </Flex>
         </Box>

@@ -89,39 +89,61 @@ const Wrapper = styled.div`background-color: #fff;`
 const DetailLeft = props => (
   <Wrapper>
     <Flex pl="1rem" pr="1rem" wrap>
-      <Box w={[12 / 12, 12 / 12, 12 / 12, 8 / 12, 8 / 12]}>
-        <Box>
-          <Text1>{props.news[0].heading_en}</Text1>
-        </Box>
-        <Box>
-          <br />
-          <Date>{props.news[0].createDate_en}</Date>
-          <br />
-        </Box>
-        <Box>
-          <WrapperHilight>
-            <Box>
-              <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
-              {/* <WrapperLogo>
+      {props.news[props.id] != undefined ? (
+        <Box w={[12 / 12, 12 / 12, 12 / 12, 8 / 12, 8 / 12]}>
+          <Box>
+            <Text1>
+              {props.lang === 'en' ? (
+                props.news[props.id].heading_en
+              ) : (
+                props.news[props.id].heading_th
+              )}
+            </Text1>
+          </Box>
+          <Box>
+            <br />
+            <Date>
+              {props.lang === 'en' ? (
+                props.news[props.id].createDate_en
+              ) : (
+                props.news[props.id].createDate_th
+              )}
+            </Date>
+            <br />
+          </Box>
+          <Box>
+            <WrapperHilight>
+              <Box>
+                <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
+                {/* <WrapperLogo>
                 <Image width="10%" pt={0} src="static/img_logo_white@2x.png" />
               </WrapperLogo> */}
-            </Box>
-            <Box>
-              <WrapperHilightText>
-                <Image
-                  width="10%"
-                  pl="90%"
-                  src="static/img_logo_white@2x.png"
-                />
-              </WrapperHilightText>
-            </Box>
-          </WrapperHilight>
+              </Box>
+              <Box>
+                <WrapperHilightText>
+                  <Image
+                    width="10%"
+                    pl="90%"
+                    src="static/img_logo_white@2x.png"
+                  />
+                </WrapperHilightText>
+              </Box>
+            </WrapperHilight>
+          </Box>
+          <Box pt="2rem">
+            <Text2>
+              {props.lang === 'en' ? (
+                props.news[props.id].article_en
+              ) : (
+                props.news[props.id].article_th
+              )}
+            </Text2>
+            <br />
+          </Box>
         </Box>
-        <Box pt="2rem">
-          <Text2>{props.news[0].article_en}</Text2>
-          <br />
-        </Box>
-      </Box>
+      ) : (
+        ''
+      )}
       <Box
         w={[12 / 12, 12 / 12, 12 / 12, 4 / 12, 4 / 12]}
         pl={['0rem', '0rem', '0rem', '6rem', '6rem']}
@@ -131,46 +153,73 @@ const DetailLeft = props => (
           <Text3>You may also like</Text3>
         </Box>
         <Flex wrap>
-          <Box
-            w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
-            pt={['1rem', '1rem', '1rem', '2rem', '2rem']}
-            pr={['0.25em', '0em', '0.25em', '0em', '0em']}
-          >
-            <ThumbnailMaxnew
-              img="static/FT6A6495.jpg"
-              name="Headline Headline consect adipicing elit sedid"
-              text="incldidunt ut labore et dolore magna atiqua. Ut emim ad minim veniam, quis nostrud exercitation ullamco..."
-              date="Aug 11, 2"
-              news={props.news}
-            />
-          </Box>
-          <Box
-            w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
-            pt={['1rem', '1rem', '1rem', '1rem', '2rem']}
-            pr={['0.125em', '0em', '0.125em', '0em', '0em']}
-            pl={['0.125em', '0em', '0.125em', '0em', '0em']}
-          >
-            <ThumbnailMaxnew
-              img="static/FT6A6495.jpg"
-              name="Headline Headline consect adipicing elit sedid"
-              text="incldidunt ut labore et dolore magna atiqua. Ut emim ad minim veniam, quis nostrud exercitation ullamco..."
-              date="Aug 11, 2"
-              news={props.news}
-            />
-          </Box>
-          <Box
-            w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
-            pt={['1rem', '1rem', '1rem', '1rem', '2rem']}
-            pl={['0.25em', '0em', '0.25em', '0em', '0em']}
-          >
-            <ThumbnailMaxnew
-              img="static/FT6A6495.jpg"
-              name="Headline Headline adipicing elit sedid"
-              text="incldidunt ut labore et dolore magna atiqua. Ut emim ad minim veniam, quis nostrud exercitation ullamco..."
-              date="Aug 11, 2"
-              news={props.news}
-            />
-          </Box>
+          {props.news[props.id - -1] != undefined ||
+          props.news[props.id - 1] != undefined ? (
+            <Box
+              w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
+              pt={['1rem', '1rem', '1rem', '2rem', '2rem']}
+              pr={['0.25em', '0em', '0.25em', '0em', '0em']}
+            >
+              {props.news[props.id - -1] != undefined ? (
+                <ThumbnailMaxnew
+                  news={props.news[props.id - -1]}
+                  lang={props.lang}
+                />
+              ) : (
+                <ThumbnailMaxnew
+                  news={props.news[props.id - 1]}
+                  lang={props.lang}
+                />
+              )}
+            </Box>
+          ) : (
+            ''
+          )}
+          {props.news[props.id - -2] != undefined ||
+          props.news[props.id - 2] != undefined ? (
+            <Box
+              w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
+              pt={['1rem', '1rem', '1rem', '1rem', '2rem']}
+              pr={['0.125em', '0em', '0.125em', '0em', '0em']}
+              pl={['0.125em', '0em', '0.125em', '0em', '0em']}
+            >
+              {props.news[props.id - -2] != undefined ? (
+                <ThumbnailMaxnew
+                  news={props.news[props.id - -2]}
+                  lang={props.lang}
+                />
+              ) : (
+                <ThumbnailMaxnew
+                  news={props.news[props.id - 2]}
+                  lang={props.lang}
+                />
+              )}
+            </Box>
+          ) : (
+            ''
+          )}
+          {props.news[props.id - -3] != undefined ||
+          props.news[props.id - 3] != undefined ? (
+            <Box
+              w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
+              pt={['1rem', '1rem', '1rem', '1rem', '2rem']}
+              pl={['0.25em', '0em', '0.25em', '0em', '0em']}
+            >
+              {props.news[props.id - -3] != undefined ? (
+                <ThumbnailMaxnew
+                  news={props.news[props.id - -3]}
+                  lang={props.lang}
+                />
+              ) : (
+                <ThumbnailMaxnew
+                  news={props.news[props.id - 3]}
+                  lang={props.lang}
+                />
+              )}
+            </Box>
+          ) : (
+            ''
+          )}
         </Flex>
       </Box>
       {/* <Flex>

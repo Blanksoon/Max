@@ -12,7 +12,7 @@ import Purchase from '../components/getTicket/Purchase'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
-import { fetchNews } from '../redux/modules/maxnews'
+import { fetchNews, fetchNEWS } from '../redux/modules/maxnews'
 import {
   recentNewsSelector,
   dataNewsSelector,
@@ -51,7 +51,7 @@ class maxnew_detail extends React.Component {
     })
   }
   render() {
-    console.log('ddddddddWEF', this.props)
+    // console.log('ddddddddWEF', this.props.news[12])
     return (
       <I18nextProvider i18n={this.i18n}>
         {/* {status.message ?  : null } */}
@@ -74,10 +74,17 @@ class maxnew_detail extends React.Component {
                 wrap
               >
                 <Box w={12 / 12}>
-                  <DetailLeft news={this.props.news} />
+                  <DetailLeft
+                    lang={this.state.lang}
+                    news={this.props.News}
+                    id={this.props.url.query.id}
+                  />
                 </Box>
-                <Box w={12 / 12} pt="1rem">
-                  <DetailRight news={this.props.news} />
+                <Box w={12 / 12} pt="1rem" pb="1rem">
+                  <DetailRight
+                    lang={this.state.lang}
+                    news={this.props.news[this.props.url.query.id]}
+                  />
                 </Box>
               </Flex>
             </Container>
@@ -107,12 +114,14 @@ const mapStateToProps = state => {
     cookie: state.cookie,
     lang: langSelector(state),
     news: recentNewsSelector(state),
+    News: state.news.news.data,
   }
 }
 maxnew_detail.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
   const newsPromise = await fetchNews(token)(store.dispatch)
+  const NewsPromise = await fetchNEWS(token)(store.dispatch)
   state = store.getState()
   const translations = await getTranslation(
     state.cookie.lang,

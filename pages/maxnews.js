@@ -11,7 +11,12 @@ import Purchase from '../components/getTicket/Purchase'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
-import { fetchNews } from '../redux/modules/maxnews'
+import {
+  fetchNews,
+  fetchNEWS,
+  pagination,
+  startindex,
+} from '../redux/modules/maxnews'
 import {
   recentNewsSelector,
   dataNewsSelector,
@@ -49,8 +54,22 @@ class maxnew extends React.Component {
       translations: await getTranslation(lang, ['common', 'navbar'], langUrl),
     })
   }
+
+  async componentDidMount() {
+    // this.setState({ loadingCard: true })
+    const response = await api.get(`${api.SERVER}/cms/maxnews`)
+    // this.setState({ loadingCard: false })
+    // console.log('ddddddddddd', response)
+    // if (response.approvalUrl) {
+    //   Router.push(`${response.approvalUrl}`)
+    // } else {
+    //   this.props.closeModal()
+    //   Router.push(`http://localhost:8080/error`)
+    // }
+  }
+
   render() {
-    // console.log('dddddddd', this.props.news[0])
+    // console.log('dddddddd', this.props)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
@@ -67,8 +86,13 @@ class maxnew extends React.Component {
           <Wrapper>
             <Container>
               <Box pt={['3rem', '3rem', '4rem', '7rem', '7rem']}>
-                <MaxTop news={this.props.news} />
-                <MaxButtom news={this.props.news} />
+                {/* GWAERHETHR */}
+                <MaxTop
+                  lang={this.state.lang}
+                  // news={this.props.news}
+                  news={this.props.News}
+                />
+                <MaxButtom lang={this.state.lang} news={this.props.News} />
               </Box>
             </Container>
           </Wrapper>
@@ -92,17 +116,19 @@ class maxnew extends React.Component {
 }
 
 const mapStateToProps = state => {
-  //console.log('ddddddsss', state.cookie)
+  console.log('ddddddsss', state)
   return {
     cookie: state.cookie,
     lang: langSelector(state),
     news: recentNewsSelector(state),
+    News: state.news.news.data,
   }
 }
 maxnew.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
   const newsPromise = await fetchNews(token)(store.dispatch)
+  const NewsPromise = await fetchNEWS(token)(store.dispatch)
   state = store.getState()
   const translations = await getTranslation(
     state.cookie.lang,
@@ -118,4 +144,6 @@ export default withRedux(initStore, null, {
   updateModalType,
   indexModalURL,
   closeModal,
+  pagination,
+  startindex,
 })(maxnew)

@@ -42,22 +42,50 @@ const Text3 = styled.div`
 `
 const ThumbnailMaxnew = props => (
   <div>
-    <Box>
-      <Image
-        width={['100%', '100%', '100%', '70%', '60%']}
-        pt={0}
-        src={props.news[0].imageUrl}
-      />
-    </Box>
-    <Box pt="1rem">
-      <Text1>{props.news[0].heading_en}</Text1>
-    </Box>
-    <Box pt="0.5rem">
-      <Text2>{props.news[0].article_en}</Text2>
-    </Box>
-    <Box pt="0.5rem">
-      <Text3> {props.news[0].createDate_en} </Text3>
-    </Box>
+    <a href={`/maxnews_detail?id=${props.news.id}`}>
+      <Box>
+        <Image
+          width={['100%', '100%', '100%', '70%', '60%']}
+          pt={0}
+          src={props.news.imageUrl}
+        />
+      </Box>
+      <Box pt="1rem">
+        <Text1>
+          {props.lang === 'en' ? props.news.heading_en : props.news.heading_th}
+        </Text1>
+      </Box>
+      <Box pt="0.5rem">
+        <Text2>
+          {props.lang === 'en' ? props.news.article_en : props.news.article_th}
+        </Text2>
+      </Box>
+      <Box pt="0.5rem">
+        <Text3>
+          {' '}
+          {props.lang === 'en' ? (
+            props.news.createDate_en
+          ) : (
+            props.news.createDate_th
+          )}{' '}
+        </Text3>
+      </Box>
+    </a>
+    <style jsx>
+      {`
+        a:link {
+          text-decoration: none;
+        }
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+        a:hover {
+          color: #ff0000;
+          text-decoration: none;
+        }
+      `}
+    </style>
   </div>
 )
 

@@ -22,6 +22,7 @@ const ProgramList = styled.select`
   width: 18em;
   height: 2.4em;
   font-size: 1em;
+  ${media.iphone7p`font-size: 0.9em;`};
   ${media.iphone5`width: 16em;`};
 `
 

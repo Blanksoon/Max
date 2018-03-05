@@ -43,6 +43,8 @@ const Navbar = styled(Fixed)`
   height: ${vars.mobileNavHeight};
   width: 100%;
   z-index: 2;
+  ${media.iphone7p`width: 100%;`};
+  ${media.phone`width: 100%;`};
 `
 const Motto = styled.span`
   color: ${vars.white};
@@ -52,6 +54,7 @@ const Motto = styled.span`
   margin-top: 0.3rem;
   margin-right: 0.2rem;
   ${media.ipad`display: inline-block`};
+  ${media.iphone7p`display: none;`};
   ${media.iphone5`font-size: 0.7em`};
 `
 const Logo = styled(Image)`

@@ -97,6 +97,7 @@ class VideoBox extends Component {
   }
 
   render() {
+    // console.log('ddddddddd', this.props)
     if (
       this.props.vod.index >= this.props.numberOfVods &&
       this.state.vodmax != 1
@@ -166,21 +167,6 @@ class VideoBox extends Component {
         </Box>
         <style jsx>
           {`
-            .backgroundx {
-              color: #ffffff;
-              background-image: url('static/FT6A2278.jpg');
-            }
-            .button {
-              background-color: red;
-              border: none;
-              color: white;
-              padding: 8px 25px;
-              text-align: center;
-              text-decoration: none;
-              display: inline-block;
-              font-weight: 700;
-              font-family: Helvetica, Arial, sans-serif;
-            }
             .button-hunger {
               background-color: white;
               border: 1px solid red;
@@ -191,21 +177,6 @@ class VideoBox extends Component {
               display: inline-block;
               font-weight: 700;
               font-family: Helvetica, Arial, sans-serif;
-            }
-            .text-left {
-              float: left;
-            }
-            .text-right {
-              float: right;
-            }
-            .gradient {
-              width: 100%;
-              height: 75vh;
-              background: -webkit-linear-gradient(
-                top,
-                rgba(119, 133, 153, 1) 0%,
-                rgba(2, 34, 70, 1) 100%
-              ); /* Chrome10-25,Safari5.1-6 */
             }
           `}
         </style>

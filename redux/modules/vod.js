@@ -1,5 +1,6 @@
 import querystring from 'querystring'
 import * as api from '../../api'
+// import { start } from 'repl'
 
 // types
 const FETCH_VODS_REQ = '@VOD/FETCH_VODS_REQ'
@@ -13,6 +14,7 @@ const RESET_FETCH_DATA = '@VOD/RESET_FETCH_DATA'
 
 const FETCH_FEATURED_VOD_REQ = '@VOD/FETCH_FEATURED_VOD_REQ'
 const FETCH_FEATURED_VOD_SUCCESS = '@VOD/FETCH_FEATURED_VOD_SUCCESS'
+const RESET_FEATURED_VOD = '@VOD/RESET_FEATURED_VOD'
 
 const PAGINATION = 'PAGINATION'
 const STARTINDEX = 'STARTINDEX'
@@ -116,12 +118,16 @@ export const setFetchFilter = filter => {
     payload: filter,
   }
 }
+export const resetFeaturedvod = () => {
+  return {
+    type: RESET_FEATURED_VOD,
+  }
+}
 export const resetFetchData = () => {
   return {
     type: RESET_FETCH_DATA,
   }
 }
-
 export const fetchFeaturedVodReq = () => ({
   type: FETCH_FEATURED_VOD_REQ,
 })
@@ -280,6 +286,13 @@ const vodReducer = (state = initialState, action) => {
         recents: [],
         related: [],
         data: {},
+        // filter: {},
+      }
+    }
+    case RESET_FEATURED_VOD: {
+      // console.log('dddddddResetreatured')
+      return {
+        ...state,
         filter: {},
       }
     }

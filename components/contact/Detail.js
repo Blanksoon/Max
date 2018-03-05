@@ -14,6 +14,8 @@ const Input = styled.input`
   padding: ${props => props.px} ${props => props.py}`};
   ${media.ipad`width: 100%;
   padding: ${props => props.px} 3em`};
+  ${media.iphone7p`width: 90%;
+  padding: ${props => props.px} ${props => props.py}`};
   ${media.phone`width: 90%;
   padding: ${props => props.px} ${props => props.py}`};
 `
@@ -23,7 +25,8 @@ const Button = styled.button`
   text-align: center;
   border: 0;
   ${media.ipad`padding: 0.5em 0.5em;`};
-  ${media.phone`padding: 0.5em 2.5em;`};
+  ${media.iphone7p`padding: 0.5em 2em;`};
+  ${media.phone`padding: 0.5em 1.5em;`};
   ${media.iphone5`padding: 0.8em 0.8em;`};
 `
 
@@ -43,6 +46,7 @@ const ButtonEmail = styled.button`
   }
   ${media.ipadpro`width: 100%;`};
   ${media.ipad`width: 100%;`};
+  ${media.iphone7p`width: 90%;`};
   ${media.phone`width: 90%;`};
 `
 const Text1 = styled.div`
@@ -185,7 +189,7 @@ class Detail extends React.Component {
             />
             <Text color="#efe3e3" left children={Address1} fontSize="0.7em" />
             <Text color="#efe3e3" left children={Address2} fontSize="0.7em" />
-            <Flex pt="1em" pb={['0.1em', '0.4em', '1em', '1em', '1em']}>
+            <Flex pt="1em" pb={['0.1em', '0.4em', '1em', '1em', '1em']} wrap>
               <Box
                 w={[6 / 12, 6 / 12, 6 / 12, 6 / 12, 6 / 12]}
                 pr={['0%', '0%', '3.5%', '3.5%', '3.5%']}

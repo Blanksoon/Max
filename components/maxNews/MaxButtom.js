@@ -1,7 +1,12 @@
 import ThumbnailRight from '../thumbnail/ThumbnailRight'
+import React, { Component, PropTypes } from 'react'
+import * as api from '../../api'
 import styled from 'styled-components'
 import color from '../commons/vars'
-import { Media, Subhead, Image, Flex, Box, Text, Button ,Link} from 'rebass'
+import { Media, Subhead, Image, Flex, Box, Text, Button, Link } from 'rebass'
+import { fetchNews, pagination, startindex } from '../../redux/modules/maxnews'
+import withRedux from 'next-redux-wrapper'
+import { initStore } from '../../redux/store'
 
 const Button1 = styled.button`
   bottom: 2%;
@@ -68,66 +73,189 @@ const WrapperHilightText = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapper = styled.div`background-color: #fff;`
-const MaxButtom = (props) => (
-  <Wrapper>
-    <Box pl="1rem" pr="1rem" width={1}>
-      <Flex>
-        <Box>
-          <Flex pt={['0rem', '0rem', '0rem', '2rem', '2rem']} />
-          <Thumbnailright news1={props.news[4]} news2={props.news[5]}/>
-          <Thumbnailright news1={props.news[6]} news2={props.news[7]}/>
-          <Thumbnailright news1={props.news[8]} news2={props.news[9]}/>
-          {/* <Thumbnailright /> */}
-          {/* <Thumbnailright /> */}
-          {/* <Thumbnailright /> */}
+class MaxButtom extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      newsmax: 0,
+    }
+    this.check = this.check.bind(this)
+  }
+
+  async check() {
+    // if (this.props.News.index == 0) {
+    //   this.props.News.index = 6
+    // }
+    // if (this.props.News.index < this.props.numberOfVods) {
+    //   const json = await api.get(
+    //     `${api.SERVER}/vods-ondemand?token=${this.props.auth.token}&index=${this
+    //       .props.vod.index}`
+    //   )
+    //   // console.log('dddddddddddfgdgd', json)
+    //   this.props.fetchVodsSuccess(json)
+    //   this.props.pagination()
+    // }
+    this.props.pagination()
+  }
+
+  renderNews(lang, news) {
+    // console.log('dddddddd', news)
+    const rowNews = []
+    const rowCount = this.props.News.index / 2 //this.props.news.index / 2
+    // Use splice on clone object, DONT MODIFY props
+    const tmpNews = [...news]
+    for (let i = 1; i < rowCount; i++) {
+      if (i == 1) {
+        ;<Thumbnailright key={i} lang={lang} news={tmpNews.splice(0, 4)} />
+      } else {
+        rowNews.push(
+          <Thumbnailright key={i} lang={lang} news={tmpNews.splice(0, 2)} />
+        )
+      }
+    }
+    return rowNews
+  }
+
+  componentDidMount() {
+    {
+      this.props.startindex(6)
+    }
+  }
+
+  render() {
+    // console.log('dddddddddddd', this.props.news)
+    return (
+      <Wrapper>
+        <Box pl="1rem" pr="1rem" width={1}>
           <Flex>
-            <Box w={1} pt="40px" pb="60px">
-              <center>
-                <button className="button-hunger">Hunger for more</button>
-              </center>
+            <Box>
+              <Flex pt={['0rem', '0rem', '0rem', '2rem', '2rem']} />
+              {this.renderNews(this.props.lang, this.props.news)}
+              <Flex>
+                <Box w={1} pt="40px" pb="60px">
+                  {this.props.News.index < this.props.news.length ? (
+                    <center>
+                      <button onClick={this.check} className="button-hunger">
+                        Hunger for more
+                      </button>
+                    </center>
+                  ) : (
+                    ''
+                  )}
+                </Box>
+              </Flex>
             </Box>
           </Flex>
         </Box>
-      </Flex>
-    </Box>
-  </Wrapper>
-)
-export default MaxButtom
+        <style jsx>
+          {`
+            .button-hunger {
+              background-color: white;
+              border: 1px solid red;
+              color: red;
+              padding: 8px 25px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-weight: 700;
+              font-family: Helvetica, Arial, sans-serif;
+            }
+          `}
+        </style>
+      </Wrapper>
+    )
+  }
+}
+const mapStateToProps = state => {
+  // console.log('ddddddddwfewef', state)
+  return {
+    News: state.news,
+  }
+}
+export default withRedux(initStore, mapStateToProps, {
+  pagination,
+  startindex,
+})(MaxButtom)
+// export default MaxButtom
 
 const Thumbnailright = props => (
-  // console.log('ddddddddFWEF',props.news1),
+  // console.log('ddddddddFWEF', props.news.length),
   <Flex pt={['1rem', '1rem', '2rem', '1rem', '1rem']} wrap>
-    <Box
-      w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
-      pr={['0em', '0em', '0em', '0.5em', '0.5em']}
-    >
-        <a href={`/maxnews_detail`}>
+    {props.news[0] != undefined ? (
+      <Box
+        w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
+        pr={['0em', '0em', '0em', '0.5em', '0.5em']}
+      >
+        <a href={`/maxnews_detail?id=${props.news[0].id}`}>
           <ThumbnailRight
             w="100%"
             img="static/maxPromo.jpg"
-            text1={props.lang==='en'?props.news1.heading_en:props.news1.heading_th}//"Headline Headline consect adipicing elit sedid"
-            text2={props.lang==='en'?props.news1.article_en:props.news1.article_th}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-            date={props.lang==='en'?props.news1.createDate_en:props.news1.createDate_th}//"Aug 11, 2017"
+            text1={
+              props.lang === 'en' ? (
+                props.news[0].heading_en
+              ) : (
+                props.news[0].heading_th
+              )
+            } //"Headline Headline consect adipicing elit sedid"
+            text2={
+              props.lang === 'en' ? (
+                props.news[0].article_en
+              ) : (
+                props.news[0].article_th
+              )
+            } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+            date={
+              props.lang === 'en' ? (
+                props.news[0].createDate_en
+              ) : (
+                props.news[0].createDate_th
+              )
+            } //"Aug 11, 2017"
             pt="0.9em"
           />
         </a>
-    </Box>
-    <Box
-      w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
-      pt={['1em', '1em', '2em', '0em', '0em']}
-      pl={['0em', '0em', '0em', '0.5em', '0.5em']}
-    >
-        <a href={`/maxnews_detail`}>
+      </Box>
+    ) : (
+      ''
+    )}
+    {props.news[1] != undefined ? (
+      <Box
+        w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
+        pt={['1em', '1em', '2em', '0em', '0em']}
+        pl={['0em', '0em', '0em', '0.5em', '0.5em']}
+      >
+        <a href={`/maxnews_detail?id=${props.news[1].id}`}>
           <ThumbnailRight
             w="100%"
             img="static/maxPromo.jpg"
-            text1={props.news2.heading_en}//"Headline Headline consect adipicing elit sedid"
-            text2={props.news2.article_en}//"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-            date={props.news2.createDate_en}//"Aug 11, 2017"
+            text1={
+              props.lang === 'en' ? (
+                props.news[1].heading_en
+              ) : (
+                props.news[1].heading_th
+              )
+            } //"Headline Headline consect adipicing elit sedid"
+            text2={
+              props.lang === 'en' ? (
+                props.news[1].article_en
+              ) : (
+                props.news[1].article_th
+              )
+            } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+            date={
+              props.lang === 'en' ? (
+                props.news[1].createDate_en
+              ) : (
+                props.news[1].createDate_th
+              )
+            } //"Aug 11, 2017"
             pt="0.9em"
           />
         </a>
-    </Box>
+      </Box>
+    ) : (
+      ''
+    )}
     <style jsx>
       {`
         a:link {

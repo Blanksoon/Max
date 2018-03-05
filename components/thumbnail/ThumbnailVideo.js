@@ -33,7 +33,7 @@ const ThumbnailVideo = props => (
           </WrapperName>
         </Box>
         <Flex pt={props.pt} wrap>
-          <Box w={[9 / 12, 12 / 12, 9 / 12, 12 / 12, 9 / 12]}>
+          <Box w={[9 / 12, 12 / 12, 12 / 12, 9 / 12, 12 / 12, 9 / 12]}>
             <Text
               left
               pt="5px"

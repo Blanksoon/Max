@@ -22,7 +22,11 @@ import Container from '../components/commons/Container'
 import Main from '../layouts/Main'
 import vars from '../components/commons/vars'
 import { initStore } from '../redux/store'
-import { fetchVods, resetFetchData } from '../redux/modules/vod'
+import {
+  fetchVods,
+  resetFetchData,
+  resetFeaturedvod,
+} from '../redux/modules/vod'
 import { fetchLives } from '../redux/modules/live'
 import { fetchNews } from '../redux/modules/maxnews'
 import {
@@ -138,6 +142,7 @@ class Index extends React.Component {
     })
   }
   componentDidMount() {
+    this.props.resetFeaturedvod()
     this.props.fetchVods(this.props.cookie.token)
   }
   render() {
@@ -159,7 +164,7 @@ class Index extends React.Component {
               url={this.props.url}
             />
             <GradientBg>
-              {/* <ModalNews modalType={10} modalURL={ImgNews} w="100%" /> */}
+              <ModalNews modalType={10} modalURL={ImgNews} w="100%" />
               <Container>
                 <WrapperHero>
                   <Hero
@@ -267,6 +272,7 @@ Index.getInitialProps = async ({ store, isServer, query, req }) => {
 export default withRedux(initStore, mapStateToProps, {
   fetchVods,
   resetFetchData,
+  resetFeaturedvod,
   fetchLives,
   fetchNews,
   dataLivesSelector,

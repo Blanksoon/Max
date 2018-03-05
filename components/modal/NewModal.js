@@ -138,6 +138,9 @@ const WrapperNew = styled.div`
   ${media.ipad`width: 650px;
   height: 400px;
   margin-bottom: 0%;`};
+  ${media.iphone7p`width: 400px;
+  height: 280px;
+  margin-bottom: 0%;`};
   ${media.phone`width: 360px;
   height: 240px;
   margin-bottom: 0%;`};
