@@ -186,7 +186,7 @@ const Thumbnailright = props => (
         w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
         pr={['0em', '0em', '0em', '0.5em', '0.5em']}
       >
-        <a href={`/maxnews_detail?id=${props.news[0].id}`}>
+        <a href={`/maxnews_detail?id=${props.news[0].__v}`}>
           <ThumbnailRight
             w="100%"
             img="static/maxPromo.jpg"
@@ -206,9 +206,9 @@ const Thumbnailright = props => (
             } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
             date={
               props.lang === 'en' ? (
-                props.news[0].createDate_en
+                props.news[0].createDate
               ) : (
-                props.news[0].createDate_th
+                props.news[0].createDate
               )
             } //"Aug 11, 2017"
             pt="0.9em"
@@ -224,7 +224,7 @@ const Thumbnailright = props => (
         pt={['1em', '1em', '2em', '0em', '0em']}
         pl={['0em', '0em', '0em', '0.5em', '0.5em']}
       >
-        <a href={`/maxnews_detail?id=${props.news[1].id}`}>
+        <a href={`/maxnews_detail?id=${props.news[1].__v}`}>
           <ThumbnailRight
             w="100%"
             img="static/maxPromo.jpg"
@@ -244,9 +244,9 @@ const Thumbnailright = props => (
             } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
             date={
               props.lang === 'en' ? (
-                props.news[1].createDate_en
+                props.news[1].createDate
               ) : (
-                props.news[1].createDate_th
+                props.news[1].createDate
               )
             } //"Aug 11, 2017"
             pt="0.9em"

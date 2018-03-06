@@ -77,7 +77,7 @@ const LiveDescription = ({ lang, common, live }) => (
                   {lang === 'en' ? live.title_en : live.title_th}
                 </b>
                 <br />
-                <b>{lang === 'en' ? live.shortDesc2_en : live.shortDesc2_en}</b>
+                <b>{lang === 'en' ? live.shortDesc2_en : live.shortDesc2_th}</b>
               </LiveTelecom>
             </Box>
             <Box
@@ -95,7 +95,7 @@ const LiveDescription = ({ lang, common, live }) => (
             <hr size="0.1" />
           </Box>
           <Box width={1} pb={['10px', 3, 3, 3, 3]} pr="5%">
-            <P>{lang === 'en' ? live.desc_en : live.desc_en}</P>
+            <P>{lang === 'en' ? live.desc_en : live.desc_th}</P>
           </Box>
           <ModalButton
             buttonID={2}

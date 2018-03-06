@@ -53,7 +53,7 @@ const WrapperImg = styled.div`
   margin-bottom: 2%;
   position: relative;
   width: 450px;
-  height: 500px;
+  height: 635px;
   background: #fff;
   z-index: 240;
   ${media.ipadpro`width: 840px;

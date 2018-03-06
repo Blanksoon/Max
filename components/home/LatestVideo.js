@@ -23,7 +23,7 @@ const renderThumbnail = (lang, vod) => (
           vod={vod}
           img={vod.thumbnailUrl}
           name={lang === 'en' ? vod.title_en : vod.title_th}
-          date={lang === 'en' ? vod.onAirDateStr_en : vod.onAirDateStr_en}
+          date={lang === 'en' ? vod.onAirDateStr_en : vod.onAirDateStr_th}
           time={vod.duration}
           bg="#021e3d"
           pl="1em"

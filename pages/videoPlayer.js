@@ -139,7 +139,7 @@ class videoPlayer extends React.Component {
           name={this.state.common.UPNEXT}
           vods={vods}
           progname={
-            this.state.lang === 'en' ? vod.programName_en : vod.programName_en
+            this.state.lang === 'en' ? vod.programName_en : vod.programName_th
           }
           lang={this.state.lang}
         />

@@ -83,7 +83,7 @@ class maxnew_detail extends React.Component {
                 <Box w={12 / 12} pt="1rem" pb="1rem">
                   <DetailRight
                     lang={this.state.lang}
-                    news={this.props.news[this.props.url.query.id]}
+                    news={this.props.News[this.props.url.query.id]}
                   />
                 </Box>
               </Flex>

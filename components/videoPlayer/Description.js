@@ -41,7 +41,7 @@ const Description = ({ lang, common, vod }) => (
         <hr size="0.1" />
       </Box>
       <Box width={1} pb={3} pl="1rem" pr="1rem">
-        <P>{lang === 'en' ? vod.desc_en : vod.desc_en}</P>
+        <P>{lang === 'en' ? vod.desc_en : vod.desc_th}</P>
       </Box>
       <style jsx>
         {`

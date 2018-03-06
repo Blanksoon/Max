@@ -79,12 +79,12 @@ const ThumbnailLive = ({ lang, live }) => {
                 children={lang === 'en' ? live.title_en : live.title_th}
               />
               <WrapperDes>
-                <Text children={lang === 'en' ? live.desc_en : live.desc_en} />
+                <Text children={lang === 'en' ? live.desc_en : live.desc_th} />
               </WrapperDes>
               <br />
               <Text
                 children={
-                  lang === 'en' ? live.shortDesc2_en : live.shortDesc2_en
+                  lang === 'en' ? live.shortDesc2_en : live.shortDesc2_th
                 }
               />
             </WrapperFront>

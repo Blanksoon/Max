@@ -60,7 +60,7 @@ const Text1 = styled.div`
   ${media.ipadpro``};
   ${media.ipad``};
   ${media.phone`font-size: 1em;height: 30px;`};
-  ${media.iphone5`font-size: 0.7em;padding: 8px 8%;`};
+  ${media.iphone5`font-size: 0.8em;padding: 8px 8%;`};
 `
 const Text2 = styled.div`
   color: #fff;
@@ -154,15 +154,15 @@ const MaxTop = props => (
                   </Box>
                   <Box w={12 / 12} pl="20px">
                     <WrapperHilightText>
-                      <Image
+                      {/* <Image
                         width="10%"
                         pl="1rem"
                         src="static/img_logo_white@2x.png"
-                      />
+                      /> */}
                       <Box
                         pl="1rem"
                         pr="1rem"
-                        pt={['4rem', '0rem', '18rem', '13rem', '18rem']}
+                        pt={['4rem', '0rem', '18rem', '17rem', '18rem']}
                       >
                         <Box w={[12 / 12, 12 / 12, 8 / 12, 8 / 12, 8 / 12]}>
                           <Text1>
@@ -188,15 +188,20 @@ const MaxTop = props => (
                           <Box w={5 / 12}>
                             <Date>
                               {props.lang === 'en' ? (
-                                props.news[0].createDate_en
+                                props.news[0].createDate
                               ) : (
-                                props.news[0].createDate_th
+                                props.news[0].createDate
                               )}
                               {/* {props.news[0].createDate_en} */}
                             </Date>
                           </Box>
                           <Box w={7 / 12}>
-                            <a href={`/maxnews_detail?id=${props.news[0].__v}`}>
+                            <a
+                              href={`/maxnews_detail?id=${props.news[0].id !=
+                              undefined
+                                ? props.news[0].id
+                                : props.news[0].__v}`}
+                            >
                               <Button1>Read more</Button1>
                             </a>
                           </Box>
@@ -215,7 +220,7 @@ const MaxTop = props => (
             >
               {props.news[1] != undefined ? (
                 <Flex pt={['1rem', '1rem', '2rem', '0rem', '0rem']}>
-                  <a href={`/maxnews_detail?id=${props.news[1].id}`}>
+                  <a href={`/maxnews_detail?id=${props.news[1].__v}`}>
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
@@ -235,9 +240,9 @@ const MaxTop = props => (
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
                         props.lang === 'en' ? (
-                          props.news[1].createDate_en
+                          props.news[1].createDate
                         ) : (
-                          props.news[1].createDate_th
+                          props.news[1].createDate
                         )
                       } //"Aug 11, 2017"
                     />
@@ -248,7 +253,7 @@ const MaxTop = props => (
               )}
               {props.news[2] != undefined ? (
                 <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '4rem']}>
-                  <a href={`/maxnews_detail?id=${props.news[2].id}`}>
+                  <a href={`/maxnews_detail?id=${props.news[2].__v}`}>
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
@@ -268,9 +273,9 @@ const MaxTop = props => (
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
                         props.lang === 'en' ? (
-                          props.news[2].createDate_en
+                          props.news[2].createDate
                         ) : (
-                          props.news[2].createDate_th
+                          props.news[2].createDate
                         )
                       } //"Aug 11, 2017"
                     />
@@ -281,7 +286,7 @@ const MaxTop = props => (
               )}
               {props.news[2] != undefined ? (
                 <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '4rem']}>
-                  <a href={`/maxnews_detail?id=${props.news[3].id}`}>
+                  <a href={`/maxnews_detail?id=${props.news[3].__v}`}>
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
@@ -301,9 +306,9 @@ const MaxTop = props => (
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
                         props.lang === 'en' ? (
-                          props.news[3].createDate_en
+                          props.news[3].createDate
                         ) : (
-                          props.news[3].createDate_th
+                          props.news[3].createDate
                         )
                       } //"Aug 11, 2017"
                     />

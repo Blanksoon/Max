@@ -28,7 +28,7 @@ import {
   resetFeaturedvod,
 } from '../redux/modules/vod'
 import { fetchLives } from '../redux/modules/live'
-import { fetchNews } from '../redux/modules/maxnews'
+import { fetchNews, fetchNEWS } from '../redux/modules/maxnews'
 import {
   toogleModal,
   updateModalType,
@@ -208,7 +208,7 @@ class Index extends React.Component {
                       lang={this.state.lang}
                       common={this.state.translations.translation.common}
                       lives={this.props.lives}
-                      news={this.props.news}
+                      news={this.props.News}
                     />
                   </Box>
                 </Flex>
@@ -247,6 +247,7 @@ const mapStateToProps = state => {
     vods: recentVodsSelector(state),
     lang: langSelector(state),
     news: recentNewsSelector(state),
+    News: state.news.news.data,
   }
 }
 
@@ -257,6 +258,7 @@ Index.getInitialProps = async ({ store, isServer, query, req }) => {
   const livePromise = fetchLives(token)(store.dispatch)
   const vodPromise = fetchVods(token)(store.dispatch, store.getState)
   const newsPromise = fetchNews(token)(store.dispatch)
+  const NewsPromise = fetchNEWS(token)(store.dispatch)
   await Promise.all([livePromise, vodPromise, newsPromise])
   state = store.getState()
   const translations = await getTranslation(

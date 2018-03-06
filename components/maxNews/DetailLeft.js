@@ -104,9 +104,9 @@ const DetailLeft = props => (
             <br />
             <Date>
               {props.lang === 'en' ? (
-                props.news[props.id].createDate_en
+                props.news[props.id].createDate
               ) : (
-                props.news[props.id].createDate_th
+                props.news[props.id].createDate
               )}
             </Date>
             <br />

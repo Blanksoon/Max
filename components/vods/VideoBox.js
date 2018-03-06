@@ -198,7 +198,7 @@ const RowVideo = ({ lang, vods }) => {
             img={vods[0].thumbnailUrl}
             name={lang === 'en' ? vods[0].title_en : vods[0].title_th}
             date={
-              lang === 'en' ? vods[0].onAirDateStr_en : vods[0].onAirDateStr_en
+              lang === 'en' ? vods[0].onAirDateStr_en : vods[0].onAirDateStr_th
             }
             time={vods[0].duration}
             // pt="1em"
@@ -217,7 +217,7 @@ const RowVideo = ({ lang, vods }) => {
             img={vods[1].thumbnailUrl}
             name={lang === 'en' ? vods[1].title_en : vods[1].programName_th}
             date={
-              lang === 'en' ? vods[1].onAirDateStr_en : vods[1].onAirDateStr_en
+              lang === 'en' ? vods[1].onAirDateStr_en : vods[1].onAirDateStr_th
             }
             time={vods[1].duration}
             // pt="1em"
@@ -236,7 +236,7 @@ const RowVideo = ({ lang, vods }) => {
             img={vods[2].thumbnailUrl}
             name={lang === 'en' ? vods[2].title_en : vods[2].title_th}
             date={
-              lang === 'en' ? vods[2].onAirDateStr_en : vods[2].onAirDateStr_en
+              lang === 'en' ? vods[2].onAirDateStr_en : vods[2].onAirDateStr_th
             }
             time={vods[2].duration}
             // pt="1em"
@@ -254,7 +254,7 @@ const RowVideo = ({ lang, vods }) => {
             img={vods[3].thumbnailUrl}
             name={lang === 'en' ? vods[3].title_en : vods[3].title_th}
             date={
-              lang === 'en' ? vods[3].onAirDateStr_en : vods[3].onAirDateStr_en
+              lang === 'en' ? vods[3].onAirDateStr_en : vods[3].onAirDateStr_th
             }
             time={vods[3].duration}
             // pt="1em"

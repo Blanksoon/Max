@@ -64,9 +64,9 @@ const ThumbnailMaxnew = props => (
         <Text3>
           {' '}
           {props.lang === 'en' ? (
-            props.news.createDate_en
+            props.news.createDate
           ) : (
-            props.news.createDate_th
+            props.news.createDate
           )}{' '}
         </Text3>
       </Box>

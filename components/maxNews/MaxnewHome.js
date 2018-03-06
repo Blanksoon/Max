@@ -163,52 +163,56 @@ class MaxnewHome extends React.Component {
                       pl="90%"
                       src="static/img_logo_white@2x.png"
                     />
-                    <Box
-                      pt={['4rem', '0rem', '18rem', '13rem', '18rem']}
-                      pl="1rem"
-                      pr="1rem"
-                    >
-                      <Box>
-                        <Text1>
-                          {this.props.lang === 'en' ? (
-                            this.props.news[0].heading_en
-                          ) : (
-                            this.props.news[0].heading_th
-                          )}
-                          {/* Headline consectetur adipicing elit, sed do eiusmod
+                    {this.props.news[0] != undefined ? (
+                      <Box
+                        pt={['4rem', '0rem', '18rem', '13rem', '18rem']}
+                        pl="1rem"
+                        pr="1rem"
+                      >
+                        <Box>
+                          <Text1>
+                            {this.props.lang === 'en' ? (
+                              this.props.news[0].heading_en
+                            ) : (
+                              this.props.news[0].heading_th
+                            )}
+                            {/* Headline consectetur adipicing elit, sed do eiusmod
                           tempor */}
-                        </Text1>
-                      </Box>
-                      <Box pt="1rem">
-                        <Text2>
-                          {this.props.lang === 'en' ? (
-                            this.props.news[0].article_en
-                          ) : (
-                            this.props.news[0].article_th
-                          )}
-                          {/* Lorem ipsum dolor sit amet, consectetur adipiscing
+                          </Text1>
+                        </Box>
+                        <Box pt="1rem">
+                          <Text2>
+                            {this.props.lang === 'en' ? (
+                              this.props.news[0].article_en
+                            ) : (
+                              this.props.news[0].article_th
+                            )}
+                            {/* Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Donec ut lectus turpis. Mauris cursus mollis
                           nisi. */}
-                        </Text2>
+                          </Text2>
+                        </Box>
+                        <Flex>
+                          <Box w={5 / 12} pt="1rem">
+                            <Date>
+                              {this.props.lang === 'en' ? (
+                                this.props.news[0].createDate
+                              ) : (
+                                this.props.news[0].createDate
+                              )}
+                              {/* Aug 11, 2017 */}
+                            </Date>
+                          </Box>
+                          <Box w={7 / 12}>
+                            <a href={`/maxnews_detail`}>
+                              <Button1>Read more</Button1>
+                            </a>
+                          </Box>
+                        </Flex>
                       </Box>
-                      <Flex>
-                        <Box w={5 / 12} pt="1rem">
-                          <Date>
-                            {this.props.lang === 'en' ? (
-                              this.props.news[0].createDate_en
-                            ) : (
-                              this.props.news[0].createDate_th
-                            )}
-                            {/* Aug 11, 2017 */}
-                          </Date>
-                        </Box>
-                        <Box w={7 / 12}>
-                          <a href={`/maxnews_detail`}>
-                            <Button1>Read more</Button1>
-                          </a>
-                        </Box>
-                      </Flex>
-                    </Box>
+                    ) : (
+                      ''
+                    )}
                   </WrapperHilightText>
                 </Box>
               </WrapperHilight>
@@ -218,93 +222,105 @@ class MaxnewHome extends React.Component {
               // minWidth={[20.1, 23.5, 26, 48, 64, 80]}
               pl={['0%', '0%', '0%', '1%', '1%']}
             >
-              <Flex pt={['1rem', '1rem', '0rem', '0rem', '0rem']}>
-                <a href={`/maxnews_detail`}>
-                  <ThumbnailRight
-                    w="100%"
-                    img="static/maxPromo.jpg"
-                    text1={
-                      this.props.lang === 'en' ? (
-                        this.props.news[1].heading_en
-                      ) : (
-                        this.props.news[1].heading_th
-                      )
-                    } //"Headline Headline consect adipicing elit sedid"
-                    text2={
-                      this.props.lang === 'en' ? (
-                        this.props.news[1].article_en
-                      ) : (
-                        this.props.news[1].article_th
-                      )
-                    } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                    date={
-                      this.props.lang === 'en' ? (
-                        this.props.news[1].createDate_en
-                      ) : (
-                        this.props.news[1].createDate_th
-                      )
-                    } //"Aug 11, 2017"
-                  />
-                </a>
-              </Flex>
-              <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '5rem']}>
-                <a href={`/maxnews_detail`}>
-                  <ThumbnailRight
-                    w="100%"
-                    img="static/maxPromo.jpg"
-                    text1={
-                      this.props.lang === 'en' ? (
-                        this.props.news[2].heading_en
-                      ) : (
-                        this.props.news[2].heading_th
-                      )
-                    } //"Headline Headline consect adipicing elit sedid"
-                    text2={
-                      this.props.lang === 'en' ? (
-                        this.props.news[2].article_en
-                      ) : (
-                        this.props.news[2].article_th
-                      )
-                    } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                    date={
-                      this.props.lang === 'en' ? (
-                        this.props.news[2].createDate_en
-                      ) : (
-                        this.props.news[2].createDate_th
-                      )
-                    } //"Aug 11, 2017"
-                  />
-                </a>
-              </Flex>
-              <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '5rem']}>
-                <a href={`/maxnews_detail`}>
-                  <ThumbnailRight
-                    w="100%"
-                    img="static/maxPromo.jpg"
-                    text1={
-                      this.props.lang === 'en' ? (
-                        this.props.news[3].heading_en
-                      ) : (
-                        this.props.news[3].heading_th
-                      )
-                    } //"Headline Headline consect adipicing elit sedid"
-                    text2={
-                      this.props.lang === 'en' ? (
-                        this.props.news[3].article_en
-                      ) : (
-                        this.props.news[3].article_th
-                      )
-                    } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-                    date={
-                      this.props.lang === 'en' ? (
-                        this.props.news[3].createDate_en
-                      ) : (
-                        this.props.news[3].createDate_th
-                      )
-                    } //"Aug 11, 2017"
-                  />
-                </a>
-              </Flex>
+              {this.props.news[1] != undefined ? (
+                <Flex pt={['1rem', '1rem', '0rem', '0rem', '0rem']}>
+                  <a href={`/maxnews_detail`}>
+                    <ThumbnailRight
+                      w="100%"
+                      img="static/maxPromo.jpg"
+                      text1={
+                        this.props.lang === 'en' ? (
+                          this.props.news[1].heading_en
+                        ) : (
+                          this.props.news[1].heading_th
+                        )
+                      } //"Headline Headline consect adipicing elit sedid"
+                      text2={
+                        this.props.lang === 'en' ? (
+                          this.props.news[1].article_en
+                        ) : (
+                          this.props.news[1].article_th
+                        )
+                      } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={
+                        this.props.lang === 'en' ? (
+                          this.props.news[1].createDate
+                        ) : (
+                          this.props.news[1].createDate
+                        )
+                      } //"Aug 11, 2017"
+                    />
+                  </a>
+                </Flex>
+              ) : (
+                ''
+              )}
+              {this.props.news[2] != undefined ? (
+                <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '5rem']}>
+                  <a href={`/maxnews_detail`}>
+                    <ThumbnailRight
+                      w="100%"
+                      img="static/maxPromo.jpg"
+                      text1={
+                        this.props.lang === 'en' ? (
+                          this.props.news[2].heading_en
+                        ) : (
+                          this.props.news[2].heading_th
+                        )
+                      } //"Headline Headline consect adipicing elit sedid"
+                      text2={
+                        this.props.lang === 'en' ? (
+                          this.props.news[2].article_en
+                        ) : (
+                          this.props.news[2].article_th
+                        )
+                      } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={
+                        this.props.lang === 'en' ? (
+                          this.props.news[2].createDate
+                        ) : (
+                          this.props.news[2].createDate
+                        )
+                      } //"Aug 11, 2017"
+                    />
+                  </a>
+                </Flex>
+              ) : (
+                ''
+              )}
+              {this.props.news[3] != undefined ? (
+                <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '5rem']}>
+                  <a href={`/maxnews_detail`}>
+                    <ThumbnailRight
+                      w="100%"
+                      img="static/maxPromo.jpg"
+                      text1={
+                        this.props.lang === 'en' ? (
+                          this.props.news[3].heading_en
+                        ) : (
+                          this.props.news[3].heading_th
+                        )
+                      } //"Headline Headline consect adipicing elit sedid"
+                      text2={
+                        this.props.lang === 'en' ? (
+                          this.props.news[3].article_en
+                        ) : (
+                          this.props.news[3].article_th
+                        )
+                      } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                      date={
+                        this.props.lang === 'en' ? (
+                          this.props.news[3].createDate
+                        ) : (
+                          this.props.news[3].createDate
+                        )
+                      } //"Aug 11, 2017"
+                    />
+                  </a>
+                </Flex>
+              ) : (
+                ''
+              )}
             </Box>
           </Flex>
           <Box pt="4rem">
