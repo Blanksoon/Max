@@ -188,9 +188,9 @@ const MaxTop = props => (
                           <Box w={5 / 12}>
                             <Date>
                               {props.lang === 'en' ? (
-                                props.news[0].createDate
+                                props.news[0].createDate_en
                               ) : (
-                                props.news[0].createDate
+                                props.news[0].createDate_th
                               )}
                               {/* {props.news[0].createDate_en} */}
                             </Date>
@@ -200,7 +200,8 @@ const MaxTop = props => (
                               href={`/maxnews_detail?id=${props.news[0].id !=
                               undefined
                                 ? props.news[0].id
-                                : props.news[0].__v}`}
+                                : props.news[0].__v}&name=${props.news[0]
+                                .programName}`}
                             >
                               <Button1>Read more</Button1>
                             </a>
@@ -240,9 +241,9 @@ const MaxTop = props => (
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
                         props.lang === 'en' ? (
-                          props.news[1].createDate
+                          props.news[1].createDate_en
                         ) : (
-                          props.news[1].createDate
+                          props.news[1].createDate_th
                         )
                       } //"Aug 11, 2017"
                     />
@@ -273,9 +274,9 @@ const MaxTop = props => (
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
                         props.lang === 'en' ? (
-                          props.news[2].createDate
+                          props.news[2].createDate_en
                         ) : (
-                          props.news[2].createDate
+                          props.news[2].createDate_th
                         )
                       } //"Aug 11, 2017"
                     />
@@ -306,9 +307,9 @@ const MaxTop = props => (
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
                         props.lang === 'en' ? (
-                          props.news[3].createDate
+                          props.news[3].createDate_en
                         ) : (
-                          props.news[3].createDate
+                          props.news[3].createDate_th
                         )
                       } //"Aug 11, 2017"
                     />

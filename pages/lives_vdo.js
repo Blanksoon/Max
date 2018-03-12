@@ -87,9 +87,11 @@ class LiveVdo extends Component {
       }
     }
   }
+
   componentWillUnmount() {
     clearInterval(this.timerId)
   }
+
   componentDidMount() {
     this.timerId = setInterval(() => {
       this.state.i++

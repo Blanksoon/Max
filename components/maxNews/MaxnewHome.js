@@ -196,15 +196,18 @@ class MaxnewHome extends React.Component {
                           <Box w={5 / 12} pt="1rem">
                             <Date>
                               {this.props.lang === 'en' ? (
-                                this.props.news[0].createDate
+                                this.props.news[0].createDate_en
                               ) : (
-                                this.props.news[0].createDate
+                                this.props.news[0].createDate_th
                               )}
                               {/* Aug 11, 2017 */}
                             </Date>
                           </Box>
                           <Box w={7 / 12}>
-                            <a href={`/maxnews_detail`}>
+                            <a
+                              href={`/maxnews_detail?id=${this.props.news[0]
+                                .__v}&name=${this.props.news[0].programName}`}
+                            >
                               <Button1>Read more</Button1>
                             </a>
                           </Box>
@@ -224,7 +227,10 @@ class MaxnewHome extends React.Component {
             >
               {this.props.news[1] != undefined ? (
                 <Flex pt={['1rem', '1rem', '0rem', '0rem', '0rem']}>
-                  <a href={`/maxnews_detail`}>
+                  <a
+                    href={`/maxnews_detail?id=${this.props.news[1]
+                      .__v}&name=${this.props.news[1].programName}`}
+                  >
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
@@ -244,9 +250,9 @@ class MaxnewHome extends React.Component {
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
                         this.props.lang === 'en' ? (
-                          this.props.news[1].createDate
+                          this.props.news[1].createDate_en
                         ) : (
-                          this.props.news[1].createDate
+                          this.props.news[1].createDate_th
                         )
                       } //"Aug 11, 2017"
                     />
@@ -257,7 +263,10 @@ class MaxnewHome extends React.Component {
               )}
               {this.props.news[2] != undefined ? (
                 <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '5rem']}>
-                  <a href={`/maxnews_detail`}>
+                  <a
+                    href={`/maxnews_detail?id=${this.props.news[2]
+                      .__v}&name=${this.props.news[2].programName}`}
+                  >
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
@@ -277,9 +286,9 @@ class MaxnewHome extends React.Component {
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
                         this.props.lang === 'en' ? (
-                          this.props.news[2].createDate
+                          this.props.news[2].createDate_en
                         ) : (
-                          this.props.news[2].createDate
+                          this.props.news[2].createDate_th
                         )
                       } //"Aug 11, 2017"
                     />
@@ -290,7 +299,10 @@ class MaxnewHome extends React.Component {
               )}
               {this.props.news[3] != undefined ? (
                 <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '5rem']}>
-                  <a href={`/maxnews_detail`}>
+                  <a
+                    href={`/maxnews_detail?id=${this.props.news[3]
+                      .__v}&name=${this.props.news[3].programName}`}
+                  >
                     <ThumbnailRight
                       w="100%"
                       img="static/maxPromo.jpg"
@@ -310,9 +322,9 @@ class MaxnewHome extends React.Component {
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
                         this.props.lang === 'en' ? (
-                          this.props.news[3].createDate
+                          this.props.news[3].createDate_en
                         ) : (
-                          this.props.news[3].createDate
+                          this.props.news[3].createDate_th
                         )
                       } //"Aug 11, 2017"
                     />

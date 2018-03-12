@@ -24,6 +24,7 @@ import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import { recentLivesSelector } from '../redux/selectors/live'
 import { recentVodsSelector } from '../redux/selectors/vod'
+import { redirect } from '../tools/utils'
 import Router from 'next/router'
 
 const WrapperTop = styled.div`
@@ -81,12 +82,11 @@ class Profile extends React.Component {
       translations: await getTranslation(lang, ['common', 'navbar'], langUrl),
     })
   }
-
   render() {
     //console.log('22222222', this.props.url.push)
-    if (this.props.auth.token === undefined) {
-      this.props.url.push('/')
-    }
+    // if (this.props.auth.token === undefined) {
+    //   this.props.url.push('/')
+    // }
     let renderUI = <div />
     if (this.state.pathname == 'Profile') {
       renderUI = (
@@ -202,7 +202,7 @@ const mapStateToProps = state => {
     lang: langSelector(state),
   }
 }
-Profile.getInitialProps = async ({ store, isServer, query, req }) => {
+Profile.getInitialProps = async ({ store, isServer, query, req, res }) => {
   let state = store.getState()
   const token = state.auth.token
   const response = await fetchLives(token)(store.dispatch)
@@ -215,6 +215,9 @@ Profile.getInitialProps = async ({ store, isServer, query, req }) => {
   )
   const props = mapStateToProps(state)
   props.translations = translations
+  if (state.auth.token === undefined) {
+    redirect('/', { res, isServer })
+  }
   return props
 }
 

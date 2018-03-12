@@ -206,9 +206,9 @@ const Thumbnailright = props => (
             } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
             date={
               props.lang === 'en' ? (
-                props.news[0].createDate
+                props.news[0].createDate_en
               ) : (
-                props.news[0].createDate
+                props.news[0].createDate_th
               )
             } //"Aug 11, 2017"
             pt="0.9em"
@@ -244,9 +244,9 @@ const Thumbnailright = props => (
             } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
             date={
               props.lang === 'en' ? (
-                props.news[1].createDate
+                props.news[1].createDate_en
               ) : (
-                props.news[1].createDate
+                props.news[1].createDate_th
               )
             } //"Aug 11, 2017"
             pt="0.9em"

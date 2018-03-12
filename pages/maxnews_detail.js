@@ -12,7 +12,12 @@ import Purchase from '../components/getTicket/Purchase'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../redux/store'
 import { fetchVods } from '../redux/modules/vod'
-import { fetchNews, fetchNEWS } from '../redux/modules/maxnews'
+import {
+  fetchNews,
+  fetchNEWS,
+  fetchNewsBig,
+  fetchNewsSmaill,
+} from '../redux/modules/maxnews'
 import {
   recentNewsSelector,
   dataNewsSelector,
@@ -31,6 +36,7 @@ import { getTranslation } from '../tools/translationHelpers'
 import { langSelector } from '../redux/selectors/lang'
 import { langUrl } from '../tools/langUrl'
 import { media } from '../tools/responsive'
+import fetchMock from 'fetch-mock'
 
 const Wrapper = styled.div`background-color: #3c5c83;`
 class maxnew_detail extends React.Component {
@@ -39,6 +45,8 @@ class maxnew_detail extends React.Component {
     this.state = {
       translations: this.props.translations,
       lang: this.props.lang,
+      NewsHilight: '',
+      NewsSmaill: '',
     }
     this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
     this.switchLang = this.switchLang.bind(this)
@@ -50,8 +58,85 @@ class maxnew_detail extends React.Component {
       translations: await getTranslation(lang, ['common', 'navbar'], langUrl),
     })
   }
+  async componentDidMount() {
+    fetchMock.restore()
+    let json = ''
+    let json2 = await fetchMock.post(`${api.SERVER}/news&id`, {
+      body: {
+        code: 200,
+        data: [
+          {
+            id: `0`,
+            programName_en: `Max Muay ThaiBig`,
+            programName_th: `แม็กซ์มวยไทยBig`,
+            heading_en: `Max Muay ThaiBig`,
+            heading_th: `แม็กซ์มวยไทยBig`,
+            createDate_en: `Jan 11,2018`,
+            createDate_th: `มค. 11,2018`,
+            imageUrl: `/static/FT6A6495.jpg`,
+            article_en: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
+            article_th: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
+          },
+        ],
+      },
+    })
+    json = json2.routes[0].response.body.data
+    this.setState({
+      NewsHilight: json,
+    })
+    json2 = await fetchMock.post(`${api.SERVER}/news&id&name`, {
+      body: {
+        code: 200,
+        data: [
+          {
+            id: `01`,
+            programName_en: `Max Muay Thai01`,
+            programName_th: `แม็กซ์มวยไทย01`,
+            heading_en: `Max Muay Thai01`,
+            heading_th: `แม็กซ์มวยไทย01`,
+            createDate_en: `Jan 11,2018`,
+            createDate_th: `มค. 11,2018`,
+            imageUrl: `/static/FT6A6495.jpg`,
+            article_en: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
+            article_th: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
+          },
+          {
+            id: `02`,
+            programName_en: `Max Muay Thai02`,
+            programName_th: `แม็กซ์มวยไทย02`,
+            heading_en: `Max Muay Thai02`,
+            heading_th: `แม็กซ์มวยไทย02`,
+            createDate_en: `Jan 11,2018`,
+            createDate_th: `มค. 11,2018`,
+            imageUrl: `/static/FT6A6495.jpg`,
+            article_en: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
+            article_th: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
+          },
+          {
+            id: `03`,
+            programName_en: `Max Muay Thai03`,
+            programName_th: `แม็กซ์มวยไทย03`,
+            heading_en: `Max Muay Thai03`,
+            heading_th: `แม็กซ์มวยไทย03`,
+            createDate_en: `Jan 11,2018`,
+            createDate_th: `มค. 11,2018`,
+            imageUrl: `/static/FT6A6495.jpg`,
+            article_en: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
+            article_th: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
+          },
+        ],
+      },
+    })
+    json = json2.routes[1].response.body.data
+    this.setState({
+      NewsSmaill: json,
+    })
+    // console.log('ddddddddJson', this.state.NewsHilight[0])
+    // console.log('ddddddddJson2', this.state.NewsSmaill)
+    fetchMock.restore()
+  }
   render() {
-    // console.log('ddddddddWEF', this.props.news[12])
+    // console.log('ddddddddWEF', this.props.url.query)
     return (
       <I18nextProvider i18n={this.i18n}>
         {/* {status.message ?  : null } */}
@@ -76,14 +161,15 @@ class maxnew_detail extends React.Component {
                 <Box w={12 / 12}>
                   <DetailLeft
                     lang={this.state.lang}
-                    news={this.props.News}
+                    newsbig={this.props.News[0]}
+                    newssm={this.props.News}
                     id={this.props.url.query.id}
                   />
                 </Box>
                 <Box w={12 / 12} pt="1rem" pb="1rem">
                   <DetailRight
                     lang={this.state.lang}
-                    news={this.props.News[this.props.url.query.id]}
+                    news={this.props.News[0]}
                   />
                 </Box>
               </Flex>
@@ -122,6 +208,8 @@ maxnew_detail.getInitialProps = async ({ store, isServer, query, req }) => {
   const token = state.auth.token
   const newsPromise = await fetchNews(token)(store.dispatch)
   const NewsPromise = await fetchNEWS(token)(store.dispatch)
+  // const NewsBigPromise = await fetchNewsBig(token)(store.dispatch)
+  // const NewsSmaillPromise = await fetchNewsSmaill(token)(store.dispatch)
   state = store.getState()
   const translations = await getTranslation(
     state.cookie.lang,

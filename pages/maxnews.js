@@ -69,7 +69,7 @@ class maxnew extends React.Component {
   }
 
   render() {
-    // console.log('dddddddd', this.props)
+    console.log('dddddddd', this.props)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
@@ -116,7 +116,7 @@ class maxnew extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log('ddddddsss', state)
+  // console.log('ddddddsss', state)
   return {
     cookie: state.cookie,
     lang: langSelector(state),
