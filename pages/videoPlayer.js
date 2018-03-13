@@ -138,9 +138,7 @@ class videoPlayer extends React.Component {
         <UpNext
           name={this.state.common.UPNEXT}
           vods={vods}
-          progname={
-            this.state.lang === 'en' ? vod.programName_en : vod.programName_th
-          }
+          progname={this.state.lang === 'en' ? vod.title_en : vod.title_th}
           lang={this.state.lang}
         />
       )
@@ -229,7 +227,7 @@ const mapStateToProps = state => {
   const vod = currentVodSelector(state)
   let vods = ''
   if (vod !== undefined) {
-    vods = relatedVodsSelector(vod.programName_en)(state)
+    vods = relatedVodsSelector(vod.title_en)(state)
   }
   const token = state.auth.token
   const cookie = state.cookie
@@ -247,7 +245,7 @@ videoPlayer.getInitialProps = async ({ store, isServer, query, req }) => {
   // Fetch other vod with same program name
   store.dispatch(
     setFetchFilter({
-      progname: vod.programName_en,
+      progname: vod.title_en,
     })
   )
   await fetchVods(token)(store.dispatch, store.getState)

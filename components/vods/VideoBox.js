@@ -117,7 +117,7 @@ class VideoBox extends Component {
         return true
       }
       //this.props.startindex(4)
-      return vod.programName_en === filteredProgram
+      return vod.title_en === filteredProgram
     })
     //console.log('filteredProgram', filteredVods)
     if (this.state.vodmax === 0) {
@@ -215,7 +215,7 @@ const RowVideo = ({ lang, vods }) => {
           <ThumbnailVideo
             id={vods[1].id}
             img={vods[1].thumbnailUrl}
-            name={lang === 'en' ? vods[1].title_en : vods[1].programName_th}
+            name={lang === 'en' ? vods[1].title_en : vods[1].title_th}
             date={
               lang === 'en' ? vods[1].onAirDateStr_en : vods[1].onAirDateStr_th
             }

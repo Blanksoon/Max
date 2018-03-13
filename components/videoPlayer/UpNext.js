@@ -40,7 +40,7 @@ const renderVideos = (lang, vod) => {
   return rowVideos
 }
 const UpNext = ({ lang, name, vods, progname }) => {
-  const relateVods = vods.filter(vod => vod.programName_en == progname)
+  const relateVods = vods.filter(vod => vod.title_en == progname)
   //console.log('ddddddddd', vods)
   return (
     <div>

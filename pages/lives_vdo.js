@@ -188,7 +188,7 @@ class LiveVdo extends Component {
                         lang={this.state.lang}
                         name={common.THISSHOWRELATEDVIDEO}
                         vods={vods}
-                        progname={live.programName}
+                        progname={live.title_en}
                       />
                     </Box>
                   </Flex>
@@ -213,7 +213,7 @@ class LiveVdo extends Component {
 const mapStateToProps = state => {
   const live = currentLiveSelector(state)
   //console.log('live', live)
-  const vods = relatedVodsSelector(live.programName)(state)
+  const vods = relatedVodsSelector(live.title_en)(state)
   const cookie = state.cookie
   const lang = langSelector(state)
   //console.log('vods', vods)
@@ -230,7 +230,7 @@ LiveVdo.getInitialProps = async ({ store, isServer, query, req }) => {
   // Fetch vods with same program name
   store.dispatch(
     setFetchFilter({
-      progname: live.programName,
+      progname: live.title_en,
     })
   )
   await fetchVods(token)(store.dispatch, store.getState)

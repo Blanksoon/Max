@@ -10,12 +10,13 @@ export const fetchProgramName = program => ({
 
 export const fetchPrograms = () => async dispatch => {
   //console.log('hi')
-  const url = `${api.SERVER}/program-name`
+  // const url = `${api.SERVER}/program-name`
+  const url = `${api.SERVER}/cms/lives/get-progname`
   try {
     const json = await api.get(url)
     // You should not return in Vods <-- change to something like data
-    console.log('ddddddddddJson', json.data)
-    dispatch(fetchProgramName(json.data))
+    console.log('ddddddddddJson', json)
+    dispatch(fetchProgramName(json))
   } catch (error) {
     console.log(error)
   }
@@ -29,7 +30,7 @@ const initialState = {
 const programReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PROGRAM_NAME: {
-      console.log('ddddddddReduc', action.payload[0].title_en)
+      console.log('ddddddddReduc', action.payload)
       return {
         ...state,
         programname_en: [

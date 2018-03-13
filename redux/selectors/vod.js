@@ -17,13 +17,13 @@ export const hilightVodSelector = state => {
 
 export const currentVodSelector = state => state.vod.data[state.vod.current]
 
-export const relatedVodsSelector = programName_en => state => {
-  if (programName_en === 'Muay Thai Battle') {
-    programName_en = 'Battle Muay Thai'
+export const relatedVodsSelector = title_en => state => {
+  if (title_en === 'Muay Thai Battle') {
+    title_en = 'Battle Muay Thai'
   }
   const recents = recentVodsSelector(state)
   //console.log('recents', recents)
-  return recents.filter(recent => recent.programName_en === programName_en)
+  return recents.filter(recent => recent.title_en === title_en)
 }
 
 export const NumberOfVods = state => {
