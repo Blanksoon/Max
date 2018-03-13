@@ -182,7 +182,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 export const fetchNEWS = token => async dispatch => {
   // console.log('ddddddddddFetchNews')
   dispatch(fetchNewsReq())
-  const url = `${api.SERVER}/cms/maxnews`
+  const url = `${api.SERVER}/maxnews`
   try {
     const json = await api.get(url)
     // console.log('dddddddddd2', json2.routes[0].response.body)
@@ -196,7 +196,7 @@ export const fetchNEWS = token => async dispatch => {
 export const fetchNewsBig = token => async dispatch => {
   // console.log('ddddddddddFetchNews')
   dispatch(fetchNewsReq())
-  const url = `${api.SERVER}/cms/maxnews`
+  const url = `${api.SERVER}/maxnews`
   try {
     fetchMock.restore()
     // const json = await api.get(url)
@@ -233,7 +233,7 @@ export const fetchNewsBig = token => async dispatch => {
 export const fetchNewsSmaill = token => async dispatch => {
   // console.log('ddddddddddFetchNews')
   dispatch(fetchNewsReq())
-  const url = `${api.SERVER}/cms/maxnews`
+  const url = `${api.SERVER}/maxnews`
   try {
     fetchMock.restore()
     // const json = await api.get(url)

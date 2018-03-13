@@ -55,19 +55,6 @@ class maxnew extends React.Component {
     })
   }
 
-  async componentDidMount() {
-    // this.setState({ loadingCard: true })
-    const response = await api.get(`${api.SERVER}/cms/maxnews`)
-    // this.setState({ loadingCard: false })
-    // console.log('ddddddddddd', response)
-    // if (response.approvalUrl) {
-    //   Router.push(`${response.approvalUrl}`)
-    // } else {
-    //   this.props.closeModal()
-    //   Router.push(`http://localhost:8080/error`)
-    // }
-  }
-
   render() {
     console.log('dddddddd', this.props)
     return (
@@ -120,14 +107,14 @@ const mapStateToProps = state => {
   return {
     cookie: state.cookie,
     lang: langSelector(state),
-    news: recentNewsSelector(state),
+    // news: recentNewsSelector(state),
     News: state.news.news.data,
   }
 }
 maxnew.getInitialProps = async ({ store, isServer, query, req }) => {
   let state = store.getState()
   const token = state.auth.token
-  const newsPromise = await fetchNews(token)(store.dispatch)
+  // const newsPromise = await fetchNews(token)(store.dispatch)
   const NewsPromise = await fetchNEWS(token)(store.dispatch)
   state = store.getState()
   const translations = await getTranslation(

@@ -200,7 +200,7 @@ class Index extends React.Component {
                 </Flex>
               </Container>
             </WrapperLive>
-            <WrapperMaxnew>
+            {/* <WrapperMaxnew>
               <Container>
                 <Flex>
                   <Box w={12 / 12} pb="4em" pt="2em">
@@ -213,7 +213,7 @@ class Index extends React.Component {
                   </Box>
                 </Flex>
               </Container>
-            </WrapperMaxnew>
+            </WrapperMaxnew> */}
             <WrapperStadiumTicket>
               <Container>
                 <Flex>
@@ -240,13 +240,13 @@ class Index extends React.Component {
 }
 
 const mapStateToProps = state => {
-  //console.log("ddddddsss", state);
+  // console.log('ddddddsss', state)
   return {
     cookie: state.cookie,
     lives: dataLivesSelector(state),
     vods: recentVodsSelector(state),
     lang: langSelector(state),
-    news: recentNewsSelector(state),
+    // news: recentNewsSelector(state),
     News: state.news.news.data,
   }
 }
@@ -257,9 +257,9 @@ Index.getInitialProps = async ({ store, isServer, query, req }) => {
   const token = state.auth.token
   const livePromise = fetchLives(token)(store.dispatch)
   const vodPromise = fetchVods(token)(store.dispatch, store.getState)
-  const newsPromise = fetchNews(token)(store.dispatch)
+  // const newsPromise = fetchNews(token)(store.dispatch)
   const NewsPromise = fetchNEWS(token)(store.dispatch)
-  await Promise.all([livePromise, vodPromise, newsPromise])
+  await Promise.all([livePromise, vodPromise, NewsPromise])
   state = store.getState()
   const translations = await getTranslation(
     state.cookie.lang,
