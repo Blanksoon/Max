@@ -59,16 +59,12 @@ class maxnew_detail extends React.Component {
     })
   }
   async componentDidMount() {
-    // const url = `${api.SERVER}//maxnews/${this.props.url.query.id}`
-    // try {
-    //   const json = await api.get(url)
-    //   // You should not return in Vods <-- change to something like data
-    //   //console.log('jsonssss', json)
-    //   dispatch(fetchVodsSuccess(json))
-    // } catch (error) {
-    //   console.log(error)
-    // }
-    // console.log('ddddddddJson', this.state.NewsHilight[0])
+    console.log('ddddddddJsonsadfwaef',`${api.SERVER}/maxnews/related?id=${this.props.url.query.id}&programName=${this.props.url.query.name}`)
+    const response = await api.get(
+      `${api.SERVER}/maxnews/related?id=${this.props.url.query.id}&programName=${this.props.url.query.name}`
+    )
+    // console.log('ddddddddJson', response.data)
+    this.setState({NewsSmaill: response.data})
     // console.log('ddddddddJson2', this.state.NewsSmaill)
   }
   render() {

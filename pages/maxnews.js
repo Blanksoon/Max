@@ -56,7 +56,7 @@ class maxnew extends React.Component {
   }
 
   render() {
-    console.log('dddddddd', this.props)
+    // console.log('dddddddd', this.props)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Main
