@@ -59,81 +59,17 @@ class maxnew_detail extends React.Component {
     })
   }
   async componentDidMount() {
-    fetchMock.restore()
-    let json = ''
-    let json2 = await fetchMock.post(`${api.SERVER}/news&id`, {
-      body: {
-        code: 200,
-        data: [
-          {
-            id: `0`,
-            programName_en: `Max Muay ThaiBig`,
-            programName_th: `แม็กซ์มวยไทยBig`,
-            heading_en: `Max Muay ThaiBig`,
-            heading_th: `แม็กซ์มวยไทยBig`,
-            createDate_en: `Jan 11,2018`,
-            createDate_th: `มค. 11,2018`,
-            imageUrl: `/static/FT6A6495.jpg`,
-            article_en: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
-            article_th: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
-          },
-        ],
-      },
-    })
-    json = json2.routes[0].response.body.data
-    this.setState({
-      NewsHilight: json,
-    })
-    json2 = await fetchMock.post(`${api.SERVER}/news&id&name`, {
-      body: {
-        code: 200,
-        data: [
-          {
-            id: `01`,
-            programName_en: `Max Muay Thai01`,
-            programName_th: `แม็กซ์มวยไทย01`,
-            heading_en: `Max Muay Thai01`,
-            heading_th: `แม็กซ์มวยไทย01`,
-            createDate_en: `Jan 11,2018`,
-            createDate_th: `มค. 11,2018`,
-            imageUrl: `/static/FT6A6495.jpg`,
-            article_en: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
-            article_th: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
-          },
-          {
-            id: `02`,
-            programName_en: `Max Muay Thai02`,
-            programName_th: `แม็กซ์มวยไทย02`,
-            heading_en: `Max Muay Thai02`,
-            heading_th: `แม็กซ์มวยไทย02`,
-            createDate_en: `Jan 11,2018`,
-            createDate_th: `มค. 11,2018`,
-            imageUrl: `/static/FT6A6495.jpg`,
-            article_en: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
-            article_th: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
-          },
-          {
-            id: `03`,
-            programName_en: `Max Muay Thai03`,
-            programName_th: `แม็กซ์มวยไทย03`,
-            heading_en: `Max Muay Thai03`,
-            heading_th: `แม็กซ์มวยไทย03`,
-            createDate_en: `Jan 11,2018`,
-            createDate_th: `มค. 11,2018`,
-            imageUrl: `/static/FT6A6495.jpg`,
-            article_en: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
-            article_th: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt`,
-          },
-        ],
-      },
-    })
-    json = json2.routes[1].response.body.data
-    this.setState({
-      NewsSmaill: json,
-    })
+    // const url = `${api.SERVER}//maxnews/${this.props.url.query.id}`
+    // try {
+    //   const json = await api.get(url)
+    //   // You should not return in Vods <-- change to something like data
+    //   //console.log('jsonssss', json)
+    //   dispatch(fetchVodsSuccess(json))
+    // } catch (error) {
+    //   console.log(error)
+    // }
     // console.log('ddddddddJson', this.state.NewsHilight[0])
     // console.log('ddddddddJson2', this.state.NewsSmaill)
-    fetchMock.restore()
   }
   render() {
     // console.log('ddddddddWEF', this.props.url.query)
