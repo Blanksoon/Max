@@ -81,7 +81,8 @@ const ButtonAlipay = styled.button`
   padding: 13px 100px;
   border: 1px solid ${vars.white};
   display: inline-block;
-
+  ${media.iphone7p`width: 150px;
+  height: 50px;padding: 13px 25px;`};
   ${media.phone`width: 150px;
   height: 50px;padding: 4px 12px;`};
   ${media.iphone5`width: 172px;
@@ -99,9 +100,9 @@ const ButtonCreditSub = styled.button`
   padding: 0px 0px;
   border: 1px solid ${vars.blue};
   display: inline-block;
-  ${media.iphone7p`width: 150px;
+  ${media.iphone7p`width: 316px;
   height: 50px;`};
-  ${media.phone`width: 150px;
+  ${media.phone`width: 263px;
   height: 50px;`};
   ${media.iphone5`width: 172px;
   height: 35px;`};
@@ -118,6 +119,8 @@ const ButtonCredit = styled.button`
   padding: 0px 0px;
   border: 1px solid ${vars.blue};
   display: inline-block;
+  ${media.iphone7p`width: 150px;
+  height: 50px;padding: 13px 25px;`};
   ${media.phone`width: 150px;
   height: 50px;`};
   ${media.iphone5`width: 172px;
@@ -135,10 +138,10 @@ const ButtonpaypalSub = styled.button`
   //   background-color: ${vars.lightRed};
   //   border: 1px solid ${vars.lightRed};
   // }
-  ${media.iphone7p`width: 150px;
-  height: 50px;padding: 13px 25px;`};
-  ${media.phone`width: 150px;
-  height: 50px;padding: 8px 30px;`};
+  ${media.iphone7p`width: 316px;
+  height: 50px;padding: 13px 106px;`};
+  ${media.phone`width: 263px;
+  height: 50px;padding: 8px 80px;`};
   ${media.iphone5`width: 172px;
   height: 35px;padding: 8px 50px;`};
 `
@@ -154,6 +157,8 @@ const Buttonpaypal = styled.button`
   //   background-color: ${vars.lightRed};
   //   border: 1px solid ${vars.lightRed};
   // }
+  ${media.iphone7p`width: 150px;
+  height: 50px;padding: 13px 25px;`};
   ${media.phone`width: 150px;
   height: 50px;padding: 4px 24px;`};
   ${media.iphone5`width: 172px;
@@ -208,16 +213,16 @@ const WrapperPricePack = styled.div`
 const WrapperPriceLive = styled.div`
   position: absolute;
   top: 50%;
-  ${media.iphone7p`top: 64%;`};
+  ${media.iphone7p`top: 65.5%;`};
   ${media.phone`top: 62%;`};
-  ${media.iphone5`top: 54.2%;`};
+  ${media.iphone5`top: 54%;`};
 `
 const ImgSub = styled.img`
   width: 318px;
   height: 60px;
-  ${media.iphone7p`width: 150px;
+  ${media.iphone7p`width: 316px;
   height: 50px;margin-left: -1px;`};
-  ${media.phone`width: 150px;
+  ${media.phone`width: 263px;
   height: 50px;
   margin-left: -1px;`};
   ${media.iphone5`width: 172px;
@@ -226,9 +231,12 @@ const ImgSub = styled.img`
 const Img = styled.img`
   width: 318px;
   height: 60px;
+  ${media.iphone7p`width: 150px;
+  height: 50px;
+  margin-left: -26px;margin-top: -14px;`};
   ${media.phone`width: 150px;
   height: 50px;
-  margin-left: -1px;`};
+  margin-left: -26px;margin-top: -14px;`};
   ${media.iphone5`width: 172px;
   height: 35px;`};
 `
@@ -515,7 +523,7 @@ class PurchaseItem extends React.Component {
                 pl={['0em', '0.5em', '0em', '0em', '0em']}
               >
                 <center>
-                  <ButtonpaypalSub
+                  <Buttonpaypal
                     onClick={this.purchasePayPal}
                     disabled={this.state.loading}
                   >
@@ -526,7 +534,7 @@ class PurchaseItem extends React.Component {
                     ) : (
                       <Image width="100%" src="../../static/PayPal.png" />
                     )}
-                  </ButtonpaypalSub>
+                  </Buttonpaypal>
                 </center>
               </Box>
               <Box
@@ -536,7 +544,7 @@ class PurchaseItem extends React.Component {
                 pt={['0.5rem', '0rem', '0rem', '0rem', '0rem', '0rem']}
               >
                 <center>
-                  <ButtonCreditSub
+                  <ButtonCredit
                     onClick={this.purchaseCard}
                     disabled={this.state.loading}
                   >
@@ -555,11 +563,11 @@ class PurchaseItem extends React.Component {
                         //allowRememberMe={false}
                       >
                         <center>
-                          <ImgSub src="../../static/109-credit-cards-accepted-logo.png" />
+                          <Img src="../../static/109-credit-cards-accepted-logo.png" />
                         </center>
                       </StripeCheckout>
                     )}
-                  </ButtonCreditSub>
+                  </ButtonCredit>
                 </center>
               </Box>
             </Flex>
@@ -576,7 +584,7 @@ class PurchaseItem extends React.Component {
                 pl={['0.5em', '0.5em', '0em', '0em', '0em']}
               >
                 <center>
-                  <ButtonAlipaySub
+                  <ButtonAlipay
                     onClick={this.purchaseAlipay}
                     disabled={this.state.loading}
                   >
@@ -592,7 +600,7 @@ class PurchaseItem extends React.Component {
                         />
                       </center>
                     )}
-                  </ButtonAlipaySub>
+                  </ButtonAlipay>
                 </center>
               </Box>
               <Box
@@ -602,7 +610,7 @@ class PurchaseItem extends React.Component {
                 pt={['0.5rem', '0rem', '0rem', '0rem', '0rem']}
               >
                 <center>
-                  <ButtonAlipaySub
+                  <ButtonAlipay
                     onClick={this.purchaseWechat}
                     disabled={this.state.loading}
                   >
@@ -613,7 +621,7 @@ class PurchaseItem extends React.Component {
                     ) : (
                       <Image width="100%" src="../../static/btn_wechat.png" />
                     )}
-                  </ButtonAlipaySub>
+                  </ButtonAlipay>
                 </center>
               </Box>
             </Flex>
@@ -814,7 +822,7 @@ class PurchaseItem extends React.Component {
                 pl={['0em', '0.5em', '0em', '0em', '0em']}
               >
                 <center>
-                  <ButtonpaypalSub
+                  <Buttonpaypal
                     onClick={this.purchasePayPal}
                     disabled={this.state.loading}
                   >
@@ -825,7 +833,7 @@ class PurchaseItem extends React.Component {
                     ) : (
                       <Image width="100%" src="../../static/PayPal.png" />
                     )}
-                  </ButtonpaypalSub>
+                  </Buttonpaypal>
                 </center>
               </Box>
               <Box
@@ -835,7 +843,7 @@ class PurchaseItem extends React.Component {
                 pt={['0.5rem', '0rem', '0rem', '0rem', '0rem', '0rem']}
               >
                 <center>
-                  <ButtonCreditSub
+                  <ButtonCredit
                     onClick={this.purchaseCard}
                     disabled={this.state.loading}
                     //token={this.onToken}
@@ -855,11 +863,11 @@ class PurchaseItem extends React.Component {
                         //allowRememberMe="false"
                       >
                         <center>
-                          <ImgSub src="../../static/109-credit-cards-accepted-logo.png" />
+                          <Img src="../../static/109-credit-cards-accepted-logo.png" />
                         </center>
                       </StripeCheckout>
                     )}
-                  </ButtonCreditSub>
+                  </ButtonCredit>
                 </center>
               </Box>
             </Flex>
@@ -876,7 +884,7 @@ class PurchaseItem extends React.Component {
                 pl={['0.5em', '0.5em', '0em', '0em', '0em']}
               >
                 <center>
-                  <ButtonAlipaySub
+                  <ButtonAlipay
                     onClick={this.purchaseAlipay}
                     disabled={this.state.loading}
                   >
@@ -892,7 +900,7 @@ class PurchaseItem extends React.Component {
                         />
                       </center>
                     )}
-                  </ButtonAlipaySub>
+                  </ButtonAlipay>
                 </center>
               </Box>
               <Box
@@ -902,7 +910,7 @@ class PurchaseItem extends React.Component {
                 pt={['0.5rem', '0rem', '0rem', '0rem', '0rem']}
               >
                 <center>
-                  <ButtonAlipaySub
+                  <ButtonAlipay
                     onClick={this.purchaseWechat}
                     disabled={this.state.loading}
                   >
@@ -913,7 +921,7 @@ class PurchaseItem extends React.Component {
                     ) : (
                       <Image width="100%" src="../../static/btn_wechat.png" />
                     )}
-                  </ButtonAlipaySub>
+                  </ButtonAlipay>
                 </center>
               </Box>
             </Flex>

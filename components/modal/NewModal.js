@@ -105,11 +105,11 @@ const WrapperPurchaseItem = styled.div`
   background: #fff;
   z-index: 240;
   ${media.iphone7p`width: 750px;
-  height: 536px;`};
+  height: 534px;`};
   ${media.phone`width: 360px;
-  height: 521px;`};
+  height: 519px;`};
   ${media.iphone5`width: 300px;
-  height: 506px;`};
+  height: 500px;`};
 `
 const WrapperChangePass = styled.div`
   position: relative;
