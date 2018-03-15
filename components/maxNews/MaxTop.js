@@ -150,7 +150,7 @@ const MaxTop = props => (
               <Box w={[12 / 12, 12 / 12, 12 / 12, 7 / 12, 7 / 12]}>
                 <WrapperHilight>
                   <Box w={12 / 12} className="imagesss">
-                    <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
+                    <Image width="100%" pt={0} src={props.news[0].imageUrl} />
                   </Box>
                   <Box w={12 / 12} pl="20px">
                     <WrapperHilightText>
@@ -197,8 +197,8 @@ const MaxTop = props => (
                           </Box>
                           <Box w={7 / 12}>
                             <a
-                              href={`/maxnews_detail?id=${props.news[0]._id}&name=${props.news[0]
-                                .programName}`}
+                              href={`/maxnews_detail?id=${props.news[0]
+                                ._id}&name=${props.news[0].programName}`}
                             >
                               <Button1>Read more</Button1>
                             </a>
@@ -218,11 +218,13 @@ const MaxTop = props => (
             >
               {props.news[1] != undefined ? (
                 <Flex pt={['1rem', '1rem', '2rem', '0rem', '0rem']}>
-                  <a href={`/maxnews_detail?id=${props.news[1]._id}&name=${props.news[1]
-                                .programName}`}>
+                  <a
+                    href={`/maxnews_detail?id=${props.news[1]._id}&name=${props
+                      .news[1].programName}`}
+                  >
                     <ThumbnailRight
                       w="100%"
-                      img="static/maxPromo.jpg"
+                      img={props.news[1].imageUrl}
                       text1={
                         props.lang === 'en' ? (
                           props.news[1].heading_en
@@ -252,11 +254,13 @@ const MaxTop = props => (
               )}
               {props.news[2] != undefined ? (
                 <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '4rem']}>
-                  <a href={`/maxnews_detail?id=${props.news[2]._id}&name=${props.news[2]
-                                .programName}`}>
+                  <a
+                    href={`/maxnews_detail?id=${props.news[2]._id}&name=${props
+                      .news[2].programName}`}
+                  >
                     <ThumbnailRight
                       w="100%"
-                      img="static/maxPromo.jpg"
+                      img={props.news[2].imageUrl}
                       text1={
                         props.lang === 'en' ? (
                           props.news[2].heading_en
@@ -284,13 +288,15 @@ const MaxTop = props => (
               ) : (
                 ''
               )}
-              {props.news[2] != undefined ? (
+              {props.news[3] != undefined ? (
                 <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '4rem']}>
-                  <a href={`/maxnews_detail?id=${props.news[3]._id}&name=${props.news[3]
-                                .programName}`}>
+                  <a
+                    href={`/maxnews_detail?id=${props.news[3]._id}&name=${props
+                      .news[3].programName}`}
+                  >
                     <ThumbnailRight
                       w="100%"
-                      img="static/maxPromo.jpg"
+                      img={props.news[3].imageUrl}
                       text1={
                         props.lang === 'en' ? (
                           props.news[3].heading_en

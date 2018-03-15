@@ -186,10 +186,13 @@ const Thumbnailright = props => (
         w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
         pr={['0em', '0em', '0em', '0.5em', '0.5em']}
       >
-        <a href={`/maxnews_detail?id=${props.news[0].__v}`}>
+        <a
+          href={`/maxnews_detail?id=${props.news[0]._id}&name=${props.news[0]
+            .programName}`}
+        >
           <ThumbnailRight
             w="100%"
-            img="static/maxPromo.jpg"
+            img={props.news[0].imageUrl}
             text1={
               props.lang === 'en' ? (
                 props.news[0].heading_en
@@ -224,10 +227,13 @@ const Thumbnailright = props => (
         pt={['1em', '1em', '2em', '0em', '0em']}
         pl={['0em', '0em', '0em', '0.5em', '0.5em']}
       >
-        <a href={`/maxnews_detail?id=${props.news[1].__v}`}>
+        <a
+          href={`/maxnews_detail?id=${props.news[1]._id}&name=${props.news[1]
+            .programName}`}
+        >
           <ThumbnailRight
             w="100%"
-            img="static/maxPromo.jpg"
+            img={props.news[1].imageUrl}
             text1={
               props.lang === 'en' ? (
                 props.news[1].heading_en

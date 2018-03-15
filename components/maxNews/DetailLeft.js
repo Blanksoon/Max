@@ -113,7 +113,7 @@ const DetailLeft = props => (
         <Box>
           <WrapperHilight>
             <Box>
-              <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
+              <Image width="100%" pt={0} src={props.newsbig.imageUrl} />
               {/* <WrapperLogo>
                 <Image width="10%" pt={0} src="static/img_logo_white@2x.png" />
               </WrapperLogo> */}
@@ -154,7 +154,11 @@ const DetailLeft = props => (
             pt={['1rem', '1rem', '1rem', '2rem', '2rem']}
             pr={['0.25em', '0em', '0.25em', '0em', '0em']}
           >
-            <ThumbnailMaxnew news={props.newssm[0]} lang={props.lang} />
+            {props.newssm[0] != undefined ? (
+              <ThumbnailMaxnew news={props.newssm[0]} lang={props.lang} />
+            ) : (
+              ''
+            )}
           </Box>
           <Box
             w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
@@ -162,14 +166,22 @@ const DetailLeft = props => (
             pr={['0.125em', '0em', '0.125em', '0em', '0em']}
             pl={['0.125em', '0em', '0.125em', '0em', '0em']}
           >
-            <ThumbnailMaxnew news={props.newssm[1]} lang={props.lang} />
+            {props.newssm[1] != undefined ? (
+              <ThumbnailMaxnew news={props.newssm[1]} lang={props.lang} />
+            ) : (
+              ''
+            )}
           </Box>
           <Box
             w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
             pt={['1rem', '1rem', '1rem', '1rem', '2rem']}
             pl={['0.25em', '0em', '0.25em', '0em', '0em']}
           >
-            <ThumbnailMaxnew news={props.newssm[2]} lang={props.lang} />
+            {props.newssm[2] != undefined ? (
+              <ThumbnailMaxnew news={props.newssm[2]} lang={props.lang} />
+            ) : (
+              ''
+            )}
           </Box>
         </Flex>
       </Box>

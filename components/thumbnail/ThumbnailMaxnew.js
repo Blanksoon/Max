@@ -42,7 +42,10 @@ const Text3 = styled.div`
 `
 const ThumbnailMaxnew = props => (
   <div>
-    <a href={`/maxnews_detail?id=${props.news.id}`}>
+    <a
+      href={`/maxnews_detail?id=${props.news._id}&name=${props.news
+        .programName}`}
+    >
       <Box>
         <Image
           width={['100%', '100%', '100%', '70%', '60%']}

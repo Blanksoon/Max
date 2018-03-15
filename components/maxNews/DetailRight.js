@@ -22,7 +22,7 @@ const DetailRight = props => (
           <FacebookProvider appId="135776387080938">
             <Share
               href={`https://www.maxmuaythai.com/maxnew_detail?id${props.news
-                .id}`}
+                ._id}`}
             >
               <Image width="100%" pt={0} src="static/ic_facebook@2x.png" />
             </Share>
@@ -36,7 +36,7 @@ const DetailRight = props => (
         <FacebookProvider appId="135776387080938">
           <Comments
             href={`
-            https://www.maxmuaythai.com/maxnew_detail?id${props.news.id}`}
+            https://www.maxmuaythai.com/maxnew_detail?id${props.news._id}`}
           />
         </FacebookProvider>
       </Box>

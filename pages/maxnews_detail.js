@@ -58,17 +58,8 @@ class maxnew_detail extends React.Component {
       translations: await getTranslation(lang, ['common', 'navbar'], langUrl),
     })
   }
-  async componentDidMount() {
-    console.log('ddddddddJsonsadfwaef',`${api.SERVER}/maxnews/related?id=${this.props.url.query.id}&programName=${this.props.url.query.name}`)
-    const response = await api.get(
-      `${api.SERVER}/maxnews/related?id=${this.props.url.query.id}&programName=${this.props.url.query.name}`
-    )
-    // console.log('ddddddddJson', response.data)
-    this.setState({NewsSmaill: response.data})
-    // console.log('ddddddddJson2', this.state.NewsSmaill)
-  }
   render() {
-    // console.log('ddddddddWEF', this.props.url.query)
+    // console.log('ddddddddrender', this.state.NewsSmaill)
     return (
       <I18nextProvider i18n={this.i18n}>
         {/* {status.message ?  : null } */}
@@ -93,15 +84,14 @@ class maxnew_detail extends React.Component {
                 <Box w={12 / 12}>
                   <DetailLeft
                     lang={this.state.lang}
-                    newsbig={this.props.News[0]}
-                    newssm={this.props.News}
-                    id={this.props.url.query.id}
+                    newsbig={this.props.NewsBig}
+                    newssm={this.props.NewsSmaill}
                   />
                 </Box>
                 <Box w={12 / 12} pt="1rem" pb="1rem">
                   <DetailRight
                     lang={this.state.lang}
-                    news={this.props.News[0]}
+                    news={this.props.NewsBig}
                   />
                 </Box>
               </Flex>
@@ -131,17 +121,19 @@ const mapStateToProps = state => {
   return {
     cookie: state.cookie,
     lang: langSelector(state),
-    news: recentNewsSelector(state),
-    News: state.news.news.data,
+    // News: state.news.news.data,
+    NewsBig: state.news.newsbig.data,
+    NewsSmaill: state.news.newssmaill.data,
   }
 }
 maxnew_detail.getInitialProps = async ({ store, isServer, query, req }) => {
+  // console.log('dddddddddInitia', query.id)
   let state = store.getState()
   const token = state.auth.token
-  const newsPromise = await fetchNews(token)(store.dispatch)
-  const NewsPromise = await fetchNEWS(token)(store.dispatch)
-  // const NewsBigPromise = await fetchNewsBig(token)(store.dispatch)
-  // const NewsSmaillPromise = await fetchNewsSmaill(token)(store.dispatch)
+  const NewsBigPromise = await fetchNewsBig(token, query.id)(store.dispatch)
+  const NewsSmaillPromise = await fetchNewsSmaill(token, query.id, query.name)(
+    store.dispatch
+  )
   state = store.getState()
   const translations = await getTranslation(
     state.cookie.lang,
