@@ -200,7 +200,7 @@ class Index extends React.Component {
                 </Flex>
               </Container>
             </WrapperLive>
-            {/* <WrapperMaxnew>
+            <WrapperMaxnew>
               <Container>
                 <Flex>
                   <Box w={12 / 12} pb="4em" pt="2em">
@@ -213,7 +213,7 @@ class Index extends React.Component {
                   </Box>
                 </Flex>
               </Container>
-            </WrapperMaxnew> */}
+            </WrapperMaxnew>
             <WrapperStadiumTicket>
               <Container>
                 <Flex>

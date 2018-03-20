@@ -5,7 +5,8 @@ import styled from 'styled-components'
 import { media, theme } from '../../tools/responsive'
 
 const WrapperName = styled.div`
-  ${media.ipad`height: 56px;overflow: hidden;`};
+  ${media.ipad`height: 29px;overflow: hidden;`};
+  ${media.iphone7p`height: 31px;overflow: hidden;`};
   ${media.phone`height: 31px;overflow: hidden;`};
   ${media.iphone5`height: 30px;overflow: hidden;`};
 `
@@ -33,7 +34,7 @@ const ThumbnailVideo = props => (
           </WrapperName>
         </Box>
         <Flex pt={props.pt} wrap>
-          <Box w={[9 / 12, 12 / 12, 12 / 12, 9 / 12, 12 / 12, 9 / 12]}>
+          <Box w={[9 / 12, 12 / 12, 12 / 12, 9 / 12, 9 / 12]}>
             <Text
               left
               pt="5px"

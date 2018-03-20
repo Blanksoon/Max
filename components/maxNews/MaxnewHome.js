@@ -206,7 +206,7 @@ class MaxnewHome extends React.Component {
                           <Box w={7 / 12}>
                             <a
                               href={`/maxnews_detail?id=${this.props.news[0]
-                                .__v}&name=${this.props.news[0].programName}`}
+                                ._id}&name=${this.props.news[0].programName}`}
                             >
                               <Button1>Read more</Button1>
                             </a>
@@ -229,7 +229,7 @@ class MaxnewHome extends React.Component {
                 <Flex pt={['1rem', '1rem', '0rem', '0rem', '0rem']}>
                   <a
                     href={`/maxnews_detail?id=${this.props.news[1]
-                      .__v}&name=${this.props.news[1].programName}`}
+                      ._id}&name=${this.props.news[1].programName}`}
                   >
                     <ThumbnailRight
                       w="100%"
@@ -265,7 +265,7 @@ class MaxnewHome extends React.Component {
                 <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '5rem']}>
                   <a
                     href={`/maxnews_detail?id=${this.props.news[2]
-                      .__v}&name=${this.props.news[2].programName}`}
+                      ._id}&name=${this.props.news[2].programName}`}
                   >
                     <ThumbnailRight
                       w="100%"
@@ -301,7 +301,7 @@ class MaxnewHome extends React.Component {
                 <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '5rem']}>
                   <a
                     href={`/maxnews_detail?id=${this.props.news[3]
-                      .__v}&name=${this.props.news[3].programName}`}
+                      ._id}&name=${this.props.news[3].programName}`}
                   >
                     <ThumbnailRight
                       w="100%"

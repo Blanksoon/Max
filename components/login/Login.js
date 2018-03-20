@@ -19,6 +19,8 @@ const Wrapper = styled.div`position: absolute;`
 const WrapperLogin = styled.div`
   padding-right: 30px;
   border-right: 1px solid #a9a9a9;
+  ${media.iphone7p`border-right: none;
+  padding-right: 0px;`};
   ${media.phone`border-right: none;
   padding-right: 0px;`};
   ${media.iphone5`border-right: none;
@@ -30,6 +32,9 @@ const WrapperForgot = styled.div`
 `
 const WrapRegisUp = styled.div`
   display: none;
+  ${media.iphone7p`text-align: right;
+  padding-top: 5px;
+  display: unset`};
   ${media.phone`text-align: right;
   padding-top: 5px;
   display: unset`};
@@ -39,6 +44,8 @@ const WrapRegisUp = styled.div`
 `
 const WrapRegisDr = styled.div`
   display: unset;
+  ${media.iphone7p`
+  display: none`};
   ${media.phone`
   display: none`};
   ${media.iphone5`
@@ -185,7 +192,7 @@ class Login extends React.Component {
               <Text1>{LOGIN}</Text1>
             </Box>
             <Flex pt="0.5rem" pl="3rem" pr="3rem" wrap>
-              <Box w={[12 / 12, 12 / 12, 5 / 12, 5 / 12, 5 / 12]}>
+              <Box w={[12 / 12, 12 / 12, 12 / 12, 5 / 12, 5 / 12, 5 / 12]}>
                 <WrapperLogin>
                   <form>
                     <Box w={1}>
@@ -234,8 +241,8 @@ class Login extends React.Component {
                 </WrapperLogin>
               </Box>
               <Box
-                w={[12 / 12, 12 / 12, 7 / 12, 7 / 12, 7 / 12]}
-                pt={['2rem', '2rem', '0rem', '0rem', '0rem']}
+                w={[12 / 12, 12 / 12, 12 / 12, 7 / 12, 7 / 12, 7 / 12]}
+                pt={['2rem', '2rem', '2rem', '0rem', '0rem', '0rem']}
               >
                 <center>
                   <FacebookLoginButton textButton={FACEBOOKBUTTON} />

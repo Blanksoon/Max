@@ -44,6 +44,8 @@ const WrapperVod = styled.div`
   height: 335px;`};
   ${media.ipad`width: 600px;
   height: 335px;`};
+  ${media.iphone7p`width: 390px;
+  height: 219px;`};
   ${media.phone`width: 350px;
   height: 197px;`};
   ${media.iphone5`width: 300px;
@@ -62,6 +64,9 @@ const WrapperImg = styled.div`
   ${media.ipad`width: 650px;
   height: 850px;
   margin-bottom: 0%;`};
+  ${media.iphone7p`width: 385px;
+  height: 395px;
+  margin-bottom: 60%;`};
   ${media.phone`width: 360px;
   height: 480px;
   margin-bottom: 0%;`};
@@ -78,6 +83,8 @@ const WrapperLogin = styled.div`
   height: 615px;`};
   ${media.ipad`width: 650px;
   height: 615px;`};
+  ${media.iphone7p`width: 405px;
+  height: 615px;`};
   ${media.phone`width: 360px;
   height: 495px;`};
   ${media.iphone5`width: 300px;
@@ -93,6 +100,8 @@ const WrapperRegister = styled.div`
   height: 615px;`};
   ${media.ipad`width: 650px;
   height: 615px;`};
+  ${media.iphone7p`width: 405px;
+  height: 655px;`};
   ${media.phone`width: 360px;
   height: 655px;`};
   ${media.iphone5`width: 300px;
