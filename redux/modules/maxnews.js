@@ -4,6 +4,8 @@ import fetchMock from 'fetch-mock'
 // types
 const FETCH_NEWS_REQ = 'FETCH_NEWS_REQ'
 const FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS'
+const FETCH_POSTER = 'FETCH_POSTER'
+const FETCH_POSTER_SUCCESS = 'FETCH_POSTER_SUCCESS'
 const NEWS_SUCCESS = 'NEWS_SUCCESS'
 const NEWSBIG_SUCCESS = 'NEWSBIG_SUCCESS'
 const NEWSSMAILL_SUCCESS = 'NEWSSMAILL_SUCCESS'
@@ -22,6 +24,10 @@ export const fetchNewsSuccess = news => {
     payload: news,
   }
 }
+export const fetchPosterSuccess = poster => ({
+  type: FETCH_POSTER_SUCCESS,
+  payload: poster,
+})
 export const NewsSuccess = news => {
   // console.log('66666666666', news)
   return {
@@ -83,6 +89,18 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     // You should not return in Vods <-- change to something like data
     dispatch(fetchNewsSuccess(json))
     // dispatch(fetchNewsSuccess(json.data))
+  } catch (error) {
+    console.log(error)
+  }
+}
+export const fetchPoster = token => async dispatch => {
+  // console.log('ddddddddddFetchPoster')
+  const url = `${api.SERVER}/cms/posters`
+  try {
+    const json = await api.get(url)
+    // console.log('dddddddddd2', json)
+    // You should not return in Vods <-- change to something like data
+    dispatch(fetchPosterSuccess(json.data[0]))
   } catch (error) {
     console.log(error)
   }
@@ -181,6 +199,14 @@ const newsReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         news: action.payload,
+      }
+    }
+    case FETCH_POSTER_SUCCESS: {
+      // console.log('ddddddddddNEWS', action)
+      return {
+        ...state,
+        loading: false,
+        poster: action.payload,
       }
     }
     case NEWSBIG_SUCCESS: {

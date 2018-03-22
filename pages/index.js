@@ -28,7 +28,7 @@ import {
   resetFeaturedvod,
 } from '../redux/modules/vod'
 import { fetchLives } from '../redux/modules/live'
-import { fetchNews, fetchNEWS } from '../redux/modules/maxnews'
+import { fetchNews, fetchNEWS, fetchPoster } from '../redux/modules/maxnews'
 import {
   toogleModal,
   updateModalType,
@@ -47,6 +47,7 @@ import { getTranslation } from '../tools/translationHelpers'
 import { langSelector } from '../redux/selectors/lang'
 import { langUrl } from '../tools/langUrl'
 import { theme, media } from '../tools/responsive'
+import * as api from '../api'
 
 const WrapperTop = styled.div`
   color: #fff;
@@ -130,6 +131,7 @@ class Index extends React.Component {
     this.state = {
       translations: this.props.translations,
       lang: this.props.lang,
+      poster: '',
     }
     this.i18n = startI18n(this.props.translations, this.props.cookie.lang)
     this.switchLang = this.switchLang.bind(this)
@@ -146,9 +148,16 @@ class Index extends React.Component {
     this.props.fetchVods(this.props.cookie.token)
   }
   render() {
-    //this.fetchNew()
-    let ImgNews = '/static/PROMO_ENG_A3.jpg'
-    if (this.props.lang == 'th') ImgNews = '/static/PROMO_THAI_A3.jpg'
+    // console.log('dddddddLOG', this.props.Poster)
+    let ImgNews = this.props.Poster.posterEn
+    if (this.props.lang == 'th') ImgNews = this.props.Poster.posterTh
+    let renderPoster = ''
+    if (
+      this.props.Poster.posterEn &&
+      this.props.Poster.posterTh !== undefined
+    ) {
+      renderPoster = <ModalNews modalType={10} modalURL={ImgNews} w="100%" />
+    }
     return (
       <I18nextProvider i18n={this.i18n}>
         <Provider theme={theme}>
@@ -164,7 +173,7 @@ class Index extends React.Component {
               url={this.props.url}
             />
             <GradientBg>
-              <ModalNews modalType={10} modalURL={ImgNews} w="100%" />
+              {renderPoster}
               <Container>
                 <WrapperHero>
                   <Hero
@@ -248,6 +257,7 @@ const mapStateToProps = state => {
     lang: langSelector(state),
     // news: recentNewsSelector(state),
     News: state.news.news.data,
+    Poster: state.news.poster,
   }
 }
 
@@ -259,7 +269,8 @@ Index.getInitialProps = async ({ store, isServer, query, req }) => {
   const vodPromise = fetchVods(token)(store.dispatch, store.getState)
   // const newsPromise = fetchNews(token)(store.dispatch)
   const NewsPromise = fetchNEWS(token)(store.dispatch)
-  await Promise.all([livePromise, vodPromise, NewsPromise])
+  const NewsPoster = fetchPoster(token)(store.dispatch)
+  await Promise.all([livePromise, vodPromise, NewsPromise, NewsPoster])
   state = store.getState()
   const translations = await getTranslation(
     state.cookie.lang,
@@ -277,6 +288,7 @@ export default withRedux(initStore, mapStateToProps, {
   resetFeaturedvod,
   fetchLives,
   fetchNews,
+  fetchPoster,
   dataLivesSelector,
   toogleModal,
   updateModalType,

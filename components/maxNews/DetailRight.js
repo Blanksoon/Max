@@ -5,6 +5,7 @@ import { Media, Subhead, Image, Flex, Box, Text, Button } from 'rebass'
 import FacebookProvider, { Comments, Like, Share } from 'react-facebook'
 
 const Wrapper = styled.div`background-color: #fff;`
+const WrapperShare = styled.div`cursor: pointer;`
 const Text3 = styled.div`
   color: ${vars.blue};
   font-weight: 700;
@@ -24,7 +25,9 @@ const DetailRight = props => (
               href={`https://www.maxmuaythai.com/maxnew_detail?id${props.news
                 ._id}`}
             >
-              <Image width="100%" pt={0} src="static/ic_facebook@2x.png" />
+              <WrapperShare>
+                <Image width="100%" pt={0} src="static/ic_facebook@2x.png" />
+              </WrapperShare>
             </Share>
           </FacebookProvider>
         </Box>
