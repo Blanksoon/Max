@@ -30,21 +30,21 @@ const Button1 = styled.button`
   font-size: 0.9em;
   margin-top: 10px;
   `} ${media.iphone7p`
-  width: 63%;
+  width: 90%;
   padding: 8px 8%;
-  margin-left: 37%;
+  margin-left: 0%;
   font-size: 0.8em;
   margin-top: 10px;
   `} ${media.phone`
-  width: 63%;
+  width: 100%;
   padding: 5px 10%;
-  margin-left: 37%;
+  margin-left: 0%;
   font-size: 0.8em;
   margin-top: 10px;
   `} ${media.iphone5`
-  width: 75%;
+  width: 100%;
   padding: 5px 10%;
-  margin-left: 24%;
+  margin-left: 0%;
   font-size: 0.7em;
   margin-top: 0px;
   `};
@@ -55,24 +55,26 @@ const Text1 = styled.div`
   font-size: 1.5em;
   // padding-top: 15rem;
   font-family: Helvetica, Arial, sans-serif;
+  line-height: 33px;
   height: 40px;
-  // overflow: hidden;
+  overflow: hidden;
   ${media.ipadpro``};
   ${media.ipad``};
+  ${media.iphone7p`height: 34px;`};
   ${media.phone`font-size: 1em;height: 30px;`};
-  ${media.iphone5`font-size: 0.8em;padding: 8px 8%;`};
+  ${media.iphone5`font-size: 0.8em;height: 29px;line-height: 20px;padding: 8px 8%;`};
 `
 const Text2 = styled.div`
   color: #fff;
   font-weight: 700;
   font-size: 0.9em;
   font-family: Helvetica, Arial, sans-serif;
-  height: 50px;
+  height: 51px;
   overflow: hidden;
-  ${media.ipadpro`padding-top: 1rem;`};
+  ${media.ipadpro`padding-top: 1rem;line-height: 21px;height: 59px;`};
   ${media.ipad`padding-top: 1rem;`};
-  ${media.phone`height: 47px;font-size: 0.8em;padding-top: 0rem;`};
-  ${media.iphone5`height: 37px;font-size: 0.7em;padding: 8px 8%;padding-top: 0rem;`};
+  ${media.phone`height: 44px;font-size: 0.8em;padding-top: 0rem;`};
+  ${media.iphone5`height: 37px;line-height: 18px;font-size: 0.7em;padding: 8px 8%;padding-top: 0rem;`};
 `
 const Date = styled.div`
   color: ${color.yellow};
@@ -150,7 +152,9 @@ const MaxTop = props => (
               <Box w={[12 / 12, 12 / 12, 12 / 12, 7 / 12, 7 / 12]}>
                 <WrapperHilight>
                   <Box w={12 / 12} className="imagesss">
-                    <Image width="100%" pt={0} src={props.news[0].imageUrl} />
+                    <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
+                    {/* {props.news[0].imageUrl}{' '} */}
+                    />
                   </Box>
                   <Box w={12 / 12} pl="20px">
                     <WrapperHilightText>
@@ -164,7 +168,7 @@ const MaxTop = props => (
                         pr="1rem"
                         pt={['4rem', '0rem', '18rem', '17rem', '18rem']}
                       >
-                        <Box w={[12 / 12, 12 / 12, 8 / 12, 8 / 12, 8 / 12]}>
+                        <Box w={12 / 12}>
                           <Text1>
                             {props.lang === 'en' ? (
                               props.news[0].heading_en
@@ -185,7 +189,7 @@ const MaxTop = props => (
                           </Text2>
                         </Box>
                         <Flex pt={['0.5em', '0em', '1em', '1em', '1em']}>
-                          <Box w={5 / 12}>
+                          <Box w={[8 / 12, 5 / 12, 5 / 12, 5 / 12, 5 / 12]}>
                             <Date>
                               {props.lang === 'en' ? (
                                 props.news[0].createDate_en
@@ -195,7 +199,7 @@ const MaxTop = props => (
                               {/* {props.news[0].createDate_en} */}
                             </Date>
                           </Box>
-                          <Box w={7 / 12}>
+                          <Box w={[4 / 12, 7 / 12, 7 / 12, 7 / 12, 7 / 12]}>
                             <a
                               href={`/maxnews_detail?id=${props.news[0]
                                 ._id}&name=${props.news[0].programName}`}

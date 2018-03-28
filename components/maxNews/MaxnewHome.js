@@ -39,7 +39,7 @@ const Button1 = styled.button`
   cursor: pointer;
   margin-top: 7px;
   ${media.ipadpro`margin-left: 40%;`};
-  ${media.iphone7p`font-size: 0.8em;padding: 8px 8%;`};
+  ${media.iphone7p`margin-left: 0%;font-size: 0.8em;padding: 8px 8%;`};
   ${media.phone`font-size: 0.8em`};
   ${media.iphone5`font-size: 0.7em;padding: 8px 8%;`};
 `
@@ -62,18 +62,22 @@ const Text1 = styled.div`
   font-family: Helvetica, Arial, sans-serif;
   // height: 40px;
   // overflow: hidden;
-  ${media.phone`font-size: 0.8em`};
-  ${media.iphone5`font-size: 0.7em;padding-bottom: 0rem;`};
+  ${media.ipadpro`padding-bottom: 0rem;`};
+  ${media.phone`font-size: 0.9em`};
+  ${media.iphone5`font-size: 0.8em;padding-bottom: 0rem;`};
 `
 const Text2 = styled.div`
   color: #fff;
   font-weight: 700;
   font-size: 0.9em;
   font-family: Helvetica, Arial, sans-serif;
-  height: 50px;
+  line-height: 1.3em;
+  height: 3.7em;
   overflow: hidden;
-  ${media.phone`font-size: 0.8em;height: 45px;`};
-  ${media.iphone5`font-size: 0.7em;height: 50px;`};
+  text-overflow: ellipsis;
+  ${media.iphone7p`font-size: 0.8em;line-height: 1.3em;height: 3.7em;`};
+  ${media.phone`font-size: 0.8em;line-height: 21px;height: 45px;`};
+  ${media.iphone5`font-size: 0.7em;height: 45px;`};
 `
 const Date = styled.div`
   color: ${vars.yellow};
@@ -193,7 +197,10 @@ class MaxnewHome extends React.Component {
                           </Text2>
                         </Box>
                         <Flex>
-                          <Box w={5 / 12} pt="1rem">
+                          <Box
+                            w={[8 / 12, 5 / 12, 5 / 12, 5 / 12, 5 / 12]}
+                            pt="1rem"
+                          >
                             <Date>
                               {this.props.lang === 'en' ? (
                                 this.props.news[0].createDate_en
@@ -203,7 +210,7 @@ class MaxnewHome extends React.Component {
                               {/* Aug 11, 2017 */}
                             </Date>
                           </Box>
-                          <Box w={7 / 12}>
+                          <Box w={[4 / 12, 7 / 12, 7 / 12, 7 / 12, 7 / 12]}>
                             <a
                               href={`/maxnews_detail?id=${this.props.news[0]
                                 ._id}&name=${this.props.news[0].programName}`}
@@ -233,7 +240,7 @@ class MaxnewHome extends React.Component {
                   >
                     <ThumbnailRight
                       w="100%"
-                      img="static/maxPromo.jpg"
+                      img={this.props.news[1].imageUrl}
                       text1={
                         this.props.lang === 'en' ? (
                           this.props.news[1].heading_en
@@ -269,7 +276,7 @@ class MaxnewHome extends React.Component {
                   >
                     <ThumbnailRight
                       w="100%"
-                      img="static/maxPromo.jpg"
+                      img={this.props.news[2].imageUrl}
                       text1={
                         this.props.lang === 'en' ? (
                           this.props.news[2].heading_en

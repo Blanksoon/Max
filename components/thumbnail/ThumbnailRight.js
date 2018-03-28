@@ -8,13 +8,13 @@ const Text1 = styled.div`
   height: 18px;
   overflow: hidden;
   ${media.ipadpro`
-    height: 20px;
+    height: 19px;
     overflow: hidden;`};
   ${media.ipad`
     height: 35px;
     overflow: hidden;`};
   ${media.iphone7p`
-    height: 17px;
+    height: 14px;
     overflow: hidden;`};
   ${media.phone`
     height: 13px;
@@ -24,22 +24,28 @@ const Text1 = styled.div`
     overflow: hidden;`};
 `
 const Text2 = styled.div`
+  line-height: 21px;
   height: 52px;
   overflow: hidden;
+  text-overflow: ellipsis;
   ${media.ipadpro`
+    line-height: 23px;
     height: 55px;
     overflow: hidden;`};
   ${media.ipad`
+    line-height: 21px;
     height: 70px;
     overflow: hidden;`};
   ${media.iphone7p`
+    line-height: 22px;
     height: 50px;
     overflow: hidden;`};
   ${media.phone`
+    line-height: 18px;
     height: 41px;
     overflow: hidden;`};
   ${media.iphone5`
-    height: 29px;
+    height: 41px;
     overflow: hidden;`};
 `
 const Text3 = styled.div`
