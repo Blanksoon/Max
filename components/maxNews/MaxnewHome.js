@@ -76,8 +76,19 @@ const Text2 = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   ${media.iphone7p`font-size: 0.8em;line-height: 1.3em;height: 3.7em;`};
-  ${media.phone`font-size: 0.8em;line-height: 21px;height: 45px;`};
+  ${media.phone`font-size: 0.8em;line-height: 21px;height: 43px;`};
   ${media.iphone5`font-size: 0.7em;height: 45px;`};
+`
+const Img = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 495px;
+  src: url(${props => props.src});
+  ${media.ipadpro`height: 386px;`};
+  ${media.ipad`height: 470px;`};
+  ${media.iphone7p`height: 260px;`};
+  ${media.phone`height: 205px;`};
+  ${media.iphone5`height: 210px;`};
 `
 const Date = styled.div`
   color: ${vars.yellow};
@@ -158,7 +169,8 @@ class MaxnewHome extends React.Component {
             <Box w={[12 / 12, 12 / 12, 12 / 12, 7 / 12, 7 / 12]}>
               <WrapperHilight>
                 <Box w={12 / 12} className="imagesss">
-                  <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
+                  <Img src={this.props.news[0].imageUrl} />
+                  {/* "static/FT6A6495.jpg" /> */}
                 </Box>
                 <Box w={12 / 12} pl="20px">
                   <WrapperHilightText>
@@ -233,7 +245,7 @@ class MaxnewHome extends React.Component {
               pl={['0%', '0%', '0%', '1%', '1%']}
             >
               {this.props.news[1] != undefined ? (
-                <Flex pt={['1rem', '1rem', '0rem', '0rem', '0rem']}>
+                <Flex pt={['1rem', '1rem', '3.5rem', '0rem', '0rem']}>
                   <a
                     href={`/maxnews_detail?id=${this.props.news[1]
                       ._id}&name=${this.props.news[1].programName}`}

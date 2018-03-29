@@ -42,7 +42,7 @@ const Text2 = styled.div`
     overflow: hidden;`};
   ${media.phone`
     line-height: 18px;
-    height: 41px;
+    height: 40px;
     overflow: hidden;`};
   ${media.iphone5`
     height: 41px;
@@ -59,18 +59,28 @@ const Text3 = styled.div`
     height: 17px;
     overflow: hidden;`};
 `
+const Img = styled.img`
+  object-fit: cover;
+  width: ${props => props.width};
+  height: 110px;
+  src: url(${props => props.src});
+  ${media.ipadpro`height: 100px;`};
+  ${media.ipad`height: 157px;`};
+  ${media.iphone7p`height: 82px;`};
+  ${media.phone`height: 73px;`};
+`
 const ThumbnailRight = props => (
   <div>
     <div className="thumbnailright">
       <Flex bg="#000000e6">
-        <Box w={5 / 12} pt={['0.2em', '0em', '0em', '0.7em', '0em']} pl="0.5em">
-          <Image width={props.w} src={props.img} />
+        <Box w={5 / 12} pt={['0.2em', '0em', '0em', '0.3em', '0em']} pl="0.5em">
+          <Img width={props.w} src={props.img} />
         </Box>
         <Box
           w={7 / 12}
           pl="20px"
           pt={['5px', '5px', '1em', '5px', '5px']}
-          pb="5px"
+          pb={['5px', '5px', '1em', '5px', '5px']}
         >
           <Box w={12 / 12}>
             <Text1>

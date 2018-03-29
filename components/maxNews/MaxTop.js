@@ -120,6 +120,17 @@ const WrapperHilightText = styled.div`
   ); /* Chrome10-25,Safari5.1-6 */
 `
 const Wrapper = styled.div`background-color: #fff;`
+const Img = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 448px;
+  src: url(${props => props.src});
+  ${media.ipadpro`height: 416px;`};
+  ${media.ipad`height: 460px;`};
+  ${media.iphone7p`height: 205px;`};
+  ${media.phone`height: 175px;`};
+  ${media.iphone5`height: 165px;`};
+`
 const MaxTop = props => (
   <Wrapper>
     <Box pl="1rem" pr="1rem" width={1}>
@@ -152,7 +163,7 @@ const MaxTop = props => (
               <Box w={[12 / 12, 12 / 12, 12 / 12, 7 / 12, 7 / 12]}>
                 <WrapperHilight>
                   <Box w={12 / 12} className="imagesss">
-                    <Image width="100%" pt={0} src="static/FT6A6495.jpg" />
+                    <Img src={props.news[0].imageUrl} />
                     {/* {props.news[0].imageUrl}{' '} */}
                     />
                   </Box>
