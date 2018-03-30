@@ -177,7 +177,7 @@ const MaxTop = props => (
                       <Box
                         pl="1rem"
                         pr="1rem"
-                        pt={['4rem', '0rem', '18rem', '17rem', '18rem']}
+                        pt={['4rem', '0rem', '18rem', '17rem', '21rem']}
                       >
                         <Box w={12 / 12}>
                           <Text1>
@@ -268,7 +268,7 @@ const MaxTop = props => (
                 ''
               )}
               {props.news[2] != undefined ? (
-                <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '4rem']}>
+                <Flex pt={['1rem', '1rem', '2rem', '1rem', '1rem']}>
                   <a
                     href={`/maxnews_detail?id=${props.news[2]._id}&name=${props
                       .news[2].programName}`}
@@ -304,7 +304,7 @@ const MaxTop = props => (
                 ''
               )}
               {props.news[3] != undefined ? (
-                <Flex pt={['1rem', '1rem', '2rem', '3.5rem', '4rem']}>
+                <Flex pt={['1rem', '1rem', '2rem', '1rem', '1rem']}>
                   <a
                     href={`/maxnews_detail?id=${props.news[3]._id}&name=${props
                       .news[3].programName}`}

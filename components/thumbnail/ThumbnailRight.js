@@ -5,12 +5,16 @@ import { Flex, Provider, Box, Image, Text } from 'rebass'
 import { media } from '../../tools/responsive'
 
 const Text1 = styled.div`
-  height: 18px;
+  line-height: 20px;
+  height: 40px;
+  margin-top: 11px;
   overflow: hidden;
   ${media.ipadpro`
+    margin-top: 15px;
     height: 19px;
     overflow: hidden;`};
   ${media.ipad`
+    margin-top: 0px;
     height: 35px;
     overflow: hidden;`};
   ${media.iphone7p`
@@ -51,7 +55,11 @@ const Text2 = styled.div`
 const Text3 = styled.div`
   color: ${color.yellow}
   height: 24px;
+  line-height: 24px;
   overflow: hidden;
+  ${media.ipadpro`
+    line-height: 13px;
+    overflow: hidden;`};
   ${media.phone`
     height: 16px;
     overflow: hidden;`};
@@ -62,9 +70,9 @@ const Text3 = styled.div`
 const Img = styled.img`
   object-fit: cover;
   width: ${props => props.width};
-  height: 110px;
+  height: 140px;
   src: url(${props => props.src});
-  ${media.ipadpro`height: 100px;`};
+  ${media.ipadpro`height: 120px;`};
   ${media.ipad`height: 157px;`};
   ${media.iphone7p`height: 82px;`};
   ${media.phone`height: 73px;`};
@@ -73,14 +81,14 @@ const ThumbnailRight = props => (
   <div>
     <div className="thumbnailright">
       <Flex bg="#000000e6">
-        <Box w={5 / 12} pt={['0.2em', '0em', '0em', '0.3em', '0em']} pl="0.5em">
+        <Box w={5 / 12} pt="0.5em" pl="0.5em" pb="0.3em">
           <Img width={props.w} src={props.img} />
         </Box>
         <Box
           w={7 / 12}
           pl="20px"
-          pt={['5px', '5px', '1em', '5px', '5px']}
-          pb={['5px', '5px', '1em', '5px', '5px']}
+          pr="20px"
+          pt={['5px', '5px', '1em', '0px', '5px']}
         >
           <Box w={12 / 12}>
             <Text1>

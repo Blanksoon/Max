@@ -58,9 +58,8 @@ const Text1 = styled.div`
   font-size: 1.5em;
   font-weight: 700;
   // padding-left: 1rem;
-  padding-bottom: 1rem;
   font-family: Helvetica, Arial, sans-serif;
-  // height: 40px;
+  height: 65px;
   // overflow: hidden;
   ${media.ipadpro`padding-bottom: 0rem;`};
   ${media.phone`font-size: 0.9em`};
@@ -71,8 +70,8 @@ const Text2 = styled.div`
   font-weight: 700;
   font-size: 0.9em;
   font-family: Helvetica, Arial, sans-serif;
-  line-height: 1.3em;
-  height: 3.7em;
+  line-height: 1.7em;
+  height: 5em;
   overflow: hidden;
   text-overflow: ellipsis;
   ${media.iphone7p`font-size: 0.8em;line-height: 1.3em;height: 3.7em;`};
@@ -181,7 +180,7 @@ class MaxnewHome extends React.Component {
                     />
                     {this.props.news[0] != undefined ? (
                       <Box
-                        pt={['4rem', '0rem', '18rem', '13rem', '18rem']}
+                        pt={['4rem', '0rem', '18rem', '13rem', '19rem']}
                         pl="1rem"
                         pr="1rem"
                       >
@@ -196,7 +195,7 @@ class MaxnewHome extends React.Component {
                           tempor */}
                           </Text1>
                         </Box>
-                        <Box pt="1rem">
+                        <Box>
                           <Text2>
                             {this.props.lang === 'en' ? (
                               this.props.news[0].article_en
@@ -242,7 +241,7 @@ class MaxnewHome extends React.Component {
             <Box
               width={[12 / 12, 12 / 12, 12 / 12, 5 / 12, 5 / 12]}
               // minWidth={[20.1, 23.5, 26, 48, 64, 80]}
-              pl={['0%', '0%', '0%', '1%', '1%']}
+              pl={['0%', '0%', '0%', '1em', '1em']}
             >
               {this.props.news[1] != undefined ? (
                 <Flex pt={['1rem', '1rem', '3.5rem', '0rem', '0rem']}>
@@ -281,7 +280,7 @@ class MaxnewHome extends React.Component {
                 ''
               )}
               {this.props.news[2] != undefined ? (
-                <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '5rem']}>
+                <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '1rem']}>
                   <a
                     href={`/maxnews_detail?id=${this.props.news[2]
                       ._id}&name=${this.props.news[2].programName}`}
@@ -317,7 +316,7 @@ class MaxnewHome extends React.Component {
                 ''
               )}
               {this.props.news[3] != undefined ? (
-                <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '5rem']}>
+                <Flex pt={['1rem', '1rem', '3.5rem', '2rem', '1rem']}>
                   <a
                     href={`/maxnews_detail?id=${this.props.news[3]
                       ._id}&name=${this.props.news[3].programName}`}

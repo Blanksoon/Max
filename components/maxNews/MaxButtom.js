@@ -129,7 +129,7 @@ class MaxButtom extends Component {
         <Box pl="1rem" pr="1rem" width={1}>
           <Flex>
             <Box>
-              <Flex pt={['0rem', '0rem', '0rem', '2rem', '2rem']} />
+              <Flex pt={['0rem', '0rem', '0rem', '1.5rem', '2rem']} />
               {this.renderNews(this.props.lang, this.props.news)}
               <Flex>
                 <Box w={1} pt="40px" pb="60px">
@@ -180,7 +180,7 @@ export default withRedux(initStore, mapStateToProps, {
 
 const Thumbnailright = props => (
   // console.log('ddddddddFWEF', props.news.length),
-  <Flex pt={['1rem', '1rem', '2rem', '1rem', '1rem']} wrap>
+  <Flex pt={['1rem', '1rem', '2rem', '0rem', '1rem']} wrap>
     {props.news[0] != undefined ? (
       <Box
         w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
