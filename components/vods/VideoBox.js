@@ -63,16 +63,18 @@ class VideoBox extends Component {
   }
 
   async check() {
+    let progname = this.props.progname
     if (this.props.vod.index == 0) {
       this.props.vod.index = 16
+    }
+    if (progname === 'Muay Thai Battle') {
+      progname = 'Battle Muay Thai'
     }
     if (this.props.vod.index < this.props.numberOfVods) {
       const json = await api.get(
         `${api.SERVER}/vods-ondemand?token=${this.props.auth.token}&index=${this
-          .props.vod.index}&progname=${this.props.progname}`
-        // &progname=${this.props.progname}
+          .props.vod.index}&progname=${progname}`
       )
-      // console.log('dddddddddddfgdgd', json)
       this.props.fetchVodsSuccess(json)
       this.props.pagination()
     }
@@ -131,6 +133,7 @@ class VideoBox extends Component {
       renderUI = ''
     }
 
+    // console.log('ddddddBattle', this.props)
     return (
       <div>
         <Flex mb={3} pt={['4rem', '5rem', '4rem', '7rem', '7rem']}>

@@ -119,7 +119,7 @@ class Vods extends React.Component {
                       }
                       filteredProgram={filteredProgram}
                       onFilteredProgramChange={this.onFilteredProgramChange}
-                      progname={this.props.filter}
+                      progname={this.props.filter.progname}
                     />
                   </Box>
                 </Container>

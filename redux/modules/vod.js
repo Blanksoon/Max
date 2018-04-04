@@ -72,6 +72,9 @@ export const fetchVodOnDemand = token => async (dispatch, getState) => {
     filter = {}
   } else {
     filter = Object.assign({}, state.vod.filter)
+    if (filter.progname === 'Muay Thai Battle') {
+      filter.progname = 'Battle Muay Thai'
+    }
   }
   if (typeof filter.progname == 'undefined') {
     filter.progname = ''
@@ -81,7 +84,7 @@ export const fetchVodOnDemand = token => async (dispatch, getState) => {
     token,
   }
   const queryStr = querystring.stringify(query)
-  //console.log('queryStr', queryStr)
+  console.log('queryStr', queryStr)
   const url = `${api.SERVER}/vods-ondemand?${queryStr}`
   try {
     const json = await api.get(url)
