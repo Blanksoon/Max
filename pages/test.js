@@ -49,7 +49,7 @@ class Example extends React.Component {
     })
   }
   render() {
-    console.log('ddddddd', this.state.ok)
+    //console.log('ddddddd', this.state.ok)
     return (
       <div>
         <Flex wrap>

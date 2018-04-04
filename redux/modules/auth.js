@@ -58,7 +58,7 @@ export const fbLogin = providerData => async dispatch => {
 }
 
 export const localLogin = providerData => async dispatch => {
-  console.log('providerData', providerData)
+  //console.log('providerData', providerData)
   dispatch(loginReq())
   try {
     const { data, status } = await api.post(
@@ -95,7 +95,7 @@ export const localLogin = providerData => async dispatch => {
   }
 }
 export const logout = () => async dispatch => {
-  console.log('h1')
+  //console.log('h1')
   dispatch(removeCookie('email'))
   dispatch(removeCookie('token'))
   dispatch(fetchLives())
@@ -150,7 +150,7 @@ const authReducer = (state = initialState, action) => {
         },
       }
     case LOGOUT:
-      console.log('sss')
+      //console.log('sss')
       return { initialState }
     default:
       return state
