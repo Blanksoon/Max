@@ -52,14 +52,14 @@ export default ({
               onChange={onFilteredProgramChange}
             >
               <option value="All shows">{all}</option>
-              <option value="Max Muay Thai"> {programEns[0]} </option>
-              <option value="Battle Muay Thai">{programEns[1]}</option>
-              <option value="Muay Thai Fighter">{programEns[2]}</option>
-              <option value="The Champion Muay Thai">{programEns[3]}</option>
-              <option value="Global Fight Wednesday">{programEns[4]}</option>
-              <option value="Global Fight Thursday">{programEns[5]}</option>
-              <option value="MUAY THAI FIGHTER Monday">{programEns[6]}</option>
-              <option value="MUAY THAI FIGHTER Tuesday">{programEns[7]}</option>
+              <option value={programEns[0]}> {programEns[0]} </option>
+              <option value={programEns[1]}>{programEns[1]}</option>
+              <option value={programEns[2]}>{programEns[2]}</option>
+              <option value={programEns[3]}>{programEns[3]}</option>
+              <option value={programEns[4]}>{programEns[4]}</option>
+              <option value={programEns[5]}>{programEns[5]}</option>
+              <option value={programEns[6]}>{programEns[6]}</option>
+              <option value={programEns[7]}>{programEns[7]}</option>
             </ProgramList>
           </Box>
           <Box w={2 / 12} />

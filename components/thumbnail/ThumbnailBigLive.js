@@ -95,9 +95,10 @@ const ThumbnailBigLive = props => (
           <br />
           <Flex wrap>
             <Box
-              w={[11 / 12, 10.7 / 12, 9 / 12, 8 / 12, 8 / 12]}
+              w={[12 / 12, 12 / 12, 12 / 12, 9 / 12, 8 / 12, 8 / 12]}
               pl="2rem"
-              pb={['0rem', '1rem', '1.5rem', '1.5rem', '1.5rem']}
+              pr="2rem"
+              pb={['0rem', '1rem', '1rem', '1.5rem', '1.5rem', '1.5rem']}
             >
               <WrapperTitle>
                 <Text3>
@@ -106,9 +107,8 @@ const ThumbnailBigLive = props => (
                 </Text3>
               </WrapperTitle>
             </Box>
-            <Box w={[4.5 / 12, 0, 0 / 12, 1 / 12, 1 / 12]} />
             <Box
-              w={[4 / 12, 12 / 12, 3 / 12, 3 / 12, 3 / 12]}
+              w={[12 / 12, 12 / 12, 12 / 12, 3 / 12, 3 / 12, 3 / 12]}
               pl="0rem"
               pb="1rem"
             >

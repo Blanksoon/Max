@@ -121,6 +121,7 @@ const ThumbnailRight = props => (
       <style jsx>
         {`
           .thumbnailright {
+            background-color: #000;
             font-family: Helvetica, Arial, sans-serif;
           }
         `}

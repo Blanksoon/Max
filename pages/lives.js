@@ -87,7 +87,7 @@ class lives extends React.Component {
     if (rowCount % 2 == 0) {
       for (let i = 0; i < rowCount; i += 2) {
         rowLive.push(
-          <Flex bg="#fff" pb="1.5rem">
+          <Flex bg="#fff" pb="1.5rem" wrap>
             <Box
               w={[1, 12 / 12, 6 / 12, 6 / 12, 6 / 12]}
               pt={['0em', '0em', '0em', '0em', '0em']}

@@ -40,6 +40,16 @@ const Text3 = styled.div`
   ${media.phone`height: 25px;font-size: 0.7em;`};
   ${media.iphone5`height: 38px;`};
 `
+const Img = styled.img`
+  object-fit: cover;
+  width: ${props => props.width};
+  height: 140px;
+  src: url(${props => props.src});
+  ${media.ipadpro`height: 120px;`};
+  ${media.ipad`height: 157px;`};
+  ${media.iphone7p`height: 82px;`};
+  ${media.phone`height: 73px;`};
+`
 const ThumbnailMaxnew = props => (
   <div>
     <a
@@ -47,7 +57,7 @@ const ThumbnailMaxnew = props => (
         .programName}`}
     >
       <Box>
-        <Image
+        <Img
           width={['100%', '100%', '100%', '70%', '60%']}
           pt={0}
           src={props.news.imageUrl}

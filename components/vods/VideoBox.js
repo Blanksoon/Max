@@ -69,7 +69,8 @@ class VideoBox extends Component {
     if (this.props.vod.index < this.props.numberOfVods) {
       const json = await api.get(
         `${api.SERVER}/vods-ondemand?token=${this.props.auth.token}&index=${this
-          .props.vod.index}`
+          .props.vod.index}&progname=${this.props.progname}`
+        // &progname=${this.props.progname}
       )
       // console.log('dddddddddddfgdgd', json)
       this.props.fetchVodsSuccess(json)

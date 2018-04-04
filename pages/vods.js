@@ -66,7 +66,7 @@ class Vods extends React.Component {
     //console.log('hi')
     const filteredProgram =
       event.target.value === 'All shows' ? '' : event.target.value
-    console.log('filteredProgram', filteredProgram)
+    // console.log('filteredProgram', filteredProgram)
     this.props.resetFetchData()
     this.props.setFetchFilter({
       progname: filteredProgram,
@@ -85,7 +85,7 @@ class Vods extends React.Component {
         filteredProgram = filter.progname
       }
     }
-    //console.log('vods', typeof this.props)
+    // console.log('dddddddvods', this.props.progname)
     return (
       <I18nextProvider i18n={this.i18n}>
         <Provider theme={theme}>
@@ -119,6 +119,7 @@ class Vods extends React.Component {
                       }
                       filteredProgram={filteredProgram}
                       onFilteredProgramChange={this.onFilteredProgramChange}
+                      progname={this.props.filter}
                     />
                   </Box>
                 </Container>

@@ -98,9 +98,9 @@ const Date = styled.div`
   ${media.iphone5`font-size: 0.7em`};
 `
 const Button = styled.button`
-  background-color: #ffffff00;
-  border: 1px solid white;
-  color: white;
+  background-color: ${vars.white};
+  border: 1px solid ${vars.red};
+  color: ${vars.red};
   padding: 8px 25px;
   text-align: center;
   text-decoration: none;

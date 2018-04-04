@@ -18,6 +18,9 @@ const Wrapper = styled.div`
   background-image: ${props => `url('${props.bannerUrl}')`};
   position: relative;
   background-repeat: no-repeat ${media.phone`height: 600px;`};
+  ${media.iphone7p`height: 560px;`};
+  ${media.phone`height: 485px;`};
+  ${media.iphone5`height: 440px;`};
 `
 const TextBig = styled.div`
   font-weight: bold;
@@ -48,7 +51,8 @@ const ButtonBlue = styled.button`
   background-color: initial;
   border: 1px solid #3d7fb8;
   color: #3d7fb8;
-  padding: 3px 25px;
+  width: 125px;
+  padding: 5px 0px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -59,11 +63,11 @@ const ButtonBlue = styled.button`
     cursor: pointer;
     background: ${color.lightBlue};
   }
-  ${media.iphone5`
-  font-size: 0.4em;
-  padding: 3px 25px;
-  width: 80px`};
   ${media.phone`
+  width: 125px`};
+  ${media.iphone5`
+  font-size: 0.7em;
+  padding: 3px 0px;
   width: 80px`};
 `
 const WrapperSky = styled.div`
@@ -73,7 +77,9 @@ const WrapperSky = styled.div`
   background: rgba(1, 15, 30, 0.6);
   position: absolute;
   top: 25%;
-  ${media.phone`top: 30%;`};
+  ${media.iphone7p`top: 10%;`};
+  ${media.phone`top: 10%;`};
+  ${media.iphone5`top: 10%;`};
   left: 0;
 `
 const Text1 = styled.div`
@@ -231,18 +237,19 @@ class LiveTop extends Component {
                     </Box>
                   </Flex>
                 ) : (
-                  <Flex wrap w={12 / 12}>
+                  <Flex wrap w={12 / 12} wrap>
                     <Box
                       pt={'0.2rem'}
-                      pl={['14%', '17%', '31%', '31%', '31%', '31%']}
+                      pl={['0%', '0%', '23%', '25%', '31%']}
                       pr={'0%'}
-                      w={[8 / 12, 7 / 12, 7 / 12, 7 / 12, 7 / 12]}
+                      w={[12 / 12, 7 / 12, 7 / 12, 7 / 12, 7 / 12]}
                     >
                       <Text4>{this.props.common.Hurry}</Text4>
                     </Box>
                     <Box
-                      w={[3 / 12, 5 / 12, 5 / 12, 5 / 12, 5 / 12]}
-                      pr={['8%', '3%', '32%', '32%', '32%']}
+                      w={[12 / 12, 12 / 12, 5 / 12, 5 / 12, 5 / 12]}
+                      pt={['1em', '1em', '0em', '0em', '0em']}
+                      pr={['0%', '0%', '13%', '28%', '32%']}
                     >
                       <Link href={`/getticket`}>
                         <a>
