@@ -5,6 +5,7 @@ import { Media, Subhead, Image, Flex, Box, Text, Button } from 'rebass'
 import FacebookProvider, { Comments } from 'react-facebook'
 import ThumbnailMaxnew from '../thumbnail/ThumbnailMaxnew'
 import { media } from '../../tools/responsive'
+import ReactHtmlParser from 'react-html-parser'
 
 const Button1 = styled.button`
   bottom: 2%;
@@ -86,106 +87,108 @@ const WrapperLogo = styled.div`
   position: absolute;
 `
 const Wrapper = styled.div`background-color: #fff;`
-const DetailLeft = props => (
-  <Wrapper>
-    <Flex pl="1rem" pr="1rem" wrap>
-      <Box w={[12 / 12, 12 / 12, 12 / 12, 8 / 12, 8 / 12]}>
-        <Box>
-          <Text1>
-            {props.lang === 'en' ? (
-              props.newsbig.heading_en
-            ) : (
-              props.newsbig.heading_th
-            )}
-          </Text1>
-        </Box>
-        <Box>
-          <br />
-          <Date>
-            {props.lang === 'en' ? (
-              props.newsbig.createDate_en
-            ) : (
-              props.newsbig.createDate_th
-            )}
-          </Date>
-          <br />
-        </Box>
-        <Box>
-          <WrapperHilight>
-            <Box>
-              <Image width="100%" pt={0} src={props.newsbig.imageUrl} />
-              {/* <WrapperLogo>
+
+const DetailLeft = props => {
+  return (
+    <Wrapper>
+      <Flex pl="1rem" pr="1rem" wrap>
+        <Box w={[12 / 12, 12 / 12, 12 / 12, 8 / 12, 8 / 12]}>
+          <Box>
+            <Text1>
+              {props.lang === 'en' ? (
+                props.newsbig.heading_en
+              ) : (
+                props.newsbig.heading_th
+              )}
+            </Text1>
+          </Box>
+          <Box>
+            <br />
+            <Date>
+              {props.lang === 'en' ? (
+                props.newsbig.createDate_en
+              ) : (
+                props.newsbig.createDate_th
+              )}
+            </Date>
+            <br />
+          </Box>
+          <Box>
+            <WrapperHilight>
+              <Box>
+                <Image width="100%" pt={0} src={props.newsbig.imageUrl} />
+                {/* <WrapperLogo>
                 <Image width="10%" pt={0} src="static/img_logo_white@2x.png" />
               </WrapperLogo> */}
+              </Box>
+              <Box>
+                <WrapperHilightText>
+                  <Image
+                    width="10%"
+                    pl="90%"
+                    src="static/img_logo_white@2x.png"
+                  />
+                </WrapperHilightText>
+              </Box>
+            </WrapperHilight>
+          </Box>
+          <Box pt="2rem">
+            <Text2>
+              {props.lang === 'en' ? (
+                ReactHtmlParser(props.newsbig.article_en)
+              ) : (
+                ReactHtmlParser(props.newsbig.article_th)
+              )}
+              <br />
+            </Text2>
+          </Box>
+        </Box>
+        <Box
+          w={[12 / 12, 12 / 12, 12 / 12, 4 / 12, 4 / 12]}
+          pl={['0rem', '0rem', '0rem', '6rem', '6rem']}
+          pr={['0rem', '0rem', '0rem', '1rem', '1rem']}
+        >
+          <Box>
+            <Text3>You may also like</Text3>
+          </Box>
+          <Flex wrap>
+            <Box
+              w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
+              pt={['1rem', '1rem', '1rem', '2rem', '2rem']}
+              pr={['0.25em', '0em', '0.25em', '0em', '0em']}
+            >
+              {props.newssm[0] != undefined ? (
+                <ThumbnailMaxnew news={props.newssm[0]} lang={props.lang} />
+              ) : (
+                ''
+              )}
             </Box>
-            <Box>
-              <WrapperHilightText>
-                <Image
-                  width="10%"
-                  pl="90%"
-                  src="static/img_logo_white@2x.png"
-                />
-              </WrapperHilightText>
+            <Box
+              w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
+              pt={['1rem', '1rem', '1rem', '1rem', '2rem']}
+              pr={['0.125em', '0em', '0.125em', '0em', '0em']}
+              pl={['0.125em', '0em', '0.125em', '0em', '0em']}
+            >
+              {props.newssm[1] != undefined ? (
+                <ThumbnailMaxnew news={props.newssm[1]} lang={props.lang} />
+              ) : (
+                ''
+              )}
             </Box>
-          </WrapperHilight>
+            <Box
+              w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
+              pt={['1rem', '1rem', '1rem', '1rem', '2rem']}
+              pl={['0.25em', '0em', '0.25em', '0em', '0em']}
+            >
+              {props.newssm[2] != undefined ? (
+                <ThumbnailMaxnew news={props.newssm[2]} lang={props.lang} />
+              ) : (
+                ''
+              )}
+            </Box>
+          </Flex>
         </Box>
-        <Box pt="2rem">
-          <Text2>
-            {props.lang === 'en' ? (
-              props.newsbig.article_en
-            ) : (
-              props.newsbig.article_th
-            )}
-          </Text2>
-          <br />
-        </Box>
-      </Box>
-      <Box
-        w={[12 / 12, 12 / 12, 12 / 12, 4 / 12, 4 / 12]}
-        pl={['0rem', '0rem', '0rem', '6rem', '6rem']}
-        pr={['0rem', '0rem', '0rem', '1rem', '1rem']}
-      >
-        <Box>
-          <Text3>You may also like</Text3>
-        </Box>
-        <Flex wrap>
-          <Box
-            w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
-            pt={['1rem', '1rem', '1rem', '2rem', '2rem']}
-            pr={['0.25em', '0em', '0.25em', '0em', '0em']}
-          >
-            {props.newssm[0] != undefined ? (
-              <ThumbnailMaxnew news={props.newssm[0]} lang={props.lang} />
-            ) : (
-              ''
-            )}
-          </Box>
-          <Box
-            w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
-            pt={['1rem', '1rem', '1rem', '1rem', '2rem']}
-            pr={['0.125em', '0em', '0.125em', '0em', '0em']}
-            pl={['0.125em', '0em', '0.125em', '0em', '0em']}
-          >
-            {props.newssm[1] != undefined ? (
-              <ThumbnailMaxnew news={props.newssm[1]} lang={props.lang} />
-            ) : (
-              ''
-            )}
-          </Box>
-          <Box
-            w={[1 / 3, 1 / 3, 1 / 3, 1, 1]}
-            pt={['1rem', '1rem', '1rem', '1rem', '2rem']}
-            pl={['0.25em', '0em', '0.25em', '0em', '0em']}
-          >
-            {props.newssm[2] != undefined ? (
-              <ThumbnailMaxnew news={props.newssm[2]} lang={props.lang} />
-            ) : (
-              ''
-            )}
-          </Box>
-        </Flex>
-      </Box>
-      {/* <Flex>
+        {/* <Flex>
         <Box w={1.5 / 12} pt="0.5rem">
           <Text3>Share on</Text3>
         </Box>
@@ -201,7 +204,8 @@ const DetailLeft = props => (
           <Comments href="http://localhost:8080/maxnew_detail" />
         </FacebookProvider>
       </Box> */}
-    </Flex>
-  </Wrapper>
-)
+      </Flex>
+    </Wrapper>
+  )
+}
 export default DetailLeft

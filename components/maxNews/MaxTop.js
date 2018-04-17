@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import color from '../commons/vars'
 import { Media, Subhead, Image, Flex, Box, Text, Button, Link } from 'rebass'
 import { media } from '../../tools/responsive'
+import ReactHtmlParser from 'react-html-parser'
 
 const Button1 = styled.button`
   bottom: 2%;
@@ -192,9 +193,9 @@ const MaxTop = props => (
                         <Box>
                           <Text2>
                             {props.lang === 'en' ? (
-                              props.news[0].article_en
+                              ReactHtmlParser(props.news[0].article_en)
                             ) : (
-                              props.news[0].article_th
+                              ReactHtmlParser(props.news[0].article_th)
                             )}
                             {/* {props.news[0].article_en} */}
                           </Text2>
@@ -249,9 +250,9 @@ const MaxTop = props => (
                       } //"Headline Headline consect adipicing elit sedid"
                       text2={
                         props.lang === 'en' ? (
-                          props.news[1].article_en
+                          ReactHtmlParser(props.news[1].article_en)
                         ) : (
-                          props.news[1].article_th
+                          ReactHtmlParser(props.news[1].article_th)
                         )
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
@@ -285,9 +286,9 @@ const MaxTop = props => (
                       } //"Headline Headline consect adipicing elit sedid"
                       text2={
                         props.lang === 'en' ? (
-                          props.news[2].article_en
+                          ReactHtmlParser(props.news[2].article_en)
                         ) : (
-                          props.news[2].article_th
+                          ReactHtmlParser(props.news[2].article_th)
                         )
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
@@ -321,9 +322,9 @@ const MaxTop = props => (
                       } //"Headline Headline consect adipicing elit sedid"
                       text2={
                         props.lang === 'en' ? (
-                          props.news[3].article_en
+                          ReactHtmlParser(props.news[3].article_en)
                         ) : (
-                          props.news[3].article_th
+                          ReactHtmlParser(props.news[3].article_th)
                         )
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={

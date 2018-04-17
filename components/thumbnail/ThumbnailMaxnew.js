@@ -3,6 +3,7 @@ import { Flex, Box, Image, Text } from 'rebass'
 import styled from 'styled-components'
 import vars from '../commons/vars'
 import { media } from '../../tools/responsive'
+import ReactHtmlParser from 'react-html-parser'
 
 const Text1 = styled.div`
   color: ${vars.black};
@@ -70,7 +71,11 @@ const ThumbnailMaxnew = props => (
       </Box>
       <Box pt="0.5rem">
         <Text2>
-          {props.lang === 'en' ? props.news.article_en : props.news.article_th}
+          {props.lang === 'en' ? (
+            ReactHtmlParser(props.news.article_en)
+          ) : (
+            ReactHtmlParser(props.news.article_th)
+          )}
         </Text2>
       </Box>
       <Box pt="0.5rem">
