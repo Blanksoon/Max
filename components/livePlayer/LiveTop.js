@@ -149,7 +149,7 @@ const ButtonBuyticket = styled(Button)`
 
 class LiveTop extends Component {
   render() {
-    console.log(typeof this.props.ui)
+    //console.log(typeof this.props.ui)
     let renderUI = <div />
     if (this.props.ui === 'COUNTDOWN') {
       //promoclip

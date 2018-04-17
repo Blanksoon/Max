@@ -105,12 +105,12 @@ class Testt extends React.Component {
     await this.props.localLogin(providerData)
 
     const chkEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    console.log('dddddd', this.state.email)
-    console.log('ddddddewew', chkEmail.test(this.state.email))
+    //console.log('dddddd', this.state.email)
+    //console.log('ddddddewew', chkEmail.test(this.state.email))
     if (chkEmail.test(this.state.email)) {
-      console.log('dddd1')
+      //console.log('dddd1')
       const data = await api.post(`${api.SERVER}/alipay`, '')
-      console.log('dddd2')
+      //console.log('dddd2')
     }
     this.setState({ loading: false })
   }

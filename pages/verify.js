@@ -86,7 +86,7 @@ class Verify extends React.Component {
 
   render() {
     const translation = this.state.translations.translation
-    console.log(translation)
+    // console.log(translation)
     // console.log('ddddddddddd',this.props)
     return (
       <I18nextProvider i18n={this.i18n}>
