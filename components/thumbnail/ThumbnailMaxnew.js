@@ -12,7 +12,7 @@ const Text1 = styled.div`
   font-family: Helvetica, Arial, sans-serif;
   height: 38px;
   overflow: hidden;
-  ${media.ipadpro`height: 21px;`};
+  ${media.ipadpro`height: 20px;`};
   ${media.ipad`height: 18px;`};
   ${media.phone`height: 14px;font-size: 0.7em;`};
   ${media.iphone5`height: 14px;`};

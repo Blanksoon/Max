@@ -173,7 +173,7 @@ class Index extends React.Component {
               url={this.props.url}
             />
             <GradientBg>
-              {/* {renderPoster} */}
+              {renderPoster}
               <Container>
                 <WrapperHero>
                   <Hero
