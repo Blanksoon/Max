@@ -7,6 +7,7 @@ import { Media, Subhead, Image, Flex, Box, Text, Button, Link } from 'rebass'
 import { fetchNews, pagination, startindex } from '../../redux/modules/maxnews'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../../redux/store'
+import ReactHtmlParser from 'react-html-parser'
 
 const Button1 = styled.button`
   bottom: 2%;
@@ -202,9 +203,9 @@ const Thumbnailright = props => (
             } //"Headline Headline consect adipicing elit sedid"
             text2={
               props.lang === 'en' ? (
-                props.news[0].article_en
+                ReactHtmlParser(props.news[0].article_en)
               ) : (
-                props.news[0].article_th
+                ReactHtmlParser(props.news[0].article_th)
               )
             } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
             date={
@@ -243,9 +244,9 @@ const Thumbnailright = props => (
             } //"Headline Headline consect adipicing elit sedid"
             text2={
               props.lang === 'en' ? (
-                props.news[1].article_en
+                ReactHtmlParser(props.news[1].article_en)
               ) : (
-                props.news[1].article_th
+                ReactHtmlParser(props.news[1].article_th)
               )
             } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
             date={
