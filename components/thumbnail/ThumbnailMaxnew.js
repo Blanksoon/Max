@@ -51,60 +51,70 @@ const Img = styled.img`
   ${media.iphone7p`height: 82px;`};
   ${media.phone`height: 73px;`};
 `
-const ThumbnailMaxnew = props => (
-  <div>
-    <a
-      href={`/maxnews_detail?id=${props.news._id}&name=${props.news
-        .programName}`}
-    >
-      <Box>
-        <Img
-          width={['100%', '100%', '100%', '70%', '60%']}
-          pt={0}
-          src={props.news.imageUrl}
-        />
-      </Box>
-      <Box pt="1rem">
-        <Text1>
-          {props.lang === 'en' ? props.news.heading_en : props.news.heading_th}
-        </Text1>
-      </Box>
-      <Box pt="0.5rem">
-        <Text2>
-          {props.lang === 'en' ? (
-            ReactHtmlParser(props.news.article_en)
-          ) : (
-            ReactHtmlParser(props.news.article_th)
-          )}
-        </Text2>
-      </Box>
-      <Box pt="0.5rem">
-        <Text3>
-          {' '}
-          {props.lang === 'en' ? (
-            props.news.createDate_en
-          ) : (
-            props.news.createDate_th
-          )}{' '}
-        </Text3>
-      </Box>
-    </a>
-    <style jsx>
-      {`
-        a:link {
-          text-decoration: none;
-        }
-        a {
-          color: #fff;
-          text-decoration: none;
-        }
-        a:hover {
-          color: #ff0000;
-          text-decoration: none;
-        }
-      `}
-    </style>
-  </div>
-)
+const ThumbnailMaxnew = props => {
+  let article_en = props.news.article_en
+  article_en = article_en.replace(/<(.|\n)*?>/g, '')
+  let article_th = props.news.article_th
+  article_th = article_th.replace(/<(.|\n)*?>/g, '')
+  return (
+    <div>
+      <a
+        href={`/maxnews_detail?id=${props.news._id}&name=${props.news
+          .programName}`}
+      >
+        <Box>
+          <Img
+            width={['100%', '100%', '100%', '70%', '60%']}
+            pt={0}
+            src={props.news.imageUrl}
+          />
+        </Box>
+        <Box pt="1rem">
+          <Text1>
+            {props.lang === 'en' ? (
+              props.news.heading_en
+            ) : (
+              props.news.heading_th
+            )}
+          </Text1>
+        </Box>
+        <Box pt="0.5rem">
+          <Text2>
+            {props.lang === 'en' ? (
+              ReactHtmlParser(article_en)
+            ) : (
+              ReactHtmlParser(article_th)
+            )}
+          </Text2>
+        </Box>
+        <Box pt="0.5rem">
+          <Text3>
+            {' '}
+            {props.lang === 'en' ? (
+              props.news.createDate_en
+            ) : (
+              props.news.createDate_th
+            )}{' '}
+          </Text3>
+        </Box>
+      </a>
+      <style jsx>
+        {`
+          a:link {
+            text-decoration: none;
+          }
+          a {
+            color: #fff;
+            text-decoration: none;
+          }
+          a:hover {
+            color: #ff0000;
+            text-decoration: none;
+          }
+        `}
+      </style>
+    </div>
+  )
+}
 
 export default ThumbnailMaxnew

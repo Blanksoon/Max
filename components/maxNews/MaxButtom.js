@@ -189,104 +189,106 @@ const Thumbnailright = props => {
   let article_en1 = props.news[1].article_en
   article_en1 = article_en1.replace(/<(.|\n)*?>/g, '')
   return (
-    // console.log('ddddddddFWEF', props.news.length),
-    <Flex pt={['1rem', '1rem', '2rem', '0rem', '1rem']} wrap>
-      {props.news[0] != undefined ? (
-        <Box
-          w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
-          pr={['0em', '0em', '0em', '0.5em', '0.5em']}
-        >
-          <a
-            href={`/maxnews_detail?id=${props.news[0]._id}&name=${props.news[0]
-              .programName}`}
+    console.log('article_th0', article_th0),
+    (
+      <Flex pt={['1rem', '1rem', '2rem', '0rem', '1rem']} wrap>
+        {props.news[0] != undefined ? (
+          <Box
+            w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
+            pr={['0em', '0em', '0em', '0.5em', '0.5em']}
           >
-            <ThumbnailRight
-              w="100%"
-              img={props.news[0].imageUrl}
-              text1={
-                props.lang === 'en' ? (
-                  props.news[0].heading_en
-                ) : (
-                  props.news[0].heading_th
-                )
-              } //"Headline Headline consect adipicing elit sedid"
-              text2={
-                props.lang === 'en' ? (
-                  ReactHtmlParser(article_en0)
-                ) : (
-                  ReactHtmlParser(article_th0)
-                )
-              } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-              date={
-                props.lang === 'en' ? (
-                  props.news[0].createDate_en
-                ) : (
-                  props.news[0].createDate_th
-                )
-              } //"Aug 11, 2017"
-              pt="0.9em"
-            />
-          </a>
-        </Box>
-      ) : (
-        ''
-      )}
-      {props.news[1] != undefined ? (
-        <Box
-          w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
-          pt={['1em', '1em', '2em', '0em', '0em']}
-          pl={['0em', '0em', '0em', '0.5em', '0.5em']}
-        >
-          <a
-            href={`/maxnews_detail?id=${props.news[1]._id}&name=${props.news[1]
-              .programName}`}
+            <a
+              href={`/maxnews_detail?id=${props.news[0]._id}&name=${props
+                .news[0].programName}`}
+            >
+              <ThumbnailRight
+                w="100%"
+                img={props.news[0].imageUrl}
+                text1={
+                  props.lang === 'en' ? (
+                    props.news[0].heading_en
+                  ) : (
+                    props.news[0].heading_th
+                  )
+                } //"Headline Headline consect adipicing elit sedid"
+                text2={
+                  props.lang === 'en' ? (
+                    ReactHtmlParser(article_en0)
+                  ) : (
+                    ReactHtmlParser(article_th0)
+                  )
+                } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                date={
+                  props.lang === 'en' ? (
+                    props.news[0].createDate_en
+                  ) : (
+                    props.news[0].createDate_th
+                  )
+                } //"Aug 11, 2017"
+                pt="0.9em"
+              />
+            </a>
+          </Box>
+        ) : (
+          ''
+        )}
+        {props.news[1] != undefined ? (
+          <Box
+            w={[12 / 12, 12 / 12, 12 / 12, 6 / 12, 6 / 12]}
+            pt={['1em', '1em', '2em', '0em', '0em']}
+            pl={['0em', '0em', '0em', '0.5em', '0.5em']}
           >
-            <ThumbnailRight
-              w="100%"
-              img={props.news[1].imageUrl}
-              text1={
-                props.lang === 'en' ? (
-                  props.news[1].heading_en
-                ) : (
-                  props.news[1].heading_th
-                )
-              } //"Headline Headline consect adipicing elit sedid"
-              text2={
-                props.lang === 'en' ? (
-                  ReactHtmlParser(article_en1)
-                ) : (
-                  ReactHtmlParser(article_th1)
-                )
-              } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
-              date={
-                props.lang === 'en' ? (
-                  props.news[1].createDate_en
-                ) : (
-                  props.news[1].createDate_th
-                )
-              } //"Aug 11, 2017"
-              pt="0.9em"
-            />
-          </a>
-        </Box>
-      ) : (
-        ''
-      )}
-      <style jsx>
-        {`
-          a:link {
-            text-decoration: none;
-          }
-          a {
-            color: #fff;
-            text-decoration: none;
-          }
-          a:hover {
-            color: #ff0000;
-            text-decoration: none;
-          }
-        `}
-      </style>
-    </Flex>
+            <a
+              href={`/maxnews_detail?id=${props.news[1]._id}&name=${props
+                .news[1].programName}`}
+            >
+              <ThumbnailRight
+                w="100%"
+                img={props.news[1].imageUrl}
+                text1={
+                  props.lang === 'en' ? (
+                    props.news[1].heading_en
+                  ) : (
+                    props.news[1].heading_th
+                  )
+                } //"Headline Headline consect adipicing elit sedid"
+                text2={
+                  props.lang === 'en' ? (
+                    ReactHtmlParser(article_en1)
+                  ) : (
+                    ReactHtmlParser(article_th1)
+                  )
+                } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames.In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
+                date={
+                  props.lang === 'en' ? (
+                    props.news[1].createDate_en
+                  ) : (
+                    props.news[1].createDate_th
+                  )
+                } //"Aug 11, 2017"
+                pt="0.9em"
+              />
+            </a>
+          </Box>
+        ) : (
+          ''
+        )}
+        <style jsx>
+          {`
+            a:link {
+              text-decoration: none;
+            }
+            a {
+              color: #fff;
+              text-decoration: none;
+            }
+            a:hover {
+              color: #ff0000;
+              text-decoration: none;
+            }
+          `}
+        </style>
+      </Flex>
+    )
   )
 }
