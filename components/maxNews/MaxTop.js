@@ -134,24 +134,24 @@ const Img = styled.img`
 `
 const MaxTop = props => {
   let article_en0 = props.news[0].article_en
-  article_en0 = article_en0.replace(/<(.|\n)*?>/g, '')
+  article_en0 = article_en0.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
   let article_th0 = props.news[0].article_th
-  article_th0 = article_th0.replace(/<(.|\n)*?>/g, '')
+  article_th0 = article_th0.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
 
   let article_en1 = props.news[1].article_en
-  article_en1 = article_en1.replace(/<(.|\n)*?>/g, '')
+  article_en1 = article_en1.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
   let article_th1 = props.news[1].article_th
-  article_th1 = article_th1.replace(/<(.|\n)*?>/g, '')
+  article_th1 = article_th1.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
 
   let article_en2 = props.news[2].article_en
-  article_en2 = article_en2.replace(/<(.|\n)*?>/g, '')
+  article_en2 = article_en2.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
   let article_th2 = props.news[2].article_th
-  article_th2 = article_th2.replace(/<(.|\n)*?>/g, '')
+  article_th2 = article_th2.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
 
   let article_en3 = props.news[3].article_en
-  article_en3 = article_en3.replace(/<(.|\n)*?>/g, '')
+  article_en3 = article_en3.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
   let article_th3 = props.news[3].article_th
-  article_th3 = article_th3.replace(/<(.|\n)*?>/g, '')
+  article_th3 = article_th3.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
   return (
     <Wrapper>
       <Box pl="1rem" pr="1rem" width={1}>

@@ -181,13 +181,14 @@ export default withRedux(initStore, mapStateToProps, {
 
 const Thumbnailright = props => {
   let article_th0 = props.news[0].article_th
-  article_th0 = article_th0.replace(/<(.|\n)*?>/g, '')
+  article_th0 = article_th0.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
   let article_th1 = props.news[1].article_th
-  article_th1 = article_th1.replace(/<(.|\n)*?>/g, '')
+  article_th1 = article_th1.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
+  console.log('article_th1: ', article_th1)
   let article_en0 = props.news[0].article_en
-  article_en0 = article_en0.replace(/<(.|\n)*?>/g, '')
+  article_en0 = article_en0.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
   let article_en1 = props.news[1].article_en
-  article_en1 = article_en1.replace(/<(.|\n)*?>/g, '')
+  article_en1 = article_en1.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
   return (
     console.log('article_th0', article_th0),
     (

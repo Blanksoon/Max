@@ -53,9 +53,9 @@ const Img = styled.img`
 `
 const ThumbnailMaxnew = props => {
   let article_en = props.news.article_en
-  article_en = article_en.replace(/<(.|\n)*?>/g, '')
+  article_en = article_en.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
   let article_th = props.news.article_th
-  article_th = article_th.replace(/<(.|\n)*?>/g, '')
+  article_th = article_th.replace(/(?:&nbsp;)|<(.|\n)*?>/g, '')
   return (
     <div>
       <a
