@@ -23,6 +23,7 @@ import { getTranslation } from '../../tools/translationHelpers'
 import { langSelector } from '../../redux/selectors/lang'
 import { langUrl } from '../../tools/langUrl'
 import { media } from '../../tools/responsive'
+import ReactHtmlParser from 'react-html-parser'
 
 const Button1 = styled.button`
   bottom: 2%;
@@ -198,9 +199,9 @@ class MaxnewHome extends React.Component {
                         <Box>
                           <Text2>
                             {this.props.lang === 'en' ? (
-                              this.props.news[0].article_en
+                              ReactHtmlParser(this.props.news[0].article_en)
                             ) : (
-                              this.props.news[0].article_th
+                              ReactHtmlParser(this.props.news[0].article_th)
                             )}
                             {/* Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Donec ut lectus turpis. Mauris cursus mollis
@@ -261,9 +262,9 @@ class MaxnewHome extends React.Component {
                       } //"Headline Headline consect adipicing elit sedid"
                       text2={
                         this.props.lang === 'en' ? (
-                          this.props.news[1].article_en
+                          ReactHtmlParser(this.props.news[1].article_en)
                         ) : (
-                          this.props.news[1].article_th
+                          ReactHtmlParser(this.props.news[1].article_th)
                         )
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
@@ -297,9 +298,9 @@ class MaxnewHome extends React.Component {
                       } //"Headline Headline consect adipicing elit sedid"
                       text2={
                         this.props.lang === 'en' ? (
-                          this.props.news[2].article_en
+                          ReactHtmlParser(this.props.news[2].article_en)
                         ) : (
-                          this.props.news[2].article_th
+                          ReactHtmlParser(this.props.news[2].article_th)
                         )
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
@@ -333,9 +334,9 @@ class MaxnewHome extends React.Component {
                       } //"Headline Headline consect adipicing elit sedid"
                       text2={
                         this.props.lang === 'en' ? (
-                          this.props.news[3].article_en
+                          ReactHtmlParser(this.props.news[3].article_en)
                         ) : (
-                          this.props.news[3].article_th
+                          ReactHtmlParser(this.props.news[3].article_th)
                         )
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
