@@ -150,7 +150,6 @@ class MaxnewHome extends React.Component {
     })
   }
   render() {
-    // console.log('dddddddd', this.props.news[0])
     return (
       <I18nextProvider i18n={this.i18n}>
         <div>
@@ -199,9 +198,19 @@ class MaxnewHome extends React.Component {
                         <Box>
                           <Text2>
                             {this.props.lang === 'en' ? (
-                              ReactHtmlParser(this.props.news[0].article_en)
+                              ReactHtmlParser(
+                                this.props.news[0].article_en.replace(
+                                  /(?:&nbsp;)|<(.|\n)*?>/g,
+                                  ''
+                                )
+                              )
                             ) : (
-                              ReactHtmlParser(this.props.news[0].article_th)
+                              ReactHtmlParser(
+                                this.props.news[0].article_th.replace(
+                                  /(?:&nbsp;)|<(.|\n)*?>/g,
+                                  ''
+                                )
+                              )
                             )}
                             {/* Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Donec ut lectus turpis. Mauris cursus mollis
@@ -262,9 +271,19 @@ class MaxnewHome extends React.Component {
                       } //"Headline Headline consect adipicing elit sedid"
                       text2={
                         this.props.lang === 'en' ? (
-                          ReactHtmlParser(this.props.news[1].article_en)
+                          ReactHtmlParser(
+                            this.props.news[1].article_en.replace(
+                              /(?:&nbsp;)|<(.|\n)*?>/g,
+                              ''
+                            )
+                          )
                         ) : (
-                          ReactHtmlParser(this.props.news[1].article_th)
+                          ReactHtmlParser(
+                            this.props.news[1].article_th.replace(
+                              /(?:&nbsp;)|<(.|\n)*?>/g,
+                              ''
+                            )
+                          )
                         )
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
@@ -298,9 +317,19 @@ class MaxnewHome extends React.Component {
                       } //"Headline Headline consect adipicing elit sedid"
                       text2={
                         this.props.lang === 'en' ? (
-                          ReactHtmlParser(this.props.news[2].article_en)
+                          ReactHtmlParser(
+                            this.props.news[2].article_en.replace(
+                              /(?:&nbsp;)|<(.|\n)*?>/g,
+                              ''
+                            )
+                          )
                         ) : (
-                          ReactHtmlParser(this.props.news[2].article_th)
+                          ReactHtmlParser(
+                            this.props.news[2].article_th.replace(
+                              /(?:&nbsp;)|<(.|\n)*?>/g,
+                              ''
+                            )
+                          )
                         )
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
@@ -334,9 +363,19 @@ class MaxnewHome extends React.Component {
                       } //"Headline Headline consect adipicing elit sedid"
                       text2={
                         this.props.lang === 'en' ? (
-                          ReactHtmlParser(this.props.news[3].article_en)
+                          ReactHtmlParser(
+                            this.props.news[3].article_en.replace(
+                              /(?:&nbsp;)|<(.|\n)*?>/g,
+                              ''
+                            )
+                          )
                         ) : (
-                          ReactHtmlParser(this.props.news[3].article_th)
+                          ReactHtmlParser(
+                            this.props.news[3].article_th.replace(
+                              /(?:&nbsp;)|<(.|\n)*?>/g,
+                              ''
+                            )
+                          )
                         )
                       } //"In in tempus risus. Aliquam erat volutpat. Nunc in nibh augue. Interdum et malesuada fames."
                       date={
@@ -409,9 +448,4 @@ MaxnewHome.getInitialProps = async ({ store, isServer, query, req }) => {
   return props
 }
 
-export default withRedux(initStore, null, {
-  toogleModal,
-  updateModalType,
-  indexModalURL,
-  closeModal,
-})(MaxnewHome)
+export default MaxnewHome
