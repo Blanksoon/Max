@@ -188,11 +188,10 @@ export default class Modal extends Component {
     modalType: 2,
   }
   handleOnClick = e => {
-    //console.log('click', e)
-    false ? this.props.toggleModalAction() : null
-    // if (false) {
-    //   this.props.toogleModalAction()
-    // }
+    // console.log('click', typeof e._dispatchListeners)
+    typeof e._dispatchListeners === 'function'
+      ? this.props.toggleModalAction()
+      : null
     e.stopPropagation()
   }
   componentDidMount() {
@@ -223,7 +222,7 @@ export default class Modal extends Component {
         <WrapperVod onClick={e => this.handleOnClick(e)} visibility="hidden">
           <Player Url={this.props.modalURL} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="../../static/close.png" />
+            <Image width="100%" src="../../static/close-red.png" />
           </WrapperClose>
         </WrapperVod>
       )
@@ -233,7 +232,7 @@ export default class Modal extends Component {
         <WrapperImg onClick={e => this.handleOnClick(e)}>
           <Image width="100%" src={this.props.modalURL} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="../../static/close.png" />
+            <Image width="100%" src="../../static/close-red.png" />
           </WrapperClose>
         </WrapperImg>
       )
@@ -244,7 +243,7 @@ export default class Modal extends Component {
         <WrapperLogin onClick={e => this.handleOnClick(e)}>
           <Login commonInLogin={this.props.common} url={this.props.url} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="../../static/close.png" />
+            <Image width="100%" src="../../static/close-red.png" />
           </WrapperClose>
         </WrapperLogin>
       )
@@ -257,7 +256,7 @@ export default class Modal extends Component {
             commonInRegister={this.props.common}
           />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="../../static/close.png" />
+            <Image width="100%" src="../../static/close-red.png" />
           </WrapperClose>
         </WrapperRegister>
       )
@@ -267,7 +266,7 @@ export default class Modal extends Component {
         <WrapperChangePass onClick={e => this.handleOnClick(e)}>
           <ChangePassStep1 common={this.props.common} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="../../static/close.png" />
+            <Image width="100%" src="../../static/close-red.png" />
           </WrapperClose>
         </WrapperChangePass>
       )
@@ -277,7 +276,7 @@ export default class Modal extends Component {
         <WrapperChangePass onClick={e => this.handleOnClick(e)}>
           <ChangePassStep2 common={this.props.common} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="../../static/close.png" />
+            <Image width="100%" src="../../static/close-red.png" />
           </WrapperClose>
         </WrapperChangePass>
       )
@@ -290,7 +289,7 @@ export default class Modal extends Component {
             commonInForgotPassword={this.props.common}
           />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="../../static/close.png" />
+            <Image width="100%" src="../../static/close-red.png" />
           </WrapperClose>
         </WrapperRegister>
       )
@@ -309,7 +308,7 @@ export default class Modal extends Component {
             <Text1>Cancle</Text1>
           </WrapperCancle> */}
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="../../static/close.png" />
+            <Image width="100%" src="../../static/close-red.png" />
           </WrapperClose>
         </WrapperPurchaseItem>
       )
@@ -319,7 +318,7 @@ export default class Modal extends Component {
         <WrapperSuccessPurchase onClick={e => this.handleOnClick(e)}>
           <SuccessPurchase closeModal={this.props.closeModal} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="../../static/close.png" />
+            <Image width="100%" src="../../static/close-red.png" />
           </WrapperClose>
         </WrapperSuccessPurchase>
       )
@@ -329,7 +328,7 @@ export default class Modal extends Component {
         <WrapperNew onClick={e => this.handleOnClick(e)}>
           <Image width="100%" src={this.props.modalURL} />
           <WrapperClose onClick={true ? this.props.closeModal : ''}>
-            <Image width="100%" src="../../static/close.png" />
+            <Image width="100%" src="../../static/close-red.png" />
           </WrapperClose>
         </WrapperNew>
       )
