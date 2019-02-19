@@ -122,7 +122,9 @@ const GradientBg = styled.div`
   ${media.phone`padding-top: 4rem;`};
   ${media.iphone5`padding-top: 4rem;`};
 `
-const Home = styled.div`font-family: Helvetica, Arial, sans-serif;`
+const Home = styled.div`
+  font-family: Helvetica, Arial, sans-serif;
+`
 let lang = 'th'
 let navbar = ''
 class Index extends React.Component {
@@ -151,7 +153,7 @@ class Index extends React.Component {
     // console.log('dddddddLOG', this.props.Poster)
     let ImgNews = this.props.Poster.posterEn
     if (this.props.lang == 'th') ImgNews = this.props.Poster.posterTh
-    let renderPoster = ''
+    let renderPoster = <div />
     if (
       this.props.Poster.posterEn &&
       this.props.Poster.posterTh !== undefined

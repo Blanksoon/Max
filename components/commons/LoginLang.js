@@ -11,6 +11,7 @@ const LoginLang = styled.span`
   color: ${vars.white};
   float: right;
   text-align: center;
+  margin-right: 0.5rem;
 `
 const Login = styled.div`
   border: 1px solid ${vars.lightBlue};
@@ -38,6 +39,12 @@ const Language = styled.a`
   height: 100%;
   padding: 0.7rem 0.7rem;
   margin-bottom: 0.5rem;
+`
+const Logo = styled.img`
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 0.7rem;
+  width: 48px;
 `
 const ClearFix = styled.div`clear: both;`
 
@@ -79,9 +86,11 @@ export default class extends Component {
             borderRight
             active={lang === 'en'}
           >
+            <Logo src='static/en_flag.svg' />
             EN
           </Language>
           <Language onClick={() => this.setLang('th')} active={lang === 'th'}>
+            <Logo src='static/th_flag.svg' />
             TH
           </Language>
         </LanguagePanel>
